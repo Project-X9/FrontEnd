@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
+import{actions} from "react-redux-form";
+import SignUp from "./SignUpComponent";
+import {postFeedback} from "../redux/ActionCreators"
 
 const mapStateToProps = state => {
     return {
     }
   }
   const mapDispatchToProps = dispatch => ({
+    resetFeedbackForm: () => { dispatch(actions.reset('feedback'))},
+    postFeedback: (email, confirmemail, password, name,day,month,
+      year,sex) => dispatch(postFeedback(email, confirmemail, password, name,day,month,
+        year,sex))
   });
   
   class Main extends Component{
@@ -29,8 +36,8 @@ const mapStateToProps = state => {
         {/* <TransitionGroup> */}
           {/* <CSSTransition key={this.props.location.key} classNames="page" timeout={300}> */}
           <Switch>
-              {/* <Route path="/home" component={HomePage}></Route> 
-              <Redirect to="/home"></Redirect> */}
+              <Route exactpath="/signup" component={()=><SignUp resetFeedbackForm={this.props.resetFeedbackForm} postFeedback={this.props.postFeedback}/>}></Route> 
+              <Redirect to="/signup"></Redirect>
           </Switch>
           {/* </CSSTransition> */}
           {/* </TransitionGroup> */}
