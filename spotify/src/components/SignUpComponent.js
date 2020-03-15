@@ -41,8 +41,11 @@ class SignUp extends Component {
     });
   };
   responseFacebook (response) {
-    this.props.resetFeedbackForm();
-    this.props.postFacebookLogin(response.email,response.image,response.name); 
+    if (response.status !== "unknown")
+    {
+      this.props.resetFeedbackForm();
+      this.props.postFacebookLogin(response.email,response.image,response.name); 
+    }
   }
   
   render() {
@@ -50,7 +53,6 @@ class SignUp extends Component {
       <div className="container signup">
         <div className="row somepadding">
           <Col xs={12} md={{ size: 6, offset: 3 }}>
-
             <Link to='/home'><img src="assets/images/Spotify_Logo_RGB_Green_(2).jpg" height="59" width="172" alt="spotify"/></Link>
             <hr />
           </Col>
@@ -86,16 +88,17 @@ class SignUp extends Component {
                       required, validEmail
                     }}
                   />
+                  <Row className='ml-2'>
                   <Errors
                     className="text-danger"
                     model=".email"
                     show="touched"
                     messages={{
-                      required: 'Required',
-                      validEmail: 'Invalid Email Address',
-
+                      required: 'Enter your Email address ,',
+                      validEmail: ' Invalid Email Address',
                     }}
                   />
+                  </Row>
                 </Col>
               </Row>
               <Row className="form-group">
@@ -110,16 +113,17 @@ class SignUp extends Component {
                       required, validEmail,confEmail : confEmail(this.state.email)
                     }}
                   />
+                  <Row className='ml-2'>
                   <Errors
                     className="text-danger"
                     model=".confirmemail"
                     show="touched"
                     messages={{
-                      required: 'Required',
-                      validEmail: 'Invalid Email Address',
+                      // required: 'Required',
+                      // validEmail: 'Invalid Email Address',
                       confEmail:'Email does not match'
                     }}
-                  />
+                  /></Row>
                 </Col>
               </Row>
               <Row className="form-group">
@@ -135,15 +139,17 @@ class SignUp extends Component {
                       required, minLength: minLength(7)
                     }}
                   />
+                  <Row className='ml-2'>                  
                   <Errors
                     className="text-danger"
                     model=".password"
                     show="touched"
                     messages={{
-                      required: 'Enter your password to continue',
-                      minLength: 'Your password is too short',
+                      required: 'Enter your password to continue, ',
+                      minLength: ' Your password is too short',
                     }}
                   />
+                  </Row>
                 </Col>
               </Row>
               <Row className="form-group">
@@ -158,6 +164,7 @@ class SignUp extends Component {
                       required
                     }}
                   />
+                  <Row className='ml-2'>
                   <Errors
                     className="text-danger"
                     model=".name"
@@ -165,7 +172,7 @@ class SignUp extends Component {
                     messages={{
                       required: 'What should we call you ?',
                     }}
-                  />
+                  /></Row>
                 </Col>
               </Row>
               <Row className="form-group">
@@ -185,14 +192,15 @@ class SignUp extends Component {
                     model=".day"
                     show="touched"
                     messages={{
-                      required: 'Enter a valid day of the month',
-                      validDay: 'Enter a valid day of the month',
+                      validDay: 'Enter a valid day of the month'
                     }}
                   />
                 </Col>
                 <Col xs={4} md={2}>
-                  <Control.select className="form-control" model=".month" name="month">
-                    <option>Month</option>
+                  <Control.select className="form-control" model=".month" name="month"   validators={{
+                      required
+                    }}>
+                    <option value='null'>Month</option>
                     <option>January</option>
                     <option>February</option>
                     <option>March</option>
@@ -206,6 +214,14 @@ class SignUp extends Component {
                     <option>November</option>
                     <option>December</option>
                   </Control.select>
+                  <Errors
+                    className="text-danger"
+                    model=".month"
+                    show="touched"
+                    messages={{
+                      required: 'required'
+                    }}
+                  />
                 </Col>
                 <Col xs={4} md={2}>
                   <Control.text
