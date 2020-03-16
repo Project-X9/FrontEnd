@@ -4,11 +4,13 @@ import {
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { actions } from 'react-redux-form';
-import SignUp from './SignUpComponent';
+import SignUp from './SignUp/SignUpComponent';
 import { postFeedback, postFacebookLogin } from '../redux/ActionCreators';
 
 
 const mapStateToProps = (state) => ({
+
+
 });
 const mapDispatchToProps = (dispatch) => ({
   resetFeedbackForm: () => { dispatch(actions.reset('feedback')); },

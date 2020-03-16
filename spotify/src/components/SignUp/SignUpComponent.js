@@ -13,21 +13,24 @@ const required = (val) => val && val.length;
 const minLength = (len) => (val) => val && (val.length >= len);
 // const isNumber = (val) => !isNaN(Number(val));
 const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
-const validDay = (val) => /^(0[1-9]|[12]\d|3[01])$/i.test(val);
+const validDay = (val) => /^([1-9]|0[1-9]|[12]\d|3[01])$/i.test(val);
 const validYear = (val) => /^(181[2-9]|18[2-9]\d|19\d\d|2\d{3}|30[0-3]\d|304[0-8])$/i.test(val); //1812 - 3048
 const confEmail=(val) => (val2) => val === val2;
-
+const typeSelected=(val) => (val === 'male' || val ==='female') ;
+const monthSelected=(val) => (val !== "null");
 class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: '',
-      confirmEmail: ''
+      selectedOption: false
   }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.responseFacebook = this.responseFacebook.bind(this);
+
   }
+  
   handleSubmit(values) {
     // const { email, confirmEmail } = this.state;
       // console.log(`Current State :${JSON.stringify(values)}`);
@@ -69,7 +72,7 @@ class SignUp extends Component {
             <strong className="line-thru">or</strong>
           </Col>
           <div className="col-12">
-            <h3>Sign up with your email adress </h3>
+            <h3>Sign up with your email address </h3>
           </div>
         </div>
         <div className="row signup-field">
@@ -197,8 +200,8 @@ class SignUp extends Component {
                   />
                 </Col>
                 <Col xs={4} md={2}>
-                  <Control.select className="form-control" model=".month" name="month"   validators={{
-                      required
+                  <Control.select className="form-control" model=".month" name="month"  validators={{
+                      monthSelected,required
                     }}>
                     <option value='null'>Month</option>
                     <option>January</option>
@@ -219,7 +222,8 @@ class SignUp extends Component {
                     model=".month"
                     show="touched"
                     messages={{
-                      required: 'required'
+                      required:"Required",
+                      monthSelected: 'Enter the month'
                     }}
                   />
                 </Col>
@@ -249,15 +253,29 @@ class SignUp extends Component {
                 <Col xs={12} md={8}>
                   <div>
                     <label className="p-3">
-                      <Control.radio model=".sex" value="male" id="sex" name="sex" />
+                      <Control.radio model=".sex" value="male" id="sex" name="sex" 
+                       validators={{
+                          typeSelected 
+                      }}/>
                       {' '}
                       Male
                     </label>
                     <label className="p-3">
-                      <Control.radio model=".sex" value="female" id="sex" name="sex" />
+                      <Control.radio model=".sex" value="female" id="sex" name="sex"           
+                      validators={{
+                        typeSelected 
+                          }} />
                       {' '}
                       Female
                     </label>
+                    <Errors
+                    className="text-danger"
+                    model=".sex"
+                    show="touched"
+                    messages={{
+                      typeSelected: 'Enter your gender'
+                    }}
+                  />
                   </div>
                 </Col>
               </Row>

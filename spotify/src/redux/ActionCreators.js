@@ -9,7 +9,6 @@ export const postFacebookLogin = (email, image, name) => (dispatch) => {
     name,
   };
   newFacebookLogin.date = new Date().toISOString();
-
   axios.post(`${baseUrl}users`, newFacebookLogin)
     .then((response) => alert(JSON.stringify(response)));
 };
