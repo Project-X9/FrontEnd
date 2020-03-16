@@ -3,12 +3,9 @@ import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { actions } from "react-redux-form";
 import SignUp from "./SignUpComponent";
-import { postFeedback } from "../redux/ActionCreators";
-import Header from "../components/PremuimComponent";
+import { postFeedback, postFacebookLogin } from "../redux/ActionCreators";
 
-const mapStateToProps = state => {
-  return {};
-};
+const mapStateToProps = state => ({});
 const mapDispatchToProps = dispatch => ({
   resetFeedbackForm: () => {
     dispatch(actions.reset("feedback"));
@@ -16,7 +13,9 @@ const mapDispatchToProps = dispatch => ({
   postFeedback: (email, confirmemail, password, name, day, month, year, sex) =>
     dispatch(
       postFeedback(email, confirmemail, password, name, day, month, year, sex)
-    )
+    ),
+  postFacebookLogin: (email, image, name) =>
+    dispatch(postFacebookLogin(email, image, name))
 });
 
 class Main extends Component {
@@ -42,12 +41,12 @@ class Main extends Component {
             component={() => (
               <SignUp
                 resetFeedbackForm={this.props.resetFeedbackForm}
+                postFacebookLogin={this.props.postFacebookLogin}
                 postFeedback={this.props.postFeedback}
               />
             )}
-          ></Route>
-          <Route exact path="/premium" component={() => <Header />}></Route>
-          <Redirect to="/signup"></Redirect>
+          />
+          <Redirect to="/signup" />
         </Switch>
         {/* </CSSTransition> */}
         {/* </TransitionGroup> */}
