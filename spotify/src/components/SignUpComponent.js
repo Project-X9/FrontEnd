@@ -1,19 +1,14 @@
-import React, { Component } from 'react';
-import {
-  Col, Label, Button, Row,
-} from 'reactstrap';
-import {
-  Control, Form, Errors, actions,
-} from 'react-redux-form';
+import React, { Component } from "react";
+import { Col, Label, Button, Row } from "reactstrap";
+import { Control, Form, Errors, actions } from "react-redux-form";
 
-
-const required = (val) => val && val.length;
-const maxLength = (len) => (val) => !(val) || (val.length <= len);
-const minLength = (len) => (val) => val && (val.length >= len);
-const isNumber = (val) => !isNaN(Number(val));
-const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
-const validDay = (val) => /^(0[1-9]|[12]\d|3[01])$/i.test(val);
-const validYear = (val) => /\d{4}$/i.test(val);
+const required = val => val && val.length;
+const maxLength = len => val => !val || val.length <= len;
+const minLength = len => val => val && val.length >= len;
+const isNumber = val => !isNaN(Number(val));
+const validEmail = val => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
+const validDay = val => /^(0[1-9]|[12]\d|3[01])$/i.test(val);
+const validYear = val => /\d{4}$/i.test(val);
 
 class SignUp extends Component {
   constructor(props) {
@@ -25,22 +20,35 @@ class SignUp extends Component {
     console.log(`Current State :${JSON.stringify(values)}`);
     // alert("Current State :" + JSON.stringify(values));
     this.props.resetFeedbackForm();
-    this.props.postFeedback(values.email, values.confirmemail, values.password, values.name, values.day, values.month,
-      values.year, values.sex);
+    this.props.postFeedback(
+      values.email,
+      values.confirmemail,
+      values.password,
+      values.name,
+      values.day,
+      values.month,
+      values.year,
+      values.sex
+    );
   }
-
 
   render() {
     return (
       <div className="container signup">
         <div className="row somepadding">
           <Col md={{ size: 8, offset: 2 }}>
-
-            <img src="assets/images/Spotify_Logo_RGB_Green_(2).jpg" height="59" width="172" alt="spotify" />
+            <img
+              src="assets/images/logo.png"
+              height="59"
+              width="172"
+              alt="spotify"
+            />
             <hr />
           </Col>
           <Col md={{ size: 8, offset: 2 }}>
-            <a className="btn facebookButton"><b className="textcolour">SIGN UP WITH FACEBOOK</b></a>
+            <a className="btn facebookButton">
+              <b className="textcolour">SIGN UP WITH FACEBOOK</b>
+            </a>
           </Col>
           <Col md={{ size: 8, offset: 2 }}>
             <strong className="line-thru">or</strong>
@@ -51,7 +59,10 @@ class SignUp extends Component {
         </div>
         <div className="row signup-field">
           <div>
-            <Form model="feedback" onSubmit={(values) => this.handleSubmit(values)}>
+            <Form
+              model="feedback"
+              onSubmit={values => this.handleSubmit(values)}
+            >
               <Row className="form-group">
                 {/* <Label htmlFor="email" md={2} ></Label> */}
                 <Col md={{ size: 8, offset: 2 }}>
@@ -62,7 +73,8 @@ class SignUp extends Component {
                     id="email"
                     name="email"
                     validators={{
-                      required, validEmail,
+                      required,
+                      validEmail
                     }}
                   />
                   <Errors
@@ -70,9 +82,8 @@ class SignUp extends Component {
                     model=".email"
                     show="touched"
                     messages={{
-                      required: 'Required',
-                      validEmail: 'Invalid Email Address',
-
+                      required: "Required",
+                      validEmail: "Invalid Email Address"
                     }}
                   />
                 </Col>
@@ -86,7 +97,8 @@ class SignUp extends Component {
                     id="confirmemail"
                     name="confirmemail"
                     validators={{
-                      required, validEmail,
+                      required,
+                      validEmail
                     }}
                   />
                   <Errors
@@ -94,8 +106,8 @@ class SignUp extends Component {
                     model=".confirmemail"
                     show="touched"
                     messages={{
-                      required: 'Required',
-                      validEmail: 'Invalid Email Address',
+                      required: "Required",
+                      validEmail: "Invalid Email Address"
                     }}
                   />
                 </Col>
@@ -110,7 +122,8 @@ class SignUp extends Component {
                     id="password"
                     name="password"
                     validators={{
-                      required, minLength: minLength(7),
+                      required,
+                      minLength: minLength(7)
                     }}
                   />
                   <Errors
@@ -118,8 +131,8 @@ class SignUp extends Component {
                     model=".password"
                     show="touched"
                     messages={{
-                      required: 'Enter your password to continue',
-                      minLength: 'Your password is too short',
+                      required: "Enter your password to continue",
+                      minLength: "Your password is too short"
                     }}
                   />
                 </Col>
@@ -133,7 +146,7 @@ class SignUp extends Component {
                     id="name"
                     name="name"
                     validators={{
-                      required,
+                      required
                     }}
                   />
                   <Errors
@@ -141,7 +154,7 @@ class SignUp extends Component {
                     model=".name"
                     show="touched"
                     messages={{
-                      required: 'What should we call you ?',
+                      required: "What should we call you ?"
                     }}
                   />
                 </Col>
@@ -155,7 +168,8 @@ class SignUp extends Component {
                     id="day"
                     name="day"
                     validators={{
-                      required, validDay,
+                      required,
+                      validDay
                     }}
                   />
                   <Errors
@@ -163,13 +177,17 @@ class SignUp extends Component {
                     model=".day"
                     show="touched"
                     messages={{
-                      required: 'Enter a valid day of the month',
-                      validDay: 'Enter a valid day of the month',
+                      required: "Enter a valid day of the month",
+                      validDay: "Enter a valid day of the month"
                     }}
                   />
                 </Col>
                 <Col md={4}>
-                  <Control.select className="form-control" model=".month" name="month">
+                  <Control.select
+                    className="form-control"
+                    model=".month"
+                    name="month"
+                  >
                     <option>Month</option>
                     <option>January</option>
                     <option>February</option>
@@ -193,7 +211,8 @@ class SignUp extends Component {
                     id="year"
                     name="year"
                     validators={{
-                      required, validYear,
+                      required,
+                      validYear
                     }}
                   />
                   <Errors
@@ -201,8 +220,8 @@ class SignUp extends Component {
                     model=".year"
                     show="touched"
                     messages={{
-                      required: 'Enter a valid year',
-                      validYear: ' Enter a valid year',
+                      required: "Enter a valid year",
+                      validYear: " Enter a valid year"
                     }}
                   />
                 </Col>
@@ -211,13 +230,21 @@ class SignUp extends Component {
                 <Col md={6}>
                   <div>
                     <label className="p-3">
-                      <Control.radio model=".sex" value="male" id="sex" name="sex" />
-                      {' '}
+                      <Control.radio
+                        model=".sex"
+                        value="male"
+                        id="sex"
+                        name="sex"
+                      />{" "}
                       Male
                     </label>
                     <label className="p-3">
-                      <Control.radio model=".sex" value="female" id="sex" name="sex" />
-                      {' '}
+                      <Control.radio
+                        model=".sex"
+                        value="female"
+                        id="sex"
+                        name="sex"
+                      />{" "}
                       Female
                     </label>
                   </div>
@@ -225,7 +252,9 @@ class SignUp extends Component {
               </Row>
               <Row className="form-group">
                 <Col md={{ size: 8, offset: 2 }}>
-                  <Button model="submit" className="signupbtn">SignUp</Button>
+                  <Button model="submit" className="signupbtn">
+                    SignUp
+                  </Button>
                 </Col>
               </Row>
             </Form>
