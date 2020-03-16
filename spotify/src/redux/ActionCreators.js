@@ -1,20 +1,29 @@
-import axios from 'axios';
-import * as ActionTypes from './ActionTypes';
-import { baseUrl } from '../shared/baseUrl';
+import axios from "axios";
+import * as ActionTypes from "./ActionTypes";
+import { baseUrl } from "../shared/baseUrl";
 
-export const postFacebookLogin = (email, image, name) => (dispatch) => {
+export const postFacebookLogin = (email, image, name) => dispatch => {
   const newFacebookLogin = {
     email,
     image,
-    name,
+    name
   };
   newFacebookLogin.date = new Date().toISOString();
 
-  axios.post(`${baseUrl}users`, newFacebookLogin)
-    .then((response) => alert(JSON.stringify(response)));
+  axios
+    .post(`${baseUrl}users`, newFacebookLogin)
+    .then(response => alert(JSON.stringify(response)));
 };
-export const postFeedback = (email, confirmemail, password, name, day, month,
-  year, sex) => (dispatch) => {
+export const postFeedback = (
+  email,
+  confirmemail,
+  password,
+  name,
+  day,
+  month,
+  year,
+  sex
+) => dispatch => {
   const newFeedback = {
     email,
     confirmemail,
@@ -23,13 +32,13 @@ export const postFeedback = (email, confirmemail, password, name, day, month,
     day,
     month,
     year,
-    sex,
+    sex
   };
   newFeedback.date = new Date().toISOString();
 
-  axios.post(`${baseUrl}users`, newFeedback)
-    .then((response) => alert(JSON.stringify(response)));
-
+  axios
+    .post(`${baseUrl}users`, newFeedback)
+    .then(response => alert(JSON.stringify(response)));
 
   // return fetch(baseUrl + 'users', {
   //     method: "POST",
