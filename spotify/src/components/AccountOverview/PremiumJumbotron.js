@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Jumbotron, Button } from "reactstrap";
-import Aux from "./Aux";
+
 class PremiumJumbotron extends Component {
   render() {
     return (

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Card, CardBody, CardText, CardSubtitle } from "reactstrap";
-import Aux from "./Aux";
+
 class FreePlan extends Component {
   render() {
     return (
