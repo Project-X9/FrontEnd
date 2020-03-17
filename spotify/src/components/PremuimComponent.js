@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import {
   Navbar,
   NavbarBrand,
@@ -29,17 +28,21 @@ import { Divider } from "@material-ui/core";
 import { NavLink } from "react-router-dom";
 import "../App.css";
 
-class Header extends Component {
+class Premium extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isNavOpen: false,
       isModalOpen: false,
-      collapsed: true
+      collapsed: true,
+      Premium: false
     };
     this.state.toggleNav = this.toggleNav.bind(this);
+    this.handlePremium = this.handlePremium.bind(this);
   }
-
+  handlePremium() {
+    this.props.PremiumPost({ Premium: true });
+  }
   toggleNav() {
     this.setState({
       isNavOpen: !this.state.isNavOpen,
@@ -49,7 +52,7 @@ class Header extends Component {
 
   render() {
     return (
-      <div className="container ">
+      <div>
         <Navbar className="NavBar" sticky={"top"} expand="md">
           <NavbarBrand className="mr-auto" href="/signup">
             <img
@@ -112,16 +115,20 @@ class Header extends Component {
             </div>
             <div>
               <h2 className="Header2">
-                Just EGP&nbsp;49.99/month after. Cancel anytime.
+                Just EGP49.99/month after. Cancel anytime.
               </h2>
             </div>
           </div>
-          <Button model="submit" className="signupbtn">
+          <Button
+            onClick={this.handlePremium}
+            model="submit"
+            className="signupbtn"
+          >
             Get Premium
           </Button>
         </Jumbotron>
         <article>
-          <h1>Why Premium?</h1>
+          <h1>Why Go Premium?</h1>
           <br />
           <br />
           <br />
@@ -173,7 +180,7 @@ class Header extends Component {
         </article>
         <Jumbotron className="JmbStyle">
           <h3>Spotify Premium</h3>
-          <h2>EGP349.99/Month</h2>
+          <h2>EGP49.99/Month</h2>
           <hr className="my-2" />
           <h5 style={{ padding: "20px", textAlign: "left" }}>
             <li>Play Any Song.</li>
@@ -184,7 +191,11 @@ class Header extends Component {
           </h5>
           <hr className="my-2" />
           <p className="lead">
-            <Button model="submit" className="signupbtn">
+            <Button
+              model="submit"
+              className="signupbtn"
+              onClick={this.handlePremium}
+            >
               Get Premium
             </Button>
           </p>
@@ -194,4 +205,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default Premium;

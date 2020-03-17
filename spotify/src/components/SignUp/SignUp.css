@@ -1,94 +1,94 @@
-.somepadding{
-    padding: 5rem;
-  }
-  
-  .facebookButton{
-    color: #fff;
-    background-color: #3B5998;
-    font-size: 14px;
-    line-height: 1;
-    border-radius: 500px;
-    padding: 16px 48px 18px;
-    /* display: block; */
-    letter-spacing: 2px;
-    font-weight: 700;
-    text-align: center;
-  }
-  .facebookButton:hover{
-    background-color: #3a61b3;
-  }
-  .textcolour{
-    color: #fff;
-  }
-  .signupbtn{
-    margin-bottom: 14px;
-    max-width: 320px;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 14px;
-    line-height: 1;
-    border-radius: 500px;
-    border-width: 0;
-    letter-spacing: 2px;
-    min-width: 160px;
-    text-transform: uppercase;
-    white-space: normal;
-    background-color: #1DB954;
-    display: block;
-    width: 100%;
-    font-weight: 700;
-    text-align: center;
-    touch-action: manipulation;
-    cursor: pointer;
-    border: 1px solid transparent;
-    padding: 7px 12px 5px;
-  }
-  .signupbtn:hover{
-    background-color: #1ED760;
-  }
-  .signup-field{
-      display: block;
-      margin-inline-start: 2px;
-      margin-inline-end: 2px;
-      padding-block-start: 0.35em;
-      padding-inline-start: 0.75em;
-      padding-inline-end: 0.75em;
-      padding-block-end: 0.625em;
-      min-inline-size: min-content;
-      font-family: Circular, Helvetica, Arial, sans-serif;
-      font-size: 16px;
-      text-size-adjust: 100%;
-      font-weight: 400;
-      margin: 0 2px;
-      align-items: center;
-      align-content: center;
-  }
-  .line-thru {
-    display: block;
-    font-size: .875em;
-    margin-bottom: 1em;
-    position: relative;
-    text-align: center;
-    width: 100%;
-    z-index: 1;
-  }
-  .line-thru:after {
-    border-bottom: 1px solid #dfe0e6;
-    content: '';
-    display: block;
-    position: absolute;
-    top: 49%;
-    width: 100%;
-    z-index: -2;
-  }
-  .line-thru:before {
-    width: 40px;
-    height: 10px;
-    background-color: #FFF;
-    content: '';
-    margin: -5px 0 0 -20px;
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    z-index: -1;
-  }
+.somepadding {
+  padding: 5rem;
+}
+
+.facebookButton {
+  color: #fff;
+  background-color: #3b5998;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 500px;
+  padding: 16px 48px 18px;
+  /* display: block; */
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-align: center;
+}
+.facebookButton:hover {
+  background-color: #3a61b3;
+}
+.textcolour {
+  color: #fff;
+}
+.signupbtn {
+  margin-bottom: 14px;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 500px;
+  border-width: 0;
+  letter-spacing: 2px;
+  min-width: 160px;
+  text-transform: uppercase;
+  white-space: normal;
+  background-color: #1db954;
+  display: block;
+  width: 100%;
+  font-weight: 700;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  border: 1px solid transparent;
+  padding: 7px 12px 5px;
+}
+.signupbtn:hover {
+  background-color: #1ed760;
+}
+.signup-field {
+  display: block;
+  margin-inline-start: 2px;
+  margin-inline-end: 2px;
+  padding-block-start: 0.35em;
+  padding-inline-start: 0.75em;
+  padding-inline-end: 0.75em;
+  padding-block-end: 0.625em;
+  min-inline-size: min-content;
+  font-family: Circular, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  text-size-adjust: 100%;
+  font-weight: 400;
+  margin: 0 2px;
+  align-items: center;
+  align-content: center;
+}
+.line-thru {
+  display: block;
+  font-size: 0.875em;
+  margin-bottom: 1em;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+.line-thru:after {
+  border-bottom: 1px solid #dfe0e6;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 49%;
+  width: 100%;
+  z-index: -2;
+}
+.line-thru:before {
+  width: 40px;
+  height: 10px;
+  background-color: #fff;
+  content: "";
+  margin: -5px 0 0 -20px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  z-index: -1;
+}
