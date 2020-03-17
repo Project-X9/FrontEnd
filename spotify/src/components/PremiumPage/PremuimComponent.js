@@ -58,61 +58,64 @@ class Premium extends Component {
   render() {
     return (
       <div>
-        <Navbar className="NavBar" sticky={"top"} expand="md">
-          <NavbarBrand className="mr-auto" href="/signup">
-            <img
-              src="assets/Images/SpotMini.png"
-              height="100px"
-              width="200px"
-              alt=""
-            />
-          </NavbarBrand>
-          <NavbarToggler
-            className="NavBarToggle"
-            onClick={this.state.toggleNav}
-          >
-            |||
-          </NavbarToggler>
+        <div className="AccountOverviewNav">
+          <div className="container">
+            <Navbar className="NavBar" sticky={"top"} expand="md">
+              <NavbarBrand className="mr-auto" href="/signup">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSBmnPgQKW4JLrNcSFhPFCLHz3t8kT1pZl0PVkLYsa8FoScWYda"
+                  height="65px"
+                  width="200px"
+                  alt=""
+                />
+              </NavbarBrand>
+              <NavbarToggler
+                className="NavBarToggle"
+                onClick={this.state.toggleNav}
+              >
+                ☰
+              </NavbarToggler>
 
-          <Collapse isOpen={this.state.isNavOpen} navbar>
-            <Nav navbar className="ml-auto">
-              <NavItem>
-                <NavLink className="nav-link" to="/home">
-                  Premium
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink className="nav-link" to="/menu">
-                  Help
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink className="nav-link" to="/aboutus">
-                  Download
-                </NavLink>
-              </NavItem>
+              <Collapse isOpen={this.state.isNavOpen} navbar>
+                <Nav navbar className="ml-auto">
+                  <NavItem>
+                    <NavLink className="nav-link" to="/home">
+                      Premium
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink className="nav-link" to="/menu">
+                      Help
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink className="nav-link" to="/aboutus">
+                      Download
+                    </NavLink>
+                  </NavItem>
 
-              <NavItem>
-                <UncontrolledDropdown nav inNavbar>
-                  <Divider
-                    className="dividerstyle"
-                    orientation="vertical"
-                    flexItem
-                  />
-                  <DropdownToggle nav caret className="seperator">
-                    <img className="Profile" src="assets/Images/Person.jpg" />
-                    Profile
-                  </DropdownToggle>
-                  <DropdownMenu right>
-                    <DropdownItem>Account </DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>LogOut</DropdownItem>
-                  </DropdownMenu>
-                </UncontrolledDropdown>
-              </NavItem>
-            </Nav>
-          </Collapse>
-        </Navbar>
+                  <NavItem>
+                    <UncontrolledDropdown nav inNavbar>
+                      <DropdownToggle nav caret className="seperator">
+                        <img
+                          className="Profile"
+                          src="https://4.bp.blogspot.com/_R0Rc6mb8H6E/S1TTZJCtq8I/AAAAAAAAC9A/a50aYOK5o0o/s320/design-fetish-no-photo-facebook-1.jpg"
+                        />
+                        Profile
+                      </DropdownToggle>
+                      <DropdownMenu className={accLogStyleParent} right>
+                        <DropdownItem className={accChild}>
+                          Account{" "}
+                        </DropdownItem>
+                        <DropdownItem className={logChild}>LogOut</DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+                  </NavItem>
+                </Nav>
+              </Collapse>
+            </Navbar>
+          </div>
+        </div>
         <Jumbotron className="JumboHeaderImg">
           <div className="App Headers">
             <div>
