@@ -56,6 +56,18 @@ class Premium extends Component {
   }
 
   render() {
+    let accLogStyleParent = "";
+    let accChild = "";
+    let logChild = "";
+    if (this.state.isNavOpen) {
+      accLogStyleParent = "OpenNav";
+      accChild = "OpenNavChild";
+      logChild = "OpenNavChild";
+    } else {
+      accLogStyleParent = "CloseNav";
+      accChild = "CloseNavChild1";
+      logChild = "CloseNavChild2";
+    }
     return (
       <div>
         <div className="AccountOverviewNav">
