@@ -58,7 +58,9 @@ class Main extends Component {
           <Route
             exact
             path="/changePassword"
-            component={() => <ChangePass GetPassword={this.GetPassword} />}
+            component={() => (
+              <ChangePass GetPassword={this.props.GetPassword} />
+            )}
           />
           <Route
             exact
