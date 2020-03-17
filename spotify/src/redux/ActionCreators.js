@@ -2,6 +2,26 @@ import axios from "axios";
 import * as ActionTypes from "./ActionTypes";
 import { baseUrl } from "../shared/baseUrl";
 
+export const PremiumPost = Premium => dispatch => {
+  const newPremium = { Premium };
+  newPremium.date = new Date().toISOString();
+  axios
+    .post(`${baseUrl}users`, newPremium)
+    .then(response => alert(JSON.stringify(response)));
+};
+export const PostPassword = password => dispatch => {
+  const newPassword = { password };
+  newPassword.date = new Date().toISOString();
+  axios
+    .post(`${baseUrl}users`, newPassword)
+    .then(response => alert(JSON.stringify(response)));
+};
+export const GetPassword = () => dispatch => {
+  axios
+    .get(`${baseUrl}users/2`)
+    .then(response => alert(JSON.stringify(response.data.password)));
+};
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const postFacebookLogin = (email, image, name) => dispatch => {
   const newFacebookLogin = {
     email,
@@ -9,9 +29,12 @@ export const postFacebookLogin = (email, image, name) => dispatch => {
     name
   };
   newFacebookLogin.date = new Date().toISOString();
-  axios.post(`${baseUrl}users`, newFacebookLogin)
-    .then((response) => alert(JSON.stringify(response)));
+
+  axios
+    .post(`${baseUrl}users`, newFacebookLogin)
+    .then(response => alert(JSON.stringify(response)));
 };
+
 export const postFeedback = (
   email,
   confirmemail,

@@ -1,0 +1,610 @@
+
+/***************************************************Account Overview***************************************************/
+/***************************************************Footer***************************************************/
+.AccountOverviewFooter{
+    font-size: 16px;
+    font-family: Circular, spotify-circular, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    background-color: rgb(0, 0, 0);
+    margin:0px auto;
+    padding: 80px 0px 50px;
+  }
+  
+  .AccountOverviewFooterFirstRow{
+    font-size: 12px;
+  }
+  
+  .AccountOverviewFooterFirstRow h5.FooterHeader{
+    color: #919496;
+    font-size: 12px;
+    font-weight: 900;
+    line-height: 1.4;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+  
+  .AccountOverviewFooterFirstRow ul{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    padding:0;
+    list-style-type:none;
+  }
+  
+  .AccountOverviewFooterFirstRow ul li{
+    padding-bottom:1.8em;
+  }
+  
+  .AccountOverviewFooterFirstRow ul li a{
+    color:white;
+  }
+  
+  .AccountOverviewFooterFirstRow a:hover{
+    text-decoration: none;
+    color: #1ed760;
+  }
+  
+  .AccountOverviewFooterFirstRow img.logo {
+    width: 100%;
+    max-width: 130px;
+    height: auto;
+    padding-bottom: 2em;
+  }
+  
+  .AccountOverviewFooterFirstRow div.icons {
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom:10%
+  }
+  
+  .AccountOverviewFooterFirstRow a.btn.btn-social-icon{
+    margin-right:1em;
+    margin-top:2.5em;
+    border-radius: 50%;
+    width:50px;
+    height:50px;
+    background-color: #222326;
+    display: inline-block;
+  }
+
+  .AccountOverviewFooterFirstRow .LeftAlign{
+    text-align:left;
+  }
+  
+  .AccountOverviewFooterFirstRow i.fa{
+    margin-top:0.3em;
+    display: inline-block;
+  }
+  
+  .AccountOverviewFooterSecondRow{
+    font-size: 12px;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .AccountOverviewFooterSecondRow a{
+    color: rgb(145, 148, 150);
+    padding:12px;
+    box-sizing: border-box;
+    padding: 1em 0;
+    margin-right: 1.1em;
+  }
+  
+  .AccountOverviewFooterSecondRow .linespacing{
+    padding:12px;
+    line-height: 2;
+    box-sizing: border-box;
+    padding: 1.3em 0;
+    margin-right: 1.1em;
+  }
+  
+  .AccountOverviewFooterSecondRow .linespacing a:hover{
+    color: #1ed760;
+    text-decoration: none;
+  }
+  
+  
+  .AccountOverviewFooterSecondRow p.stylesecondrow2{
+    text-align: right;
+    color: rgb(145, 148, 150);
+    box-sizing: border-box;
+    padding: 1.3em 0;
+    margin: 0
+  }
+  /***************************************************Footer***************************************************/
+  /***************************************************Nav Bar***************************************************/
+  div.AccountOverviewNav div.container{
+    margin:0;
+    padding:0;
+    max-width:100%;
+  }
+  
+  div.AccountOverviewNav div.container .NavBar {
+    background-color: black;
+  }
+  
+  div.AccountOverviewNav div.container .Profile {
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-right: 10px;
+  }
+  
+  div.AccountOverviewNav div.container .nav-link {
+    color: white;
+    margin-left: 20px;
+  }
+  
+  div.AccountOverviewNav div.container .nav-link:hover {
+    color: #1ed760;
+    margin-left: 20px;
+  }
+  
+  div.AccountOverviewNav div.container .seperator {
+    border-left-style: outset;
+    border-left-color: white;
+    border-left-width: 2px;
+  }
+  
+  div.AccountOverviewNav div.container .OpenNav {
+    background-color: black;
+  }
+  
+  div.AccountOverviewNav div.container .OpenNav .OpenNavChild{
+    color: grey;
+  }
+  
+  div.AccountOverviewNav div.container .OpenNav .OpenNavChild:hover {
+    color: #1ed760;
+    background-color: black;
+  }
+  
+  div.AccountOverviewNav div.container .CloseNav {
+    background-color: white;
+  }
+  
+  div.AccountOverviewNav div.container .CloseNav .CloseNavChild1{
+    color: rgb(0, 0, 0);
+  }
+  
+  div.AccountOverviewNav div.container .CloseNav .CloseNavChild1:hover {
+    color: #1ed760;
+    background-color: white;
+  }
+  
+  div.AccountOverviewNav div.container .CloseNav .CloseNavChild2{
+    color: grey;
+  }
+  
+  div.AccountOverviewNav div.container .CloseNav .CloseNavChild2:hover {
+    color: #1ed760;
+    background-color: white;
+  }
+  
+  .NavBarToggle {
+    background-color: black;
+    color: white;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin-right: 50px;
+  }
+  /***************************************************Nav Bar***************************************************/
+  /***************************************************Body***************************************************/
+  /***************************************************Jumbotron***************************************************/
+  .AccountOverviewBody {
+    background: #222326; /*for browsers that don't support gradient*/
+    background: -webkit-linear-gradient(rgb(37, 75, 129),#222326); /*for safari and chrome*/
+    background: -o-linear-gradient(rgb(37, 75, 129),#222326); /*for opera*/
+    background: -moz-linear-gradient(rgb(37, 75, 129),#222326); /*for firefox*/
+    background: linear-gradient(rgb(37, 75, 129),#222326); /*standard syntax*/
+  }
+  
+  .AccountOverviewBody div.jumbotron{
+    margin-left: 7%;
+    margin-right: 7%;
+    padding-bottom: 0;  
+    background: #222326; /*for browsers that don't support gradient*/
+    background: -webkit-linear-gradient(rgb(1, 31, 73),#000000); /*for safari and chrome*/
+    background: -o-linear-gradient(rgb(1, 31, 73),#000000); /*for opera*/
+    background: -moz-linear-gradient(rgb(1, 31, 73),#000000); /*for firefox*/
+    background: linear-gradient(rgb(1, 31, 73),#000000); /*standard syntax*/
+  }
+  
+  @media(max-width: 1000px){
+    .AccountOverviewBody div.AccountOverviewBodyJumbo{
+      margin:0;
+      padding-bottom: 0;  
+    }
+  }
+  
+  .AccountOverviewBody div.container{
+    height:100%;
+  }
+  
+  .AccountOverviewBody img.Phone {
+    width: 100%;
+    max-width: 490px;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .AccountOverviewBody h1.Header {
+    font-weight: 700;
+    padding: 0;
+    color:white;
+    font-size: 72px;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    line-height: 1;
+    letter-spacing: -.05em;
+    box-sizing: border-box;
+    text-align: left;
+  }
+  
+  .AccountOverviewBody p.UnderHeader {
+    font-size: var(--body-1-font);
+    font-weight: 400;
+    letter-spacing: -.01em;
+    margin: 1em 0;
+    box-sizing: border-box;
+    color:#f8f8f8;
+    text-align: left;
+  }
+  
+  .AccountOverviewBody Button.UnderParagraph {
+    letter-spacing: 1.5px;
+    font-size: 14px;
+    width: auto;
+    display: inline-block;
+    background-color: var(--green);
+    color: var(--white);
+    border-radius: 100px;
+    min-height: 48px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 20px;
+    padding: 1em 3em;
+    border: none;
+    transition-duration: 33ms;
+    transition-property: background-color,border-color,color,box-shadow,filter,transform,-webkit-box-shadow,-webkit-filter,-webkit-transform;
+    user-select: none;
+    text-decoration: none;
+    cursor: pointer;
+    max-width: none;
+    box-sizing: border-box;
+    margin-bottom:2em;
+  }
+  
+  .AccountOverviewBody Button.UnderParagraph:hover {
+    transform: scale(1.04);
+  }
+  /***************************************************Jumbotron***************************************************/
+  /***************************************************Sidebar***************************************************/
+  .AccountOverviewBody .container .Linkers{
+    padding:0;
+  }
+  
+  .AccountOverviewBody .sidebar {
+    text-align:left;
+  
+  }
+
+  .AccountOverviewBody .sidebar .Profile{
+    box-sizing: border-box;
+    fill: #222326;
+  
+  }
+  
+  .AccountOverviewBody .sidebar .fa.fa-snapchat-ghost{
+    font-size: 50px;
+    margin-left:100px;
+  }
+  
+  .AccountOverviewBody .sidebar .fa.fa-home,
+  .AccountOverviewBody .sidebar .fa.fa-edit,
+  .AccountOverviewBody .sidebar .fa.fa-lock,
+  .AccountOverviewBody .sidebar .fa.fa-hashtag,
+  .AccountOverviewBody .sidebar .fa.fa-credit-card
+  {
+    margin-right:1.5em;
+    font-size:23px;
+    width:5px;
+    height:5px;
+  }
+  
+  .AccountOverviewBody .sidebar {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #222326;
+    height: 100%;
+    overflow: auto;
+    box-sizing: border-box;
+    font-family: Circular,Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #222326;
+  }
+  
+  /* Sidebar links */
+  .AccountOverviewBody .sidebar a {
+    fill: var(--white);
+    color: #919496;;
+    padding-left: 50px;
+    padding-right: 15px;
+    position: relative;
+    text-decoration: none;
+    background-color: #222326;
+    display: block;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: none;
+    border-radius: 0;
+    letter-spacing: 0;
+    text-transform: none;
+    box-sizing: border-box;
+    font-size: 16px;
+    list-style: none;
+    border-top-style:solid ;
+    border-bottom-style:solid ;
+    border-top-width: 0.1em;
+    border-bottom-width: 0.1em;
+    border-top-color: rgb(22, 22, 21);
+    border-bottom-color: rgb(22, 22, 21);
+    font-family: Circular,Helvetica,Arial,sans-serif;
+    line-height: 1.5;
+  }
+  
+  /* Active/current link */
+  .AccountOverviewBody .sidebar a.active {
+    background-color: #222326;
+    border-left-style: solid;
+    border-left-width: 0.4em;
+    border-left-color:#4CAF50;
+    color: white;
+  }
+  
+  /* Links on mouse-over */
+  .AccountOverviewBody .sidebar a:hover:not(.active) {
+    background-color: #222326;
+    border-left-style: solid;
+    border-left-width: 0.4em;
+    border-left-color:#4CAF50;
+  }
+  
+  .AccountOverviewBody .sidebar a.AppearBig:hover{
+    border-style: none;
+  }
+  
+  /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+  .AccountOverviewBody div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+  }
+  
+  /* On screens that are less than 992px wide, make the sidebar into a topbar */
+  @media screen and (max-width: 992px) {
+    .AccountOverviewBody .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+      font-size: 12px;
+      display: flex;
+      flex-direction: row;
+    }
+    .AccountOverviewBody .sidebar a {
+      float: left;
+    }
+    div.content {margin-left: 0;}
+  
+    .AccountOverviewBody .sidebar .AppearBig{
+     display: none;
+    }
+    .AccountOverviewBody .container .EditProfile:hover{
+      transform: scale(3);
+      border: 2px solid #18191a;
+      color:red;
+    }
+  }
+  /***************************************************Sidebar***************************************************/
+  /***************************************************Sidebar Content***************************************************/
+  
+  .AccountOverviewBody .container .Content{
+    background-color: white;
+    padding:3em;
+  }
+  
+  .AccountOverviewBody .container .BigHeader{
+    font-size: 48px;
+    line-height: 56px;
+    padding-bottom: 0.67em;
+    font-weight: 900;
+    letter-spacing: -1px;
+    padding-bottom:0.67em;
+    color: var(--gray-10);
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  .AccountOverviewBody .container .SmallHeader{
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 900;
+    letter-spacing: -0.25px;
+    color: var(--gray-10);
+    margin-bottom: 16px;
+    padding: 0;
+    padding-bottom: 1.5em;
+    box-sizing: border-box;
+  }
+  
+  .AccountOverviewBody .container .Content1{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0px;
+    color: #b1b4b6;
+    padding:0;
+    box-sizing: border-box;
+    white-space: nowrap;
+    border-collapse: collapse;
+    border-spacing: 0;
+    text-align:left;
+  }
+  
+  .AccountOverviewBody .container .Content2{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: right;
+    padding:0;
+    box-sizing: border-box;
+    white-space: nowrap;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  
+  
+  .AccountOverviewBody .container .EditProfile{
+    letter-spacing: 1.5px;
+    font-size: 14px;
+    width: auto;
+    display: inline-block;
+    color: #b1b4b6;
+    border-style:solid;
+    border-color:#b1b4b6;
+    background-color:transparent;
+    border-radius: 100px;
+    min-height: 48px;
+    text-align:center;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 20px;
+    padding: 1em 3em;
+    transition-duration: 33ms;
+    transition-property: background-color,border-color,color,box-shadow,filter,transform,-webkit-box-shadow,-webkit-filter,-webkit-transform;
+    user-select: none;
+    text-decoration: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    margin-bottom:3em;
+  }
+  
+  .AccountOverviewBody .container .EditProfile:hover{
+    transform: scale(1.04);
+    border: 2px solid #18191a;
+    color:#18191a;
+  }
+  
+  @media screen and (max-width: 992px) {
+    .AccountOverviewBody .container .EditProfile{
+      width:100%;
+    }
+  }
+  
+  .AccountOverviewBody .container .SmallHeader2{
+    font-size:24px;
+    line-height:32px;
+    font-weight: 900;
+    letter-spacing: -0.25px;
+    margin-bottom: 16px;
+    padding:0;
+    color:black;
+    box-sizing:border-box;
+  }
+  
+  .AccountOverviewBody .container .ContainingFree{
+    width:100%;
+    background: rgb(147, 3, 231); /*for browsers that don't support gradient*/
+    background: -webkit-linear-gradient(rgb(194, 3, 233),rgb(147, 3, 231)); /*for safari and chrome*/
+    background: -o-linear-gradient(rgb(194, 3, 233),rgb(147, 3, 231)); /*for opera*/
+    background: -moz-linear-gradient(rgb(194, 3, 233),rgb(147, 3, 231)); /*for firefox*/
+    background: linear-gradient(rgb(194, 3, 233),rgb(147, 3, 231)); /*standard syntax*/
+  }
+
+  .AccountOverviewBody .container .ContainingPremium{
+    width:100%;
+    background: rgb(12, 191, 223); /*for browsers that don't support gradient*/
+    background: -webkit-linear-gradient(to right,rgb(12, 191, 223),rgb(3, 114, 241)); /*for safari and chrome*/
+    background: -o-linear-gradient(to right,rgb(12, 191, 223),rgb(3, 114, 241)); /*for opera*/
+    background: -moz-linear-gradient(to right,rgb(12, 191, 223),rgb(3, 114, 241)); /*for firefox*/
+    background: linear-gradient(to right,rgb(12, 191, 223),rgb(3, 114, 241)); /*standard syntax*/
+  }
+  
+  .AccountOverviewBody .container img.PremiumImage{
+    flex-basis: 33%;
+    height: 100%;
+    width:100%;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    box-sizing: border-box;
+  }
+
+  .AccountOverviewBody .container .MediumHeader{
+    margin: 90px 0;
+    padding-left: 0.7em;
+    text-align: left;
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -0.5px;
+    font-weight: 900;
+    box-sizing: border-box;
+    color:white;
+  }
+
+  .AccountOverviewBody .container .PremiumHeaderColumn .MediumHeader{
+    margin: 90px 0;
+    padding-left: 0.7em;
+    text-align: left;
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -0.5px;
+    font-weight: 900;
+    box-sizing: border-box;
+    color:white;
+  }
+  
+  .AccountOverviewBody .container .CardContainer1{
+    width:100%;
+  }
+  
+  .AccountOverviewBody .container .CardContainer2{
+    width:100%;
+    margin-bottom:1.5em;
+    text-align:left;
+  }
+  
+  .AccountOverviewBody .container .FreePlanText{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0px;
+    width:100%;
+    box-sizing: border-box;
+  }
+  
+  .AccountOverviewBody .container .FreePlan{
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 900;
+    letter-spacing: -0.25px;
+    box-sizing: border-box;
+  }
+  /***************************************************Sidebar Content***************************************************/
+  /***************************************************Body***************************************************/
