@@ -9,18 +9,19 @@ export const PremiumPost = Premium => dispatch => {
     .post(`${baseUrl}users`, newPremium)
     .then(response => alert(JSON.stringify(response)));
 };
+export const PostPassword = password => dispatch => {
+  const newPassword = { password };
+  newPassword.date = new Date().toISOString();
+  axios
+    .post(`${baseUrl}users`, newPassword)
+    .then(response => alert(JSON.stringify(response)));
+};
 export const GetPassword = () => dispatch => {
   axios
-    .get("http://localhost:3001/users/2")
+    .get(`${baseUrl}users/2`)
     .then(response => alert(JSON.stringify(response.data.password)));
-
-  // let password = "";
-  // axios.get("http://localhost:3001/users/2").then(response => {
-  //   password = response.data.password;
-  // });
-  // return password;
 };
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const postFacebookLogin = (email, image, name) => dispatch => {
   const newFacebookLogin = {
     email,

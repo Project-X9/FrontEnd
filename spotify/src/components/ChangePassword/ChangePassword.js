@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Col, Button, Row } from "reactstrap";
 import { Control, Form, Errors } from "react-redux-form";
 import { Label } from "reactstrap";
-import axios from "axios";
+
 const required = val => val && val.length;
 const minLength = len => val => val && val.length >= len;
 const confPass = val => val2 => val === val2;
@@ -20,7 +20,17 @@ class ChangePass extends Component {
     this.handleConfirmPassword = this.handleConfirmPassword.bind(this);
   }
 
-  handleChangePassword = values => {};
+  handleChangePassword = values => {
+    this.setState({ CurrentPassword: this.props.GetPassword(2) });
+    alert(this.state.CurrentPassword);
+    alert(values.password);
+    if (!this.state.CurrentPassword) {
+      if (this.state.CurrentPassword !== values.password) {
+        const post = { Password: values.password, id: 2 };
+        this.props.PostPassword(post);
+      }
+    }
+  };
 
   handleConfirmPassword = event => {
     this.setState({

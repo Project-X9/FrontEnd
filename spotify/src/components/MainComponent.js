@@ -9,7 +9,8 @@ import {
   postFeedback,
   postFacebookLogin,
   PremiumPost,
-  GetPassword
+  GetPassword,
+  PostPassword
 } from "../redux/ActionCreators";
 
 const mapStateToProps = state => ({});
@@ -17,6 +18,7 @@ const mapDispatchToProps = dispatch => ({
   resetFeedbackForm: () => {
     dispatch(actions.reset("feedback"));
   },
+  PostPassword: (password, id) => dispatch(PostPassword(password, id)),
   GetPassword: id => dispatch(GetPassword(id)),
   PremiumPost: password => dispatch(PremiumPost(password)),
   postFeedback: (email, confirmemail, password, name, day, month, year, sex) =>
@@ -59,7 +61,10 @@ class Main extends Component {
             exact
             path="/changePassword"
             component={() => (
-              <ChangePass GetPassword={this.props.GetPassword} />
+              <ChangePass
+                PostPassword={this.props.PostPassword}
+                GetPassword={this.props.GetPassword}
+              />
             )}
           />
           <Route

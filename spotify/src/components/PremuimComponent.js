@@ -41,7 +41,12 @@ class Premium extends Component {
     this.handlePremium = this.handlePremium.bind(this);
   }
   handlePremium() {
-    this.props.PremiumPost({ Premium: true });
+    this.setState({ Premium: true });
+    const post = {
+      Premium: true,
+      id: 2
+    };
+    this.props.PremiumPost(post);
   }
   toggleNav() {
     this.setState({
