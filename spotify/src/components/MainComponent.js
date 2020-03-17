@@ -1,25 +1,32 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import { Switch, Route, Redirect, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { actions } from "react-redux-form";
+import SignUp from "./SignUp/SignUpComponent";
+import PremiumComponent from "./PremuimComponent";
+import ChangePass from "../../src/components/ChangePassword/ChangePassword";
 import {
-  Switch, Route, Redirect, withRouter,
-} from 'react-router-dom';
-import { connect } from 'react-redux';
-import { actions } from 'react-redux-form';
-import SignUp from './SignUp/SignUpComponent';
-import AccountOverview from './AccountOverview/AccountOverviewComponent'
-import { postFeedback, postFacebookLogin } from '../redux/ActionCreators';
+  postFeedback,
+  postFacebookLogin,
+  PremiumPost,
+  GetPassword,
+  PostPassword
+} from "../redux/ActionCreators";
 
-
-const mapStateToProps = (state) => ({
-
-
-});
-const mapDispatchToProps = (dispatch) => ({
-  resetFeedbackForm: () => { dispatch(actions.reset('feedback')); },
-  postFeedback: (email, confirmemail, password, name, day, month,
-    year, sex) => dispatch(postFeedback(email, confirmemail, password, name, day, month,
-    year, sex)),
-  postFacebookLogin: (email, image, name) => dispatch(postFacebookLogin(email, image, name)),
-
+const mapStateToProps = state => ({});
+const mapDispatchToProps = dispatch => ({
+  resetFeedbackForm: () => {
+    dispatch(actions.reset("feedback"));
+  },
+  PostPassword: (password, id) => dispatch(PostPassword(password, id)),
+  GetPassword: id => dispatch(GetPassword(id)),
+  PremiumPost: password => dispatch(PremiumPost(password)),
+  postFeedback: (email, confirmemail, password, name, day, month, year, sex) =>
+    dispatch(
+      postFeedback(email, confirmemail, password, name, day, month, year, sex)
+    ),
+  postFacebookLogin: (email, image, name) =>
+    dispatch(postFacebookLogin(email, image, name))
 });
 
 class Main extends Component {
@@ -51,7 +58,22 @@ class Main extends Component {
             )}
           />
           <Route
-            exact path="/accountoverview"component={() => (<AccountOverview/>)}/>
+            exact
+            path="/changePassword"
+            component={() => (
+              <ChangePass
+                PostPassword={this.props.PostPassword}
+                GetPassword={this.props.GetPassword}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/premium"
+            component={() => (
+              <PremiumComponent PremiumPost={this.props.PremiumPost} />
+            )}
+          />
           <Redirect to="/signup" />
         </Switch>
         {/* </CSSTransition> */}
