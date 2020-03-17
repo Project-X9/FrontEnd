@@ -5,6 +5,7 @@ import {
 import { connect } from 'react-redux';
 import { actions } from 'react-redux-form';
 import SignUp from './SignUp/SignUpComponent';
+import AccountOverview from './AccountOverview/AccountOverviewComponent'
 import { postFeedback, postFacebookLogin } from '../redux/ActionCreators';
 
 
@@ -49,6 +50,8 @@ class Main extends Component {
               />
             )}
           />
+          <Route
+            exact path="/accountoverview"component={() => (<AccountOverview/>)}/>
           <Redirect to="/signup" />
         </Switch>
         {/* </CSSTransition> */}
