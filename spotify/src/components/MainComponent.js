@@ -32,14 +32,23 @@ class Main extends Component {
 
     // }
 
-
     return (
       <div className="App">
         {/* <Header /> */}
         {/* <TransitionGroup> */}
         {/* <CSSTransition key={this.props.location.key} classNames="page" timeout={300}> */}
         <Switch>
-          <Route exact path="/signup" component={() => <SignUp resetFeedbackForm={this.props.resetFeedbackForm} postFacebookLogin={this.props.postFacebookLogin} postFeedback={this.props.postFeedback} />} />
+          <Route
+            exact
+            path="/signup"
+            component={() => (
+              <SignUp
+                resetFeedbackForm={this.props.resetFeedbackForm}
+                postFacebookLogin={this.props.postFacebookLogin}
+                postFeedback={this.props.postFeedback}
+              />
+            )}
+          />
           <Redirect to="/signup" />
         </Switch>
         {/* </CSSTransition> */}
