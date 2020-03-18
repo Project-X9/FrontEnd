@@ -71,7 +71,7 @@ class Premium extends Component {
             className="NavBarToggle"
             onClick={this.state.toggleNav}
           >
-            |||
+            ☰
           </NavbarToggler>
 
           <Collapse isOpen={this.state.isNavOpen} navbar>
