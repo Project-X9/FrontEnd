@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Navbar,
   NavbarBrand,
@@ -10,47 +10,48 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  Button
-} from "reactstrap";
-import { NavLink } from "react-router-dom";
-import { Link } from "react-router-dom";
-import FreePlan from "./FreePlan";
-import PremiumPlan from "./PremiumPlan";
-import FreeJumbotron from "./FreeJumbotron";
-import PremiumJumbotron from "./PremiumJumbotron";
+  Button,
+} from 'reactstrap';
+import { NavLink, Link } from 'react-router-dom';
+
+import FreePlan from './FreePlan';
+import PremiumPlan from './PremiumPlan';
+import FreeJumbotron from './FreeJumbotron';
+import PremiumJumbotron from './PremiumJumbotron';
 
 class AccountOverview extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isNavOpen: false
+      isNavOpen: false,
     };
     this.state.toggleNav = this.toggleNav.bind(this);
   }
 
   toggleNav() {
     this.setState({
-      isNavOpen: !this.state.isNavOpen
+      isNavOpen: !this.state.isNavOpen,
     });
   }
+
   render() {
-    let accLogStyleParent = "";
-    let accChild = "";
-    let logChild = "";
+    let accLogStyleParent = '';
+    let accChild = '';
+    let logChild = '';
     if (this.state.isNavOpen) {
-      accLogStyleParent = "OpenNav";
-      accChild = "OpenNavChild";
-      logChild = "OpenNavChild";
+      accLogStyleParent = 'OpenNav';
+      accChild = 'OpenNavChild';
+      logChild = 'OpenNavChild';
     } else {
-      accLogStyleParent = "CloseNav";
-      accChild = "CloseNavChild1";
-      logChild = "CloseNavChild2";
+      accLogStyleParent = 'CloseNav';
+      accChild = 'CloseNavChild1';
+      logChild = 'CloseNavChild2';
     }
     return (
       <div>
         <div className="AccountOverviewNav">
           <div className="container">
-            <Navbar className="NavBar" sticky={"top"} expand="md">
+            <Navbar className="NavBar" sticky="top" expand="md">
               <NavbarBrand className="mr-auto" href="/signup">
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSBmnPgQKW4JLrNcSFhPFCLHz3t8kT1pZl0PVkLYsa8FoScWYda"
@@ -95,7 +96,8 @@ class AccountOverview extends Component {
                       </DropdownToggle>
                       <DropdownMenu className={accLogStyleParent} right>
                         <DropdownItem className={accChild}>
-                          Account{" "}
+                          Account
+                          {' '}
                         </DropdownItem>
                         <DropdownItem className={logChild}>LogOut</DropdownItem>
                       </DropdownMenu>
@@ -114,26 +116,26 @@ class AccountOverview extends Component {
               <div className="col-sm-12 col-md-12 col-lg-4 Linkers">
                 <div className="sidebar">
                   <Link to="/" className="AppearBig">
-                    <i className="fa fa-snapchat-ghost" aria-hidden="true"></i>
+                    <i className="fa fa-snapchat-ghost" aria-hidden="true" />
                   </Link>
                   <Link to="/" className="active">
-                    <i className="fa fa-home"></i>
+                    <i className="fa fa-home" />
                     Account overview
                   </Link>
                   <Link to="/" href="#news">
-                    <i className="fa fa-edit"></i>
+                    <i className="fa fa-edit" />
                     Edit profile
                   </Link>
                   <Link to="/" href="#contact">
-                    <i className="fa fa-lock"></i>
+                    <i className="fa fa-lock" />
                     Change password
                   </Link>
                   <Link to="/" href="#contact">
-                    <i className="fa fa-hashtag"></i>
+                    <i className="fa fa-hashtag" />
                     Recover playlists
                   </Link>
                   <Link to="/" href="#contact">
-                    <i class="fa fa-credit-card"></i>
+                    <i className="fa fa-credit-card" />
                     Redeem
                   </Link>
                 </div>
@@ -153,7 +155,7 @@ class AccountOverview extends Component {
                     <h5>Shesho123</h5>
                   </div>
                 </div>
-                <hr></hr>
+                <hr />
                 <div className="row">
                   <div className="col Content1">
                     <h5>Email</h5>
@@ -162,7 +164,7 @@ class AccountOverview extends Component {
                     <h5>ahmedhashish@ymail.com</h5>
                   </div>
                 </div>
-                <hr></hr>
+                <hr />
                 <div className="row">
                   <div className="col Content1">
                     <h5>Date of birth</h5>
@@ -171,7 +173,7 @@ class AccountOverview extends Component {
                     <h5>7/23/98</h5>
                   </div>
                 </div>
-                <hr></hr>
+                <hr />
                 <div className="row">
                   <div className="col Content1">
                     <h5>Country</h5>
@@ -180,7 +182,7 @@ class AccountOverview extends Component {
                     <h5>EG</h5>
                   </div>
                 </div>
-                <hr></hr>
+                <hr />
                 <div className="row">
                   <button className="EditProfile" color="success">
                     EDIT PROFILE
@@ -268,19 +270,19 @@ class AccountOverview extends Component {
                     className="btn btn-social-icon btn-instagram"
                     href="https://www.instagram.com/spotify/?hl=en"
                   >
-                    <i className="fa fa-instagram"></i>
+                    <i className="fa fa-instagram" />
                   </a>
                   <a
                     className="btn btn-social-icon btn-twitter"
                     href="https://twitter.com/Spotify?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
                   >
-                    <i className="fa fa-twitter"></i>
+                    <i className="fa fa-twitter" />
                   </a>
                   <a
                     className="btn btn-social-icon btn-facebook"
                     href="https://www.facebook.com/Spotify/"
                   >
-                    <i className="fa fa-facebook"></i>
+                    <i className="fa fa-facebook" />
                   </a>
                 </div>
               </div>

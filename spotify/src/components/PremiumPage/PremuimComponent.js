@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Navbar,
   NavbarBrand,
@@ -21,12 +21,12 @@ import {
   Button,
   Label,
   Input,
-  DropdownToggle
-} from "reactstrap";
-import { Divider } from "@material-ui/core";
+  DropdownToggle,
+} from 'reactstrap';
+import { Divider } from '@material-ui/core';
 
-import { NavLink } from "react-router-dom";
-import "../App.css";
+import { NavLink } from 'react-router-dom';
+
 
 class Premium extends Component {
   constructor(props) {
@@ -35,44 +35,46 @@ class Premium extends Component {
       isNavOpen: false,
       isModalOpen: false,
       collapsed: true,
-      Premium: false
+      Premium: false,
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.handlePremium = this.handlePremium.bind(this);
   }
+
   handlePremium() {
     this.setState({ Premium: true });
     const post = {
       Premium: true,
-      id: 2
+      id: 2,
     };
     this.props.PremiumPost(post);
   }
+
   toggleNav() {
     this.setState({
       isNavOpen: !this.state.isNavOpen,
-      collapsed: !this.state.collapsed
+      collapsed: !this.state.collapsed,
     });
   }
 
   render() {
-    let accLogStyleParent = "";
-    let accChild = "";
-    let logChild = "";
+    let accLogStyleParent = '';
+    let accChild = '';
+    let logChild = '';
     if (this.state.isNavOpen) {
-      accLogStyleParent = "OpenNav";
-      accChild = "OpenNavChild";
-      logChild = "OpenNavChild";
+      accLogStyleParent = 'OpenNav';
+      accChild = 'OpenNavChild';
+      logChild = 'OpenNavChild';
     } else {
-      accLogStyleParent = "CloseNav";
-      accChild = "CloseNavChild1";
-      logChild = "CloseNavChild2";
+      accLogStyleParent = 'CloseNav';
+      accChild = 'CloseNavChild1';
+      logChild = 'CloseNavChild2';
     }
     return (
       <div>
         <div className="AccountOverviewNav">
           <div className="container">
-            <Navbar className="NavBar" sticky={"top"} expand="md">
+            <Navbar className="NavBar" sticky="top" expand="md">
               <NavbarBrand className="mr-auto" href="/signup">
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSBmnPgQKW4JLrNcSFhPFCLHz3t8kT1pZl0PVkLYsa8FoScWYda"
@@ -117,7 +119,8 @@ class Premium extends Component {
                       </DropdownToggle>
                       <DropdownMenu className={accLogStyleParent} right>
                         <DropdownItem className={accChild}>
-                          Account{" "}
+                          Account
+                          {' '}
                         </DropdownItem>
                         <DropdownItem className={logChild}>LogOut</DropdownItem>
                       </DropdownMenu>
@@ -160,40 +163,42 @@ class Premium extends Component {
                 width="142"
                 alt=""
               />
-              <h5 class="mt-0">Download Music.</h5>
+              <h5 className="mt-0">Download Music.</h5>
               <p>Listen AnyWhere.</p>
             </Col>
             <Col>
-              {" "}
+              {' '}
               <img
                 src="assets/images/SecondIcon.png"
                 height="142"
                 width="142"
                 alt=""
-              />{" "}
-              <h5 class="mt-0">No Ad Interruptions.</h5>
+              />
+              {' '}
+              <h5 className="mt-0">No Ad Interruptions.</h5>
               <p>Enjoy NonStop Music.</p>
             </Col>
             <Col>
-              {" "}
+              {' '}
               <img
                 src="assets/images/ThirdIcon.png"
                 height="142"
                 width="142"
                 alt=""
               />
-              <h5 class="mt-0">Play any Song.</h5>
+              <h5 className="mt-0">Play any Song.</h5>
               <p>Even on mobile.</p>
             </Col>
             <Col>
-              {" "}
+              {' '}
               <img
                 src="assets/images/fourthIcon.png"
                 height="142"
                 width="142"
                 alt=""
-              />{" "}
-              <h5 class="mt-0">Unlimited Skips.</h5>
+              />
+              {' '}
+              <h5 className="mt-0">Unlimited Skips.</h5>
               <p>Just hit next.</p>
             </Col>
           </Row>
@@ -202,7 +207,7 @@ class Premium extends Component {
           <h3>Spotify Premium</h3>
           <h2>EGP49.99/Month</h2>
           <hr className="my-2" />
-          <h5 style={{ padding: "20px", textAlign: "left" }}>
+          <h5 style={{ padding: '20px', textAlign: 'left' }}>
             <li>Play Any Song.</li>
             <li>Listen Offline.</li>
             <li>No ad interruptions.</li>

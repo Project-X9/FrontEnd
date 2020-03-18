@@ -1,5 +1,7 @@
-import React, { Component } from "react";
-import { Card, CardBody, CardText, CardSubtitle } from "reactstrap";
+import React, { Component } from 'react';
+import {
+  Card, CardBody, CardText, CardSubtitle,
+} from 'reactstrap';
 
 class FreePlan extends Component {
   render() {
@@ -14,7 +16,7 @@ class FreePlan extends Component {
               <CardText className="FreePlanText">
                 Play music in shuffle mode only, with ads.
               </CardText>
-              <hr></hr>
+              <hr />
               <CardSubtitle className="FreePlan">Free</CardSubtitle>
             </CardBody>
           </Card>
