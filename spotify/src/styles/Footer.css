@@ -1,0 +1,116 @@
+/******************Footer******************/
+.AccountOverviewFooter {
+  font-size: 16px;
+  font-family: Circular, spotify-circular, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  background-color: rgb(0, 0, 0);
+  margin: 0px auto;
+  padding: 80px 0px 50px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  line-height: 1.5;
+  -webkit-box-direction: normal;
+  box-sizing: border-box;
+  display: block;
+  color: #1ed760;
+}
+
+.AccountOverviewFooterFirstRow {
+  font-size: 12px;
+}
+
+.AccountOverviewFooterFirstRow h5.FooterHeader {
+  color: #919496;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.AccountOverviewFooterFirstRow ul {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 0;
+  list-style-type: none;
+}
+
+.AccountOverviewFooterFirstRow ul li {
+  padding-bottom: 1.8em;
+}
+
+.AccountOverviewFooterFirstRow ul li a {
+  color: white;
+}
+
+.AccountOverviewFooterFirstRow a:hover {
+  text-decoration: none;
+  color: #1ed760;
+}
+
+.AccountOverviewFooterFirstRow img.logo {
+  width: 100%;
+  max-width: 130px;
+  height: auto;
+  padding-bottom: 2em;
+}
+
+.AccountOverviewFooterFirstRow div.icons {
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 10%;
+}
+
+.AccountOverviewFooterFirstRow a.btn.btn-social-icon {
+  margin-right: 1em;
+  margin-top: 2.5em;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: #222326;
+  display: inline-block;
+}
+
+.AccountOverviewFooterFirstRow i.fa {
+  margin-top: 0.3em;
+  display: inline-block;
+}
+
+.AccountOverviewFooterSecondRow {
+  font-size: 12px;
+  display: flex;
+  flex-direction: row;
+}
+
+.AccountOverviewFooterSecondRow a {
+  color: rgb(145, 148, 150);
+  padding: 12px;
+  box-sizing: border-box;
+  padding: 1em 0;
+  margin-right: 1.1em;
+}
+
+.AccountOverviewFooterSecondRow .linespacing {
+  padding: 12px;
+  line-height: 2;
+  box-sizing: border-box;
+  padding: 1.3em 0;
+  margin-right: 1.1em;
+}
+
+.AccountOverviewFooterSecondRow .linespacing a:hover {
+  color: #1ed760;
+  text-decoration: none;
+}
+
+.AccountOverviewFooterSecondRow p.stylesecondrow2 {
+  text-align: right;
+  color: rgb(145, 148, 150);
+  box-sizing: border-box;
+  padding: 1.3em 0;
+  margin: 0;
+}
+/******************Footer******************/

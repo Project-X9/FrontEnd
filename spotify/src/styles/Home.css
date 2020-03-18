@@ -1,0 +1,243 @@
+@font-face {
+    font-family: Circular;
+    src: url("https://sp-bootstrap.global.ssl.fastly.net/8.12.4/fonts/circular-light.woff2") format("woff2"), url("https://sp-bootstrap.global.ssl.fastly.net/8.12.4/fonts/circular-light.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: Circular-hbr;
+    src: url("https://sp-bootstrap.global.ssl.fastly.net/8.12.4/fonts/circular-light-hbr.woff2") format("woff2"), url("https://sp-bootstrap.global.ssl.fastly.net/8.12.4/fonts/circular-light-hbr.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: Circular;
+    src: url("https://sp-bootstrap.global.ssl.fastly.net/8.12.4/fonts/circular-book.woff2") format("woff2"), url("https://sp-bootstrap.global.ssl.fastly.net/8.12.4/fonts/circular-book.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: Circular-hbr;
+    src: url("https://sp-bootstrap.global.ssl.fastly.net/8.12.4/fonts/circular-book-hbr.woff2") format("woff2"), url("https://sp-bootstrap.global.ssl.fastly.net/8.12.4/fonts/circular-book-hbr.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: Circular;
+    src: url("https://sp-bootstrap.global.ssl.fastly.net/8.12.4/fonts/circular-medium.woff2") format("woff2"), url("https://sp-bootstrap.global.ssl.fastly.net/8.12.4/fonts/circular-medium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: Circular-hbr;
+    src: url("https://sp-bootstrap.global.ssl.fastly.net/8.12.4/fonts/circular-medium-hbr.woff2") format("woff2"), url("https://sp-bootstrap.global.ssl.fastly.net/8.12.4/fonts/circular-medium-hbr.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: Circular;
+    src: url("https://sp-bootstrap.global.ssl.fastly.net/8.12.4/fonts/circular-bold.woff2") format("woff2"), url("https://sp-bootstrap.global.ssl.fastly.net/8.12.4/fonts/circular-bold.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: Circular-hbr;
+    src: url("https://sp-bootstrap.global.ssl.fastly.net/8.12.4/fonts/circular-bold-hbr.woff2") format("woff2"), url("https://sp-bootstrap.global.ssl.fastly.net/8.12.4/fonts/circular-bold-hbr.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: Circular;
+    src: url("https://sp-bootstrap.global.ssl.fastly.net/8.12.4/fonts/circular-black.woff2") format("woff2"), url("https://sp-bootstrap.global.ssl.fastly.net/8.12.4/fonts/circular-black.woff") format("woff");
+    font-weight: 900;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: Circular-hbr;
+    src: url("https://sp-bootstrap.global.ssl.fastly.net/8.12.4/fonts/circular-black-hbr.woff2") format("woff2"), url("https://sp-bootstrap.global.ssl.fastly.net/8.12.4/fonts/circular-black-hbr.woff") format("woff");
+    font-weight: 900;
+    font-style: normal;
+  }
+
+.homeBody{
+  font-family: Circular, Helvetica, Arial, sans-serif, Ruble;
+  background-color: #f037a5;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(-60%, #f037a5),
+    color-stop(140%, #fae62d)
+  );
+  background: linear-gradient(#f037a5 -60%, #fae62d 140%);
+  background-size: cover;
+  padding: 0 0 94% 0;
+  width: 100%;
+  height: 0;
+}
+.Home .homeContent {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+  font-family: Circular, Helvetica, Arial, sans-serif, Ruble;
+  -webkit-box-direction: normal;
+  color: #fff;
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  width: 878px;
+  height: 676px;
+  background: url("https://www.scdn.co/i/home/hero-burst-mobile.svg") no-repeat;
+  transform: translate(-50%, 10%);
+
+  /* background: url() no-repeat;
+  position: absolute;*/
+}
+
+.Home h1 {
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+  font-family: Circular, Helvetica, Arial, sans-serif, Ruble;
+  margin-top: 0;
+}
+@media (min-width: 768px) {
+  .Home h1 {
+    font-size: 64px;
+  }
+}
+@media (min-width: 992px) {
+  .Home h1 {
+    font-size: 80px;
+  }
+}
+.Home h4{
+    font-size: 18px;
+    margin-top: 20px;
+}
+.Home nav {
+  margin: 0 auto;
+  padding: 10px 15px;
+  opacity: 0.5;
+  z-index: 100;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background-color: #000;
+  color: white;
+}
+
+@media(max-width:768px){
+    .nav{
+        opacity: 1;
+    }
+}
+
+.Home .brand-logo {
+  color: white;
+  cursor: pointer;
+  font-size: 25px;
+  font-family: Circular, Helvetica, Arial, sans-serif, Ruble;
+  font-weight: bold;
+  font-style: normal;
+}
+.Home .nav-links {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  font-size: 16px;
+  text-align: left;
+  font-family: Circular, Helvetica, Arial, sans-serif, Ruble;
+  top: 0;
+  font-weight: 400;
+  line-height: 1.5;
+  min-height: 45px;
+  position: relative;
+}
+
+.Home .nav-element {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-box-direction: normal;
+    color: #fff;
+    font-family: Circular, spotify-circular, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    list-style: none;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: inherit;
+    letter-spacing: 0;
+    white-space: nowrap;
+    display: block;
+    margin: 0;
+}
+
+.Home .nav-link {
+  color: #fff;
+}
+
+.Home .nav-link:hover {
+  color: #1ed760;
+}
+
+#navLogo {
+  width: 130px;
+  margin-left: 60px;
+}
+
+
+.Home .getSpotifyBtn {
+  font-size: 16px;
+  margin-top: 20px;
+  line-height: 1;
+  background-color: #1db954;
+  color: #fff;
+  border-radius: 500px;
+  padding: 16px 48px 18px;
+  -webkit-transition-property: background-color, border-color, color,
+    -webkit-box-shadow, -webkit-filter;
+  transition-property: background-color, border-color, color, -webkit-box-shadow,
+    -webkit-filter;
+  transition-property: background-color, border-color, color, box-shadow, filter;
+  transition-property: background-color, border-color, color, box-shadow, filter,
+    -webkit-box-shadow, -webkit-filter;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  border-width: 0;
+  letter-spacing: 2px;
+  min-width: 160px;
+  text-transform: uppercase;
+  white-space: normal;
+}
+.Home .getSpotifyBtn:hover {
+  background-color: #1ed760;
+}
+
+.Home .row-simplified {
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  z-index: 1;
+  color: #fff;
+  display: block;
+}
+.Home .row {
+  margin-top: 150px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.Home .sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.Home .AccountOverviewFooter{
+    position: relative;
+    z-index: 10;
+    bottom:0;
+}
