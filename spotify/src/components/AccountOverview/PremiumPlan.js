@@ -1,5 +1,7 @@
-import React, { Component } from "react";
-import { Card, CardBody, CardText, CardSubtitle } from "reactstrap";
+import React, { Component } from 'react';
+import {
+  Card, CardBody, CardText, CardSubtitle,
+} from 'reactstrap';
 
 class Premium extends Component {
   render() {
@@ -13,7 +15,7 @@ class Premium extends Component {
             <img
               className="PremiumImage"
               src="//www.scdn.co/i/account/plans/premium-f84013bcdac8cb7a27599785d5c74d848024afb5.png"
-            ></img>
+            />
           </div>
         </div>
         <div className="row CardContainer1">

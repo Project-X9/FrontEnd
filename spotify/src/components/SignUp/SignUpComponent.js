@@ -23,7 +23,8 @@ class SignUp extends Component {
     super(props);
     this.state = {
       email: '',
-      selectedOption: false
+      selectedOption: false,
+      confEmail:''
   }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -77,7 +78,8 @@ class SignUp extends Component {
         </div>
         <div className="row signup-field">
           <div>
-            <Form model="feedback" onSubmit={(values) => this.handleSubmit(values)}>
+            <Form model="feedback" 
+            onSubmit={(values) => this.handleSubmit(values)}>
               <Row className="form-group">
                 <Col xs={12} md={{ size: 6, offset: 3 }}>
                   <Control.text
@@ -107,13 +109,14 @@ class SignUp extends Component {
               <Row className="form-group">
                 <Col xs={12} md={{ size: 6, offset: 3 }}>
                   <Control.text
+                    onChange={this.handleConfEmailChange}
                     className="form-control"
                     model=".confirmemail"
                     placeholder="Confirm Email"
                     id="confirmemail"
                     name="confirmemail"
                     validators={{
-                      required, validEmail,confEmail : confEmail(this.state.email)
+                      required, validEmail,confEmail : confEmail(this.state.email) 
                     }}
                   />
                   <Row className='ml-2'>

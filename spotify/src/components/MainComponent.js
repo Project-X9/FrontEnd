@@ -4,33 +4,32 @@ import { connect } from "react-redux";
 import { actions } from "react-redux-form";
 import Home from "./Homepage/HomeComponent"
 import SignUp from "./SignUp/SignUpComponent";
-import PremiumComponent from "./PremuimComponent";
-import ChangePass from "../../src/components/ChangePassword/ChangePassword";
-import AccountOverview from "./AccountOverview/AccountOverviewComponent";
+import PremiumComponent from './PremiumPage/PremuimComponent';
+import ChangePass from './ChangePassword/ChangePassword';
+import AccountOverview from './AccountOverview/AccountOverviewComponent';
 import {
   postFeedback,
   postFacebookLogin,
   PremiumPost,
   GetPassword,
   PostPassword,
-  GetAllInfo
-} from "../redux/ActionCreators";
+} from '../redux/ActionCreators';
 
-const mapStateToProps = state => ({});
-const mapDispatchToProps = dispatch => ({
+const mapStateToProps = (state) => ({
+
+
+});
+const mapDispatchToProps = (dispatch) => ({
   resetFeedbackForm: () => {
-    dispatch(actions.reset("feedback"));
+    dispatch(actions.reset('feedback'));
   },
   PostPassword: (password, id) => dispatch(PostPassword(password, id)),
-  GetAllInfo: id => dispatch(GetAllInfo(id)),
-  GetPassword: id => dispatch(GetPassword(id)),
-  PremiumPost: password => dispatch(PremiumPost(password)),
-  postFeedback: (email, confirmemail, password, name, day, month, year, sex) =>
-    dispatch(
-      postFeedback(email, confirmemail, password, name, day, month, year, sex)
-    ),
-  postFacebookLogin: (email, image, name) =>
-    dispatch(postFacebookLogin(email, image, name))
+  GetPassword: (id) => dispatch(GetPassword(id)),
+  PremiumPost: (password) => dispatch(PremiumPost(password)),
+  postFeedback: (email, confirmemail, password, name, day, month, year, sex) => dispatch(
+    postFeedback(email, confirmemail, password, name, day, month, year, sex),
+  ),
+  postFacebookLogin: (email, image, name) => dispatch(postFacebookLogin(email, image, name)),
 });
 
 class Main extends Component {
@@ -89,7 +88,7 @@ class Main extends Component {
             exact
             path="/accountoverview"
             component={() => (
-              <AccountOverview GetAllInfo={this.props.GetAllInfo} />
+              <AccountOverview />
             )}
           />
           <Redirect to="/signup" />

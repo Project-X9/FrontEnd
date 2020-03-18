@@ -25,7 +25,7 @@ class ChangePass extends Component {
     alert(this.state.CurrentPassword);
     alert(values.password);
     if (!this.state.CurrentPassword) {
-      if (this.state.CurrentPassword !== values.password) {
+      if (this.state.CurrentPassword === values.password) {
         const post = { Password: values.password, id: 2 };
         this.props.PostPassword(post);
       }
