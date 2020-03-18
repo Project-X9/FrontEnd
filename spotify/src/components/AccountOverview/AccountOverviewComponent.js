@@ -23,11 +23,25 @@ class AccountOverview extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isNavOpen: false
+      isNavOpen: false,
+      email: "",
+      name: "",
+      day: "",
+      month: "",
+      year: "",
+      sex: "",
+      Premium: ""
     };
     this.state.toggleNav = this.toggleNav.bind(this);
+    this.GetAll = this.GetAll.bind(this);
   }
-
+  GetAll = id => {
+    const post = this.props.GetAllInfo(2);
+    if (post) {
+    } else {
+      alert("");
+    }
+  };
   toggleNav() {
     this.setState({
       isNavOpen: !this.state.isNavOpen
@@ -46,6 +60,8 @@ class AccountOverview extends Component {
       accChild = "CloseNavChild1";
       logChild = "CloseNavChild2";
     }
+    this.GetAll();
+
     return (
       <div>
         <div className="AccountOverviewNav">
