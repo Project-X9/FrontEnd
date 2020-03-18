@@ -17,22 +17,10 @@ export const PostPassword = (password) => (dispatch) => {
     .then((response) => alert(JSON.stringify(response)));
 };
 export const fetchUserData = () => (dispatch) => {
-
-  var myRequest= new XMLHttpRequest();
-
-    myRequest.onreadystatechange=function(){
-      
-      if(this.readyState === 4 && this.status === 200){
-        
-        var myjsObject=JSON.stringify(this.responseText);
-        alert(myjsObject);
-        dispatch(addUserData(myjsObject));
-       
-      }
-    
-    }
-    myRequest.open('GET',baseUrl + 'users' + '/2',true);
-    myRequest.send();
+  
+  return fetch(baseUrl + 'users')
+  .then(response => response.json())
+  .then(data => dispatch(addUserData(data)))
   };
   export const addUserData = (data) => ({
     type: ActionTypes.ADD_USERDATA,

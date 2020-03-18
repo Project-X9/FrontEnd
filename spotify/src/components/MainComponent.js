@@ -35,7 +35,10 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 class Main extends Component {
-  componentDidMount() {}
+  
+  componentDidMount() {
+    this.props.fetchUserData();
+  }
 
   render() {
     // const HomePage=()=>{
