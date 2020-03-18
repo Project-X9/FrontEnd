@@ -35,11 +35,45 @@ class AccountOverview extends Component {
     });
   }
   handleClick(){
-    this.props.fetchUserData();
+    // this.props.fetchUserData();
+    alert(this.props.data);
   }
 
   
   render() {
+    
+  const UserData =this.props.data.data.map((data) => {
+      return (
+          <div className="col-12 col-md-5 m-1"  key={data.id}>
+              <div className="row">
+                  <div className="col Content1">
+                    <h5>Username</h5>
+                  </div>
+                  <div className="col Content2">
+                    <h5> {data.name} </h5>
+                  </div>
+                </div>
+                <hr />
+                <div className="row">
+                  <div className="col Content1">
+                    <h5>Email</h5>
+                  </div>
+                  <div className="col Content2">
+                    <h5>{data.email}</h5>
+                  </div>
+                </div>
+                <hr />
+                <div className="row">
+                  <div className="col Content1">
+                    <h5>Date of birth</h5>
+                  </div>
+                  <div className="col Content2">
+                    <h5>7/23/98</h5>
+                  </div>
+                </div>
+          </div>
+      );
+  });
     let accLogStyleParent = '';
     let accChild = '';
     let logChild = '';
@@ -152,32 +186,9 @@ class AccountOverview extends Component {
                 <div className="row">
                   <h3 className="SmallHeader">Profile</h3>
                 </div>
-                <div className="row">
-                  <div className="col Content1">
-                    <h5>Username</h5>
-                  </div>
-                  <div className="col Content2">
-                    <h5>Shesho123</h5>
-                  </div>
-                </div>
-                <hr />
-                <div className="row">
-                  <div className="col Content1">
-                    <h5>Email</h5>
-                  </div>
-                  <div className="col Content2">
-                    <h5>{this.state.email}</h5>
-                  </div>
-                </div>
-                <hr />
-                <div className="row">
-                  <div className="col Content1">
-                    <h5>Date of birth</h5>
-                  </div>
-                  <div className="col Content2">
-                    <h5>7/23/98</h5>
-                  </div>
-                </div>
+
+                  <div>{UserData}</div>
+
                 <hr />
                 <div className="row">
                   <div className="col Content1">
