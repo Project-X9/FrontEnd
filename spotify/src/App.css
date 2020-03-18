@@ -1,7 +1,32 @@
 .App {
   text-align: center;
 }
+.App .Headers {
+  color: #ffff;
+  text-align: initial;
+}
+.App .Header1 {
+  text-align: inherit;
+  line-height: 1.2;
+  font-weight: 900;
+  max-width: 100%;
+  width: auto;
+  display: inline-block;
+  font-size: 48px;
+  margin-top: 70px;
+  margin-left: 20px;
+  margin-bottom: 20px;
 
+  padding: 0px;
+  @media (min-width: 768px) {
+    font-size: 80px;
+  }
+}
+.App .Header2 {
+  margin-top: 70px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -36,4 +61,13 @@
     transform: rotate(360deg);
   }
 }
+<<<<<<< HEAD
 
+=======
+.App .Paragraph {
+  display: block;
+  width: 100%;
+
+  flex-grow: 1;
+}
+>>>>>>> 13861c1b3b0c24ce0886298fc18a6fa7c77f110c

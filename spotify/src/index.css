@@ -1,112 +1,106 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-/* /////////////////////// Sign UP Page /////////////////////////// */
-/* .signup{
-  position: relative;
-} */
-.somepadding{
-  padding: 5rem;
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.seperator {
+  border-left-style: outset;
+  border-left-color: white;
+  border-left-width: 2px;
+}
+.NavBar {
+  background-color: black;
+  width: 100%;
+}
+.Profile {
+  height: 30px;
+  width: 30px;
+  border-radius: 10px;
+  margin-left: 20px;
+  margin-right: 10px;
+}
+.jumbotron {
+  border-radius: 0px;
+  width: 100%;
 }
 
-.facebookButton{
-  color: #fff;
-  background-color: #3B5998;
-  font-size: 14px;
-  line-height: 1;
-  border-radius: 500px;
-  padding: 16px 48px 18px;
-  /* display: block; */
-  letter-spacing: 2px;
-  font-weight: 700;
-  text-align: center;
+.customization {
+  padding-left: 50px;
 }
-.facebookButton:hover{
-  background-color: #3a61b3;
+
+li.seperating {
+  background: currentColor;
+  margin: auto 17px;
+  display: inline-block;
+  height: 16px;
+  width: 1px;
 }
-.textcolour{
-  color: #fff;
+
+.background_nav {
+  background-color: rgba(0, 0, 0, 0.6);
 }
-.signupbtn{
-  margin-bottom: 14px;
-  max-width: 320px;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 14px;
-  line-height: 1;
-  border-radius: 500px;
-  border-width: 0;
-  letter-spacing: 2px;
-  min-width: 160px;
-  text-transform: uppercase;
-  white-space: normal;
-  background-color: #1DB954;
-  display: block;
-  width: 100%;
-  font-weight: 700;
-  text-align: center;
-  touch-action: manipulation;
-  cursor: pointer;
-  border: 1px solid transparent;
-  padding: 7px 12px 5px;
+
+.somemargins {
+  margin: auto 17px;
 }
-.signupbtn:hover{
-  background-color: #1ED760;
+
+body {
+  font-weight: 400;
 }
-.signup-field{
-    display: block;
-    margin-inline-start: 2px;
-    margin-inline-end: 2px;
-    padding-block-start: 0.35em;
-    padding-inline-start: 0.75em;
-    padding-inline-end: 0.75em;
-    padding-block-end: 0.625em;
-    min-inline-size: min-content;
-    font-family: Circular, Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    text-size-adjust: 100%;
-    font-weight: 400;
-    margin: 0 2px;
-    align-items: center;
-    align-content: center;
+.dividerstyle {
+  background-color: black;
+  color: black;
 }
-.line-thru {
-  display: block;
-  font-size: .875em;
-  margin-bottom: 1em;
-  position: relative;
-  text-align: center;
-  width: 100%;
-  z-index: 1;
+.nav-link {
+  color: lightgreen;
+  margin-left: 20px;
 }
-.line-thru:after {
-  border-bottom: 1px solid #dfe0e6;
-  content: '';
-  display: block;
-  position: absolute;
-  top: 49%;
-  width: 100%;
-  z-index: -2;
-}
-.line-thru:before {
-  width: 40px;
-  height: 10px;
-  background-color: #FFF;
-  content: '';
-  margin: -5px 0 0 -20px;
-  left: 50%;
-  position: absolute;
-  top: 50%;
+.JumboHeaderImg {
+  background-image: url("../src/components/SpotifyImg.png");
+
+  left: 0px;
+  top: 0px;
   z-index: -1;
+<<<<<<< HEAD
+=======
+  background-size: cover;
+  background-color: white;
+  margin: 0px;
+}
+.icon {
+  display: inline-block;
+  margin-right: 20px;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  width: 142px;
+  height: 142px;
+}
+.JmbStyle {
+  padding: 7px;
+  border-radius: 16px;
+}
+
+.NavBarToggle {
+  background-color: black;
+  color: white;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-right: 50px;
+>>>>>>> 13861c1b3b0c24ce0886298fc18a6fa7c77f110c
 }
