@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import {
-  Switch, Route, Redirect, withRouter,
-} from 'react-router-dom';
-import { connect } from 'react-redux';
-import { actions } from 'react-redux-form';
-import SignUp from './SignUp/SignUpComponent';
+import React, { Component } from "react";
+import { Switch, Route, Redirect, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { actions } from "react-redux-form";
+import Home from "./Homepage/HomeComponent"
+import SignUp from "./SignUp/SignUpComponent";
 import PremiumComponent from './PremiumPage/PremuimComponent';
 import ChangePass from './ChangePassword/ChangePassword';
 import AccountOverview from './AccountOverview/AccountOverviewComponent';
@@ -52,6 +51,13 @@ class Main extends Component {
         {/* <TransitionGroup> */}
         {/* <CSSTransition key={this.props.location.key} classNames="page" timeout={300}> */}
         <Switch>
+        <Route
+            exact
+            path="/"
+            component={() => (
+              <Home />
+            )}
+          />
           <Route
             exact
             path="/signup"
