@@ -11,8 +11,7 @@ import {
   postFacebookLogin,
   PremiumPost,
   GetPassword,
-  PostPassword,
-  GetAllInfo
+  PostPassword
 } from "../redux/ActionCreators";
 
 const mapStateToProps = state => ({});
@@ -21,7 +20,6 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.reset("feedback"));
   },
   PostPassword: (password, id) => dispatch(PostPassword(password, id)),
-  GetAllInfo: id => dispatch(GetAllInfo(id)),
   GetPassword: id => dispatch(GetPassword(id)),
   PremiumPost: password => dispatch(PremiumPost(password)),
   postFeedback: (email, confirmemail, password, name, day, month, year, sex) =>
@@ -80,9 +78,7 @@ class Main extends Component {
           <Route
             exact
             path="/accountoverview"
-            component={() => (
-              <AccountOverview GetAllInfo={this.props.GetAllInfo} />
-            )}
+            component={() => <AccountOverview />}
           />
           <Redirect to="/signup" />
         </Switch>
