@@ -21,7 +21,14 @@ export const GetPassword = () => dispatch => {
     .get(`${baseUrl}users/2`)
     .then(response => alert(JSON.stringify(response.data.password)));
 };
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////
+
+export const GetAllInfo = id => dispatch => {
+  axios
+    .get(`${baseUrl}users/2`)
+    .then(response => alert(JSON.stringify(response.data)));
+};
+///////////////////////////////////////////////////////////////////
 export const postFacebookLogin = (email, image, name) => dispatch => {
   const newFacebookLogin = {
     email,
