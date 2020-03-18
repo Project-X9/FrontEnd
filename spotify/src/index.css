@@ -71,8 +71,6 @@ body {
   left: 0px;
   top: 0px;
   z-index: -1;
-<<<<<<< HEAD
-=======
   background-size: cover;
   background-color: white;
   margin: 0px;
@@ -102,5 +100,4 @@ body {
   box-sizing: border-box;
   cursor: pointer;
   margin-right: 50px;
->>>>>>> 13861c1b3b0c24ce0886298fc18a6fa7c77f110c
 }

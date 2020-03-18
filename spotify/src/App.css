@@ -61,13 +61,9 @@
     transform: rotate(360deg);
   }
 }
-<<<<<<< HEAD
-
-=======
 .App .Paragraph {
   display: block;
   width: 100%;
 
   flex-grow: 1;
 }
->>>>>>> 13861c1b3b0c24ce0886298fc18a6fa7c77f110c

@@ -241,3 +241,7 @@
     z-index: 10;
     bottom:0;
 }
+#NavSlash:hover{
+  color: #fff;
+  cursor: default;
+}
