@@ -53,7 +53,7 @@ class Main extends Component {
         <Switch>
         <Route
             exact
-            path="/"
+            path="/home"
             component={() => (
               <Home />
             )}
