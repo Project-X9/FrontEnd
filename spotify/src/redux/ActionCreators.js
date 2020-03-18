@@ -16,6 +16,28 @@ export const PostPassword = (password) => (dispatch) => {
     .post(`${baseUrl}users`, newPassword)
     .then((response) => alert(JSON.stringify(response)));
 };
+export const fetchUserData = () => (dispatch) => {
+
+  var myRequest= new XMLHttpRequest();
+
+    myRequest.onreadystatechange=function(){
+      
+      if(this.readyState === 4 && this.status === 200){
+        
+        var myjsObject=JSON.stringify(this.responseText);
+        alert(myjsObject);
+        dispatch(addUserData(myjsObject));
+       
+      }
+    
+    }
+    myRequest.open('GET',baseUrl + 'users' + '/2',true);
+    myRequest.send();
+  };
+  export const addUserData = (data) => ({
+    type: ActionTypes.ADD_USERDATA,
+    payload: data
+    });
 export const GetPassword = () => (dispatch) => {
   axios
     .get(`${baseUrl}users/2`)
@@ -85,3 +107,4 @@ export const postFeedback = (
   // .then(response => alert(JSON.stringify(response)))
   // .catch(error =>  { console.log('post feedback', error.message); alert('Your feedback could not be posted\nError: '+error.message); });
 };
+//////////////////////////////////Account overView///////////////////////////////

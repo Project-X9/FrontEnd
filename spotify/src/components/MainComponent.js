@@ -14,16 +14,18 @@ import {
   PremiumPost,
   GetPassword,
   PostPassword,
+  fetchUserData,
 } from '../redux/ActionCreators';
 
 const mapStateToProps = (state) => ({
-
+  data:state.data
 
 });
 const mapDispatchToProps = (dispatch) => ({
   resetFeedbackForm: () => {
     dispatch(actions.reset('feedback'));
   },
+  fetchUserData: () => { dispatch(fetchUserData())},
   PostPassword: (password, id) => dispatch(PostPassword(password, id)),
   GetPassword: (id) => dispatch(GetPassword(id)),
   PremiumPost: (password) => dispatch(PremiumPost(password)),
@@ -82,7 +84,7 @@ class Main extends Component {
             exact
             path="/accountoverview"
             component={() => (
-              <AccountOverview />
+              <AccountOverview fetchUserData={this.props.fetchUserData} data={this.props.data}/>
             )}
           />
           <Redirect to="/signup" />

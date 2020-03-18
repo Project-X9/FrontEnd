@@ -19,20 +19,26 @@ import PremiumPlan from './PremiumPlan';
 import FreeJumbotron from './FreeJumbotron';
 import PremiumJumbotron from './PremiumJumbotron';
 
+
 class AccountOverview extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isNavOpen: false,
+      isNavOpen: false
     };
     this.state.toggleNav = this.toggleNav.bind(this);
+    this.state.handleClick = this.handleClick.bind(this);
   }
   toggleNav() {
     this.setState({
       isNavOpen: !this.state.isNavOpen,
     });
   }
+  handleClick(){
+    this.props.fetchUserData();
+  }
 
+  
   render() {
     let accLogStyleParent = '';
     let accChild = '';
@@ -46,7 +52,6 @@ class AccountOverview extends Component {
       accChild = 'CloseNavChild1';
       logChild = 'CloseNavChild2';
     }
-
     return (
       <div>
         <div className="AccountOverviewNav">
@@ -161,7 +166,7 @@ class AccountOverview extends Component {
                     <h5>Email</h5>
                   </div>
                   <div className="col Content2">
-                    <h5>ahmedhashish@ymail.com</h5>
+                    <h5>{this.state.email}</h5>
                   </div>
                 </div>
                 <hr />
@@ -194,7 +199,7 @@ class AccountOverview extends Component {
                 <FreePlan />
                 <PremiumPlan />
                 <div className="row">
-                  <Button className="EditProfile" color="success">
+                  <Button onClick={this.state.handleClick} className="EditProfile" color="success">
                     JOIN PREMIUM
                   </Button>
                 </div>
