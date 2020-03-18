@@ -81,7 +81,9 @@ class Main extends Component {
           <Route
             exact
             path="/accountoverview"
-            component={() => <AccountOverview />}
+            component={() => (
+              <AccountOverview />
+            )}
           />
           <Redirect to="/signup" />
         </Switch>

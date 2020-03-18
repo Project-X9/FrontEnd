@@ -27,7 +27,6 @@ class AccountOverview extends Component {
     };
     this.state.toggleNav = this.toggleNav.bind(this);
   }
-
   toggleNav() {
     this.setState({
       isNavOpen: !this.state.isNavOpen,
@@ -47,6 +46,7 @@ class AccountOverview extends Component {
       accChild = 'CloseNavChild1';
       logChild = 'CloseNavChild2';
     }
+
     return (
       <div>
         <div className="AccountOverviewNav">
