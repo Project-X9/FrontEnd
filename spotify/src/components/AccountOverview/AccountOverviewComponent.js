@@ -37,7 +37,7 @@ class AccountOverview extends Component {
     
   const UserData =this.props.data.data.map((data) => {
       return (
-          <div className="col-12 col-md-5 m-1"  key={data.id}>
+          <div key={data.id}>
               <div className="row">
                   <div className="col Content1">
                     <h5>Username</h5>
@@ -64,6 +64,7 @@ class AccountOverview extends Component {
                     <h5>7/23/98</h5>
                   </div>
                 </div>
+                <hr/>
           </div>
       );
   });
@@ -102,17 +103,17 @@ class AccountOverview extends Component {
               <Collapse isOpen={this.state.isNavOpen} navbar>
                 <Nav navbar className="ml-auto">
                   <NavItem>
-                    <NavLink className="nav-link" to="/home">
+                    <NavLink className="nav-link" to="/premium">
                       Premium
                     </NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink className="nav-link" to="/menu">
+                    <NavLink className="nav-link" to="/home">
                       Help
                     </NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink className="nav-link" to="/aboutus">
+                    <NavLink className="nav-link" to="/home">
                       Download
                     </NavLink>
                   </NavItem>
@@ -128,7 +129,7 @@ class AccountOverview extends Component {
                       </DropdownToggle>
                       <DropdownMenu className={accLogStyleParent} right>
                         <DropdownItem className={accChild}>
-                          Account
+                          <NavLink to="accountoverview">Account</NavLink>
                           {' '}
                         </DropdownItem>
                         <DropdownItem className={logChild}>LogOut</DropdownItem>
@@ -150,7 +151,7 @@ class AccountOverview extends Component {
                   <Link to="/" className="AppearBig">
                     <i className="fa fa-snapchat-ghost" aria-hidden="true" />
                   </Link>
-                  <Link to="/" className="active">
+                  <Link to="/accountoverview" className="active">
                     <i className="fa fa-home" />
                     Account overview
                   </Link>
@@ -182,7 +183,6 @@ class AccountOverview extends Component {
 
                   <div>{UserData}</div>
 
-                <hr />
                 <div className="row">
                   <div className="col Content1">
                     <h5>Country</h5>
@@ -204,12 +204,12 @@ class AccountOverview extends Component {
                 <PremiumPlan />
                 <div className="row">
                   <Button className="EditProfile" color="success">
-                    JOIN PREMIUM
+                    <NavLink to="premium">JOIN PREMIUM</NavLink>
                   </Button>
                 </div>
                 <div className="row">
                   <Button className="EditProfile" color="success">
-                    SIGN OUT EVERYWHERE
+                    SIGN OUT 
                   </Button>
                 </div>
               </div>

@@ -8,9 +8,10 @@ import {
 import { Link,Redirect } from 'react-router-dom';
 import FacebookLogin from 'react-facebook-login';
 
+
 const required = (val) => val && val.length;
 // const maxLength = (len) => (val) => !(val) || (val.length <= len);
-const minLength = (len) => (val) => val && (val.length >= len);
+const minLength = len => val => val && val.length >= len;
 // const isNumber = (val) => !isNaN(Number(val));
 const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 const validDay = (val) => /^([1-9]|0[1-9]|[12]\d|3[01])$/i.test(val);
@@ -24,54 +25,64 @@ class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
+      email: "",
       selectedOption: false,
-      confEmail:''
-  }
+      confEmail: ""
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.responseFacebook = this.responseFacebook.bind(this);
-
   }
-  
+
   handleSubmit(values) {
     // const { email, confirmEmail } = this.state;
       // console.log(`Current State :${JSON.stringify(values)}`);
       this.props.resetFeedbackForm();
       this.props.postFeedback(values.email, values.confirmemail, values.password, values.name, values.day, values.month,
         values.year, values.sex);
-      return(
-          <Redirect to="/premium" />
-      )
-  }
-  handleEmailChange = (event) => {
+
+      
+        
+    }
+  handleEmailChange = event => {
     this.setState({
       email: event.target.value
     });
   };
-  responseFacebook (response) {
-    if (response.status !== "unknown")
-    {
+  responseFacebook(response) {
+    if (response.status !== "unknown") {
       this.props.resetFeedbackForm();
-      this.props.postFacebookLogin(response.email,response.image,response.name); 
+      this.props.postFacebookLogin(
+        response.email,
+        response.image,
+        response.name
+      );
     }
   }
-  
+
   render() {
     return (
       <div className="container signup">
         <div className="row somepadding">
           <Col xs={12} md={{ size: 6, offset: 3 }}>
-            <Link to='/home'><img src="assets/images/logo.png" height="59" width="172" alt="spotify"/></Link>
+            <Link to="/home">
+              <img
+                src="assets/images/logo.png"
+                height="59"
+                width="172"
+                alt="spotify"
+              />
+            </Link>
             <hr />
           </Col>
           <Col xs={12} md={{ size: 6, offset: 3 }}>
-          <FacebookLogin
+            <FacebookLogin
               cssClass="facebookButton"
               appId="723287988413715"
-              autoLoad={true}
+              autoLoad={false}
               fields="name,email,picture,birthday"
-              callback={this.responseFacebook}/>
+              callback={this.responseFacebook}
+            />
             {/* <a className="btn facebookButton"><b className="textcolour">SIGN UP WITH FACEBOOK</b></a> */}
           </Col>
           <Col xs={12} md={{ size: 6, offset: 3 }}>
@@ -83,8 +94,9 @@ class SignUp extends Component {
         </div>
         <div className="row signup-field">
           <div>
-            <Form model="feedback" 
-            onSubmit={(values) => this.handleSubmit(values)}>
+            <Form
+              model="feedback"
+              onSubmit={values => this.handleSubmit(values)}>
               <Row className="form-group">
                 <Col xs={12} md={{ size: 6, offset: 3 }}>
                   <Control.text
@@ -95,19 +107,20 @@ class SignUp extends Component {
                     id="email"
                     name="email"
                     validators={{
-                      required, validEmail
+                      required,
+                      validEmail
                     }}
                   />
-                  <Row className='ml-2'>
-                  <Errors
-                    className="text-danger"
-                    model=".email"
-                    show="touched"
-                    messages={{
-                      required: 'Enter your Email address ,',
-                      validEmail: ' Invalid Email Address',
-                    }}
-                  />
+                  <Row className="ml-2">
+                    <Errors
+                      className="text-danger"
+                      model=".email"
+                      show="touched"
+                      messages={{
+                        required: "Enter your Email address ,",
+                        validEmail: " Invalid Email Address"
+                      }}
+                    />
                   </Row>
                 </Col>
               </Row>
@@ -121,20 +134,23 @@ class SignUp extends Component {
                     id="confirmemail"
                     name="confirmemail"
                     validators={{
-                      required, validEmail,confEmail : confEmail(this.state.email) 
+                      required,
+                      validEmail,
+                      confEmail: confEmail(this.state.email)
                     }}
                   />
-                  <Row className='ml-2'>
-                  <Errors
-                    className="text-danger"
-                    model=".confirmemail"
-                    show="touched"
-                    messages={{
-                      // required: 'Required',
-                      // validEmail: 'Invalid Email Address',
-                      confEmail:'Email does not match'
-                    }}
-                  /></Row>
+                  <Row className="ml-2">
+                    <Errors
+                      className="text-danger"
+                      model=".confirmemail"
+                      show="touched"
+                      messages={{
+                        // required: 'Required',
+                        // validEmail: 'Invalid Email Address',
+                        confEmail: "Email does not match"
+                      }}
+                    />
+                  </Row>
                 </Col>
               </Row>
               <Row className="form-group">
@@ -147,21 +163,22 @@ class SignUp extends Component {
                     id="password"
                     name="password"
                     validators={{
-                      required, minLength: minLength(7)
+                      required,
+                      minLength: minLength(7)
                     }}
                   />
-                  <Row className='ml-2'>
-                    <Col xs={12}>                  
-                  <Errors
-                    className="text-danger"
-                    model=".password"
-                    show="touched"
-                    messages={{
-                      required: 'Enter your password to continue, ',
-                      minLength: ' Your password is too short',
-                    }}
-                  />
-                  </Col>
+                  <Row className="ml-2">
+                    <Col xs={12}>
+                      <Errors
+                        className="text-danger"
+                        model=".password"
+                        show="touched"
+                        messages={{
+                          required: "Enter your password to continue, ",
+                          minLength: " Your password is too short"
+                        }}
+                      />
+                    </Col>
                   </Row>
                 </Col>
               </Row>
@@ -177,15 +194,16 @@ class SignUp extends Component {
                       required
                     }}
                   />
-                  <Row className='ml-2'>
-                  <Errors
-                    className="text-danger"
-                    model=".name"
-                    show="touched"
-                    messages={{
-                      required: 'What should we call you ?',
-                    }}
-                  /></Row>
+                  <Row className="ml-2">
+                    <Errors
+                      className="text-danger"
+                      model=".name"
+                      show="touched"
+                      messages={{
+                        required: "What should we call you ?"
+                      }}
+                    />
+                  </Row>
                 </Col>
               </Row>
               <Row className="form-group">
@@ -197,7 +215,8 @@ class SignUp extends Component {
                     id="day"
                     name="day"
                     validators={{
-                      required, validDay
+                      required,
+                      validDay
                     }}
                   />
                   <Errors
@@ -205,15 +224,20 @@ class SignUp extends Component {
                     model=".day"
                     show="touched"
                     messages={{
-                      validDay: 'Enter a valid day of the month'
+                      validDay: "Enter a valid day of the month"
                     }}
                   />
                 </Col>
                 <Col xs={4} md={2}>
-                  <Control.select className="form-control" model=".month" name="month"  validators={{
-                      monthSelected,required
+                  <Control.select
+                    className="form-control"
+                    model=".month"
+                    name="month"
+                    validators={{
+                      monthSelected,
+                      required
                     }}>
-                    <option value='null'>Month</option>
+                    <option value="null">Month</option>
                     <option>January</option>
                     <option>February</option>
                     <option>March</option>
@@ -232,8 +256,8 @@ class SignUp extends Component {
                     model=".month"
                     show="touched"
                     messages={{
-                      required:"Required",
-                      monthSelected: 'Enter the month'
+                      required: "Required",
+                      monthSelected: "Enter the month"
                     }}
                   />
                 </Col>
@@ -245,7 +269,8 @@ class SignUp extends Component {
                     id="year"
                     name="year"
                     validators={{
-                      required, validYear
+                      required,
+                      validYear
                     }}
                   />
                   <Errors
@@ -253,8 +278,8 @@ class SignUp extends Component {
                     model=".year"
                     show="touched"
                     messages={{
-                      required: 'Enter a year to continue',
-                      validYear: ' Enter a valid year'
+                      required: "Enter a year to continue",
+                      validYear: " Enter a valid year"
                     }}
                   />
                 </Col>
@@ -263,35 +288,45 @@ class SignUp extends Component {
                 <Col xs={12} md={8}>
                   <div>
                     <label className="p-3">
-                      <Control.radio model=".sex" value="male" id="sex" name="sex" 
-                       validators={{
-                          typeSelected 
-                      }}/>
-                      {' '}
+                      <Control.radio
+                        model=".sex"
+                        value="male"
+                        id="sex"
+                        name="sex"
+                        validators={{
+                          typeSelected
+                        }}
+                      />{" "}
                       Male
                     </label>
                     <label className="p-3">
-                      <Control.radio model=".sex" value="female" id="sex" name="sex"           
-                      validators={{
-                        typeSelected 
-                          }} />
-                      {' '}
+                      <Control.radio
+                        model=".sex"
+                        value="female"
+                        id="sex"
+                        name="sex"
+                        validators={{
+                          typeSelected
+                        }}
+                      />{" "}
                       Female
                     </label>
                     <Errors
-                    className="text-danger"
-                    model=".sex"
-                    show="touched"
-                    messages={{
-                      typeSelected: 'Enter your gender'
-                    }}
-                  />
+                      className="text-danger"
+                      model=".sex"
+                      show="touched"
+                      messages={{
+                        typeSelected: "Enter your gender"
+                      }}
+                    />
                   </div>
                 </Col>
               </Row>
               <Row className="form-group">
                 <Col xs={12} md={{ size: 6, offset: 3 }}>
-                  <Button model="submit" className="signupbtn">SignUp</Button>
+                  <Button model="submit" className="signupbtn">
+                    SignUp
+                  </Button>
                 </Col>
               </Row>
             </Form>

@@ -2,171 +2,171 @@
     border-left-style: outset;
     border-left-color: white;
     border-left-width: 2px;
-  }
-  .NavBar {
-    background-color: black;
-    width: 100%;
-  }
-  .Profile {
-    height: 30px;
-    width: 30px;
-    border-radius: 10px;
-    margin-left: 20px;
-    margin-right: 10px;
-  }
-  .jumbotron {
-    border-radius: 0px;
-    width: 100%;
-  }
-  
-  .customization {
-    padding-left: 50px;
-  }
-  
-  li.seperating {
-    background: currentColor;
-    margin: auto 17px;
-    display: inline-block;
-    height: 16px;
-    width: 1px;
-  }
-  
-  .background_nav {
-    background-color: rgba(0, 0, 0, 0.6);
-  }
-  
-  .somemargins {
-    margin: auto 17px;
-  }
-  
-  body {
-    font-weight: 400;
-  }
-  .dividerstyle {
-    background-color: black;
-    color: black;
-  }
-  .nav-link {
-    color: lightgreen;
-    margin-left: 20px;
-  }
-  .JumboHeaderImg {
-    background-image: url("../src/components/SpotifyImg.png");
-  
-    left: 0px;
-    top: 0px;
-    z-index: -1;
-    background-size: cover;
-    background-color: white;
-    margin: 0px;
-  }
-  .icon {
-    display: inline-block;
-    margin-right: 20px;
-    -webkit-box-flex: 1;
-    flex-grow: 1;
-    width: 142px;
-    height: 142px;
-  }
-  .JmbStyle {
-    padding: 7px;
-    border-radius: 16px;
-  }
-  
-  .NavBarToggle {
-    background-color: black;
-    color: white;
-    height: 100%;
-    display: flex;
-    flex-flow: column;
-    justify-content: space-around;
-    align-items: center;
-    padding: 10px 0;
-    box-sizing: border-box;
-    cursor: pointer;
-    margin-right: 50px;
-  }
-  /***************************************************Nav Bar***************************************************/
-  div.AccountOverviewNav div.container{
-    margin:0;
-    padding:0;
-    max-width:100%;
-  }
-  
-  div.AccountOverviewNav div.container .NavBar {
-    background-color: black;
-  }
-  
-  div.AccountOverviewNav div.container .Profile {
-    height: 30px;
-    width: 30px;
-    border-radius: 10px;
-    margin-left: 20px;
-    margin-right: 10px;
-  }
-  
-  div.AccountOverviewNav div.container .nav-link {
-    color: white;
-    margin-left: 20px;
-  }
-  
-  div.AccountOverviewNav div.container .nav-link:hover {
-    color: #1ed760;
-    margin-left: 20px;
-  }
-  
-  div.AccountOverviewNav div.container .seperator {
-    border-left-style: outset;
-    border-left-color: white;
-    border-left-width: 2px;
-  }
-  
-  div.AccountOverviewNav div.container .OpenNav {
-    background-color: black;
-  }
-  
-  div.AccountOverviewNav div.container .OpenNav .OpenNavChild{
-    color: grey;
-  }
-  
-  div.AccountOverviewNav div.container .OpenNav .OpenNavChild:hover {
-    color: #1ed760;
-    background-color: black;
-  }
-  
-  div.AccountOverviewNav div.container .CloseNav {
-    background-color: white;
-  }
-  
-  div.AccountOverviewNav div.container .CloseNav .CloseNavChild1{
-    color: rgb(0, 0, 0);
-  }
-  
-  div.AccountOverviewNav div.container .CloseNav .CloseNavChild1:hover {
-    color: #1ed760;
-    background-color: white;
-  }
-  
-  div.AccountOverviewNav div.container .CloseNav .CloseNavChild2{
-    color: grey;
-  }
-  
-  div.AccountOverviewNav div.container .CloseNav .CloseNavChild2:hover {
-    color: #1ed760;
-    background-color: white;
-  }
-  
-  .NavBarToggle {
-    background-color: black;
-    color: white;
-    height: 100%;
-    display: flex;
-    flex-flow: column;
-    justify-content: space-around;
-    align-items: center;
-    padding: 10px 0;
-    box-sizing: border-box;
-    cursor: pointer;
-    margin-right: 50px;
-  }
-  /***************************************************Nav Bar***************************************************/
+}
+.NavBar {
+  background-color: black;
+  width: 100%;
+}
+.Profile {
+  height: 30px;
+  width: 30px;
+  border-radius: 10px;
+  margin-left: 20px;
+  margin-right: 10px;
+}
+.jumbotron {
+  border-radius: 0px;
+  width: 100%;
+}
+
+.customization {
+  padding-left: 50px;
+}
+
+li.seperating {
+  background: currentColor;
+  margin: auto 17px;
+  display: inline-block;
+  height: 16px;
+  width: 1px;
+}
+
+.background_nav {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.somemargins {
+  margin: auto 17px;
+}
+
+body {
+  font-weight: 400;
+}
+.dividerstyle {
+  background-color: black;
+  color: black;
+}
+.nav-link {
+  color: lightgreen;
+  margin-left: 20px;
+}
+.JumboHeaderImg {
+  background-image: url("./SpotifyImg.png");
+
+  left: 0px;
+  top: 0px;
+  z-index: -1;
+  background-size: cover;
+  background-color: white;
+  margin: 0px;
+}
+.icon {
+  display: inline-block;
+  margin-right: 20px;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  width: 142px;
+  height: 142px;
+}
+.JmbStyle {
+  padding: 7px;
+  border-radius: 16px;
+}
+
+.NavBarToggle {
+  background-color: black;
+  color: white;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-right: 50px;
+}
+/***************************************************Nav Bar***************************************************/
+div.AccountOverviewNav div.container{
+  margin:0;
+  padding:0;
+  max-width:100%;
+}
+
+div.AccountOverviewNav div.container .NavBar {
+  background-color: black;
+}
+
+div.AccountOverviewNav div.container .Profile {
+  height: 30px;
+  width: 30px;
+  border-radius: 10px;
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
+div.AccountOverviewNav div.container .nav-link {
+  color: white;
+  margin-left: 20px;
+}
+
+div.AccountOverviewNav div.container .nav-link:hover {
+  color: #1ed760;
+  margin-left: 20px;
+}
+
+div.AccountOverviewNav div.container .seperator {
+  border-left-style: outset;
+  border-left-color: white;
+  border-left-width: 2px;
+}
+
+div.AccountOverviewNav div.container .OpenNav {
+  background-color: black;
+}
+
+div.AccountOverviewNav div.container .OpenNav .OpenNavChild{
+  color: grey;
+}
+
+div.AccountOverviewNav div.container .OpenNav .OpenNavChild:hover {
+  color: #1ed760;
+  background-color: black;
+}
+
+div.AccountOverviewNav div.container .CloseNav {
+  background-color: white;
+}
+
+div.AccountOverviewNav div.container .CloseNav .CloseNavChild1{
+  color: rgb(0, 0, 0);
+}
+
+div.AccountOverviewNav div.container .CloseNav .CloseNavChild1:hover {
+  color: #1ed760;
+  background-color: white;
+}
+
+div.AccountOverviewNav div.container .CloseNav .CloseNavChild2{
+  color: grey;
+}
+
+div.AccountOverviewNav div.container .CloseNav .CloseNavChild2:hover {
+  color: #1ed760;
+  background-color: white;
+}
+
+.NavBarToggle {
+  background-color: black;
+  color: white;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-right: 50px;
+}
+/***************************************************Nav Bar***************************************************/
