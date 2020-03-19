@@ -44,7 +44,7 @@ class AccountOverview extends Component {
     
   const UserData =this.props.data.data.map((data) => {
       return (
-          <div className="col-12 col-md-5 m-1"  key={data.id}>
+          <div key={data.id}>
               <div className="row">
                   <div className="col Content1">
                     <h5>Username</h5>
@@ -71,6 +71,7 @@ class AccountOverview extends Component {
                     <h5>7/23/98</h5>
                   </div>
                 </div>
+                <hr/>
           </div>
       );
   });
@@ -189,7 +190,6 @@ class AccountOverview extends Component {
 
                   <div>{UserData}</div>
 
-                <hr />
                 <div className="row">
                   <div className="col Content1">
                     <h5>Country</h5>
@@ -210,7 +210,7 @@ class AccountOverview extends Component {
                 <FreePlan />
                 <PremiumPlan />
                 <div className="row">
-                  <Button onClick={this.state.handleClick} className="EditProfile" color="success">
+                  <Button className="EditProfile" color="success">
                     JOIN PREMIUM
                   </Button>
                 </div>

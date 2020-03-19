@@ -212,6 +212,7 @@
   .AccountOverviewBody div.jumbotron{
     margin-left: 7%;
     margin-right: 7%;
+    margin-bottom: 0;
     padding-bottom: 0;  
     background: #222326; /*for browsers that don't support gradient*/
     background: -webkit-linear-gradient(rgb(1, 31, 73),#000000); /*for safari and chrome*/
