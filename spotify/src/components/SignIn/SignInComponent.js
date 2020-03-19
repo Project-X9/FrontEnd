@@ -133,7 +133,7 @@ class SignIn extends Component {
                   <Button
                     model="submit"
                     className="signinbtn"
-                    cssClass="signinbutton">
+                    id="signinbutton">
                     Sign In
                   </Button>
                   <div id="forgot-password">
@@ -142,7 +142,7 @@ class SignIn extends Component {
                     </Link>
                   </div>
                   <p id="text-sign-in">Don't Have an Account?</p>
-                  <Button cssClass="signupbutton">
+                  <Button id="signupbutton" name="signupbutton">
                     <Link to="/signup" id="signuplink">
                       SIGN UP FOR SPOTIFY
                     </Link>

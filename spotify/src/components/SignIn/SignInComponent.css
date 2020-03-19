@@ -14,22 +14,39 @@
     margin: 10px;
 }
 
-.signupbutton {
-    width: 200px;
+#signupbutton {
+    width: 300px;
     height: 50px;
     background-color: white;
     border-radius: 150px;
-    border-color: lightslategrey;
+    border-color: lightslategray;
+    border-style: solid;
+    border-width: 3px;
+}
+
+#signinbutton {
+    width: 300px;
+    height: 50px;
+    background-color: white;
+    border-radius: 150px;
+    border-color: lightslategray;
+    border-style: solid;
+    border-width: 3px;
+    color: lightslategray;
 }
 
 #signuplink {
-    color: white;
+    color: lightslategray;
     padding: 10px;
     margin: 10px;
 }
 
+#signupbutton:hover {
+    background-color: lightslategray;
+}
+
 #signuplink:hover {
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
