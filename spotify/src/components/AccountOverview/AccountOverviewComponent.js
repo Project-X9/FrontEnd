@@ -27,19 +27,12 @@ class AccountOverview extends Component {
       isNavOpen: false
     };
     this.state.toggleNav = this.toggleNav.bind(this);
-    this.state.handleClick = this.handleClick.bind(this);
   }
   toggleNav() {
     this.setState({
-      isNavOpen: !this.state.isNavOpen,
+      isNavOpen: !this.state.isNavOpen
     });
   }
-  handleClick(){
-    // this.props.fetchUserData();
-    alert(this.props.data);
-  }
-
-  
   render() {
     
   const UserData =this.props.data.data.map((data) => {
@@ -210,7 +203,7 @@ class AccountOverview extends Component {
                 <FreePlan />
                 <PremiumPlan />
                 <div className="row">
-                  <Button onClick={this.state.handleClick} className="EditProfile" color="success">
+                  <Button className="EditProfile" color="success">
                     JOIN PREMIUM
                   </Button>
                 </div>

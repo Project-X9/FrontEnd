@@ -119,7 +119,7 @@ class Premium extends Component {
                       </DropdownToggle>
                       <DropdownMenu className={accLogStyleParent} right>
                         <DropdownItem className={accChild}>
-                          Account
+                          <NavLink to ='/accountoverview'>Account</NavLink>
                           {' '}
                         </DropdownItem>
                         <DropdownItem className={logChild}>LogOut</DropdownItem>

@@ -5,7 +5,7 @@ import {
 import {
   Control, Form, Errors,
 } from 'react-redux-form';
-import { Link } from 'react-router-dom';
+import { Link,Redirect } from 'react-router-dom';
 import FacebookLogin from 'react-facebook-login';
 
 const required = (val) => val && val.length;
@@ -18,6 +18,8 @@ const validYear = (val) => /^(181[2-9]|18[2-9]\d|19\d\d|2\d{3}|30[0-3]\d|304[0-8
 const confEmail=(val) => (val2) => val === val2;
 const typeSelected=(val) => (val === 'male' || val ==='female') ;
 const monthSelected=(val) => (val !== "null");
+
+
 class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -38,6 +40,9 @@ class SignUp extends Component {
       this.props.resetFeedbackForm();
       this.props.postFeedback(values.email, values.confirmemail, values.password, values.name, values.day, values.month,
         values.year, values.sex);
+      return(
+          <Redirect to="/premium" />
+      )
   }
   handleEmailChange = (event) => {
     this.setState({

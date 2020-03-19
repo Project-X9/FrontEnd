@@ -17,7 +17,8 @@ import {
 } from '../redux/ActionCreators';
 
 const mapStateToProps = (state) => ({
-  data:state.data
+  data:state.data,
+  id:state.id
 
 });
 const mapDispatchToProps = (dispatch) => ({

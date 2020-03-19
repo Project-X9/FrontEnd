@@ -41,8 +41,8 @@ export const postFacebookLogin = (email, image, name) => (dispatch) => {
   newFacebookLogin.date = new Date().toISOString();
 
   axios
-    .post(`${baseUrl}users`, newFacebookLogin)
-    .then((response) => alert(JSON.stringify(response)));
+    .post(`${baseUrl}users`, newFacebookLogin);
+    // .then((response) => alert(JSON.parse(response)));
 };
 
 export const postFeedback = (
@@ -54,7 +54,7 @@ export const postFeedback = (
   month,
   year,
   sex,
-) => (dispatch) => {
+  ) => (dispatch) => {
   const newFeedback = {
     email,
     confirmemail,
@@ -66,33 +66,14 @@ export const postFeedback = (
     sex,
   };
   newFeedback.date = new Date().toISOString();
-
   axios
-    .post(`${baseUrl}users`, newFeedback)
-    .then((response) => alert(JSON.stringify(response)));
-
-  // return fetch(baseUrl + 'users', {
-  //     method: "POST",
-  //     body: JSON.stringify(newFeedback),
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     credentials: "same-origin"
-  // })
-  // .then(response => {
-  //     if (response.ok) {
-  //       return response;
-  //     } else {
-  //       var error = new Error('Error ' + response.status + ': ' + response.statusText);
-  //       error.response = response;
-  //       throw error;
-  //     }
-  //   },
-  //   error => {
-  //         throw error;
-  //   })
-  // .then(response => response.json())
-  // .then(response => alert(JSON.stringify(response)))
-  // .catch(error =>  { console.log('post feedback', error.message); alert('Your feedback could not be posted\nError: '+error.message); });
+    .post(`${baseUrl}users`, newFeedback);
+    // .then((response) =>alert (JSON.stringify(response)));
+    // .then((response) =>dispatch(addUserId(JSON.parse(response.data.id))));
 };
+export const addUserId = (data) => ({
+  type: ActionTypes.ADD_USERSTATES,
+  payload: data
+  });
+
 //////////////////////////////////Account overView///////////////////////////////
