@@ -1,48 +1,55 @@
-import axios from 'axios';
-import * as ActionTypes from './ActionTypes';
-import { baseUrl } from '../shared/baseUrl';
+import axios from "axios";
+import * as ActionTypes from "./ActionTypes";
+import { baseUrl } from "../shared/baseUrl";
 
-export const PremiumPost = (Premium) => (dispatch) => {
+export const PremiumPost = Premium => dispatch => {
   const newPremium = { Premium };
   newPremium.date = new Date().toISOString();
   axios
     .post(`${baseUrl}users`, newPremium)
-    .then((response) => alert(JSON.stringify(response)));
+    .then(response => alert(JSON.stringify(response)));
 };
-export const PostPassword = (password) => (dispatch) => {
+export const PostPassword = password => dispatch => {
   const newPassword = { password };
   newPassword.date = new Date().toISOString();
   axios
     .post(`${baseUrl}users`, newPassword)
-    .then((response) => alert(JSON.stringify(response)));
+    .then(response => alert(JSON.stringify(response)));
 };
-export const fetchUserData = () => (dispatch) => {
-  
-  return fetch(baseUrl + 'users')
-  .then(response => response.json())
-  .then(data => dispatch(addUserData(data)))
+export const fetchUserData = () => dispatch => {
+  var myRequest = new XMLHttpRequest();
+
+  myRequest.onreadystatechange = function() {
+    if (this.readyState === 4 && this.status === 200) {
+      var myjsObject = JSON.stringify(this.responseText);
+      alert(myjsObject);
+      dispatch(addUserData(myjsObject));
+    }
   };
-  export const addUserData = (data) => ({
-    type: ActionTypes.ADD_USERDATA,
-    payload: data
-    });
-export const GetPassword = () => (dispatch) => {
+  myRequest.open("GET", baseUrl + "users" + "/2", true);
+  myRequest.send();
+};
+export const addUserData = data => ({
+  type: ActionTypes.ADD_USERDATA,
+  payload: data
+});
+export const GetPassword = () => dispatch => {
   axios
     .get(`${baseUrl}users/2`)
-    .then((response) => alert(JSON.stringify(response.data.password)));
+    .then(response => alert(JSON.stringify(response.data.password)));
 };
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-export const postFacebookLogin = (email, image, name) => (dispatch) => {
+export const postFacebookLogin = (email, image, name) => dispatch => {
   const newFacebookLogin = {
     email,
     image,
-    name,
+    name
   };
   newFacebookLogin.date = new Date().toISOString();
 
   axios
     .post(`${baseUrl}users`, newFacebookLogin)
-    .then((response) => alert(JSON.stringify(response)));
+    .then(response => alert(JSON.stringify(response)));
 };
 
 export const postFeedback = (
@@ -53,8 +60,8 @@ export const postFeedback = (
   day,
   month,
   year,
-  sex,
-) => (dispatch) => {
+  sex
+) => dispatch => {
   const newFeedback = {
     email,
     confirmemail,
@@ -63,14 +70,13 @@ export const postFeedback = (
     day,
     month,
     year,
-    sex,
+    sex
   };
   newFeedback.date = new Date().toISOString();
 
   axios
     .post(`${baseUrl}users`, newFeedback)
-    .then((response) => alert(JSON.stringify(response)));
-
+    .then(response => alert(JSON.stringify(response)));
   // return fetch(baseUrl + 'users', {
   //     method: "POST",
   //     body: JSON.stringify(newFeedback),

@@ -1,0 +1,55 @@
+#forgot-password-link:hover {
+    text-decoration: none;
+    color: #1db954;
+}
+
+#forgot-password-link {
+    padding: 10px;
+    margin-top: 20px;
+    color: green;
+}
+
+#forgot-password {
+    padding: 10px;
+    margin: 10px;
+}
+
+#signupbutton {
+    width: 300px;
+    height: 50px;
+    background-color: white;
+    border-radius: 150px;
+    border-color: lightslategray;
+    border-style: solid;
+    border-width: 3px;
+}
+
+#signinbutton {
+    width: 300px;
+    height: 50px;
+    background-color: white;
+    border-radius: 150px;
+    border-color: lightslategray;
+    border-style: solid;
+    border-width: 3px;
+    color: lightslategray;
+}
+
+#signuplink {
+    color: lightslategray;
+    padding: 10px;
+    margin: 10px;
+}
+
+#signupbutton:hover {
+    background-color: lightslategray;
+}
+
+#signuplink:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.signupbutton:hover {
+    background-color: lightslategrey;
+}
