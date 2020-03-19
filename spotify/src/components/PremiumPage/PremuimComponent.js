@@ -24,6 +24,7 @@ import {
   DropdownToggle
 } from "reactstrap";
 import { Divider } from "@material-ui/core";
+import "./PremiumComponent.css";
 
 import { NavLink } from "react-router-dom";
 
@@ -84,7 +85,8 @@ class Premium extends Component {
               </NavbarBrand>
               <NavbarToggler
                 className="NavBarToggle"
-                onClick={this.state.toggleNav}>
+                onClick={this.state.toggleNav}
+              >
                 ☰
               </NavbarToggler>
 
@@ -117,7 +119,7 @@ class Premium extends Component {
                       </DropdownToggle>
                       <DropdownMenu className={accLogStyleParent} right>
                         <DropdownItem className={accChild}>
-                          <NavLink to ='/accountoverview'>Account</NavLink>
+                          <NavLink to="/accountoverview">Account</NavLink>
                         </DropdownItem>
                         <DropdownItem className={logChild}>LogOut</DropdownItem>
                       </DropdownMenu>
@@ -142,7 +144,8 @@ class Premium extends Component {
           <Button
             onClick={this.handlePremium}
             model="submit"
-            className="signupbtn">
+            className="signupbtn"
+          >
             Get Premium
           </Button>
         </Jumbotron>
@@ -213,7 +216,8 @@ class Premium extends Component {
             <Button
               model="submit"
               className="signupbtn"
-              onClick={this.handlePremium}>
+              onClick={this.handlePremium}
+            >
               Get Premium
             </Button>
           </p>

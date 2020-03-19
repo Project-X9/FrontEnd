@@ -1,7 +1,7 @@
 .seperator {
-    border-left-style: outset;
-    border-left-color: white;
-    border-left-width: 2px;
+  border-left-style: outset;
+  border-left-color: white;
+  border-left-width: 2px;
 }
 .NavBar {
   background-color: black;
@@ -51,7 +51,7 @@ body {
   margin-left: 20px;
 }
 .JumboHeaderImg {
-  background-image: url("./SpotifyImg.png");
+  background-image: url("../SpotifyImg.png");
 
   left: 0px;
   top: 0px;
@@ -71,6 +71,8 @@ body {
 .JmbStyle {
   padding: 7px;
   border-radius: 16px;
+  width: 80%;
+  margin: 170px;
 }
 
 .NavBarToggle {
@@ -87,10 +89,10 @@ body {
   margin-right: 50px;
 }
 /***************************************************Nav Bar***************************************************/
-div.AccountOverviewNav div.container{
-  margin:0;
-  padding:0;
-  max-width:100%;
+div.AccountOverviewNav div.container {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
 }
 
 div.AccountOverviewNav div.container .NavBar {
@@ -125,7 +127,7 @@ div.AccountOverviewNav div.container .OpenNav {
   background-color: black;
 }
 
-div.AccountOverviewNav div.container .OpenNav .OpenNavChild{
+div.AccountOverviewNav div.container .OpenNav .OpenNavChild {
   color: grey;
 }
 
@@ -138,7 +140,7 @@ div.AccountOverviewNav div.container .CloseNav {
   background-color: white;
 }
 
-div.AccountOverviewNav div.container .CloseNav .CloseNavChild1{
+div.AccountOverviewNav div.container .CloseNav .CloseNavChild1 {
   color: rgb(0, 0, 0);
 }
 
@@ -147,7 +149,7 @@ div.AccountOverviewNav div.container .CloseNav .CloseNavChild1:hover {
   background-color: white;
 }
 
-div.AccountOverviewNav div.container .CloseNav .CloseNavChild2{
+div.AccountOverviewNav div.container .CloseNav .CloseNavChild2 {
   color: grey;
 }
 
