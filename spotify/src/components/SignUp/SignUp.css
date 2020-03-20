@@ -1,7 +1,10 @@
 .somepadding {
   padding: 5rem;
 }
-
+*, *:before, *:after {
+  box-sizing: border-box;
+  position: relative;
+}
 .facebookButton {
   color: #fff;
   background-color: #3b5998;
@@ -16,6 +19,17 @@
 }
 .facebookButton:hover {
   background-color: #3a61b3;
+}
+.errors > span {
+  display: block;
+  font-size: 0.8rem;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+input:not([type]):focus {
+  outline: 2px solid #1695A3;
 }
 .textcolour {
   color: #fff;

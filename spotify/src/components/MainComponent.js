@@ -88,7 +88,7 @@ class Main extends Component {
             exact
             path="/premium"
             component={() => (
-              <PremiumComponent PremiumPost={this.props.PremiumPost} />
+              <PremiumComponent PremiumPost={this.props.PremiumPost} id={this.props.id.id} />
             )}
           />
           <Route
