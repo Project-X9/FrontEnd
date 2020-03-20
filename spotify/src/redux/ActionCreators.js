@@ -32,6 +32,12 @@ export const fetchUserData = () => (dispatch) => {
   return fetch(baseUrl + 'users')
   .then(response => response.json())
   .then(data => dispatch(addUserData(data)))
+
+
+  // axios.get(`${baseUrl}users/2`)
+  // .then(response=> 
+  //     dispatch(addUserData(response.data)))
+
   };
 export const addUserData = data => ({
   type: ActionTypes.ADD_USERDATA,
@@ -52,7 +58,8 @@ export const postFacebookLogin = (email, image, name) => dispatch => {
   newFacebookLogin.date = new Date().toISOString();
 
   axios
-    .post(`${baseUrl}users`, newFacebookLogin);
+    .post(`${baseUrl}users`, newFacebookLogin)
+    
     // .then((response) => alert(JSON.parse(response)));
 };
 
@@ -78,7 +85,15 @@ export const postFeedback = (
   };
   newFeedback.date = new Date().toISOString();
   axios
-    .post(`${baseUrl}users`, newFeedback);
+    .post(`${baseUrl}users`, newFeedback)
+    .then(response =>
+      {
+        if(response.status === "created")
+        {
+          // let data=JSON.stringify(response[0].data.id);
+          dispatch(addUserId(response[0].data.id))
+        }
+      })
     // .then((response) =>alert (JSON.stringify(response)));
     // .then((response) =>dispatch(addUserId(JSON.parse(response.data.id))));
 };
