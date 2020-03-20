@@ -41,13 +41,19 @@ class Premium extends Component {
   }
 
   handlePremium() {
-    // this.setState({ Premium: true });
-    // const post = {
-    //   Premium: true,
-    //   id: 2
-    // };
-    // this.props.PremiumPost(post);
-    alert(this.props.id.id)
+    this.setState({ Premium: true });
+    const post = {
+      Premium: true,
+      id: 2
+    };
+    this.props.PremiumPost(post);
+    var myObject = JSON.stringify(this.props.id)
+
+  //   var count = Object.length.valueOf(myObject.us);
+  //   alert(count)
+  // var lastElement = this.props.id[this.props.id.length-1][0];
+  alert(this.props.id)
+
   }
 
   toggleNav() {

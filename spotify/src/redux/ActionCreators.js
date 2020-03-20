@@ -85,13 +85,14 @@ export const postFeedback = (
   };
   newFeedback.date = new Date().toISOString();
   axios
-    .post(`${baseUrl}users`, newFeedback)
-    .then(response =>
+    .post(`${baseUrl}users`, newFeedback)   //here where i send the post request to the server 
+    .then(response =>                       
       {
         if(response.status === "created")
-        {
-          // let data=JSON.stringify(response[0].data.id);
-          dispatch(addUserId(response[0].data.id))
+        {                                    //here i want to get the id of the last elment i posted from the 
+                                            // comming response which is coming in jason format and then i need
+        dispatch(addUserId(response))      //to send it to the function addUserId to add it in my store
+          
         }
       })
     // .then((response) =>alert (JSON.stringify(response)));

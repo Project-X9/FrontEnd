@@ -41,14 +41,17 @@ class SignUp extends Component {
       if( values.email !== "" && values.confirmemail !== "" && values.password !== "" && values.name!== "" && values.day!== "" && values.month!== "" &&
         values.year!== "" && values.sex!== "")
       {
-      this.props.resetFeedbackForm();
-      this.props.postFeedback(values.email, values.confirmemail, values.password, values.name, values.day, values.month,
-        values.year, values.sex);
-        this.setState({
-          submitted:true
-        })
+          this.props.resetFeedbackForm();
+          this.props.postFeedback(values.email, values.confirmemail, values.password, values.name, values.day, values.month,
+          values.year, values.sex);
+          this.setState({
+              submitted:true
+            })
+          }
+        else{
+            return values;
+        }
       //  this.props.history.push("/premium")  
-      }
     }
   handleEmailChange = event => {
     this.setState({
