@@ -35,7 +35,8 @@ class Premium extends Component {
       isNavOpen: false,
       isModalOpen: false,
       collapsed: true,
-      Premium: false
+      Premium: false,
+      tempId:""
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.handlePremium = this.handlePremium.bind(this);
@@ -48,7 +49,23 @@ class Premium extends Component {
     //   id: 2
     // };
     // this.props.PremiumPost(post);
-    alert(this.props.id.id)
+    // var myObject = JSON.stringify(this.props.id)
+
+  //   var count = Object.length.valueOf(myObject.us);
+  //   alert(count)
+  // var lastElement = this.props.id[this.props.id.length-1][0];
+
+ 
+  this.setState({
+    tempId:this.props.id.id.length + 1
+  })
+   
+  //     this.setState({
+  //       tempId:map.size
+  //     })
+    
+  // }))
+  // alert(this.state.tempId);
   }
 
   toggleNav() {

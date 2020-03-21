@@ -24,7 +24,8 @@ class AccountOverview extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isNavOpen: false
+      isNavOpen: false,
+      tempId:this.props.id.id.length + 1
     };
     this.state.toggleNav = this.toggleNav.bind(this);
   }
@@ -35,8 +36,8 @@ class AccountOverview extends Component {
   }
   render() {
     
-  const UserData =this.props.data.data.map((data) => {
-      return (
+  const UserData =this.props.data.data.map((data) =>{ if(data.id === this.state.tempId -1)
+      {return (
           <div key={data.id}>
               <div className="row">
                   <div className="col Content1">
@@ -61,12 +62,12 @@ class AccountOverview extends Component {
                     <h5>Date of birth</h5>
                   </div>
                   <div className="col Content2">
-                    <h5>7/23/98</h5>
+                    <h5>{data.day}/{data.month}/{data.year}</h5>
                   </div>
                 </div>
                 <hr/>
           </div>
-      );
+      );}
   });
     let accLogStyleParent = '';
     let accChild = '';
