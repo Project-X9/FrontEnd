@@ -49,7 +49,8 @@ class SignUp extends Component {
             })
           }
         else{
-            return values;
+          this.props.resetFeedbackForm();
+
         }
       //  this.props.history.push("/premium")  
     }
@@ -60,6 +61,9 @@ class SignUp extends Component {
   };
   responseFacebook(response) {
     if (response.status !== "unknown") {
+      this.setState({
+        submitted:true
+      })
       this.props.resetFeedbackForm();
       this.props.postFacebookLogin(
         response.email,
@@ -74,7 +78,7 @@ class SignUp extends Component {
     let redirected=null;
     if(this.state.submitted)
     {
-      redirected=<Redirect to="/premium"></Redirect>
+      redirected=<Redirect to="/accountoverview"></Redirect>
     }
     return (
       <div className="container signup">

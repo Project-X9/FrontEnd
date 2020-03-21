@@ -88,7 +88,7 @@ class Main extends Component {
             exact
             path="/premium"
             component={() => (
-              <PremiumComponent PremiumPost={this.props.PremiumPost} id={this.props.id.id} />
+              <PremiumComponent PremiumPost={this.props.PremiumPost} id={this.props.id} />
             )}
           />
           <Route
@@ -98,6 +98,7 @@ class Main extends Component {
               <AccountOverview
                 fetchUserData={this.props.fetchUserData}
                 data={this.props.data}
+                id={this.props.id}
               />
             )}
           />
