@@ -15,11 +15,11 @@ import {
   GetPassword,
   PostPassword,
   fetchUserData
-} from '../redux/ActionCreators';
+} from "../redux/ActionCreators";
 
-const mapStateToProps = (state) => ({
-  data:state.data,
-  id:state.id
+const mapStateToProps = state => ({
+  data: state.data,
+  id: state.id
 });
 const mapDispatchToProps = dispatch => ({
   resetFeedbackForm: () => {
@@ -43,7 +43,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class Main extends Component {
-  
   componentDidMount() {
     this.props.fetchUserData();
   }
@@ -81,6 +80,7 @@ class Main extends Component {
               <ChangePass
                 PostPassword={this.props.PostPassword}
                 GetPassword={this.props.GetPassword}
+                id={this.props.id}
               />
             )}
           />
@@ -88,7 +88,10 @@ class Main extends Component {
             exact
             path="/premium"
             component={() => (
-              <PremiumComponent PremiumPost={this.props.PremiumPost} id={this.props.id} />
+              <PremiumComponent
+                PremiumPost={this.props.PremiumPost}
+                id={this.props.id}
+              />
             )}
           />
           <Route

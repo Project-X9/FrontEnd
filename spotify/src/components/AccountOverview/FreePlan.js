@@ -1,7 +1,5 @@
-import React, { Component } from 'react';
-import {
-  Card, CardBody, CardText, CardSubtitle,
-} from 'reactstrap';
+import React, { Component } from "react";
+import { Card, CardBody, CardText, CardSubtitle } from "reactstrap";
 
 class FreePlan extends Component {
   render() {

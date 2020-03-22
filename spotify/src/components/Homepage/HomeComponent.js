@@ -1,17 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { NavLink } from "react-router-dom";
-import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import NavbarHome from "./NavbarComponent";
 import "./Home.css";
 import Footer from "./FooterComponent";
-import { button, Button } from "reactstrap";
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-  }
   componentDidMount() {
     document.body.classList.add("homeBody");
   }

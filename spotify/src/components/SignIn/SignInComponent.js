@@ -4,7 +4,7 @@ import { Control, Form, Errors } from "react-redux-form";
 import { Link } from "react-router-dom";
 import FacebookLogin from "react-facebook-login";
 const validEmail = val => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
-const confEmail = val => val2 => val === val2;
+
 const required = val => val && val.length;
 
 class SignIn extends Component {
@@ -133,7 +133,8 @@ class SignIn extends Component {
                   <Button
                     model="submit"
                     className="signinbtn"
-                    id="signinbutton">
+                    id="signinbutton"
+                  >
                     Sign In
                   </Button>
                   <div id="forgot-password">

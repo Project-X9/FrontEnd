@@ -52,10 +52,8 @@ body {
 }
 .JumboHeaderImg {
   background-image: url("../SpotifyImg.png");
-
   left: 0px;
   top: 0px;
-  z-index: -1;
   background-size: cover;
   background-color: white;
   margin: 0px;
@@ -74,7 +72,9 @@ body {
   width: 80%;
   margin: 170px;
 }
-
+.PremiumMargin {
+  margin-top: 20px;
+}
 .NavBarToggle {
   background-color: black;
   color: white;

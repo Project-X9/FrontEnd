@@ -1,21 +1,12 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import NavLogo from "./Spotify_Logo_RGB_White.png";
-import { Switch, Route, Redirect, withRouter } from "react-router-dom";
-import SignUp from "../SignUp/SignUpComponent";
 import {
   Navbar,
   NavbarBrand,
   Nav,
   NavItem,
   NavbarToggler,
-  Collapse,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  Button
+  Collapse
 } from "reactstrap";
 
 class NavbarHome extends Component {
@@ -45,7 +36,8 @@ class NavbarHome extends Component {
           </NavbarBrand>
           <NavbarToggler
             className="NavBarToggle"
-            onClick={this.state.toggleNav}>
+            onClick={this.state.toggleNav}
+          >
             ☰
           </NavbarToggler>
 

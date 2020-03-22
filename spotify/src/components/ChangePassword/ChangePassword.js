@@ -21,15 +21,15 @@ class ChangePass extends Component {
   }
 
   handleChangePassword = values => {
-    this.setState({ CurrentPassword: this.props.GetPassword(2) });
-    alert(this.state.CurrentPassword);
-    alert(values.password);
-    if (!this.state.CurrentPassword) {
-      if (this.state.CurrentPassword === values.password) {
-        const post = { Password: values.password, id: 2 };
-        this.props.PostPassword(post);
-      }
-    }
+    // this.setState({ CurrentPassword: this.props.GetPassword(2) });
+    // alert(this.state.CurrentPassword);
+    // alert(values.password);
+    // if (!this.state.CurrentPassword) {
+    //   if (this.state.CurrentPassword === values.password) {
+    //     const post = { Password: values.password, id: 2 };
+    //     this.props.PostPassword(post);
+    //   }
+    // }
   };
 
   handleConfirmPassword = event => {

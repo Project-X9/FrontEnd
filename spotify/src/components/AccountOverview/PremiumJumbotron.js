@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Jumbotron, Button } from 'reactstrap';
+import React, { Component } from "react";
+import { Jumbotron } from "reactstrap";
 
 class PremiumJumbotron extends Component {
   render() {
@@ -19,6 +19,7 @@ class PremiumJumbotron extends Component {
                 <img
                   className="Phone"
                   src="https://www.scdn.co/i/account/overview/iphone-ddd9e69.png"
+                  alt=""
                 />
               </div>
             </div>
