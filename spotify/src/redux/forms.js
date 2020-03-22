@@ -6,6 +6,5 @@ export const InitialFeedback = {
   day: '',
   month: '',
   year: '',
-  sex: '',
-  day: '',
+  sex: ''
 };

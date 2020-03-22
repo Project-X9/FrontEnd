@@ -19,56 +19,68 @@ import PremiumPlan from './PremiumPlan';
 import FreeJumbotron from './FreeJumbotron';
 import PremiumJumbotron from './PremiumJumbotron';
 
-
 class AccountOverview extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isNavOpen: false,
-      tempId:this.props.id.id.length + 1
+      tempId: this.props.id.id.length + 1,
     };
     this.state.toggleNav = this.toggleNav.bind(this);
   }
+
   toggleNav() {
     this.setState({
-      isNavOpen: !this.state.isNavOpen
+      isNavOpen: !this.state.isNavOpen,
     });
   }
+
   render() {
-    
-  const UserData =this.props.data.data.map((data) =>{ if(data.id === this.state.tempId -1)
-      {return (
+    const UserData = this.props.data.data.map((data) => {
+      if (data.id === this.state.tempId - 1) {
+        return (
           <div key={data.id}>
-              <div className="row">
-                  <div className="col Content1">
-                    <h5>Username</h5>
-                  </div>
-                  <div className="col Content2">
-                    <h5> {data.name} </h5>
-                  </div>
-                </div>
-                <hr />
-                <div className="row">
-                  <div className="col Content1">
-                    <h5>Email</h5>
-                  </div>
-                  <div className="col Content2">
-                    <h5>{data.email}</h5>
-                  </div>
-                </div>
-                <hr />
-                <div className="row">
-                  <div className="col Content1">
-                    <h5>Date of birth</h5>
-                  </div>
-                  <div className="col Content2">
-                    <h5>{data.day}/{data.month}/{data.year}</h5>
-                  </div>
-                </div>
-                <hr/>
+            <div className="row">
+              <div className="col Content1">
+                <h5>Username</h5>
+              </div>
+              <div className="col Content2">
+                <h5>
+                  {' '}
+                  {data.name}
+                  {' '}
+                </h5>
+              </div>
+            </div>
+            <hr />
+            <div className="row">
+              <div className="col Content1">
+                <h5>Email</h5>
+              </div>
+              <div className="col Content2">
+                <h5>{data.email}</h5>
+              </div>
+            </div>
+            <hr />
+            <div className="row">
+              <div className="col Content1">
+                <h5>Date of birth</h5>
+              </div>
+              <div className="col Content2">
+                <h5>
+                  {data.day}
+                  /
+                  {data.month}
+                  /
+                  {data.year}
+                </h5>
+              </div>
+            </div>
+            <hr />
           </div>
-      );}
-  });
+        );
+      }
+    });
     let accLogStyleParent = '';
     let accChild = '';
     let logChild = '';
@@ -123,6 +135,7 @@ class AccountOverview extends Component {
                     <UncontrolledDropdown nav inNavbar>
                       <DropdownToggle nav caret className="seperator">
                         <img
+                          alt=""
                           className="Profile"
                           src="https://4.bp.blogspot.com/_R0Rc6mb8H6E/S1TTZJCtq8I/AAAAAAAAC9A/a50aYOK5o0o/s320/design-fetish-no-photo-facebook-1.jpg"
                         />
@@ -182,7 +195,7 @@ class AccountOverview extends Component {
                   <h3 className="SmallHeader">Profile</h3>
                 </div>
 
-                  <div>{UserData}</div>
+                <div>{UserData}</div>
 
                 <div className="row">
                   <div className="col Content1">
@@ -210,7 +223,7 @@ class AccountOverview extends Component {
                 </div>
                 <div className="row">
                   <Button className="EditProfile" color="success">
-                    SIGN OUT 
+                    SIGN OUT
                   </Button>
                 </div>
               </div>

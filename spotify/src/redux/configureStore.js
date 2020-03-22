@@ -9,8 +9,8 @@ import { UserID } from './UserId';
 export const ConfigureStore = () => {
   const store = createStore(
     combineReducers({
-        data:Data,
-        id:UserID,
+      data: Data,
+      id: UserID,
       ...createForms({
         feedback: InitialFeedback,
       }),

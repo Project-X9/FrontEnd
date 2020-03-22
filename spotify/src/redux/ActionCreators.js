@@ -2,41 +2,30 @@ import axios from "axios";
 import * as ActionTypes from "./ActionTypes";
 import { baseUrl } from "../shared/baseUrl";
 
-export const PremiumPost = Premium => dispatch => {
-  const newPremium = { Premium };
-  newPremium.date = new Date().toISOString();
+export const PremiumPost = (id) => (dispatch)=> {
+  
+  const data={
+    premium:true
+  }
+  data.date=new Date().toISOString();
   axios
-    .post(`${baseUrl}users`, newPremium)
-    .then(response => alert(JSON.stringify(response)));
+    .patch(`${baseUrl}users/${id}`, data)
+    // .then(response => alert(response.data.premium ));
 };
-export const PostPassword = password => dispatch => {
+
+export const PostPassword = password  => {
   const newPassword = { password };
   newPassword.date = new Date().toISOString();
   axios
     .post(`${baseUrl}users`, newPassword)
     .then(response => alert(JSON.stringify(response)));
 };
-// export const fetchUserData = () => dispatch => {
-//   var myRequest = new XMLHttpRequest();
 
-//   myRequest.onreadystatechange = function() {
-//     if (this.readyState === 4 && this.status === 200) {
-//       var myjsObject = JSON.stringify(this.responseText);
-//       // alert(myjsObject);
-//       dispatch(addUserData(myjsObject));
-//     }
-//   };
-// 
 export const fetchUserData = () => (dispatch) => {
   
   return fetch(baseUrl + 'users')
   .then(response => response.json())
   .then(data => dispatch(addUserData(data)))
-
-
-  // axios.get(`${baseUrl}users/2`)
-  // .then(response=> 
-  //     dispatch(addUserData(response.data)))
 
   };
 export const addUserData = data => ({
@@ -61,7 +50,7 @@ export const postFacebookLogin = (email, image, name) => dispatch => {
     .post(`${baseUrl}users`, newFacebookLogin)
     .then(response =>                       
       {
-                                          //here i want to get the id of the last elment i posted from the 
+          //here i want to get the id of the last elment i posted from the 
         let id=response.data.id                                    // comming response which is coming in jason format and then i need
         dispatch(addUserId(id))      //to send it to the function addUserId to add it in my store
           // alert(response.data.id)
@@ -95,7 +84,7 @@ export const postFeedback = (
     .post(`${baseUrl}users`, newFeedback)   //here where i send the post request to the server 
     .then(response =>                       
       {
-                                          //here i want to get the id of the last elment i posted from the 
+         //here i want to get the id of the last elment i posted from the 
         let id=response.data.id                                    // comming response which is coming in jason format and then i need
         dispatch(addUserId(id))      //to send it to the function addUserId to add it in my store
           // alert(response.data.id)
