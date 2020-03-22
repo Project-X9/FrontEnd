@@ -35,13 +35,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   PostPassword: (password, id) => dispatch(PostPassword(password, id)),
   GetPassword: (id) => dispatch(GetPassword(id)),
-
-
   PremiumPost: (id) => dispatch(PremiumPost(id)),
-
-
   postFeedback: (email, confirmemail, password, name, day, month, year, sex) => dispatch(
-    postFeedback(email, confirmemail, password, name, day, month, year, sex),
+  postFeedback(email, confirmemail, password, name, day, month, year, sex),
   ),
   postFacebookLogin: (email, image, name) => dispatch(postFacebookLogin(email, image, name)),
 });

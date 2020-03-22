@@ -56,7 +56,7 @@ class Premium extends Component {
     //   id: this.state.tempId
     // };
     // this.props.PremiumPost(post);
-    this.props.PremiumPost(12);
+    this.props.PremiumPost(16);
     this.togglemodal();
   }
 
@@ -154,12 +154,13 @@ class Premium extends Component {
           </div>
           <p>
             <Button
-              onClick={this.handlePremium}
+              className="signupbtn"
+              onClick={this.togglemodal}
             >
               Get Premium
             </Button>
-            <Modal isOpen={this.state.modal} togglemodal={this.togglemodal}>
-              <ModalHeader togglemodal={this.togglemodal}>
+            <Modal isOpen={this.state.modal} >
+              <ModalHeader>
                 Claiming Premium
               </ModalHeader>
               <ModalBody>
@@ -173,7 +174,7 @@ class Premium extends Component {
                   Claim
                   {' '}
                 </Button>
-                {' '}
+                 {' '}
                 <Button color="secondary" onClick={this.togglemodal}>
                   Cancel
                 </Button>
@@ -251,31 +252,11 @@ class Premium extends Component {
             <Button
               model="submit"
               className="signupbtn"
-              onClick={this.handlePremium}
+              onClick={this.togglemodal}
             >
               Get Premium
             </Button>
-            <Modal isOpen={this.state.modal} togglemodal={this.togglemodal}>
-              <ModalHeader togglemodal={this.togglemodal}>
-                Claiming Premium
-              </ModalHeader>
-              <ModalBody>
-                Pay 5 EGP please for claiming your Premium account
-              </ModalBody>
-              <ModalFooter>
-                <Button
-                  color="primary"
-                  onClick={(this.handlePremium, this.togglemodal)}
-                >
-                  Claim
-                  {' '}
-                </Button>
-                {' '}
-                <Button color="secondary" onClick={this.togglemodal}>
-                  Cancel
-                </Button>
-              </ModalFooter>
-            </Modal>
+            
           </p>
         </Jumbotron>
       </div>
