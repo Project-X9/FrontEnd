@@ -14,25 +14,27 @@ import {
   PremiumPost,
   GetPassword,
   PostPassword,
+  getEmail,
   fetchUserData
-} from '../redux/ActionCreators';
+} from "../redux/ActionCreators";
 
-const mapStateToProps = (state) => ({
-  data:state.data,
-  id:state.id
+const mapStateToProps = state => ({
+  data: state.data,
+  id: state.id
 });
 const mapDispatchToProps = dispatch => ({
   resetFeedbackForm: () => {
     dispatch(actions.reset("feedback"));
   },
   resetSignInForm: () => {
-    dispatch(actions.reset("sign-in"));
+    dispatch(actions.reset("feedback"));
   },
   fetchUserData: () => {
     dispatch(fetchUserData());
   },
   PostPassword: (password, id) => dispatch(PostPassword(password, id)),
   GetPassword: id => dispatch(GetPassword(id)),
+  getEmail: id => dispatch(getEmail(id)),
   PremiumPost: password => dispatch(PremiumPost(password)),
   postFeedback: (email, confirmemail, password, name, day, month, year, sex) =>
     dispatch(
@@ -43,7 +45,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class Main extends Component {
-  
   componentDidMount() {
     this.props.fetchUserData();
   }
@@ -88,7 +89,10 @@ class Main extends Component {
             exact
             path="/premium"
             component={() => (
-              <PremiumComponent PremiumPost={this.props.PremiumPost} id={this.props.id.id} />
+              <PremiumComponent
+                PremiumPost={this.props.PremiumPost}
+                id={this.props.id.id}
+              />
             )}
           />
           <Route
@@ -108,6 +112,9 @@ class Main extends Component {
               <SignIn
                 resetSignInForm={this.props.resetSignInForm}
                 postFacebookLogin={this.props.postFacebookLogin}
+                handleLogin={this.props.handleLogin}
+                GetPassword={this.props.GetPassword}
+                getEmail={this.props.getEmail}
               />
             )}
           />
