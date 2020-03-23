@@ -12,12 +12,13 @@ import {
   DropdownItem,
   Button,
 } from 'reactstrap';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, Redirect } from 'react-router-dom';
 
 import FreePlan from './FreePlan';
 import PremiumPlan from './PremiumPlan';
 import FreeJumbotron from './FreeJumbotron';
 import PremiumJumbotron from './PremiumJumbotron';
+
 
 class AccountOverview extends Component {
   constructor(props) {
@@ -27,6 +28,7 @@ class AccountOverview extends Component {
       tempId: this.props.id.id.length + 1,
     };
     this.state.toggleNav = this.toggleNav.bind(this);
+    this.state.nullID = this.nullID.bind(this);
   }
 
   toggleNav() {
@@ -35,7 +37,19 @@ class AccountOverview extends Component {
     });
   }
 
+  nullID() {
+    this.setState({
+      tempId: '',
+    });
+  }
+
   render() {
+    let forRedirect='';
+    if(this.state.tempId==='')
+    {
+      forRedirect = <Redirect to="/signup"></Redirect>;
+    }
+    
     const UserData = this.props.data.data.map((data) => {
       if (data.id === this.state.tempId - 1) {
         return (
@@ -81,8 +95,10 @@ class AccountOverview extends Component {
         );
       }
     });
+    
     return (
       <div>
+        {forRedirect}
         <div className="AccountOverviewNav">
           <div className="container">
             <Navbar className="NavBar NavStyle" sticky="top" expand="md">
@@ -195,7 +211,7 @@ class AccountOverview extends Component {
                 </div>
                 <hr />
                 <div className="row">
-                  <button className="EditProfile" color="success">
+                  <button onClick={this.state.nullID} className="EditProfile" color="success">
                     EDIT PROFILE
                   </button>
                 </div>
