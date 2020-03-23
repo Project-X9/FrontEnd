@@ -12,7 +12,7 @@ import {
   DropdownItem,
   Button,
 } from 'reactstrap';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, Redirect } from 'react-router-dom';
 
 import FreePlan from './FreePlan';
 import PremiumPlan from './PremiumPlan';
@@ -24,67 +24,84 @@ class AccountOverview extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isNavOpen: false
+      isNavOpen: false,
+      tempId: this.props.id.id.length + 1,
     };
     this.state.toggleNav = this.toggleNav.bind(this);
+    this.state.nullID = this.nullID.bind(this);
   }
+
   toggleNav() {
     this.setState({
-      isNavOpen: !this.state.isNavOpen
+      isNavOpen: !this.state.isNavOpen,
     });
   }
+
+  nullID() {
+    this.setState({
+      tempId: '',
+    });
+  }
+
   render() {
-    
-  const UserData =this.props.data.data.map((data) => {
-      return (
-          <div key={data.id}>
-              <div className="row">
-                  <div className="col Content1">
-                    <h5>Username</h5>
-                  </div>
-                  <div className="col Content2">
-                    <h5> {data.name} </h5>
-                  </div>
-                </div>
-                <hr />
-                <div className="row">
-                  <div className="col Content1">
-                    <h5>Email</h5>
-                  </div>
-                  <div className="col Content2">
-                    <h5>{data.email}</h5>
-                  </div>
-                </div>
-                <hr />
-                <div className="row">
-                  <div className="col Content1">
-                    <h5>Date of birth</h5>
-                  </div>
-                  <div className="col Content2">
-                    <h5>7/23/98</h5>
-                  </div>
-                </div>
-                <hr/>
-          </div>
-      );
-  });
-    let accLogStyleParent = '';
-    let accChild = '';
-    let logChild = '';
-    if (this.state.isNavOpen) {
-      accLogStyleParent = 'OpenNav';
-      accChild = 'OpenNavChild';
-      logChild = 'OpenNavChild';
-    } else {
-      accLogStyleParent = 'CloseNav';
-      accChild = 'CloseNavChild1';
-      logChild = 'CloseNavChild2';
+    let forRedirect='';
+    if(this.state.tempId==='')
+    {
+      forRedirect = <Redirect to="/signup"></Redirect>;
     }
+    
+    const UserData = this.props.data.data.map((data) => {
+      if (data.id === this.state.tempId - 1) {
+        return (
+          <div key={data.id}>
+            <div className="row">
+              <div className="col Content1">
+                <h5>Username</h5>
+              </div>
+              <div className="col Content2">
+                <h5>
+                  {' '}
+                  {data.name}
+                  {' '}
+                </h5>
+              </div>
+            </div>
+            <hr />
+            <div className="row">
+              <div className="col Content1">
+                <h5>Email</h5>
+              </div>
+              <div className="col Content2">
+                <h5>{data.email}</h5>
+              </div>
+            </div>
+            <hr />
+            <div className="row">
+              <div className="col Content1">
+                <h5>Date of birth</h5>
+              </div>
+              <div className="col Content2">
+                <h5>
+                  {data.day}
+                  /
+                  {data.month}
+                  /
+                  {data.year}
+                </h5>
+              </div>
+            </div>
+            <hr />
+          </div>
+        );
+      }
+    });
+    
     return (
       <div>
+        {forRedirect}
         <div className="AccountOverviewNav">
           <div className="container">
-            <Navbar className="NavBar" sticky="top" expand="md">
+            <Navbar className="NavBar NavStyle" sticky="top" expand="md">
               <NavbarBrand className="mr-auto" href="/signup">
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSBmnPgQKW4JLrNcSFhPFCLHz3t8kT1pZl0PVkLYsa8FoScWYda"
@@ -122,17 +139,18 @@ class AccountOverview extends Component {
                     <UncontrolledDropdown nav inNavbar>
                       <DropdownToggle nav caret className="seperator">
                         <img
+                          alt=""
                           className="Profile"
                           src="https://4.bp.blogspot.com/_R0Rc6mb8H6E/S1TTZJCtq8I/AAAAAAAAC9A/a50aYOK5o0o/s320/design-fetish-no-photo-facebook-1.jpg"
                         />
                         Profile
                       </DropdownToggle>
-                      <DropdownMenu className={accLogStyleParent} right>
-                        <DropdownItem className={accChild}>
-                          <NavLink to="accountoverview">Account</NavLink>
+                      <DropdownMenu className={"StaticNav"} right>
+                        <DropdownItem className={"StaticNavChild1Container"} >
+                          <NavLink className={"StaticNavChild1"} to="accountoverview">Account</NavLink>
                           {' '}
                         </DropdownItem>
-                        <DropdownItem className={logChild}>LogOut</DropdownItem>
+                        <DropdownItem className={"StaticNavChild2"}>LogOut</DropdownItem>
                       </DropdownMenu>
                     </UncontrolledDropdown>
                   </NavItem>
@@ -144,8 +162,8 @@ class AccountOverview extends Component {
         <div className="AccountOverviewBody">
           <FreeJumbotron />
           <PremiumJumbotron />
-          <div className="container">
-            <div className="row">
+          <div className="container InfoContainer">
+            <div className="row InfoContainerRow">
               <div className="col-sm-12 col-md-12 col-lg-4 Linkers">
                 <div className="sidebar">
                   <Link to="/" className="AppearBig">
@@ -159,7 +177,7 @@ class AccountOverview extends Component {
                     <i className="fa fa-edit" />
                     Edit profile
                   </Link>
-                  <Link to="/" href="#contact">
+                  <Link to="/changePassword" href="#contact">
                     <i className="fa fa-lock" />
                     Change password
                   </Link>
@@ -181,7 +199,7 @@ class AccountOverview extends Component {
                   <h3 className="SmallHeader">Profile</h3>
                 </div>
 
-                  <div>{UserData}</div>
+                <div>{UserData}</div>
 
                 <div className="row">
                   <div className="col Content1">
@@ -193,7 +211,7 @@ class AccountOverview extends Component {
                 </div>
                 <hr />
                 <div className="row">
-                  <button className="EditProfile" color="success">
+                  <button onClick={this.state.nullID} className="EditProfile" color="success">
                     EDIT PROFILE
                   </button>
                 </div>
@@ -204,12 +222,12 @@ class AccountOverview extends Component {
                 <PremiumPlan />
                 <div className="row">
                   <Button className="EditProfile" color="success">
-                    <NavLink to="premium">JOIN PREMIUM</NavLink>
+                    <NavLink className="InsideEditProfile" to="premium">JOIN PREMIUM</NavLink>
                   </Button>
                 </div>
                 <div className="row">
                   <Button className="EditProfile" color="success">
-                    SIGN OUT 
+                    SIGN OUT
                   </Button>
                 </div>
               </div>

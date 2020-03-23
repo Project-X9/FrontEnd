@@ -1,9 +1,5 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { NavLink } from "react-router-dom";
-import NavLogo from "./Spotify_Logo_RGB_White.png";
-import { Switch, Route, Redirect, withRouter } from "react-router-dom";
-import SignUp from "../SignUp/SignUpComponent";
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import {
   Navbar,
   NavbarBrand,
@@ -11,29 +7,26 @@ import {
   NavItem,
   NavbarToggler,
   Collapse,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  Button
-} from "reactstrap";
+} from 'reactstrap';
 
 class NavbarHome extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isNavOpen: false
+      isNavOpen: false,
     };
     this.state.toggleNav = this.toggleNav.bind(this);
   }
+
   toggleNav() {
     this.setState({
-      isNavOpen: !this.state.isNavOpen
+      isNavOpen: !this.state.isNavOpen,
     });
   }
+
   render() {
     return (
-      <Navbar className="NavBar" sticky={"top"} expand="md">
+      <Navbar className="NavBar" sticky="top" expand="md">
         <div className="container">
           <NavbarBrand className="mr-auto" href="/">
             <img
@@ -45,7 +38,8 @@ class NavbarHome extends Component {
           </NavbarBrand>
           <NavbarToggler
             className="NavBarToggle"
-            onClick={this.state.toggleNav}>
+            onClick={this.state.toggleNav}
+          >
             ☰
           </NavbarToggler>
 

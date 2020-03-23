@@ -13,23 +13,30 @@ class ChangePass extends Component {
     this.state = {
       Password: "",
       CurrentPassword: "",
-      ConfirmPassword: ""
+      ConfirmPassword: "",
+      tempId: this.props.id.id.length + 1
     };
     this.handleChangePassword = this.handleChangePassword.bind(this);
-
+    this.handleData = this.handleData.bind(this);
     this.handleConfirmPassword = this.handleConfirmPassword.bind(this);
   }
+  handleData = () => {
+    let temp;
+    this.props.data.data.map(data => {
+      if (data.id === this.state.tempId - 1) {
+        temp = data.password;
+      }
+    });
+    return temp;
+  };
 
   handleChangePassword = values => {
-    this.setState({ CurrentPassword: this.props.GetPassword(2) });
-    alert(this.state.CurrentPassword);
-    alert(values.password);
-    if (!this.state.CurrentPassword) {
-      if (this.state.CurrentPassword === values.password) {
-        const post = { Password: values.password, id: 2 };
-        this.props.PostPassword(post);
-      }
-    }
+    alert(this.state.tempId);
+    const temp = this.handleData();
+    if (temp === values.Currentpassword) {
+      const post = values.password;
+      this.props.PostPassword(post, this.state.tempId - 1);
+    } else alert("Password is Incorrect");
   };
 
   handleConfirmPassword = event => {
@@ -79,18 +86,18 @@ class ChangePass extends Component {
                   minLength: minLength(7)
                 }}
               />
+              <Row className="ml-2">
+                <Errors
+                  className="text-danger"
+                  model=".password"
+                  show="touched"
+                  messages={{
+                    required: "Enter your password to continue, ",
+                    minLength: "Your password is too short"
+                  }}
+                />
+              </Row>
             </Col>
-            <Row className="ml-2">
-              <Errors
-                className="text-danger"
-                model=".password"
-                show="touched"
-                messages={{
-                  required: "Enter your password to continue, ",
-                  minLength: "Your password is too short"
-                }}
-              />
-            </Row>
           </Row>{" "}
           <Row className="form-group">
             <Col xs={12} md={{ size: 6, offset: 3 }}>

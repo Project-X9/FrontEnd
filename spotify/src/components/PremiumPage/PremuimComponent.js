@@ -3,27 +3,23 @@ import {
   Navbar,
   NavbarBrand,
   Jumbotron,
-  Media,
   Nav,
   NavItem,
   NavbarToggler,
   Collapse,
   Row,
-  Form,
   Col,
-  FormGroup,
   Modal,
-  ModalBody,
   ModalHeader,
+  ModalBody,
+  ModalFooter,
   UncontrolledDropdown,
   DropdownMenu,
   DropdownItem,
   Button,
-  Label,
-  Input,
   DropdownToggle
 } from "reactstrap";
-import { Divider } from "@material-ui/core";
+import "./PremiumComponent.css";
 
 import { NavLink } from "react-router-dom";
 
@@ -32,28 +28,37 @@ class Premium extends Component {
     super(props);
     this.state = {
       isNavOpen: false,
+      modal: false,
       isModalOpen: false,
       collapsed: true,
-      Premium: false
+      Premium: false,
+      tempId: ""
     };
     this.state.toggleNav = this.toggleNav.bind(this);
+    this.togglemodal = this.togglemodal.bind(this);
     this.handlePremium = this.handlePremium.bind(this);
   }
 
+  togglemodal() {
+    const Temp = !this.state.modal;
+    this.setState({ modal: Temp });
+  }
+
   handlePremium() {
-    this.setState({ Premium: true });
-    const post = {
-      Premium: true,
-      id: 2
-    };
-    this.props.PremiumPost(post);
-    var myObject = JSON.stringify(this.props.id)
-
-  //   var count = Object.length.valueOf(myObject.us);
-  //   alert(count)
-  // var lastElement = this.props.id[this.props.id.length-1][0];
-  alert(this.props.id)
-
+    // this.setState({
+    //   tempId: this.props.id.id.length + 1
+    // });
+    // alert(this.state.tempId);
+    // this.props.PremiumPost({ Premium: true });
+    // this.setState({ Premium: true });
+    // const post = {
+    //   Premium: true,
+    //   id: this.state.tempId
+    // };
+    // this.props.PremiumPost(post);
+    alert(this.props.id.id.length + 1);
+    this.props.PremiumPost(this.props.id.id.length + 1);
+    this.togglemodal();
   }
 
   toggleNav() {
@@ -91,7 +96,8 @@ class Premium extends Component {
               </NavbarBrand>
               <NavbarToggler
                 className="NavBarToggle"
-                onClick={this.state.toggleNav}>
+                onClick={this.state.toggleNav}
+              >
                 ☰
               </NavbarToggler>
 
@@ -117,6 +123,7 @@ class Premium extends Component {
                     <UncontrolledDropdown nav inNavbar>
                       <DropdownToggle nav caret className="seperator">
                         <img
+                          alt=""
                           className="Profile"
                           src="https://4.bp.blogspot.com/_R0Rc6mb8H6E/S1TTZJCtq8I/AAAAAAAAC9A/a50aYOK5o0o/s320/design-fetish-no-photo-facebook-1.jpg"
                         />
@@ -124,7 +131,7 @@ class Premium extends Component {
                       </DropdownToggle>
                       <DropdownMenu className={accLogStyleParent} right>
                         <DropdownItem className={accChild}>
-                          <NavLink to ='/accountoverview'>Account</NavLink>
+                          <NavLink to="/accountoverview">Account</NavLink>
                         </DropdownItem>
                         <DropdownItem className={logChild}>LogOut</DropdownItem>
                       </DropdownMenu>
@@ -142,19 +149,33 @@ class Premium extends Component {
             </div>
             <div>
               <h2 className="Header2">
-                Just EGP49.99/month after. Cancel anytime.
+                Just EGP&nbsp;49.99/month after. Cancel anytime.
               </h2>
             </div>
           </div>
-          <Button
-            onClick={this.handlePremium}
-            model="submit"
-            className="signupbtn">
-            Get Premium
-          </Button>
+          <p>
+            <Button className="signupbtn" onClick={this.togglemodal}>
+              Get Premium
+            </Button>
+            <Modal isOpen={this.state.modal}>
+              <ModalHeader>Claiming Premium</ModalHeader>
+              <ModalBody>
+                Pay 5 EGP please for claiming your Premium account
+              </ModalBody>
+              <ModalFooter>
+                <Button color="primary" onClick={this.handlePremium}>
+                  Claim{" "}
+                </Button>{" "}
+                <Button color="secondary" onClick={this.togglemodal}>
+                  Cancel
+                </Button>
+              </ModalFooter>
+            </Modal>
+          </p>
         </Jumbotron>
+
         <article>
-          <h1>Why Go Premium?</h1>
+          <h1 className="PremiumMargin">Why Go Premium?</h1>
           <br />
           <br />
           <br />
@@ -216,11 +237,12 @@ class Premium extends Component {
             <li>High Audio Quality.</li>
           </h5>
           <hr className="my-2" />
-          <p className="lead">
+          <p>
             <Button
               model="submit"
               className="signupbtn"
-              onClick={this.handlePremium}>
+              onClick={this.togglemodal}
+            >
               Get Premium
             </Button>
           </p>

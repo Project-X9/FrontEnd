@@ -2,48 +2,31 @@ import axios from "axios";
 import * as ActionTypes from "./ActionTypes";
 import { baseUrl } from "../shared/baseUrl";
 
-export const PremiumPost = Premium => dispatch => {
-  const newPremium = { Premium };
-  newPremium.date = new Date().toISOString();
-  axios
-    .post(`${baseUrl}users`, newPremium)
-    .then(response => alert(JSON.stringify(response)));
+export const PremiumPost = id => dispatch => {
+  const data = {
+    premium: true
+  };
+  data.date = new Date().toISOString();
+  axios.patch(`${baseUrl}users/${id}`, data);
+  // .then(response => alert(response.data.premium ));
 };
-export const PostPassword = password => dispatch => {
-  const newPassword = { password };
-  newPassword.date = new Date().toISOString();
-  axios
-    .post(`${baseUrl}users`, newPassword)
-    .then(response => alert(JSON.stringify(response)));
-};
-// export const fetchUserData = () => dispatch => {
-//   var myRequest = new XMLHttpRequest();
-
-//   myRequest.onreadystatechange = function() {
-//     if (this.readyState === 4 && this.status === 200) {
-//       var myjsObject = JSON.stringify(this.responseText);
-//       // alert(myjsObject);
-//       dispatch(addUserData(myjsObject));
-//     }
-//   };
-//
 export const fetchUserData = () => dispatch => {
   return fetch(baseUrl + "users")
     .then(response => response.json())
     .then(data => dispatch(addUserData(data)));
-
-  // axios.get(`${baseUrl}users/2`)
-  // .then(response=>
-  //     dispatch(addUserData(response.data)))
 };
 export const addUserData = data => ({
   type: ActionTypes.ADD_USERDATA,
   payload: data
 });
-export const GetPassword = () => dispatch => {
+export const GetPassword = id => dispatch => {
   axios
-    .get(`${baseUrl}users/2`)
-    .then(response => alert(JSON.stringify(response.data.password)));
+    .get(`${baseUrl}users/${id - 1}`)
+    .then(response => JSON.stringify(response.data.password));
+};
+export const PostPassword = (password, id) => dispatch => {
+  const newPassword = { password: password };
+  axios.patch(`${baseUrl}users/${id}`, newPassword);
 };
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const postFacebookLogin = (email, image, name) => dispatch => {
@@ -54,8 +37,12 @@ export const postFacebookLogin = (email, image, name) => dispatch => {
   };
   newFacebookLogin.date = new Date().toISOString();
 
-  axios.post(`${baseUrl}users`, newFacebookLogin);
-
+  axios.post(`${baseUrl}users`, newFacebookLogin).then(response => {
+    //here i want to get the id of the last elment i posted from the
+    let id = response.data.id; // comming response which is coming in jason format and then i need
+    dispatch(addUserId(id)); //to send it to the function addUserId to add it in my store
+    // alert(response.data.id)
+  });
   // .then((response) => alert(JSON.parse(response)));
 };
 
@@ -84,11 +71,10 @@ export const postFeedback = (
   axios
     .post(`${baseUrl}users`, newFeedback) //here where i send the post request to the server
     .then(response => {
-      if (response.status === "created") {
-        //here i want to get the id of the last elment i posted from the
-        // comming response which is coming in jason format and then i need
-        dispatch(addUserId(response)); //to send it to the function addUserId to add it in my store
-      }
+      //here i want to get the id of the last elment i posted from the
+      let id = response.data.id; // comming response which is coming in jason format and then i need
+      dispatch(addUserId(id)); //to send it to the function addUserId to add it in my store
+      // alert(response.data.id)
     });
   // .then((response) =>alert (JSON.stringify(response)));
   // .then((response) =>dispatch(addUserId(JSON.parse(response.data.id))));
@@ -100,7 +86,7 @@ export const addUserId = data => ({
 
 export const getEmail = () => dispatch => {
   axios
-    .get(`${baseUrl}users/2`)
+    .get(`${baseUrl}users/${id - 1}`)
     .then(response => alert(JSON.stringify(response.data.email)));
 };
 //////////////////////////////////Account overView///////////////////////////////

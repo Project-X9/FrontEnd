@@ -35,7 +35,7 @@ const mapDispatchToProps = dispatch => ({
   PostPassword: (password, id) => dispatch(PostPassword(password, id)),
   GetPassword: id => dispatch(GetPassword(id)),
   getEmail: id => dispatch(getEmail(id)),
-  PremiumPost: password => dispatch(PremiumPost(password)),
+  PremiumPost: id => dispatch(PremiumPost(id)),
   postFeedback: (email, confirmemail, password, name, day, month, year, sex) =>
     dispatch(
       postFeedback(email, confirmemail, password, name, day, month, year, sex)
@@ -82,6 +82,8 @@ class Main extends Component {
               <ChangePass
                 PostPassword={this.props.PostPassword}
                 GetPassword={this.props.GetPassword}
+                data={this.props.data}
+                id={this.props.id}
               />
             )}
           />
@@ -91,7 +93,7 @@ class Main extends Component {
             component={() => (
               <PremiumComponent
                 PremiumPost={this.props.PremiumPost}
-                id={this.props.id.id}
+                id={this.props.id}
               />
             )}
           />
@@ -102,6 +104,7 @@ class Main extends Component {
               <AccountOverview
                 fetchUserData={this.props.fetchUserData}
                 data={this.props.data}
+                id={this.props.id}
               />
             )}
           />

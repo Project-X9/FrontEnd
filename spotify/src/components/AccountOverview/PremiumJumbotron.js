@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Jumbotron, Button } from 'reactstrap';
+import { Jumbotron } from 'reactstrap';
 
 class PremiumJumbotron extends Component {
   render() {
     return (
-      <div>
+      <div className="JumbotronContainer">
         <Jumbotron className="AccountOverviewBodyJumbo">
           <div className="container">
             <div className="row">
@@ -19,6 +19,7 @@ class PremiumJumbotron extends Component {
                 <img
                   className="Phone"
                   src="https://www.scdn.co/i/account/overview/iphone-ddd9e69.png"
+                  alt=""
                 />
               </div>
             </div>

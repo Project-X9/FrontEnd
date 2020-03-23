@@ -6,11 +6,5 @@ export const InitialFeedback = {
   day: "",
   month: "",
   year: "",
-  sex: "",
-  day: ""
-};
-
-export const InitialLogin = {
-  email: "",
-  password: ""
+  sex: ""
 };
