@@ -81,23 +81,11 @@ class AccountOverview extends Component {
         );
       }
     });
-    let accLogStyleParent = '';
-    let accChild = '';
-    let logChild = '';
-    if (this.state.isNavOpen) {
-      accLogStyleParent = 'OpenNav';
-      accChild = 'OpenNavChild';
-      logChild = 'OpenNavChild';
-    } else {
-      accLogStyleParent = 'CloseNav';
-      accChild = 'CloseNavChild1';
-      logChild = 'CloseNavChild2';
-    }
     return (
       <div>
         <div className="AccountOverviewNav">
           <div className="container">
-            <Navbar className="NavBar" sticky="top" expand="md">
+            <Navbar className="NavBar NavStyle" sticky="top" expand="md">
               <NavbarBrand className="mr-auto" href="/signup">
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSBmnPgQKW4JLrNcSFhPFCLHz3t8kT1pZl0PVkLYsa8FoScWYda"
@@ -141,12 +129,12 @@ class AccountOverview extends Component {
                         />
                         Profile
                       </DropdownToggle>
-                      <DropdownMenu className={accLogStyleParent} right>
-                        <DropdownItem className={accChild}>
-                          <NavLink to="accountoverview">Account</NavLink>
+                      <DropdownMenu className={"StaticNav"} right>
+                        <DropdownItem className={"StaticNavChild1Container"} >
+                          <NavLink className={"StaticNavChild1"} to="accountoverview">Account</NavLink>
                           {' '}
                         </DropdownItem>
-                        <DropdownItem className={logChild}>LogOut</DropdownItem>
+                        <DropdownItem className={"StaticNavChild2"}>LogOut</DropdownItem>
                       </DropdownMenu>
                     </UncontrolledDropdown>
                   </NavItem>
@@ -158,8 +146,8 @@ class AccountOverview extends Component {
         <div className="AccountOverviewBody">
           <FreeJumbotron />
           <PremiumJumbotron />
-          <div className="container">
-            <div className="row">
+          <div className="container InfoContainer">
+            <div className="row InfoContainerRow">
               <div className="col-sm-12 col-md-12 col-lg-4 Linkers">
                 <div className="sidebar">
                   <Link to="/" className="AppearBig">
@@ -173,7 +161,7 @@ class AccountOverview extends Component {
                     <i className="fa fa-edit" />
                     Edit profile
                   </Link>
-                  <Link to="/" href="#contact">
+                  <Link to="/changePassword" href="#contact">
                     <i className="fa fa-lock" />
                     Change password
                   </Link>
@@ -218,7 +206,7 @@ class AccountOverview extends Component {
                 <PremiumPlan />
                 <div className="row">
                   <Button className="EditProfile" color="success">
-                    <NavLink to="premium">JOIN PREMIUM</NavLink>
+                    <NavLink className="InsideEditProfile" to="premium">JOIN PREMIUM</NavLink>
                   </Button>
                 </div>
                 <div className="row">
