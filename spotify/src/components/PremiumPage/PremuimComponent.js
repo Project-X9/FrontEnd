@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -17,11 +17,11 @@ import {
   DropdownMenu,
   DropdownItem,
   Button,
-  DropdownToggle,
-} from 'reactstrap';
-import './PremiumComponent.css';
+  DropdownToggle
+} from "reactstrap";
+import "./PremiumComponent.css";
 
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 class Premium extends Component {
   constructor(props) {
@@ -32,7 +32,7 @@ class Premium extends Component {
       isModalOpen: false,
       collapsed: true,
       Premium: false,
-      tempId:this.props.id.id.length + 1,
+      tempId: ""
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.togglemodal = this.togglemodal.bind(this);
@@ -56,29 +56,30 @@ class Premium extends Component {
     //   id: this.state.tempId
     // };
     // this.props.PremiumPost(post);
-    this.props.PremiumPost(this.state.tempId);
+    alert(this.props.id.id.length + 1);
+    this.props.PremiumPost(this.props.id.id.length + 1);
     this.togglemodal();
   }
 
   toggleNav() {
     this.setState({
       isNavOpen: !this.state.isNavOpen,
-      collapsed: !this.state.collapsed,
+      collapsed: !this.state.collapsed
     });
   }
 
   render() {
-    let accLogStyleParent = '';
-    let accChild = '';
-    let logChild = '';
+    let accLogStyleParent = "";
+    let accChild = "";
+    let logChild = "";
     if (this.state.isNavOpen) {
-      accLogStyleParent = 'OpenNav';
-      accChild = 'OpenNavChild';
-      logChild = 'OpenNavChild';
+      accLogStyleParent = "OpenNav";
+      accChild = "OpenNavChild";
+      logChild = "OpenNavChild";
     } else {
-      accLogStyleParent = 'CloseNav';
-      accChild = 'CloseNavChild1';
-      logChild = 'CloseNavChild2';
+      accLogStyleParent = "CloseNav";
+      accChild = "CloseNavChild1";
+      logChild = "CloseNavChild2";
     }
     return (
       <div>
@@ -153,28 +154,18 @@ class Premium extends Component {
             </div>
           </div>
           <p>
-            <Button
-              className="signupbtn"
-              onClick={this.togglemodal}
-            >
+            <Button className="signupbtn" onClick={this.togglemodal}>
               Get Premium
             </Button>
-            <Modal isOpen={this.state.modal} >
-              <ModalHeader>
-                Claiming Premium
-              </ModalHeader>
+            <Modal isOpen={this.state.modal}>
+              <ModalHeader>Claiming Premium</ModalHeader>
               <ModalBody>
                 Pay 5 EGP please for claiming your Premium account
               </ModalBody>
               <ModalFooter>
-                <Button
-                  color="primary"
-                  onClick={this.handlePremium}
-                >
-                  Claim
-                  {' '}
-                </Button>
-                 {' '}
+                <Button color="primary" onClick={this.handlePremium}>
+                  Claim{" "}
+                </Button>{" "}
                 <Button color="secondary" onClick={this.togglemodal}>
                   Cancel
                 </Button>
@@ -200,19 +191,18 @@ class Premium extends Component {
               <p>Listen AnyWhere.</p>
             </Col>
             <Col>
-              {' '}
+              {" "}
               <img
                 src="assets/images/SecondIcon.png"
                 height="142"
                 width="142"
                 alt=""
-              />
-              {' '}
+              />{" "}
               <h5 className="mt-0">No Ad Interruptions.</h5>
               <p>Enjoy NonStop Music.</p>
             </Col>
             <Col>
-              {' '}
+              {" "}
               <img
                 src="assets/images/ThirdIcon.png"
                 height="142"
@@ -223,14 +213,13 @@ class Premium extends Component {
               <p>Even on mobile.</p>
             </Col>
             <Col>
-              {' '}
+              {" "}
               <img
                 src="assets/images/fourthIcon.png"
                 height="142"
                 width="142"
                 alt=""
-              />
-              {' '}
+              />{" "}
               <h5 className="mt-0">Unlimited Skips.</h5>
               <p>Just hit next.</p>
             </Col>
@@ -240,7 +229,7 @@ class Premium extends Component {
           <h3>Spotify Premium</h3>
           <h2>EGP49.99/Month</h2>
           <hr className="my-2" />
-          <h5 style={{ padding: '20px', textAlign: 'left' }}>
+          <h5 style={{ padding: "20px", textAlign: "left" }}>
             <li>Play Any Song.</li>
             <li>Listen Offline.</li>
             <li>No ad interruptions.</li>
@@ -256,7 +245,6 @@ class Premium extends Component {
             >
               Get Premium
             </Button>
-            
           </p>
         </Jumbotron>
       </div>
