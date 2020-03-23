@@ -100,7 +100,6 @@ class Main extends Component {
             path="/accountoverview"
             component={() => (
               <AccountOverview
-                fetchUserData={this.props.fetchUserData}
                 data={this.props.data}
                 id={this.props.id}
               />
