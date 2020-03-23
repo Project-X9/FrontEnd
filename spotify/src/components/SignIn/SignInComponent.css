@@ -36,20 +36,24 @@
 }
 
 #signuplink {
-    color: lightslategray;
+    color: inherit;
     padding: 10px;
     margin: 10px;
 }
 
-#signupbutton:hover {
-    background-color: lightslategray;
+#signupbutton {
+    color: lightslategray;
 }
 
 #signuplink:hover {
-    color: white;
     text-decoration: none;
 }
 
-.signupbutton:hover {
+#signupbutton:hover {
     background-color: lightslategrey;
+    color: white;
+}
+
+.facebookButton {
+    margin: 10px;
 }
