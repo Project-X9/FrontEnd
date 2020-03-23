@@ -2,40 +2,32 @@ import axios from "axios";
 import * as ActionTypes from "./ActionTypes";
 import { baseUrl } from "../shared/baseUrl";
 
-export const PremiumPost = (id) => (dispatch)=> {
-  
-  const data={
-    premium:true
-  }
-  data.date=new Date().toISOString();
-  axios
-    .patch(`${baseUrl}users/${id}`, data)
-    // .then(response => alert(response.data.premium ));
-};
-
-export const PostPassword = password  => {
-  const newPassword = { password };
-  newPassword.date = new Date().toISOString();
-  axios
-    .post(`${baseUrl}users`, newPassword)
-    .then(response => alert(JSON.stringify(response)));
-};
-
-export const fetchUserData = () => (dispatch) => {
-  
-  return fetch(baseUrl + 'users')
-  .then(response => response.json())
-  .then(data => dispatch(addUserData(data)))
-
+export const PremiumPost = id => dispatch => {
+  const data = {
+    premium: true
   };
+  data.date = new Date().toISOString();
+  axios.patch(`${baseUrl}users/${id}`, data);
+  // .then(response => alert(response.data.premium ));
+};
+
+export const fetchUserData = () => dispatch => {
+  return fetch(baseUrl + "users")
+    .then(response => response.json())
+    .then(data => dispatch(addUserData(data)));
+};
 export const addUserData = data => ({
   type: ActionTypes.ADD_USERDATA,
   payload: data
 });
-export const GetPassword = () => dispatch => {
+export const GetPassword = id => dispatch => {
   axios
-    .get(`${baseUrl}users/2`)
-    .then(response => alert(JSON.stringify(response.data.password)));
+    .get(`${baseUrl}users/${id - 1}`)
+    .then(response => JSON.stringify(response.data.password));
+};
+export const PostPassword = (password, id) => dispatch => {
+  const newPassword = { password: password };
+  axios.patch(`${baseUrl}users/${id}`, newPassword);
 };
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const postFacebookLogin = (email, image, name) => dispatch => {
@@ -46,17 +38,13 @@ export const postFacebookLogin = (email, image, name) => dispatch => {
   };
   newFacebookLogin.date = new Date().toISOString();
 
-  axios
-    .post(`${baseUrl}users`, newFacebookLogin)
-    .then(response =>                       
-      {
-          //here i want to get the id of the last elment i posted from the 
-        let id=response.data.id                                    // comming response which is coming in jason format and then i need
-        dispatch(addUserId(id))      //to send it to the function addUserId to add it in my store
-          // alert(response.data.id)
-        
-      })
-    // .then((response) => alert(JSON.parse(response)));
+  axios.post(`${baseUrl}users`, newFacebookLogin).then(response => {
+    //here i want to get the id of the last elment i posted from the
+    let id = response.data.id; // comming response which is coming in jason format and then i need
+    dispatch(addUserId(id)); //to send it to the function addUserId to add it in my store
+    // alert(response.data.id)
+  });
+  // .then((response) => alert(JSON.parse(response)));
 };
 
 export const postFeedback = (
@@ -67,8 +55,8 @@ export const postFeedback = (
   day,
   month,
   year,
-  sex,
-  ) => (dispatch) => {
+  sex
+) => dispatch => {
   const newFeedback = {
     email,
     confirmemail,
@@ -81,21 +69,19 @@ export const postFeedback = (
   };
   newFeedback.date = new Date().toISOString();
   axios
-    .post(`${baseUrl}users`, newFeedback)   //here where i send the post request to the server 
-    .then(response =>                       
-      {
-         //here i want to get the id of the last elment i posted from the 
-        let id=response.data.id                                    // comming response which is coming in jason format and then i need
-        dispatch(addUserId(id))      //to send it to the function addUserId to add it in my store
-          // alert(response.data.id)
-        
-      })
-    // .then((response) =>alert (JSON.stringify(response)));
-    // .then((response) =>dispatch(addUserId(JSON.parse(response.data.id))));
+    .post(`${baseUrl}users`, newFeedback) //here where i send the post request to the server
+    .then(response => {
+      //here i want to get the id of the last elment i posted from the
+      let id = response.data.id; // comming response which is coming in jason format and then i need
+      dispatch(addUserId(id)); //to send it to the function addUserId to add it in my store
+      // alert(response.data.id)
+    });
+  // .then((response) =>alert (JSON.stringify(response)));
+  // .then((response) =>dispatch(addUserId(JSON.parse(response.data.id))));
 };
-export const addUserId = (data) => ({
+export const addUserId = data => ({
   type: ActionTypes.ADD_USERSTATES,
   payload: data
-  });
+});
 
 //////////////////////////////////Account overView///////////////////////////////
