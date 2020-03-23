@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Jumbotron, Button } from 'reactstrap';
-
+import { NavLink } from 'react-router-dom';
 class FreeJumbotron extends Component {
   render() {
     return (
-      <div>
+      <div className="JumbotronContainer">
         <Jumbotron className="AccountOverviewBodyJumbo">
           <div className="container">
             <div className="row">
@@ -15,7 +15,7 @@ class FreeJumbotron extends Component {
                   when you’re offline. No restrictions. No ads.
                 </p>
                 <Button className="UnderParagraph" color="success">
-                  GET PREMIUM
+                  <NavLink className="UnderParagraph" to="premium">GET PREMIUM</NavLink>
                 </Button>
               </div>
               <div className="col-sm-12 col-md-12 col-lg-5">
