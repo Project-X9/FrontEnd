@@ -32,7 +32,7 @@ class Premium extends Component {
       isModalOpen: false,
       collapsed: true,
       Premium: false,
-      tempId: '',
+      tempId:this.props.id.id.length + 1,
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.togglemodal = this.togglemodal.bind(this);
@@ -56,7 +56,7 @@ class Premium extends Component {
     //   id: this.state.tempId
     // };
     // this.props.PremiumPost(post);
-    this.props.PremiumPost(16);
+    this.props.PremiumPost(this.state.tempId);
     this.togglemodal();
   }
 

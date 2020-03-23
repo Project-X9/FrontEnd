@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Col, Button, Row,
+  Col, Button, Row, Label, NavLink,
 } from 'reactstrap';
 import {
   Control, Form, Errors,
@@ -78,7 +78,7 @@ class SignUp extends Component {
     let redirected=null;
     if(this.state.submitted)
     {
-      redirected=<Redirect to="/accountoverview"></Redirect>
+      redirected=<Redirect to="/premium"></Redirect>
     }
     return (
       <div className="container signup">
@@ -359,7 +359,13 @@ class SignUp extends Component {
                   </Button>
                 </Col>
               </Row>
+              <Row>
+                <Col xs={12} md={12}>
+                  <Label>Already have an account ?</Label><Link className="text-green" to="/login"> LpuogIn</Link>
+                </Col>
+              </Row>
             </Form>
+
           </div>
         </div>
       </div>

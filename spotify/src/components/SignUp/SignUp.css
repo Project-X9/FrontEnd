@@ -60,6 +60,15 @@ input:not([type]):focus {
 .signupbtn:hover {
   background-color: #1ed760;
 }
+.text-green{
+  color: #1aa84c ;
+  text-align: center;
+  text-decoration: none;
+}
+.text-green:hover{
+  color: #1ED760;
+  text-decoration: none;
+}
 .signup-field {
   display: block;
   margin-inline-start: 2px;

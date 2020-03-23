@@ -90,7 +90,7 @@ class Main extends Component {
             component={() => (
               <PremiumComponent
                 PremiumPost={this.props.PremiumPost}
-                // id={this.props.id}
+                id={this.props.id}
               />
             )}
           />
