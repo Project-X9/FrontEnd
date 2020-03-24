@@ -225,10 +225,10 @@
   /***************************************************Jumbotron***************************************************/
   .AccountOverviewBody {
     background: #222326; /*for browsers that don't support gradient*/
-    background: -webkit-linear-gradient(rgb(37, 75, 129),#222326); /*for safari and chrome*/
-    background: -o-linear-gradient(rgb(37, 75, 129),#222326); /*for opera*/
-    background: -moz-linear-gradient(rgb(37, 75, 129),#222326); /*for firefox*/
-    background: linear-gradient(rgb(37, 75, 129),#222326); /*standard syntax*/
+    background: -webkit-linear-gradient(rgb(47, 58, 75),#222326); /*for safari and chrome*/
+    background: -o-linear-gradient(rgb(47, 58, 75),#222326); /*for opera*/
+    background: -moz-linear-gradient(rgb(47, 58, 75),#222326); /*for firefox*/
+    background: linear-gradient(rgb(47, 58, 75),#222326); /*standard syntax*/
   }
   
   .AccountOverviewBody{

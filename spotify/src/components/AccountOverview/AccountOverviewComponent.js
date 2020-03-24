@@ -40,7 +40,7 @@ class AccountOverview extends Component {
     super(props);
     this.state = {
       isNavOpen: false,
-      tempId: this.props.id.id.length + 1,
+      tempId: this.props.id.id.length,
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.state.nullID = this.nullID.bind(this);
@@ -79,7 +79,8 @@ class AccountOverview extends Component {
     }
 
     const UserData = this.props.data.data.map((data) => {
-      if (data.id === this.state.tempId - 1) {
+      if (data.id === this.state.tempId) {
+        // alert(data.premium);
         return (
           <div key={data.id}>
             <div className="row">
@@ -120,6 +121,32 @@ class AccountOverview extends Component {
             </div>
             <hr />
           </div>
+        );
+      }
+    });
+
+    const showJumbotron = this.props.data.data.map((data) => {
+      if (data.id === this.state.tempId) {
+        if (data.premium === false) {
+          return (
+            <FreeJumbotron />
+          );
+        }
+        return (
+          <PremiumJumbotron />
+        );
+      }
+    });
+
+    const showPlan = this.props.data.data.map((data) => {
+      if (data.id === this.state.tempId) {
+        if (data.premium === false) {
+          return (
+            <FreePlan />
+          );
+        }
+        return (
+          <PremiumPlan />
         );
       }
     });
@@ -188,8 +215,7 @@ class AccountOverview extends Component {
           </div>
         </div>
         <div className="AccountOverviewBody">
-          <FreeJumbotron />
-          <PremiumJumbotron />
+          {showJumbotron}
           <div className="container InfoContainer">
             <div className="row InfoContainerRow">
               <div className="col-sm-12 col-md-12 col-lg-4 Linkers">
@@ -246,8 +272,7 @@ class AccountOverview extends Component {
                 <div className="row">
                   <h3 className="SmallHeader2">Your plan</h3>
                 </div>
-                <FreePlan />
-                <PremiumPlan />
+                {showPlan}
                 <div className="row">
                   <Button className="EditProfile" color="success">
                     <NavLink className="InsideEditProfile" to="premium">JOIN PREMIUM</NavLink>
