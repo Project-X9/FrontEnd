@@ -1,4 +1,32 @@
-import React, { Component } from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: SignUp/SignUpComponent.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: SignUp/SignUpComponent.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from 'react';
 import {
   Col, Button, Row, Label, NavLink,
 } from 'reactstrap';
@@ -8,9 +36,9 @@ import {
 import { Link ,Redirect } from 'react-router-dom';
 import FacebookLogin from 'react-facebook-login';
 
-const required = val => val && val.length;
-// const maxLength = (len) => (val) => !(val) || (val.length <= len);
-const minLength = len => val => val && val.length >= len;
+const required = val => val &amp;&amp; val.length;
+// const maxLength = (len) => (val) => !(val) || (val.length &lt;= len);
+const minLength = len => val => val &amp;&amp; val.length >= len;
 // const isNumber = (val) => !isNaN(Number(val));
 const validEmail = val => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 const validDay = val => /^([1-9]|0[1-9]|[12]\d|3[01])$/i.test(val);
@@ -56,13 +84,13 @@ class SignUp extends Component {
     // const { email, confirmEmail } = this.state;
     // console.log(`Current State :${JSON.stringify(values)}`);
     if (
-      values.email !== "" &&
-      values.confirmemail !== "" &&
-      values.password !== "" &&
-      values.name !== "" &&
-      values.day !== "" &&
-      values.month !== "" &&
-      values.year !== "" &&
+      values.email !== "" &amp;&amp;
+      values.confirmemail !== "" &amp;&amp;
+      values.password !== "" &amp;&amp;
+      values.name !== "" &amp;&amp;
+      values.day !== "" &amp;&amp;
+      values.month !== "" &amp;&amp;
+      values.year !== "" &amp;&amp;
       values.sex !== ""
     ) {
       this.props.resetFeedbackForm();
@@ -120,49 +148,49 @@ class SignUp extends Component {
   render() {
     let redirected = null;
     if (this.state.submitted) {
-      redirected = <Redirect to="/premium"></Redirect>;
+      redirected = &lt;Redirect to="/premium">&lt;/Redirect>;
     }
     return (
-      <div className="container signup">
+      &lt;div className="container signup">
         {redirected}
-        <div className="row somepadding">
-          <Col xs={12} md={{ size: 6, offset: 3 }}>
-            <Link to="/home">
-              <img
+        &lt;div className="row somepadding">
+          &lt;Col xs={12} md={{ size: 6, offset: 3 }}>
+            &lt;Link to="/home">
+              &lt;img
                 src="assets/images/logo.png"
                 height="59"
                 width="172"
                 alt="spotify"
               />
-            </Link>
-            <hr />
-          </Col>
-          <Col xs={12} md={{ size: 6, offset: 3 }}>
-            <FacebookLogin
+            &lt;/Link>
+            &lt;hr />
+          &lt;/Col>
+          &lt;Col xs={12} md={{ size: 6, offset: 3 }}>
+            &lt;FacebookLogin
               cssClass="facebookButton"
               appId="723287988413715"
               autoLoad={false}
               fields="name,email,picture,birthday"
               callback={this.responseFacebook}
             />
-            {/* <a className="btn facebookButton"><b className="textcolour">SIGN UP WITH FACEBOOK</b></a> */}
-          </Col>
-          <Col xs={12} md={{ size: 6, offset: 3 }}>
-            <strong className="line-thru">or</strong>
-          </Col>
-          <div className="col-12">
-            <h3>Sign up with your email address </h3>
-          </div>
-        </div>
-        <div className="row signup-field">
-          <div>
-            <Form
+            {/* &lt;a className="btn facebookButton">&lt;b className="textcolour">SIGN UP WITH FACEBOOK&lt;/b>&lt;/a> */}
+          &lt;/Col>
+          &lt;Col xs={12} md={{ size: 6, offset: 3 }}>
+            &lt;strong className="line-thru">or&lt;/strong>
+          &lt;/Col>
+          &lt;div className="col-12">
+            &lt;h3>Sign up with your email address &lt;/h3>
+          &lt;/div>
+        &lt;/div>
+        &lt;div className="row signup-field">
+          &lt;div>
+            &lt;Form
               model="feedback"
               onSubmit={values => this.handleSubmit(values)}
             >
-              <Row className="form-group">
-                <Col xs={12} md={{ size: 6, offset: 3 }}>
-                  <Control.text
+              &lt;Row className="form-group">
+                &lt;Col xs={12} md={{ size: 6, offset: 3 }}>
+                  &lt;Control.text
                     onChange={this.handleEmailChange}
                     className="form-control"
                     model=".email"
@@ -174,8 +202,8 @@ class SignUp extends Component {
                       validEmail
                     }}
                   />
-                  <Row className="ml-2">
-                    <Errors
+                  &lt;Row className="ml-2">
+                    &lt;Errors
                       className="text-danger error"
                       model=".email"
                       show="touched"
@@ -184,12 +212,12 @@ class SignUp extends Component {
                         validEmail: " Invalid Email Address"
                       }}
                     />
-                  </Row>
-                </Col>
-              </Row>
-              <Row className="form-group">
-                <Col xs={12} md={{ size: 6, offset: 3 }}>
-                  <Control.text
+                  &lt;/Row>
+                &lt;/Col>
+              &lt;/Row>
+              &lt;Row className="form-group">
+                &lt;Col xs={12} md={{ size: 6, offset: 3 }}>
+                  &lt;Control.text
                     onChange={this.handleConfEmailChange}
                     className="form-control"
                     model=".confirmemail"
@@ -202,8 +230,8 @@ class SignUp extends Component {
                       confEmail: confEmail(this.state.email)
                     }}
                   />
-                  <Row className="ml-2">
-                    <Errors
+                  &lt;Row className="ml-2">
+                    &lt;Errors
                       className="text-danger error"
                       model=".confirmemail"
                       show="touched"
@@ -213,12 +241,12 @@ class SignUp extends Component {
                         confEmail: "Email does not match"
                       }}
                     />
-                  </Row>
-                </Col>
-              </Row>
-              <Row className="form-group">
-                <Col xs={12} md={{ size: 6, offset: 3 }}>
-                  <Control.text
+                  &lt;/Row>
+                &lt;/Col>
+              &lt;/Row>
+              &lt;Row className="form-group">
+                &lt;Col xs={12} md={{ size: 6, offset: 3 }}>
+                  &lt;Control.text
                     type="password"
                     className="form-control"
                     model=".password"
@@ -230,8 +258,8 @@ class SignUp extends Component {
                       minLength: minLength(7)
                     }}
                   />
-                  <Row className="ml-2">
-                    <Errors
+                  &lt;Row className="ml-2">
+                    &lt;Errors
                       className="text-danger error"
                       model=".password"
                       show="touched"
@@ -240,12 +268,12 @@ class SignUp extends Component {
                         minLength: " Your password is too short"
                       }}
                     />
-                  </Row>
-                </Col>
-              </Row>
-              <Row className="form-group">
-                <Col xs={12} md={{ size: 6, offset: 3 }}>
-                  <Control.text
+                  &lt;/Row>
+                &lt;/Col>
+              &lt;/Row>
+              &lt;Row className="form-group">
+                &lt;Col xs={12} md={{ size: 6, offset: 3 }}>
+                  &lt;Control.text
                     className="form-control"
                     model=".name"
                     placeholder="What should we call you ?"
@@ -255,8 +283,8 @@ class SignUp extends Component {
                       required
                     }}
                   />
-                  <Row className="ml-2">
-                    <Errors
+                  &lt;Row className="ml-2">
+                    &lt;Errors
                       className="text-danger error"
                       model=".name"
                       show="touched"
@@ -264,12 +292,12 @@ class SignUp extends Component {
                         required: "What should we call you ?"
                       }}
                     />
-                  </Row>
-                </Col>
-              </Row>
-              <Row className="form-group">
-                <Col xs={4} md={{ size: 2, offset: 3 }}>
-                  <Control.text
+                  &lt;/Row>
+                &lt;/Col>
+              &lt;/Row>
+              &lt;Row className="form-group">
+                &lt;Col xs={4} md={{ size: 2, offset: 3 }}>
+                  &lt;Control.text
                     className="form-control"
                     model=".day"
                     placeholder="Day"
@@ -280,7 +308,7 @@ class SignUp extends Component {
                       validDay
                     }}
                   />
-                  <Errors
+                  &lt;Errors
                     className="text-danger error"
                     model=".day"
                     show="touched"
@@ -288,9 +316,9 @@ class SignUp extends Component {
                       validDay: "Enter a valid day of the month"
                     }}
                   />
-                </Col>
-                <Col xs={4} md={2}>
-                  <Control.select
+                &lt;/Col>
+                &lt;Col xs={4} md={2}>
+                  &lt;Control.select
                     className="form-control"
                     model=".month"
                     name="month"
@@ -299,21 +327,21 @@ class SignUp extends Component {
                       required
                     }}
                   >
-                    <option value="null">Month</option>
-                    <option>January</option>
-                    <option>February</option>
-                    <option>March</option>
-                    <option>April</option>
-                    <option>May</option>
-                    <option>June</option>
-                    <option>July</option>
-                    <option>August</option>
-                    <option>September</option>
-                    <option>October</option>
-                    <option>November</option>
-                    <option>December</option>
-                  </Control.select>
-                  <Errors
+                    &lt;option value="null">Month&lt;/option>
+                    &lt;option>January&lt;/option>
+                    &lt;option>February&lt;/option>
+                    &lt;option>March&lt;/option>
+                    &lt;option>April&lt;/option>
+                    &lt;option>May&lt;/option>
+                    &lt;option>June&lt;/option>
+                    &lt;option>July&lt;/option>
+                    &lt;option>August&lt;/option>
+                    &lt;option>September&lt;/option>
+                    &lt;option>October&lt;/option>
+                    &lt;option>November&lt;/option>
+                    &lt;option>December&lt;/option>
+                  &lt;/Control.select>
+                  &lt;Errors
                     className="text-danger error"
                     model=".month"
                     show="touched"
@@ -322,9 +350,9 @@ class SignUp extends Component {
                       monthSelected: "Enter the month"
                     }}
                   />
-                </Col>
-                <Col xs={4} md={2}>
-                  <Control.text
+                &lt;/Col>
+                &lt;Col xs={4} md={2}>
+                  &lt;Control.text
                     className="form-control"
                     model=".year"
                     placeholder="Year"
@@ -335,7 +363,7 @@ class SignUp extends Component {
                       validYear
                     }}
                   />
-                  <Errors
+                  &lt;Errors
                     className="text-danger error"
                     model=".year"
                     show="touched"
@@ -344,13 +372,13 @@ class SignUp extends Component {
                       validYear: " Enter a valid year"
                     }}
                   />
-                </Col>
-              </Row>
-              <Row className="form-group">
-                <Col xs={12} md={8}>
-                  <div>
-                    <label className="p-3">
-                      <Control.radio
+                &lt;/Col>
+              &lt;/Row>
+              &lt;Row className="form-group">
+                &lt;Col xs={12} md={8}>
+                  &lt;div>
+                    &lt;label className="p-3">
+                      &lt;Control.radio
                         model=".sex"
                         value="male"
                         id="sex"
@@ -360,9 +388,9 @@ class SignUp extends Component {
                         }}
                       />{" "}
                       Male
-                    </label>
-                    <label className="p-3">
-                      <Control.radio
+                    &lt;/label>
+                    &lt;label className="p-3">
+                      &lt;Control.radio
                         model=".sex"
                         value="female"
                         id="sex"
@@ -372,8 +400,8 @@ class SignUp extends Component {
                         }}
                       />{" "}
                       Female
-                    </label>
-                    <Errors
+                    &lt;/label>
+                    &lt;Errors
                       className="text-danger error"
                       model=".sex"
                       show="touched"
@@ -381,27 +409,50 @@ class SignUp extends Component {
                         typeSelected: "Enter your gender"
                       }}
                     />
-                  </div>
-                </Col>
-              </Row>
-              <Row className="form-group">
-                <Col xs={12} md={{ size: 6, offset: 3 }}>
-                  <Button model="submit" className="signupbtn">
+                  &lt;/div>
+                &lt;/Col>
+              &lt;/Row>
+              &lt;Row className="form-group">
+                &lt;Col xs={12} md={{ size: 6, offset: 3 }}>
+                  &lt;Button model="submit" className="signupbtn">
                     SignUp
-                  </Button>
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={12} md={12}>
-                  <Label>Already have an account ?</Label><Link className="text-green" to="/login"> LogIn</Link>
-                </Col>
-              </Row>
-            </Form>
+                  &lt;/Button>
+                &lt;/Col>
+              &lt;/Row>
+              &lt;Row>
+                &lt;Col xs={12} md={12}>
+                  &lt;Label>Already have an account ?&lt;/Label>&lt;Link className="text-green" to="/login"> LogIn&lt;/Link>
+                &lt;/Col>
+              &lt;/Row>
+            &lt;/Form>
 
-          </div>
-        </div>
-      </div>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
     );
   }
 }
 export default SignUp;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AccountOverview.html">AccountOverview</a></li><li><a href="FreeJumbotron.html">FreeJumbotron</a></li><li><a href="FreePlan.html">FreePlan</a></li><li><a href="Premium.html">Premium</a></li><li><a href="PremiumJumbotron.html">PremiumJumbotron</a></li><li><a href="SignUp.html">SignUp</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Tue Mar 24 2020 03:21:48 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -68,6 +68,7 @@ export const postFeedback = (
     sex
   };
   newFeedback.date = new Date().toISOString();
+  newFeedback.premium=false;
   axios
     .post(`${baseUrl}users`, newFeedback) //here where i send the post request to the server
     .then(response => {

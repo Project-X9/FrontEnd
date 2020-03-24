@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: AccountOverview</title>
+    <title>JSDoc: Class: SignUp</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: AccountOverview</h1>
+    <h1 class="page-title">Class: SignUp</h1>
 
     
 
@@ -28,9 +28,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>AccountOverview<span class="signature">(props)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>SignUp<span class="signature">(props)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description"><p>Account Overview page</p></div>
+            <div class="class-description"><p>Sign Up Page</p></div>
         
     
 </header>
@@ -45,7 +45,7 @@
     
 
     
-    <h4 class="name" id="AccountOverview"><span class="type-signature"></span>new AccountOverview<span class="signature">(props)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="SignUp"><span class="type-signature"></span>new SignUp<span class="signature">(props)</span><span class="type-signature"></span></h4>
     
 
     
@@ -127,7 +127,7 @@
 
         <tr>
             
-                <td class="name"><code>data</code></td>
+                <td class="name"><code>postFeedback</code></td>
             
 
             <td class="type">
@@ -138,14 +138,14 @@
 
             
 
-            <td class="description last"><p>Essentially contains the data of the users in the database</p></td>
+            <td class="description last"></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>id</code></td>
+                <td class="name"><code>resetFeedbackForm</code></td>
             
 
             <td class="type">
@@ -156,7 +156,7 @@
 
             
 
-            <td class="description last"><p>Essentially contains the id of one of the users in the database</p></td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -204,7 +204,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AccountOverview_AccountOverviewComponent.js.html">AccountOverview/AccountOverviewComponent.js</a>, <a href="AccountOverview_AccountOverviewComponent.js.html#line39">line 39</a>
+        <a href="SignUp_SignUpComponent.js.html">SignUp/SignUpComponent.js</a>, <a href="SignUp_SignUpComponent.js.html#line35">line 35</a>
     </li></ul></dd>
     
 
@@ -250,34 +250,19 @@
     
 
     
-
-    
-        <h3 class="subsection-title">Methods</h3>
+        <h3 class="subsection-title">Members</h3>
 
         
             
+<h4 class="name" id="handleEmailChange"><span class="type-signature"></span>handleEmailChange<span class="type-signature"></span></h4>
 
-    
-
-    
-    <h4 class="name" id="nullID"><span class="type-signature"></span>nullID<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
 
 
 
 <div class="description">
-    <p>Setting tempId to an empty string, used for testing if the user tries
-to enter the page without an ID,
-he will be redirected to another page</p>
+    <p>This function set the this.state.email with the value the user fill in the input
+field of email to be able to check the email in the confirm email</p>
 </div>
-
-
-
-
-
-
 
 
 
@@ -314,7 +299,140 @@ he will be redirected to another page</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AccountOverview_AccountOverviewComponent.js.html">AccountOverview/AccountOverviewComponent.js</a>, <a href="AccountOverview_AccountOverviewComponent.js.html#line64">line 64</a>
+        <a href="SignUp_SignUpComponent.js.html">SignUp/SignUpComponent.js</a>, <a href="SignUp_SignUpComponent.js.html#line92">line 92</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="handleSubmit"><span class="type-signature"></span>handleSubmit<span class="signature">(values)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>This function takes the data fromthe input fields and assure that the all
+the data is not empty (don't make the validations) and if all the data required is
+avaliable it gives the data to the function (PostFeedback) to post the data to the
+server and resets the input fields using resetFeedBack form and also state the submitted
+state to true to be redirected to the next page.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>values</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="SignUp_SignUpComponent.js.html">SignUp/SignUpComponent.js</a>, <a href="SignUp_SignUpComponent.js.html#line55">line 55</a>
     </li></ul></dd>
     
 
@@ -402,7 +520,7 @@ he will be redirected to another page</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AccountOverview_AccountOverviewComponent.js.html">AccountOverview/AccountOverviewComponent.js</a>, <a href="AccountOverview_AccountOverviewComponent.js.html#line75">line 75</a>
+        <a href="SignUp_SignUpComponent.js.html">SignUp/SignUpComponent.js</a>, <a href="SignUp_SignUpComponent.js.html#line120">line 120</a>
     </li></ul></dd>
     
 
@@ -448,7 +566,7 @@ he will be redirected to another page</p>
     
 
     
-    <h4 class="name" id="toggleNav"><span class="type-signature"></span>toggleNav<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="responseFacebook"><span class="type-signature"></span>responseFacebook<span class="signature">(response)</span><span class="type-signature"></span></h4>
     
 
     
@@ -456,7 +574,8 @@ he will be redirected to another page</p>
 
 
 <div class="description">
-    <p>Toggles the Navigation bar by switching isNavOpen from true to false and vice versa</p>
+    <p>This function recieves the responce of the facebook login and uses the same functions i used in handleSubmit to
+post the users data and set Submitted to true to be redirected</p>
 </div>
 
 
@@ -465,6 +584,55 @@ he will be redirected to another page</p>
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>response</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Response</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -500,7 +668,7 @@ he will be redirected to another page</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AccountOverview_AccountOverviewComponent.js.html">AccountOverview/AccountOverviewComponent.js</a>, <a href="AccountOverview_AccountOverviewComponent.js.html#line52">line 52</a>
+        <a href="SignUp_SignUpComponent.js.html">SignUp/SignUpComponent.js</a>, <a href="SignUp_SignUpComponent.js.html#line103">line 103</a>
     </li></ul></dd>
     
 
