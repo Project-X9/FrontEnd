@@ -10,7 +10,6 @@ export const PremiumPost = id => dispatch => {
   axios.patch(`${baseUrl}users/${id}`, data);
   // .then(response => alert(response.data.premium ));
 };
-
 export const fetchUserData = () => dispatch => {
   return fetch(baseUrl + "users")
     .then(response => response.json())
@@ -67,6 +66,7 @@ export const postFeedback = (
     year,
     sex
   };
+
   newFeedback.date = new Date().toISOString();
   newFeedback.premium=false;
   axios
@@ -84,5 +84,17 @@ export const addUserId = data => ({
   type: ActionTypes.ADD_USERSTATES,
   payload: data
 });
+
+export const getEmail = id => dispatch => {
+  return axios
+    .get(`${baseUrl}users/${id - 1}`)
+    .then(response => JSON.stringify(response.data.email));
+};
+
+export const getPassword = id => dispatch => {
+  axios.get(`${baseUrl}users/${id - 1}`).then(response => {
+    return response.data.password;
+  });
+};
 
 //////////////////////////////////Account overView///////////////////////////////

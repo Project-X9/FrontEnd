@@ -1,31 +1,79 @@
 import React, { Component } from "react";
 import { Col, Button, Row } from "reactstrap";
 import { Control, Form, Errors } from "react-redux-form";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import FacebookLogin from "react-facebook-login";
 const validEmail = val => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
-
 const required = val => val && val.length;
 
 class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: ""
+      email: "",
+      password: "",
+      isSuccessful: false,
+      loginId: null
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.responseFacebook = this.responseFacebook.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleEmail = this.handleEmail.bind(this);
+    this.handleId = this.handleId.bind(this);
+    this.handlePassword = this.handlePassword.bind(this);
   }
-
-  handleSubmit(values) {
-    // const { email, confirmEmail } = this.state;
-    // console.log(`Current State :${JSON.stringify(values)}`);
+  handlePassword = () => {
+    let temp;
+    this.props.data.data.map(data => {
+      if (data.id === this.state.loginId) {
+        temp = data.password;
+      }
+    });
+    return temp;
+  };
+  handleLogin = values => {
     this.props.resetSignInForm();
-  }
-  handleEmailChange = event => {
+    let userId = this.handleId(values.email);
+    let userEmail;
+    let userPassword;
+    this.setState(
+      {
+        loginId: userId
+      },
+      () => {
+        userEmail = this.handleEmail();
+        userPassword = this.handlePassword();
+        if (userEmail === values.email) {
+          if (userPassword === values.password) {
+            this.setState({
+              isSuccessful: true
+            });
+          } else alert("Invalid Username/Email or Password");
+        } else alert("Invalid Username/Email or Password");
+      }
+    );
+  };
+  handleId = email => {
+    let temp;
+    this.props.data.data.map(data => {
+      if (data.email === email) {
+        temp = data.id;
+      }
+    });
+    return temp;
+  };
+  handleEmail = () => {
+    let temp;
+    this.props.data.data.map(data => {
+      if (data.id === this.state.loginId) {
+        temp = data.email;
+      }
+    });
+    return temp;
+  };
+  handleChange = event => {
     this.setState({
-      email: event.target.value
+      [event.target.name]: event.target.value
     });
   };
   responseFacebook(response) {
@@ -40,21 +88,28 @@ class SignIn extends Component {
   }
 
   render() {
+    let redirect = null;
+    if (this.state.isSuccessful === true) {
+      redirect = <Redirect to="/accountoverview"></Redirect>;
+    }
     return (
       <div className="container signin">
+        {" "}
+        {redirect}
         <div className="row somepadding">
           <Col xs={12} md={{ size: 6, offset: 3 }}>
             <Link to="/home">
               <img
-                src="assets/images/logo.png"
-                height="59"
-                width="172"
+                src="assets/images/logo2.png"
+                height="70"
+                width="230"
                 alt="spotify"
               />
             </Link>
             <hr />
           </Col>
           <Col xs={12} md={{ size: 6, offset: 3 }}>
+            <h4>To continue, log in to Spotify</h4>
             <FacebookLogin
               cssClass="facebookButton"
               appId="723287988413715"
@@ -64,7 +119,7 @@ class SignIn extends Component {
             />
           </Col>
           <Col xs={12} md={{ size: 6, offset: 3 }}>
-            <strong className="line-thru">or</strong>
+            <strong className="line-thru">OR</strong>
           </Col>
           <div className="col-12">
             <h3>Sign In with your email address or username</h3>
@@ -72,11 +127,13 @@ class SignIn extends Component {
         </div>
         <div className="row signup-field">
           <div>
-            <Form model="sign-in">
+            <Form
+              model="feedback"
+              onSubmit={values => this.handleLogin(values)}>
               <Row className="form-group">
                 <Col xs={12} md={{ size: 6, offset: 3 }}>
                   <Control.text
-                    onChange={this.handleEmailChange}
+                    onChange={this.handleChange}
                     className="form-control"
                     model=".email"
                     placeholder="Email or Username"
@@ -106,6 +163,7 @@ class SignIn extends Component {
                   <Control.text
                     type="password"
                     className="form-control"
+                    onChange={this.handleChange}
                     model=".password"
                     placeholder="Password"
                     id="password"
@@ -133,18 +191,17 @@ class SignIn extends Component {
                   <Button
                     model="submit"
                     className="signinbtn"
-                    id="signinbutton"
-                  >
+                    id="signinbutton">
                     Sign In
                   </Button>
-                  <div id="forgot-password">
-                    <Link id="forgot-password-link" to="/home">
+                  <div id="forgot-password" name="forogot-password">
+                    <Link id="forgot-password-link" to="/changePassword">
                       Forgot your Password?
                     </Link>
                   </div>
                   <p id="text-sign-in">Don't Have an Account?</p>
                   <Button id="signupbutton" name="signupbutton">
-                    <Link to="/signup" id="signuplink">
+                    <Link to="/signup" id="signuplink" name="signuplink">
                       SIGN UP FOR SPOTIFY
                     </Link>
                   </Button>
