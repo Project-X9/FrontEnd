@@ -74,6 +74,7 @@ class Main extends Component {
                 resetFeedbackForm={this.props.resetFeedbackForm}
                 postFacebookLogin={this.props.postFacebookLogin}
                 postFeedback={this.props.postFeedback}
+                data={this.props.data}
               />
             )}
           />

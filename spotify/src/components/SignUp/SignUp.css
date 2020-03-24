@@ -56,6 +56,8 @@ input:not([type]):focus {
   cursor: pointer;
   border: 1px solid transparent;
   padding: 7px 12px 5px;
+  height: 40px;
+
 }
 .signupbtn:hover {
   background-color: #1ed760;

@@ -55,7 +55,14 @@ class SignUp extends Component {
   handleSubmit(values) {
     // const { email, confirmEmail } = this.state;
     // console.log(`Current State :${JSON.stringify(values)}`);
-    if (
+    let temp=this.handleExcistance(values.email)
+    if(temp)
+    {
+      alert("This account already Signed Up before")
+      this.props.resetFeedbackForm();
+
+    }
+    else if (
       values.email !== "" &&
       values.confirmemail !== "" &&
       values.password !== "" &&
@@ -79,11 +86,25 @@ class SignUp extends Component {
       this.setState({
         submitted: true
       });
-    } else {
+    } 
+    else {
       this.props.resetFeedbackForm();
     }
     //  this.props.history.push("/premium")
   }
+  /**
+   * Function to test the excistance of the email
+   * @param {String} email
+   */
+  handleExcistance = (email) => {
+    let temp=false;
+    this.props.data.data.map(data => {
+      if (data.email === email) {
+        temp=true;
+      }
+    });
+    return temp;
+  };
   /**
    * This function set the this.state.email with the value the user fill in the input 
    * field of email to be able to check the email in the confirm email 
@@ -113,8 +134,9 @@ class SignUp extends Component {
       );
     }
   }
+  
   /**
-   * Responsible for showing everything on the Account Overview page
+   * Responsible for showing everything on the Sign Up page
    * @returns Components that will be displayed on the page
    */
   render() {
@@ -129,7 +151,7 @@ class SignUp extends Component {
           <Col xs={12} md={{ size: 6, offset: 3 }}>
             <Link to="/home">
               <img
-                src="assets/images/logo.png"
+                src="assets/images/logo2.png"
                 height="59"
                 width="172"
                 alt="spotify"
@@ -393,7 +415,7 @@ class SignUp extends Component {
               </Row>
               <Row>
                 <Col xs={12} md={12}>
-                  <Label>Already have an account ?</Label><Link className="text-green" to="/login"> LogIn</Link>
+                  <Label>Already have an account ?</Label><Link className="text-green" to="/signin"> LogIn</Link>
                 </Col>
               </Row>
             </Form>
