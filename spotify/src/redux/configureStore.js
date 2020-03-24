@@ -4,7 +4,7 @@ import thunk from "redux-thunk";
 import logger from "redux-logger";
 import { InitialFeedback, InitialLogin } from "./forms";
 import { Data } from "./userData";
-import { UserID } from "./UserStates";
+import { UserID } from "./UserId";
 
 export const ConfigureStore = () => {
   const store = createStore(

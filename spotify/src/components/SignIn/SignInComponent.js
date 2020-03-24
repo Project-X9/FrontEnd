@@ -12,31 +12,64 @@ class SignIn extends Component {
     this.state = {
       email: "",
       password: "",
-      isSuccessful: false
+      isSuccessful: false,
+      loginId: null
     };
-    this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.responseFacebook = this.responseFacebook.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleEmail = this.handleEmail.bind(this);
+    this.handleId = this.handleId.bind(this);
+    this.handlePassword = this.handlePassword.bind(this);
   }
-  handleLogin = values => {
-    console.log(values);
-    this.props.resetSignInForm();
-    this.setState({ email: values.email });
-    this.setState({ password: values.password });
-    console.log(this.state);
-    this.props.resetSignInForm();
-    const Password = this.props.GetPassword(9);
-    const Email = this.props.getEmail(9);
-    if (this.state.email === Email) {
-      if (this.state.password === Password) {
-        this.setState({
-          isSuccessful: true
-        });
+  handlePassword = () => {
+    let temp;
+    this.props.data.data.map(data => {
+      if (data.id === this.state.loginId) {
+        temp = data.password;
       }
-    }
+    });
+    return temp;
   };
-  handleSuccessfulAuth = event => {
-    event.preventDefault();
+  handleLogin = values => {
+    this.props.resetSignInForm();
+    let userId = this.handleId(values.email);
+    let userEmail;
+    let userPassword;
+    this.setState(
+      {
+        loginId: userId
+      },
+      () => {
+        userEmail = this.handleEmail();
+        userPassword = this.handlePassword();
+        if (userEmail === values.email) {
+          if (userPassword === values.password) {
+            this.setState({
+              isSuccessful: true
+            });
+          } else alert("Invalid Username/Email or Password");
+        } else alert("Invalid Username/Email or Password");
+      }
+    );
+  };
+  handleId = email => {
+    let temp;
+    this.props.data.data.map(data => {
+      if (data.email === email) {
+        temp = data.id;
+      }
+    });
+    return temp;
+  };
+  handleEmail = () => {
+    let temp;
+    this.props.data.data.map(data => {
+      if (data.id === this.state.loginId) {
+        temp = data.email;
+      }
+    });
+    return temp;
   };
   handleChange = event => {
     this.setState({
@@ -56,12 +89,13 @@ class SignIn extends Component {
 
   render() {
     let redirect = null;
-    if (this.state.isSuccessful) {
+    if (this.state.isSuccessful === true) {
       redirect = <Redirect to="/accountoverview"></Redirect>;
     }
-    const { email, password, isSuccessful } = this.state;
     return (
       <div className="container signin">
+        {" "}
+        {redirect}
         <div className="row somepadding">
           <Col xs={12} md={{ size: 6, offset: 3 }}>
             <Link to="/home">
@@ -129,7 +163,7 @@ class SignIn extends Component {
                   <Control.text
                     type="password"
                     className="form-control"
-                    onChange={this.onChange}
+                    onChange={this.handleChange}
                     model=".password"
                     placeholder="Password"
                     id="password"

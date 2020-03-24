@@ -84,9 +84,16 @@ export const addUserId = data => ({
   payload: data
 });
 
-export const getEmail = () => dispatch => {
-  axios
+export const getEmail = id => dispatch => {
+  return axios
     .get(`${baseUrl}users/${id - 1}`)
-    .then(response => alert(JSON.stringify(response.data.email)));
+    .then(response => JSON.stringify(response.data.email));
 };
+
+export const getPassword = id => dispatch => {
+  axios.get(`${baseUrl}users/${id - 1}`).then(response => {
+    return response.data.password;
+  });
+};
+
 //////////////////////////////////Account overView///////////////////////////////

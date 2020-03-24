@@ -15,6 +15,7 @@ import {
   GetPassword,
   PostPassword,
   getEmail,
+  getPassword,
   fetchUserData
 } from "../redux/ActionCreators";
 
@@ -35,6 +36,7 @@ const mapDispatchToProps = dispatch => ({
   PostPassword: (password, id) => dispatch(PostPassword(password, id)),
   GetPassword: id => dispatch(GetPassword(id)),
   getEmail: id => dispatch(getEmail(id)),
+  getPassword: id => dispatch(getPassword(id)),
   PremiumPost: id => dispatch(PremiumPost(id)),
   postFeedback: (email, confirmemail, password, name, day, month, year, sex) =>
     dispatch(
@@ -116,8 +118,10 @@ class Main extends Component {
                 resetSignInForm={this.props.resetSignInForm}
                 postFacebookLogin={this.props.postFacebookLogin}
                 handleLogin={this.props.handleLogin}
-                GetPassword={this.props.GetPassword}
+                getPassword={this.props.getPassword}
                 getEmail={this.props.getEmail}
+                data={this.props.data}
+                id={this.props.id}
               />
             )}
           />

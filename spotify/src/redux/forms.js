@@ -8,3 +8,7 @@ export const InitialFeedback = {
   year: "",
   sex: ""
 };
+export const InitialLogin = {
+  email: "",
+  password: ""
+};
