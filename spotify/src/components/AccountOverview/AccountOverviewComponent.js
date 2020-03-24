@@ -1,3 +1,10 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable consistent-return */
+/* eslint-disable array-callback-return */
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import {
   Navbar,
@@ -19,8 +26,16 @@ import PremiumPlan from './PremiumPlan';
 import FreeJumbotron from './FreeJumbotron';
 import PremiumJumbotron from './PremiumJumbotron';
 
-
+/**
+ * Account Overview page
+ */
 class AccountOverview extends Component {
+  /**
+   *
+   * @param {Object} props
+   * @param props.data Essentially contains the data of the users in the database
+   * @param props.id Essentially contains the id of one of the users in the database
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -31,25 +46,38 @@ class AccountOverview extends Component {
     this.state.nullID = this.nullID.bind(this);
   }
 
+  /**
+   * Toggles the Navigation bar by switching isNavOpen from true to false and vice versa
+   */
   toggleNav() {
     this.setState({
       isNavOpen: !this.state.isNavOpen,
     });
   }
 
+
+  /**
+   * Setting tempId to an empty string, used for testing if the user tries
+   *  to enter the page without an ID,
+   * he will be redirected to another page
+   */
   nullID() {
     this.setState({
       tempId: '',
     });
   }
 
+
+  /**
+   * Responsible for showing everything on the Account Overview page
+   * @returns Components that will be displayed on the page
+   */
   render() {
-    let forRedirect='';
-    if(this.state.tempId==='')
-    {
-      forRedirect = <Redirect to="/signup"></Redirect>;
+    let forRedirect = '';
+    if (this.state.tempId === '') {
+      forRedirect = <Redirect to="/signup" />;
     }
-    
+
     const UserData = this.props.data.data.map((data) => {
       if (data.id === this.state.tempId - 1) {
         return (
@@ -95,7 +123,7 @@ class AccountOverview extends Component {
         );
       }
     });
-    
+
     return (
       <div>
         {forRedirect}
@@ -145,12 +173,12 @@ class AccountOverview extends Component {
                         />
                         Profile
                       </DropdownToggle>
-                      <DropdownMenu className={"StaticNav"} right>
-                        <DropdownItem className={"StaticNavChild1Container"} >
-                          <NavLink className={"StaticNavChild1"} to="accountoverview">Account</NavLink>
+                      <DropdownMenu className="StaticNav" right>
+                        <DropdownItem className="StaticNavChild1Container">
+                          <NavLink className="StaticNavChild1" to="accountoverview">Account</NavLink>
                           {' '}
                         </DropdownItem>
-                        <DropdownItem className={"StaticNavChild2"}>LogOut</DropdownItem>
+                        <DropdownItem className="StaticNavChild2">LogOut</DropdownItem>
                       </DropdownMenu>
                     </UncontrolledDropdown>
                   </NavItem>

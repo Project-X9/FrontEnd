@@ -1,8 +1,18 @@
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import { Jumbotron } from 'reactstrap';
 
+/**
+ * Class for the PremiumJumbotron component which is a jumbotron shown for the premium users
+ */
 class PremiumJumbotron extends Component {
   render() {
+    /**
+     * Responsible for showing a jumbotron customized for premium users
+     * @returns Components that will be display the jumbotron,
+     *  and will be used in AccountOverview.js
+     */
     return (
       <div className="JumbotronContainer">
         <Jumbotron className="AccountOverviewBodyJumbo">

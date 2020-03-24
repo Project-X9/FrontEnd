@@ -1,7 +1,16 @@
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import { Card, CardBody, CardText } from 'reactstrap';
 
+/**
+ * Class for the freePlan component which is a container shown for the premium users
+ */
 class Premium extends Component {
+  /**
+   * Responsible for showing a container customized for premium users
+   * @returns Components that will be display the container, and will be used in AccountOverview.js
+   */
   render() {
     return (
       <div>
