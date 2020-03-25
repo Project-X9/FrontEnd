@@ -33,12 +33,21 @@ class SignIn extends Component {
   };
   handleUser = () => {
     let temp;
+    let temp2;
     this.props.data.data.map(data => {
       if (data.id === this.state.loginId) {
         temp = data;
       }
     });
-    return temp;
+    temp2 = (({ id, name, email, day, month, year }) => ({
+      id,
+      name,
+      email,
+      day,
+      month,
+      year
+    }))(temp);
+    return temp2;
   };
   setUser = user => {
     IdObj.Id = user.id;
