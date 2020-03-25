@@ -12,7 +12,7 @@ class SignIn extends Component {
     this.state = {
       email: "",
       password: "",
-      isSuccessful: false,
+      isSuccessful: null,
       loginId: null
     };
     this.handleChange = this.handleChange.bind(this);
@@ -77,8 +77,8 @@ class SignIn extends Component {
             this.setState({
               isSuccessful: true
             });
-          } else alert("Invalid Username/Email or Password");
-        } else alert("Invalid Username/Email or Password");
+          } else this.setState({ isSuccessful: false, loginId: null });
+        } else this.setState({ isSuccessful: false, loginId: null });
       }
     );
   };
@@ -152,6 +152,11 @@ class SignIn extends Component {
           </Col>
           <div className="col-12">
             <h3>Sign In with your email address or username</h3>
+            {this.state.isSuccessful === false ? (
+              <h5 id="invalid">Invalid Username/Email or Password</h5>
+            ) : (
+              <span></span>
+            )}
           </div>
         </div>
         <div className="row signup-field">
@@ -178,7 +183,8 @@ class SignIn extends Component {
                       show="touched"
                       messages={{
                         required: "Enter your Email address ,",
-                        validEmail: " Invalid Email Address"
+                        validEmail: "Invalid Email Address",
+                        successfulLogin: "Invalid Email or Password"
                       }}
                     />
                   </Row>
@@ -206,7 +212,8 @@ class SignIn extends Component {
                         model=".password"
                         show="touched"
                         messages={{
-                          required: "Enter your password to continue, "
+                          required: "Enter your password to continue",
+                          successfulLogin: "Invalid Email or Password"
                         }}
                       />
                     </Col>
