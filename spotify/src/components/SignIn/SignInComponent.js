@@ -3,9 +3,9 @@ import { Col, Button, Row } from "reactstrap";
 import { Control, Form, Errors } from "react-redux-form";
 import { Link, Redirect } from "react-router-dom";
 import FacebookLogin from "react-facebook-login";
+import IdObj from "../../Global";
 const validEmail = val => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 const required = val => val && val.length;
-
 class SignIn extends Component {
   constructor(props) {
     super(props);
@@ -31,11 +31,29 @@ class SignIn extends Component {
     });
     return temp;
   };
+  handleUser = () => {
+    let temp;
+    this.props.data.data.map(data => {
+      if (data.id === this.state.loginId) {
+        temp = data;
+      }
+    });
+    return temp;
+  };
+  setUser = user => {
+    IdObj.Id = user.id;
+    IdObj.name = user.name;
+    IdObj.email = user.email;
+    IdObj.year = user.year;
+    IdObj.month = user.month;
+    IdObj.day = user.day;
+  };
   handleLogin = values => {
     this.props.resetSignInForm();
     let userId = this.handleId(values.email);
     let userEmail;
     let userPassword;
+    let user;
     this.setState(
       {
         loginId: userId
@@ -43,6 +61,8 @@ class SignIn extends Component {
       () => {
         userEmail = this.handleEmail();
         userPassword = this.handlePassword();
+        user = this.handleUser();
+        this.setUser(user);
         if (userEmail === values.email) {
           if (userPassword === values.password) {
             this.setState({
@@ -127,9 +147,7 @@ class SignIn extends Component {
         </div>
         <div className="row signup-field">
           <div>
-            <Form
-              model="feedback"
-              onSubmit={values => this.handleLogin(values)}>
+            <Form model="login" onSubmit={values => this.handleLogin(values)}>
               <Row className="form-group">
                 <Col xs={12} md={{ size: 6, offset: 3 }}>
                   <Control.text

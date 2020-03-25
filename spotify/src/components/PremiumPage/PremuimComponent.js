@@ -20,6 +20,7 @@ import {
   DropdownToggle
 } from "reactstrap";
 import "./PremiumComponent.css";
+import IdObj from "../../Global";
 
 import { NavLink } from "react-router-dom";
 
@@ -96,8 +97,7 @@ class Premium extends Component {
               </NavbarBrand>
               <NavbarToggler
                 className="NavBarToggle"
-                onClick={this.state.toggleNav}
-              >
+                onClick={this.state.toggleNav}>
                 ☰
               </NavbarToggler>
 
@@ -241,8 +241,7 @@ class Premium extends Component {
             <Button
               model="submit"
               className="signupbtn"
-              onClick={this.togglemodal}
-            >
+              onClick={this.togglemodal}>
               Get Premium
             </Button>
           </p>

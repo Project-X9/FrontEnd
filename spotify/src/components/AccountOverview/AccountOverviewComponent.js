@@ -5,7 +5,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable react/destructuring-assignment */
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -17,14 +17,15 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  Button,
-} from 'reactstrap';
-import { NavLink, Link, Redirect } from 'react-router-dom';
+  Button
+} from "reactstrap";
+import { NavLink, Link, Redirect } from "react-router-dom";
 
-import FreePlan from './FreePlan';
-import PremiumPlan from './PremiumPlan';
-import FreeJumbotron from './FreeJumbotron';
-import PremiumJumbotron from './PremiumJumbotron';
+import FreePlan from "./FreePlan";
+import PremiumPlan from "./PremiumPlan";
+import FreeJumbotron from "./FreeJumbotron";
+import PremiumJumbotron from "./PremiumJumbotron";
+import IdObj from "../../Global";
 
 /**
  * Account Overview page
@@ -40,7 +41,7 @@ class AccountOverview extends Component {
     super(props);
     this.state = {
       isNavOpen: false,
-      tempId: this.props.id.id.length,
+      tempId: IdObj.Id
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.state.nullID = this.nullID.bind(this);
@@ -51,10 +52,9 @@ class AccountOverview extends Component {
    */
   toggleNav() {
     this.setState({
-      isNavOpen: !this.state.isNavOpen,
+      isNavOpen: !this.state.isNavOpen
     });
   }
-
 
   /**
    * Setting tempId to an empty string, used for testing if the user tries
@@ -63,36 +63,31 @@ class AccountOverview extends Component {
    */
   nullID() {
     this.setState({
-      tempId: '',
+      tempId: ""
     });
   }
-
 
   /**
    * Responsible for showing everything on the Account Overview page
    * @returns Components that will be displayed on the page
    */
   render() {
-    let forRedirect = '';
-    if (this.state.tempId === '') {
+    let forRedirect = "";
+    if (this.state.tempId === "") {
       forRedirect = <Redirect to="/signup" />;
     }
 
-    const UserData = this.props.data.data.map((data) => {
-      if (data.id === this.state.tempId) {
+    const UserData = this.props.data.data.map(data => {
+      if (IdObj.id !== null) {
         // alert(data.premium);
         return (
-          <div key={data.id}>
+          <div key={IdObj.Id}>
             <div className="row">
               <div className="col Content1">
                 <h5>Username</h5>
               </div>
               <div className="col Content2">
-                <h5>
-                  {' '}
-                  {data.name}
-                  {' '}
-                </h5>
+                <h5> {IdObj.name} </h5>
               </div>
             </div>
             <hr />
@@ -101,7 +96,7 @@ class AccountOverview extends Component {
                 <h5>Email</h5>
               </div>
               <div className="col Content2">
-                <h5>{data.email}</h5>
+                <h5>{IdObj.email}</h5>
               </div>
             </div>
             <hr />
@@ -111,11 +106,7 @@ class AccountOverview extends Component {
               </div>
               <div className="col Content2">
                 <h5>
-                  {data.day}
-                  /
-                  {data.month}
-                  /
-                  {data.year}
+                  {IdObj.day}/{IdObj.month}/{IdObj.year}
                 </h5>
               </div>
             </div>
@@ -125,29 +116,21 @@ class AccountOverview extends Component {
       }
     });
 
-    const showJumbotron = this.props.data.data.map((data) => {
+    const showJumbotron = this.props.data.data.map(data => {
       if (data.id === this.state.tempId) {
         if (data.premium === false) {
-          return (
-            <FreeJumbotron />
-          );
+          return <FreeJumbotron />;
         }
-        return (
-          <PremiumJumbotron />
-        );
+        return <PremiumJumbotron />;
       }
     });
 
-    const showPlan = this.props.data.data.map((data) => {
+    const showPlan = this.props.data.data.map(data => {
       if (data.id === this.state.tempId) {
         if (data.premium === false) {
-          return (
-            <FreePlan />
-          );
+          return <FreePlan />;
         }
-        return (
-          <PremiumPlan />
-        );
+        return <PremiumPlan />;
       }
     });
 
@@ -167,8 +150,7 @@ class AccountOverview extends Component {
               </NavbarBrand>
               <NavbarToggler
                 className="NavBarToggle"
-                onClick={this.state.toggleNav}
-              >
+                onClick={this.state.toggleNav}>
                 ☰
               </NavbarToggler>
 
@@ -202,10 +184,15 @@ class AccountOverview extends Component {
                       </DropdownToggle>
                       <DropdownMenu className="StaticNav" right>
                         <DropdownItem className="StaticNavChild1Container">
-                          <NavLink className="StaticNavChild1" to="accountoverview">Account</NavLink>
-                          {' '}
+                          <NavLink
+                            className="StaticNavChild1"
+                            to="accountoverview">
+                            Account
+                          </NavLink>{" "}
                         </DropdownItem>
-                        <DropdownItem className="StaticNavChild2">LogOut</DropdownItem>
+                        <DropdownItem className="StaticNavChild2">
+                          LogOut
+                        </DropdownItem>
                       </DropdownMenu>
                     </UncontrolledDropdown>
                   </NavItem>
@@ -265,7 +252,10 @@ class AccountOverview extends Component {
                 </div>
                 <hr />
                 <div className="row">
-                  <button onClick={this.state.nullID} className="EditProfile" color="success">
+                  <button
+                    onClick={this.state.nullID}
+                    className="EditProfile"
+                    color="success">
                     EDIT PROFILE
                   </button>
                 </div>
@@ -275,7 +265,9 @@ class AccountOverview extends Component {
                 {showPlan}
                 <div className="row">
                   <Button className="EditProfile" color="success">
-                    <NavLink className="InsideEditProfile" to="premium">JOIN PREMIUM</NavLink>
+                    <NavLink className="InsideEditProfile" to="premium">
+                      JOIN PREMIUM
+                    </NavLink>
                   </Button>
                 </div>
                 <div className="row">
@@ -348,20 +340,17 @@ class AccountOverview extends Component {
                 <div className="col-sm-12 col-md-12 col-lg-4 icons">
                   <a
                     className="btn btn-social-icon btn-instagram"
-                    href="https://www.instagram.com/spotify/?hl=en"
-                  >
+                    href="https://www.instagram.com/spotify/?hl=en">
                     <i className="fa fa-instagram" />
                   </a>
                   <a
                     className="btn btn-social-icon btn-twitter"
-                    href="https://twitter.com/Spotify?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
-                  >
+                    href="https://twitter.com/Spotify?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
                     <i className="fa fa-twitter" />
                   </a>
                   <a
                     className="btn btn-social-icon btn-facebook"
-                    href="https://www.facebook.com/Spotify/"
-                  >
+                    href="https://www.facebook.com/Spotify/">
                     <i className="fa fa-facebook" />
                   </a>
                 </div>
