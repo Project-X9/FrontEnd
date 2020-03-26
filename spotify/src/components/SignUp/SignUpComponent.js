@@ -38,7 +38,8 @@ class SignUp extends Component {
       email: "",
       selectedOption: false,
       confEmail: "",
-      submitted: false
+      submitted: false,
+      existBefore:null
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -58,7 +59,9 @@ class SignUp extends Component {
     let temp=this.handleExcistance(values.email)
     if(temp)
     {
-      alert("This account already Signed Up before")
+      this.setState({
+        existBefore:true
+      })
       this.props.resetFeedbackForm();
 
     }
@@ -174,6 +177,11 @@ class SignUp extends Component {
           </Col>
           <div className="col-12">
             <h3>Sign up with your email address </h3>
+            {this.state.existBefore === true ? (
+              <h5 id="invalid">This email already exist</h5>
+            ) : (
+              <span></span>
+            )}
           </div>
         </div>
         <div className="row signup-field">

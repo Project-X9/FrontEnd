@@ -19,7 +19,8 @@ import {
   PostPassword,
   getEmail,
   getPassword,
-  fetchUserData
+  fetchUserData,
+  handleLoginId
 } from "../redux/ActionCreators";
 
 const mapStateToProps = state => ({
@@ -41,6 +42,7 @@ const mapDispatchToProps = dispatch => ({
   getEmail: id => dispatch(getEmail(id)),
   getPassword: id => dispatch(getPassword(id)),
   PremiumPost: id => dispatch(PremiumPost(id)),
+  handleLoginId: (id) => dispatch(handleLoginId(id)),
   postFeedback: (email, confirmemail, password, name, day, month, year, sex) =>
     dispatch(
       postFeedback(email, confirmemail, password, name, day, month, year, sex)
@@ -117,9 +119,10 @@ class Main extends Component {
               <SignIn
                 resetSignInForm={this.props.resetSignInForm}
                 postFacebookLogin={this.props.postFacebookLogin}
-                handleLogin={this.props.handleLogin}
+                // handleLoginId={this.props.handleLoginId}
                 data={this.props.data}
                 id={this.props.id}
+                handleLoginId={this.props.handleLoginId}
               />
             )}
           />

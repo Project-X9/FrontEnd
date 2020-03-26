@@ -41,7 +41,7 @@ class AccountOverview extends Component {
     super(props);
     this.state = {
       isNavOpen: false,
-      tempId: IdObj.Id
+      tempId: this.props.id.id
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.state.nullID = this.nullID.bind(this);
@@ -76,18 +76,21 @@ class AccountOverview extends Component {
     if (this.state.tempId === "") {
       forRedirect = <Redirect to="/signup" />;
     }
-
-    const UserData = this.props.data.data.map(data => {
-      if (IdObj.id !== null) {
+    const UserData = this.props.data.data.map((data) => {
+      if (data.id === this.state.tempId) {
         // alert(data.premium);
         return (
-          <div key={IdObj.Id}>
+          <div key={data.id}>
             <div className="row">
               <div className="col Content1">
                 <h5>Username</h5>
               </div>
               <div className="col Content2">
-                <h5> {IdObj.name} </h5>
+                <h5>
+                  {' '}
+                  {data.name}
+                  {' '}
+                </h5>
               </div>
             </div>
             <hr />
@@ -96,7 +99,7 @@ class AccountOverview extends Component {
                 <h5>Email</h5>
               </div>
               <div className="col Content2">
-                <h5>{IdObj.email}</h5>
+                <h5>{data.email}</h5>
               </div>
             </div>
             <hr />
@@ -106,7 +109,11 @@ class AccountOverview extends Component {
               </div>
               <div className="col Content2">
                 <h5>
-                  {IdObj.day}/{IdObj.month}/{IdObj.year}
+                  {data.day}
+                  /
+                  {data.month}
+                  /
+                  {data.year}
                 </h5>
               </div>
             </div>
@@ -115,7 +122,6 @@ class AccountOverview extends Component {
         );
       }
     });
-
     const showJumbotron = this.props.data.data.map(data => {
       if (data.id === this.state.tempId) {
         if (data.premium === false) {
