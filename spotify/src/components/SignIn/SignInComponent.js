@@ -77,11 +77,6 @@ class SignIn extends Component {
         userName = this.handleuUserName();
         userPassword = this.handlePassword();
         user = this.handleUser();
-        console.log(user);
-        console.log(userName);
-        console.log(userEmail);
-        console.log(this.state.loginId);
-        console.log(userPassword);
         if (userEmail === values.email || userName === values.email) {
           if (userPassword === values.password) {
             this.setState({
