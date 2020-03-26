@@ -14,12 +14,8 @@ class SignIn extends Component {
       email: "",
       password: "",
       isSuccessful: null,
-<<<<<<< HEAD
       loginId: null,
       ifExist: null
-=======
-      loginId: ""
->>>>>>> dd79ada4e8935faf65379cadcabe1f8057113459
     };
     this.handleChange = this.handleChange.bind(this);
     this.responseFacebook = this.responseFacebook.bind(this);
@@ -98,12 +94,10 @@ class SignIn extends Component {
     this.props.data.data.map(data => {
       if (data.email === email || data.name === email) {
         for (let index = 0; index < data.id + 1; index++) {
-          if(index === data.id)
-          {
-            temp=index  
+          if (index === data.id) {
+            temp = index;
           }
         }
-
       }
     });
     return temp;
@@ -146,7 +140,7 @@ class SignIn extends Component {
   render() {
     let redirect = null;
     if (this.state.isSuccessful === true) {
-      this.props.handleLoginId(this.state.loginId)
+      this.props.handleLoginId(this.state.loginId);
       redirect = <Redirect to="/accountoverview"></Redirect>;
     }
     if (this.state.ifExist === false) {
