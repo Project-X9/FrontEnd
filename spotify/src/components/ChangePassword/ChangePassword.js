@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Col, Button, Row } from "reactstrap";
 import { Control, Form, Errors } from "react-redux-form";
 import { Label } from "reactstrap";
-
+import IdObj from "../../Global";
 const required = val => val && val.length;
 const minLength = len => val => val && val.length >= len;
 const confPass = val => val2 => val === val2;
@@ -52,8 +52,7 @@ class ChangePass extends Component {
         <hr />
         <Form
           model="feedback"
-          onSubmit={values => this.handleChangePassword(values)}
-        >
+          onSubmit={values => this.handleChangePassword(values)}>
           <Row className="form-group">
             <Col xs={12} md={{ size: 6, offset: 3 }}>
               <Label>Current Password</Label>

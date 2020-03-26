@@ -8,6 +8,8 @@ import PremiumComponent from "./PremiumPage/PremuimComponent";
 import ChangePass from "./ChangePassword/ChangePassword";
 import AccountOverview from "./AccountOverview/AccountOverviewComponent";
 import SignIn from "./SignIn/SignInComponent";
+import IdObj from "../Global";
+
 import {
   postFeedback,
   postFacebookLogin,
@@ -28,7 +30,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.reset("feedback"));
   },
   resetSignInForm: () => {
-    dispatch(actions.reset("feedback"));
+    dispatch(actions.reset("login"));
   },
   fetchUserData: () => {
     dispatch(fetchUserData());
@@ -104,10 +106,7 @@ class Main extends Component {
             exact
             path="/accountoverview"
             component={() => (
-              <AccountOverview
-                data={this.props.data}
-                id={this.props.id}
-              />
+              <AccountOverview data={this.props.data} id={this.props.id} />
             )}
           />
           <Route
@@ -118,8 +117,6 @@ class Main extends Component {
                 resetSignInForm={this.props.resetSignInForm}
                 postFacebookLogin={this.props.postFacebookLogin}
                 handleLogin={this.props.handleLogin}
-                getPassword={this.props.getPassword}
-                getEmail={this.props.getEmail}
                 data={this.props.data}
                 id={this.props.id}
               />
