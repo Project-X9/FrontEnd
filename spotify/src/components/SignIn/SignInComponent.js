@@ -4,7 +4,9 @@ import { Control, Form, Errors } from "react-redux-form";
 import { Link, Redirect } from "react-router-dom";
 import FacebookLogin from "react-facebook-login";
 import IdObj from "../../Global";
-const validEmail = val => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
+const validUserName = val =>
+  /^[a-zA-Z0-9_.-]*$/.test(val) ||
+  /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 const required = val => val && val.length;
 class SignIn extends Component {
   constructor(props) {
@@ -39,15 +41,17 @@ class SignIn extends Component {
         temp = data;
       }
     });
-    temp2 = (({ id, name, email, day, month, year }) => ({
-      id,
-      name,
-      email,
-      day,
-      month,
-      year
-    }))(temp);
-    return temp2;
+    if (temp) {
+      temp2 = (({ id, name, email, day, month, year }) => ({
+        id,
+        name,
+        email,
+        day,
+        month,
+        year
+      }))(temp);
+      return temp2;
+    } else return null;
   };
   setUser = user => {
     IdObj.Id = user.id;
@@ -63,29 +67,36 @@ class SignIn extends Component {
     let userEmail;
     let userPassword;
     let user;
+    let userName;
     this.setState(
       {
         loginId: userId
       },
       () => {
         userEmail = this.handleEmail();
+        userName = this.handleuUserName();
         userPassword = this.handlePassword();
         user = this.handleUser();
-        this.setUser(user);
-        if (userEmail === values.email) {
+        console.log(user);
+        console.log(userName);
+        console.log(userEmail);
+        console.log(this.state.loginId);
+        console.log(userPassword);
+        if (userEmail === values.email || userName === values.email) {
           if (userPassword === values.password) {
             this.setState({
               isSuccessful: true
             });
+            this.setUser(user);
           } else this.setState({ isSuccessful: false, loginId: null });
-        } else this.setState({ isSuccessful: false, loginId: null });
+        } else this.setState({ isSuccessful: false });
       }
     );
   };
   handleId = email => {
     let temp;
     this.props.data.data.map(data => {
-      if (data.email === email) {
+      if (data.email === email || data.name === email) {
         temp = data.id;
       }
     });
@@ -96,6 +107,15 @@ class SignIn extends Component {
     this.props.data.data.map(data => {
       if (data.id === this.state.loginId) {
         temp = data.email;
+      }
+    });
+    return temp;
+  };
+  handleuUserName = () => {
+    let temp;
+    this.props.data.data.map(data => {
+      if (data.id === this.state.loginId) {
+        temp = data.name;
       }
     });
     return temp;
@@ -173,7 +193,7 @@ class SignIn extends Component {
                     name="email"
                     validators={{
                       required,
-                      validEmail
+                      validUserName
                     }}
                   />
                   <Row className="ml-2">
