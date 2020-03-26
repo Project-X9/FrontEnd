@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import NavbarHome from './NavbarComponent';
-import './Home.css';
-import Footer from './FooterComponent';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import NavbarHome from "./NavbarComponent";
+import "./Home.css";
+import Footer from "./FooterComponent";
 
 class Home extends Component {
   componentDidMount() {
-    document.body.classList.add('homeBody');
+    document.body.classList.add("homeBody");
   }
 
   componentWillUnmount() {
-    document.body.classList.remove('homeBody');
+    document.body.classList.remove("homeBody");
   }
 
   render() {

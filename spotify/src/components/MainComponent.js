@@ -8,6 +8,7 @@ import PremiumComponent from "./PremiumPage/PremuimComponent";
 import ChangePass from "./ChangePassword/ChangePassword";
 import AccountOverview from "./AccountOverview/AccountOverviewComponent";
 import SignIn from "./SignIn/SignInComponent";
+import PlayFotter from "./WebPlayer/PlayFotterComponent";
 import IdObj from "../Global";
 
 import {
@@ -120,6 +121,13 @@ class Main extends Component {
                 data={this.props.data}
                 id={this.props.id}
               />
+            )}
+          />
+          <Route
+            exact
+            path="/webplayer"
+            component={() => (
+              <PlayFotter data={this.props.data} id={this.props.id} />
             )}
           />
           <Redirect to="/signup" />

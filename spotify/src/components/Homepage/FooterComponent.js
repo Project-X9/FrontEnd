@@ -1,6 +1,6 @@
-import React from 'react';
-import './Footer.css';
-
+import React from "react";
+import "./Footer.css";
+import { Link } from "react-router-dom";
 function Footer(props) {
   return (
     <div className="AccountOverviewFooter">
@@ -54,7 +54,7 @@ function Footer(props) {
                   <a href="http://google.com">Help</a>
                 </li>
                 <li className="FooterElement">
-                  <a href="http://google.com">Web Player</a>
+                  <Link to="/webplayer">Web Player </Link>
                 </li>
                 <li className="FooterElement">
                   <a href="http://google.com">Free Mobile App</a>
@@ -64,20 +64,17 @@ function Footer(props) {
             <div className="col-sm-12 col-md-12 col-lg-4 icons">
               <a
                 className="btn btn-social-icon btn-instagram"
-                href="http://instagram.com/spotify"
-              >
+                href="http://instagram.com/spotify">
                 <i className="fa fa-instagram" />
               </a>
               <a
                 className="btn btn-social-icon btn-twitter"
-                href="http://twitter.com/spotify"
-              >
+                href="http://twitter.com/spotify">
                 <i className="fa fa-twitter" />
               </a>
               <a
                 className="btn btn-social-icon btn-facebook"
-                href="http://www.facebook.com/spotify"
-              >
+                href="http://www.facebook.com/spotify">
                 <i className="fa fa-facebook" />
               </a>
             </div>

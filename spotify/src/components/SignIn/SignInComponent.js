@@ -15,7 +15,8 @@ class SignIn extends Component {
       email: "",
       password: "",
       isSuccessful: null,
-      loginId: null
+      loginId: null,
+      ifExist: null
     };
     this.handleChange = this.handleChange.bind(this);
     this.responseFacebook = this.responseFacebook.bind(this);
@@ -23,6 +24,8 @@ class SignIn extends Component {
     this.handleEmail = this.handleEmail.bind(this);
     this.handleId = this.handleId.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
+    this.handleUser = this.handleUser.bind(this);
+    this.handleuUserName = this.handleuUserName.bind(this);
   }
   handlePassword = () => {
     let temp;
@@ -122,12 +125,13 @@ class SignIn extends Component {
   };
   responseFacebook(response) {
     if (response.status !== "unknown") {
-      this.props.resetFeedbackForm();
-      this.props.postFacebookLogin(
-        response.email,
-        response.image,
-        response.name
-      );
+      this.props.resetSignInForm();
+      let userId = this.handleId(response.email);
+      this.setState({ loginId: userId }, () => {
+        if (userId === null)
+          this.setState({ ifExist: false, isSuccessful: null });
+        else this.setState({ ifExist: true, isSuccessful: true });
+      });
     }
   }
 
@@ -135,6 +139,9 @@ class SignIn extends Component {
     let redirect = null;
     if (this.state.isSuccessful === true) {
       redirect = <Redirect to="/accountoverview"></Redirect>;
+    }
+    if (this.state.ifExist === false) {
+      redirect = <Redirect to="/signup"></Redirect>;
     }
     return (
       <div className="container signin">
