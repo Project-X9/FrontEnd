@@ -57,8 +57,8 @@ class Premium extends Component {
     //   id: this.state.tempId
     // };
     // this.props.PremiumPost(post);
-    alert(this.props.id.id.length + 1);
-    this.props.PremiumPost(this.props.id.id.length + 1);
+    // alert(this.props.id.id.length + 1);
+    this.props.PremiumPost(this.props.id.id);
     this.togglemodal();
   }
 

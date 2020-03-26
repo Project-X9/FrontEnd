@@ -73,15 +73,26 @@ export const postFeedback = (
     .post(`${baseUrl}users`, newFeedback) //here where i send the post request to the server
     .then(response => {
       //here i want to get the id of the last elment i posted from the
-      let id = response.data.id; // comming response which is coming in jason format and then i need
-      dispatch(addUserId(id)); //to send it to the function addUserId to add it in my store
+       // comming response which is coming in jason format and then i need
+      for (let index = 0; index < response.data.id + 1; index++) {
+        if(index === response.data.id)
+        {
+          dispatch(addUserId(index)); //to send it to the function addUserId to add it in my store 
+        }
+        
+      }
       // alert(response.data.id)
     });
   // .then((response) =>alert (JSON.stringify(response)));
   // .then((response) =>dispatch(addUserId(JSON.parse(response.data.id))));
 };
+
+export const handleLoginId = id => dispatch => {
+  dispatch(addUserId(id));
+};
+
 export const addUserId = data => ({
-  type: ActionTypes.ADD_USERSTATES,
+  type: ActionTypes.ADD_USERID,
   payload: data
 });
 

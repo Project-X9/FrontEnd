@@ -3,7 +3,6 @@ import { Col, Button, Row } from "reactstrap";
 import { Control, Form, Errors } from "react-redux-form";
 import { Link, Redirect } from "react-router-dom";
 import FacebookLogin from "react-facebook-login";
-import IdObj from "../../Global";
 const validUserName = val =>
   /^[a-zA-Z0-9_.-]*$/.test(val) ||
   /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
@@ -15,7 +14,7 @@ class SignIn extends Component {
       email: "",
       password: "",
       isSuccessful: null,
-      loginId: null
+      loginId: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.responseFacebook = this.responseFacebook.bind(this);
@@ -53,14 +52,14 @@ class SignIn extends Component {
       return temp2;
     } else return null;
   };
-  setUser = user => {
-    IdObj.Id = user.id;
-    IdObj.name = user.name;
-    IdObj.email = user.email;
-    IdObj.year = user.year;
-    IdObj.month = user.month;
-    IdObj.day = user.day;
-  };
+  // setUser = user => {
+  //   IdObj.Id = user.id;
+  //   IdObj.name = user.name;
+  //   IdObj.email = user.email;
+  //   IdObj.year = user.year;
+  //   IdObj.month = user.month;
+  //   IdObj.day = user.day;
+  // };
   handleLogin = values => {
     this.props.resetSignInForm();
     let userId = this.handleId(values.email);
@@ -82,8 +81,7 @@ class SignIn extends Component {
             this.setState({
               isSuccessful: true
             });
-            this.setUser(user);
-          } else this.setState({ isSuccessful: false, loginId: null });
+          } else this.setState({ isSuccessful: false, loginId: "" });
         } else this.setState({ isSuccessful: false });
       }
     );
@@ -92,7 +90,13 @@ class SignIn extends Component {
     let temp;
     this.props.data.data.map(data => {
       if (data.email === email || data.name === email) {
-        temp = data.id;
+        for (let index = 0; index < data.id + 1; index++) {
+          if(index === data.id)
+          {
+            temp=index  
+          }
+        }
+
       }
     });
     return temp;
@@ -134,6 +138,7 @@ class SignIn extends Component {
   render() {
     let redirect = null;
     if (this.state.isSuccessful === true) {
+      this.props.handleLoginId(this.state.loginId)
       redirect = <Redirect to="/accountoverview"></Redirect>;
     }
     return (
@@ -157,7 +162,7 @@ class SignIn extends Component {
             <FacebookLogin
               cssClass="facebookButton"
               appId="723287988413715"
-              autoLoad={true}
+              autoLoad={false}
               fields="name,email,picture,birthday"
               callback={this.responseFacebook}
             />
