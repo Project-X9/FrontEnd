@@ -1,10 +1,20 @@
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import { Jumbotron, Button } from 'reactstrap';
+import { NavLink } from 'react-router-dom';
 
+/**
+ * Class for the FreeJumbotron component which is a jumbotron shown for the free users
+ */
 class FreeJumbotron extends Component {
+  /**
+   * Responsible for showing a jumbotron customized for free users
+   * @returns Components that will be display the jumbotron, and will be used in AccountOverview.js
+   */
   render() {
     return (
-      <div>
+      <div className="JumbotronContainer">
         <Jumbotron className="AccountOverviewBodyJumbo">
           <div className="container">
             <div className="row">
@@ -15,11 +25,12 @@ class FreeJumbotron extends Component {
                   when you’re offline. No restrictions. No ads.
                 </p>
                 <Button className="UnderParagraph" color="success">
-                  GET PREMIUM
+                  <NavLink className="UnderParagraph" to="premium">GET PREMIUM</NavLink>
                 </Button>
               </div>
               <div className="col-sm-12 col-md-12 col-lg-5">
                 <img
+                  alt=""
                   className="Phone"
                   src="https://www.scdn.co/i/account/overview/iphone-ddd9e69.png"
                 />

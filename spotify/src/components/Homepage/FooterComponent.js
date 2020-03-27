@@ -1,7 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./Footer.css";
+import { Link } from "react-router-dom";
+/**Footer component of the main page, contains the necessary navigations and links */
 function Footer(props) {
+  /**
+   * @return Returns a footer component with the needed links to be used anywhere
+   */
   return (
     <div className="AccountOverviewFooter">
       <div className="container">
@@ -54,7 +58,7 @@ function Footer(props) {
                   <a href="http://google.com">Help</a>
                 </li>
                 <li className="FooterElement">
-                  <a href="http://google.com">Web Player</a>
+                  <Link to="/webplayer">Web Player </Link>
                 </li>
                 <li className="FooterElement">
                   <a href="http://google.com">Free Mobile App</a>
@@ -64,21 +68,18 @@ function Footer(props) {
             <div className="col-sm-12 col-md-12 col-lg-4 icons">
               <a
                 className="btn btn-social-icon btn-instagram"
-                href="http://instagram.com/spotify"
-              >
-                <i className="fa fa-instagram"></i>
+                href="http://instagram.com/spotify">
+                <i className="fa fa-instagram" />
               </a>
               <a
                 className="btn btn-social-icon btn-twitter"
-                href="http://twitter.com/spotify"
-              >
-                <i className="fa fa-twitter"></i>
+                href="http://twitter.com/spotify">
+                <i className="fa fa-twitter" />
               </a>
               <a
                 className="btn btn-social-icon btn-facebook"
-                href="http://www.facebook.com/spotify"
-              >
-                <i className="fa fa-facebook"></i>
+                href="http://www.facebook.com/spotify">
+                <i className="fa fa-facebook" />
               </a>
             </div>
           </div>

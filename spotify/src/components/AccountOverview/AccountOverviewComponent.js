@@ -1,4 +1,11 @@
-import React, { Component } from 'react';
+/* eslint-disable react/button-has-type */
+/* eslint-disable consistent-return */
+/* eslint-disable array-callback-return */
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable react/destructuring-assignment */
+import React, { Component } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -10,48 +17,135 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  Button,
-} from 'reactstrap';
-import { NavLink, Link } from 'react-router-dom';
+  Button
+} from "reactstrap";
+import { NavLink, Link, Redirect } from "react-router-dom";
 
-import FreePlan from './FreePlan';
-import PremiumPlan from './PremiumPlan';
-import FreeJumbotron from './FreeJumbotron';
-import PremiumJumbotron from './PremiumJumbotron';
+import FreePlan from "./FreePlan";
+import PremiumPlan from "./PremiumPlan";
+import FreeJumbotron from "./FreeJumbotron";
+import PremiumJumbotron from "./PremiumJumbotron";
+import IdObj from "../../Global";
 
+/**
+ * Account Overview page
+ */
 class AccountOverview extends Component {
+  /**
+   *
+   * @param {Object} props
+   * @param props.data Essentially contains the data of the users in the database
+   * @param props.id Essentially contains the id of one of the users in the database
+   */
   constructor(props) {
     super(props);
     this.state = {
       isNavOpen: false,
+      tempId: this.props.id.id
     };
     this.state.toggleNav = this.toggleNav.bind(this);
+    this.state.nullID = this.nullID.bind(this);
   }
+
+  /**
+   * Toggles the Navigation bar by switching isNavOpen from true to false and vice versa
+   */
   toggleNav() {
     this.setState({
-      isNavOpen: !this.state.isNavOpen,
+      isNavOpen: !this.state.isNavOpen
     });
   }
 
+  /**
+   * Setting tempId to an empty string, used for testing if the user tries
+   *  to enter the page without an ID,
+   * he will be redirected to another page
+   */
+  nullID() {
+    this.setState({
+      tempId: ""
+    });
+  }
+
+  /**
+   * Responsible for showing everything on the Account Overview page
+   * @returns Components that will be displayed on the page
+   */
   render() {
-    let accLogStyleParent = '';
-    let accChild = '';
-    let logChild = '';
-    if (this.state.isNavOpen) {
-      accLogStyleParent = 'OpenNav';
-      accChild = 'OpenNavChild';
-      logChild = 'OpenNavChild';
-    } else {
-      accLogStyleParent = 'CloseNav';
-      accChild = 'CloseNavChild1';
-      logChild = 'CloseNavChild2';
+    let forRedirect = "";
+    if (this.state.tempId === "") {
+      forRedirect = <Redirect to="/signup" />;
     }
+    const UserData = this.props.data.data.map((data) => {
+      if (data.id === this.state.tempId) {
+        // alert(data.premium);
+        return (
+          <div key={data.id}>
+            <div className="row">
+              <div className="col Content1">
+                <h5>Username</h5>
+              </div>
+              <div className="col Content2">
+                <h5>
+                  {' '}
+                  {data.name}
+                  {' '}
+                </h5>
+              </div>
+            </div>
+            <hr />
+            <div className="row">
+              <div className="col Content1">
+                <h5>Email</h5>
+              </div>
+              <div className="col Content2">
+                <h5>{data.email}</h5>
+              </div>
+            </div>
+            <hr />
+            <div className="row">
+              <div className="col Content1">
+                <h5>Date of birth</h5>
+              </div>
+              <div className="col Content2">
+                <h5>
+                  {data.day}
+                  /
+                  {data.month}
+                  /
+                  {data.year}
+                </h5>
+              </div>
+            </div>
+            <hr />
+          </div>
+        );
+      }
+    });
+    const showJumbotron = this.props.data.data.map(data => {
+      if (data.id === this.state.tempId) {
+        if (data.premium === false) {
+          return <FreeJumbotron />;
+        }
+        return <PremiumJumbotron />;
+      }
+    });
+
+    const showPlan = this.props.data.data.map(data => {
+      if (data.id === this.state.tempId) {
+        if (data.premium === false) {
+          return <FreePlan />;
+        }
+        return <PremiumPlan />;
+      }
+    });
 
     return (
       <div>
+        {forRedirect}
         <div className="AccountOverviewNav">
           <div className="container">
-            <Navbar className="NavBar" sticky="top" expand="md">
+            <Navbar className="NavBar NavStyle" sticky="top" expand="md">
               <NavbarBrand className="mr-auto" href="/signup">
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSBmnPgQKW4JLrNcSFhPFCLHz3t8kT1pZl0PVkLYsa8FoScWYda"
@@ -62,25 +156,24 @@ class AccountOverview extends Component {
               </NavbarBrand>
               <NavbarToggler
                 className="NavBarToggle"
-                onClick={this.state.toggleNav}
-              >
+                onClick={this.state.toggleNav}>
                 ☰
               </NavbarToggler>
 
               <Collapse isOpen={this.state.isNavOpen} navbar>
                 <Nav navbar className="ml-auto">
                   <NavItem>
-                    <NavLink className="nav-link" to="/home">
+                    <NavLink className="nav-link" to="/premium">
                       Premium
                     </NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink className="nav-link" to="/menu">
+                    <NavLink className="nav-link" to="/home">
                       Help
                     </NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink className="nav-link" to="/aboutus">
+                    <NavLink className="nav-link" to="/home">
                       Download
                     </NavLink>
                   </NavItem>
@@ -89,17 +182,23 @@ class AccountOverview extends Component {
                     <UncontrolledDropdown nav inNavbar>
                       <DropdownToggle nav caret className="seperator">
                         <img
+                          alt=""
                           className="Profile"
                           src="https://4.bp.blogspot.com/_R0Rc6mb8H6E/S1TTZJCtq8I/AAAAAAAAC9A/a50aYOK5o0o/s320/design-fetish-no-photo-facebook-1.jpg"
                         />
                         Profile
                       </DropdownToggle>
-                      <DropdownMenu className={accLogStyleParent} right>
-                        <DropdownItem className={accChild}>
-                          Account
-                          {' '}
+                      <DropdownMenu className="StaticNav" right>
+                        <DropdownItem className="StaticNavChild1Container">
+                          <NavLink
+                            className="StaticNavChild1"
+                            to="accountoverview">
+                            Account
+                          </NavLink>{" "}
                         </DropdownItem>
-                        <DropdownItem className={logChild}>LogOut</DropdownItem>
+                        <DropdownItem className="StaticNavChild2">
+                          LogOut
+                        </DropdownItem>
                       </DropdownMenu>
                     </UncontrolledDropdown>
                   </NavItem>
@@ -109,16 +208,15 @@ class AccountOverview extends Component {
           </div>
         </div>
         <div className="AccountOverviewBody">
-          <FreeJumbotron />
-          <PremiumJumbotron />
-          <div className="container">
-            <div className="row">
+          {showJumbotron}
+          <div className="container InfoContainer">
+            <div className="row InfoContainerRow">
               <div className="col-sm-12 col-md-12 col-lg-4 Linkers">
                 <div className="sidebar">
                   <Link to="/" className="AppearBig">
                     <i className="fa fa-snapchat-ghost" aria-hidden="true" />
                   </Link>
-                  <Link to="/" className="active">
+                  <Link to="/accountoverview" className="active">
                     <i className="fa fa-home" />
                     Account overview
                   </Link>
@@ -126,7 +224,7 @@ class AccountOverview extends Component {
                     <i className="fa fa-edit" />
                     Edit profile
                   </Link>
-                  <Link to="/" href="#contact">
+                  <Link to="/changePassword" href="#contact">
                     <i className="fa fa-lock" />
                     Change password
                   </Link>
@@ -147,33 +245,9 @@ class AccountOverview extends Component {
                 <div className="row">
                   <h3 className="SmallHeader">Profile</h3>
                 </div>
-                <div className="row">
-                  <div className="col Content1">
-                    <h5>Username</h5>
-                  </div>
-                  <div className="col Content2">
-                    <h5>Shesho123</h5>
-                  </div>
-                </div>
-                <hr />
-                <div className="row">
-                  <div className="col Content1">
-                    <h5>Email</h5>
-                  </div>
-                  <div className="col Content2">
-                    <h5>ahmedhashish@ymail.com</h5>
-                  </div>
-                </div>
-                <hr />
-                <div className="row">
-                  <div className="col Content1">
-                    <h5>Date of birth</h5>
-                  </div>
-                  <div className="col Content2">
-                    <h5>7/23/98</h5>
-                  </div>
-                </div>
-                <hr />
+
+                <div>{UserData}</div>
+
                 <div className="row">
                   <div className="col Content1">
                     <h5>Country</h5>
@@ -184,23 +258,27 @@ class AccountOverview extends Component {
                 </div>
                 <hr />
                 <div className="row">
-                  <button className="EditProfile" color="success">
+                  <button
+                    onClick={this.state.nullID}
+                    className="EditProfile"
+                    color="success">
                     EDIT PROFILE
                   </button>
                 </div>
                 <div className="row">
                   <h3 className="SmallHeader2">Your plan</h3>
                 </div>
-                <FreePlan />
-                <PremiumPlan />
+                {showPlan}
                 <div className="row">
                   <Button className="EditProfile" color="success">
-                    JOIN PREMIUM
+                    <NavLink className="InsideEditProfile" to="premium">
+                      JOIN PREMIUM
+                    </NavLink>
                   </Button>
                 </div>
                 <div className="row">
                   <Button className="EditProfile" color="success">
-                    SIGN OUT EVERYWHERE
+                    SIGN OUT
                   </Button>
                 </div>
               </div>
@@ -268,20 +346,17 @@ class AccountOverview extends Component {
                 <div className="col-sm-12 col-md-12 col-lg-4 icons">
                   <a
                     className="btn btn-social-icon btn-instagram"
-                    href="https://www.instagram.com/spotify/?hl=en"
-                  >
+                    href="https://www.instagram.com/spotify/?hl=en">
                     <i className="fa fa-instagram" />
                   </a>
                   <a
                     className="btn btn-social-icon btn-twitter"
-                    href="https://twitter.com/Spotify?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
-                  >
+                    href="https://twitter.com/Spotify?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
                     <i className="fa fa-twitter" />
                   </a>
                   <a
                     className="btn btn-social-icon btn-facebook"
-                    href="https://www.facebook.com/Spotify/"
-                  >
+                    href="https://www.facebook.com/Spotify/">
                     <i className="fa fa-facebook" />
                   </a>
                 </div>

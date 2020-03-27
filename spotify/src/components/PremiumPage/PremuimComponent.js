@@ -1,74 +1,86 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   Navbar,
   NavbarBrand,
   Jumbotron,
-  Media,
   Nav,
   NavItem,
   NavbarToggler,
   Collapse,
   Row,
-  Form,
   Col,
-  FormGroup,
   Modal,
-  ModalBody,
   ModalHeader,
+  ModalBody,
+  ModalFooter,
   UncontrolledDropdown,
   DropdownMenu,
   DropdownItem,
   Button,
-  Label,
-  Input,
-  DropdownToggle,
-} from 'reactstrap';
-import { Divider } from '@material-ui/core';
+  DropdownToggle
+} from "reactstrap";
+import "./PremiumComponent.css";
+import IdObj from "../../Global";
 
-import { NavLink } from 'react-router-dom';
-
+import { NavLink } from "react-router-dom";
 
 class Premium extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isNavOpen: false,
+      modal: false,
       isModalOpen: false,
       collapsed: true,
       Premium: false,
+      tempId: ""
     };
     this.state.toggleNav = this.toggleNav.bind(this);
+    this.togglemodal = this.togglemodal.bind(this);
     this.handlePremium = this.handlePremium.bind(this);
   }
 
+  togglemodal() {
+    const Temp = !this.state.modal;
+    this.setState({ modal: Temp });
+  }
+
   handlePremium() {
-    this.setState({ Premium: true });
-    const post = {
-      Premium: true,
-      id: 2,
-    };
-    this.props.PremiumPost(post);
+    // this.setState({
+    //   tempId: this.props.id.id.length + 1
+    // });
+    // alert(this.state.tempId);
+    // this.props.PremiumPost({ Premium: true });
+    // this.setState({ Premium: true });
+    // const post = {
+    //   Premium: true,
+    //   id: this.state.tempId
+    // };
+    // this.props.PremiumPost(post);
+    // alert(this.props.id.id.length + 1);
+    this.props.PremiumPost(this.props.id.id);
+    this.togglemodal();
   }
 
   toggleNav() {
     this.setState({
       isNavOpen: !this.state.isNavOpen,
-      collapsed: !this.state.collapsed,
+      collapsed: !this.state.collapsed
     });
   }
 
   render() {
-    let accLogStyleParent = '';
-    let accChild = '';
-    let logChild = '';
+    let accLogStyleParent = "";
+    let accChild = "";
+    let logChild = "";
     if (this.state.isNavOpen) {
-      accLogStyleParent = 'OpenNav';
-      accChild = 'OpenNavChild';
-      logChild = 'OpenNavChild';
+      accLogStyleParent = "OpenNav";
+      accChild = "OpenNavChild";
+      logChild = "OpenNavChild";
     } else {
-      accLogStyleParent = 'CloseNav';
-      accChild = 'CloseNavChild1';
-      logChild = 'CloseNavChild2';
+      accLogStyleParent = "CloseNav";
+      accChild = "CloseNavChild1";
+      logChild = "CloseNavChild2";
     }
     return (
       <div>
@@ -85,8 +97,7 @@ class Premium extends Component {
               </NavbarBrand>
               <NavbarToggler
                 className="NavBarToggle"
-                onClick={this.state.toggleNav}
-              >
+                onClick={this.state.toggleNav}>
                 ☰
               </NavbarToggler>
 
@@ -94,7 +105,7 @@ class Premium extends Component {
                 <Nav navbar className="ml-auto">
                   <NavItem>
                     <NavLink className="nav-link" to="/home">
-                      Premium
+                      Home
                     </NavLink>
                   </NavItem>
                   <NavItem>
@@ -112,6 +123,7 @@ class Premium extends Component {
                     <UncontrolledDropdown nav inNavbar>
                       <DropdownToggle nav caret className="seperator">
                         <img
+                          alt=""
                           className="Profile"
                           src="https://4.bp.blogspot.com/_R0Rc6mb8H6E/S1TTZJCtq8I/AAAAAAAAC9A/a50aYOK5o0o/s320/design-fetish-no-photo-facebook-1.jpg"
                         />
@@ -119,8 +131,7 @@ class Premium extends Component {
                       </DropdownToggle>
                       <DropdownMenu className={accLogStyleParent} right>
                         <DropdownItem className={accChild}>
-                          Account
-                          {' '}
+                          <NavLink to="/accountoverview">Account</NavLink>
                         </DropdownItem>
                         <DropdownItem className={logChild}>LogOut</DropdownItem>
                       </DropdownMenu>
@@ -138,20 +149,33 @@ class Premium extends Component {
             </div>
             <div>
               <h2 className="Header2">
-                Just EGP49.99/month after. Cancel anytime.
+                Just EGP&nbsp;49.99/month after. Cancel anytime.
               </h2>
             </div>
           </div>
-          <Button
-            onClick={this.handlePremium}
-            model="submit"
-            className="signupbtn"
-          >
-            Get Premium
-          </Button>
+          <p>
+            <Button className="signupbtn" onClick={this.togglemodal}>
+              Get Premium
+            </Button>
+            <Modal isOpen={this.state.modal}>
+              <ModalHeader>Claiming Premium</ModalHeader>
+              <ModalBody>
+                Pay 5 EGP please for claiming your Premium account
+              </ModalBody>
+              <ModalFooter>
+                <Button color="primary" onClick={this.handlePremium}>
+                  Claim{" "}
+                </Button>{" "}
+                <Button color="secondary" onClick={this.togglemodal}>
+                  Cancel
+                </Button>
+              </ModalFooter>
+            </Modal>
+          </p>
         </Jumbotron>
+
         <article>
-          <h1>Why Go Premium?</h1>
+          <h1 className="PremiumMargin">Why Go Premium?</h1>
           <br />
           <br />
           <br />
@@ -167,19 +191,18 @@ class Premium extends Component {
               <p>Listen AnyWhere.</p>
             </Col>
             <Col>
-              {' '}
+              {" "}
               <img
                 src="assets/images/SecondIcon.png"
                 height="142"
                 width="142"
                 alt=""
-              />
-              {' '}
+              />{" "}
               <h5 className="mt-0">No Ad Interruptions.</h5>
               <p>Enjoy NonStop Music.</p>
             </Col>
             <Col>
-              {' '}
+              {" "}
               <img
                 src="assets/images/ThirdIcon.png"
                 height="142"
@@ -190,14 +213,13 @@ class Premium extends Component {
               <p>Even on mobile.</p>
             </Col>
             <Col>
-              {' '}
+              {" "}
               <img
                 src="assets/images/fourthIcon.png"
                 height="142"
                 width="142"
                 alt=""
-              />
-              {' '}
+              />{" "}
               <h5 className="mt-0">Unlimited Skips.</h5>
               <p>Just hit next.</p>
             </Col>
@@ -207,7 +229,7 @@ class Premium extends Component {
           <h3>Spotify Premium</h3>
           <h2>EGP49.99/Month</h2>
           <hr className="my-2" />
-          <h5 style={{ padding: '20px', textAlign: 'left' }}>
+          <h5 style={{ padding: "20px", textAlign: "left" }}>
             <li>Play Any Song.</li>
             <li>Listen Offline.</li>
             <li>No ad interruptions.</li>
@@ -215,12 +237,11 @@ class Premium extends Component {
             <li>High Audio Quality.</li>
           </h5>
           <hr className="my-2" />
-          <p className="lead">
+          <p>
             <Button
               model="submit"
               className="signupbtn"
-              onClick={this.handlePremium}
-            >
+              onClick={this.togglemodal}>
               Get Premium
             </Button>
           </p>

@@ -134,6 +134,10 @@
     margin-right: 10px;
   }
   
+  div.AccountOverviewNav nav.NavBar.NavStyle{
+    text-align: left;
+  }
+
   div.AccountOverviewNav div.container .nav-link {
     color: white;
     margin-left: 20px;
@@ -162,27 +166,25 @@
     color: #1ed760;
     background-color: black;
   }
-  
-  div.AccountOverviewNav div.container .CloseNav {
-    background-color: white;
+
+  div.AccountOverviewNav div.container .StaticNav,
+  div.AccountOverviewNav div.container .StaticNav .StaticNavChild1Container{
+    background-color: white;  
+  }
+
+  div.AccountOverviewNav div.container .StaticNav .StaticNavChild1{
+    color: black;  
   }
   
-  div.AccountOverviewNav div.container .CloseNav .CloseNavChild1{
-    color: rgb(0, 0, 0);
-  }
-  
-  div.AccountOverviewNav div.container .CloseNav .CloseNavChild1:hover {
-    color: #1ed760;
-    background-color: white;
-  }
-  
-  div.AccountOverviewNav div.container .CloseNav .CloseNavChild2{
+  div.AccountOverviewNav div.container .StaticNav .StaticNavChild2{
     color: grey;
   }
   
-  div.AccountOverviewNav div.container .CloseNav .CloseNavChild2:hover {
+  div.AccountOverviewNav div.container .StaticNav .StaticNavChild1:hover,
+  div.AccountOverviewNav div.container .StaticNav .StaticNavChild2:hover{
     color: #1ed760;
     background-color: white;
+    text-decoration:none;
   }
   
   .NavBarToggle {
@@ -198,21 +200,46 @@
     cursor: pointer;
     margin-right: 50px;
   }
+
+  @media(max-width: 768px){
+
+    div.AccountOverviewNav div.container .StaticNav {
+      background-color: black;
+    }
+
+    div.AccountOverviewNav div.container .StaticNav .StaticNavChild1,
+    div.AccountOverviewNav div.container .StaticNav .StaticNavChild2{
+      color: rgb(94, 91, 91);
+      background-color: black;
+    }
+
+    div.AccountOverviewNav div.container .StaticNav .StaticNavChild1:hover,
+    div.AccountOverviewNav div.container .StaticNav .StaticNavChild2:hover{
+    color: #1ed760;
+    background-color: black;
+    text-decoration:none;
+  }
+  }
   /***************************************************Nav Bar***************************************************/
   /***************************************************Body***************************************************/
   /***************************************************Jumbotron***************************************************/
   .AccountOverviewBody {
     background: #222326; /*for browsers that don't support gradient*/
-    background: -webkit-linear-gradient(rgb(37, 75, 129),#222326); /*for safari and chrome*/
-    background: -o-linear-gradient(rgb(37, 75, 129),#222326); /*for opera*/
-    background: -moz-linear-gradient(rgb(37, 75, 129),#222326); /*for firefox*/
-    background: linear-gradient(rgb(37, 75, 129),#222326); /*standard syntax*/
+    background: -webkit-linear-gradient(rgb(47, 58, 75),#222326); /*for safari and chrome*/
+    background: -o-linear-gradient(rgb(47, 58, 75),#222326); /*for opera*/
+    background: -moz-linear-gradient(rgb(47, 58, 75),#222326); /*for firefox*/
+    background: linear-gradient(rgb(47, 58, 75),#222326); /*standard syntax*/
   }
   
-  .AccountOverviewBody div.jumbotron{
-    margin-left: 7%;
-    margin-right: 7%;
+  .AccountOverviewBody{
+    padding-left:7%;
+    padding-right:7%;
+  }
+
+  .AccountOverviewBody div.AccountOverviewBodyJumbo.jumbotron{  
+    margin-bottom: 0;
     padding-bottom: 0;  
+    text-align: left;
     background: #222326; /*for browsers that don't support gradient*/
     background: -webkit-linear-gradient(rgb(1, 31, 73),#000000); /*for safari and chrome*/
     background: -o-linear-gradient(rgb(1, 31, 73),#000000); /*for opera*/
@@ -221,9 +248,8 @@
   }
   
   @media(max-width: 1000px){
-    .AccountOverviewBody div.AccountOverviewBodyJumbo{
-      margin:0;
-      padding-bottom: 0;  
+    .AccountOverviewBody{
+      padding:0;
     }
   }
   
@@ -287,11 +313,31 @@
     box-sizing: border-box;
     margin-bottom:2em;
   }
-  
+
+  .AccountOverviewBody a.UnderParagraph {
+    color:white;
+  }
+
   .AccountOverviewBody Button.UnderParagraph:hover {
     transform: scale(1.04);
   }
+
+  .AccountOverviewBody a.UnderParagraph:hover {
+    text-decoration:none;
+  }
   /***************************************************Jumbotron***************************************************/
+  /***************************************************Sidebar & Sidebar Content Container*************************/
+  div.container.InfoContainer{
+    padding:0;
+    margin:0;
+    max-width:100%;
+  }
+
+  div.row.InfoContainerRow{
+    margin:0;
+  }
+  /***************************************************Sidebar & Sidebar Content Container************************/
+  /***************************************************Sidebar***************************************************/
   /***************************************************Sidebar***************************************************/
   .AccountOverviewBody .container .Linkers{
     padding:0;
@@ -414,11 +460,7 @@
     .AccountOverviewBody .sidebar .AppearBig{
      display: none;
     }
-    .AccountOverviewBody .container .EditProfile:hover{
-      transform: scale(3);
-      border: 2px solid #18191a;
-      color:red;
-    }
+   
   }
   /***************************************************Sidebar***************************************************/
   /***************************************************Sidebar Content***************************************************/
@@ -504,11 +546,19 @@
     box-sizing: border-box;
     margin-bottom:3em;
   }
-  
+
+  .AccountOverviewBody .container a.InsideEditProfile{
+    color:#b1b4b6;
+  }
+
   .AccountOverviewBody .container .EditProfile:hover{
     transform: scale(1.04);
     border: 2px solid #18191a;
     color:#18191a;
+  }
+
+  .AccountOverviewBody .container a.InsideEditProfile:hover{
+    text-decoration:none;
   }
   
   @media screen and (max-width: 992px) {
