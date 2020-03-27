@@ -20,7 +20,6 @@ import {
   DropdownToggle
 } from "reactstrap";
 import "./PremiumComponent.css";
-import IdObj from "../../Global";
 
 import { NavLink, Redirect } from "react-router-dom";
 

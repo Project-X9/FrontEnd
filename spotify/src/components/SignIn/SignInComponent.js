@@ -187,7 +187,7 @@ class SignIn extends Component {
     let redirect = null;
     if (this.state.isSuccessful === true) {
       this.props.handleLoginId(this.state.loginId);
-      redirect = <Redirect to="/accountoverview"></Redirect>;
+      redirect = <Redirect to="/account/overview"></Redirect>;
     }
     if (this.state.ifExist === false) {
       redirect = <Redirect to="/signup"></Redirect>;
