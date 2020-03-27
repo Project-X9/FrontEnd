@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: SignUp</title>
+    <title>JSDoc: Class: SignIn</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: SignUp</h1>
+    <h1 class="page-title">Class: SignIn</h1>
 
     
 
@@ -28,9 +28,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>SignUp<span class="signature">(props)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>SignIn<span class="signature">(props)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description"><p>Sign Up Page</p></div>
+            <div class="class-description"><p>Sign In Class</p></div>
         
     
 </header>
@@ -45,7 +45,7 @@
     
 
     
-    <h4 class="name" id="SignUp"><span class="type-signature"></span>new SignUp<span class="signature">(props)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="SignIn"><span class="type-signature"></span>new SignIn<span class="signature">(props)</span><span class="type-signature"></span></h4>
     
 
     
@@ -127,10 +127,15 @@
 
         <tr>
             
-                <td class="name"><code>postFeedback</code></td>
+                <td class="name"><code>resetSignInForm</code></td>
             
 
             <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
             
             </td>
 
@@ -138,25 +143,7 @@
 
             
 
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>resetFeedbackForm</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
+            <td class="description last"><p>clears the inputs in the login form</p></td>
         </tr>
 
     
@@ -204,7 +191,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SignUp_SignUpComponent.js.html">SignUp/SignUpComponent.js</a>, <a href="SignUp_SignUpComponent.js.html#line35">line 35</a>
+        <a href="SignIn_SignInComponent.js.html">SignIn/SignInComponent.js</a>, <a href="SignIn_SignInComponent.js.html#line19">line 19</a>
     </li></ul></dd>
     
 
@@ -254,7 +241,7 @@
 
         
             
-<h4 class="name" id="handleEmailChange"><span class="type-signature"></span>handleEmailChange<span class="type-signature"></span></h4>
+<h4 class="name" id="handleChange"><span class="type-signature"></span>handleChange<span class="type-signature"></span></h4>
 
 
 
@@ -299,7 +286,7 @@ field of email to be able to check the email in the confirm email</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SignUp_SignUpComponent.js.html">SignUp/SignUpComponent.js</a>, <a href="SignUp_SignUpComponent.js.html#line116">line 116</a>
+        <a href="SignIn_SignInComponent.js.html">SignIn/SignInComponent.js</a>, <a href="SignIn_SignInComponent.js.html#line161">line 161</a>
     </li></ul></dd>
     
 
@@ -317,13 +304,13 @@ field of email to be able to check the email in the confirm email</p>
 
         
             
-<h4 class="name" id="handleExcistance"><span class="type-signature"></span>handleExcistance<span class="type-signature"></span></h4>
+<h4 class="name" id="handleEmail"><span class="type-signature"></span>handleEmail<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <p>Function to test the excistance of the email</p>
+    <p>Responsible for returning the email of the logged in user ID.</p>
 </div>
 
 
@@ -361,7 +348,317 @@ field of email to be able to check the email in the confirm email</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SignUp_SignUpComponent.js.html">SignUp/SignUpComponent.js</a>, <a href="SignUp_SignUpComponent.js.html#line102">line 102</a>
+        <a href="SignIn_SignInComponent.js.html">SignIn/SignInComponent.js</a>, <a href="SignIn_SignInComponent.js.html#line134">line 134</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="handleId"><span class="type-signature"></span>handleId<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Responsible for receiving the email entered in the sign in form and checking if the email exists in the database.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="SignIn_SignInComponent.js.html">SignIn/SignInComponent.js</a>, <a href="SignIn_SignInComponent.js.html#line117">line 117</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="handleLogin"><span class="type-signature"></span>handleLogin<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Responsible for receiving the values entered in the sign in form and checking if the email exists in the database and sets the loginId with the ID that matched the email entered then sets state for parameters for successful login or if login failed.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="SignIn_SignInComponent.js.html">SignIn/SignInComponent.js</a>, <a href="SignIn_SignInComponent.js.html#line86">line 86</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="handlePassword"><span class="type-signature"></span>handlePassword<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Responsible for finding if the loginId exists in the database or not</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="SignIn_SignInComponent.js.html">SignIn/SignInComponent.js</a>, <a href="SignIn_SignInComponent.js.html#line41">line 41</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="handleUser"><span class="type-signature"></span>handleUser<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Responsible for returning a subset of the data of the logged in user to be stored in a global object</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="SignIn_SignInComponent.js.html">SignIn/SignInComponent.js</a>, <a href="SignIn_SignInComponent.js.html#line54">line 54</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="handleuUserName"><span class="type-signature"></span>handleuUserName<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Responsible for returning the username of the logged in user ID.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="SignIn_SignInComponent.js.html">SignIn/SignInComponent.js</a>, <a href="SignIn_SignInComponent.js.html#line147">line 147</a>
     </li></ul></dd>
     
 
@@ -382,147 +679,6 @@ field of email to be able to check the email in the confirm email</p>
 
     
         <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="handleSubmit"><span class="type-signature"></span>handleSubmit<span class="signature">(values)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p>This function takes the data fromthe input fields and assure that the all
-the data is not empty (don't make the validations) and if all the data required is
-avaliable it gives the data to the function (PostFeedback) to post the data to the
-server and resets the input fields using resetFeedBack form and also state the submitted
-state to true to be redirected to the next page.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>values</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SignUp_SignUpComponent.js.html">SignUp/SignUpComponent.js</a>, <a href="SignUp_SignUpComponent.js.html#line56">line 56</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         
             
@@ -582,7 +738,7 @@ state to true to be redirected to the next page.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SignUp_SignUpComponent.js.html">SignUp/SignUpComponent.js</a>, <a href="SignUp_SignUpComponent.js.html#line145">line 145</a>
+        <a href="SignIn_SignInComponent.js.html">SignIn/SignInComponent.js</a>, <a href="SignIn_SignInComponent.js.html#line186">line 186</a>
     </li></ul></dd>
     
 
@@ -636,8 +792,7 @@ state to true to be redirected to the next page.</p>
 
 
 <div class="description">
-    <p>This function recieves the responce of the facebook login and uses the same functions i used in handleSubmit to
-post the users data and set Submitted to true to be redirected</p>
+    <p>This function recieves the responce of the facebook login and uses the same functions i used to check if the email is in the users database or not and redirect to sign up if it doesnt exist</p>
 </div>
 
 
@@ -689,7 +844,7 @@ post the users data and set Submitted to true to be redirected</p>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>the facebook response with name image and email</p></td>
         </tr>
 
     
@@ -730,7 +885,7 @@ post the users data and set Submitted to true to be redirected</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SignUp_SignUpComponent.js.html">SignUp/SignUpComponent.js</a>, <a href="SignUp_SignUpComponent.js.html#line127">line 127</a>
+        <a href="SignIn_SignInComponent.js.html">SignIn/SignInComponent.js</a>, <a href="SignIn_SignInComponent.js.html#line170">line 170</a>
     </li></ul></dd>
     
 
