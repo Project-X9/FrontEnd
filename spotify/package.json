@@ -33,7 +33,6 @@
     "eject": "react-scripts eject",
     "lint": "eslint ./src/**",
     "docs": "./node_modules/.bin/jsdoc -c jsdoc.json"
-
   },
   "eslintConfig": {
     "extends": "react-app"

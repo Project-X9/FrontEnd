@@ -50,24 +50,7 @@
       "sex": "male",
       "date": "2020-03-24T16:59:05.166Z",
       "premium": false,
-<<<<<<< HEAD
-      "id": 44
-    },
-    {
-      "email": "amrmohamedalialiali@yahoo.com",
-      "confirmemail": "amrmohamedalialiali@yahoo.com",
-      "password": "147852369",
-      "name": "Amr",
-      "day": "15",
-      "month": "July",
-      "year": "1997",
-      "sex": "male",
-      "date": "2020-03-24T14:33:52.552Z",
-      "premium": false,
-      "id": 45
-=======
       "id": 4
->>>>>>> ce8190000fdc532111dc6ce8d723038c2ce816c3
     }
   ]
 }

@@ -22,7 +22,7 @@ import {
 import "./PremiumComponent.css";
 import IdObj from "../../Global";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 
 class Premium extends Component {
   constructor(props) {
@@ -33,33 +33,41 @@ class Premium extends Component {
       isModalOpen: false,
       collapsed: true,
       Premium: false,
-      tempId: ""
+      tempId: this.props.id.id
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.togglemodal = this.togglemodal.bind(this);
-    this.handlePremium = this.handlePremium.bind(this);
+    this.handlePremiumT = this.handlePremiumT.bind(this);
+    this.handlePremiumF = this.handlePremiumF.bind(this);
   }
 
+  handleData = () => {
+    let temp;
+    this.props.data.data.map(data => {
+      if (data.id === this.props.id.id) {
+        temp = data.premium;
+      }
+    });
+    this.setState({ Premium: temp });
+    return temp;
+  };
   togglemodal() {
+    const Checker = this.handleData();
     const Temp = !this.state.modal;
     this.setState({ modal: Temp });
   }
 
-  handlePremium() {
-    // this.setState({
-    //   tempId: this.props.id.id.length + 1
-    // });
-    // alert(this.state.tempId);
-    // this.props.PremiumPost({ Premium: true });
-    // this.setState({ Premium: true });
-    // const post = {
-    //   Premium: true,
-    //   id: this.state.tempId
-    // };
-    // this.props.PremiumPost(post);
-    // alert(this.props.id.id.length + 1);
-    this.props.PremiumPost(this.props.id.id);
-    this.togglemodal();
+  handlePremiumT() {
+    if (this.state.Premium === false) {
+      this.props.PremiumPost(this.props.id.id, true);
+      this.togglemodal();
+    }
+  }
+  handlePremiumF() {
+    if (this.state.Premium === true) {
+      this.props.PremiumPost(this.props.id.id, false);
+      this.togglemodal();
+    }
   }
 
   toggleNav() {
@@ -70,6 +78,11 @@ class Premium extends Component {
   }
 
   render() {
+    let forRedirect = "";
+    if (this.props.id.id === "") {
+      forRedirect = <Redirect to="/signup" />;
+    }
+
     let accLogStyleParent = "";
     let accChild = "";
     let logChild = "";
@@ -97,7 +110,8 @@ class Premium extends Component {
               </NavbarBrand>
               <NavbarToggler
                 className="NavBarToggle"
-                onClick={this.state.toggleNav}>
+                onClick={this.state.toggleNav}
+              >
                 ☰
               </NavbarToggler>
 
@@ -163,9 +177,20 @@ class Premium extends Component {
                 Pay 5 EGP please for claiming your Premium account
               </ModalBody>
               <ModalFooter>
-                <Button color="primary" onClick={this.handlePremium}>
+                <Button
+                  hidden={this.state.Premium}
+                  color="primary"
+                  onClick={this.handlePremiumT}
+                >
                   Claim{" "}
-                </Button>{" "}
+                </Button>
+                <Button
+                  hidden={!this.state.Premium}
+                  color="primary"
+                  onClick={this.handlePremiumF}
+                >
+                  Cancel Premium{" "}
+                </Button>
                 <Button color="secondary" onClick={this.togglemodal}>
                   Cancel
                 </Button>
@@ -241,7 +266,8 @@ class Premium extends Component {
             <Button
               model="submit"
               className="signupbtn"
-              onClick={this.togglemodal}>
+              onClick={this.togglemodal}
+            >
               Get Premium
             </Button>
           </p>

@@ -41,8 +41,8 @@ const mapDispatchToProps = dispatch => ({
   GetPassword: id => dispatch(GetPassword(id)),
   getEmail: id => dispatch(getEmail(id)),
   getPassword: id => dispatch(getPassword(id)),
-  PremiumPost: id => dispatch(PremiumPost(id)),
-  handleLoginId: (id) => dispatch(handleLoginId(id)),
+  PremiumPost: (id, isPremium) => dispatch(PremiumPost(id, isPremium)),
+  handleLoginId: id => dispatch(handleLoginId(id)),
   postFeedback: (email, confirmemail, password, name, day, month, year, sex) =>
     dispatch(
       postFeedback(email, confirmemail, password, name, day, month, year, sex)
@@ -102,6 +102,7 @@ class Main extends Component {
               <PremiumComponent
                 PremiumPost={this.props.PremiumPost}
                 id={this.props.id}
+                data={this.props.data}
               />
             )}
           />
