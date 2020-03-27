@@ -7,15 +7,7 @@ const validUserName = val =>
   /^[a-zA-Z0-9_.-]*$/.test(val) ||
   /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 const required = val => val && val.length;
-/**
- * Sign In Class
- */
 class SignIn extends Component {
-  /**
-   *
-   * @param {Object} props
-   * @param {Function} props.resetSignInForm clears the inputs in the login form
-   */
   constructor(props) {
     super(props);
     this.state = {
@@ -34,10 +26,6 @@ class SignIn extends Component {
     this.handleUser = this.handleUser.bind(this);
     this.handleuUserName = this.handleuUserName.bind(this);
   }
-  /**
-   * Responsible for finding if the loginId exists in the database or not
-   * @returns the found Id, either null or if it was found.
-   */
   handlePassword = () => {
     let temp;
     this.props.data.data.map(data => {
@@ -47,10 +35,6 @@ class SignIn extends Component {
     });
     return temp;
   };
-  /**
-   * Responsible for returning a subset of the data of the logged in user to be stored in a global object
-   * @returns subset of the user data, without the password
-   */
   handleUser = () => {
     let temp;
     let temp2;
@@ -79,10 +63,6 @@ class SignIn extends Component {
   //   IdObj.month = user.month;
   //   IdObj.day = user.day;
   // };
-  /**
-   * Responsible for receiving the values entered in the sign in form and checking if the email exists in the database and sets the loginId with the ID that matched the email entered then sets state for parameters for successful login or if login failed.
-   * @param {Object} values
-   */
   handleLogin = values => {
     this.props.resetSignInForm();
     let userId = this.handleId(values.email);
@@ -109,11 +89,6 @@ class SignIn extends Component {
       }
     );
   };
-  /**
-   * Responsible for receiving the email entered in the sign in form and checking if the email exists in the database.
-   * @param {String} email
-   * @returns Id for existing email.
-   */
   handleId = email => {
     let temp;
     this.props.data.data.map(data => {
@@ -127,10 +102,6 @@ class SignIn extends Component {
     });
     return temp;
   };
-  /**
-   * Responsible for returning the email of the logged in user ID.
-   * @returns email.
-   */
   handleEmail = () => {
     let temp;
     this.props.data.data.map(data => {
@@ -140,10 +111,6 @@ class SignIn extends Component {
     });
     return temp;
   };
-  /**
-   * Responsible for returning the username of the logged in user ID.
-   * @returns username.
-   */
   handleuUserName = () => {
     let temp;
     this.props.data.data.map(data => {
@@ -153,20 +120,11 @@ class SignIn extends Component {
     });
     return temp;
   };
-  /**
-   * This function set the this.state.email with the value the user fill in the input
-   * field of email to be able to check the email in the confirm email
-   * @param {Event} event
-   */
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
   };
-  /**
-   * This function recieves the responce of the facebook login and uses the same functions i used to check if the email is in the users database or not and redirect to sign up if it doesnt exist
-   * @param {Response} response the facebook response with name image and email
-   */
   responseFacebook(response) {
     if (response.status !== "unknown") {
       this.props.resetSignInForm();
@@ -176,13 +134,9 @@ class SignIn extends Component {
           this.setState({ ifExist: false, isSuccessful: null });
         else this.setState({ ifExist: true, isSuccessful: true });
       });
-    } else this.setState({ ifExist: false, isSuccessful: null });
+    }
   }
 
-  /**
-   * Responsible for showing everything on the Sign Up page
-   * @returns Components that will be displayed on the page
-   */
   render() {
     let redirect = null;
     if (this.state.isSuccessful === true) {
