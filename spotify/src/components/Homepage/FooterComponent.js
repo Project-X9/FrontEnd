@@ -1,7 +1,11 @@
 import React from "react";
 import "./Footer.css";
 import { Link } from "react-router-dom";
+/**Footer component of the main page, contains the necessary navigations and links */
 function Footer(props) {
+  /**
+   * @return Returns a footer component with the needed links to be used anywhere
+   */
   return (
     <div className="AccountOverviewFooter">
       <div className="container">
