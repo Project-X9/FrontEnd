@@ -1,4 +1,32 @@
-import React, { Component } from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: SignIn/SignInComponent.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: SignIn/SignInComponent.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from "react";
 import { Col, Button, Row } from "reactstrap";
 import { Control, Form, Errors } from "react-redux-form";
 import { Link, Redirect } from "react-router-dom";
@@ -6,7 +34,7 @@ import FacebookLogin from "react-facebook-login";
 const validUserName = val =>
   /^[a-zA-Z0-9_.-]*$/.test(val) ||
   /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
-const required = val => val && val.length;
+const required = val => val &amp;&amp; val.length;
 /**
  * Sign In Class
  */
@@ -118,7 +146,7 @@ class SignIn extends Component {
     let temp;
     this.props.data.data.map(data => {
       if (data.email === email || data.name === email) {
-        for (let index = 0; index < data.id + 1; index++) {
+        for (let index = 0; index &lt; data.id + 1; index++) {
           if (index === data.id) {
             temp = index;
           }
@@ -187,55 +215,55 @@ class SignIn extends Component {
     let redirect = null;
     if (this.state.isSuccessful === true) {
       this.props.handleLoginId(this.state.loginId);
-      redirect = <Redirect to="/accountoverview"></Redirect>;
+      redirect = &lt;Redirect to="/accountoverview">&lt;/Redirect>;
     }
     if (this.state.ifExist === false) {
-      redirect = <Redirect to="/signup"></Redirect>;
+      redirect = &lt;Redirect to="/signup">&lt;/Redirect>;
     }
     return (
-      <div className="container signin">
+      &lt;div className="container signin">
         {" "}
         {redirect}
-        <div className="row somepadding">
-          <Col xs={12} md={{ size: 6, offset: 3 }}>
-            <Link to="/home">
-              <img
+        &lt;div className="row somepadding">
+          &lt;Col xs={12} md={{ size: 6, offset: 3 }}>
+            &lt;Link to="/home">
+              &lt;img
                 src="assets/images/logo2.png"
                 height="70"
                 width="230"
                 alt="spotify"
               />
-            </Link>
-            <hr />
-          </Col>
-          <Col xs={12} md={{ size: 6, offset: 3 }}>
-            <h4>To continue, log in to Spotify</h4>
-            <FacebookLogin
+            &lt;/Link>
+            &lt;hr />
+          &lt;/Col>
+          &lt;Col xs={12} md={{ size: 6, offset: 3 }}>
+            &lt;h4>To continue, log in to Spotify&lt;/h4>
+            &lt;FacebookLogin
               cssClass="facebookButton"
               appId="723287988413715"
               autoLoad={false}
               fields="name,email,picture,birthday"
               callback={this.responseFacebook}
             />
-          </Col>
-          <Col xs={12} md={{ size: 6, offset: 3 }}>
-            <strong className="line-thru">OR</strong>
-          </Col>
-          <div className="col-12">
-            <h3>Sign In with your email address or username</h3>
+          &lt;/Col>
+          &lt;Col xs={12} md={{ size: 6, offset: 3 }}>
+            &lt;strong className="line-thru">OR&lt;/strong>
+          &lt;/Col>
+          &lt;div className="col-12">
+            &lt;h3>Sign In with your email address or username&lt;/h3>
             {this.state.isSuccessful === false ? (
-              <h5 id="invalid">Invalid Username/Email or Password</h5>
+              &lt;h5 id="invalid">Invalid Username/Email or Password&lt;/h5>
             ) : (
-              <span></span>
+              &lt;span>&lt;/span>
             )}
-          </div>
-        </div>
-        <div className="row signup-field">
-          <div>
-            <Form model="login" onSubmit={values => this.handleLogin(values)}>
-              <Row className="form-group">
-                <Col xs={12} md={{ size: 6, offset: 3 }}>
-                  <Control.text
+          &lt;/div>
+        &lt;/div>
+        &lt;div className="row signup-field">
+          &lt;div>
+            &lt;Form model="login" onSubmit={values => this.handleLogin(values)}>
+              &lt;Row className="form-group">
+                &lt;Col xs={12} md={{ size: 6, offset: 3 }}>
+                  &lt;Control.text
                     onChange={this.handleChange}
                     className="form-control"
                     model=".email"
@@ -247,8 +275,8 @@ class SignIn extends Component {
                       validUserName
                     }}
                   />
-                  <Row className="ml-2">
-                    <Errors
+                  &lt;Row className="ml-2">
+                    &lt;Errors
                       className="text-danger"
                       model=".email"
                       show="touched"
@@ -258,13 +286,13 @@ class SignIn extends Component {
                         successfulLogin: "Invalid Email or Password"
                       }}
                     />
-                  </Row>
-                </Col>
-              </Row>
-              <Row className="form-group"></Row>
-              <Row className="form-group">
-                <Col xs={12} md={{ size: 6, offset: 3 }}>
-                  <Control.text
+                  &lt;/Row>
+                &lt;/Col>
+              &lt;/Row>
+              &lt;Row className="form-group">&lt;/Row>
+              &lt;Row className="form-group">
+                &lt;Col xs={12} md={{ size: 6, offset: 3 }}>
+                  &lt;Control.text
                     type="password"
                     className="form-control"
                     onChange={this.handleChange}
@@ -276,9 +304,9 @@ class SignIn extends Component {
                       required
                     }}
                   />
-                  <Row className="ml-2">
-                    <Col xs={12}>
-                      <Errors
+                  &lt;Row className="ml-2">
+                    &lt;Col xs={12}>
+                      &lt;Errors
                         className="text-danger"
                         model=".password"
                         show="touched"
@@ -287,36 +315,59 @@ class SignIn extends Component {
                           successfulLogin: "Invalid Email or Password"
                         }}
                       />
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
-              <Row className="form-group">
-                <Col xs={12} md={{ size: 6, offset: 3 }}>
-                  <Button
+                    &lt;/Col>
+                  &lt;/Row>
+                &lt;/Col>
+              &lt;/Row>
+              &lt;Row className="form-group">
+                &lt;Col xs={12} md={{ size: 6, offset: 3 }}>
+                  &lt;Button
                     model="submit"
                     className="signinbtn"
                     id="signinbutton">
                     Sign In
-                  </Button>
-                  <div id="forgot-password" name="forogot-password">
-                    <Link id="forgot-password-link" to="/changePassword">
+                  &lt;/Button>
+                  &lt;div id="forgot-password" name="forogot-password">
+                    &lt;Link id="forgot-password-link" to="/changePassword">
                       Forgot your Password?
-                    </Link>
-                  </div>
-                  <p id="text-sign-in">Don't Have an Account?</p>
-                  <Button id="signupbutton" name="signupbutton">
-                    <Link to="/signup" id="signuplink" name="signuplink">
+                    &lt;/Link>
+                  &lt;/div>
+                  &lt;p id="text-sign-in">Don't Have an Account?&lt;/p>
+                  &lt;Button id="signupbutton" name="signupbutton">
+                    &lt;Link to="/signup" id="signuplink" name="signuplink">
                       SIGN UP FOR SPOTIFY
-                    </Link>
-                  </Button>
-                </Col>
-              </Row>
-            </Form>
-          </div>
-        </div>
-      </div>
+                    &lt;/Link>
+                  &lt;/Button>
+                &lt;/Col>
+              &lt;/Row>
+            &lt;/Form>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
     );
   }
 }
 export default SignIn;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AccountOverview.html">AccountOverview</a></li><li><a href="FreeJumbotron.html">FreeJumbotron</a></li><li><a href="FreePlan.html">FreePlan</a></li><li><a href="Home.html">Home</a></li><li><a href="NavbarHome.html">NavbarHome</a></li><li><a href="Premium.html">Premium</a></li><li><a href="PremiumJumbotron.html">PremiumJumbotron</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Footer">Footer</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Fri Mar 27 2020 20:27:37 GMT+0200 (توقيت شرق أوروبا الرسمي)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
