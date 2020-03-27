@@ -23,6 +23,7 @@ class Home extends Component {
       <div className="Home">
         <NavbarHome />
         <div class="bg-pic"></div>
+        <div className="container"></div>
         <div class="row row-simplified homeContent">
           <h1>Music for everyone.</h1>
           <h4>Millions of songs. No credit card needed.</h4>
@@ -32,6 +33,9 @@ class Home extends Component {
             </button>
           </Link>
         </div>
+        <button model="submit" className="getArtistBtn">
+              claim your artist account
+        </button>
         <Footer className="homeFooter" />
       </div>
     );

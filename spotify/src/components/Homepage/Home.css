@@ -239,9 +239,38 @@
 .Home .AccountOverviewFooter{
     position: relative;
     z-index: 10;
+    margin-top: 150px;
     bottom:0;
 }
 #NavSlash:hover{
   color: #fff;
   cursor: default;
+}
+.getArtistBtn{
+  font-size: 16px;
+  margin-top: 0px;
+  line-height: 1;
+  z-index: 15;
+  position: relative;
+  background-color: rgb(245,155,35);
+  color: #fff;
+  border-radius: 500px;
+  padding: 16px 48px 18px;
+  -webkit-transition-property: background-color, border-color, color,
+    -webkit-box-shadow, -webkit-filter;
+  transition-property: background-color, border-color, color, -webkit-box-shadow,
+    -webkit-filter;
+  transition-property: background-color, border-color, color, box-shadow, filter;
+  transition-property: background-color, border-color, color, box-shadow, filter,
+    -webkit-box-shadow, -webkit-filter;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  border-width: 0;
+  letter-spacing: 2px;
+  min-width: 160px;
+  text-transform: uppercase;
+
+}
+.getArtistBtn:hover{
+  background-color: rgb(245,175,35);
 }
