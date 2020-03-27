@@ -33,7 +33,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable react/destructuring-assignment */
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Navbar,
   NavbarBrand,
@@ -45,15 +45,14 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  Button
-} from "reactstrap";
-import { NavLink, Link, Redirect } from "react-router-dom";
+  Button,
+} from 'reactstrap';
+import { NavLink, Link, Redirect } from 'react-router-dom';
 
-import FreePlan from "./FreePlan";
-import PremiumPlan from "./PremiumPlan";
-import FreeJumbotron from "./FreeJumbotron";
-import PremiumJumbotron from "./PremiumJumbotron";
-import IdObj from "../../Global";
+import FreePlan from './FreePlan';
+import PremiumPlan from './PremiumPlan';
+import FreeJumbotron from './FreeJumbotron';
+import PremiumJumbotron from './PremiumJumbotron';
 
 /**
  * Account Overview page
@@ -69,7 +68,11 @@ class AccountOverview extends Component {
     super(props);
     this.state = {
       isNavOpen: false,
+<<<<<<< HEAD
       tempId: this.props.id.id
+=======
+      tempId: this.props.id.id.length + 1,
+>>>>>>> parent of fe590ff... Added Documentation for Sign In and Tweaked Facebook Login
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.state.nullID = this.nullID.bind(this);
@@ -80,9 +83,10 @@ class AccountOverview extends Component {
    */
   toggleNav() {
     this.setState({
-      isNavOpen: !this.state.isNavOpen
+      isNavOpen: !this.state.isNavOpen,
     });
   }
+
 
   /**
    * Setting tempId to an empty string, used for testing if the user tries
@@ -91,22 +95,29 @@ class AccountOverview extends Component {
    */
   nullID() {
     this.setState({
-      tempId: ""
+      tempId: '',
     });
   }
+
 
   /**
    * Responsible for showing everything on the Account Overview page
    * @returns Components that will be displayed on the page
    */
   render() {
-    let forRedirect = "";
-    if (this.state.tempId === "") {
+    let forRedirect = '';
+    if (this.state.tempId === '') {
       forRedirect = &lt;Redirect to="/signup" />;
     }
+<<<<<<< HEAD
     const UserData = this.props.data.data.map((data) => {
       if (data.id === this.state.tempId) {
         // alert(data.premium);
+=======
+
+    const UserData = this.props.data.data.map((data) => {
+      if (data.id === this.state.tempId - 1) {
+>>>>>>> parent of fe590ff... Added Documentation for Sign In and Tweaked Facebook Login
         return (
           &lt;div key={data.id}>
             &lt;div className="row">
@@ -150,6 +161,7 @@ class AccountOverview extends Component {
         );
       }
     });
+<<<<<<< HEAD
     const showJumbotron = this.props.data.data.map(data => {
       if (data.id === this.state.tempId) {
         if (data.premium === false) {
@@ -167,6 +179,8 @@ class AccountOverview extends Component {
         return &lt;PremiumPlan />;
       }
     });
+=======
+>>>>>>> parent of fe590ff... Added Documentation for Sign In and Tweaked Facebook Login
 
     return (
       &lt;div>
@@ -184,7 +198,8 @@ class AccountOverview extends Component {
               &lt;/NavbarBrand>
               &lt;NavbarToggler
                 className="NavBarToggle"
-                onClick={this.state.toggleNav}>
+                onClick={this.state.toggleNav}
+              >
                 ☰
               &lt;/NavbarToggler>
 
@@ -218,15 +233,10 @@ class AccountOverview extends Component {
                       &lt;/DropdownToggle>
                       &lt;DropdownMenu className="StaticNav" right>
                         &lt;DropdownItem className="StaticNavChild1Container">
-                          &lt;NavLink
-                            className="StaticNavChild1"
-                            to="accountoverview">
-                            Account
-                          &lt;/NavLink>{" "}
+                          &lt;NavLink className="StaticNavChild1" to="accountoverview">Account&lt;/NavLink>
+                          {' '}
                         &lt;/DropdownItem>
-                        &lt;DropdownItem className="StaticNavChild2">
-                          LogOut
-                        &lt;/DropdownItem>
+                        &lt;DropdownItem className="StaticNavChild2">LogOut&lt;/DropdownItem>
                       &lt;/DropdownMenu>
                     &lt;/UncontrolledDropdown>
                   &lt;/NavItem>
@@ -236,7 +246,8 @@ class AccountOverview extends Component {
           &lt;/div>
         &lt;/div>
         &lt;div className="AccountOverviewBody">
-          {showJumbotron}
+          &lt;FreeJumbotron />
+          &lt;PremiumJumbotron />
           &lt;div className="container InfoContainer">
             &lt;div className="row InfoContainerRow">
               &lt;div className="col-sm-12 col-md-12 col-lg-4 Linkers">
@@ -286,22 +297,18 @@ class AccountOverview extends Component {
                 &lt;/div>
                 &lt;hr />
                 &lt;div className="row">
-                  &lt;button
-                    onClick={this.state.nullID}
-                    className="EditProfile"
-                    color="success">
+                  &lt;button onClick={this.state.nullID} className="EditProfile" color="success">
                     EDIT PROFILE
                   &lt;/button>
                 &lt;/div>
                 &lt;div className="row">
                   &lt;h3 className="SmallHeader2">Your plan&lt;/h3>
                 &lt;/div>
-                {showPlan}
+                &lt;FreePlan />
+                &lt;PremiumPlan />
                 &lt;div className="row">
                   &lt;Button className="EditProfile" color="success">
-                    &lt;NavLink className="InsideEditProfile" to="premium">
-                      JOIN PREMIUM
-                    &lt;/NavLink>
+                    &lt;NavLink className="InsideEditProfile" to="premium">JOIN PREMIUM&lt;/NavLink>
                   &lt;/Button>
                 &lt;/div>
                 &lt;div className="row">
@@ -374,17 +381,20 @@ class AccountOverview extends Component {
                 &lt;div className="col-sm-12 col-md-12 col-lg-4 icons">
                   &lt;a
                     className="btn btn-social-icon btn-instagram"
-                    href="https://www.instagram.com/spotify/?hl=en">
+                    href="https://www.instagram.com/spotify/?hl=en"
+                  >
                     &lt;i className="fa fa-instagram" />
                   &lt;/a>
                   &lt;a
                     className="btn btn-social-icon btn-twitter"
-                    href="https://twitter.com/Spotify?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
+                    href="https://twitter.com/Spotify?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+                  >
                     &lt;i className="fa fa-twitter" />
                   &lt;/a>
                   &lt;a
                     className="btn btn-social-icon btn-facebook"
-                    href="https://www.facebook.com/Spotify/">
+                    href="https://www.facebook.com/Spotify/"
+                  >
                     &lt;i className="fa fa-facebook" />
                   &lt;/a>
                 &lt;/div>
@@ -420,13 +430,21 @@ export default AccountOverview;
 </div>
 
 <nav>
+<<<<<<< HEAD
     <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AccountOverview.html">AccountOverview</a></li><li><a href="FreeJumbotron.html">FreeJumbotron</a></li><li><a href="FreePlan.html">FreePlan</a></li><li><a href="Home.html">Home</a></li><li><a href="Premium.html">Premium</a></li><li><a href="PremiumJumbotron.html">PremiumJumbotron</a></li><li><a href="SignUp.html">SignUp</a></li></ul>
+=======
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AccountOverview.html">AccountOverview</a></li><li><a href="FreeJumbotron.html">FreeJumbotron</a></li><li><a href="FreePlan.html">FreePlan</a></li><li><a href="Premium.html">Premium</a></li><li><a href="PremiumJumbotron.html">PremiumJumbotron</a></li><li><a href="SignUp.html">SignUp</a></li></ul>
+>>>>>>> parent of fe590ff... Added Documentation for Sign In and Tweaked Facebook Login
 </nav>
 
 <br class="clear">
 
 <footer>
+<<<<<<< HEAD
     Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Fri Mar 27 2020 17:42:09 GMT+0200 (EET)
+=======
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Tue Mar 24 2020 03:21:48 GMT+0200 (Eastern European Standard Time)
+>>>>>>> parent of fe590ff... Added Documentation for Sign In and Tweaked Facebook Login
 </footer>
 
 <script> prettyPrint(); </script>
