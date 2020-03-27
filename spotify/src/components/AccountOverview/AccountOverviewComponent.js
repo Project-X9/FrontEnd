@@ -19,12 +19,12 @@ import {
   DropdownItem,
   Button
 } from "reactstrap";
-import { NavLink, Link, Redirect } from "react-router-dom";
-
+import { NavLink, Link, Redirect, Switch, Route} from "react-router-dom";
 import FreePlan from "./FreePlan";
 import PremiumPlan from "./PremiumPlan";
 import FreeJumbotron from "./FreeJumbotron";
 import PremiumJumbotron from "./PremiumJumbotron";
+import ChangePass from "./ChangePassword";
 import IdObj from "../../Global";
 
 /**
@@ -41,7 +41,7 @@ class AccountOverview extends Component {
     super(props);
     this.state = {
       isNavOpen: false,
-      tempId: this.props.id.id
+      tempId: this.props.id.id,
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.state.nullID = this.nullID.bind(this);
@@ -52,7 +52,7 @@ class AccountOverview extends Component {
    */
   toggleNav() {
     this.setState({
-      isNavOpen: !this.state.isNavOpen
+      isNavOpen: !this.state.isNavOpen,
     });
   }
 
@@ -63,7 +63,7 @@ class AccountOverview extends Component {
    */
   nullID() {
     this.setState({
-      tempId: ""
+      tempId: '',
     });
   }
 
@@ -72,13 +72,20 @@ class AccountOverview extends Component {
    * @returns Components that will be displayed on the page
    */
   render() {
-    let forRedirect = "";
-    if (this.state.tempId === "") {
-      forRedirect = <Redirect to="/signup" />;
+
+    const forRedirection = ()=>{
+      alert("hi");
+      let forRedirect = "";
+      if (this.state.tempId === "") {
+        alert("Help");
+        forRedirect = <Redirect to="/signup" />;
+      }
+      alert("hi2");
     }
+
     const UserData = this.props.data.data.map((data) => {
       if (data.id === this.state.tempId) {
-        // alert(data.premium);
+        alert(this.state.tempId)
         return (
           <div key={data.id}>
             <div className="row">
@@ -140,9 +147,58 @@ class AccountOverview extends Component {
       }
     });
 
+    const showOverview = () => {
+        return (
+          <div>
+            <div className="row">
+                  <h1 className="BigHeader">Account overview</h1>
+                </div>
+                <div className="row">
+                  <h3 className="SmallHeader">Profile</h3>
+                </div>
+
+                <div>{UserData}</div>
+
+                <div className="row">
+                  <div className="col Content1">
+                    <h5>Country</h5>
+                  </div>
+                  <div className="col Content2">
+                    <h5>EG</h5>
+                  </div>
+                </div>
+                <hr />
+                <div className="row">
+                  <button
+                    onClick={this.state.nullID}
+                    className="EditProfile"
+                    color="success">
+                    EDIT PROFILE
+                  </button>
+                </div>
+                <div className="row">
+                  <h3 className="SmallHeader2">Your plan</h3>
+                </div>
+                {showPlan}
+                <div className="row">
+                  <Button className="EditProfile" color="success">
+                    <NavLink className="InsideEditProfile" to="premium">
+                      JOIN PREMIUM
+                    </NavLink>
+                  </Button>
+                </div>
+                <div className="row">
+                  <Button className="EditProfile" color="success">
+                    SIGN OUT
+                  </Button>
+            </div>
+          </div>
+        ); 
+    };
+
     return (
       <div>
-        {forRedirect}
+        {forRedirection}
         <div className="AccountOverviewNav">
           <div className="container">
             <Navbar className="NavBar NavStyle" sticky="top" expand="md">
@@ -216,7 +272,7 @@ class AccountOverview extends Component {
                   <Link to="/" className="AppearBig">
                     <i className="fa fa-snapchat-ghost" aria-hidden="true" />
                   </Link>
-                  <Link to="/accountoverview" className="active">
+                  <Link to="/account/overview" className="active">
                     <i className="fa fa-home" />
                     Account overview
                   </Link>
@@ -224,7 +280,7 @@ class AccountOverview extends Component {
                     <i className="fa fa-edit" />
                     Edit profile
                   </Link>
-                  <Link to="/changePassword" href="#contact">
+                  <Link to="/account/changePassword" href="#contact">
                     <i className="fa fa-lock" />
                     Change password
                   </Link>
@@ -239,48 +295,25 @@ class AccountOverview extends Component {
                 </div>
               </div>
               <div className="col-sm-12 col-md-12 col-lg-8 Content">
-                <div className="row">
-                  <h1 className="BigHeader">Account overview</h1>
-                </div>
-                <div className="row">
-                  <h3 className="SmallHeader">Profile</h3>
-                </div>
-
-                <div>{UserData}</div>
-
-                <div className="row">
-                  <div className="col Content1">
-                    <h5>Country</h5>
-                  </div>
-                  <div className="col Content2">
-                    <h5>EG</h5>
-                  </div>
-                </div>
-                <hr />
-                <div className="row">
-                  <button
-                    onClick={this.state.nullID}
-                    className="EditProfile"
-                    color="success">
-                    EDIT PROFILE
-                  </button>
-                </div>
-                <div className="row">
-                  <h3 className="SmallHeader2">Your plan</h3>
-                </div>
-                {showPlan}
-                <div className="row">
-                  <Button className="EditProfile" color="success">
-                    <NavLink className="InsideEditProfile" to="premium">
-                      JOIN PREMIUM
-                    </NavLink>
-                  </Button>
-                </div>
-                <div className="row">
-                  <Button className="EditProfile" color="success">
-                    SIGN OUT
-                  </Button>
-                </div>
+              <Switch>
+                  <Route
+                    path="/account/overview"
+                    component={showOverview}
+                  />
+                  <Route
+                    path="/account/changePassword"
+                    component={() => (
+                      <ChangePass
+                        PostPassword={this.props.PostPassword}
+                        GetPassword={this.props.GetPassword}
+                        data={this.props.data}
+                        id={this.props.id}
+                      />
+                    )}
+                  />
+                  <Redirect to="/account/overview" />
+              </Switch>
+                
               </div>
             </div>
           </div>

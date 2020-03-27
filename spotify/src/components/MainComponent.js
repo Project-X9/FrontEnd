@@ -5,7 +5,6 @@ import { actions } from "react-redux-form";
 import Home from "./Homepage/HomeComponent";
 import SignUp from "./SignUp/SignUpComponent";
 import PremiumComponent from "./PremiumPage/PremuimComponent";
-import ChangePass from "./ChangePassword/ChangePassword";
 import AccountOverview from "./AccountOverview/AccountOverviewComponent";
 import SignIn from "./SignIn/SignInComponent";
 import PlayFotter from "./WebPlayer/PlayFotterComponent";
@@ -85,18 +84,6 @@ class Main extends Component {
           />
           <Route
             exact
-            path="/changePassword"
-            component={() => (
-              <ChangePass
-                PostPassword={this.props.PostPassword}
-                GetPassword={this.props.GetPassword}
-                data={this.props.data}
-                id={this.props.id}
-              />
-            )}
-          />
-          <Route
-            exact
             path="/premium"
             component={() => (
               <PremiumComponent
@@ -105,11 +92,20 @@ class Main extends Component {
               />
             )}
           />
-          <Route
-            exact
-            path="/accountoverview"
+          <Route  
+            
+            path="/account"
             component={() => (
-              <AccountOverview data={this.props.data} id={this.props.id} />
+              <AccountOverview 
+              //////////for overview and change password
+              data={this.props.data} 
+              id={this.props.id}
+              ///////////
+              ///////////for change password
+              PostPassword={this.props.PostPassword}
+              GetPassword={this.props.GetPassword}
+              //////////
+              />
             )}
           />
           <Route
