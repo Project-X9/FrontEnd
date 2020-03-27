@@ -1,0 +1,172 @@
+.ModalBackGround{
+    position: relative;
+    width: 812px;
+    -webkit-box-shadow: 0 2px 8px 2px rgba(0,0,0,.33);
+    box-shadow: 0 2px 8px 2px rgba(0,0,0,.33);
+    overflow: hidden;
+    background: #000 url(https://open.scdn.co/cdn/images/improved-modal-bg.23e5dcb1.jpg) 50% no-repeat;
+    background-size: 100% 100%;
+    border-radius: 12px;
+    padding: 65px 50px 50px;
+    -webkit-animation: ModalModalAnimation .4s ease-in-out 1;
+    animation: ModalModalAnimation .4s ease-in-out 1;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-delay: .15s;
+    animation-delay: .15s;
+    
+    
+}
+.modalbody{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    
+}
+.theHeader{
+    color: #fff;
+    margin-bottom: 8px;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 48px;
+}
+body{
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .015em;
+    font-weight: var(--glue-font-weight-normal);
+    color: #b3b3b3;
+    text-transform: none;
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+}
+.modal-content{
+    background-color:transparent;
+    background-clip: none;
+    border: none; 
+    border-radius: 0;
+}
+ol{
+    margin-bottom: 6px;
+    margin-top: 28px;
+    color: white;
+    list-style: none;
+}
+li{
+    display: list-item;
+    text-align: -webkit-match-parent;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: .015em;
+    position: relative;
+    color: #fff;
+    margin-top: 10px;
+}
+  
+li{
+    /* padding-left: 26px; */
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: .015em;
+    position: relative;
+    color: #fff;
+    margin-top: 10px;
+}
+svg{
+    /* position:absolute; */
+    /* direction: rtl; */
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    margin-top: -6px;
+    stroke: #fff;
+    vertical-align: middle;
+    /* margin-right: 28px; */
+}
+polygon{
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: .015em;
+    position: relative;
+    color: #fff;
+    margin-top: 10px;
+}
+.modifiedRow{
+flex-direction: row;
+display: flex;
+}
+.innerRight{
+    padding: 32px;
+    background: #fff;
+    -webkit-box-shadow: 0 8px 24px 0 rgba(0,0,0,.3), 0 24px 16px -5px rgba(0,0,0,.17);
+    box-shadow: 0 8px 24px 0 rgba(0,0,0,.3), 0 24px 16px -5px rgba(0,0,0,.17);
+    border-radius: 8px;
+}
+.righPart,.leftPart {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    margin: 0 10px;
+}
+.signupfree{
+    font-size: 18px;
+    line-height: 24px;
+    display: block;
+    padding: 13px;
+    width: 100%;
+    background-color: #1db954;
+    font-weight: 700;
+    letter-spacing: 1.76px;
+    text-transform: uppercase;
+    border: 2px solid transparent;
+    border-radius: 500px;
+    color: #fff;
+    -webkit-transition: all 33ms cubic-bezier(.3,0,0,1);
+    transition: all 33ms cubic-bezier(.3,0,0,1);
+    will-change: transform;
+    white-space: nowrap;
+    padding: 8px 34px;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+}
+.seperator{
+
+    height: 1px;
+    background: #b3b3b3;
+    margin: 32px 8px 26px;
+}
+.alreadyhaveanaccount{
+    text-align: center;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #000;
+    margin-bottom: 1em;
+}
+.login{
+    border: 1px solid #000;
+    font-size: 18px;
+    line-height: 24px;
+    display: block;
+    padding: 13px;
+    width: 100%;
+    background-color: #fff;
+    color: #181818;
+    font-weight: 700;
+    letter-spacing: 1.76px;
+    text-transform: uppercase;
+    border-radius: 500px;
+    transition: all 33ms cubic-bezier(.3,0,0,1);
+    will-change: transform;
+    white-space: nowrap;
+    cursor: pointer;
+    text-align: center;
+    
+}

@@ -14,6 +14,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "react": "^16.13.0",
+    "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.0",
     "react-facebook-login": "^4.1.1",
     "react-redux": "^7.2.0",
@@ -33,7 +34,6 @@
     "eject": "react-scripts eject",
     "lint": "eslint ./src/**",
     "docs": "./node_modules/.bin/jsdoc -c jsdoc.json"
-
   },
   "eslintConfig": {
     "extends": "react-app"

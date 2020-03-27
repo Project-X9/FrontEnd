@@ -9,7 +9,7 @@ import ChangePass from "./ChangePassword/ChangePassword";
 import AccountOverview from "./AccountOverview/AccountOverviewComponent";
 import SignIn from "./SignIn/SignInComponent";
 import PlayFotter from "./WebPlayer/PlayFotterComponent";
-import IdObj from "../Global";
+import Library from './Library/LibraryCompnent';
 
 import {
   postFeedback,
@@ -57,13 +57,6 @@ class Main extends Component {
   }
 
   render() {
-    // const HomePage=()=>{
-    //     return(
-    //       <Home />
-    //     )
-
-    // }
-
     return (
       <div className="App">
         {/* <Header /> */}
@@ -79,6 +72,15 @@ class Main extends Component {
                 resetFeedbackForm={this.props.resetFeedbackForm}
                 postFacebookLogin={this.props.postFacebookLogin}
                 postFeedback={this.props.postFeedback}
+                data={this.props.data}
+              />
+            )}
+          />
+          <Route
+            exact path="/library"
+            component={() => (
+              <Library
+                id={this.props.id}
                 data={this.props.data}
               />
             )}
