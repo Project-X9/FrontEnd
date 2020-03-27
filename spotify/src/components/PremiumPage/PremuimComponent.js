@@ -20,7 +20,6 @@ import {
   DropdownToggle
 } from "reactstrap";
 import "./PremiumComponent.css";
-import IdObj from "../../Global";
 
 import { NavLink } from "react-router-dom";
 
@@ -131,7 +130,7 @@ class Premium extends Component {
                       </DropdownToggle>
                       <DropdownMenu className={accLogStyleParent} right>
                         <DropdownItem className={accChild}>
-                          <NavLink to="/account/overview">Account</NavLink>
+                          <NavLink to="/accountoverview">Account</NavLink>
                         </DropdownItem>
                         <DropdownItem className={logChild}>LogOut</DropdownItem>
                       </DropdownMenu>

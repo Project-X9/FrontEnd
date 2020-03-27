@@ -1,4 +1,4 @@
-.ModalBackGround{
+/* .ModalBackGround{
     position: relative;
     width: 812px;
     -webkit-box-shadow: 0 2px 8px 2px rgba(0,0,0,.33);
@@ -70,7 +70,7 @@ li{
 }
   
 li{
-    /* padding-left: 26px; */
+    padding-left: 26px;
     font-size: 16px;
     line-height: 22px;
     letter-spacing: .015em;
@@ -79,15 +79,15 @@ li{
     margin-top: 10px;
 }
 svg{
-    /* position:absolute; */
-    /* direction: rtl; */
+    position:absolute; 
+    direction: rtl;
     width: 16px;
     height: 16px;
     top: 50%;
     margin-top: -6px;
     stroke: #fff;
     vertical-align: middle;
-    /* margin-right: 28px; */
+
 }
 polygon{
     font-size: 16px;
@@ -169,4 +169,4 @@ display: flex;
     cursor: pointer;
     text-align: center;
     
-}
+} */
