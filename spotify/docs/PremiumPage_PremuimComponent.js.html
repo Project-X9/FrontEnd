@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: PremiumPage/PremuimComponent.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: PremiumPage/PremuimComponent.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Premium Component
+ */
+import React, { Component } from "react";
+import {
+  Navbar,
+  NavbarBrand,
+  Jumbotron,
+  Nav,
+  NavItem,
+  NavbarToggler,
+  Collapse,
+  Row,
+  Col,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  UncontrolledDropdown,
+  DropdownMenu,
+  DropdownItem,
+  Button,
+  DropdownToggle
+} from "reactstrap";
+import "./PremiumComponent.css";
+
+import { NavLink, Redirect } from "react-router-dom";
+
+class Premium extends Component {
+  /**
+   *
+   * @param props.data Essentially contains the data of the users in the database
+   * @param props.id Essentially contains the id of one of the users in the database
+
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      isNavOpen: false,
+      modal: false,
+      isModalOpen: false,
+      collapsed: true,
+      Premium: false,
+      tempId: this.props.id.id
+    };
+    this.state.toggleNav = this.toggleNav.bind(this);
+    this.togglemodal = this.togglemodal.bind(this);
+    this.handlePremiumT = this.handlePremiumT.bind(this);
+    this.handlePremiumF = this.handlePremiumF.bind(this);
+  }
+
+  handleData = () => {
+    let temp;
+    this.props.data.data.map(data => {
+      if (data.id === this.props.id.id) {
+        temp = data.premium;
+      }
+    });
+    this.setState({ Premium: temp });
+    return temp;
+  };
+  togglemodal() {
+    const Checker = this.handleData();
+    const Temp = !this.state.modal;
+    this.setState({ modal: Temp });
+  }
+  /**
+   * Posts the claiming of premium membership
+   */
+  handlePremiumT() {
+    if (this.state.Premium === false) {
+      this.props.PremiumPost(this.props.id.id, true);
+      this.togglemodal();
+    }
+  }
+
+  /**
+   * Posts the Canceling of premium membership
+   */
+  handlePremiumF() {
+    if (this.state.Premium === true) {
+      this.props.PremiumPost(this.props.id.id, false);
+      this.togglemodal();
+    }
+  }
+  /**
+   * Toggles the Navigation bar by switching isNavOpen from true to false and vice versa
+   */
+  toggleNav() {
+    this.setState({
+      isNavOpen: !this.state.isNavOpen,
+      collapsed: !this.state.collapsed
+    });
+  }
+
+  render() {
+    let forRedirect = "";
+    if (this.props.id.id === "") {
+      forRedirect = &lt;Redirect to="/signup" />;
+    }
+
+    let accLogStyleParent = "";
+    let accChild = "";
+    let logChild = "";
+    if (this.state.isNavOpen) {
+      accLogStyleParent = "OpenNav";
+      accChild = "OpenNavChild";
+      logChild = "OpenNavChild";
+    } else {
+      accLogStyleParent = "CloseNav";
+      accChild = "CloseNavChild1";
+      logChild = "CloseNavChild2";
+    }
+    return (
+      &lt;div>
+        &lt;div className="AccountOverviewNav">
+          &lt;div className="container">
+            &lt;Navbar className="NavBar" sticky="top" expand="md">
+              &lt;NavbarBrand className="mr-auto" href="/signup">
+                &lt;img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSBmnPgQKW4JLrNcSFhPFCLHz3t8kT1pZl0PVkLYsa8FoScWYda"
+                  height="65px"
+                  width="200px"
+                  alt=""
+                />
+              &lt;/NavbarBrand>
+              &lt;NavbarToggler
+                className="NavBarToggle"
+                onClick={this.state.toggleNav}
+              >
+                ☰
+              &lt;/NavbarToggler>
+
+              &lt;Collapse isOpen={this.state.isNavOpen} navbar>
+                &lt;Nav navbar className="ml-auto">
+                  &lt;NavItem>
+                    &lt;NavLink className="nav-link" to="/home">
+                      Home
+                    &lt;/NavLink>
+                  &lt;/NavItem>
+                  &lt;NavItem>
+                    &lt;NavLink className="nav-link" to="/menu">
+                      Help
+                    &lt;/NavLink>
+                  &lt;/NavItem>
+                  &lt;NavItem>
+                    &lt;NavLink className="nav-link" to="/aboutus">
+                      Download
+                    &lt;/NavLink>
+                  &lt;/NavItem>
+
+                  &lt;NavItem>
+                    &lt;UncontrolledDropdown nav inNavbar>
+                      &lt;DropdownToggle nav caret className="seperator">
+                        &lt;img
+                          alt=""
+                          className="Profile"
+                          src="https://4.bp.blogspot.com/_R0Rc6mb8H6E/S1TTZJCtq8I/AAAAAAAAC9A/a50aYOK5o0o/s320/design-fetish-no-photo-facebook-1.jpg"
+                        />
+                        Profile
+                      &lt;/DropdownToggle>
+                      &lt;DropdownMenu className={accLogStyleParent} right>
+                        &lt;DropdownItem className={accChild}>
+                          &lt;NavLink to="/accountoverview">Account&lt;/NavLink>
+                        &lt;/DropdownItem>
+                        &lt;DropdownItem className={logChild}>LogOut&lt;/DropdownItem>
+                      &lt;/DropdownMenu>
+                    &lt;/UncontrolledDropdown>
+                  &lt;/NavItem>
+                &lt;/Nav>
+              &lt;/Collapse>
+            &lt;/Navbar>
+          &lt;/div>
+        &lt;/div>
+        &lt;Jumbotron className="JumboHeaderImg">
+          &lt;div className="App Headers">
+            &lt;div>
+              &lt;header className="Header1">Get Premium free for 1 month.&lt;/header>
+            &lt;/div>
+            &lt;div>
+              &lt;h2 className="Header2">
+                Just EGP&amp;nbsp;49.99/month after. Cancel anytime.
+              &lt;/h2>
+            &lt;/div>
+          &lt;/div>
+          &lt;p>
+            &lt;Button className="signupbtn" onClick={this.togglemodal}>
+              Get Premium
+            &lt;/Button>
+            &lt;Modal isOpen={this.state.modal}>
+              &lt;ModalHeader>Claiming Premium&lt;/ModalHeader>
+              &lt;ModalBody>
+                Pay 5 EGP please for claiming your Premium account
+              &lt;/ModalBody>
+              &lt;ModalFooter>
+                &lt;Button
+                  hidden={this.state.Premium}
+                  color="primary"
+                  onClick={this.handlePremiumT}
+                >
+                  Claim{" "}
+                &lt;/Button>
+                &lt;Button
+                  hidden={!this.state.Premium}
+                  color="primary"
+                  onClick={this.handlePremiumF}
+                >
+                  Cancel Premium{" "}
+                &lt;/Button>
+                &lt;Button color="secondary" onClick={this.togglemodal}>
+                  Cancel
+                &lt;/Button>
+              &lt;/ModalFooter>
+            &lt;/Modal>
+          &lt;/p>
+        &lt;/Jumbotron>
+
+        &lt;article>
+          &lt;h1 className="PremiumMargin">Why Go Premium?&lt;/h1>
+          &lt;br />
+          &lt;br />
+          &lt;br />
+          &lt;Row xs="2">
+            &lt;Col>
+              &lt;img
+                src="assets/images/MusicDownload.png"
+                height="142"
+                width="142"
+                alt=""
+              />
+              &lt;h5 className="mt-0">Download Music.&lt;/h5>
+              &lt;p>Listen AnyWhere.&lt;/p>
+            &lt;/Col>
+            &lt;Col>
+              {" "}
+              &lt;img
+                src="assets/images/SecondIcon.png"
+                height="142"
+                width="142"
+                alt=""
+              />{" "}
+              &lt;h5 className="mt-0">No Ad Interruptions.&lt;/h5>
+              &lt;p>Enjoy NonStop Music.&lt;/p>
+            &lt;/Col>
+            &lt;Col>
+              {" "}
+              &lt;img
+                src="assets/images/ThirdIcon.png"
+                height="142"
+                width="142"
+                alt=""
+              />
+              &lt;h5 className="mt-0">Play any Song.&lt;/h5>
+              &lt;p>Even on mobile.&lt;/p>
+            &lt;/Col>
+            &lt;Col>
+              {" "}
+              &lt;img
+                src="assets/images/fourthIcon.png"
+                height="142"
+                width="142"
+                alt=""
+              />{" "}
+              &lt;h5 className="mt-0">Unlimited Skips.&lt;/h5>
+              &lt;p>Just hit next.&lt;/p>
+            &lt;/Col>
+          &lt;/Row>
+        &lt;/article>
+        &lt;Jumbotron className="JmbStyle">
+          &lt;h3>Spotify Premium&lt;/h3>
+          &lt;h2>EGP49.99/Month&lt;/h2>
+          &lt;hr className="my-2" />
+          &lt;h5 style={{ padding: "20px", textAlign: "left" }}>
+            &lt;li>Play Any Song.&lt;/li>
+            &lt;li>Listen Offline.&lt;/li>
+            &lt;li>No ad interruptions.&lt;/li>
+            &lt;li>Unlimited Skips.&lt;/li>
+            &lt;li>High Audio Quality.&lt;/li>
+          &lt;/h5>
+          &lt;hr className="my-2" />
+          &lt;p>
+            &lt;Button
+              model="submit"
+              className="signupbtn"
+              onClick={this.togglemodal}
+            >
+              Get Premium
+            &lt;/Button>
+          &lt;/p>
+        &lt;/Jumbotron>
+      &lt;/div>
+    );
+  }
+}
+
+export default Premium;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AccountOverview.html">AccountOverview</a></li><li><a href="ChangePass.html">ChangePass</a></li><li><a href="FreeJumbotron.html">FreeJumbotron</a></li><li><a href="FreePlan.html">FreePlan</a></li><li><a href="Home.html">Home</a></li><li><a href="NavbarHome.html">NavbarHome</a></li><li><a href="Premium.html">Premium</a></li><li><a href="PremiumJumbotron.html">PremiumJumbotron</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Footer">Footer</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Fri Mar 27 2020 23:48:15 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

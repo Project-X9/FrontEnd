@@ -1,3 +1,6 @@
+/**
+ * Premium Component
+ */
 import React, { Component } from "react";
 import {
   Navbar,
@@ -24,6 +27,12 @@ import "./PremiumComponent.css";
 import { NavLink, Redirect } from "react-router-dom";
 
 class Premium extends Component {
+  /**
+   *
+   * @param props.data Essentially contains the data of the users in the database
+   * @param props.id Essentially contains the id of one of the users in the database
+
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -55,20 +64,28 @@ class Premium extends Component {
     const Temp = !this.state.modal;
     this.setState({ modal: Temp });
   }
-
+  /**
+   * Posts the claiming of premium membership
+   */
   handlePremiumT() {
     if (this.state.Premium === false) {
       this.props.PremiumPost(this.props.id.id, true);
       this.togglemodal();
     }
   }
+
+  /**
+   * Posts the Canceling of premium membership
+   */
   handlePremiumF() {
     if (this.state.Premium === true) {
       this.props.PremiumPost(this.props.id.id, false);
       this.togglemodal();
     }
   }
-
+  /**
+   * Toggles the Navigation bar by switching isNavOpen from true to false and vice versa
+   */
   toggleNav() {
     this.setState({
       isNavOpen: !this.state.isNavOpen,
