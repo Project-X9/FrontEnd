@@ -14,7 +14,7 @@ class ChangePass extends Component {
       Password: "",
       CurrentPassword: "",
       ConfirmPassword: "",
-      tempId: this.props.id.id.length + 1
+      tempId: this.props.id.id
     };
     this.handleChangePassword = this.handleChangePassword.bind(this);
     this.handleData = this.handleData.bind(this);
@@ -23,7 +23,7 @@ class ChangePass extends Component {
   handleData = () => {
     let temp;
     this.props.data.data.map(data => {
-      if (data.id === this.state.tempId - 1) {
+      if (data.id === this.state.tempId) {
         temp = data.password;
       }
     });
@@ -31,11 +31,10 @@ class ChangePass extends Component {
   };
 
   handleChangePassword = values => {
-    alert(this.state.tempId);
     const temp = this.handleData();
     if (temp === values.Currentpassword) {
       const post = values.password;
-      this.props.PostPassword(post, this.state.tempId - 1);
+      this.props.PostPassword(post, this.state.tempId);
     } else alert("Password is Incorrect");
   };
 

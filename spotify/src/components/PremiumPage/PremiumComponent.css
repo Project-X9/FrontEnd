@@ -22,7 +22,9 @@
 .customization {
   padding-left: 50px;
 }
-
+.modified-content{
+  background-color: white;
+}
 li.seperating {
   background: currentColor;
   margin: auto 17px;
