@@ -1,6 +1,8 @@
 /**
  * Change Password Component
  */
+import { Redirect, Switch, Route } from "react-router-dom";
+
 import React, { Component } from "react";
 import { Col, Button, Row } from "reactstrap";
 import { Control, Form, Errors } from "react-redux-form";
@@ -59,8 +61,15 @@ class ChangePass extends Component {
   };
 
   render() {
+    let redirect = "";
+    if (this.state.tempId === "") {
+      alert("help");
+      redirect = <Redirect to="/signup" />;
+    }
+
     return (
       <div className="container">
+        {redirect}
         <h1 className="headerGreen">Change Your Password</h1>
         <hr />
         <Form
