@@ -188,6 +188,7 @@ class Premium extends Component {
               Get Premium
             </Button>
             <Modal isOpen={this.state.modal}>
+              <div className="modified-content">
               <ModalHeader>Claiming Premium</ModalHeader>
               <ModalBody>
                 Pay 5 EGP please for claiming your Premium account
@@ -211,6 +212,7 @@ class Premium extends Component {
                   Cancel
                 </Button>
               </ModalFooter>
+              </div>
             </Modal>
           </p>
         </Jumbotron>
