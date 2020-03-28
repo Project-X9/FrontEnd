@@ -73,16 +73,27 @@ class AccountOverview extends Component {
    */
   render() {
 
-    const forRedirection = ()=>{
-      alert("hi");
-      let forRedirect = "";
-      if (this.state.tempId === "") {
-        alert("Help");
-        forRedirect = <Redirect to="/signup" />;
-      }
-      alert("hi2");
+    let overviewActive=''
+    let editProfileActive=''
+    let changePasswordActive=''
+    let recoverPlaylistsActive=''
+    let redeemActive=''
+    let currentURL=window.location.href
+    if(currentURL==="http://localhost:3000/account/overview")
+    {
+      overviewActive='active'; editProfileActive=''; changePasswordActive=''; recoverPlaylistsActive=''; redeemActive='';
+    }
+    else if(currentURL==="http://localhost:3000/account/changepassword")
+    {
+      overviewActive=''; editProfileActive=''; changePasswordActive='active'; recoverPlaylistsActive=''; redeemActive='';
     }
 
+    let redirect=''
+    if (this.state.tempId === "") {
+      alert("help") 
+      redirect=<Redirect to="/signup" />
+    }
+   
     const UserData = this.props.data.data.map((data) => {
       if (data.id === this.state.tempId) {
         alert(this.state.tempId)
@@ -198,7 +209,7 @@ class AccountOverview extends Component {
 
     return (
       <div>
-        {forRedirection}
+        {redirect}
         <div className="AccountOverviewNav">
           <div className="container">
             <Navbar className="NavBar NavStyle" sticky="top" expand="md">
@@ -272,23 +283,23 @@ class AccountOverview extends Component {
                   <Link to="/" className="AppearBig">
                     <i className="fa fa-snapchat-ghost" aria-hidden="true" />
                   </Link>
-                  <Link to="/account/overview" className="active">
+                  <Link to="/account/overview" className={overviewActive}>
                     <i className="fa fa-home" />
                     Account overview
                   </Link>
-                  <Link to="/" href="#news">
+                  <Link to="/" href="#news" className={editProfileActive}>
                     <i className="fa fa-edit" />
                     Edit profile
                   </Link>
-                  <Link to="/account/changePassword" href="#contact">
+                  <Link to="/account/changepassword" href="#contact" className={changePasswordActive}>
                     <i className="fa fa-lock" />
                     Change password
                   </Link>
-                  <Link to="/" href="#contact">
+                  <Link to="/" href="#contact" className={recoverPlaylistsActive}>
                     <i className="fa fa-hashtag" />
                     Recover playlists
                   </Link>
-                  <Link to="/" href="#contact">
+                  <Link to="/" href="#contact" className={redeemActive}>
                     <i className="fa fa-credit-card" />
                     Redeem
                   </Link>
@@ -301,7 +312,7 @@ class AccountOverview extends Component {
                     component={showOverview}
                   />
                   <Route
-                    path="/account/changePassword"
+                    path="/account/changepassword"
                     component={() => (
                       <ChangePass
                         PostPassword={this.props.PostPassword}
