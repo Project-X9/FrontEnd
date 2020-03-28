@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Col, Button, Row } from "reactstrap";
 import { Control, Form, Errors } from "react-redux-form";
 import { Label } from "reactstrap";
-import IdObj from "../../Global";
 const required = val => val && val.length;
 const minLength = len => val => val && val.length >= len;
 const confPass = val => val2 => val === val2;
@@ -23,7 +22,7 @@ class ChangePass extends Component {
   handleData = () => {
     let temp;
     this.props.data.data.map(data => {
-      if (data.id === this.state.tempId) {
+      if (data.id === this.props.id.id) {
         temp = data.password;
       }
     });
@@ -31,10 +30,11 @@ class ChangePass extends Component {
   };
 
   handleChangePassword = values => {
+    alert(this.props.id.id);
     const temp = this.handleData();
     if (temp === values.Currentpassword) {
       const post = values.password;
-      this.props.PostPassword(post, this.state.tempId);
+      this.props.PostPassword(post, this.props.id.id);
     } else alert("Password is Incorrect");
   };
 
@@ -51,7 +51,8 @@ class ChangePass extends Component {
         <hr />
         <Form
           model="feedback"
-          onSubmit={values => this.handleChangePassword(values)}>
+          onSubmit={values => this.handleChangePassword(values)}
+        >
           <Row className="form-group">
             <Col xs={12} md={{ size: 6, offset: 3 }}>
               <Label>Current Password</Label>

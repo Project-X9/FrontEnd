@@ -1,4 +1,4 @@
-import React, { Component ,useState} from "react";
+import React, { Component, useState } from "react";
 
 import { 
     Form,FormGroup,Modal,ModalBody,ModalHeader,Button,Label,Input,Jumbotron, Row, Col,Mo} from 'reactstrap'; 
@@ -84,9 +84,7 @@ class Library extends Component {
             </Modal>
         </div>      
     );
-    
-
-    }
+  }
 }
 
 export default Library;

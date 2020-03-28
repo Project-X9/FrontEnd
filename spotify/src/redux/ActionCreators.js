@@ -2,9 +2,9 @@ import axios from "axios";
 import * as ActionTypes from "./ActionTypes";
 import { baseUrl } from "../shared/baseUrl";
 
-export const PremiumPost = id => dispatch => {
+export const PremiumPost = (id, isPremium) => dispatch => {
   const data = {
-    premium: true
+    premium: isPremium
   };
   data.date = new Date().toISOString();
   axios.patch(`${baseUrl}users/${id}`, data);
@@ -68,18 +68,16 @@ export const postFeedback = (
   };
 
   newFeedback.date = new Date().toISOString();
-  newFeedback.premium=false;
+  newFeedback.premium = false;
   axios
     .post(`${baseUrl}users`, newFeedback) //here where i send the post request to the server
     .then(response => {
       //here i want to get the id of the last elment i posted from the
-       // comming response which is coming in jason format and then i need
+      // comming response which is coming in jason format and then i need
       for (let index = 0; index < response.data.id + 1; index++) {
-        if(index === response.data.id)
-        {
-          dispatch(addUserId(index)); //to send it to the function addUserId to add it in my store 
+        if (index === response.data.id) {
+          dispatch(addUserId(index)); //to send it to the function addUserId to add it in my store
         }
-        
       }
       // alert(response.data.id)
     });
