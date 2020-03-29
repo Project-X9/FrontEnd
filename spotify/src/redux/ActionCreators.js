@@ -36,7 +36,7 @@ export const postFacebookLogin = (email, image, name) => dispatch => {
     name
   };
   newFacebookLogin.date = new Date().toISOString();
-
+  newFacebookLogin.premium=false
   axios.post(`${baseUrl}users`, newFacebookLogin).then(response => {
     //here i want to get the id of the last elment i posted from the
     let id = response.data.id; // comming response which is coming in jason format and then i need
@@ -72,7 +72,7 @@ export const postFeedback = (
   axios
     .post(`${baseUrl}users`, newFeedback) //here where i send the post request to the server
     .then(response => {
-      //here i want to get the id of the last elment i posted from the
+      // here i want to get the id of the last elment i posted from the
       // comming response which is coming in jason format and then i need
       for (let index = 0; index < response.data.id + 1; index++) {
         if (index === response.data.id) {

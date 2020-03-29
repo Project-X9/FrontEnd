@@ -73,7 +73,6 @@ class Premium extends Component {
       this.togglemodal();
     }
   }
-
   /**
    * Posts the Canceling of premium membership
    */

@@ -1,5 +1,9 @@
 import * as ActionTypes from './ActionTypes';
 
+const initialState={
+  id:''
+};
+
 export const UserID = (state = { id:''}, action) => {
   switch (action.type) {
     case ActionTypes.ADD_USERID:
