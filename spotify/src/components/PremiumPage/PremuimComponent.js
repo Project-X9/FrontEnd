@@ -93,9 +93,9 @@ class Premium extends Component {
   }
 
   render() {
-    let forRedirect = "";
-    if (this.props.id.id === "") {
-      forRedirect = <Redirect to="/signup" />;
+    let redirect = "";
+    if (this.state.tempId === "") {
+      redirect = <Redirect to="/signup" />;
     }
 
     let accLogStyleParent = "";
@@ -112,6 +112,7 @@ class Premium extends Component {
     }
     return (
       <div>
+        {redirect}
         <div className="AccountOverviewNav">
           <div className="container">
             <Navbar className="NavBar" sticky="top" expand="md">
@@ -188,29 +189,29 @@ class Premium extends Component {
             </Button>
             <Modal isOpen={this.state.modal}>
               <div className="modified-content">
-              <ModalHeader>Claiming Premium</ModalHeader>
-              <ModalBody>
-                Pay 5 EGP please for claiming your Premium account
-              </ModalBody>
-              <ModalFooter>
-                <Button
-                  hidden={this.state.Premium}
-                  color="primary"
-                  onClick={this.handlePremiumT}
-                >
-                  Claim{" "}
-                </Button>
-                <Button
-                  hidden={!this.state.Premium}
-                  color="primary"
-                  onClick={this.handlePremiumF}
-                >
-                  Cancel Premium{" "}
-                </Button>
-                <Button color="secondary" onClick={this.togglemodal}>
-                  Cancel
-                </Button>
-              </ModalFooter>
+                <ModalHeader>Claiming Premium</ModalHeader>
+                <ModalBody>
+                  Pay 5 EGP please for claiming your Premium account
+                </ModalBody>
+                <ModalFooter>
+                  <Button
+                    hidden={this.state.Premium}
+                    color="primary"
+                    onClick={this.handlePremiumT}
+                  >
+                    Claim{" "}
+                  </Button>
+                  <Button
+                    hidden={!this.state.Premium}
+                    color="primary"
+                    onClick={this.handlePremiumF}
+                  >
+                    Cancel Premium{" "}
+                  </Button>
+                  <Button color="secondary" onClick={this.togglemodal}>
+                    Cancel
+                  </Button>
+                </ModalFooter>
               </div>
             </Modal>
           </p>
