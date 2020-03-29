@@ -39,11 +39,17 @@ class SignUp extends Component {
       selectedOption: false,
       confEmail: "",
       submitted: false,
-      existBefore:null
+      existBefore:null,
+      FaceBookId: "",
+      SignUpId:"",
+      submittedFromFacebook:false,
+      submittedFromSignUp:false,
+      length:this.props.data.data.length
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.responseFacebook = this.responseFacebook.bind(this);
+    
   }
 /**
  * This function takes the data fromthe input fields and assure that the all
@@ -75,20 +81,26 @@ class SignUp extends Component {
       values.year !== "" &&
       values.sex !== ""
     ) {
-      this.props.resetFeedbackForm();
-      this.props.postFeedback(
-        values.email,
-        values.confirmemail,
-        values.password,
-        values.name,
-        values.day,
-        values.month,
-        values.year,
-        values.sex
-      );
       this.setState({
-        submitted: true
-      });
+        submitted: true,
+        submittedFromSignUp:true,
+        SignUpId:this.props.data.data.length+1
+      },()=>{
+        this.props.resetFeedbackForm();
+        this.props.postFeedback(
+          values.email,
+          values.confirmemail,
+          values.password,
+          values.name,
+          values.day,
+          values.month,
+          values.year,
+          values.sex
+        );
+      }
+      );
+      
+      
     } 
     else {
       this.props.resetFeedbackForm();
@@ -118,7 +130,26 @@ class SignUp extends Component {
       email: event.target.value
     });
   };
-
+  // componentWillReceiveProps(nextProbs){
+  //   if(nextProbs.data.data !== this.props.data.data )
+  //   {
+  //     this.setState({
+  //     })
+  //   }
+  // }
+  handleIdIfExist = email => {
+    let temp;
+    this.props.data.data.map(data => {
+      if (data.email === email || data.name === email) {
+        for (let index = 0; index < data.id + 1; index++) {
+          if (index === data.id) {
+            temp = index;
+          }
+        }
+      }
+    });
+    return temp;
+  };
   /**
    * This function recieves the responce of the facebook login and uses the same functions i used in handleSubmit to
    * post the users data and set Submitted to true to be redirected
@@ -126,26 +157,52 @@ class SignUp extends Component {
    */
   responseFacebook(response) {
     if (response.status !== "unknown") {
+      let exist = this.handleExcistance(response.email);
+      if(exist)
+      {
+      var id=this.handleIdIfExist(response.email)
+      // this.props.handleLoginId(id);
+      // this.state.tempId=id;  
       this.setState({
-        submitted: true
+        submitted: true,
+        FaceBookId:id,
+        submittedFromFacebook:true
       });
       this.props.resetFeedbackForm();
+    }
+    else if(!exist)
+    {
+      this.setState({
+        submitted: true,
+        FaceBookId:this.props.data.data.length + 1,
+        submittedFromFacebook:true
+      },()=>{
+      this.props.resetFeedbackForm()
       this.props.postFacebookLogin(
         response.email,
         response.image,
         response.name
+      )
+      }
       );
+      
     }
   }
-  
+}
   /**
    * Responsible for showing everything on the Sign Up page
    * @returns Components that will be displayed on the page
    */
   render() {
     let redirected = null;
-    if (this.state.submitted) {
-      redirected = <Redirect to="/premium"></Redirect>;
+    if (this.state.submitted && this.state.submittedFromFacebook) {
+      this.props.handleLoginId(this.state.FaceBookId);
+      redirected = <Redirect to="/signin"></Redirect>
+    }
+    else if(this.state.submitted && this.state.submittedFromSignUp)
+    {
+      this.props.handleLoginId(this.state.SignUpId);
+      redirected = <Redirect to="/signin"></Redirect>
     }
     return (
       <div className="container signup">

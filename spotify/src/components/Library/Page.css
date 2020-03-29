@@ -1,0 +1,155 @@
+.LibraryPageBody{
+    background-color: #191919;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .015em;
+    font-weight: var(--glue-font-weight-normal);
+    color: #b3b3b3;
+    text-transform: none;
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+}
+.customizedNavbar{
+    grid-area: main-view;
+    height: 60px;
+    z-index: 2; 
+}
+
+.customizedButton{
+    border: none;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,.7);
+    color: #fff;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    opacity: .6;
+    
+
+}
+.customizedSvg{
+    border: none;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background-color: black;
+    color: #fff;
+    /* display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; */
+    cursor: pointer;
+    opacity: .6;
+    margin: -21px 20px 1px 0;
+
+}
+.customizedPath{
+    color: #fff;
+}
+.customizedNavitems{
+    margin:  10px;
+    padding: 0px;
+    border: 0;
+    vertical-align: baseline;
+}
+.customizedNavLink{
+    white-space: nowrap;
+    pointer-events: auto;
+    text-transform: capitalize;
+    font-size: 18px;
+    line-height: 16px;
+    font-weight: 700;
+    color: #fff;
+    position: relative;
+    border: 0;
+    display: inline-block;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin: 0 8px;
+}
+.customizedNavLink:hover{
+    color: white;
+}
+.MainViewPlaylsit{
+    width: 100%;
+    position: relative;
+    isolation: isolate;
+    padding-bottom: 32px;
+    /* margin: 0; */
+    /* padding: 0; */
+    border: 0;
+    vertical-align: baseline;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    height: 100%;
+    /* overflow-y: scroll; */
+    transform: translateZ(0);
+}
+.sectionPlayList{
+    padding: 0 32px;
+    margin: 0;
+    max-width: 1955px;
+}
+.header_playList{
+    font-size: 28px;
+    line-height: 1.6;
+    font-weight: 600;
+    letter-spacing: -.36px;
+    color: #fff;
+    margin: 24px 0;
+    margin-right: 90%;
+}
+.gridView{
+    display: grid;
+    grid-gap: 16px;
+    grid-template-columns: repeat(auto-fill,minmax(164px,1fr));
+    grid-auto-rows: 1fr;
+    min-height: 0;
+
+    
+
+}
+.LikedSongs{
+    grid-column: span 2;
+    height: inherit;
+    background: linear-gradient(149.46deg,#450af5,#8e8ee5 99.16%);
+    color: #fff;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 20px 20px 16px;
+    border-radius: 8px;
+    isolation: isolate;
+    
+}
+.showLiked
+{
+    display: flex;
+    height: 100%;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.insideLiked{
+    max-height: 130px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    display: -webkit-box;
+}
+.customizedSpan{
+    opacity: .7
+}
+.titleLiked{
+    min-height: 62px;
+}
+/* .likedNav{
+     */
+/* } */

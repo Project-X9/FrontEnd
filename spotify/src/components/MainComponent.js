@@ -9,7 +9,7 @@ import AccountOverview from "./AccountOverview/AccountOverviewComponent";
 import SignIn from "./SignIn/SignInComponent";
 import PlayFotter from "./WebPlayer/PlayFotterComponent";
 import Library from './Library/LibraryCompnent';
-
+import LibraryPage from  "./Library/LibraryPage"
 import {
   postFeedback,
   postFacebookLogin,
@@ -53,6 +53,7 @@ const mapDispatchToProps = dispatch => ({
 class Main extends Component {
   componentDidMount() {
     this.props.fetchUserData();
+    this.props.postFeedback();
   }
 
   render() {
@@ -71,7 +72,10 @@ class Main extends Component {
                 resetFeedbackForm={this.props.resetFeedbackForm}
                 postFacebookLogin={this.props.postFacebookLogin}
                 postFeedback={this.props.postFeedback}
+                id={this.props.id}
                 data={this.props.data}
+                handleLoginId={this.props.handleLoginId}
+
               />
             )}
           />
@@ -84,6 +88,17 @@ class Main extends Component {
               />
             )}
           />
+          
+          <Route
+            path="/librarypage"
+            component={() => (
+              <LibraryPage
+                id={this.props.id}
+                data={this.props.data}
+              />
+            )}
+          />
+          
           <Route
             exact
             path="/premium"
