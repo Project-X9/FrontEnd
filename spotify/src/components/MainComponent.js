@@ -53,7 +53,6 @@ const mapDispatchToProps = dispatch => ({
 class Main extends Component {
   componentDidMount() {
     this.props.fetchUserData();
-    this.props.postFeedback();
   }
 
   render() {

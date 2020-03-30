@@ -7,13 +7,9 @@ import "./components/SignIn/SignInComponent.css";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { ConfigureStore } from "./redux/configureStore";
-import {saveState,loadState} from './components/localstorage';
 
-const persistState= loadState();
-const store = ConfigureStore(persistState);
-store.subscribe(()=>{
-  saveState(store.getState());
-})
+const store = ConfigureStore();
+
 class App extends Component {
   render() {
     return (

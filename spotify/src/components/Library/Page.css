@@ -8,12 +8,6 @@
     text-transform: none;
     font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
 }
-.customizedNavbar{
-    grid-area: main-view;
-    height: 60px;
-    z-index: 2; 
-}
-
 .customizedButton{
     border: none;
     height: 32px;
@@ -150,6 +144,105 @@
 .titleLiked{
     min-height: 62px;
 }
-/* .likedNav{
-     */
-/* } */
+.likedNav{
+    text-decoration: none;
+    font-size: 28px;
+    line-height: 36px;
+    font-weight: 700;
+    letter-spacing: -.36px;
+    padding-bottom: 2px;
+    position: relative;
+    z-index: 1;
+    
+
+}
+.likedSongsSpan{
+    color: #fff;
+    overflow: hidden;
+    direction: auto;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    position: relative;
+    margin-right: 55% ;
+}
+.likedNav:hover{
+    text-decoration: none;
+}
+.noOflikedSongs{
+    text-transform: lowercase;
+    color: #fff;
+    font-size: 16px;
+    line-height: 24px;
+    margin-right: 75% ;
+
+
+}
+.playButtonOfLikedSongs{
+    /* right: 24px; */
+    /* bottom: 36px; */
+    /* opacity: 0; */
+    pointer-events: none;
+    /* position: absolute; */
+    /* box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12), 0 1px 5px 0 rgba(0,0,0,.2); */
+    z-index: 2;
+    border-radius: 500px;
+    margin-left: 82%;
+    padding-bottom: 15px;
+    
+}
+.PlayButton{
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 700;
+    letter-spacing: 1.76px;
+    /* text-transform: uppercase; */
+    border: 0;
+    border-radius: 500px;
+    color: #fff;
+    background-color: #1db954;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 48px;
+}
+.NavBarToggle_Hassan{
+    color: white;
+}
+.CardsLibrary{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 20px 20px 16px;
+    background: #282828;
+    border-radius: 8px;
+    isolation: isolate;
+}
+.cardPhoto{
+    height: 0;
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
+    margin-bottom: 16px;
+    background-color: #333;
+    box-shadow: 0 10px 30px 0 rgba(0,0,0,.3), 0 1px 2px 0 rgba(0,0,0,.2);
+}
+.imageHolder{
+    transition-duration: .3s;
+    transition-property: opacity;
+    transition-timing-function: cubic-bezier(.3,0,.4,1);
+    opacity: 1;
+}
+.theimage{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    object-fit: cover;
+    object-position: center center;
+}
