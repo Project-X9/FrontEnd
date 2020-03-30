@@ -34,7 +34,11 @@ class LibraryPage extends Component {
             <div className="LibraryPageBody">
             <Navbar expand="md" className="customizedNavbar">
                     <div className="container">
-                        <NavbarToggler onClick={this.state.toggleNav} />
+                        <NavbarToggler 
+                        className="NavBarToggle_Hassan"
+                        onClick={this.state.toggleNav} > 
+                         ☰
+                        </NavbarToggler>
                 <Collapse isOpen={this.state.isNavOpen} navbar>
                     <Nav navbar>
                     <NavItem className="customizedNavitems">
