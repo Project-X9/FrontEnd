@@ -31,11 +31,12 @@ class LibraryPage extends Component {
     render(){
 
         return(
+            <div>
             <div className="LibraryPageBody">
             <Navbar expand="md" className="customizedNavbar">
                     <div className="container">
                         <NavbarToggler 
-                        className="NavBarToggle_Hassan"
+                        className="NavBarToggle_Hassan ml-auto"
                         onClick={this.state.toggleNav} > 
                          ☰
                         </NavbarToggler>
@@ -80,12 +81,12 @@ class LibraryPage extends Component {
             <div className="container MainViewPlaylsit">
                 <div className="sectionPlayList">
                     <Row>
-                        <Col>
+                        <Col  md={12}>
                             <h1 className="header_playList">Playlists</h1>
                         </Col>
                     </Row>
                     <Row>
-                        <Col>
+                        <Col  md={12}>
                             <div className="gridView">
                                 <div className="LikedSongs">
                                     <div draggable="true">
@@ -97,9 +98,44 @@ class LibraryPage extends Component {
                                             </div>
                                         </div>
                                         <div className="titleLiked">
-                                            <Link></Link>
+                                            <Row>
+                                                <Col  md={12}>
+                                                    <Link className="likedNav" to="/">
+                                                        <span dir="auto" className="likedSongsSpan">Liked Songs</span>
+                                                    </Link>
+                                                </Col>
+                                            </Row>
+                                            <Row>
+                                                <Col  md={12}>
+                                                    <div className="noOflikedSongs">1 Liked song</div>
+                                                </Col>
+                                            </Row>
+                                            <Row className="playButtonOfLikedSongs">
+                                                <Col  md={12}>
+                                                    <Button className="PlayButton">
+                                                    <svg height="24" role="img" width="24" viewBox="0 0 24 24">
+                                                        <polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor">
+                                                        </polygon>
+                                                    </svg>
+                                                    </Button>
+                                                </Col>
+                                            </Row>
                                         </div>
+                                       
                                     </div>
+                                </div>
+                                <div className="CardsLibrary">
+                                    <Row>
+                                        <Col>
+                                            <div draggable="true">
+                                                <div className="cardPhoto">
+                                                    <div className="imageHolder">
+                                                    <img src="https://i.scdn.co/image/ab67706f000000021c6e257c426955c06bdfb9ef" alt="" className="theImage"></img>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </Col>
+                                    </Row>
                                 </div>
                             </div>
                         </Col>
@@ -107,6 +143,7 @@ class LibraryPage extends Component {
                 </div>
                 
             </div>
+        </div>
         </div>
         );
   }
