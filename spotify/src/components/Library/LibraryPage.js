@@ -3,7 +3,7 @@ import React, { Component, useState } from "react";
 
 import { 
     Nav,Navbar,NavItem,NavbarToggler,
-   Button,Label,Input,Jumbotron, Row, Col,Collapse} from 'reactstrap'; 
+   Button,Label,Input,Jumbotron, Row, Col,Collapse,DropdownItem,UncontrolledDropdown,DropdownToggle,DropdownMenu} from 'reactstrap'; 
 import {Link,NavLink} from "react-router-dom";
 
 import "./Page.css";
@@ -35,48 +35,86 @@ class LibraryPage extends Component {
             <div className="LibraryPageBody">
             <Navbar expand="md" className="customizedNavbar">
                     <div className="container">
-                        <NavbarToggler 
-                        className="NavBarToggle_Hassan ml-auto"
-                        onClick={this.state.toggleNav} > 
-                         ☰
-                        </NavbarToggler>
-                <Collapse isOpen={this.state.isNavOpen} navbar>
-                    <Nav navbar>
-                    <NavItem className="customizedNavitems">
+                     <Row className="flexRowOfLibraryPage">
+                         <Col>
+                            
+                    <Nav navbar className="flexRowOfLibraryPage">
+                        <NavItem className="customizedNavitems">
+                            <Button className="customizedButton">
+                                <NavLink className="nav-link customizedArrows" to="/">
+                                <svg className="customizedSvg" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M15.54 21.15L5.095 12.23 15.54 3.31l.65.76-9.555 8.16 9.555 8.16"></path>                            </svg>    
+                                </NavLink>
+                            </Button>   
+                        </NavItem>
+                        <NavItem className="customizedNavitems">
                         <Button className="customizedButton">
-                            <NavLink className="nav-link customizedArrows" to="/">
-                            <svg className="customizedSvg" viewBox="0 0 24 24">
-                            <path fill="currentColor" d="M15.54 21.15L5.095 12.23 15.54 3.31l.65.76-9.555 8.16 9.555 8.16"></path>                            </svg>    
-                            </NavLink>
-                        </Button>   
-                    </NavItem>
-                    <NavItem className="customizedNavitems">
-                    <Button className="customizedButton">
-                            <NavLink className="nav-link customizedArrows" to="/">
-                            <svg className="customizedSvg" viewBox="0 0 24 24">
-                            <path fill="currentColor" d="M7.96 21.15l-.65-.76 9.555-8.16L7.31 4.07l.65-.76 10.445 8.92"></path>
-                            </svg>    
-                            </NavLink>
-                        </Button>  
-                    </NavItem>
-                        <NavItem className="customizedNavitems">
-                            <NavLink className="nav-link customizedNavLink" to="/">
-                                Playlists
-                            </NavLink>
+                                <NavLink className="nav-link customizedArrows" to="/">
+                                <svg className="customizedSvg" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M7.96 21.15l-.65-.76 9.555-8.16L7.31 4.07l.65-.76 10.445 8.92"></path>
+                                </svg>    
+                                </NavLink>
+                            </Button>  
                         </NavItem>
                         <NavItem className="customizedNavitems">
-                            <NavLink className="nav-link customizedNavLink" to="/">
-                            Artists
-                            </NavLink>
-                        </NavItem>
-                        <NavItem className="customizedNavitems">
-                            <NavLink className="nav-link customizedNavLink" to="/">
-                            Albums
-                            </NavLink>
+                                <NavLink className="nav-link customizedNavLink" to="/">
+                                    Playlists
+                                </NavLink>
+                            </NavItem>
+                            <NavItem className="Disappear  customizedNavitems">
+                                <NavLink className="nav-link customizedNavLink " to="/">
+                                    Artists
+                                </NavLink>
+                            </NavItem>
+                            <NavItem className=" Disappear customizedNavitems ">
+                                <NavLink className="nav-link customizedNavLink" to="/">
+                                    Albums
+                                </NavLink>
+                            </NavItem>
+                        <NavItem className=" customizedNavLink toTheLeft">
+                            <UncontrolledDropdown nav inNavbar >
+                            <Button className="AccountItself">
+                                <DropdownToggle nav caret className="profileNavItem">
+                                    <i class="fa fa-user-secret"></i>
+                                    Profile
+                                </DropdownToggle>
+                            </Button>
+                            <DropdownMenu className="StaticNav" right>
+                                <DropdownItem className="StaticNavChildContainer DisappearFromDropDowm">
+                                <NavLink
+                                    className="StaticNavChild"
+                                    to="accountoverview">
+                                    Account
+                                </NavLink>{" "}
+                                </DropdownItem>
+                                <DropdownItem className="StaticNavChildContainer DisappearFromDropDowm">
+                                <NavLink
+                                    className="StaticNavChild "
+                                    to="accountoverview">
+                                    Log out
+                                </NavLink>{" "}
+                                </DropdownItem>
+                                <DropdownItem className="StaticNavChildContainer">
+                                <NavLink
+                                    className="StaticNavChild Disappear"
+                                    to="accountoverview">
+                                    Artistst
+                                </NavLink>{" "}
+                                </DropdownItem>
+                                <DropdownItem className="StaticNavChildContainer">
+                                <NavLink
+                                    className="StaticNavChild Disappear"
+                                    to="accountoverview">
+                                    Albums
+                                </NavLink>{" "}
+                                </DropdownItem>
+                            </DropdownMenu>
+                            </UncontrolledDropdown>
                         </NavItem>
                     </Nav>
-                </Collapse>
-            </div>
+                    </Col>
+                </Row>
+                </div>
             </Navbar>
             <div className="container MainViewPlaylsit">
                 <div className="sectionPlayList">
@@ -127,13 +165,27 @@ class LibraryPage extends Component {
                                 <div className="CardsLibrary">
                                     <Row>
                                         <Col>
-                                            <div draggable="true">
+                                            <div>
                                                 <div className="cardPhoto">
                                                     <div className="imageHolder">
-                                                    <img src="https://i.scdn.co/image/ab67706f000000021c6e257c426955c06bdfb9ef" alt="" className="theImage"></img>
+                                                    <img src="https://i.scdn.co/image/ab67706f000000021c6e257c426955c06bdfb9ef" alt="" className="theimage"></img>
                                                     </div>
                                                 </div>
                                             </div>
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col md={12}>
+                                            <Row className="cardTitle" >
+                                                <Col md={12}>
+                                                    <Link className="titlePlaylistLink">Todays Best Egyptsadasdasd</Link>
+                                                </Col>
+                                            </Row>
+                                            <Row>
+                                                <Col md={12}>
+                                                    <p className="desciptionPlaylistLink">Todays Best Egyptsadasdasd</p>
+                                                </Col>
+                                            </Row>
                                         </Col>
                                     </Row>
                                 </div>

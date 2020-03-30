@@ -93,6 +93,9 @@ export const addUserId = data => ({
   type: ActionTypes.ADD_USERID,
   payload: data
 });
+export const logOut = () => ({
+  type: ActionTypes.ADD_LOGOUT
+});
 
 export const getEmail = id => dispatch => {
   return axios
