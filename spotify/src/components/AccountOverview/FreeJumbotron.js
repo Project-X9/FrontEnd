@@ -25,7 +25,7 @@ class FreeJumbotron extends Component {
                   when you’re offline. No restrictions. No ads.
                 </p>
                 <Button className="UnderParagraph" color="success">
-                  <NavLink className="UnderParagraph" to="premium">GET PREMIUM</NavLink>
+                  <NavLink className="UnderParagraph" to="/premium">GET PREMIUM</NavLink>
                 </Button>
               </div>
               <div className="col-sm-12 col-md-12 col-lg-5">

@@ -193,7 +193,7 @@ class AccountOverview extends Component {
                 {showPlan}
                 <div className="row">
                   <Button className="EditProfile" color="success">
-                    <NavLink className="InsideEditProfile" to="premium">
+                    <NavLink className="InsideEditProfile" to="/premium">
                       JOIN PREMIUM
                     </NavLink>
                   </Button>
@@ -322,7 +322,7 @@ class AccountOverview extends Component {
                       />
                     )}
                   />
-                  <Redirect to="/account/overview" />
+                  
               </Switch>
                 
               </div>

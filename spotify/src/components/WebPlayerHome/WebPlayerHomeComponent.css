@@ -1,0 +1,310 @@
+ /***************************************************Sidebar & Sidebar Content Container*************************/
+  div.container.InfoContainer{
+    padding:0;
+    margin:0;
+    max-width:100%;
+    
+  }
+
+  div.row.InfoContainerRow{
+    margin:0;
+    display:flex;
+    flex-wrap: nowrap;
+  }
+  /***************************************************Sidebar & Sidebar Content Container************************/
+  /***************************************************Sidebar***************************************************/
+  .WebPlayerHomeBody .container .Linkers{
+
+    width:250px;
+  }
+  
+  .WebPlayerHomeBody .sidebar {
+    text-align:left;
+  }
+
+  .WebPlayerHomeBody .sidebar .Profile{
+    box-sizing: border-box;
+    fill: #222326;
+  
+  }
+  
+  .WebPlayerHomeBody .sidebar .fa.fa-snapchat-ghost{
+    font-size: 50px;
+    margin-left:100px;
+  }
+  
+  .WebPlayerHomeBody .sidebar .fa.fa-home,
+  .WebPlayerHomeBody .sidebar .fa.fa-edit,
+  .WebPlayerHomeBody .sidebar .fa.fa-lock,
+  .WebPlayerHomeBody .sidebar .fa.fa-hashtag,
+  .WebPlayerHomeBody .sidebar .fa.fa-credit-card
+  {
+    margin-right:1.5em;
+    font-size:23px;
+    width:5px;
+    height:5px;
+  }
+  
+  .WebPlayerHomeBody .sidebar {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #222326;
+    height: 100%;
+    overflow: auto;
+    box-sizing: border-box;
+    font-family: Circular,Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #222326;
+  }
+  
+  /* Sidebar links */
+  .WebPlayerHomeBody .sidebar a {
+    fill: var(--white);
+    color: #919496;;
+    padding-left: 50px;
+    padding-right: 15px;
+    position: relative;
+    text-decoration: none;
+    background-color: #222326;
+    display: block;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: none;
+    border-radius: 0;
+    letter-spacing: 0;
+    text-transform: none;
+    box-sizing: border-box;
+    font-size: 16px;
+    list-style: none;
+    border-top-style:solid ;
+    border-bottom-style:solid ;
+    border-top-width: 0.1em;
+    border-bottom-width: 0.1em;
+    border-top-color: rgb(22, 22, 21);
+    border-bottom-color: rgb(22, 22, 21);
+    font-family: Circular,Helvetica,Arial,sans-serif;
+    line-height: 1.5;
+  }
+  
+  /* Active/current link */
+  .WebPlayerHomeBody .sidebar a.active {
+    background-color: #222326;
+    border-left-style: solid;
+    border-left-width: 0.4em;
+    border-left-color:#4CAF50;
+    color: white;
+  }
+  
+  /* Links on mouse-over */
+  .WebPlayerHomeBody .sidebar a:hover:not(.active) {
+    background-color: #222326;
+    border-left-style: solid;
+    border-left-width: 0.4em;
+    border-left-color:#4CAF50;
+  }
+  
+  .WebPlayerHomeBody .sidebar a.AppearBig:hover{
+    border-style: none;
+  }
+  
+  /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+  .WebPlayerHomeBody div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+  }
+  
+  /* On screens that are less than 992px wide, make the sidebar into a topbar */
+  @media screen and (max-width: 992px) {
+    .WebPlayerHomeBody .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+      font-size: 12px;
+      display: flex;
+      flex-direction: row;
+    }
+    .WebPlayerHomeBody .sidebar a {
+      float: left;
+    }
+    div.content {margin-left: 0;}
+  
+    .WebPlayerHomeBody .sidebar .AppearBig{
+     display: none;
+    }
+   
+  }
+  /***************************************************Sidebar***************************************************/
+  /***************************************************Nav Bar***************************************************/
+  div.WebPlayerHomeNav{
+    margin:0;
+    padding:0;
+    width:100%;
+  }
+
+  div.WebPlayerHomeNav .container{
+    margin:0;
+    padding:0;
+    width:100%;
+    max-width: 100%;
+  }
+  
+  div.WebPlayerHomeNav div.container .NavBar {
+    background-color: #1a1818;
+  }
+  
+  div.WebPlayerHomeNav div.container .Profile {
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+    margin-left: 0px;
+    margin-right: 10px;
+  }
+  
+  div.WebPlayerHomeNav nav.NavBar.NavStyle{
+    text-align: left;
+  }
+
+  div.WebPlayerHomeNav div.container .nav-link {
+    color: white;
+    margin-left: 0px;
+  }
+  
+  div.WebPlayerHomeNav div.container .nav-link:hover {
+    margin-left: 0px;
+  }
+
+  div.WebPlayerHomeNav .customizedNavitems{
+    margin:  10px;
+    padding: 0px;
+    border: 0;
+    vertical-align: baseline;
+  }
+
+  div.WebPlayerHomeNav .customizedButton{
+    border: none;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,.7);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    opacity: .6;
+  }
+
+  div.WebPlayerHomeNav .customizedSvg{
+    border: none;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background-color: black;
+    cursor: pointer;
+    opacity: .6;
+    margin: 0px;
+  }
+
+
+  .WebPlayerHomeNav Button.NextToAccount {
+    background-color: transparent;
+    border: 2px solid #fff;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 700;
+    letter-spacing: 1.76px;
+    text-transform: uppercase;
+    border-radius: 500px;
+    color: #fff;
+    transition: all 33ms cubic-bezier(.3,0,0,1);
+    padding: 8px 34px;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .WebPlayerHomeNav a.NextToAccount {
+    color:white;
+  }
+
+  .WebPlayerHomeNav Button.NextToAccount:hover {
+    transform: scale(1.06);
+  }
+
+  .WebPlayerHomeNav a.NextToAccount:hover {
+    text-decoration:none;
+  }
+
+  .WebPlayerHomeNav Button.AccountItself {
+    border-radius: 23px;
+    height: 32px;
+    min-width: 32px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    border:0;
+    cursor: pointer;
+    color: #fff;
+    padding: 2px;
+    margin-left: 16px;
+    background-color: black;   
+  }
+
+  .WebPlayerHomeNav a.AccountItselfIcons.nav-link {
+    margin:0px;  
+  }
+
+  .WebPlayerHomeNav Button.AccountItself:hover {
+    background-color: #282828;
+  }
+  
+  div.WebPlayerHomeNav div.container .StaticNav {
+    background-color: #282828;  
+  }
+
+  div.WebPlayerHomeNav div.container .StaticNav .StaticNavChildContainer{
+    padding:0;
+  }
+
+  div.WebPlayerHomeNav div.container .StaticNav .StaticNavChild{
+    width: 100%;
+    color: rgb(168, 167, 167);
+    padding: 3px 20px;
+    line-height: 32px;
+    white-space: nowrap;
+    background: none;
+    border: 0;
+    user-select: none;
+    cursor: default;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative; 
+  }
+  
+  div.WebPlayerHomeNav div.container .StaticNav .StaticNavChildContainer:hover,
+  div.WebPlayerHomeNav div.container .StaticNav .StaticNavChild:hover{
+    color: #fff;
+    background-color: #333;
+    text-decoration:none;
+  }
+  
+
+  @media(min-width: 769px){
+    div.WebPlayerHomeNav div.container .StaticNav .StaticNavChild.Disappear{
+    display: none;
+    }
+  }
+
+  @media(max-width: 768px){
+    .WebPlayerHomeNav Button.NextToAccount {
+      display: none;
+    }
+  }
+  /***************************************************Nav Bar***************************************************/
+  
