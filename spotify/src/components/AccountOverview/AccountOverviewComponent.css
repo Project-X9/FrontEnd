@@ -338,7 +338,6 @@
   }
   /***************************************************Sidebar & Sidebar Content Container************************/
   /***************************************************Sidebar***************************************************/
-  /***************************************************Sidebar***************************************************/
   .AccountOverviewBody .container .Linkers{
     padding:0;
   }
@@ -559,6 +558,7 @@
 
   .AccountOverviewBody .container a.InsideEditProfile:hover{
     text-decoration:none;
+    color:#18191a;
   }
   
   @media screen and (max-width: 992px) {

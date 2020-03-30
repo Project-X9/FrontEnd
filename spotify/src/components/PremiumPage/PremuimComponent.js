@@ -93,10 +93,7 @@ class Premium extends Component {
   }
 
   render() {
-    let redirect = "";
-    if (this.state.tempId === "") {
-      redirect = <Redirect to="/signup" />;
-    }
+ 
 
     let accLogStyleParent = "";
     let accChild = "";
@@ -112,7 +109,6 @@ class Premium extends Component {
     }
     return (
       <div>
-        {redirect}
         <div className="AccountOverviewNav">
           <div className="container">
             <Navbar className="NavBar" sticky="top" expand="md">
