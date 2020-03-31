@@ -1,0 +1,314 @@
+ /***************************************************Sidebar, Navbar & Sidebar Content Container*************************/
+  .WebPlayerHomeBody div.container.InfoContainer{
+    padding:0;
+    margin:0;
+    max-width:100%;
+  }
+
+  .WebPlayerHomeBody div.row.InfoContainerRow{
+    margin:0;
+  }
+  /***************************************************Sidebar, Navbar & Sidebar Content Container************************/
+  /***************************************************Sidebar***************************************************/
+  .WebPlayerHomeBody .container .Linkers{
+    padding:0;
+    background-color: black;
+  }
+
+  
+  .WebPlayerHomeBody .sidebar {
+    text-align:left;
+  }
+
+  .WebPlayerHomeBody .sidebar .fa.fa-home,
+  .WebPlayerHomeBody .sidebar .fa.fa-search,
+  .WebPlayerHomeBody .sidebar .fa.fa-bomb,
+  .WebPlayerHomeBody .sidebar .fa.fa-plus-square,
+  .WebPlayerHomeBody .sidebar .fa.fa-heart
+  {
+    margin-right:1.5em;
+    font-size:23px;
+    width:5px;
+    height:5px;
+  }
+  
+  /* Sidebar links */
+  .WebPlayerHomeBody .sidebar a {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.015em;
+    text-transform: none;
+    color: #b3b3b3;
+    text-align:left;
+    list-style: none;
+    padding-left: 20px;
+    padding-right: 15px;
+    text-decoration: none;
+    background-color: black;
+    display: block;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: none;
+    border-radius: 0;
+    box-sizing: border-box;
+    font-family: Circular,Helvetica,Arial,sans-serif;
+  }
+
+  .WebPlayerHomeBody .sidebarHeaderBetween{
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.015em;
+    text-transform: none;
+    color: #b3b3b3;
+    text-align:left;
+    padding-left: 20px;
+    margin-top:1.5em;
+  }
+
+  .WebPlayerHomeBody .sidebar a.AppearBigImage{
+    margin: 0.5em 0;
+  }
+  
+  /* Active/current link */
+  .WebPlayerHomeBody .sidebar a.active {
+    background-color: #222326;
+    color: white;
+    border-radius: 7px;
+    margin: 0 0.4em;
+  }
+  
+  /* Links on mouse-over */
+  .WebPlayerHomeBody .sidebar a:hover:not(.active) {
+    color: white;
+    transition-property: color;
+    transition-duration: 0.4s;
+  }
+  
+  /***************************************************Sidebar***************************************************/
+  /***************************************************Navbar & Content***************************************************/
+  div.col.webPlayerHomeNavAndContent{
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width:100%;
+  }
+  /***************************************************Navbar & Content***************************************************/
+  /***************************************************Navbar***************************************************/
+  div.WebPlayerHomeNav{
+    margin:0;
+    padding:0;
+    width:100%;
+  }
+
+  div.WebPlayerHomeNav .container{
+    margin:0;
+    padding:0;
+    width:100%;
+    max-width: 100%;
+  }
+  
+  div.WebPlayerHomeNav div.container .NavBar {
+    background-color: #1a1818;
+  }
+  
+  div.WebPlayerHomeNav div.container .Profile {
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+    margin-left: 0px;
+    margin-right: 10px;
+  }
+  
+  div.WebPlayerHomeNav nav.NavBar.NavStyle{
+    text-align: left;
+  }
+
+  div.WebPlayerHomeNav div.container .nav-link {
+    color: white;
+    margin-left: 0px;
+  }
+  
+  div.WebPlayerHomeNav div.container .nav-link:hover {
+    margin-left: 0px;
+  }
+
+  div.WebPlayerHomeNav .customizedNavitems{
+    margin:  10px;
+    padding: 0px;
+    border: 0;
+    vertical-align: baseline;
+  }
+
+  div.WebPlayerHomeNav .customizedButton{
+    border: none;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,.7);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    opacity: .6;
+  }
+
+  div.WebPlayerHomeNav .customizedSvg{
+    border: none;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background-color: black;
+    cursor: pointer;
+    opacity: .6;
+    margin: 0px;
+  }
+
+
+  .WebPlayerHomeNav Button.NextToAccount {
+    background-color: transparent;
+    border: 2px solid #fff;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 700;
+    letter-spacing: 1.76px;
+    text-transform: uppercase;
+    border-radius: 500px;
+    color: #fff;
+    transition: all 33ms cubic-bezier(.3,0,0,1);
+    padding: 8px 34px;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .WebPlayerHomeNav Button.HomeNotSignedUp {
+    background-color: black;
+    border: none;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 700;
+    letter-spacing: 1.76px;
+    text-transform: uppercase;
+    border-radius: 500px;
+    color: #fff;
+    transition: all 33ms cubic-bezier(.3,0,0,1);
+    padding: 8px 15px;
+    margin-right:2em;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .WebPlayerHomeNav Button.HomeNotLoggedin {
+    background-color: white;
+    border: none;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 700;
+    letter-spacing: 1.76px;
+    text-transform: uppercase;
+    border-radius: 500px;
+    color: black;
+    transition: all 33ms cubic-bezier(.3,0,0,1);
+    padding: 8px 34px;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .WebPlayerHomeNav a.HomeNotSignedUp,
+  .WebPlayerHomeNav a.NextToAccount {
+    color:white;
+  }
+  
+  .WebPlayerHomeNav a.HomeNotLoggedin{
+    color:black;
+  }
+
+  .WebPlayerHomeNav Button.HomeNotLoggedin:hover,
+  .WebPlayerHomeNav Button.HomeNotSignedUp:hover,
+  .WebPlayerHomeNav Button.NextToAccount:hover {
+    transform: scale(1.06);
+  }
+
+  .WebPlayerHomeNav a.HomeNotLoggedin:hover,
+  .WebPlayerHomeNav a.HomeNotSignedUp:hover,
+  .WebPlayerHomeNav a.NextToAccount:hover {
+    text-decoration:none;
+  }
+
+  .WebPlayerHomeNav ul.ml-auto.MakingTheButtonsHorizontal  {
+    display: contents;
+  }
+
+  .WebPlayerHomeNav Button.AccountItself {
+    border-radius: 23px;
+    height: 32px;
+    min-width: 32px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    border:0;
+    cursor: pointer;
+    color: #fff;
+    padding: 2px;
+    margin-left: 16px;
+    background-color: black;   
+  }
+
+  .WebPlayerHomeNav a.AccountItselfIcons.nav-link {
+    margin:0px;  
+  }
+
+  .WebPlayerHomeNav Button.AccountItself:hover {
+    background-color: #282828;
+  }
+  
+  div.WebPlayerHomeNav div.container .StaticNav {
+    background-color: #282828;  
+  }
+
+  div.WebPlayerHomeNav div.container .StaticNav .StaticNavChildContainer{
+    padding:0;
+  }
+
+  div.WebPlayerHomeNav div.container .StaticNav .StaticNavChild{
+    width: 100%;
+    color: rgb(168, 167, 167);
+    padding: 3px 20px;
+    line-height: 32px;
+    white-space: nowrap;
+    background: none;
+    border: 0;
+    user-select: none;
+    cursor: default;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative; 
+  }
+  
+  div.WebPlayerHomeNav div.container .StaticNav .StaticNavChildContainer:hover,
+  div.WebPlayerHomeNav div.container .StaticNav .StaticNavChild:hover{
+    color: #fff;
+    background-color: #333;
+    text-decoration:none;
+  }
+  
+
+  @media(min-width: 769px){
+    div.WebPlayerHomeNav div.container .StaticNav .StaticNavChild.Disappear{
+    display: none;
+    }
+  }
+
+  @media(max-width: 768px){
+    .WebPlayerHomeNav Button.NextToAccount {
+      display: none;
+    }
+  }
+  /***************************************************Navbar***************************************************/
+  

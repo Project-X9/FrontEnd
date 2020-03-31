@@ -93,11 +93,6 @@ class Premium extends Component {
   }
 
   render() {
-    // let redirect = "";
-    // if (this.state.tempId === "") {
-    //   redirect = <Redirect to="/signup" />;
-    // }
-
     let accLogStyleParent = "";
     let accChild = "";
     let logChild = "";

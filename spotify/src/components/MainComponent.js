@@ -6,11 +6,12 @@ import Home from "./Homepage/HomeComponent";
 import SignUp from "./SignUp/SignUpComponent";
 import PremiumComponent from "./PremiumPage/PremuimComponent";
 import AccountOverview from "./AccountOverview/AccountOverviewComponent";
+import WebPlayer from "./WebPlayerHome/WebPlayerComponent";
 import SignIn from "./SignIn/SignInComponent";
 import PlayFotter from "./WebPlayer/PlayFotterComponent";
-import Library from "./Library/LibraryCompnent";
 import NowPlay from "./NowPlayComponent/NowPlay";
-import LibraryPage from "./Library/LibraryPage";
+import Library from "./Library/LibraryCompnent";
+import Albums from "./Library/AlbumsComponent";
 import {
   postFeedback,
   postFacebookLogin,
@@ -20,7 +21,8 @@ import {
   getEmail,
   getPassword,
   fetchUserData,
-  handleLoginId
+  handleLoginId,
+  handleLogoutId
 } from "../redux/ActionCreators";
 
 const mapStateToProps = state => ({
@@ -37,6 +39,7 @@ const mapDispatchToProps = dispatch => ({
   fetchUserData: () => {
     dispatch(fetchUserData());
   },
+  handleLogoutId: id => dispatch(handleLogoutId(id)),
   PostPassword: (password, id) => dispatch(PostPassword(password, id)),
   GetPassword: id => dispatch(GetPassword(id)),
   getEmail: id => dispatch(getEmail(id)),
@@ -54,7 +57,6 @@ const mapDispatchToProps = dispatch => ({
 class Main extends Component {
   componentDidMount() {
     this.props.fetchUserData();
-    this.props.postFeedback();
   }
 
   render() {
@@ -97,10 +99,9 @@ class Main extends Component {
           <Route
             path="/librarypage"
             component={() => (
-              <LibraryPage id={this.props.id} data={this.props.data} />
+              <Albums id={this.props.id} data={this.props.data} />
             )}
           />
-
           <Route
             exact
             path="/premium"
@@ -113,7 +114,7 @@ class Main extends Component {
             )}
           />
           <Route
-            path="/account"
+            path="/account/overview"
             component={() => (
               <AccountOverview
                 //////////for overview and change password
@@ -124,9 +125,23 @@ class Main extends Component {
                 PostPassword={this.props.PostPassword}
                 GetPassword={this.props.GetPassword}
                 //////////
+                handleLogoutId={this.props.handleLogoutId}
               />
             )}
           />
+
+          <Route
+            path="/webplayer/home"
+            component={() => (
+              <WebPlayer
+                //////////for WebPlayer and HomeNavAndComponents
+                data={this.props.data}
+                id={this.props.id}
+                ///////////
+              />
+            )}
+          />
+
           <Route
             exact
             path="/signin"

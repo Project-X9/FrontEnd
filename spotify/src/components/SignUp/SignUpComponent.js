@@ -87,7 +87,7 @@ class SignUp extends Component {
         SignUpId:this.props.data.data.length+1
       },()=>{
         this.props.resetFeedbackForm();
-        this.props.postFeedback(
+        this.props.postFeedback( //the function that posts the user data
           values.email,
           values.confirmemail,
           values.password,
@@ -99,8 +99,6 @@ class SignUp extends Component {
         );
       }
       );
-      
-      
     } 
     else {
       this.props.resetFeedbackForm();

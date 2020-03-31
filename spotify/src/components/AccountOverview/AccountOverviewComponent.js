@@ -65,8 +65,12 @@ class AccountOverview extends Component {
     this.setState({
       tempId: '',
     });
-  }
+  } 
 
+  handleLogout(){
+    let id="";
+    this.props.handleLogoutId(id);
+  }
   /**
    * Responsible for showing everything on the Account Overview page
    * @returns Components that will be displayed on the page
@@ -90,13 +94,12 @@ class AccountOverview extends Component {
 
     let redirect=''
     if (this.state.tempId === "") {
-      alert("help") 
+      alert("No ID") 
       redirect=<Redirect to="/signup" />
     }
    
     const UserData = this.props.data.data.map((data) => {
       if (data.id === this.state.tempId) {
-        alert(this.state.tempId)
         return (
           <div key={data.id}>
             <div className="row">
@@ -181,10 +184,13 @@ class AccountOverview extends Component {
                 <hr />
                 <div className="row">
                   <button
-                    onClick={this.state.nullID}
+                    // onClick={this.state.nullID}
+                    onClick={this.handleLogout}
                     className="EditProfile"
                     color="success">
-                    EDIT PROFILE
+                    <NavLink className="InsideEditProfile" to="/premium">
+                      EDIT PROFILE
+                    </NavLink>
                   </button>
                 </div>
                 <div className="row">
@@ -193,14 +199,16 @@ class AccountOverview extends Component {
                 {showPlan}
                 <div className="row">
                   <Button className="EditProfile" color="success">
-                    <NavLink className="InsideEditProfile" to="premium">
+                    <NavLink className="InsideEditProfile" to="/premium">
                       JOIN PREMIUM
                     </NavLink>
                   </Button>
                 </div>
                 <div className="row">
                   <Button className="EditProfile" color="success">
-                    SIGN OUT
+                    <NavLink className="InsideEditProfile" to="/">
+                      SIGN OUT
+                    </NavLink>
                   </Button>
             </div>
           </div>
@@ -213,7 +221,7 @@ class AccountOverview extends Component {
         <div className="AccountOverviewNav">
           <div className="container">
             <Navbar className="NavBar NavStyle" sticky="top" expand="md">
-              <NavbarBrand className="mr-auto" href="/signup">
+              <NavbarBrand className="mr-auto" href="/home">
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSBmnPgQKW4JLrNcSFhPFCLHz3t8kT1pZl0PVkLYsa8FoScWYda"
                   height="65px"
@@ -259,12 +267,16 @@ class AccountOverview extends Component {
                         <DropdownItem className="StaticNavChild1Container">
                           <NavLink
                             className="StaticNavChild1"
-                            to="accountoverview">
+                            to="/account/overview">
                             Account
-                          </NavLink>{" "}
+                          </NavLink>
                         </DropdownItem>
-                        <DropdownItem className="StaticNavChild2">
-                          LogOut
+                        <DropdownItem className="StaticNavChild1Container">
+                        <NavLink
+                            className="StaticNavChild2"
+                            to="/account/overview">
+                            Log out
+                          </NavLink>
                         </DropdownItem>
                       </DropdownMenu>
                     </UncontrolledDropdown>
@@ -280,51 +292,49 @@ class AccountOverview extends Component {
             <div className="row InfoContainerRow">
               <div className="col-sm-12 col-md-12 col-lg-4 Linkers">
                 <div className="sidebar">
-                  <Link to="/" className="AppearBig">
+                  <Link className="AppearBig">
                     <i className="fa fa-snapchat-ghost" aria-hidden="true" />
                   </Link>
                   <Link to="/account/overview" className={overviewActive}>
                     <i className="fa fa-home" />
                     Account overview
                   </Link>
-                  <Link to="/" href="#news" className={editProfileActive}>
+                  <Link to="/" className={editProfileActive}>
                     <i className="fa fa-edit" />
                     Edit profile
                   </Link>
-                  <Link to="/account/changepassword" href="#contact" className={changePasswordActive}>
+                  <Link to="/account/changepassword" className={changePasswordActive}>
                     <i className="fa fa-lock" />
                     Change password
                   </Link>
-                  <Link to="/" href="#contact" className={recoverPlaylistsActive}>
+                  <Link to="/"  className={recoverPlaylistsActive}>
                     <i className="fa fa-hashtag" />
                     Recover playlists
                   </Link>
-                  <Link to="/" href="#contact" className={redeemActive}>
+                  <Link to="/" className={redeemActive}>
                     <i className="fa fa-credit-card" />
                     Redeem
                   </Link>
                 </div>
               </div>
               <div className="col-sm-12 col-md-12 col-lg-8 Content">
-              <Switch>
-                  <Route
-                    path="/account/overview"
-                    component={showOverview}
-                  />
-                  <Route
-                    path="/account/changepassword"
-                    component={() => (
-                      <ChangePass
-                        PostPassword={this.props.PostPassword}
-                        GetPassword={this.props.GetPassword}
-                        data={this.props.data}
-                        id={this.props.id}
-                      />
-                    )}
-                  />
-                  <Redirect to="/account/overview" />
-              </Switch>
-                
+                <Switch>
+                    <Route
+                      path="/account/overview"
+                      component={showOverview}
+                    />
+                    <Route
+                      path="/account/changepassword"
+                      component={() => (
+                        <ChangePass
+                          PostPassword={this.props.PostPassword}
+                          GetPassword={this.props.GetPassword}
+                          data={this.props.data}
+                          id={this.props.id}
+                        />
+                      )}
+                    />    
+                </Switch>
               </div>
             </div>
           </div>
@@ -334,7 +344,7 @@ class AccountOverview extends Component {
             <div className="AccountOverviewFooterFirstRow">
               <div className="row justify-content-center">
                 <div className="col-sm-12 col-md-12 col-lg-2">
-                  <Link to="http://spotify.com">
+                  <Link to="/home">
                     <img
                       className="logo"
                       src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSBmnPgQKW4JLrNcSFhPFCLHz3t8kT1pZl0PVkLYsa8FoScWYda"
@@ -346,13 +356,13 @@ class AccountOverview extends Component {
                   <h5 className="FooterHeader">COMPANY</h5>
                   <ul>
                     <li>
-                      <Link to="http://google.com">About</Link>
+                      <Link to="/">About</Link>
                     </li>
                     <li>
-                      <Link to="http://google.com">Jobs</Link>
+                      <Link to="/">Jobs</Link>
                     </li>
                     <li>
-                      <Link to="http://google.com">For the Record</Link>
+                      <Link to="/">For the Record</Link>
                     </li>
                   </ul>
                 </div>
@@ -360,16 +370,16 @@ class AccountOverview extends Component {
                   <h5 className="FooterHeader">COMMUNITIES</h5>
                   <ul>
                     <li>
-                      <Link to="http://google.com">For Artists</Link>
+                      <Link to="/">For Artists</Link>
                     </li>
                     <li>
-                      <Link to="http://google.com">Developers</Link>
+                      <Link to="/">Developers</Link>
                     </li>
                     <li>
-                      <Link to="http://google.com">Brands</Link>
+                      <Link to="/">Brands</Link>
                     </li>
                     <li>
-                      <Link to="http://google.com">Investors</Link>
+                      <Link to="/">Investors</Link>
                     </li>
                   </ul>
                 </div>
@@ -377,13 +387,13 @@ class AccountOverview extends Component {
                   <h5 className="FooterHeader">USEFUL LINKS</h5>
                   <ul>
                     <li>
-                      <Link to="http://google.com">About</Link>
+                      <Link to="">Help</Link>
                     </li>
                     <li>
-                      <Link to="http://google.com">Jobs</Link>
+                      <Link to="/webplayer">Web Player</Link>
                     </li>
                     <li>
-                      <Link to="http://google.com">For the Record</Link>
+                      <Link to="">Free Mobile App</Link>
                     </li>
                   </ul>
                 </div>
@@ -408,11 +418,11 @@ class AccountOverview extends Component {
             </div>
             <div className="AccountOverviewFooterSecondRow">
               <div className="col-sm-9 col-md-9 linespacing">
-                <Link to="http://google.com">Legal</Link>
-                <Link to="http://google.com">Privacy Center</Link>
-                <Link to="http://google.com">Privacy Policy</Link>
-                <Link to="http://google.com">Cookies</Link>
-                <Link to="http://google.com">About Ads</Link>
+                <Link to="/">Legal</Link>
+                <Link to="/">Privacy Center</Link>
+                <Link to="/">Privacy Policy</Link>
+                <Link to="/">Cookies</Link>
+                <Link to="/">About Ads</Link>
               </div>
               <div className="col-sm-3 col-md-3">
                 <p className="stylesecondrow2">© 2020 Spotify AB</p>

@@ -93,7 +93,15 @@ export const addUserId = data => ({
   type: ActionTypes.ADD_USERID,
   payload: data
 });
-
+//////////////////////////////////// LOGOUT /////////////////////// 
+export const handleLogoutId  = (id)=> dispatch => {
+  dispatch(removeUserId(id));
+};
+export const removeUserId = (id) => ({
+  type: ActionTypes.ADD_LOGOUT,
+  payload:id
+});
+/////////////////////////////////////////////////////////////////////
 export const getEmail = id => dispatch => {
   return axios
     .get(`${baseUrl}users/${id - 1}`)
