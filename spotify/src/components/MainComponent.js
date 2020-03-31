@@ -6,7 +6,7 @@ import Home from "./Homepage/HomeComponent";
 import SignUp from "./SignUp/SignUpComponent";
 import PremiumComponent from "./PremiumPage/PremuimComponent";
 import AccountOverview from "./AccountOverview/AccountOverviewComponent";
-import WebPlayerHome from "./WebPlayerHome/WebPlayerHomeComponent"
+import WebPlayer from "./WebPlayerHome/WebPlayerComponent"
 import SignIn from "./SignIn/SignInComponent";
 import PlayFotter from "./WebPlayer/PlayFotterComponent";
 import Library from './Library/LibraryCompnent';
@@ -130,8 +130,8 @@ class Main extends Component {
           <Route
             path="/webplayer/home"
             component={() => (
-              <WebPlayerHome
-             //////////for WebPlayerHome and HomeNavAndComponentsSigned
+              <WebPlayer
+             //////////for WebPlayer and HomeNavAndComponents
              data={this.props.data} 
              id={this.props.id}
              ///////////

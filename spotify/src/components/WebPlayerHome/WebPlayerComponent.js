@@ -21,10 +21,10 @@ import {
   Button
 } from "reactstrap";
 import { NavLink, Link, Redirect, Switch, Route} from "react-router-dom";
-import HomeNavAndContentSigned from './HomeNavAndContentSigned'
+import HomeNavAndContent from './HomeNavAndContent'
 
 
-class WebPlayerHome extends Component {
+class WebPlayer extends Component {
  
   constructor(props) {
     super(props);
@@ -35,18 +35,23 @@ class WebPlayerHome extends Component {
 
  
   render() {
-    const isSignedIn = this.props.data.data.map((data) => {
-        if (data.id === this.state.tempId) {
-          return (
-            <div>
-             <HomeNavAndContentSigned
-                data={this.props.data} 
-                id={this.props.id}
-            /> 
-            </div>
-          );
-        }
-      });
+    const showLikeAndCreate = this.props.data.data.map((data) => {
+      if (data.id === this.state.tempId) {
+        return(
+          <div>
+              <h3 className="sidebarHeaderBetween">PLAYLISTS</h3>
+              <Link to="/" >
+                  <i className="fa fa-plus-square"></i>
+                  Create Playlist
+              </Link>
+              <Link to="/" >
+                  <i className="fa fa-heart"></i>
+                  Liked Songs
+              </Link>
+          </div>
+        )
+      }
+    });
     return (
       <div>
         <div className="WebPlayerHomeBody">
@@ -74,19 +79,22 @@ class WebPlayerHome extends Component {
                             <i className="fa fa-bomb"></i>
                             Your Library
                         </Link>
-                        <h3 className="sidebarHeaderBetween">PLAYLISTS</h3>
-                        <Link to="/" >
-                            <i className="fa fa-plus-square"></i>
-                            Create Playlist
-                        </Link>
-                        <Link to="/" >
-                            <i className="fa fa-heart"></i>
-                            Liked Songs
-                        </Link>
+                        {showLikeAndCreate}
                         </div>
                     </div>
                     <div className="col-md-8 col-lg-9 webPlayerHomeNavAndContent">
-                        {isSignedIn}
+                      <Switch>
+                        <Route
+                          path="/webplayer/home"
+                            component={() => (
+                              <HomeNavAndContent
+                             data={this.props.data} 
+                             id={this.props.id}
+                              />
+                            )}
+                        />
+                        />    
+                      </Switch>
                     </div>
                 </div>
             </div>
@@ -101,4 +109,4 @@ class WebPlayerHome extends Component {
   }
 }
 
-export default WebPlayerHome;
+export default WebPlayer;
