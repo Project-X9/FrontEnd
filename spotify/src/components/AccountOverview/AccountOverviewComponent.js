@@ -45,6 +45,7 @@ class AccountOverview extends Component {
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.state.nullID = this.nullID.bind(this);
+    
   }
 
   /**

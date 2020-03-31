@@ -126,7 +126,7 @@ class LibraryPage extends Component {
                 </Row>
                 </div>
             </Navbar>
-            {/* <div className="container MainViewPlaylsit">
+            { <div className="container MainViewPlaylsit">
                 <div className="sectionPlayList">
                     <Row>
                         <Col  md={12}>
@@ -160,12 +160,14 @@ class LibraryPage extends Component {
                                             </Row>
                                             <Row className="playButtonOfLikedSongs">
                                                 <Col  md={12}>
+                                                    <div className="displayButton">
                                                     <Button className="PlayButton">
                                                     <svg height="24" role="img" width="24" viewBox="0 0 24 24">
                                                         <polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor">
                                                         </polygon>
                                                     </svg>
                                                     </Button>
+                                                    </div>
                                                 </Col>
                                             </Row>
                                         </div>
@@ -214,8 +216,8 @@ class LibraryPage extends Component {
                         </Col>
                     </Row>
                 </div>
-                 */}
-            {/* </div> */}
+                 }
+            </div> }
         </div>
         </div>
         );
