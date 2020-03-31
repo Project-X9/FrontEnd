@@ -8,8 +8,9 @@ import PremiumComponent from "./PremiumPage/PremuimComponent";
 import AccountOverview from "./AccountOverview/AccountOverviewComponent";
 import SignIn from "./SignIn/SignInComponent";
 import PlayFotter from "./WebPlayer/PlayFotterComponent";
-import Library from './Library/LibraryCompnent';
-import LibraryPage from  "./Library/LibraryPage"
+import Library from "./Library/LibraryCompnent";
+import NowPlay from "./NowPlayComponent/NowPlay";
+import LibraryPage from "./Library/LibraryPage";
 import {
   postFeedback,
   postFacebookLogin,
@@ -75,30 +76,31 @@ class Main extends Component {
                 id={this.props.id}
                 data={this.props.data}
                 handleLoginId={this.props.handleLoginId}
-
               />
             )}
           />
           <Route
-            exact path="/library"
+            exact
+            path="/library"
             component={() => (
-              <Library
-                id={this.props.id}
-                data={this.props.data}
-              />
+              <Library id={this.props.id} data={this.props.data} />
             )}
           />
-          
+          <Route
+            exact
+            path="/nowplay"
+            component={() => (
+              <NowPlay id={this.props.id} data={this.props.data} />
+            )}
+          />
+
           <Route
             path="/librarypage"
             component={() => (
-              <LibraryPage
-                id={this.props.id}
-                data={this.props.data}
-              />
+              <LibraryPage id={this.props.id} data={this.props.data} />
             )}
           />
-          
+
           <Route
             exact
             path="/premium"
@@ -110,19 +112,18 @@ class Main extends Component {
               />
             )}
           />
-          <Route  
-            
+          <Route
             path="/account"
             component={() => (
-              <AccountOverview 
-              //////////for overview and change password
-              data={this.props.data} 
-              id={this.props.id}
-              ///////////
-              ///////////for change password
-              PostPassword={this.props.PostPassword}
-              GetPassword={this.props.GetPassword}
-              //////////
+              <AccountOverview
+                //////////for overview and change password
+                data={this.props.data}
+                id={this.props.id}
+                ///////////
+                ///////////for change password
+                PostPassword={this.props.PostPassword}
+                GetPassword={this.props.GetPassword}
+                //////////
               />
             )}
           />

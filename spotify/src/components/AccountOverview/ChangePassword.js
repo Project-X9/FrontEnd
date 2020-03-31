@@ -1,7 +1,7 @@
 /**
  * Change Password Component
  */
-import { Redirect, Switch, Route } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 import React, { Component } from "react";
 import { Col, Button, Row } from "reactstrap";
