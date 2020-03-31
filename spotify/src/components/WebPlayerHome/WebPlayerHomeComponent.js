@@ -21,7 +21,7 @@ import {
   Button
 } from "reactstrap";
 import { NavLink, Link, Redirect, Switch, Route} from "react-router-dom";
-
+import HomeNavAndContentSigned from './HomeNavAndContentSigned'
 
 
 class WebPlayerHome extends Component {
@@ -29,125 +29,64 @@ class WebPlayerHome extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isNavOpen: false,
+      tempId: this.props.id.id,
     };
-    this.state.toggleNav = this.toggleNav.bind(this);
-  }
-
-  
-  toggleNav() {
-    this.setState({
-      isNavOpen: !this.state.isNavOpen,
-    });
   }
 
  
   render() {
-
+    const isSignedIn = this.props.data.data.map((data) => {
+        if (data.id === this.state.tempId) {
+          return (
+            <div>
+             <HomeNavAndContentSigned
+                data={this.props.data} 
+                id={this.props.id}
+            /> 
+            </div>
+          );
+        }
+      });
     return (
       <div>
         <div className="WebPlayerHomeBody">
             <div className="container InfoContainer">
                 <div className="row InfoContainerRow">
-                    <div className="Linkers">
+                    <div className="col-md-4 col-lg-3 Linkers">
                         <div className="sidebar">
-                        <Link to="/" className="AppearBig">
-                            <i className="fa fa-snapchat-ghost" aria-hidden="true" />
+                        <Link to="/home" className="AppearBigImage">
+                            <img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSBmnPgQKW4JLrNcSFhPFCLHz3t8kT1pZl0PVkLYsa8FoScWYda"
+                            height="50px"
+                            width="160px"
+                            alt=""
+                            />
+                        </Link>
+                        <Link to="/webplayer/home"  className="active">
+                            <i className="fa fa-home" />
+                            Home
+                        </Link>
+                        <Link to="/webplayer/search">
+                            <i className="fa fa-search"></i>
+                            Search
+                        </Link>
+                        <Link to="/webplayer/library">
+                            <i className="fa fa-bomb"></i>
+                            Your Library
+                        </Link>
+                        <h3 className="sidebarHeaderBetween">PLAYLISTS</h3>
+                        <Link to="/" >
+                            <i className="fa fa-plus-square"></i>
+                            Create Playlist
                         </Link>
                         <Link to="/" >
-                            <i className="fa fa-home" />
-                            Account overview
-                        </Link>
-                        <Link to="/" href="#news" >
-                            <i className="fa fa-edit" />
-                            Edit profile
-                        </Link>
-                        <Link to="/" href="#contact" >
-                            <i className="fa fa-lock" />
-                            Change password
-                        </Link>
-                        <Link to="/" href="#contact">
-                            <i className="fa fa-hashtag" />
-                            Recover playlists
-                        </Link>
-                        <Link to="/" href="#contact" >
-                            <i className="fa fa-credit-card" />
-                            Redeem
+                            <i className="fa fa-heart"></i>
+                            Liked Songs
                         </Link>
                         </div>
                     </div>
-                    <div className="col Content">
-                        <div className="row">
-                            <div className="WebPlayerHomeNav">
-                                <div className="container">
-                                    <Navbar className="NavBar NavStyle" sticky="top" expand="md">
-                                        <Nav className="mr-auto" href="/signup">
-                                        <NavItem className="customizedNavitems">
-                                                <Button className="customizedButton">
-                                                    <NavLink className="nav-link" to="/">
-                                                    <svg className="customizedSvg" viewBox="0 0 24 24">
-                                                    <path fill="currentColor" d="M15.54 21.15L5.095 12.23 15.54 3.31l.65.76-9.555 8.16 9.555 8.16"></path>                            </svg>    
-                                                    </NavLink>
-                                                </Button>   
-                                        </NavItem>
-                                        <NavItem className="customizedNavitems">
-                                                <Button className="customizedButton">
-                                                        <NavLink className="nav-link customizedArrows" to="/">
-                                                        <svg className="customizedSvg" viewBox="0 0 24 24">
-                                                        <path fill="currentColor" d="M7.96 21.15l-.65-.76 9.555-8.16L7.31 4.07l.65-.76 10.445 8.92"></path>
-                                                        </svg>    
-                                                        </NavLink>
-                                                </Button>  
-                                        </NavItem>
-                                        </Nav>
-                                        <Nav navbar className="ml-auto">
-                                            <NavItem>
-                                            <Button className="NextToAccount" color="success">
-                                                <NavLink className="NextToAccount" to="/premium">UPGRADE</NavLink>
-                                            </Button> 
-                                            </NavItem>
-                                            <NavItem>
-                                                <UncontrolledDropdown nav inNavbar>
-                                                <Button className="AccountItself">
-                                                    <DropdownToggle nav caret>
-                                                        <i class="fa fa-user-secret"></i>
-                                                        Profile
-                                                    </DropdownToggle>
-                                                </Button>
-                                                <DropdownMenu className="StaticNav" right>
-                                                    <DropdownItem className="StaticNavChildContainer">
-                                                    <NavLink
-                                                        className="StaticNavChild"
-                                                        to="accountoverview">
-                                                        Account
-                                                    </NavLink>{" "}
-                                                    </DropdownItem>
-                                                    <DropdownItem className="StaticNavChildContainer">
-                                                    <NavLink
-                                                        className="StaticNavChild Disappear"
-                                                        to="accountoverview">
-                                                        Upgarde
-                                                    </NavLink>{" "}
-                                                    </DropdownItem>
-                                                    <DropdownItem className="StaticNavChildContainer">
-                                                    <NavLink
-                                                        className="StaticNavChild"
-                                                        to="accountoverview">
-                                                        Log out
-                                                    </NavLink>{" "}
-                                                    </DropdownItem>
-                                                </DropdownMenu>
-                                                </UncontrolledDropdown>
-                                            </NavItem>
-                                        </Nav>
-                                       
-                                    </Navbar>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="row">
-                            
-                        </div>
+                    <div className="col-md-8 col-lg-9 webPlayerHomeNavAndContent">
+                        {isSignedIn}
                     </div>
                 </div>
             </div>

@@ -112,7 +112,7 @@ class Main extends Component {
           />
           <Route  
             
-            path="/account"
+            path="/account/overview"
             component={() => (
               <AccountOverview 
               //////////for overview and change password
@@ -128,9 +128,13 @@ class Main extends Component {
           />
 
           <Route
-            path="/webplayer"
+            path="/webplayer/home"
             component={() => (
               <WebPlayerHome
+             //////////for WebPlayerHome and HomeNavAndComponentsSigned
+             data={this.props.data} 
+             id={this.props.id}
+             ///////////
               />
             )}
           />
