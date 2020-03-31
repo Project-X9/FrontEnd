@@ -137,7 +137,42 @@ class HomeNavAndContentSigned extends Component {
                   </div>
               </div>
               <div className="row">
-                  <h1>Hello,uiviuviuviuvuiuiyvuyvutchwveufyewvuywe yuewv cfyuew fcutewvfywevfywev</h1>
+                <div className="WebPlayerHomeContent">
+                  <div className="container">
+                    <div className="row">
+                      <div className="col-sm-12">
+                        <div className="GridView">
+                          <div className="CardsHome">
+                            <div className="row">
+                              <div className="col">
+                                <div>
+                                <div className="CardPhoto">
+                                    <div className="ImageHolder">
+                                        <img  className="ImageItself" src="https://a10.gaanacdn.com/images/albums/69/2437469/crop_480x480_2437469.jpg" alt=""></img>
+                                    </div>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                          
+                        
+                            <div className="row">
+                              <div className="col">
+                                <div>
+                                <div className="CardPhoto">
+                                    <div className="ImageHolder">
+                                        <img  className="ImageItself" src="https://i.scdn.co/image/ab67706f000000021c6e257c426955c06bdfb9ef" alt=""></img>
+                                    </div>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
            </div>
           );
