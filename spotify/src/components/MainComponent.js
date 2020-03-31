@@ -93,7 +93,6 @@ class Main extends Component {
               />
             )}
           />
-          
           <Route
             path="/librarypage"
             component={() => (
