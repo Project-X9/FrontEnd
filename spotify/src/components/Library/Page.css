@@ -183,7 +183,7 @@
     /* right: 24px; */
     /* bottom: 36px; */
     /* opacity: 0; */
-    pointer-events: none;
+    /* pointer-events: none; */
     /* position: absolute; */
     /* box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12), 0 1px 5px 0 rgba(0,0,0,.2); */
     z-index: 2;
@@ -202,7 +202,7 @@
     border-radius: 500px;
     color: #fff;
     background-color: #1db954;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     height: 48px;
@@ -219,17 +219,21 @@
     padding: 20px 20px 16px;
     background: #282828;
     border-radius: 8px;
-    isolation: isolate;
+    align-items: center;
+    /* isolation: isolate; */
 }
 .cardPhoto{
   height: 156px;
   width: 156px;
     /* padding-top: 100%; */
     position: relative;
+    border-radius: 50%;
     margin-bottom: 16px;
     background-color: #333;
     box-shadow: 0 10px 30px 0 rgba(0,0,0,.3), 0 1px 2px 0 rgba(0,0,0,.2);
+
 }
+
 .imageHolder{
     transition-duration: .3s;
     transition-property: opacity;
@@ -377,17 +381,18 @@
     line-height: 20px;
     font-weight: 700;
     letter-spacing: .24px;
+    text-align: left;  
   }
   .desciptionPlaylistLink
   {
     font-size: 12px;
     line-height: 18px;
-    text-overflow: ellipsis;
+    /* text-overflow: ellipsis; */
     color: #b3b3b3;
     padding: 0;
     margin-top: 4px;
     white-space: normal;
-    overflow: hidden;
+    /* overflow: hidden; */
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -395,24 +400,21 @@
 
   }
   .playButtonPlayList{
-    right: 16px;
-    pointer-events: none;
+    right: 1px;
+    /* pointer-events: none; */
     position: absolute;
-    bottom: 16px;
+    bottom: 1px;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12), 0 1px 5px 0 rgba(0,0,0,.2);
     z-index: 2;
     border-radius: 500px;
-    /* padding:20px; */
-    /* opacity: 1; */
   }
-  /* .playButtonPlayList:hover{
-    display: none;
-  } */
-  .dissapperOnHover{
-    opacity: 0;  
+  .displayButton {
+   height: 15px;
   }
-  .dissapperOnHover:hover{
-    opacity: 1;  
+  .displayButton:hover button{
+    display: block;
+    background-color: #1db954;
+
   }
   .theButtonItself{
   position: relative;
@@ -435,6 +437,7 @@
   align-items: center;
   height: 40px;
   width: 40px;
+  display: none;
   /* opacity: 1; */
 }
 /* .theButtonItself:hover{
@@ -442,4 +445,7 @@
 } */
 .toTheLeft{
     margin-left: 60% ;
+}
+.activeButton{
+  background-color: #333;
 }

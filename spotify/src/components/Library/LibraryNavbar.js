@@ -22,6 +22,22 @@ class LibraryNavbar extends Component {
     
     
     render(){
+        let playlistsActive=''
+        let albumsActive=''
+        let artistsActive=''
+        let currentURL=window.location.href
+        if(currentURL==="http://localhost:3000/librarypage/playlists")
+        {
+            playlistsActive=' activeButton'; albumsActive=''; artistsActive=''; 
+        }
+        else if(currentURL==="http://localhost:3000/librarypage/albums")
+        {
+            playlistsActive=''; artistsActive=''; albumsActive=' activeButton'; ;
+        }
+        else if(currentURL==="http://localhost:3000/librarypage/artists")
+        {
+            playlistsActive=''; albumsActive=''; artistsActive=' activeButton';
+        }
         return(
             <div>
             <div className="LibraryPageBody">
@@ -49,22 +65,22 @@ class LibraryNavbar extends Component {
                             </Button>  
                         </NavItem>
                         <NavItem className="customizedNavitems">
-                                <NavLink className="nav-link customizedNavLink" to="/">
+                                <NavLink className={ "nav-link customizedNavLink "+ playlistsActive} to="/librarypage/playlists">
                                     Playlists
                                 </NavLink>
                             </NavItem>
                             <NavItem className="Disappear  customizedNavitems">
-                                <NavLink className="nav-link customizedNavLink " to="/">
+                                <NavLink className={ "nav-link customizedNavLink "+ artistsActive} to="/librarypage/artists">
                                     Artists
                                 </NavLink>
                             </NavItem>
                             <NavItem className=" Disappear customizedNavitems ">
-                                <NavLink className="nav-link customizedNavLink" to="/">
+                                <NavLink className={ "nav-link customizedNavLink "+ albumsActive} to="/librarypage/albums">
                                     Albums
                                 </NavLink>
                             </NavItem>
-                        <Nav >    
-                        <NavItem className=" customizedNavLink toTheLeft">
+                    <Nav className="ml-auto" navbar>
+                        <NavItem className=" customizedNavLink ">
                             <UncontrolledDropdown nav inNavbar >
                             <Button className="AccountItself">
                                 <DropdownToggle nav caret className="profileNavItem">
@@ -104,8 +120,8 @@ class LibraryNavbar extends Component {
                             </DropdownMenu>
                             </UncontrolledDropdown>
                         </NavItem>
-                        </Nav> 
-                    </Nav>
+                    </Nav> 
+                </Nav>
                     </Col>
                 </Row>
                 </div>
