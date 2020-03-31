@@ -65,8 +65,12 @@ class AccountOverview extends Component {
     this.setState({
       tempId: '',
     });
-  }
+  } 
 
+  handleLogout(){
+    let id="";
+    this.props.handleLogoutId(id);
+  }
   /**
    * Responsible for showing everything on the Account Overview page
    * @returns Components that will be displayed on the page
@@ -181,7 +185,8 @@ class AccountOverview extends Component {
                 <hr />
                 <div className="row">
                   <button
-                    onClick={this.state.nullID}
+                    // onClick={this.state.nullID}
+                    onClick={this.handleLogout}
                     className="EditProfile"
                     color="success">
                     EDIT PROFILE
@@ -263,7 +268,7 @@ class AccountOverview extends Component {
                             Account
                           </NavLink>{" "}
                         </DropdownItem>
-                        <DropdownItem className="StaticNavChild2">
+                        <DropdownItem className="StaticNavChild2" onClick={this.handleLogout}>
                           LogOut
                         </DropdownItem>
                       </DropdownMenu>

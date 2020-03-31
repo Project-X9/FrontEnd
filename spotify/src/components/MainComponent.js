@@ -10,7 +10,10 @@ import WebPlayerHome from "./WebPlayerHome/WebPlayerHomeComponent"
 import SignIn from "./SignIn/SignInComponent";
 import PlayFotter from "./WebPlayer/PlayFotterComponent";
 import Library from './Library/LibraryCompnent';
-import LibraryPage from  "./Library/LibraryPage"
+import LibraryPage from  "./Library/LibraryPage";
+import PlayList from './Library/PlayListComponent';
+import Albums from './Library/AlbumsComponent';
+
 import {
   postFeedback,
   postFacebookLogin,
@@ -20,7 +23,8 @@ import {
   getEmail,
   getPassword,
   fetchUserData,
-  handleLoginId
+  handleLoginId,
+  handleLogoutId
 } from "../redux/ActionCreators";
 
 const mapStateToProps = state => ({
@@ -37,6 +41,7 @@ const mapDispatchToProps = dispatch => ({
   fetchUserData: () => {
     dispatch(fetchUserData());
   },
+  handleLogoutId:id=>dispatch(handleLogoutId(id)),
   PostPassword: (password, id) => dispatch(PostPassword(password, id)),
   GetPassword: id => dispatch(GetPassword(id)),
   getEmail: id => dispatch(getEmail(id)),
@@ -92,13 +97,12 @@ class Main extends Component {
           <Route
             path="/librarypage"
             component={() => (
-              <LibraryPage
+              <Albums
                 id={this.props.id}
                 data={this.props.data}
               />
             )}
           />
-          
           <Route
             exact
             path="/premium"
@@ -123,6 +127,7 @@ class Main extends Component {
               PostPassword={this.props.PostPassword}
               GetPassword={this.props.GetPassword}
               //////////
+              handleLogoutId={this.props.handleLogoutId}
               />
             )}
           />

@@ -132,10 +132,12 @@
 }
 .insideLiked{
     max-height: 130px;
-    overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal;
+    overflow: hidden;
     display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 .customizedSpan{
     opacity: .7
@@ -175,8 +177,7 @@
     font-size: 16px;
     line-height: 24px;
     margin-right: 75% ;
-
-
+  
 }
 .playButtonOfLikedSongs{
     /* right: 24px; */
@@ -377,21 +378,68 @@
     font-weight: 700;
     letter-spacing: .24px;
   }
-  .descriptionPlaylistLink
+  .desciptionPlaylistLink
   {
     font-size: 12px;
     line-height: 18px;
     text-overflow: ellipsis;
-    /* white-space: nowrap; */
-    /* color: #b3b3b3; */
-    /* padding: 0; */
-    /* margin-top: 4px; */
+    color: #b3b3b3;
+    padding: 0;
+    margin-top: 4px;
     white-space: normal;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    text-align: left;
+
   }
-/* .toTheLeft{
-    margin-left: 60% ;
+  .playButtonPlayList{
+    right: 16px;
+    pointer-events: none;
+    position: absolute;
+    bottom: 16px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12), 0 1px 5px 0 rgba(0,0,0,.2);
+    z-index: 2;
+    border-radius: 500px;
+    /* padding:20px; */
+    /* opacity: 1; */
+  }
+  /* .playButtonPlayList:hover{
+    display: none;
+  } */
+  .dissapperOnHover{
+    opacity: 0;  
+  }
+  .dissapperOnHover:hover{
+    opacity: 1;  
+  }
+  .theButtonItself{
+  position: relative;
+  z-index: 1;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 700;
+  letter-spacing: 1.76px;
+  text-transform: uppercase;
+  --size: 40px;
+  border: 0;
+  border-radius: 500px;
+  color: #fff;
+  background-color: #1db954;
+  transition: transform 33ms cubic-bezier(.3,0,0,1),-webkit-transform 33ms cubic-bezier(.3,0,0,1);
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  /* opacity: 1; */
+}
+/* .theButtonItself:hover{
+  background-color: yellow;
 } */
+.toTheLeft{
+    margin-left: 60% ;
+}
