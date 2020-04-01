@@ -10,6 +10,7 @@ import React, { Component } from "react";
 import { Navbar,Nav,NavItem,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem,Button} from "reactstrap";
 import { NavLink} from "react-router-dom";
 import PopularNewHomeAndNavContent from "./PopularNewHomeAndNavContent";
+import PopularArtistsHomeAndNavContent from "./PopularArtistsHomeAndNavContent";
 
 
 
@@ -76,18 +77,18 @@ class HomeNavAndContentSigned extends Component {
                       <div className="container">
                           <Navbar className="NavBar NavStyle" sticky="top" expand="md">
                               <Nav className="mr-auto" href="/signup">
-                              <NavItem className="customizedNavitems">
-                                      <Button className="customizedButton">
+                              <NavItem className="CustomNavitems">
+                                      <Button className="CustomButton">
                                           <NavLink className="nav-link" to="/webplayer/library">
-                                          <svg className="customizedSvg" viewBox="0 0 24 24">
+                                          <svg className="CustomSvg" viewBox="0 0 24 24">
                                           <path fill="currentColor" d="M15.54 21.15L5.095 12.23 15.54 3.31l.65.76-9.555 8.16 9.555 8.16"></path>                            </svg>    
                                           </NavLink>
                                       </Button>   
                               </NavItem>
-                              <NavItem className="customizedNavitems">
-                                      <Button className="customizedButton">
-                                              <NavLink className="nav-link customizedArrows" to="/webplayer/search">
-                                              <svg className="customizedSvg" viewBox="0 0 24 24">
+                              <NavItem className="CustomNavitems">
+                                      <Button className="CustomButton">
+                                              <NavLink className="nav-link" to="/webplayer/search">
+                                              <svg className="CustomSvg" viewBox="0 0 24 24">
                                               <path fill="currentColor" d="M7.96 21.15l-.65-.76 9.555-8.16L7.31 4.07l.65-.76 10.445 8.92"></path>
                                               </svg>    
                                               </NavLink>
@@ -129,7 +130,7 @@ class HomeNavAndContentSigned extends Component {
                 <div className="WebPlayerHomeContent">
                   <div className="container">
                     <PopularNewHomeAndNavContent/>
-                    
+                    <PopularArtistsHomeAndNavContent/>
                   </div>
                 </div>
               </div>
@@ -144,18 +145,18 @@ class HomeNavAndContentSigned extends Component {
                       <div className="container">
                           <Navbar className="NavBar NavStyle" sticky="top" expand="md">
                               <Nav className="mr-auto" href="/signup">
-                              <NavItem className="customizedNavitems">
-                                      <Button className="customizedButton">
+                              <NavItem className="CustomNavitems">
+                                      <Button className="CustomButton">
                                           <NavLink className="nav-link" to="/webplayer/library">
-                                          <svg className="customizedSvg" viewBox="0 0 24 24">
+                                          <svg className="CustomSvg" viewBox="0 0 24 24">
                                           <path fill="currentColor" d="M15.54 21.15L5.095 12.23 15.54 3.31l.65.76-9.555 8.16 9.555 8.16"></path>                            </svg>    
                                           </NavLink>
                                       </Button>   
                               </NavItem>
-                              <NavItem className="customizedNavitems">
-                                      <Button className="customizedButton">
-                                              <NavLink className="nav-link customizedArrows" to="/webplayer/search">
-                                              <svg className="customizedSvg" viewBox="0 0 24 24">
+                              <NavItem className="CustomNavitems">
+                                      <Button className="CustomButton">
+                                              <NavLink className="nav-link" to="/webplayer/search">
+                                              <svg className="CustomSvg" viewBox="0 0 24 24">
                                               <path fill="currentColor" d="M7.96 21.15l-.65-.76 9.555-8.16L7.31 4.07l.65-.76 10.445 8.92"></path>
                                               </svg>    
                                               </NavLink>
