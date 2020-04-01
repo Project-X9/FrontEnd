@@ -434,6 +434,10 @@
     background-color: #1db954;
 
   }
+  .displayButton:hover button {
+    display: block; /* On :hover of div show button */
+ }
+  
   .theButtonItself{
   position: relative;
   z-index: 1;

@@ -22,6 +22,7 @@ import {
 } from "reactstrap";
 import { NavLink, Link, Redirect, Switch, Route} from "react-router-dom";
 import HomeNavAndContent from './HomeNavAndContent'
+import LibraryPage from  "../Library/LibraryPage";
 
 
 class WebPlayer extends Component {
@@ -75,7 +76,7 @@ class WebPlayer extends Component {
                             <i className="fa fa-search"></i>
                             Search
                         </Link>
-                        <Link to="/webplayer/library">
+                        <Link to="/webplayer/librarypage">
                             <i className="fa fa-bomb"></i>
                             Your Library
                         </Link>
@@ -92,6 +93,15 @@ class WebPlayer extends Component {
                              id={this.props.id}
                               />
                             )}
+                        />
+                        <Route
+                          path="/webplayer/librarypage"
+                          component={() => (
+                            <LibraryPage
+                              id={this.props.id}
+                              data={this.props.data}
+                            />
+                          )}
                         />
                         />    
                       </Switch>
