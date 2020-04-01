@@ -76,7 +76,7 @@ class WebPlayer extends Component {
                             <i className="fa fa-search"></i>
                             Search
                         </Link>
-                        <Link to="/webplayer/librarypage">
+                        <Link to="/webplayer/librarypage/playlists">
                             <i className="fa fa-bomb"></i>
                             Your Library
                         </Link>
