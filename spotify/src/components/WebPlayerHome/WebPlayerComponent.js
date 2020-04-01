@@ -93,7 +93,7 @@ class WebPlayer extends Component {
                             <img
                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSBmnPgQKW4JLrNcSFhPFCLHz3t8kT1pZl0PVkLYsa8FoScWYda"
                             height="50px"
-                            width="160px"
+                            width="145px"
                             alt=""
                             />
                         </Link>
