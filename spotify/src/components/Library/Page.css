@@ -283,6 +283,21 @@
     object-position: center center;
 }
 
+.customizedNavbar{
+  background-color: #141313;
+  position: fixed;
+  top:0;
+  max-width:100%;
+  width:-moz-available;
+  z-index: 1000;  
+}
+
+@media(max-width: 768px){
+  .customizedNavbar {
+    position: relative;
+  }
+}
+
   .customizedNavbar Button.NextToAccount {
     background-color: transparent;
     border: 2px solid #fff;

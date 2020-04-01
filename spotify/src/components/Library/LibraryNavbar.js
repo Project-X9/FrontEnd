@@ -38,7 +38,7 @@ class LibraryNavbar extends Component {
         }
         return(
             <div>
-            <div className="LibraryPageBody">
+            <div>
             <Navbar expand="md" className="customizedNavbar">
                     <div className="container customizedContainer">
                      <Row className="flexRowOfLibraryPage">

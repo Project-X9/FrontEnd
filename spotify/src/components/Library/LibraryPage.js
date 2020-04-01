@@ -23,7 +23,7 @@ class LibraryPage extends Component {
     
     render(){
         return(
-          <div className="container">
+          <div className="container-fluid">
             <Row>
               <Col md={12}>
             <div className="LibraryPageBody">

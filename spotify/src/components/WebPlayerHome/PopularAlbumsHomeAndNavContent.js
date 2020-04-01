@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import {Button} from 'reactstrap'; 
 import {Link} from "react-router-dom";
 
-class PopularNewHomeAndNavContent extends Component {
+class PopularAlbumsHomeAndNavContent extends Component {
     render(){
         return(
             <div>
-            <div className="row FirstHeaderAndSeeAll">
+            <div className="row HeaderAndSeeAll">
                 <div className="col-sm-9 ContainerHeaderAboveGrid">
                     <Link className="LinkHeaderAboveGrid">
-                    <h2 className="HeaderAboveGrid">Popular new releases</h2>
+                    <h2 className="HeaderAboveGrid">Popular albums</h2>
                     </Link>
                 </div>
                 <div className="col-sm-3 ContainerSeeAllAboveGrid">
@@ -24,7 +24,7 @@ class PopularNewHomeAndNavContent extends Component {
                             <div className="col">
                             <div className="CardPhoto">
                                 <div className="ImageHolder">
-                                    <img  className="ImageItself" src="https://a10.gaanacdn.com/images/albums/69/2437469/crop_480x480_2437469.jpg" alt=""></img>
+                                    <img  className="ImageItself" src="https://i.scdn.co/image/ab67616d0000b2735675e83f707f1d7271e5cf8a" alt=""></img>
                                 </div>
                             </div>
                             </div>
@@ -33,13 +33,13 @@ class PopularNewHomeAndNavContent extends Component {
                             <div className="col-md-12">
                                 <div className="row" >
                                     <div className="col-md-12">
-                                        <Link className="TitlePlaylistLink">On My Way</Link>
+                                        <Link className="TitlePlaylistLink">Evolve</Link>
                                     </div>
                                 </div>
                                 <div className="row" >
                                     <div className="col-md-12">
                                         <div className="DescriptionPlaylistLink">
-                                            <span>Alan Walker, Sabrina Carpenter & Farruko</span>
+                                            <span>Imagine Dragons</span>
                                         </div>
                                     </div>
                                 </div> 
@@ -60,7 +60,7 @@ class PopularNewHomeAndNavContent extends Component {
                             <div className="col">
                             <div className="CardPhoto">
                                 <div className="ImageHolder">
-                                    <img  className="ImageItself" src="https://enarab.com/wp-content/uploads/2020/02/https-_images.genius.com_ede1aee3ff875d14a591481f3cee0459.1000x1000x1.jpg" alt=""></img>
+                                    <img  className="ImageItself" src="https://i.scdn.co/image/ab67616d0000b2737636e1c9e67eaafc9f49aefd" alt=""></img>
                                 </div>
                             </div>
                             </div>
@@ -69,13 +69,13 @@ class PopularNewHomeAndNavContent extends Component {
                             <div className="col-md-12">
                                 <div className="row" >
                                     <div className="col-md-12">
-                                        <Link className="TitlePlaylistLink">Dance Monkey</Link>
+                                        <Link className="TitlePlaylistLink">Manic</Link>
                                     </div>
                                 </div>
                                 <div className="row" >
                                     <div className="col-md-12">
                                         <div className="DescriptionPlaylistLink">
-                                            <span>Tones and I</span>
+                                            <span>Halsey</span>
                                         </div>
                                     </div>
                                 </div>
@@ -96,7 +96,7 @@ class PopularNewHomeAndNavContent extends Component {
                             <div className="col">
                             <div className="CardPhoto">
                                 <div className="ImageHolder">
-                                    <img  className="ImageItself" src="https://images.genius.com/5130fa53a609b46f23a0672b972c7281.1000x1000x1.jpg" alt=""></img>
+                                    <img  className="ImageItself" src="https://i.scdn.co/image/ab67616d0000b273a108e07c661f9fc54de9c43a" alt=""></img>
                                 </div>
                             </div>
                             </div>
@@ -105,13 +105,13 @@ class PopularNewHomeAndNavContent extends Component {
                             <div className="col-md-12">
                                 <div className="row" >
                                     <div className="col-md-12">
-                                        <Link className="TitlePlaylistLink">Mind Is A Prison</Link>
+                                        <Link className="TitlePlaylistLink">Different World</Link>
                                     </div>
                                 </div>
                                 <div className="row" >
                                     <div className="col-md-12">
                                         <div className="DescriptionPlaylistLink">
-                                            <span>Alec Benjamin</span>
+                                            <span>Alan Walker</span>
                                         </div>
                                     </div>
                                 </div>                              
@@ -132,7 +132,7 @@ class PopularNewHomeAndNavContent extends Component {
                             <div className="col">
                             <div className="CardPhoto">
                                 <div className="ImageHolder">
-                                    <img  className="ImageItself" src="https://images-na.ssl-images-amazon.com/images/I/41DN4sJ2BkL._AC_.jpg" alt=""></img>
+                                    <img  className="ImageItself" src="https://i.scdn.co/image/ab67616d0000b273459d675aa0b6f3b211357370" alt=""></img>
                                 </div>
                             </div>
                             </div>
@@ -141,13 +141,13 @@ class PopularNewHomeAndNavContent extends Component {
                             <div className="col-md-12">
                                 <div className="row" >
                                     <div className="col-md-12">
-                                        <Link className="TitlePlaylistLink">Sunflower</Link>
+                                        <Link className="TitlePlaylistLink">Narrated For You</Link>
                                     </div>
                                 </div>
                                 <div className="row" >
                                     <div className="col-md-12">
                                         <div className="DescriptionPlaylistLink">
-                                            <span>Post Malone, Swae Lee</span>
+                                            <span>Alec Benjamin</span>
                                         </div>
                                     </div>
                                 </div>                               
@@ -168,7 +168,7 @@ class PopularNewHomeAndNavContent extends Component {
                             <div className="col">
                             <div className="CardPhoto">
                                 <div className="ImageHolder">
-                                    <img  className="ImageItself" src="https://lh3.googleusercontent.com/proxy/3B24TgpBUyyfWYwSbJKlhqu5OiI8J068XcVx7Pz5nTMr13HY5Q5blxmvExDPDfHMRWOWORkPouenQXL_hrTrdCamAHvNDEKodqGQ38jNRFPlMX_ySp-wTj_rqxCy_mh6Dfudopjn9Dmjs0BessG1ZSbJ2UqoyZ09Lw" alt=""></img>
+                                    <img  className="ImageItself" src="https://i.scdn.co/image/ab67616d0000b27350a3147b4edd7701a876c6ce" alt=""></img>
                                 </div>
                             </div>
                             </div>
@@ -177,13 +177,13 @@ class PopularNewHomeAndNavContent extends Component {
                             <div className="col-md-12">
                                 <div className="row" >
                                     <div className="col-md-12">
-                                        <Link className="TitlePlaylistLink">South of the Border</Link>
+                                        <Link className="TitlePlaylistLink">WHEN WE ALL FALL ASLEEP, WHERE DO WE GO?</Link>
                                     </div>
                                 </div>
                                 <div className="row" >
                                     <div className="col-md-12">
                                         <div className="DescriptionPlaylistLink">
-                                            <span>Ed Sheeran (ft. Camilla Cabello & Cardi B)</span>
+                                            <span>Billie Eilish</span>
                                         </div>
                                     </div>
                                 </div>
@@ -204,7 +204,7 @@ class PopularNewHomeAndNavContent extends Component {
                             <div className="col">
                             <div className="CardPhoto">
                                 <div className="ImageHolder">
-                                    <img  className="ImageItself" src="https://upload.wikimedia.org/wikipedia/en/7/79/OneRepublic_-_Rescue_Me.png" alt=""></img>
+                                    <img  className="ImageItself" src="https://i.scdn.co/image/ab67616d0000b2739478c87599550dd73bfa7e02" alt=""></img>
                                 </div>
                             </div>
                             </div>
@@ -213,13 +213,13 @@ class PopularNewHomeAndNavContent extends Component {
                             <div className="col-md-12">
                                 <div className="row" >
                                     <div className="col-md-12">
-                                        <Link className="TitlePlaylistLink">Rescue Me</Link>
+                                        <Link className="TitlePlaylistLink">Hollywood's Bleeding</Link>
                                     </div>
                                 </div>
                                 <div className="row" >
                                     <div className="col-md-12">
                                         <div className="DescriptionPlaylistLink">
-                                            <span>OneRepublic</span>
+                                            <span>Post Malone</span>
                                         </div>
                                     </div>
                                 </div>
@@ -242,4 +242,4 @@ class PopularNewHomeAndNavContent extends Component {
     )
     }
 }
-export default PopularNewHomeAndNavContent;
+export default PopularAlbumsHomeAndNavContent;

@@ -58,7 +58,7 @@ class WebPlayer extends Component {
     }
     else if(currentURL==="http://localhost:3000/webplayer/librarypage/playlists")
     {
-      homeActive=''; searchActive=''; libraryActive='active'; createPlaylistsActive=''; likedSongsActive='';
+      homeActive=''; searchActive=''; libraryActive=' active'; createPlaylistsActive=''; likedSongsActive='';
     }
     let redirected = null;
     if (this.state.SignedIn) {
@@ -105,9 +105,10 @@ class WebPlayer extends Component {
                             <i className="fa fa-search"></i>
                             Search
                         </Link>                                       
-                            <Button onClick={this.toggleModal}><i className={"fa fa-bomb" + libraryActive}></i>
-                            Your Library
-                            </Button>
+                        <Button className={"SidebarLibraryButton" + libraryActive} onClick={this.toggleModal}>
+                          <i className="fa fa-bomb"></i>
+                          Your Library
+                        </Button>
                         {showLikeAndCreate}
                         </div>
                     </div>
