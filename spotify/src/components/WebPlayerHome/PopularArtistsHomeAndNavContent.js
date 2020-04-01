@@ -19,7 +19,7 @@ class PopularArtistsHomeAndNavContent extends Component {
             <div className="row">
                 <div className="col-sm-12">
                 <div className="GridView">
-                    <div className="CardsHome">
+                    <div className="ArtistCardsHome">
                         <div className="row">
                             <div className="col">
                             <div className="ArtistCardPhoto">
@@ -29,7 +29,7 @@ class PopularArtistsHomeAndNavContent extends Component {
                             </div>
                             </div>
                         </div>
-                        <div className="row">
+                        <div className="row mr-auto">
                             <div className="col-md-12">
                                 <div className="row" >
                                     <div className="col-md-12">
@@ -45,7 +45,7 @@ class PopularArtistsHomeAndNavContent extends Component {
                                 </div>
                                 <div className="row">
                                     <div className="col-md-12">
-                                        <div className="PlayButtonPlayList">
+                                        <div className="ArtistPlayButtonPlayList">
                                             <Button className="ButtonItself"> 
                                             <svg height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
                                             </Button>
