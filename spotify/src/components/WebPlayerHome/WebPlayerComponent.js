@@ -6,6 +6,8 @@
 /* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable react/destructuring-assignment */
 import "./WebPlayerHomeComponent.css";
+import { useHistory } from 'react-router-dom';
+
 import React, { Component } from "react";
 import {Link, Switch, Route} from "react-router-dom";
 import HomeNavAndContent from './HomeNavAndContent'
@@ -18,10 +20,30 @@ class WebPlayer extends Component {
     super(props);
     this.state = {
       tempId: this.props.id.id,
-    };
-  }
+      isModalOpen:false,
+      SignedIn:false
 
- 
+    };
+    this.toggleModal=this.toggleModal.bind(this);
+  }
+  toggleModal(){
+    if(this.state.tempId !== "")
+    {
+      this.setState({
+        SignedIn:true
+    });
+    }
+    else {
+      this.setState({
+        isModalOpen: !this.state.isModalOpen
+    });
+    }
+    
+  }
+  // handleIfLoggedIn(){
+  //   
+  // }
+
   render() {
     let homeActive=''
     let searchActive=''
@@ -36,6 +58,10 @@ class WebPlayer extends Component {
     else if(currentURL==="http://localhost:3000/webplayer/librarypage/playlists")
     {
       homeActive=''; searchActive=''; libraryActive='active'; createPlaylistsActive=''; likedSongsActive='';
+    }
+    let redirected = null;
+    if (this.state.SignedIn) {
+      redirected = <Redirect to="/webplayer/librarypage/playlists"></Redirect>
     }
     const showLikeAndCreate = this.props.data.data.map((data) => {
       if (data.id === this.state.tempId) {
@@ -56,6 +82,7 @@ class WebPlayer extends Component {
     });
     return (
       <div>
+      {redirected}
         <div className="WebPlayerHomeBody">
             <div className="container InfoContainer">
                 <div className="row InfoContainerRow">
@@ -76,11 +103,10 @@ class WebPlayer extends Component {
                         <Link to="/webplayer/search" className={searchActive}>
                             <i className="fa fa-search"></i>
                             Search
-                        </Link>
-                        <Link to="/webplayer/librarypage/playlists" className={libraryActive}>
-                            <i className="fa fa-bomb"></i>
+                        </Link>                                       
+                            <Button onClick={this.toggleModal}><i className={"fa fa-bomb" + libraryActive}></i>
                             Your Library
-                        </Link>
+                            </Button>
                         {showLikeAndCreate}
                         </div>
                     </div>
@@ -115,9 +141,59 @@ class WebPlayer extends Component {
            
           </div>
         </div>
+        <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal} className="ModalBackGround" 
+                    size="lg">
+                <div className="modal-content modalcontent">        
+                <ModalBody className="p-0 modalbody">
+                    <div className="row flexer" >
+                        <div className="col-sm-6 col-md-6 col-lg-6 leftPart ">
+                            <div className="row">
+                                <div className="col-sm-12 col-md-12 col-lg-12 ">
+                                    <h2 className="theHeader">Get the most out of Spotify with a free account</h2>
+                                </div>
+                            </div>
+                            <div className="row flexer">
+                                <div className="col-sm-12 col-md-12 col-lg-12">
+                                    <ol className="libraryol">
+                                        <li className="libraryli flexer">
+                                            <svg className= "librarysvg flexer" xmlns="http://www.w3.org/1999/xlink" viewBox="0 0 16 18" width="16" height="16">
+                                            <polygon points="13.985,2.383 5.127,12.754 1.388,8.375 0.73,9.145 5.127,14.294 14.745,3.032"></polygon>
+                                            </svg>
+                                            No credit card, ever
+                                        </li>
+                                        <li className="libraryli flexer"><svg className= "librarysvg flexer" xmlns="http://www.w3.org/1999/xlink" viewBox="0 0 16 18" width="16" height="16">
+                                            <polygon points="13.985,2.383 5.127,12.754 1.388,8.375 0.73,9.145 5.127,14.294 14.745,3.032"></polygon>
+                                            </svg>
+                                            Get unlimited podcasts
+                                            </li>
+                                        <li className="libraryli flexer">
+                                        <svg className= "flexer librarysvg" xmlns="http://www.w3.org/1999/xlink" viewBox="0 0 16 18" width="16" height="16">
+                                            <polygon points="13.985,2.383 5.127,12.754 1.388,8.375 0.73,9.145 5.127,14.294 14.745,3.032"></polygon>
+                                        </svg>
+                                        Play your favorite music, with ads
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-sm-6 col-md-6 col-lg-6">   
+                            <div className="righPart">
+                                <div className="innerRight">
+                                    <Button className="signupfree"><Link to="/signup"className="linksignup">Sign up free</Link></Button>
+                                    <div className="seperator"></div>
+                                    <div className="alreadyhaveanaccount">Already have an account?</div>
+                                    <Button className="libraryloginbut"><Link to="/signin"className="linkLogin">Log in</Link></Button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ModalBody> 
+                </div>
+            </Modal>
     </div>
+    
     );
   }
 }
 
-export default WebPlayer;
+export default WebPlayer
