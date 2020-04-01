@@ -10,8 +10,7 @@ import WebPlayer from "./WebPlayerHome/WebPlayerComponent"
 import SignIn from "./SignIn/SignInComponent";
 import PlayFotter from "./WebPlayer/PlayFotterComponent";
 import Library from './Library/LibraryCompnent';
-import PlayList from './Library/PlayListComponent';
-import Albums from './Library/AlbumsComponent';
+
 
 import {
   postFeedback,
@@ -23,12 +22,14 @@ import {
   getPassword,
   fetchUserData,
   handleLoginId,
-  handleLogoutId
+  handleLogoutId,
+  fetchUserPlaylist
 } from "../redux/ActionCreators";
 
 const mapStateToProps = state => ({
   data: state.data,
-  id: state.id
+  id: state.id,
+  playLists:state.playLists
 });
 const mapDispatchToProps = dispatch => ({
   resetFeedbackForm: () => {
@@ -39,6 +40,9 @@ const mapDispatchToProps = dispatch => ({
   },
   fetchUserData: () => {
     dispatch(fetchUserData());
+  },
+  fetchUserPlaylist: () => {
+    dispatch(fetchUserPlaylist());
   },
   handleLogoutId:id=>dispatch(handleLogoutId(id)),
   PostPassword: (password, id) => dispatch(PostPassword(password, id)),
@@ -58,6 +62,7 @@ const mapDispatchToProps = dispatch => ({
 class Main extends Component {
   componentDidMount() {
     this.props.fetchUserData();
+    this.props.fetchUserPlaylist();
   }
 
   render() {
@@ -129,6 +134,7 @@ class Main extends Component {
              //////////for WebPlayer and HomeNavAndComponents and librarypage
              data={this.props.data} 
              id={this.props.id}
+             playLists={this.props.playLists}
              ///////////
               />
             )}

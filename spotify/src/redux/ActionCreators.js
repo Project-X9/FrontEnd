@@ -93,15 +93,6 @@ export const addUserId = data => ({
   type: ActionTypes.ADD_USERID,
   payload: data
 });
-//////////////////////////////////// LOGOUT /////////////////////// 
-export const handleLogoutId  = (id)=> dispatch => {
-  dispatch(removeUserId(id));
-};
-export const removeUserId = (id) => ({  //it recieves an empty string 
-  type: ActionTypes.ADD_LOGOUT,
-  payload:id
-});
-/////////////////////////////////////////////////////////////////////
 export const getEmail = id => dispatch => {
   return axios
     .get(`${baseUrl}users/${id - 1}`)
@@ -113,5 +104,30 @@ export const getPassword = id => dispatch => {
     return response.data.password;
   });
 };
+//////////////////////////////////// LOGOUT /////////////////////// 
+export const handleLogoutId  = (id)=> dispatch => {
+  dispatch(removeUserId(id));
+  // dispatch(removeUserData());
+};
+// export const removeUserData= () => ({  
+//   type: ActionTypes.REMOVE_USERDATA
+// });
+export const removeUserId = (id) => ({  //it recieves an empty string 
+  type: ActionTypes.ADD_LOGOUT,
+  payload:id
+});
+/////////////////////////////////////////////////////////////////////
+/////////////////GetPlayListData////////by Ahmed M. Hassan//////
 
-//////////////////////////////////Account overView///////////////////////////////
+/////it should take the id when we integrate with the back end
+export const fetchUserPlaylist = () => dispatch => {
+  axios.get(`${baseUrl}playlist`)
+  .then(response =>dispatch(addUserPlaylist(response.data)));
+};
+export const addUserPlaylist = data => ({
+  type: ActionTypes.ADD_PLAYLIST,
+  payload: data
+});
+// export const removeUserPlayList= () => ({  
+//   type: ActionTypes.REMOVE_PLAYLIST
+// });

@@ -5,7 +5,9 @@ import logger from "redux-logger";
 import { InitialFeedback, InitialLogin } from "./forms";
 import { Data } from "./userData";
 import { UserID } from "./UserId";
-// import { persistState } from 'redux-localstorage';
+import {PlayList} from "./UserPlayLists"
+
+
 
 function saveState (state){
 
@@ -33,6 +35,7 @@ export const ConfigureStore = () => {
     combineReducers({
       data: Data,
       id: UserID,
+      playLists:PlayList,
       ...createForms({
         feedback: InitialFeedback,
         login: InitialLogin

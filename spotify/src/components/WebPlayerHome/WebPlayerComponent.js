@@ -13,8 +13,7 @@ import {Link, Switch, Route,Redirect} from "react-router-dom";
 import { Button, Modal, ModalBody} from 'reactstrap'; 
 import HomeNavAndContent from './HomeNavAndContent'
 import LibraryPage from  "../Library/LibraryPage";
-import { Redirect } from 'react-router-dom';
-import { Button,Modal,ModalBody } from 'reactstrap';
+
 
 
 class WebPlayer extends Component {
@@ -35,6 +34,7 @@ class WebPlayer extends Component {
       this.setState({
         SignedIn:true
     });
+    alert(this.props.playLists.playLists.length)
     }
     else {
       this.setState({
