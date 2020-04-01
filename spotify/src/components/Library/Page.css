@@ -156,7 +156,7 @@
 }
 .titleLiked{
     min-height: 62px;
-    margin-right: 42%;
+    text-align: left;
 }
 .displayFlex_hassan{
   display: flex;
@@ -173,9 +173,6 @@
     padding-bottom: 2px;
     position: relative;
     z-index: 1;
-
-    
-
 }
 .likedSongsSpan{
     color: #fff;
@@ -228,6 +225,9 @@
     align-items: center;
     height: 48px;
     width: 48px;
+    position: absolute;
+    top: 3em;
+    right:1em;
 }
 .NavBarToggle_Hassan{
     color: white;
@@ -470,11 +470,22 @@
   height: 40px;
   width: 40px;
   display: none;
-  /* opacity: 1; */
 }
 /* .theButtonItself:hover{
   background-color: yellow;
 } */
+
+.CardsLibrary:hover button{
+  display: block;
+}
+
+.LikedSongs:hover button{
+  display: block;
+}
+
+.theButtonItself:hover{
+  transform: scale(1.06);
+}
 .toTheLeft{
     margin-left: 60% ;
 }

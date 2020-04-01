@@ -7,20 +7,7 @@
 /* eslint-disable react/destructuring-assignment */
 import "./WebPlayerHomeComponent.css";
 import React, { Component } from "react";
-import {
-  Navbar,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavbarToggler,
-  Collapse,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  Button
-} from "reactstrap";
-import { NavLink, Link, Redirect, Switch, Route} from "react-router-dom";
+import {Link, Switch, Route} from "react-router-dom";
 import HomeNavAndContent from './HomeNavAndContent'
 import LibraryPage from  "../Library/LibraryPage";
 
@@ -36,16 +23,30 @@ class WebPlayer extends Component {
 
  
   render() {
+    let homeActive=''
+    let searchActive=''
+    let libraryActive=''
+    let createPlaylistsActive=''
+    let likedSongsActive=''
+    let currentURL=window.location.href
+    if(currentURL==="http://localhost:3000/webplayer/home")
+    {
+      homeActive='active'; searchActive=''; libraryActive=''; createPlaylistsActive=''; likedSongsActive='';
+    }
+    else if(currentURL==="http://localhost:3000/webplayer/librarypage/playlists")
+    {
+      homeActive=''; searchActive=''; libraryActive='active'; createPlaylistsActive=''; likedSongsActive='';
+    }
     const showLikeAndCreate = this.props.data.data.map((data) => {
       if (data.id === this.state.tempId) {
         return(
           <div>
               <h3 className="sidebarHeaderBetween">PLAYLISTS</h3>
-              <Link to="/" >
+              <Link to="/"  className={createPlaylistsActive}>
                   <i className="fa fa-plus-square"></i>
                   Create Playlist
               </Link>
-              <Link to="/" >
+              <Link to="/"  className={likedSongsActive}>
                   <i className="fa fa-heart"></i>
                   Liked Songs
               </Link>
@@ -68,15 +69,15 @@ class WebPlayer extends Component {
                             alt=""
                             />
                         </Link>
-                        <Link to="/webplayer/home"  className="active">
+                        <Link to="/webplayer/home"  className={homeActive}>
                             <i className="fa fa-home" />
                             Home
                         </Link>
-                        <Link to="/webplayer/search">
+                        <Link to="/webplayer/search" className={searchActive}>
                             <i className="fa fa-search"></i>
                             Search
                         </Link>
-                        <Link to="/webplayer/librarypage/playlists">
+                        <Link to="/webplayer/librarypage/playlists" className={libraryActive}>
                             <i className="fa fa-bomb"></i>
                             Your Library
                         </Link>
