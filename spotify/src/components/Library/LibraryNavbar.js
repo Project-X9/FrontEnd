@@ -15,9 +15,7 @@ class LibraryNavbar extends Component {
         this.state={
             tempId:''
         };
-        
-
-      
+ 
     }
     
     
@@ -42,10 +40,9 @@ class LibraryNavbar extends Component {
             <div>
             <div className="LibraryPageBody">
             <Navbar expand="md" className="customizedNavbar">
-                    <div className="container">
+                    <div className="container customizedContainer">
                      <Row className="flexRowOfLibraryPage">
                          <Col>
-                            
                     <Nav navbar className="flexRowOfLibraryPage">
                         <NavItem className="customizedNavitems">
                             <Button className="customizedButton">
@@ -99,21 +96,21 @@ class LibraryNavbar extends Component {
                                 <DropdownItem className="StaticNavChildContainer DisappearFromDropDowm">
                                 <NavLink
                                     className="StaticNavChild "
-                                    to="accountoverview">
+                                    to="">
                                     Log out
                                 </NavLink>{" "}
                                 </DropdownItem>
                                 <DropdownItem className="StaticNavChildContainer">
                                 <NavLink
                                     className="StaticNavChild Disappear"
-                                    to="accountoverview">
+                                    to="/librarypage/artists">
                                     Artistst
                                 </NavLink>{" "}
                                 </DropdownItem>
                                 <DropdownItem className="StaticNavChildContainer">
                                 <NavLink
                                     className="StaticNavChild Disappear"
-                                    to="accountoverview">
+                                    to="/librarypage/albums">
                                     Albums
                                 </NavLink>{" "}
                                 </DropdownItem>

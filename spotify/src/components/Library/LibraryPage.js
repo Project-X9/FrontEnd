@@ -7,6 +7,8 @@ import Albums from './AlbumsComponent';
 import Artists from './ArtistsComponent';
 import LibraryNavbar from './LibraryNavbar'
 import {Switch, Route} from "react-router-dom";
+import { 
+  Button, Row, Col,} from 'reactstrap'; 
 
 
 class LibraryPage extends Component {
@@ -20,7 +22,8 @@ class LibraryPage extends Component {
     
     render(){
         return(
-            <div>
+            <Row className="backGround_LibraryPage">
+              <Col md={12}>
             <div className="LibraryPageBody">
             <LibraryNavbar />
             <Switch>
@@ -29,7 +32,7 @@ class LibraryPage extends Component {
                       component={() => (
                         <PlayList
                         />
-                      )}                    />
+                      )} />
                     <Route
                       path="/librarypage/albums"
                       component={Albums}
@@ -40,7 +43,8 @@ class LibraryPage extends Component {
                     />    
                 </Switch>
         </div>
-        </div>
+        </Col>
+        </Row>
         );
   }
 }
