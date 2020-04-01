@@ -33,6 +33,7 @@ class WebPlayer extends Component {
       this.setState({
         SignedIn:true
     });
+    alert(this.props.playLists.playLists.length)
     }
     else {
       this.setState({
