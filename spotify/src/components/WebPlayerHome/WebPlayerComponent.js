@@ -13,6 +13,8 @@ import {Link, Switch, Route,Redirect} from "react-router-dom";
 import { Button, Modal, ModalBody} from 'reactstrap'; 
 import HomeNavAndContent from './HomeNavAndContent'
 import LibraryPage from  "../Library/LibraryPage";
+import { Redirect } from 'react-router-dom';
+import { Button,Modal,ModalBody } from 'reactstrap';
 
 
 class WebPlayer extends Component {
@@ -181,7 +183,7 @@ class WebPlayer extends Component {
                             <div className="righPart">
                                 <div className="innerRight">
                                     <Button className="signupfree"><Link to="/signup"className="linksignup">Sign up free</Link></Button>
-                                    <div className="seperator"></div>
+                                    <div className="seperator_LibraryModal"></div>
                                     <div className="alreadyhaveanaccount">Already have an account?</div>
                                     <Button className="libraryloginbut"><Link to="/signin"className="linkLogin">Log in</Link></Button>
                                 </div>

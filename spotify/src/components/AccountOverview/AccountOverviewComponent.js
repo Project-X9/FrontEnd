@@ -186,12 +186,12 @@ class AccountOverview extends Component {
                 <div className="row">
                   <button
                     // onClick={this.state.nullID}
-                    onClick={this.handleLogout}
+                    onClick={() => { this.handleLogout() }}
                     className="EditProfile"
                     color="success">
-                    <NavLink className="InsideEditProfile" to="/premium">
+                    {/* <NavLink className="InsideEditProfile" to="/premium"> */}
                       EDIT PROFILE
-                    </NavLink>
+                    {/* </NavLink> */}
                   </button>
                 </div>
                 <div className="row">

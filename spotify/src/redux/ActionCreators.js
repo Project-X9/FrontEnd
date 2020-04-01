@@ -97,7 +97,7 @@ export const addUserId = data => ({
 export const handleLogoutId  = (id)=> dispatch => {
   dispatch(removeUserId(id));
 };
-export const removeUserId = (id) => ({
+export const removeUserId = (id) => ({  //it recieves an empty string 
   type: ActionTypes.ADD_LOGOUT,
   payload:id
 });

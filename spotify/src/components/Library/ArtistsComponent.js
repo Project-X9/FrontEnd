@@ -28,7 +28,7 @@ class Artists extends Component {
                         </Col>
                     </Row>
                     <Row>
-                        <Col  md={12}>
+                        <Col  md={12} className="customizedColForCards">
                             <div className="gridView">
                                 <div className="CardsLibrary">
                                     <Row>

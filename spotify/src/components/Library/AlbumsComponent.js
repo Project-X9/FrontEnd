@@ -27,7 +27,7 @@ class Albums extends Component {
                         </Col>
                     </Row>
                     <Row>
-                        <Col  md={12} className="m-0">
+                        <Col  md={12} className="m-0 customizedColForCards">
                             <div className="gridView">
                                 <div className="CardsLibrary">
                                     <Row>
