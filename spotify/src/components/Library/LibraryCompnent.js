@@ -4,7 +4,7 @@ import {
     Form,FormGroup,Modal,ModalBody,ModalHeader,Button,Label,Input,Jumbotron, Row, Col,Mo} from 'reactstrap'; 
 import {Link} from "react-router-dom";
 
-// import "./Library.css";
+import "./Library.css";
 
 
 class Library extends Component {

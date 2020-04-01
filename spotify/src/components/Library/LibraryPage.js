@@ -15,7 +15,8 @@ class LibraryPage extends Component {
     constructor(props){
         super(props);
         this.state={
-            tempId:''
+            tempId:'',
+            isModalOpen:false
         };
     }
     
