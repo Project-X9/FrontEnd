@@ -58,7 +58,7 @@ class WebPlayer extends Component {
         <div className="WebPlayerHomeBody">
             <div className="container InfoContainer">
                 <div className="row InfoContainerRow">
-                    <div className="col-md-4 col-lg-3 Linkers">
+                    <div className="col-md-3 col-lg-2 Linkers">
                         <div className="sidebar">
                         <Link to="/home" className="AppearBigImage">
                             <img
@@ -76,14 +76,14 @@ class WebPlayer extends Component {
                             <i className="fa fa-search"></i>
                             Search
                         </Link>
-                        <Link to="/webplayer/librarypage">
+                        <Link to="/webplayer/librarypage/playlists">
                             <i className="fa fa-bomb"></i>
                             Your Library
                         </Link>
                         {showLikeAndCreate}
                         </div>
                     </div>
-                    <div className="col-md-8 col-lg-9 webPlayerHomeNavAndContent">
+                    <div className="col-md-9 col-lg-10 webPlayerHomeNavAndContent">
                       <Switch>
                         <Route
                           path="/webplayer/home"

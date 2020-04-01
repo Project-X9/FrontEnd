@@ -1,5 +1,5 @@
 .LibraryPageBody{
-    background-color: #191919;
+    background-color: #141313;
     font-size: 14px;
     line-height: 20px;
     letter-spacing: .015em;
@@ -109,7 +109,7 @@
     color: #fff;
     margin: 24px 0;
     margin-right: 90%;
-    background-color: #191919;
+    background-color: #141313;
 
 }
 .gridView{
@@ -140,6 +140,7 @@
     align-items: center;
     padding-top: 30px;
     padding-bottom: 40px;
+    
 }
 .insideLiked{
     max-height: 130px;
@@ -155,6 +156,13 @@
 }
 .titleLiked{
     min-height: 62px;
+    margin-right: 42%;
+}
+.displayFlex_hassan{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  /* margin-right: 50%; */
 }
 .likedNav{
     text-decoration: none;
@@ -165,19 +173,21 @@
     padding-bottom: 2px;
     position: relative;
     z-index: 1;
+
     
 
 }
 .likedSongsSpan{
     color: #fff;
-    overflow: hidden;
+    /* overflow: hidden;
     direction: auto;
     display: -webkit-box;
     -webkit-line-clamp: 1;
     word-break: break-all;
     -webkit-box-orient: vertical;
     position: relative;
-    margin-right: 55% ;
+    margin-right: 55% ; */
+    /* margin-right:; */
 }
 .likedNav:hover{
     text-decoration: none;

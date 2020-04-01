@@ -22,29 +22,31 @@ class LibraryPage extends Component {
     
     render(){
         return(
-            <Row className="backGround_LibraryPage">
+          <div className="container">
+            <Row>
               <Col md={12}>
             <div className="LibraryPageBody">
             <LibraryNavbar />
             <Switch>
                     <Route
-                      path="/librarypage/playlists"
+                      path="/webplayer/librarypage/playlists"
                       component={() => (
                         <PlayList
                         />
                       )} />
                     <Route
-                      path="/librarypage/albums"
+                      path="/webplayer/librarypage/albums"
                       component={Albums}
                     />    
                       <Route
-                      path="/librarypage/artists"
+                      path="/webplayer/librarypage/artists"
                       component={Artists}
                     />    
                 </Switch>
         </div>
         </Col>
         </Row>
+        </div>
         );
   }
 }

@@ -24,15 +24,15 @@ class LibraryNavbar extends Component {
         let albumsActive=''
         let artistsActive=''
         let currentURL=window.location.href
-        if(currentURL==="http://localhost:3000/librarypage/playlists")
+        if(currentURL==="http://localhost:3000/webplayer/librarypage/playlists")
         {
             playlistsActive=' activeButton'; albumsActive=''; artistsActive=''; 
         }
-        else if(currentURL==="http://localhost:3000/librarypage/albums")
+        else if(currentURL==="http://localhost:3000/webplayer/librarypage/albums")
         {
             playlistsActive=''; artistsActive=''; albumsActive=' activeButton'; ;
         }
-        else if(currentURL==="http://localhost:3000/librarypage/artists")
+        else if(currentURL==="http://localhost:3000/webplayer/librarypage/artists")
         {
             playlistsActive=''; albumsActive=''; artistsActive=' activeButton';
         }
@@ -62,17 +62,17 @@ class LibraryNavbar extends Component {
                             </Button>  
                         </NavItem>
                         <NavItem className="customizedNavitems">
-                                <NavLink className={ "nav-link customizedNavLink "+ playlistsActive} to="/librarypage/playlists">
+                                <NavLink className={ "nav-link customizedNavLink "+ playlistsActive} to="/webplayer/librarypage/playlists">
                                     Playlists
                                 </NavLink>
                             </NavItem>
                             <NavItem className="Disappear  customizedNavitems">
-                                <NavLink className={ "nav-link customizedNavLink "+ artistsActive} to="/librarypage/artists">
+                                <NavLink className={ "nav-link customizedNavLink "+ artistsActive} to="/webplayer/librarypage/artists">
                                     Artists
                                 </NavLink>
                             </NavItem>
                             <NavItem className=" Disappear customizedNavitems ">
-                                <NavLink className={ "nav-link customizedNavLink "+ albumsActive} to="/librarypage/albums">
+                                <NavLink className={ "nav-link customizedNavLink "+ albumsActive} to="/webplayer/librarypage/albums">
                                     Albums
                                 </NavLink>
                             </NavItem>

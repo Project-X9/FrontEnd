@@ -38,7 +38,7 @@ class PlayList extends Component {
                                             </div>
                                         </div>
                                         <div className="titleLiked">
-                                            <Row>
+                                            <Row className="displayFlex_hassan">
                                                 <Col  md={12}>
                                                     <Link className="likedNav" to="/">
                                                         <span dir="auto" className="likedSongsSpan">Liked Songs</span>
