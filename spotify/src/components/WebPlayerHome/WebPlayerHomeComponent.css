@@ -388,6 +388,11 @@
     margin-bottom:2em;
   }
 
+  div.WebPlayerHomeContent .row.BelowImage
+  {
+    align-self: flex-start;
+  }
+
   div.WebPlayerHomeContent .CardsHome{
     height: 100%;
     display: flex;
@@ -468,37 +473,26 @@ div.WebPlayerHomeContent .DescriptionPlaylistLink
   {
     font-size: 12px;
     line-height: 18px;
+    text-overflow: ellipsis;
     color: #b3b3b3;
     padding: 0;
     margin-top: 4px;
     white-space: normal;
+    overflow: hidden;
+    direction: auto;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    word-break: break-all;
     -webkit-box-orient: vertical;
     text-align: left;
-
   }
 
   div.WebPlayerHomeContent .PlayButtonPlayList{
     position: absolute;
-    left:75%;
-    bottom:50%;
-    height:40px;
+    left:70%;
+    bottom:12%;
+    height:20px;
     width:50px;
-  }
-
-  div.WebPlayerHomeContent .ArtistPlayButtonPlayList{
-    position: absolute;
-    left:7em;
-    bottom:-0.5em;
-    height:40px;
-    width:50px;
-  }
-
-  @media(max-width: 1101px){
-    div.WebPlayerHomeContent .ArtistPlayButtonPlayList{
-      left:170%;
-    }
   }
 
   div.WebPlayerHomeContent .ButtonItself{

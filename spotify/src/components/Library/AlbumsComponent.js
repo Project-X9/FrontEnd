@@ -41,29 +41,29 @@ class Albums extends Component {
                                             </div>
                                         </Col>
                                     </Row>
-                                    <Row>
+                                    <Row className="TextBelowTheImage">
                                         <Col md={12}>
                                             <Row className="cardTitle" >
                                                 <Col md={12}>
-                                                    <Link className="titlePlaylistLink">Todays Best Egyptsadasdasd</Link>
+                                                    <Link className="titlePlaylistLink">To</Link>
                                                 </Col>
                                             </Row>
                                             <Row>
                                                 <Col md={12}>
                                                     <div className="desciptionPlaylistLink">
-                                                        <span>The finest and freshest Egyptian hits. Cover: Wegz.</span>
+                                                        <span>T</span>
                                                     </div>
                                                 </Col>
                                             </Row>
-                                            <Row >
-                                                <Col md={12} >
-                                                    <div className="playButtonPlayList dissapperOnHover">
-                                                        <Button className="theButtonItself dissapperOnHover"> 
-                                                        <svg height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
-                                                        </Button>
-                                                    </div>
-                                                </Col>
-                                            </Row>
+                                        </Col>
+                                    </Row>
+                                    <Row className="playButtonPlayList">
+                                        <Col md={12} >
+                                            <div>
+                                                <Button className="theButtonItself"> 
+                                                <svg height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
+                                                </Button>
+                                            </div>
                                         </Col>
                                     </Row>
                                 </div>
@@ -79,7 +79,7 @@ class Albums extends Component {
                                             </div>
                                         </Col>
                                     </Row>
-                                    <Row>
+                                    <Row className="TextBelowTheImage">
                                         <Col md={12}>
                                             <Row className="cardTitle" >
                                                 <Col md={12}>
@@ -93,15 +93,15 @@ class Albums extends Component {
                                                     </div>
                                                 </Col>
                                             </Row>
-                                            <Row className="dissapperOnHover">
-                                                <Col md={12} className="dissapperOnHover">
-                                                    <div className="playButtonPlayList dissapperOnHover">
-                                                        <Button className="theButtonItself dissapperOnHover"> 
-                                                        <svg className="dissapperOnHover"height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
-                                                        </Button>
-                                                    </div>
-                                                </Col>
-                                            </Row>
+                                        </Col>
+                                    </Row>
+                                    <Row className="playButtonPlayList">
+                                        <Col md={12} >
+                                            <div >
+                                                <Button className="theButtonItself"> 
+                                                <svg height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
+                                                </Button>
+                                            </div>
                                         </Col>
                                     </Row>
                                 </div>
@@ -117,7 +117,7 @@ class Albums extends Component {
                                             </div>
                                         </Col>
                                     </Row>
-                                    <Row>
+                                    <Row className="TextBelowTheImage">
                                         <Col md={12}>
                                             <Row className="cardTitle" >
                                                 <Col md={12}>
@@ -131,15 +131,15 @@ class Albums extends Component {
                                                     </div>
                                                 </Col>
                                             </Row>
-                                            <Row className="dissapperOnHover">
-                                                <Col md={12} className="dissapperOnHover">
-                                                    <div className="playButtonPlayList dissapperOnHover">
-                                                        <Button className="theButtonItself dissapperOnHover"> 
-                                                        <svg className="dissapperOnHover"height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
-                                                        </Button>
-                                                    </div>
-                                                </Col>
-                                            </Row>
+                                        </Col>
+                                    </Row>
+                                    <Row className="playButtonPlayList">
+                                        <Col md={12} >
+                                            <div>
+                                                <Button className="theButtonItself"> 
+                                                <svg height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
+                                                </Button>
+                                            </div>
                                         </Col>
                                     </Row>
                                 </div>
@@ -155,7 +155,7 @@ class Albums extends Component {
                                             </div>
                                         </Col>
                                     </Row>
-                                    <Row>
+                                    <Row className="TextBelowTheImage">
                                         <Col md={12}>
                                             <Row className="cardTitle" >
                                                 <Col md={12}>
@@ -169,15 +169,15 @@ class Albums extends Component {
                                                     </div>
                                                 </Col>
                                             </Row>
-                                            <Row className="dissapperOnHover">
-                                                <Col md={12} className="dissapperOnHover">
-                                                    <div className="playButtonPlayList dissapperOnHover">
-                                                        <Button className="theButtonItself dissapperOnHover"> 
-                                                        <svg className="dissapperOnHover"height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
-                                                        </Button>
-                                                    </div>
-                                                </Col>
-                                            </Row>
+                                        </Col>
+                                    </Row>
+                                    <Row className="playButtonPlayList">
+                                        <Col md={12} >
+                                            <div >
+                                                <Button className="theButtonItself"> 
+                                                <svg height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
+                                                </Button>
+                                            </div>
                                         </Col>
                                     </Row>
                                 </div>
@@ -193,7 +193,7 @@ class Albums extends Component {
                                             </div>
                                         </Col>
                                     </Row>
-                                    <Row>
+                                    <Row className="TextBelowTheImage">
                                         <Col md={12}>
                                             <Row className="cardTitle" >
                                                 <Col md={12}>
@@ -207,15 +207,15 @@ class Albums extends Component {
                                                     </div>
                                                 </Col>
                                             </Row>
-                                            <Row className="dissapperOnHover">
-                                                <Col md={12} className="dissapperOnHover">
-                                                    <div className="playButtonPlayList dissapperOnHover">
-                                                        <Button className="theButtonItself dissapperOnHover"> 
-                                                        <svg className="dissapperOnHover"height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
-                                                        </Button>
-                                                    </div>
-                                                </Col>
-                                            </Row>
+                                        </Col>
+                                    </Row>
+                                    <Row className="playButtonPlayList">
+                                        <Col md={12} >
+                                            <div>
+                                                <Button className="theButtonItself"> 
+                                                <svg height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
+                                                </Button>
+                                            </div>
                                         </Col>
                                     </Row>
                                 </div>
