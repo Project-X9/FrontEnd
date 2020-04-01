@@ -7,8 +7,6 @@
       background-color: #333;
       box-shadow: 0 10px 30px 0 rgba(0,0,0,.3), 0 1px 2px 0 rgba(0,0,0,.2);
       border-radius: 50%;
-
-  
   }
   .imageHolder_Artist{
     transition-duration: .3s;
@@ -29,4 +27,45 @@
     object-fit: cover;
     object-position: center center;
   }
- 
+
+  .theButtonItself_Artist{
+    z-index: 1;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 700;
+    letter-spacing: 1.76px;
+    text-transform: uppercase;
+    --size: 40px;
+    border: 0;
+    border-radius: 500px;
+    color: #fff;
+    background-color: #1db954;
+    transition: transform 33ms cubic-bezier(.3,0,0,1),-webkit-transform 33ms cubic-bezier(.3,0,0,1);
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    display: none;
+    position: absolute;
+    left:8em;
+    bottom:1em;
+  }
+
+  .Artist_playButtonPlayList{
+    right: 1px;
+    /* pointer-events: none; */
+    position: absolute;
+    bottom: 1px;
+    z-index: 2;
+    border-radius: 500px;
+    height:50px;
+    width:50px;
+  }
+  @media(max-width: 768px){
+    .theButtonItself_Artist{
+      left:16em;
+    }
+  }

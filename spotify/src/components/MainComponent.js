@@ -9,9 +9,10 @@ import AccountOverview from "./AccountOverview/AccountOverviewComponent";
 import WebPlayer from "./WebPlayerHome/WebPlayerComponent";
 import SignIn from "./SignIn/SignInComponent";
 import PlayFotter from "./WebPlayer/PlayFotterComponent";
-import NowPlay from "./NowPlayComponent/NowPlay";
 import Library from "./Library/LibraryCompnent";
+import PlayList from "./Library/PlayListComponent";
 import Albums from "./Library/AlbumsComponent";
+
 import {
   postFeedback,
   postFacebookLogin,
@@ -95,12 +96,7 @@ class Main extends Component {
               <NowPlay id={this.props.id} data={this.props.data} />
             )}
           />
-          <Route
-            path="/librarypage"
-            component={() => (
-              <LibraryPage id={this.props.id} data={this.props.data} />
-            )}
-          />
+
           <Route
             exact
             path="/premium"
@@ -133,7 +129,7 @@ class Main extends Component {
             path="/webplayer"
             component={() => (
               <WebPlayer
-                //////////for WebPlayer and HomeNavAndComponents
+                //////////for WebPlayer and HomeNavAndComponents and librarypage
                 data={this.props.data}
                 id={this.props.id}
                 ///////////

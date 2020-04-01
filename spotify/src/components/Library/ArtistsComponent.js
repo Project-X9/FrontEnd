@@ -59,8 +59,8 @@ class Artists extends Component {
                                             <Row>
                                                 <Col md={12}>
                                                 <div className="displayButton">
-                                                    <div className="playButtonPlayList">
-                                                        <Button className="theButtonItself "> 
+                                                    <div className="Artist_playButtonPlayList">
+                                                        <Button className="theButtonItself_Artist "> 
                                                         <svg height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
                                                         </Button>
                                                     </div>
