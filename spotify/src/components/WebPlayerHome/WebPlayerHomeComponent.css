@@ -399,17 +399,6 @@
     align-items: center;
   }
 
-  div.WebPlayerHomeContent .ArtistCardsHome{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    padding: 20px 20px 16px;
-    background: #282828;
-    border-radius: 8px;
-    align-items: center;
-  }
-
 div.WebPlayerHomeContent .CardPhoto{
   height: 156px;
   width: 156px;
@@ -420,8 +409,8 @@ div.WebPlayerHomeContent .CardPhoto{
 }
 
 div.WebPlayerHomeContent .ArtistCardPhoto{
-  height: 159px;
-  width: 159px;
+  height: 156px;
+  width: 156px;
   position: relative;
   margin-bottom: 16px;
   background-color: #333;
@@ -436,15 +425,6 @@ div.WebPlayerHomeContent .ImageHolder{
   opacity: 1;
   height: 156px;
   width: 156px;
-}
-
-div.WebPlayerHomeContent .ArtistImageHolder{
-  transition-duration: .3s;
-  transition-property: opacity;
-  transition-timing-function: cubic-bezier(.3,0,.4,1);
-  opacity: 1;
-  height: 159px;
-  width: 159px;
 }
 
 div.WebPlayerHomeContent .ImageItself{
@@ -538,7 +518,6 @@ div.WebPlayerHomeContent .DescriptionPlaylistLink
     display:none;
   }
 
-  div.WebPlayerHomeContent .ArtistCardsHome:hover button,
   div.WebPlayerHomeContent .CardsHome:hover button{
     display: block;
   }

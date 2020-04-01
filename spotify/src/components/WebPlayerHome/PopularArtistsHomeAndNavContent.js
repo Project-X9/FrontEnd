@@ -19,11 +19,11 @@ class PopularArtistsHomeAndNavContent extends Component {
             <div className="row">
                 <div className="col-sm-12">
                 <div className="GridView">
-                    <div className="ArtistCardsHome">
+                    <div className="CardsHome">
                         <div className="row">
                             <div className="col">
                             <div className="ArtistCardPhoto">
-                                <div className="ArtistImageHolder">
+                                <div className="ImageHolder">
                                     <img  className="ArtistImageItself" src="https://a10.gaanacdn.com/images/albums/69/2437469/crop_480x480_2437469.jpg" alt=""></img>
                                 </div>
                             </div>
