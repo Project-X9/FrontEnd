@@ -50,21 +50,22 @@ class PlayList extends Component {
                                                     <div className="noOflikedSongs flexRowOfLibraryPage">1 Liked song</div>
                                                 </Col>
                                             </Row>
-                                            <Row className="playButtonOfLikedSongs">
-                                                <Col  md={12}>
-                                                    <div className="displayButton">
-                                                    <Button className="PlayButton">
-                                                    <svg height="24" role="img" width="24" viewBox="0 0 24 24">
-                                                        <polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor">
-                                                        </polygon>
-                                                    </svg>
-                                                    </Button>
-                                                    </div>
-                                                </Col>
-                                            </Row>
+                                          
                                         </div>
                                        
                                     </div>
+                                    <Row className="playButtonOfLikedSongs">
+                                        <Col  md={12}>
+                                            <div className="displayButton">
+                                            <Button className="PlayButton">
+                                            <svg height="24" role="img" width="24" viewBox="0 0 24 24">
+                                                <polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor">
+                                                </polygon>
+                                            </svg>
+                                            </Button>
+                                            </div>
+                                        </Col>
+                                    </Row>
                                 </div>
                                 <div className="CardsLibrary">
                                     <Row>
@@ -72,13 +73,13 @@ class PlayList extends Component {
                                             <div>
                                                 <div className="cardPhoto">
                                                     <div className="imageHolder">
-                                                    <img src="https://i.scdn.co/image/ab67706f000000021c6e257c426955c06bdfb9ef" alt="" className="theimage"></img>
+                                                        <img src="https://i.scdn.co/image/ab67706f000000021c6e257c426955c06bdfb9ef" alt="" className="theimage"></img>
                                                     </div>
                                                 </div>
                                             </div>
                                         </Col>
                                     </Row>
-                                    <Row>
+                                    <Row className="TextBelowTheImage">
                                         <Col md={12}>
                                             <Row className="cardTitle" >
                                                 <Col md={12}>
@@ -92,17 +93,15 @@ class PlayList extends Component {
                                                     </div>
                                                 </Col>
                                             </Row>
-                                            <Row className="displayButton">
-                                                <Col md={12} >
-                                                    <div >
-                                                    <div className="playButtonPlayList">
-                                                        <Button className="theButtonItself "> 
-                                                        <svg height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
-                                                        </Button>
-                                                    </div>
-                                                    </div>
-                                                </Col>
-                                            </Row>
+                                        </Col>
+                                    </Row>
+                                    <Row className="playButtonPlayList">
+                                        <Col md={12} >
+                                            <div>
+                                                <Button className="theButtonItself"> 
+                                                <svg height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
+                                                </Button>
+                                            </div>
                                         </Col>
                                     </Row>
                                 </div>

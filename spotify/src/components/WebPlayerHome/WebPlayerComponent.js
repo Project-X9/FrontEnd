@@ -15,7 +15,6 @@ import HomeNavAndContent from './HomeNavAndContent'
 import LibraryPage from  "../Library/LibraryPage";
 
 
-
 class WebPlayer extends Component {
  
   constructor(props) {

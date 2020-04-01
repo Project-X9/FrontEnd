@@ -42,7 +42,7 @@ class Artists extends Component {
                                             </div>
                                         </Col>
                                     </Row>
-                                    <Row className="mr-auto">
+                                    <Row className="TextBelowTheImage">
                                         <Col md={12}>
                                             <Row className="cardTitle" >
                                                 <Col md={12}>
@@ -56,17 +56,18 @@ class Artists extends Component {
                                                     </div>
                                                 </Col>
                                             </Row>
-                                            <Row>
-                                                <Col md={12}>
-                                                <div className="displayButton">
-                                                    <div className="Artist_playButtonPlayList">
-                                                        <Button className="theButtonItself_Artist "> 
-                                                        <svg height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
-                                                        </Button>
-                                                    </div>
-                                                </div>
-                                                </Col>
-                                            </Row>
+                                           
+                                        </Col>
+                                    </Row>
+                                    <Row className="playButtonPlayList">
+                                        <Col md={12}>
+                                        <div className="displayButton">
+                                            <div >
+                                                <Button className="theButtonItself"> 
+                                                <svg height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
+                                                </Button>
+                                            </div>
+                                        </div>
                                         </Col>
                                     </Row>
                                 </div>
