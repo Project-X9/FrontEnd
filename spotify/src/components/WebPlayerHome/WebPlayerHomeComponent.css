@@ -397,7 +397,18 @@
     background: #282828;
     border-radius: 8px;
     align-items: center;
-}
+  }
+
+  div.WebPlayerHomeContent .ArtistCardsHome{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 20px 20px 16px;
+    background: #282828;
+    border-radius: 8px;
+    align-items: center;
+  }
 
 div.WebPlayerHomeContent .CardPhoto{
   height: 156px;
@@ -496,6 +507,20 @@ div.WebPlayerHomeContent .DescriptionPlaylistLink
     width:50px;
   }
 
+  div.WebPlayerHomeContent .ArtistPlayButtonPlayList{
+    position: absolute;
+    left:7em;
+    bottom:-0.5em;
+    height:40px;
+    width:50px;
+  }
+
+  @media(max-width: 1101px){
+    div.WebPlayerHomeContent .ArtistPlayButtonPlayList{
+      left:170%;
+    }
+  }
+
   div.WebPlayerHomeContent .ButtonItself{
     position: relative;
     border: 0;
@@ -513,10 +538,12 @@ div.WebPlayerHomeContent .DescriptionPlaylistLink
     display:none;
   }
 
+  div.WebPlayerHomeContent .ArtistCardsHome:hover button,
   div.WebPlayerHomeContent .CardsHome:hover button{
     display: block;
   }
 
+  div.WebPlayerHomeContent .ArtistButtonItself:hover,
   div.WebPlayerHomeContent .ButtonItself:hover{
     transform: scale(1.06);
   }
