@@ -130,6 +130,7 @@
     position: fixed;
     top:0;
     max-width:100%;
+    width:-webkit-available;
     width:-moz-available;
     z-index: 1000;   
   }

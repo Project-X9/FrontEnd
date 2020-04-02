@@ -18,6 +18,11 @@ class LibraryNavbar extends Component {
  
     }
     
+
+  handleLogout(){
+    let id="";
+    this.props.handleLogoutId(id);
+  }
     
     render(){
         let playlistsActive=''
@@ -87,11 +92,12 @@ class LibraryNavbar extends Component {
                             </Button>
                             <DropdownMenu className="StaticNav" right>
                                 <DropdownItem className="StaticNavChildContainer DisappearFromDropDowm">
-                                <NavLink
+                                <Button
+                                    onClick={() => { this.handleLogout() }} 
                                     className="StaticNavChild"
-                                    to="accountoverview">
+                                    >
                                     Account
-                                </NavLink>{" "}
+                                </Button>{" "}
                                 </DropdownItem>
                                 <DropdownItem className="StaticNavChildContainer DisappearFromDropDowm">
                                 <NavLink

@@ -154,38 +154,78 @@
     border-left-color: white;
     border-left-width: 2px;
   }
-  
-  div.AccountOverviewNav div.container .OpenNav {
-    background-color: black;
-  }
-  
-  div.AccountOverviewNav div.container .OpenNav .OpenNavChild{
-    color: grey;
-  }
-  
-  div.AccountOverviewNav div.container .OpenNav .OpenNavChild:hover {
-    color: #1ed760;
-    background-color: black;
+
+  div.AccountOverviewNav div.container .HorizontalLine {
+    display:none;
   }
 
-  div.AccountOverviewNav div.container .StaticNav,
-  div.AccountOverviewNav div.container .StaticNav .StaticNavChild1Container{
+  div.AccountOverviewNav div.container .AccountWhenCollapsed {
+    display:none;
+    color:grey;
+  }
+  
+  div.AccountOverviewNav div.container .LogoutWhenCollapsed {
+    display:none;
+    color: grey;
+    background-color: black;
+    padding:0;
+    border:none;
+  }
+
+  div.AccountOverviewNav div.container .LogoutWhenCollapsed.btn.btn-secondary{
+    width: 100%;
+    text-align:left;
+  }
+
+  div.AccountOverviewNav div.container .LogoutWhenCollapsed.btn.btn-secondary:focus{
+    box-shadow: none;
+  }
+  
+ 
+  div.AccountOverviewNav div.container .StaticNav .StaticNavChildContainer.dropdown-item{
     background-color: white;  
+    width:100%;
+    padding:0;
+    padding-left:15px;
   }
 
   div.AccountOverviewNav div.container .StaticNav .StaticNavChild1{
     color: black;  
+    width:100%;
+  }
+
+  div.AccountOverviewNav div.container .StaticNav .StaticNavChild1.active{
+    display:block;
   }
   
   div.AccountOverviewNav div.container .StaticNav .StaticNavChild2{
     color: grey;
+    background-color: white;
+    padding:0;
+    border:none;
+  }
+
+  div.AccountOverviewNav div.container .StaticNav .StaticNavChild2.btn.btn-secondary{
+    display: block;
+    width: 100%;
+    text-align:left;
+  }
+
+  div.AccountOverviewNav div.container .StaticNav .StaticNavChild2.btn.btn-secondary:focus{
+    box-shadow: none;
   }
   
   div.AccountOverviewNav div.container .StaticNav .StaticNavChild1:hover,
-  div.AccountOverviewNav div.container .StaticNav .StaticNavChild2:hover{
+  div.AccountOverviewNav div.container .StaticNav .StaticNavChild2.btn.btn-secondary:hover{
     color: #1ed760;
     background-color: white;
     text-decoration:none;
+  }
+
+  div.AccountOverviewNav div.container .AccountWhenCollapsed:hover,
+  div.AccountOverviewNav div.container .LogoutWhenCollapsed.btn.btn-secondary:hover{
+  color: #1ed760;
+  text-decoration:none;
   }
   
   .NavBarToggle {
@@ -202,24 +242,44 @@
     margin-right: 50px;
   }
 
-  @media(max-width: 768px){
-
-    div.AccountOverviewNav div.container .StaticNav {
-      background-color: black;
-    }
-
-    div.AccountOverviewNav div.container .StaticNav .StaticNavChild1,
-    div.AccountOverviewNav div.container .StaticNav .StaticNavChild2{
-      color: rgb(94, 91, 91);
-      background-color: black;
-    }
-
-    div.AccountOverviewNav div.container .StaticNav .StaticNavChild1:hover,
-    div.AccountOverviewNav div.container .StaticNav .StaticNavChild2:hover{
-    color: #1ed760;
-    background-color: black;
-    text-decoration:none;
+  div.AccountOverviewNav div.container .ImageWhenCollapsed {
+    margin:40px 0;
+    margin-left:20px;
+    display:none;
   }
+
+  @media(max-width: 767px){
+
+    div.AccountOverviewNav div.container .nav-link {
+      color: white;
+      margin-left: 20px;
+      font-size:40px;
+    }
+    
+    div.AccountOverviewNav div.container .HorizontalLine {
+      display:block;
+    }
+
+    div.AccountOverviewNav div.container .HorizontalLine:hover{
+      color:white;
+    }
+
+    div.AccountOverviewNav div.container .AccountWhenCollapsed {
+      display:block;
+    }
+    
+    div.AccountOverviewNav div.container .LogoutWhenCollapsed.btn.btn-secondary {
+      display:block;
+    }
+
+    div.AccountOverviewNav div.container .AccountOverviewDropDown {
+      display:none;
+    }
+
+    div.AccountOverviewNav div.container .ImageWhenCollapsed {
+      display:block;
+    } 
+   
   }
   /***************************************************Nav Bar***************************************************/
   /***************************************************Body***************************************************/

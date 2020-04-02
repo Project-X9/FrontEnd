@@ -14,9 +14,19 @@ import PopularArtistsHomeAndNavContent from "./PopularArtistsHomeAndNavContent";
 import PopularAlbumsHomeAndNavContent from "./PopularAlbumsHomeAndNavContent";
 
 
-
+/**
+ * WebPlayer page
+ */
 class HomeNavAndContentSigned extends Component {
  
+   /**
+   *
+   * @param {Object} props
+   * @param props.data Essentially contains the data of the users in the database
+   * @param props.id Essentially contains the id of one of the users in the database
+   * @param props.playLists Essentially contains the data of the playlists in the database
+   * @param props.handleLogoutId Essentially taks an id (should be an empty string) and replaces the current user id with it
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -24,6 +34,19 @@ class HomeNavAndContentSigned extends Component {
     };
   }
 
+  /**
+   * Sets a variable to an empty string then passes it to
+   * handleLogoutId() functions which logs the user out
+   */
+  handleLogout(){
+    let id="";
+    this.props.handleLogoutId(id);
+  }
+
+  /**
+   * Responsible for showing everything on the webplayer page
+   * @returns Components that will be displayed on the page
+   */
  
   render() {
     const userName = this.props.data.data.map((data) => {
@@ -69,7 +92,7 @@ class HomeNavAndContentSigned extends Component {
         }
       });
 
-      const isSignedIn = this.props.data.data.map((data) => {
+      const SignedIn = this.props.data.data.map((data) => {
         if (data.id === this.state.tempId) {
           return (
             <div>
@@ -114,8 +137,8 @@ class HomeNavAndContentSigned extends Component {
                                           </DropdownItem>
                                           <DropdownItem className="StaticNavChildContainer">
                                           <Button
-                                              className="StaticNavChild"
-                                              to="accountoverview">
+                                              onClick={() => { this.handleLogout() }} 
+                                              className="StaticNavChild">
                                               Log out
                                           </Button>
                                           </DropdownItem>
@@ -139,6 +162,7 @@ class HomeNavAndContentSigned extends Component {
            </div>
           );
         }
+      });
         if (''===this.state.tempId) {
           return(
             <div>
@@ -181,17 +205,23 @@ class HomeNavAndContentSigned extends Component {
                       </div>
                   </div>
               </div>
-              <div className="row">
-                  <h1>Hello,uiviuviuviuvuiuiyvuyvutchwveufyewvuywe yuewv cfyuew fcutewvfywevfywev</h1>
+              <div className="row RowWebPlayerHomeContent">
+                <div className="WebPlayerHomeContent">
+                  <div className="container">
+                    <PopularNewHomeAndNavContent/>
+                    <PopularArtistsHomeAndNavContent/>
+                    <PopularAlbumsHomeAndNavContent/>
+                  </div>
+                </div>
               </div>
           </div>
           )
         }
-      });
+      
 
     return (
       <div>
-      {isSignedIn}
+      {SignedIn}
       </div>
     );
   }

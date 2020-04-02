@@ -117,6 +117,8 @@ class WebPlayer extends Component {
                               <HomeNavAndContent
                              data={this.props.data} 
                              id={this.props.id}
+                             playLists={this.props.playLists}
+                             handleLogoutId={this.props.handleLogoutId}
                               />
                             )}
                         />
@@ -129,11 +131,11 @@ class WebPlayer extends Component {
                             playLists={this.props.playLists}
                             artist={this.props.artist}
                             album={this.props.album}
-
+                            handleLogoutId={this.props.handleLogoutId}
                             />
                           )}
                         />
-                        />    
+                        <Redirect to="/webplayer/home" /> 
                       </Switch>
                     </div>
                 </div>
