@@ -235,7 +235,6 @@ class AccountOverview extends Component {
                 onClick={this.state.toggleNav}>
                 ☰
               </NavbarToggler>
-
               <Collapse isOpen={this.state.isNavOpen} navbar>
                 <Nav navbar className="ml-auto">
                   <NavItem>
@@ -253,7 +252,11 @@ class AccountOverview extends Component {
                       Download
                     </NavLink>
                   </NavItem>
-
+                  <NavItem>
+                    <span className="nav-link HorizontalLine">
+                    ──
+                    </span>
+                  </NavItem>
                   <NavItem>
                     <UncontrolledDropdown nav inNavbar>
                       <DropdownToggle nav caret className="seperator">
@@ -265,19 +268,19 @@ class AccountOverview extends Component {
                         Profile
                       </DropdownToggle>
                       <DropdownMenu className="StaticNav" right>
-                        <DropdownItem className="StaticNavChild1Container">
+                        <DropdownItem className="StaticNavChildContainer">
                           <NavLink
                             className="StaticNavChild1"
                             to="/account/overview">
                             Account
                           </NavLink>
                         </DropdownItem>
-                        <DropdownItem className="StaticNavChild1Container">
-                        <NavLink
+                        <DropdownItem className="StaticNavChildContainer">
+                        <Button
                             className="StaticNavChild2"
                             to="/account/overview">
                             Log out
-                          </NavLink>
+                        </Button>
                         </DropdownItem>
                       </DropdownMenu>
                     </UncontrolledDropdown>

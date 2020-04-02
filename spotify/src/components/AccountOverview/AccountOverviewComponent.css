@@ -154,6 +154,10 @@
     border-left-color: white;
     border-left-width: 2px;
   }
+
+  div.AccountOverviewNav div.container .HorizontalLine {
+    display:none;
+  }
   
   div.AccountOverviewNav div.container .OpenNav {
     background-color: black;
@@ -169,7 +173,7 @@
   }
 
   div.AccountOverviewNav div.container .StaticNav,
-  div.AccountOverviewNav div.container .StaticNav .StaticNavChild1Container{
+  div.AccountOverviewNav div.container .StaticNav .StaticNavChildContainer{
     background-color: white;  
   }
 
@@ -202,7 +206,11 @@
     margin-right: 50px;
   }
 
-  @media(max-width: 768px){
+  @media(max-width: 767px){
+
+    div.AccountOverviewNav div.container .HorizontalLine {
+      display:block;
+    }
 
     div.AccountOverviewNav div.container .StaticNav {
       background-color: black;

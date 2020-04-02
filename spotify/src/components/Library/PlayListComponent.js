@@ -35,6 +35,42 @@ class PlayList extends Component {
                                                 <span className="customizedSpan"></span>
                                                 <span dir="auto">Wegz</span>
                                                 <span className="customizedSpan">دورك جي</span>
+                                                <span dir="auto">Wegz</span>
+                                                <span className="customizedSpan">دورك جي</span>
+                                                <span dir="auto">Wegz</span>
+                                                <span className="customizedSpan">دورك جي</span>
+                                                <span dir="auto">Wegz</span>
+                                                <span className="customizedSpan">دورك جي</span>
+                                                <span dir="auto">Wegz</span>
+                                                <span className="customizedSpan">دورك جي</span>
+                                                <span dir="auto">Wegz</span>
+                                                <span className="customizedSpan">دورك جي</span>
+                                                <span className="customizedSpan"></span>
+                                                <span dir="auto">Wegz</span>
+                                                <span className="customizedSpan">دورك جي</span>
+                                                <span dir="auto">Wegz</span>
+                                                <span className="customizedSpan">دورك جي</span>
+                                                <span dir="auto">Wegz</span>
+                                                <span className="customizedSpan">دورك جي</span>
+                                                <span dir="auto">Wegz</span>
+                                                <span className="customizedSpan">دورك جي</span>
+                                                <span dir="auto">Wegz</span>
+                                                <span className="customizedSpan">دورك جي</span>
+                                                <span dir="auto">Wegz</span>
+                                                <span className="customizedSpan">دورك جي</span>
+                                                <span className="customizedSpan"></span>
+                                                <span dir="auto">Wegz</span>
+                                                <span className="customizedSpan">دورك جي</span>
+                                                <span dir="auto">Wegz</span>
+                                                <span className="customizedSpan">دورك جي</span>
+                                                <span dir="auto">Wegz</span>
+                                                <span className="customizedSpan">دورك جي</span>
+                                                <span dir="auto">Wegz</span>
+                                                <span className="customizedSpan">دورك جي</span>
+                                                <span dir="auto">Wegz</span>
+                                                <span className="customizedSpan">دورك جي</span>
+                                                <span dir="auto">Wegz</span>
+                                                <span className="customizedSpan">دورك جي</span>
                                             </div>
                                         </div>
                                         <div className="titleLiked">
@@ -89,6 +125,10 @@ class PlayList extends Component {
                                             <Row>
                                                 <Col md={12}>
                                                     <div className="desciptionPlaylistLink">
+                                                        <span>The finest and freshest Egyptian hits. Cover: Wegz.</span>
+                                                        <span>The finest and freshest Egyptian hits. Cover: Wegz.</span>
+                                                        <span>The finest and freshest Egyptian hits. Cover: Wegz.</span>
+                                                        <span>The finest and freshest Egyptian hits. Cover: Wegz.</span>
                                                         <span>The finest and freshest Egyptian hits. Cover: Wegz.</span>
                                                     </div>
                                                 </Col>

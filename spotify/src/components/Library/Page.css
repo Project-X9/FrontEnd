@@ -139,16 +139,20 @@
     align-items: center;
     padding-top: 30px;
     padding-bottom: 40px;
-    
 }
+
 .insideLiked{
-    max-height: 130px;
     text-overflow: ellipsis;
+    padding: 0;
+    margin-top: 4px;
     white-space: normal;
     overflow: hidden;
+    direction: auto;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
+    word-break: break-all;
     -webkit-box-orient: vertical;
+    text-align: left;
 }
 .customizedSpan{
     opacity: .7
