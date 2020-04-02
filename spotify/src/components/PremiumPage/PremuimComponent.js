@@ -93,8 +93,6 @@ class Premium extends Component {
   }
 
   render() {
- 
-
     let accLogStyleParent = "";
     let accChild = "";
     let logChild = "";

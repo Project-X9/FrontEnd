@@ -6,11 +6,11 @@ import Home from "./Homepage/HomeComponent";
 import SignUp from "./SignUp/SignUpComponent";
 import PremiumComponent from "./PremiumPage/PremuimComponent";
 import AccountOverview from "./AccountOverview/AccountOverviewComponent";
-import WebPlayer from "./WebPlayerHome/WebPlayerComponent"
+import WebPlayer from "./WebPlayerHome/WebPlayerComponent";
 import SignIn from "./SignIn/SignInComponent";
 import PlayFotter from "./WebPlayer/PlayFotterComponent";
-import Library from './Library/LibraryCompnent';
-
+import Library from "./Library/LibraryCompnent";
+import NowPlay from "./NowPlayComponent/NowPlay";
 
 
 import {
@@ -33,9 +33,9 @@ import {
 const mapStateToProps = state => ({
   data: state.data,
   id: state.id,
-  playLists:state.playLists,
-  artist:state.artist,
-  album:state.album
+  playLists: state.playLists,
+  artist: state.artist,
+  album: state.album
 });
 const mapDispatchToProps = dispatch => ({
   resetFeedbackForm: () => {
@@ -56,7 +56,7 @@ const mapDispatchToProps = dispatch => ({
   fetchAlbum: () => {
     dispatch(fetchAlbum());
   },
-  handleLogoutId:id=>dispatch(handleLogoutId(id)),
+  handleLogoutId: id => dispatch(handleLogoutId(id)),
   PostPassword: (password, id) => dispatch(PostPassword(password, id)),
   GetPassword: id => dispatch(GetPassword(id)),
   getEmail: id => dispatch(getEmail(id)),
@@ -107,15 +107,20 @@ class Main extends Component {
             )}
           />
           <Route
-            exact path="/library"
+            exact
+            path="/library"
             component={() => (
-              <Library
-                id={this.props.id}
-                data={this.props.data}
-              />
+              <Library id={this.props.id} data={this.props.data} />
             )}
           />
-          
+          <Route
+            exact
+            path="/nowplay"
+            component={() => (
+              <NowPlay id={this.props.id} data={this.props.data} />
+            )}
+          />
+
           <Route
             exact
             path="/premium"
@@ -127,7 +132,7 @@ class Main extends Component {
               />
             )}
           />
-          <Route  
+          <Route
             path="/account"
             component={() => (
               <AccountOverview 
@@ -150,14 +155,14 @@ class Main extends Component {
             path="/webplayer"
             component={() => (
               <WebPlayer
-             //////////for Home page and Library page
-             data={this.props.data} 
-             id={this.props.id}
-             playLists={this.props.playLists}
-             artist={this.props.artist}
-             album={this.props.album}
-             handleLogoutId={this.props.handleLogoutId}
-             ///////////
+                //////////for Home page and Library page
+                data={this.props.data}
+                id={this.props.id}
+                playLists={this.props.playLists}
+                artist={this.props.artist}
+                album={this.props.album}
+                handleLogoutId={this.props.handleLogoutId}
+                ///////////
               />
             )}
           />
