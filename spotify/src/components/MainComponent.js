@@ -12,6 +12,7 @@ import PlayFotter from "./WebPlayer/PlayFotterComponent";
 import Library from "./Library/LibraryCompnent";
 import NowPlay from "./NowPlayComponent/NowPlay";
 
+
 import {
   postFeedback,
   postFacebookLogin,
@@ -25,7 +26,8 @@ import {
   handleLogoutId,
   fetchUserPlaylist,
   fetchArtist,
-  fetchAlbum
+  fetchAlbum,
+  EditProfile
 } from "../redux/ActionCreators";
 
 const mapStateToProps = state => ({
@@ -64,6 +66,11 @@ const mapDispatchToProps = dispatch => ({
   postFeedback: (email, confirmemail, password, name, day, month, year, sex) =>
     dispatch(
       postFeedback(email, confirmemail, password, name, day, month, year, sex)
+    ),
+
+    EditProfile: (name, day, month, year, sex,id) =>
+    dispatch(
+      EditProfile(name, day, month, year, sex,id)
     ),
   postFacebookLogin: (email, image, name) =>
     dispatch(postFacebookLogin(email, image, name))
@@ -128,16 +135,18 @@ class Main extends Component {
           <Route
             path="/account"
             component={() => (
-              <AccountOverview
-                //////////for overview and change password
-                data={this.props.data}
-                id={this.props.id}
-                handleLogoutId={this.props.handleLogoutId}
-                ///////////
-                ///////////for change password
-                PostPassword={this.props.PostPassword}
-                GetPassword={this.props.GetPassword}
-                //////////
+              <AccountOverview 
+              //////////for overview and change password
+              data={this.props.data} 
+              id={this.props.id}
+              handleLogoutId={this.props.handleLogoutId}
+              ///////////
+              ///////////for change password
+              PostPassword={this.props.PostPassword}
+              GetPassword={this.props.GetPassword}
+              //////////
+              EditProfile={this.props.EditProfile}
+
               />
             )}
           />
