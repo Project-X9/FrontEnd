@@ -18,6 +18,38 @@ class PlayList extends Component {
    
     
     render(){
+        if(this.props.playLists.playLists.length === 0)
+        {
+            var RenderNoLikedplayLists=() =>{
+                return(
+                    <div className="NolikedLevelZero">
+                    <div className="NolikedLevelOne">
+                        <div className="NolikedLevelTwo">
+                            <div className="row TakeitDown">
+                                <div className="col-xs-12 NolikedLevelThree">
+                                <div className="SomeheighPlease">
+                                    <svg width="51" height="52" viewBox="0 0 51 52" xmlns="http://www.w3.org/2000/svg">
+                                        <title>Add Playlist Icon</title>
+                                        <path d="M10 0C4.477 0 0 4.477 0 10s4.477 10 10 10 10-4.477 10-10c0-5.524-4.477-10-10-10zm7 11h-6v6H9v-6H3V9h6V3h2v6h6v2zm7.75-3.655c.118.653.188 1.32.217 2L49 4.234v27.03c-1.65-2.044-4.174-3.356-7-3.356-4.962 0-9 4.037-9 9 0 4.962 4.038 9 9 9s9-4.038 9-9V1.764l-26.25 5.58zM42 43.91c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm-25-6.556C15.348 35.31 12.826 34 10 34c-4.963 0-9 4.037-9 9 0 4.96 4.037 9 9 9s9-4.04 9-9V21.97c-.632.476-1.296.912-2 1.285v14.097zM10 50c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7c0 3.858-3.14 7-7 7z" fill="currentColor" fill-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <Row>
+                                        <Col md={12}>
+                                            <h1 class="YourFirstInAll">Create your first playlist</h1>
+                                            <h4 class="_1bfd68987bbac2dd824e5db895bd3c57-scss">We’ll help you make the perfect mixtape, minus the tape.</h4>
+                                            <button class="_2221af4e93029bedeab751d04fab4b8b-scss _1edf52628d509e6baded2387f6267588-scss _4a19a959428c34075eef50bd44ab468f-scss" type="button">Create new playlist</button>
+                                        </Col>
+                                </Row>
+                                </div>
+                            </div>                        
+                        </div>                         
+
+                    </div>                                    
+                </div>  
+
+                )
+            }
+        }
         const RenderLikedOrNot =this.props.playLists.playLists.map((PlayLists)=>
         {
             if(PlayLists.name==="Liked_Songs" && PlayLists.tracks.length !== 0){
@@ -129,26 +161,31 @@ class PlayList extends Component {
         
         return(
             <div>
-            {/* <div className="LibraryPageBody"> */}
             <div className="container MainViewPlaylsit">
                 <div className="sectionPlayList">
-                    <Row>
-                        <Col  md={12}>
-                            <h1 className="header_playList">Playlists</h1>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col  md={12} className="m-0 customizedColForCards">
-                            <div className="gridView">
-                                {RenderLikedOrNot}
-                                {RenderUserPlayLists}
-                            </div>
-                        </Col>
-                    </Row>
+                    {this.props.playLists.playLists.length===0 ? (
+                        <div>{RenderNoLikedplayLists()}</div>
+                    ) :(
+                        <div>
+                            <Row>
+                                <Col  md={12}>
+                                    <h1 className="header_playList">Playlists</h1>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col  md={12} className="m-0 customizedColForCards">
+                                    <div className="gridView">
+                                        {RenderLikedOrNot}
+                                        {RenderUserPlayLists}
+                                    </div>
+                                </Col>
+                            </Row>
+                        </div>
+                    )
+                    }
+                   
                 </div>
-                
-            {/* </div> */}
-        </div>
+             </div>
         </div>        )
     }
 }
