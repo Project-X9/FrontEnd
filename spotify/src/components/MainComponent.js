@@ -10,7 +10,6 @@ import WebPlayer from "./WebPlayerHome/WebPlayerComponent";
 import SignIn from "./SignIn/SignInComponent";
 import PlayFotter from "./WebPlayer/PlayFotterComponent";
 import Library from "./Library/LibraryCompnent";
-import NowPlay from "./NowPlayComponent/NowPlay";
 
 
 import {
@@ -113,13 +112,6 @@ class Main extends Component {
               <Library id={this.props.id} data={this.props.data} />
             )}
           />
-          <Route
-            exact
-            path="/nowplay"
-            component={() => (
-              <NowPlay id={this.props.id} data={this.props.data} />
-            )}
-          />
 
           <Route
             exact
@@ -136,7 +128,7 @@ class Main extends Component {
             path="/account"
             component={() => (
               <AccountOverview 
-              //////////for overview and change password and edit profile
+              //////////for overview and change password and edit profile and nowplay
               data={this.props.data} 
               id={this.props.id}
               handleLogoutId={this.props.handleLogoutId}

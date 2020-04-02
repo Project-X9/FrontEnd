@@ -11,6 +11,7 @@ import {Link, Switch, Route,Redirect} from "react-router-dom";
 import { Button, Modal, ModalBody} from 'reactstrap'; 
 import HomeNavAndContent from './HomeNavAndContent'
 import LibraryPage from  "../Library/LibraryPage";
+import NowPlay from "../NowPlayComponent/NowPlay";
 import { baseUrl2 } from "../../shared/baseUrl";
 
 
@@ -56,6 +57,10 @@ class WebPlayer extends Component {
     {
       homeActive=''; searchActive=''; libraryActive=' active'; createPlaylistsActive=''; likedSongsActive='';
     }
+    else if(currentURL===baseUrl2 + "webplayer/nowplay")
+    {
+      homeActive=''; searchActive=''; libraryActive=''; createPlaylistsActive=''; likedSongsActive='BottomTwoActive';
+    }
     let redirected = null;
     if (this.state.SignedIn) {
       redirected = <Redirect to="/webplayer/librarypage/playlists"></Redirect>
@@ -69,7 +74,7 @@ class WebPlayer extends Component {
                   <i className="fa fa-plus-square"></i>
                   Create Playlist
               </Link>
-              <Link to="/"  className={likedSongsActive}>
+              <Link to="/webplayer/nowplay"  className={likedSongsActive}>
                   <i className="fa fa-heart"></i>
                   Liked Songs
               </Link>
@@ -133,6 +138,13 @@ class WebPlayer extends Component {
                             handleLogoutId={this.props.handleLogoutId}
                             />
                           )}
+                        />
+                        <Route
+                            exact
+                            path="/webplayer/nowplay"
+                            component={() => (
+                              <NowPlay id={this.props.id} data={this.props.data} />
+                            )}
                         />
                         <Redirect to="/webplayer/home" /> 
                       </Switch>
