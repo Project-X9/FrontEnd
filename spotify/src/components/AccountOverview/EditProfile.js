@@ -21,16 +21,18 @@ render(){
                 </Input>
             </FormGroup>
             <FormGroup>
-                <div className="row">
+                <div className="row EditProfileLabelDate">
+                    <Label className="EditProfileLabel" for="exampleSelect">Date of birth</Label>
+                </div>
+                <div className="row EditJustForBorder">
                     <div className="col">
-                        <Label className="EditProfileLabel" for="exampleSelect">Date of birth</Label>
                         <Input className="EditProfileInputSelection" type="select" name="select" id="exampleSelect">
                         <option>01</option><option>02</option><option>03</option><option>04</option><option>05</option>
                         <option>06</option><option>07</option><option>08</option><option>09</option><option>10</option>
                         <option>11</option><option>12</option>
                         </Input>
                     </div>
-                    <div className="col  BringingItDown">
+                    <div className="col">
                         <Input className="EditProfileInputSelection" type="select" name="select" id="exampleSelect">
                         <option>01</option><option>02</option><option>03</option><option>04</option><option>05</option>
                         <option>06</option><option>07</option><option>08</option><option>09</option><option>10</option>
@@ -41,18 +43,16 @@ render(){
                         <option>31</option>
                         </Input>
                     </div>
-                    <div className="col  BringingItDown">
+                    <div className="col">
                         <Input className="EditProfileInputSelection" type="textarea" name="text" id="exampleText" />
                     </div>
                 </div>
             </FormGroup>
-            <FormGroup>
-                
-            </FormGroup>
+            <div className="EditProfileButtonsPositioning"> 
+                <Button className="EditProfileSaveButton">SAVE PROFILE</Button>
+                <Button className="EditProfileCancelButton">CANCEL</Button>
+            </div>
             
-           
-            
-            <Button>Submit</Button>
             </Form>
         </div>
     );

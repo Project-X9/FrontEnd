@@ -65,7 +65,7 @@ class NowPlay extends Component {
       artistsActive = " activeButton";
     }
     return (
-      <div>
+     
         <div className="LibraryPageBody">
           <Navbar expand="md" className="customizedNavbar Ezzat ">
             <div className="container customizedContainer">
@@ -311,7 +311,7 @@ class NowPlay extends Component {
             </div>
           </section>
         </div>
-      </div>
+   
     );
   }
 }

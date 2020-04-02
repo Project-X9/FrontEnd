@@ -728,6 +728,11 @@
     padding:3em;
   }
 
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .EditProfileContent{
+    background-color: white;
+    padding:3em;
+  }
+
   .AccountOverviewBody .container .Content.EditProfileContentAswell .PageEditProfileBigHeader{
     padding-bottom: 0;
     margin-top: 0;
@@ -736,6 +741,12 @@
     margin-left: 0px;
     border-bottom: 1px solid #EFEFEF;
     font-family: Circular, Helvetica, Arial, sans-serif, IosFix;
+  }
+
+  
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .EditJustForBorder{
+    padding-bottom: 24px;
+    border-bottom: 1px solid #EFEFEF;
   }
 
   .AccountOverviewBody .container .Content.EditProfileContentAswell .EditProfileBigHeader{
@@ -757,6 +768,10 @@
     box-sizing: border-box; 
     display: flex;
     align-self: flex-start;  
+  }
+
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .EditProfileLabelDate{
+    padding-left:20px;  
   }
 
   .AccountOverviewBody .container .Content.EditProfileContentAswell .EditProfileInputText{
@@ -802,8 +817,73 @@
     margin: 0;
   }
 
-  .AccountOverviewBody .container .Content.EditProfileContentAswell .BringingItDown{
-    padding-top:30px;
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .EditProfileButtonsPositioning{
+    display:flex;
+    flex-direction: row-reverse;
+  }
+
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .EditProfileCancelButton{
+    margin-right: 20px;
+    float: right !important;
+    color: #000;
+    max-width: 290px;
+    font-size: 12px;
+    line-height: 1;
+    border-radius: 500px;
+    padding: 10px 32px;
+    transition-property: background-color, border-color, color, box-shadow, filter, -webkit-box-shadow, -webkit-filter;
+    transition-duration: .3s;
+    border-width: 0;
+    letter-spacing: 2px;
+    min-width: 160px;
+    text-transform: uppercase;
+    white-space: normal;
+    margin-bottom: 0;
+    font-weight: 700;
+    text-align: center;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    user-select: none;
+    text-decoration: none;
+    background-color: transparent;
+    box-sizing: border-box;
+    font-family: Circular, Helvetica, Arial, sans-serif, IosFix;
+  }
+
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .EditProfileSaveButton{
+    float: right !important;
+    max-width: 290px;
+    font-size: 12px;
+    line-height: 1;
+    border-radius: 500px;
+    padding: 10px 32px;
+    transition-property: background-color, border-color, color, box-shadow, filter, -webkit-box-shadow, -webkit-filter;
+    transition-duration: .3s;
+    border-width: 0;
+    letter-spacing: 2px;
+    min-width: 160px;
+    text-transform: uppercase;
+    white-space: normal;
+    margin-bottom: 0;
+    font-weight: 700;
+    text-align: center;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    user-select: none;
+    font-family: inherit;
+    -webkit-appearance: button;
+    overflow: visible;
+    box-sizing: border-box;
+    background-color: rgb(44, 173, 77);
+  }
+
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .EditProfileSaveButton:hover{
+    color: #FFF;
+    background-color: #1ED760;
+    border-color: #116e32;
+    text-decoration: none;
   }
   /***************************************************Sidebar Content Edit Profile***************************************************/
   /***************************************************Body***************************************************/
