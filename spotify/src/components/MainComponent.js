@@ -12,6 +12,7 @@ import PlayFotter from "./WebPlayer/PlayFotterComponent";
 import Library from './Library/LibraryCompnent';
 
 
+
 import {
   postFeedback,
   postFacebookLogin,
@@ -26,6 +27,7 @@ import {
   fetchUserPlaylist,
   fetchArtist,
   fetchAlbum,
+  EditProfile
 } from "../redux/ActionCreators";
 
 const mapStateToProps = state => ({
@@ -64,6 +66,11 @@ const mapDispatchToProps = dispatch => ({
   postFeedback: (email, confirmemail, password, name, day, month, year, sex) =>
     dispatch(
       postFeedback(email, confirmemail, password, name, day, month, year, sex)
+    ),
+
+    EditProfile: (name, day, month, year, sex,id) =>
+    dispatch(
+      EditProfile(name, day, month, year, sex,id)
     ),
   postFacebookLogin: (email, image, name) =>
     dispatch(postFacebookLogin(email, image, name))
@@ -133,6 +140,8 @@ class Main extends Component {
               PostPassword={this.props.PostPassword}
               GetPassword={this.props.GetPassword}
               //////////
+              EditProfile={this.props.EditProfile}
+
               />
             )}
           />

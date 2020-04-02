@@ -81,7 +81,7 @@ class LibraryNavbar extends Component {
                                     Albums
                                 </NavLink>
                             </NavItem>
-                    <Nav className="ml-auto" navbar>
+                    <Nav className="CustomizedNavForTheDropDownItem" navbar>
                         <NavItem className=" customizedNavLink ">
                             <UncontrolledDropdown nav inNavbar >
                             <Button className="AccountItself">
@@ -127,7 +127,7 @@ class LibraryNavbar extends Component {
                 </Nav>
                     </Col>
                 </Row>
-                </div>
+            </div>
             </Navbar>
             {/* </div> */}
         </div>

@@ -155,3 +155,13 @@ export const addAlbum = data => ({
 // export const removeUserPlayList= () => ({  
 //   type: ActionTypes.REMOVE_PLAYLIST
 // });
+////////////////////////////////////////Edit Profile/////////////////////////////////////////////
+export const EditProfile = (
+  name, day, month, year, sex,id
+) => dispatch => {
+  const newFeedback = {
+    name, day, month, year, sex
+  };
+  axios
+    .patch(`${baseUrl}users${id}`, newFeedback);
+}
