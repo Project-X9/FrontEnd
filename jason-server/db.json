@@ -210,6 +210,122 @@
   
       }
   
+    ],
+    
+    "playlist": [
+      {
+        "name": "Best of 2015",
+        "image": "https://enarab.com/wp-content/uploads/2020/02/https-_images.genius.com_ede1aee3ff875d14a591481f3cee0459.1000x1000x1.jpg",
+        "id": 1,
+        "authorId": 6,
+        "tracks": [],
+        "isLiked": false,
+        "description": "Best of 2015 & 2016!",
+        "author": "by Ahmed M. hassan"
+      },
+      {
+        "name": "Best of 2018",
+        "image": "https://images.genius.com/5130fa53a609b46f23a0672b972c7281.1000x1000x1.jpg",
+        "id": 2,
+        "authorId": 2,
+        "tracks": [],
+        "isLiked": false,
+        "description": "Best of 2018 & 2017!",
+        "author": "by Ezzat"
+      },
+      {
+        "name": "English Songs",
+        "image": "https://images-na.ssl-images-amazon.com/images/I/41DN4sJ2BkL._AC_.jpg",
+        "id": 3,
+        "authorId": 2,
+        "tracks": [],
+        "isLiked": false,
+        "description": "Best of 2018 & 2017!",
+        "author": "by Ahmed"
+      },
+      {
+        "name": "English Songs",
+        "image": "https://lh3.googleusercontent.com/proxy/3B24TgpBUyyfWYwSbJKlhqu5OiI8J068XcVx7Pz5nTMr13HY5Q5blxmvExDPDfHMRWOWORkPouenQXL_hrTrdCamAHvNDEKodqGQ38jNRFPlMX_ySp-wTj_rqxCy_mh6Dfudopjn9Dmjs0BessG1ZSbJ2UqoyZ09Lw",
+        "id": 4,
+        "authorId": 2,
+        "isLiked": false,
+        "tracks": [],
+        "description": "Best of 2018 & 2017!",
+        "author": "by Hazem"
+      },
+      {
+        "name": "English Songs",
+        "authorId": 2,
+        "id": 5,
+        "isLiked": false,
+        "image": "https://images-na.ssl-images-amazon.com/images/I/41DN4sJ2BkL._AC_.jpg",
+        "tracks": [
+          {
+            "name": "Hadotah Morah",
+            "artist": "angham",
+            "id": 1
+          },
+          {
+            "name": "Hadotah Morah",
+            "artist": "angham",
+            "id": 2
+          }
+        ],
+        "description": "Best of 2018 & 2017!",
+        "author": "by Hazem"
+      },
+      {
+        "name": "Liked_Songs",
+        "id": 6,
+        "isLiked": true,
+        "authorId": 2,
+        "tracks": [
+          {
+            "name": "Hadotah Morah",
+            "artist": "angham",
+            "id": 1
+          },
+          {
+            "name": "Hadotah Morah",
+            "artist": "angham",
+            "id": 2
+          }
+        ],
+        "description": ""
+      }
+    ],
+    "artists": [
+      {
+        "name": "Amr Diab",
+        "image": "https://i.scdn.co/image/ee11ffb4c0f334e4c958ed051bbaf5f720751c9d",
+        "id": 1
+      },
+      {
+        "name": "Eminem",
+        "image": "https://images.genius.com/5130fa53a609b46f23a0672b972c7281.1000x1000x1.jpg",
+        "id": 2
+      },
+      {
+        "name": "Alan Walker",
+        "image": "https://i.scdn.co/image/c5c098af718b187525fb2f78527ebf89ea1b0466",
+        "id": 3
+      },
+      {
+        "name": "Post Malone",
+        "image": "https://i.scdn.co/image/9040899d5660920fdf7efeb7aa2cc4e6d86f86f6",
+        "id": 4
+      },
+      {
+        "name": "Ed Sheeran",
+        "authorId": 2,
+        "id": 5,
+        "image": "https://i.scdn.co/image/f55cab0739390cf3b2c2f773b9c779b2f0ae8a99"
+      },
+      {
+        "name": "Camila Cabello",
+        "id": 6,
+        "image": "https://i.scdn.co/image/6628c8b4acfa56206eaf83edd561f0549f8f23df"
+      }
     ]
   
   }

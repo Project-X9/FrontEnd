@@ -41,10 +41,7 @@ class WebPlayer extends Component {
     }
     
   }
-  // handleIfLoggedIn(){
-  //   
-  // }
-
+ 
   render() {
     let homeActive=''
     let searchActive=''
@@ -58,7 +55,7 @@ class WebPlayer extends Component {
     }
     else if(currentURL==="http://localhost:3000/webplayer/librarypage/playlists")
     {
-      homeActive=''; searchActive=''; libraryActive='active'; createPlaylistsActive=''; likedSongsActive='';
+      homeActive=''; searchActive=''; libraryActive=' active'; createPlaylistsActive=''; likedSongsActive='';
     }
     let redirected = null;
     if (this.state.SignedIn) {
@@ -105,9 +102,10 @@ class WebPlayer extends Component {
                             <i className="fa fa-search"></i>
                             Search
                         </Link>                                       
-                            <Button onClick={this.toggleModal}><i className={"fa fa-bomb" + libraryActive}></i>
-                            Your Library
-                            </Button>
+                        <Button className={"SidebarLibraryButton" + libraryActive} onClick={this.toggleModal}>
+                          <i className="fa fa-bomb"></i>
+                          Your Library
+                        </Button>
                         {showLikeAndCreate}
                         </div>
                     </div>
@@ -119,6 +117,8 @@ class WebPlayer extends Component {
                               <HomeNavAndContent
                              data={this.props.data} 
                              id={this.props.id}
+                             playLists={this.props.playLists}
+                             handleLogoutId={this.props.handleLogoutId}
                               />
                             )}
                         />
@@ -126,12 +126,16 @@ class WebPlayer extends Component {
                           path="/webplayer/librarypage"
                           component={() => (
                             <LibraryPage
-                              id={this.props.id}
-                              data={this.props.data}
+                            data={this.props.data}
+                            id={this.props.id}
+                            playLists={this.props.playLists}
+                            artist={this.props.artist}
+                            album={this.props.album}
+                            handleLogoutId={this.props.handleLogoutId}
                             />
                           )}
                         />
-                        />    
+                        <Redirect to="/webplayer/home" /> 
                       </Switch>
                     </div>
                 </div>
@@ -181,7 +185,7 @@ class WebPlayer extends Component {
                             <div className="righPart">
                                 <div className="innerRight">
                                     <Button className="signupfree"><Link to="/signup"className="linksignup">Sign up free</Link></Button>
-                                    <div className="seperator"></div>
+                                    <div className="seperator_LibraryModal"></div>
                                     <div className="alreadyhaveanaccount">Already have an account?</div>
                                     <Button className="libraryloginbut"><Link to="/signin"className="linkLogin">Log in</Link></Button>
                                 </div>

@@ -18,6 +18,11 @@ class LibraryNavbar extends Component {
  
     }
     
+
+  handleLogout(){
+    let id="";
+    this.props.handleLogoutId(id);
+  }
     
     render(){
         let playlistsActive=''
@@ -38,11 +43,11 @@ class LibraryNavbar extends Component {
         }
         return(
             <div>
-            <div className="LibraryPageBody">
-            <Navbar expand="md" className="customizedNavbar">
+            {/* <div className="LibraryPageBody"> */}
+            <Navbar expand="md" className="customizedNavbar" >
                     <div className="container customizedContainer">
                      <Row className="flexRowOfLibraryPage">
-                         <Col>
+                         <Col md={12}>
                     <Nav navbar className="flexRowOfLibraryPage">
                         <NavItem className="customizedNavitems">
                             <Button className="customizedButton">
@@ -82,16 +87,17 @@ class LibraryNavbar extends Component {
                             <Button className="AccountItself">
                                 <DropdownToggle nav caret className="profileNavItem">
                                     <i class="fa fa-user-secret"></i>
-                                    Profile
+                                    {this.props.data.data[this.props.id.id -1].name}
                                 </DropdownToggle>
                             </Button>
                             <DropdownMenu className="StaticNav" right>
                                 <DropdownItem className="StaticNavChildContainer DisappearFromDropDowm">
-                                <NavLink
+                                <Button
+                                    onClick={() => { this.handleLogout() }} 
                                     className="StaticNavChild"
-                                    to="accountoverview">
+                                    >
                                     Account
-                                </NavLink>{" "}
+                                </Button>{" "}
                                 </DropdownItem>
                                 <DropdownItem className="StaticNavChildContainer DisappearFromDropDowm">
                                 <NavLink
@@ -123,7 +129,7 @@ class LibraryNavbar extends Component {
                 </Row>
                 </div>
             </Navbar>
-            </div>
+            {/* </div> */}
         </div>
         );
   }

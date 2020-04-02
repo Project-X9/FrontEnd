@@ -132,24 +132,33 @@
     padding: 20px 20px 16px;
     border-radius: 8px;
     isolation: isolate;
-    
 }
 .showLiked
 {
     display: flex;
     align-items: center;
-    padding-top: 30px;
+    padding-top: 25px;
     padding-bottom: 40px;
+      /* height: 100%; */
     
 }
+
 .insideLiked{
-    max-height: 130px;
-    text-overflow: ellipsis;
-    white-space: normal;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  padding: 0;
+  margin-top: 4px;
+  white-space: normal;
+  overflow: hidden;
+  direction: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  height: 70px;
+
 }
 .customizedSpan{
     opacity: .7
@@ -167,7 +176,7 @@
 .likedNav{
     text-decoration: none;
     font-size: 28px;
-    line-height: 36px;
+    /* line-height: 36px; */
     font-weight: 700;
     letter-spacing: -.36px;
     padding-bottom: 2px;
@@ -226,12 +235,22 @@
     height: 48px;
     width: 48px;
     position: absolute;
-    top: 3em;
+    top: -3em;
     right:1em;
+}
+.theButtonItself:hover{
+  background-color: #1db954;
+
 }
 .NavBarToggle_Hassan{
     color: white;
 }
+
+.row.TextBelowTheImage
+  {
+    align-self: flex-start;
+  }
+
 .CardsLibrary{
     height: 100%;
     display: flex;
@@ -254,6 +273,10 @@
     box-shadow: 0 10px 30px 0 rgba(0,0,0,.3), 0 1px 2px 0 rgba(0,0,0,.2);
 
 }
+.customizedColForCards{
+  padding-left: 7px;
+  padding-right: 7px;
+}
 
 .imageHolder{
     transition-duration: .3s;
@@ -272,6 +295,21 @@
     display: block;
     object-fit: cover;
     object-position: center center;
+}
+
+.customizedNavbar{
+  background-color: #141313;
+  position: fixed;
+  top:0;
+  max-width:100%;
+  width:-moz-available;
+  z-index: 1000;  
+}
+
+@media(max-width: 768px){
+  .customizedNavbar {
+    position: relative;
+  }
 }
 
   .customizedNavbar Button.NextToAccount {
@@ -387,10 +425,11 @@
     margin: 0;
     
   }
+  /* not used */
   .customizedContainer{
-    /* width: 100%; */
-    /* margin: 0; */
-    /* max-width: 100%; */
+    width: 100%;
+    margin: 0;
+    max-width: 100%;
   }
   .flexRowOfLibraryPage{
     display: flex;
@@ -411,34 +450,40 @@
     letter-spacing: .24px;
     text-align: left;  
   }
+  .titlePlaylistLink:hover{
+    text-decoration: none;
+    color: white;
+  }
   .desciptionPlaylistLink
   {
     font-size: 12px;
     line-height: 18px;
-    /* text-overflow: ellipsis; */
+    text-overflow: ellipsis;
     color: #b3b3b3;
     padding: 0;
     margin-top: 4px;
     white-space: normal;
-    /* overflow: hidden; */
+    overflow: hidden;
+    direction: auto;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    word-break: break-all;
     -webkit-box-orient: vertical;
     text-align: left;
+  }
 
-  }
   .playButtonPlayList{
-    right: 1px;
-    /* pointer-events: none; */
     position: absolute;
-    bottom: 1px;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12), 0 1px 5px 0 rgba(0,0,0,.2);
-    z-index: 2;
-    border-radius: 500px;
+    left:70%;
+    bottom:12%;
+    height:20px;
+    width:50px;
   }
+
   .displayButton {
    height: 15px;
   }
+  
   .displayButton:hover button{
     display: block;
     background-color: #1db954;

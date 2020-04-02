@@ -10,8 +10,6 @@ import WebPlayer from "./WebPlayerHome/WebPlayerComponent";
 import SignIn from "./SignIn/SignInComponent";
 import PlayFotter from "./WebPlayer/PlayFotterComponent";
 import Library from "./Library/LibraryCompnent";
-import PlayList from "./Library/PlayListComponent";
-import Albums from "./Library/AlbumsComponent";
 import NowPlay from "./NowPlayComponent/NowPlay";
 
 import {
@@ -24,12 +22,18 @@ import {
   getPassword,
   fetchUserData,
   handleLoginId,
-  handleLogoutId
+  handleLogoutId,
+  fetchUserPlaylist,
+  fetchArtist,
+  fetchAlbum
 } from "../redux/ActionCreators";
 
 const mapStateToProps = state => ({
   data: state.data,
-  id: state.id
+  id: state.id,
+  playLists: state.playLists,
+  artist: state.artist,
+  album: state.album
 });
 const mapDispatchToProps = dispatch => ({
   resetFeedbackForm: () => {
@@ -40,6 +44,15 @@ const mapDispatchToProps = dispatch => ({
   },
   fetchUserData: () => {
     dispatch(fetchUserData());
+  },
+  fetchUserPlaylist: () => {
+    dispatch(fetchUserPlaylist());
+  },
+  fetchArtist: () => {
+    dispatch(fetchArtist());
+  },
+  fetchAlbum: () => {
+    dispatch(fetchAlbum());
   },
   handleLogoutId: id => dispatch(handleLogoutId(id)),
   PostPassword: (password, id) => dispatch(PostPassword(password, id)),
@@ -59,6 +72,9 @@ const mapDispatchToProps = dispatch => ({
 class Main extends Component {
   componentDidMount() {
     this.props.fetchUserData();
+    this.props.fetchUserPlaylist();
+    this.props.fetchArtist();
+    this.props.fetchAlbum();
   }
 
   render() {
@@ -130,9 +146,13 @@ class Main extends Component {
             path="/webplayer"
             component={() => (
               <WebPlayer
-                //////////for WebPlayer and HomeNavAndComponents and librarypage
+                //////////for Home page and Library page
                 data={this.props.data}
                 id={this.props.id}
+                playLists={this.props.playLists}
+                artist={this.props.artist}
+                album={this.props.album}
+                handleLogoutId={this.props.handleLogoutId}
                 ///////////
               />
             )}

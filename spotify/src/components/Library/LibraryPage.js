@@ -19,30 +19,44 @@ class LibraryPage extends Component {
             isModalOpen:false
         };
     }
-    
-    
     render(){
         return(
-          <div className="container">
+          <div className="container-fluid m-0 p-0">
             <Row>
               <Col md={12}>
             <div className="LibraryPageBody">
-            <LibraryNavbar />
+            <LibraryNavbar 
+            data={this.props.data}
+            id={this.props.id}
+            handleLogoutId={this.props.handleLogoutId}/>
             <Switch>
                     <Route
                       path="/webplayer/librarypage/playlists"
                       component={() => (
                         <PlayList
+                        data={this.props.data}
+                        id={this.props.id}
+                        playLists={this.props.playLists}
+                        />
+                      )} />
+                   <Route
+                      path="/webplayer/librarypage/albums"
+                      component={() => (
+                        <Albums
+                        data={this.props.data}
+                        id={this.props.id}
+                        album={this.props.album}
                         />
                       )} />
                     <Route
-                      path="/webplayer/librarypage/albums"
-                      component={Albums}
-                    />    
-                      <Route
                       path="/webplayer/librarypage/artists"
-                      component={Artists}
-                    />    
+                      component={() => (
+                        <Artists
+                        data={this.props.data}
+                        id={this.props.id}
+                        artist={this.props.artist}
+                        />
+                      )} />
                 </Switch>
         </div>
         </Col>

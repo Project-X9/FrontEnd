@@ -93,15 +93,6 @@ export const addUserId = data => ({
   type: ActionTypes.ADD_USERID,
   payload: data
 });
-//////////////////////////////////// LOGOUT /////////////////////// 
-export const handleLogoutId  = (id)=> dispatch => {
-  dispatch(removeUserId(id));
-};
-export const removeUserId = (id) => ({
-  type: ActionTypes.ADD_LOGOUT,
-  payload:id
-});
-/////////////////////////////////////////////////////////////////////
 export const getEmail = id => dispatch => {
   return axios
     .get(`${baseUrl}users/${id - 1}`)
@@ -113,5 +104,54 @@ export const getPassword = id => dispatch => {
     return response.data.password;
   });
 };
+//////////////////////////////////// LOGOUT /////////////////////// 
+export const handleLogoutId  = (id)=> dispatch => {
+  dispatch(removeUserId(id));
+  // dispatch(removeUserData());
+};
+// export const removeUserData= () => ({  
+//   type: ActionTypes.REMOVE_USERDATA
+// });
+export const removeUserId = (id) => ({  //it recieves an empty string 
+  type: ActionTypes.ADD_LOGOUT,
+  payload:id
+});
+/////////////////////////////////////////////////////////////////////
+/////////////////GetPlayListData////////by Ahmed M. Hassan//////
 
-//////////////////////////////////Account overView///////////////////////////////
+/////it should take the id when we integrate with the back end
+export const fetchUserPlaylist = () => dispatch => {
+  axios.get(`${baseUrl}playlist`)
+  .then(response =>dispatch(addUserPlaylist(response.data)));
+};
+export const addUserPlaylist = data => ({
+  type: ActionTypes.ADD_PLAYLIST,
+  payload: data
+});
+/////////////////////////////////////////////////////////////////////
+/////////////////GetArtistData////////by Ahmed M. Hassan//////
+
+/////it should take the id when we integrate with the back end
+export const fetchArtist = () => dispatch => {
+  axios.get(`${baseUrl}artists`)
+  .then(response =>dispatch(addArtist(response.data)));
+};
+export const addArtist = data => ({
+  type: ActionTypes.ADD_ARTIST,
+  payload: data
+});
+/////////////////////////////////////////////////////////////////////
+/////////////////GetArtistData////////by Ahmed M. Hassan//////
+
+/////it should take the id when we integrate with the back end
+export const fetchAlbum = () => dispatch => {
+  axios.get(`${baseUrl}albums`)
+  .then(response =>dispatch(addAlbum(response.data)));
+};
+export const addAlbum = data => ({
+  type: ActionTypes.ADD_ALBUM,
+  payload: data
+});
+// export const removeUserPlayList= () => ({  
+//   type: ActionTypes.REMOVE_PLAYLIST
+// });
