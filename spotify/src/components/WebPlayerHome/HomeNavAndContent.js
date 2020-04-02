@@ -75,7 +75,7 @@ class HomeNavAndContentSigned extends Component {
               <div className="row">
                   <div className="WebPlayerHomeNav">
                       <div className="container">
-                          <Navbar className="NavBar NavStyle" sticky="top" expand="md">
+                          <Navbar className="NavBar NavStyle" expand="md">
                               <Nav className="mr-auto" href="/signup">
                               <NavItem className="CustomNavitems">
                                       <Button className="CustomButton">
