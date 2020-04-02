@@ -11,6 +11,7 @@ import { Navbar,Nav,NavItem,UncontrolledDropdown,DropdownToggle,DropdownMenu,Dro
 import { NavLink} from "react-router-dom";
 import PopularNewHomeAndNavContent from "./PopularNewHomeAndNavContent";
 import PopularArtistsHomeAndNavContent from "./PopularArtistsHomeAndNavContent";
+import PopularAlbumsHomeAndNavContent from "./PopularAlbumsHomeAndNavContent";
 
 
 
@@ -112,11 +113,11 @@ class HomeNavAndContentSigned extends Component {
                                           {showUpgrade2}
                                           </DropdownItem>
                                           <DropdownItem className="StaticNavChildContainer">
-                                          <NavLink
+                                          <Button
                                               className="StaticNavChild"
                                               to="accountoverview">
                                               Log out
-                                          </NavLink>
+                                          </Button>
                                           </DropdownItem>
                                       </DropdownMenu>
                                       </UncontrolledDropdown>
@@ -131,6 +132,7 @@ class HomeNavAndContentSigned extends Component {
                   <div className="container">
                     <PopularNewHomeAndNavContent/>
                     <PopularArtistsHomeAndNavContent/>
+                    <PopularAlbumsHomeAndNavContent/>
                   </div>
                 </div>
               </div>
