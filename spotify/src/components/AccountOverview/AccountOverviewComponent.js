@@ -36,6 +36,9 @@ class AccountOverview extends Component {
    * @param {Object} props
    * @param props.data Essentially contains the data of the users in the database
    * @param props.id Essentially contains the id of one of the users in the database
+   * @param props.handleLogoutId Essentially taks an id (should be an empty string) and replaces the current user id with it
+   * @param props.PostPassword Essentially passed to ChangePass component, and is used to set a password
+   * @param props.GetPassword Essentially passed to ChangePass component, and is used to get a password
    */
   constructor(props) {
     super(props);
@@ -68,6 +71,10 @@ class AccountOverview extends Component {
     });
   } 
 
+  /**
+   * Sets a variable to an empty string then passes it to
+   * handleLogoutId() functions which logs the user out
+   */
   handleLogout(){
     let id="";
     this.props.handleLogoutId(id);
@@ -95,7 +102,6 @@ class AccountOverview extends Component {
 
     let redirect=''
     if (this.state.tempId === "") {
-      alert("No ID") 
       redirect=<Redirect to="/signup" />
     }
    
@@ -185,13 +191,9 @@ class AccountOverview extends Component {
                 <hr />
                 <div className="row">
                   <button
-                    // onClick={this.state.nullID}
-                    onClick={() => { this.handleLogout() }}
                     className="EditProfile"
                     color="success">
-                    {/* <NavLink className="InsideEditProfile" to="/premium"> */}
                       EDIT PROFILE
-                    {/* </NavLink> */}
                   </button>
                 </div>
                 <div className="row">
@@ -258,7 +260,29 @@ class AccountOverview extends Component {
                     </span>
                   </NavItem>
                   <NavItem>
-                    <UncontrolledDropdown nav inNavbar>
+                    <NavLink className="nav-link AccountWhenCollapsed" to="/account/overview">
+                      Account
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <Button 
+                      onClick={() => { this.handleLogout() }} 
+                      className="nav-link LogoutWhenCollapsed" >
+                      Log out
+                    </Button>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink className="ImageWhenCollapsed" to="/home">
+                      <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSBmnPgQKW4JLrNcSFhPFCLHz3t8kT1pZl0PVkLYsa8FoScWYda"
+                        height="25px"
+                        width="70px"
+                        alt=""
+                      />
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <UncontrolledDropdown nav inNavbar className="AccountOverviewDropDown">
                       <DropdownToggle nav caret className="seperator">
                         <img
                           alt=""
@@ -277,8 +301,8 @@ class AccountOverview extends Component {
                         </DropdownItem>
                         <DropdownItem className="StaticNavChildContainer">
                         <Button
-                            className="StaticNavChild2"
-                            to="/account/overview">
+                            onClick={() => { this.handleLogout() }}
+                            className="StaticNavChild2">
                             Log out
                         </Button>
                         </DropdownItem>
@@ -337,7 +361,8 @@ class AccountOverview extends Component {
                           id={this.props.id}
                         />
                       )}
-                    />    
+                    />  
+                    <Redirect to="/account/overview" />   
                 </Switch>
               </div>
             </div>
@@ -394,7 +419,7 @@ class AccountOverview extends Component {
                       <Link to="">Help</Link>
                     </li>
                     <li>
-                      <Link to="/webplayer">Web Player</Link>
+                      <Link to="/webplayer/home">Web Player</Link>
                     </li>
                     <li>
                       <Link to="">Free Mobile App</Link>

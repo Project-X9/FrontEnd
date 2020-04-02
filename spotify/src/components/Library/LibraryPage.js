@@ -25,7 +25,8 @@ class LibraryPage extends Component {
             <Row>
               <Col md={12}>
             <div className="LibraryPageBody">
-            <LibraryNavbar />
+            <LibraryNavbar 
+            handleLogoutId={this.props.handleLogoutId}/>
             <Switch>
                     <Route
                       path="/webplayer/librarypage/playlists"

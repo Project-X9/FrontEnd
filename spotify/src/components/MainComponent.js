@@ -131,10 +131,11 @@ class Main extends Component {
             path="/webplayer"
             component={() => (
               <WebPlayer
-             //////////for WebPlayer and HomeNavAndComponents and librarypage
+             //////////for Home page and Library page
              data={this.props.data} 
              id={this.props.id}
              playLists={this.props.playLists}
+             handleLogoutId={this.props.handleLogoutId}
              ///////////
               />
             )}
