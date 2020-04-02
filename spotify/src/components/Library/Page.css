@@ -424,10 +424,11 @@
     margin: 0;
     
   }
+  /* not used */
   .customizedContainer{
-    /* width: 100%; */
-    /* margin: 0; */
-    /* max-width: 100%; */
+    width: 100%;
+    margin: 0;
+    max-width: 100%;
   }
   .flexRowOfLibraryPage{
     display: flex;

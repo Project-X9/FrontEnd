@@ -25,7 +25,10 @@ class LibraryPage extends Component {
             <Row>
               <Col md={12}>
             <div className="LibraryPageBody">
-            <LibraryNavbar />
+            <LibraryNavbar 
+            data={this.props.data}
+            id={this.props.id}
+            />
             <Switch>
                     <Route
                       path="/webplayer/librarypage/playlists"
@@ -42,7 +45,7 @@ class LibraryPage extends Component {
                         <Albums
                         data={this.props.data}
                         id={this.props.id}
-                        playLists={this.props.playLists}
+                        album={this.props.album}
                         />
                       )} />
                     <Route
@@ -51,7 +54,7 @@ class LibraryPage extends Component {
                         <Artists
                         data={this.props.data}
                         id={this.props.id}
-                        playLists={this.props.playLists}
+                        artist={this.props.artist}
                         />
                       )} />
                 </Switch>

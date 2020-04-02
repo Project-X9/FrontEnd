@@ -23,13 +23,17 @@ import {
   fetchUserData,
   handleLoginId,
   handleLogoutId,
-  fetchUserPlaylist
+  fetchUserPlaylist,
+  fetchArtist,
+  fetchAlbum,
 } from "../redux/ActionCreators";
 
 const mapStateToProps = state => ({
   data: state.data,
   id: state.id,
-  playLists:state.playLists
+  playLists:state.playLists,
+  artist:state.artist,
+  album:state.album
 });
 const mapDispatchToProps = dispatch => ({
   resetFeedbackForm: () => {
@@ -43,6 +47,12 @@ const mapDispatchToProps = dispatch => ({
   },
   fetchUserPlaylist: () => {
     dispatch(fetchUserPlaylist());
+  },
+  fetchArtist: () => {
+    dispatch(fetchArtist());
+  },
+  fetchAlbum: () => {
+    dispatch(fetchAlbum());
   },
   handleLogoutId:id=>dispatch(handleLogoutId(id)),
   PostPassword: (password, id) => dispatch(PostPassword(password, id)),
@@ -63,6 +73,8 @@ class Main extends Component {
   componentDidMount() {
     this.props.fetchUserData();
     this.props.fetchUserPlaylist();
+    this.props.fetchArtist();
+    this.props.fetchAlbum();
   }
 
   render() {
@@ -84,7 +96,6 @@ class Main extends Component {
                 id={this.props.id}
                 data={this.props.data}
                 handleLoginId={this.props.handleLoginId}
-
               />
             )}
           />
@@ -110,7 +121,6 @@ class Main extends Component {
             )}
           />
           <Route  
-            
             path="/account"
             component={() => (
               <AccountOverview 
@@ -135,6 +145,9 @@ class Main extends Component {
              data={this.props.data} 
              id={this.props.id}
              playLists={this.props.playLists}
+             artist={this.props.artist}
+             album={this.props.album}
+
              ///////////
               />
             )}
