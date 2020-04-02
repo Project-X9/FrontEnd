@@ -1,18 +1,10 @@
 import React, { Component } from "react";
 import {
   Navbar,
-  NavbarBrand,
-  Jumbotron,
   Nav,
   NavItem,
-  NavbarToggler,
-  Collapse,
   Row,
   Col,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
   UncontrolledDropdown,
   DropdownMenu,
   DropdownItem,
@@ -21,7 +13,7 @@ import {
 } from "reactstrap";
 import "./NowPlay.css";
 
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 class NowPlay extends Component {
   constructor(props) {
     super(props);
@@ -294,7 +286,18 @@ class NowPlay extends Component {
                                   </div>
                                 </div>
                                 <div className="TrackListCol more">
-                                  <div className="TrackListCol TopAlign"></div>
+                                  <div className="TrackListCol TopAlign">
+                                    <div className="TrackListRow more textMenuWrapper">
+                                      <button className="MultiButton">
+                                        <i class="fa fa-ellipsis-h"></i>
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="TrackLisCol Duration">
+                                  <div className="TrackListHeader Body by">
+                                    <span>3:21</span>
+                                  </div>
                                 </div>
                               </li>
                             </div>
