@@ -2,19 +2,26 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import { Jumbotron } from 'reactstrap';
+import { baseUrl2 } from "../../shared/baseUrl";
 
 /**
  * Class for the PremiumJumbotron component which is a jumbotron shown for the premium users
  */
 class PremiumJumbotron extends Component {
-  render() {
-    /**
+  /**
      * Responsible for showing a jumbotron customized for premium users
      * @returns Components that will be display the jumbotron,
      *  and will be used in AccountOverview.js
      */
+  render() {
+    let showJumbo="HideAccountOverviewJumbotron";
+    let currentURL=window.location.href;
+    if(currentURL===baseUrl2 + "account/overview")
+    {
+      showJumbo="JumbotronContainer";
+    }
     return (
-      <div className="JumbotronContainer">
+      <div className={showJumbo}>
         <Jumbotron className="AccountOverviewBodyJumbo">
           <div className="container">
             <div className="row">

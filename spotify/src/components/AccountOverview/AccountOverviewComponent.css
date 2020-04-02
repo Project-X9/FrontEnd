@@ -297,6 +297,10 @@
     padding-right:7%;
   }
 
+  .AccountOverviewBody div.HideAccountOverviewJumbotron{
+    display:none;
+  }
+
   .AccountOverviewBody div.AccountOverviewBodyJumbo.jumbotron{  
     margin-bottom: 0;
     padding-bottom: 0;  
@@ -523,7 +527,7 @@
    
   }
   /***************************************************Sidebar***************************************************/
-  /***************************************************Sidebar Content***************************************************/
+  /***************************************************Sidebar Content Account Overview***************************************************/
   
   .AccountOverviewBody .container .Content{
     background-color: white;
@@ -717,5 +721,89 @@
     letter-spacing: -0.25px;
     box-sizing: border-box;
   }
-  /***************************************************Sidebar Content***************************************************/
+  /***************************************************Sidebar Content Account Overview***************************************************/
+  /***************************************************Sidebar Content Edit Profile***************************************************/
+  .AccountOverviewBody .container .Content.EditProfileContentAswell{
+    background-color: #F8F8F8;
+    padding:3em;
+  }
+
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .PageEditProfileBigHeader{
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-right: 0px;
+    margin-bottom: 24px;
+    margin-left: 0px;
+    border-bottom: 1px solid #EFEFEF;
+    font-family: Circular, Helvetica, Arial, sans-serif, IosFix;
+  }
+
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .EditProfileBigHeader{
+    font-size: 26px;
+    margin: .5em 0;
+    color: #1DB954;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    box-sizing: border-box;
+  }
+
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .EditProfileLabel{
+    color:#919496;
+    font-weight: 400;
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    box-sizing: border-box; 
+    display: flex;
+    align-self: flex-start;  
+  }
+
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .EditProfileInputText{
+    box-shadow: none;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+    -webkit-appearance: none;
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #222326;
+    background-color: #FFF;
+    background-image: none;
+    border: 1px solid #D9DADC;
+    border-radius: 0;
+    font-family: inherit;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .EditProfileInputSelection{
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    color: #222326;
+    padding-right: 48px;
+    text-indent: .01px;
+    text-overflow: '';
+    box-shadow: none;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: #FFF;
+    border: 1px solid #D9DADC;
+    border-radius: 0;
+    text-transform: none;
+    margin: 0;
+  }
+
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .BringingItDown{
+    padding-top:30px;
+  }
+  /***************************************************Sidebar Content Edit Profile***************************************************/
   /***************************************************Body***************************************************/

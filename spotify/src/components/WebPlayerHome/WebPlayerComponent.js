@@ -6,13 +6,13 @@
 /* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable react/destructuring-assignment */
 import "./WebPlayerHomeComponent.css";
-import { useHistory } from 'react-router-dom';
-
 import React, { Component } from "react";
 import {Link, Switch, Route,Redirect} from "react-router-dom";
 import { Button, Modal, ModalBody} from 'reactstrap'; 
 import HomeNavAndContent from './HomeNavAndContent'
 import LibraryPage from  "../Library/LibraryPage";
+import NowPlay from "../NowPlayComponent/NowPlay";
+import { baseUrl2 } from "../../shared/baseUrl";
 
 
 class WebPlayer extends Component {
@@ -49,13 +49,17 @@ class WebPlayer extends Component {
     let createPlaylistsActive=''
     let likedSongsActive=''
     let currentURL=window.location.href
-    if(currentURL==="http://localhost:3000/webplayer/home")
+    if(currentURL===baseUrl2 + "webplayer/home")
     {
       homeActive='active'; searchActive=''; libraryActive=''; createPlaylistsActive=''; likedSongsActive='';
     }
-    else if(currentURL==="http://localhost:3000/webplayer/librarypage/playlists")
+    else if(currentURL===baseUrl2 + "webplayer/librarypage/playlists")
     {
       homeActive=''; searchActive=''; libraryActive=' active'; createPlaylistsActive=''; likedSongsActive='';
+    }
+    else if(currentURL===baseUrl2 + "webplayer/nowplay")
+    {
+      homeActive=''; searchActive=''; libraryActive=''; createPlaylistsActive=''; likedSongsActive='BottomTwoActive';
     }
     let redirected = null;
     if (this.state.SignedIn) {
@@ -70,7 +74,7 @@ class WebPlayer extends Component {
                   <i className="fa fa-plus-square"></i>
                   Create Playlist
               </Link>
-              <Link to="/"  className={likedSongsActive}>
+              <Link to="/webplayer/nowplay"  className={likedSongsActive}>
                   <i className="fa fa-heart"></i>
                   Liked Songs
               </Link>
@@ -134,6 +138,13 @@ class WebPlayer extends Component {
                             handleLogoutId={this.props.handleLogoutId}
                             />
                           )}
+                        />
+                        <Route
+                            exact
+                            path="/webplayer/nowplay"
+                            component={() => (
+                              <NowPlay id={this.props.id} data={this.props.data} />
+                            )}
                         />
                         <Redirect to="/webplayer/home" /> 
                       </Switch>

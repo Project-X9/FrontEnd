@@ -96,6 +96,13 @@
     border-radius: 7px;
     margin: 0 0.4em;
   }
+
+  .WebPlayerHomeBody .sidebar a.BottomTwoActive {
+    color: white;
+    border-radius: 7px;
+    margin: 0 0.4em;
+  }
+
   .WebPlayerHomeBody button.SidebarLibraryButton.active.btn.btn-secondary{
     width:94%;
     border:none;

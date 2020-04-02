@@ -25,7 +25,8 @@ import PremiumPlan from "./PremiumPlan";
 import FreeJumbotron from "./FreeJumbotron";
 import PremiumJumbotron from "./PremiumJumbotron";
 import ChangePass from "./ChangePassword";
-import IdObj from "../../Global";
+import EditProfile from "./EditProfile";
+import { baseUrl2 } from "../../shared/baseUrl";
 
 /**
  * Account Overview page
@@ -91,11 +92,11 @@ class AccountOverview extends Component {
     let recoverPlaylistsActive=''
     let redeemActive=''
     let currentURL=window.location.href
-    if(currentURL==="http://localhost:3000/account/overview")
+    if(currentURL===baseUrl2 + "account/overview")
     {
       overviewActive='active'; editProfileActive=''; changePasswordActive=''; recoverPlaylistsActive=''; redeemActive='';
     }
-    else if(currentURL==="http://localhost:3000/account/changepassword")
+    else if(currentURL===baseUrl2 + "account/changepassword")
     {
       overviewActive=''; editProfileActive=''; changePasswordActive='active'; recoverPlaylistsActive=''; redeemActive='';
     }
@@ -171,7 +172,7 @@ class AccountOverview extends Component {
     const showOverview = () => {
         return (
           <div>
-            <div className="row">
+                <div className="row">
                   <h1 className="BigHeader">Account overview</h1>
                 </div>
                 <div className="row">
@@ -327,7 +328,7 @@ class AccountOverview extends Component {
                     <i className="fa fa-home" />
                     Account overview
                   </Link>
-                  <Link to="/" className={editProfileActive}>
+                  <Link to="/account/edit" className={editProfileActive}>
                     <i className="fa fa-edit" />
                     Edit profile
                   </Link>
@@ -345,7 +346,7 @@ class AccountOverview extends Component {
                   </Link>
                 </div>
               </div>
-              <div className="col-sm-12 col-md-12 col-lg-8 Content">
+              <div className="col-sm-12 col-md-12 col-lg-8 Content EditProfileContentAswell">
                 <Switch>
                     <Route
                       path="/account/overview"
@@ -362,6 +363,15 @@ class AccountOverview extends Component {
                         />
                       )}
                     />  
+                    <Route
+                      path="/account/edit"
+                      component={() => (
+                        <EditProfile
+                          data={this.props.data}
+                          id={this.props.id}
+                        />
+                      )}
+                    />
                     <Redirect to="/account/overview" />   
                 </Switch>
               </div>

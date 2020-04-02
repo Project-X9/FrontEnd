@@ -1,16 +1,16 @@
-div {
+.DivStyle {
   margin: 0;
   padding: 0;
   border: 0;
   vertical-align: baseline;
 }
-header {
+.headerstyle {
   margin: 0;
   padding: 0;
   border: 0;
   vertical-align: baseline;
 }
-button {
+.buttonstyle {
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.015em;
@@ -20,7 +20,7 @@ button {
   font-family: cursive;
   padding: 0;
 }
-ol {
+.olstyle {
   display: block;
   list-style-type: decimal;
   margin-block-start: 1em;
@@ -29,7 +29,7 @@ ol {
   margin-inline-end: 0px;
   padding-inline-start: 40px;
 }
-li {
+.listyle {
   margin: 0;
   padding: 0;
   border: 0;
@@ -428,14 +428,6 @@ li {
   height: 4.56em;
 }
 
-.TrackListRow:hover .TrackListCol.PositionOuter.TopAlign.PlayPause {
-  display: block;
-  color: #fff;
-}
-.TrackListRow:hover .TrackListCol.PositionOuter.Position {
-  margin-top: 0.75em;
-  display: none;
-}
 .TrackListCol.PositionOuter {
   font-feature-settings: "tnum";
   letter-spacing: 0;
@@ -454,9 +446,20 @@ li {
 
 .TrackListCol.PositionOuter.PlayPause {
   color: #fff;
+
   display: none;
 }
 
+.TrackListRow:hover .TrackListCol.PositionOuter.TopAlign.PlayPause {
+  display: block;
+  color: #fff;
+  width: auto;
+  margin-top: 0.75em;
+}
+.TrackListRow:hover .TrackListCol.PositionOuter.Position {
+  margin-top: 0.75em;
+  display: none;
+}
 .TrackListCol.name {
   -ms-flex: 1 1 0px;
   flex: 1 1 0;
@@ -494,4 +497,30 @@ li {
   text-align: right;
   padding-right: 1em;
   min-width: 65px;
+}
+.TrackListRow.more.textMenuWrapper {
+  display: none;
+}
+.TrackListRow:hover .more .textMenuWrapper {
+  display: block;
+}
+.MultiButton {
+  background-color: transparent;
+  color: #fff;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 700;
+  letter-spacing: 1.76px;
+  text-transform: uppercase;
+  border: 2px solid transparent;
+  border-radius: 500px;
+  color: #fff;
+  -webkit-transition: all 33ms cubic-bezier(0.3, 0, 0, 1);
+  transition: all 33ms cubic-bezier(0.3, 0, 0, 1);
+  will-change: transform;
+  white-space: nowrap;
+  padding: 8px 34px;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
 }
