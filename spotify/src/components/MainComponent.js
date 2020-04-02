@@ -12,6 +12,7 @@ import PlayFotter from "./WebPlayer/PlayFotterComponent";
 import Library from "./Library/LibraryCompnent";
 import PlayList from "./Library/PlayListComponent";
 import Albums from "./Library/AlbumsComponent";
+import NowPlay from "./NowPlayComponent/NowPlay";
 
 import {
   postFeedback,
