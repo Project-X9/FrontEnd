@@ -99,6 +99,7 @@
     padding: 0 32px;
     margin: 0;
     max-width: 1955px;
+    margin-top: 4%;
     
 }
 .header_playList{
@@ -296,13 +297,15 @@
     object-fit: cover;
     object-position: center center;
 }
-
+.CustomizedNavForTheDropDownItem{
+  margin-left: 25%;
+}
 .customizedNavbar{
   background-color: #141313;
   position: fixed;
   top:0;
   max-width:100%;
-  width:-moz-available;
+  width:100%;
   z-index: 1000;  
 }
 
@@ -425,10 +428,11 @@
     margin: 0;
     
   }
+  /* not used */
   .customizedContainer{
-    /* width: 100%; */
-    /* margin: 0; */
-    /* max-width: 100%; */
+    width: 100%;
+    margin: 0;
+    max-width: 100%;
   }
   .flexRowOfLibraryPage{
     display: flex;

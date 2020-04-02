@@ -6,7 +6,8 @@ import { InitialFeedback, InitialLogin } from "./forms";
 import { Data } from "./userData";
 import { UserID } from "./UserId";
 import {PlayList} from "./UserPlayLists"
-
+import { Artist } from './Artist';
+import { Album } from './Albums';
 
 
 function saveState (state){
@@ -36,6 +37,8 @@ export const ConfigureStore = () => {
       data: Data,
       id: UserID,
       playLists:PlayList,
+      artist:Artist,
+      album:Album,
       ...createForms({
         feedback: InitialFeedback,
         login: InitialLogin

@@ -128,6 +128,40 @@ export const addUserPlaylist = data => ({
   type: ActionTypes.ADD_PLAYLIST,
   payload: data
 });
+/////////////////////////////////////////////////////////////////////
+/////////////////GetArtistData////////by Ahmed M. Hassan//////
+
+/////it should take the id when we integrate with the back end
+export const fetchArtist = () => dispatch => {
+  axios.get(`${baseUrl}artists`)
+  .then(response =>dispatch(addArtist(response.data)));
+};
+export const addArtist = data => ({
+  type: ActionTypes.ADD_ARTIST,
+  payload: data
+});
+/////////////////////////////////////////////////////////////////////
+/////////////////GetArtistData////////by Ahmed M. Hassan//////
+
+/////it should take the id when we integrate with the back end
+export const fetchAlbum = () => dispatch => {
+  axios.get(`${baseUrl}albums`)
+  .then(response =>dispatch(addAlbum(response.data)));
+};
+export const addAlbum = data => ({
+  type: ActionTypes.ADD_ALBUM,
+  payload: data
+});
 // export const removeUserPlayList= () => ({  
 //   type: ActionTypes.REMOVE_PLAYLIST
 // });
+////////////////////////////////////////Edit Profile/////////////////////////////////////////////
+export const EditProfile = (
+  name, day, month, year, sex,id
+) => dispatch => {
+  const newFeedback = {
+    name, day, month, year, sex
+  };
+  axios
+    .patch(`${baseUrl}users${id}`, newFeedback);
+}

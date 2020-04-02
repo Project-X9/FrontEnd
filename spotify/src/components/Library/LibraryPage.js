@@ -26,6 +26,8 @@ class LibraryPage extends Component {
               <Col md={12}>
             <div className="LibraryPageBody">
             <LibraryNavbar 
+            data={this.props.data}
+            id={this.props.id}
             handleLogoutId={this.props.handleLogoutId}/>
             <Switch>
                     <Route
@@ -43,7 +45,7 @@ class LibraryPage extends Component {
                         <Albums
                         data={this.props.data}
                         id={this.props.id}
-                        playLists={this.props.playLists}
+                        album={this.props.album}
                         />
                       )} />
                     <Route
@@ -52,7 +54,7 @@ class LibraryPage extends Component {
                         <Artists
                         data={this.props.data}
                         id={this.props.id}
-                        playLists={this.props.playLists}
+                        artist={this.props.artist}
                         />
                       )} />
                 </Switch>

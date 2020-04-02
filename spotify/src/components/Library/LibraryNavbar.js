@@ -47,7 +47,7 @@ class LibraryNavbar extends Component {
             <Navbar expand="md" className="customizedNavbar" >
                     <div className="container customizedContainer">
                      <Row className="flexRowOfLibraryPage">
-                         <Col>
+                         <Col md={12}>
                     <Nav navbar className="flexRowOfLibraryPage">
                         <NavItem className="customizedNavitems">
                             <Button className="customizedButton">
@@ -81,13 +81,13 @@ class LibraryNavbar extends Component {
                                     Albums
                                 </NavLink>
                             </NavItem>
-                    <Nav className="ml-auto" navbar>
+                    <Nav className="CustomizedNavForTheDropDownItem" navbar>
                         <NavItem className=" customizedNavLink ">
                             <UncontrolledDropdown nav inNavbar >
                             <Button className="AccountItself">
                                 <DropdownToggle nav caret className="profileNavItem">
                                     <i class="fa fa-user-secret"></i>
-                                    Profile
+                                    {this.props.data.data[this.props.id.id -1].name}
                                 </DropdownToggle>
                             </Button>
                             <DropdownMenu className="StaticNav" right>
@@ -127,7 +127,7 @@ class LibraryNavbar extends Component {
                 </Nav>
                     </Col>
                 </Row>
-                </div>
+            </div>
             </Navbar>
             {/* </div> */}
         </div>

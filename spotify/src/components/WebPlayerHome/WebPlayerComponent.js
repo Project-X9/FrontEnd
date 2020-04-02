@@ -128,6 +128,8 @@ class WebPlayer extends Component {
                             data={this.props.data}
                             id={this.props.id}
                             playLists={this.props.playLists}
+                            artist={this.props.artist}
+                            album={this.props.album}
                             handleLogoutId={this.props.handleLogoutId}
                             />
                           )}

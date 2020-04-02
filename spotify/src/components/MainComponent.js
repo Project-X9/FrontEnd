@@ -6,10 +6,11 @@ import Home from "./Homepage/HomeComponent";
 import SignUp from "./SignUp/SignUpComponent";
 import PremiumComponent from "./PremiumPage/PremuimComponent";
 import AccountOverview from "./AccountOverview/AccountOverviewComponent";
-import WebPlayer from "./WebPlayerHome/WebPlayerComponent"
+import WebPlayer from "./WebPlayerHome/WebPlayerComponent";
 import SignIn from "./SignIn/SignInComponent";
 import PlayFotter from "./WebPlayer/PlayFotterComponent";
-import Library from './Library/LibraryCompnent';
+import Library from "./Library/LibraryCompnent";
+import NowPlay from "./NowPlayComponent/NowPlay";
 
 
 import {
@@ -23,13 +24,18 @@ import {
   fetchUserData,
   handleLoginId,
   handleLogoutId,
-  fetchUserPlaylist
+  fetchUserPlaylist,
+  fetchArtist,
+  fetchAlbum,
+  EditProfile
 } from "../redux/ActionCreators";
 
 const mapStateToProps = state => ({
   data: state.data,
   id: state.id,
-  playLists:state.playLists
+  playLists: state.playLists,
+  artist: state.artist,
+  album: state.album
 });
 const mapDispatchToProps = dispatch => ({
   resetFeedbackForm: () => {
@@ -44,7 +50,13 @@ const mapDispatchToProps = dispatch => ({
   fetchUserPlaylist: () => {
     dispatch(fetchUserPlaylist());
   },
-  handleLogoutId:id=>dispatch(handleLogoutId(id)),
+  fetchArtist: () => {
+    dispatch(fetchArtist());
+  },
+  fetchAlbum: () => {
+    dispatch(fetchAlbum());
+  },
+  handleLogoutId: id => dispatch(handleLogoutId(id)),
   PostPassword: (password, id) => dispatch(PostPassword(password, id)),
   GetPassword: id => dispatch(GetPassword(id)),
   getEmail: id => dispatch(getEmail(id)),
@@ -55,6 +67,11 @@ const mapDispatchToProps = dispatch => ({
     dispatch(
       postFeedback(email, confirmemail, password, name, day, month, year, sex)
     ),
+
+    EditProfile: (name, day, month, year, sex,id) =>
+    dispatch(
+      EditProfile(name, day, month, year, sex,id)
+    ),
   postFacebookLogin: (email, image, name) =>
     dispatch(postFacebookLogin(email, image, name))
 });
@@ -63,6 +80,8 @@ class Main extends Component {
   componentDidMount() {
     this.props.fetchUserData();
     this.props.fetchUserPlaylist();
+    this.props.fetchArtist();
+    this.props.fetchAlbum();
   }
 
   render() {
@@ -84,20 +103,24 @@ class Main extends Component {
                 id={this.props.id}
                 data={this.props.data}
                 handleLoginId={this.props.handleLoginId}
-
               />
             )}
           />
           <Route
-            exact path="/library"
+            exact
+            path="/library"
             component={() => (
-              <Library
-                id={this.props.id}
-                data={this.props.data}
-              />
+              <Library id={this.props.id} data={this.props.data} />
             )}
           />
-          
+          <Route
+            exact
+            path="/nowplay"
+            component={() => (
+              <NowPlay id={this.props.id} data={this.props.data} />
+            )}
+          />
+
           <Route
             exact
             path="/premium"
@@ -109,8 +132,7 @@ class Main extends Component {
               />
             )}
           />
-          <Route  
-            
+          <Route
             path="/account"
             component={() => (
               <AccountOverview 
@@ -123,6 +145,8 @@ class Main extends Component {
               PostPassword={this.props.PostPassword}
               GetPassword={this.props.GetPassword}
               //////////
+              EditProfile={this.props.EditProfile}
+
               />
             )}
           />
@@ -131,12 +155,14 @@ class Main extends Component {
             path="/webplayer"
             component={() => (
               <WebPlayer
-             //////////for Home page and Library page
-             data={this.props.data} 
-             id={this.props.id}
-             playLists={this.props.playLists}
-             handleLogoutId={this.props.handleLogoutId}
-             ///////////
+                //////////for Home page and Library page
+                data={this.props.data}
+                id={this.props.id}
+                playLists={this.props.playLists}
+                artist={this.props.artist}
+                album={this.props.album}
+                handleLogoutId={this.props.handleLogoutId}
+                ///////////
               />
             )}
           />

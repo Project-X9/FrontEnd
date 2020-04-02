@@ -8,3 +8,6 @@ export const ADD_LOGOUT ='ADD_LOGOUT';
 export const ADD_PLAYLIST = 'ADD_PLAYLIST';
 // export const REMOVE_PLAYLIST = 'REMOVE_PLAYLIST';
 
+export const ADD_ARTIST = 'ADD_ARTIST';
+export const ADD_ALBUM = 'ADD_ALBUM';
+

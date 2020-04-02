@@ -22,7 +22,7 @@
 .customization {
   padding-left: 50px;
 }
-.modified-content{
+.modified-content {
   background-color: white;
 }
 li.seperating {
@@ -71,8 +71,8 @@ body {
 .JmbStyle {
   padding: 7px;
   border-radius: 16px;
-  width: 80%;
-  margin: 170px;
+  width: 100%;
+  margin: 30px;
 }
 .PremiumMargin {
   margin-top: 20px;
