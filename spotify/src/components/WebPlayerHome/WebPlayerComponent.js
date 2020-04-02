@@ -6,13 +6,12 @@
 /* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable react/destructuring-assignment */
 import "./WebPlayerHomeComponent.css";
-import { useHistory } from 'react-router-dom';
-
 import React, { Component } from "react";
 import {Link, Switch, Route,Redirect} from "react-router-dom";
 import { Button, Modal, ModalBody} from 'reactstrap'; 
 import HomeNavAndContent from './HomeNavAndContent'
 import LibraryPage from  "../Library/LibraryPage";
+import { baseUrl2 } from "../../shared/baseUrl";
 
 
 class WebPlayer extends Component {
@@ -49,11 +48,11 @@ class WebPlayer extends Component {
     let createPlaylistsActive=''
     let likedSongsActive=''
     let currentURL=window.location.href
-    if(currentURL==="http://localhost:3000/webplayer/home")
+    if(currentURL===baseUrl2 + "webplayer/home")
     {
       homeActive='active'; searchActive=''; libraryActive=''; createPlaylistsActive=''; likedSongsActive='';
     }
-    else if(currentURL==="http://localhost:3000/webplayer/librarypage/playlists")
+    else if(currentURL===baseUrl2 + "webplayer/librarypage/playlists")
     {
       homeActive=''; searchActive=''; libraryActive=' active'; createPlaylistsActive=''; likedSongsActive='';
     }

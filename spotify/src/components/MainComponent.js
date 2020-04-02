@@ -114,7 +114,7 @@ class Main extends Component {
             path="/account"
             component={() => (
               <AccountOverview 
-              //////////for overview and change password
+              //////////for overview and change password and edit profile
               data={this.props.data} 
               id={this.props.id}
               handleLogoutId={this.props.handleLogoutId}
