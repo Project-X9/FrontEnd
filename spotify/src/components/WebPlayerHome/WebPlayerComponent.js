@@ -33,7 +33,6 @@ class WebPlayer extends Component {
       this.setState({
         SignedIn:true
     });
-    alert(this.props.playLists.playLists.length)
     }
     else {
       this.setState({
@@ -42,10 +41,7 @@ class WebPlayer extends Component {
     }
     
   }
-  // handleIfLoggedIn(){
-  //   
-  // }
-
+ 
   render() {
     let homeActive=''
     let searchActive=''
@@ -128,8 +124,9 @@ class WebPlayer extends Component {
                           path="/webplayer/librarypage"
                           component={() => (
                             <LibraryPage
-                              id={this.props.id}
-                              data={this.props.data}
+                            data={this.props.data}
+                            id={this.props.id}
+                            playLists={this.props.playLists}
                             />
                           )}
                         />

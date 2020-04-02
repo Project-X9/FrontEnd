@@ -38,8 +38,8 @@ class LibraryNavbar extends Component {
         }
         return(
             <div>
-            <div>
-            <Navbar expand="md" className="customizedNavbar">
+            {/* <div className="LibraryPageBody"> */}
+            <Navbar expand="md" className="customizedNavbar" >
                     <div className="container customizedContainer">
                      <Row className="flexRowOfLibraryPage">
                          <Col>
@@ -123,7 +123,7 @@ class LibraryNavbar extends Component {
                 </Row>
                 </div>
             </Navbar>
-            </div>
+            {/* </div> */}
         </div>
         );
   }
