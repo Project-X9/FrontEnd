@@ -17,10 +17,44 @@ button {
   font-weight: var(--glue-font-weight-normal);
   color: #b3b3b3;
   text-transform: none;
-  font-family: spotify-circular-cyrillic;
+  font-family: cursive;
   padding: 0;
 }
+ol {
+  display: block;
+  list-style-type: decimal;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+.signupbtn.Transformed {
+  background-color: transparent;
+  border: 1px solid white;
+}
 .Jumbostyle {
+  background: linear-gradient(
+    160deg,
+    #03140c,
+    #051817,
+    #0c1c1f,
+    #141f26,
+    #181f2c,
+    #1a1b2f,
+    #221630,
+    #2c0d2c
+  );
+}
+.customizedNavbar.Ezzat {
+  position: unset;
+  background-color: transparent;
   background: linear-gradient(
     160deg,
     #03140c,
@@ -39,7 +73,7 @@ button {
   padding-bottom: 32px;
   padding: 0 32px;
   margin: 0;
-  max-width: 1955px;
+  /* max-width: 1955px; */
 }
 .contentSection {
   padding-top: 2em;
@@ -59,7 +93,7 @@ button {
 .TrackListHeader {
   margin: 0 auto 1.5em;
   text-align: center;
-  max-width: 400px;
+  /* max-width: 400px; */
 }
 .cover.art.icon {
   position: absolute;
@@ -90,7 +124,7 @@ button {
   align-items: flex-start;
   margin: 0 auto;
   padding-bottom: 15px;
-  max-width: 320px;
+  /* max-width: 320px; */
   position: relative;
   /* padding-bottom: 2.5em; */
 }
@@ -99,7 +133,7 @@ button {
 }
 .ButtonHover {
   position: absolute;
-  width: 500px;
+  /* width: 500px; */
   left: 0;
   top: 180px;
   text-align: center;
@@ -113,7 +147,6 @@ button {
 }
 
 .ButtonHover a {
-  width: 200px;
   padding: 12px 48px;
   text-align: center;
   color: white;
@@ -348,4 +381,117 @@ button {
 
 .TrackListHeader .fa.fa-ellipsis-h {
   font-size: larger;
+}
+
+.TransparentButton {
+  background-color: transparent;
+  border-color: transparent;
+}
+/* /////////////////////2ND part///////////////////////////////// */
+.TrackListContainer {
+  position: relative;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.TrackListContainer.Orderedlist {
+  width: 100%;
+  margin-bottom: 1.5em;
+  list-style: none;
+}
+
+.TrackListRow {
+  outline: none;
+
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 4.56em;
+  list-style-type: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+}
+
+.TrackListRow:hover {
+  background-color: hsla(0, 0%, 100%, 0.1);
+}
+.TrackListCol {
+  display: block;
+  height: 4.56em;
+}
+
+.TrackListRow:hover .TrackListCol.PositionOuter.TopAlign.PlayPause {
+  display: block;
+  color: #fff;
+}
+.TrackListRow:hover .TrackListCol.PositionOuter.Position {
+  margin-top: 0.75em;
+  display: none;
+}
+.TrackListCol.PositionOuter {
+  font-feature-settings: "tnum";
+  letter-spacing: 0;
+  width: 3em;
+  text-align: right;
+  padding-right: 1em;
+}
+.TrackListCol.PositionOuter.Position {
+  margin-top: 0.75em;
+  display: block;
+}
+
+.TrackListCol.PositionOuter.TopAlign {
+  margin-top: 0.7em;
+}
+
+.TrackListCol.PositionOuter.PlayPause {
+  color: #fff;
+  display: none;
+}
+
+.TrackListCol.name {
+  -ms-flex: 1 1 0px;
+  flex: 1 1 0;
+  width: 0;
+  overflow: hidden;
+  padding-right: 1px;
+  margin-right: -1px;
+}
+.InOneLine {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 1px;
+  margin-right: -1px;
+}
+.TrackListName {
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.015em;
+  color: #fff;
+  text-align: left;
+}
+
+.TrackListName.SecondLine {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+}
+
+.TrackListCol.more {
+  text-align: right;
+  padding-right: 1em;
+  min-width: 65px;
 }

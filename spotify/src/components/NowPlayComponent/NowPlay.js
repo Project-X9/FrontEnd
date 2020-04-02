@@ -38,6 +38,9 @@ class NowPlay extends Component {
     // this.handlePremiumT = this.handlePremiumT.bind(this);
     // this.handlePremiumF = this.handlePremiumF.bind(this);
   }
+  changeBack(e) {
+    e.target.style.background = "red";
+  }
   toggleNav() {
     this.setState({
       isNavOpen: !this.state.isNavOpen,
@@ -72,7 +75,7 @@ class NowPlay extends Component {
     return (
       <div>
         <div className="LibraryPageBody">
-          <Navbar expand="md" className="customizedNavbar">
+          <Navbar expand="md" className="customizedNavbar Ezzat ">
             <div className="container customizedContainer">
               <Row className="flexRowOfLibraryPage">
                 <Col>
@@ -143,7 +146,7 @@ class NowPlay extends Component {
               <section className="contentSection">
                 <div className="container fluid">
                   <div className="row general">
-                    <div className="col-xs-12 col-lg-3 col-xl-4">
+                    <div className="col-xs-12 col-lg-4 col-xl-4">
                       <div>
                         <header className="TrackListHeader">
                           <div>
@@ -225,14 +228,17 @@ class NowPlay extends Component {
                             </div>
                             <div className="TrackListHeader Body Inverter">
                               <div className="TrackListHeader Body Inverter Actions">
-                                <button className="signupbtn" type="submit">
+                                <button
+                                  className="signupbtn Transformed"
+                                  type="submit"
+                                >
                                   PLAY
                                 </button>
                                 <div className="TrackListHeader ExtraButtons">
-                                  <Button className="Jumbostyle">
+                                  <Button className="TransparentButton">
                                     <i class="fa fa-heart"></i>
                                   </Button>
-                                  <Button className="Jumbostyle">
+                                  <Button className="TransparentButton">
                                     <i class="fa fa-ellipsis-h"></i>
                                   </Button>
                                 </div>
@@ -243,8 +249,58 @@ class NowPlay extends Component {
                         </header>
                       </div>
                     </div>
+
                     <div class="col-xs-12 col-lg-9 col-xl-8">
-                      Ahmed13213213213213213213213213131
+                      <section className="TrackListContainer">
+                        <ol className="TrackListContainer Orderedlist">
+                          <div className="textMenuWrapper">
+                            <div draggable="true">
+                              <li
+                                tabindex="0"
+                                role="button"
+                                aria-pressed="false"
+                                className="TrackListRow"
+                              >
+                                <div className="TrackListCol PositionOuter">
+                                  <div
+                                    role="button"
+                                    className="TrackListCol PositionOuter TopAlign PlayPause"
+                                  >
+                                    <svg class="icon-play" viewBox="0 0 85 100">
+                                      <path
+                                        fill="currentColor"
+                                        d="M81 44.6c5 3 5 7.8 0 10.8L9 98.7c-5 3-9 .7-9-5V6.3c0-5.7 4-8 9-5l72 43.3z"
+                                      >
+                                        <title>PLAY</title>
+                                      </path>
+                                    </svg>
+                                  </div>
+                                  <div
+                                    role="button"
+                                    className="TrackListCol PositionOuter  Position"
+                                  >
+                                    <i className="fa fa-music"></i>
+                                  </div>
+                                </div>
+                                <div className="TrackListCol name">
+                                  <div className="TrackListCol TopAlign ">
+                                    <div className=" InOneLine TrackListName">
+                                      {" "}
+                                      Binding lights{" "}
+                                    </div>
+                                    <div className="TrackListName SecondLine">
+                                      by Mr A7a
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="TrackListCol more">
+                                  <div className="TrackListCol TopAlign"></div>
+                                </div>
+                              </li>
+                            </div>
+                          </div>
+                        </ol>
+                      </section>
                     </div>
                   </div>
                 </div>
