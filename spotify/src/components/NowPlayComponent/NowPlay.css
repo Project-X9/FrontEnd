@@ -1,16 +1,16 @@
-div {
+.DivStyle {
   margin: 0;
   padding: 0;
   border: 0;
   vertical-align: baseline;
 }
-header {
+.headerstyle {
   margin: 0;
   padding: 0;
   border: 0;
   vertical-align: baseline;
 }
-button {
+.buttonstyle {
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.015em;
@@ -20,7 +20,7 @@ button {
   font-family: cursive;
   padding: 0;
 }
-ol {
+.olstyle {
   display: block;
   list-style-type: decimal;
   margin-block-start: 1em;
@@ -29,7 +29,7 @@ ol {
   margin-inline-end: 0px;
   padding-inline-start: 40px;
 }
-li {
+.listyle {
   margin: 0;
   padding: 0;
   border: 0;

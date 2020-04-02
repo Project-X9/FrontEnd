@@ -540,3 +540,91 @@
 .activeButton{
   background-color: #333;
 }
+/* /////////////////////////////////////////////// If no liked PlayLists */
+.NolikedLevelZero{
+  isolation: isolate;
+  padding-bottom: 32px;
+
+}
+.NolikedLevelOne{
+  padding: 0 32px;
+  margin: 0;
+  max-width: 1955px;
+  display: block;
+}
+.NolikedLevelTwo{
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 8px;
+  padding-right: 8px;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  margin-bottom: 1em;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  align-items: center;
+}
+.NolikedLevelThree{
+  text-align: center;
+  margin-bottom: 64px;
+  
+
+}
+.TakeitDown{
+  margin-top: 6em;
+  
+}
+.YourFirstInAll{
+  font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -.005em;
+    font-weight: 700;
+    color: #fff;
+    text-transform: none;
+    text-align: center;
+    margin-bottom: 36px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    
+}
+.SomeheighPlease{
+  height: 90px;
+}
+._1bfd68987bbac2dd824e5db895bd3c57-scss {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: .015em;
+  font-weight: var(--glue-font-weight-normal);
+  color: #b3b3b3;
+  text-transform: none;
+}
+._2221af4e93029bedeab751d04fab4b8b-scss {
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 700;
+  letter-spacing: 1.76px;
+  text-transform: uppercase;
+  border: 2px solid transparent;
+  border-radius: 500px;
+  color: #fff;
+  -webkit-transition: all 33ms cubic-bezier(.3,0,0,1);
+  transition: all 33ms cubic-bezier(.3,0,0,1);
+  will-change: transform;
+  white-space: nowrap;
+  padding: 8px 34px;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 36px;
+
+}
+._1edf52628d509e6baded2387f6267588-scss {
+  background-color: #fff;
+  color: #181818;
+}
+.d121f0ba42b580ad9a173b53c622c11d-scss ._4a19a959428c34075eef50bd44ab468f-scss {
+    margin-top: 36px;
+}
