@@ -11,7 +11,7 @@ import {
   Button,
   DropdownToggle
 } from "reactstrap";
-// import "./NowPlay.css";
+import "./NowPlay.css";
 
 import { NavLink } from "react-router-dom";
 class NowPlay extends Component {
