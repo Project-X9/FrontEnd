@@ -153,9 +153,17 @@ class HomeNavAndContentSigned extends Component {
               <div className="row RowWebPlayerHomeContent">
                 <div className="WebPlayerHomeContent">
                   <div className="container">
-                    <PopularNewHomeAndNavContent/>
-                    <PopularArtistsHomeAndNavContent/>
-                    <PopularAlbumsHomeAndNavContent/>
+                  <PopularNewHomeAndNavContent
+                     playLists={this.props.playLists}
+                     artist={this.props.artist}
+                     album={this.props.album}
+                     />
+                    <PopularArtistsHomeAndNavContent
+                     artist={this.props.artist}
+                     />
+                    <PopularAlbumsHomeAndNavContent
+                     album={this.props.album}
+                     />
                   </div>
                 </div>
               </div>
@@ -208,9 +216,15 @@ class HomeNavAndContentSigned extends Component {
               <div className="row RowWebPlayerHomeContent">
                 <div className="WebPlayerHomeContent">
                   <div className="container">
-                    <PopularNewHomeAndNavContent/>
-                    <PopularArtistsHomeAndNavContent/>
-                    <PopularAlbumsHomeAndNavContent/>
+                    <PopularNewHomeAndNavContent
+                     playLists={this.props.playLists}
+                     />
+                    <PopularArtistsHomeAndNavContent
+                     artist={this.props.artist}
+                     />
+                    <PopularAlbumsHomeAndNavContent
+                     album={this.props.album}
+                     />
                   </div>
                 </div>
               </div>
