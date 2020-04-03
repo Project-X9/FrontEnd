@@ -191,11 +191,11 @@ class AccountOverview extends Component {
                 </div>
                 <hr />
                 <div className="row">
-                  <button
-                    className="EditProfile"
-                    color="success">
+                  <Button className="EditProfile"  color="success">
+                    <NavLink className="InsideEditProfile" to="/account/edit">
                       EDIT PROFILE
-                  </button>
+                      </NavLink>
+                  </Button>
                 </div>
                 <div className="row">
                   <h3 className="SmallHeader2">Your plan</h3>
@@ -369,6 +369,7 @@ class AccountOverview extends Component {
                         <EditProfile
                           data={this.props.data}
                           id={this.props.id}
+                          EditProfile={this.props.EditProfile}
                         />
                       )}
                     />

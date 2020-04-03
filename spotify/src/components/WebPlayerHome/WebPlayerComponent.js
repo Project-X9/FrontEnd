@@ -119,10 +119,12 @@ class WebPlayer extends Component {
                           path="/webplayer/home"
                             component={() => (
                               <HomeNavAndContent
-                             data={this.props.data} 
-                             id={this.props.id}
-                             playLists={this.props.playLists}
-                             handleLogoutId={this.props.handleLogoutId}
+                                data={this.props.data} 
+                                id={this.props.id}
+                                playLists={this.props.playLists}
+                                artist={this.props.artist}
+                                album={this.props.album}
+                                handleLogoutId={this.props.handleLogoutId}
                               />
                             )}
                         />

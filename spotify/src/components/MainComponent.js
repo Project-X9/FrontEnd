@@ -137,8 +137,9 @@ class Main extends Component {
               PostPassword={this.props.PostPassword}
               GetPassword={this.props.GetPassword}
               //////////
+              ///////// for edit profile
               EditProfile={this.props.EditProfile}
-
+              /////////
               />
             )}
           />

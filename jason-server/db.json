@@ -137,14 +137,51 @@
       "author": "by Ezzat"
     },
     {
-      "name": "English Songs",
+      "name": "English Songs Hashish",
       "image": "https://images-na.ssl-images-amazon.com/images/I/41DN4sJ2BkL._AC_.jpg",
       "id": 3,
       "authorId": 2,
-      "tracks": [],
+      "tracks": [
+        {
+          "name": "On My Way",
+          "artist": "Alan Walker, Sabrina Carpenter & Farruko",
+          "image": "https://i.scdn.co/image/ab67616d00001e02d2aaf635815c265aa1ecdecc",
+          "id": 1
+        },
+        {
+          "name": "Sunflower",
+          "artist": "Post Malone, Swae Lee",
+          "image": "https://i.scdn.co/image/ab67616d00001e02e2e352d89826aef6dbd5ff8f",
+          "id": 2
+        },
+        {
+          "name": "Dance Monket",
+          "artist": "Tones and I",
+          "image": "https://i.scdn.co/image/ab67616d00001e02c6f7af36ecdc3ed6e0a1f169",
+          "id": 3
+        },
+        {
+          "name": "Mind Is A Prison",
+          "artist": "Alec Benjamin",
+          "image": "https://i.scdn.co/image/ab67616d0000b27301e5ba828a5f31eeb1147074",
+          "id": 4
+        },
+        {
+          "name": "You Are The Reason",
+          "artist": "Calum Scott",
+          "image": "https://i.scdn.co/image/ab67616d00001e02f2d671c22b70e01b78a618a8",
+          "id": 5
+        },
+        {
+          "name": "Ashes",
+          "artist": "Celine Dion",
+          "image": "https://i.scdn.co/image/ab67616d00001e024a244eac7349088c23f96764",
+          "id": 6
+        }
+      ],
       "isLiked": false,
       "description": "Best of 2018 & 2017!",
-      "author": "by Ahmed"
+      "author": "by Ahmed Hashish"
     },
     {
       "name": "English Songs",
