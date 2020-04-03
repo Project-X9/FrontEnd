@@ -51,6 +51,9 @@ class SignUp extends Component {
     this.responseFacebook = this.responseFacebook.bind(this);
     
   }
+  componentDidMount(){
+    this.props.resetFeedbackForm(); 
+  }
 /**
  * This function takes the data fromthe input fields and assure that the all
  * the data is not empty (don't make the validations) and if all the data required is
