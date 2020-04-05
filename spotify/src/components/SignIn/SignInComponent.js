@@ -34,6 +34,9 @@ class SignIn extends Component {
     this.handleUser = this.handleUser.bind(this);
     this.handleuUserName = this.handleuUserName.bind(this);
   }
+  componentDidMount(){
+    this.props.resetSignInForm();
+  }
   /**
    * Responsible for finding if the loginId exists in the database or not
    * @returns the found Id, either null or if it was found.

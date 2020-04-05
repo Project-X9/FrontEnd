@@ -26,7 +26,7 @@ import {
   fetchUserPlaylist,
   fetchArtist,
   fetchAlbum,
-  EditProfile
+  EditProfile,
 } from "../redux/ActionCreators";
 
 const mapStateToProps = state => ({
@@ -34,7 +34,8 @@ const mapStateToProps = state => ({
   id: state.id,
   playLists: state.playLists,
   artist: state.artist,
-  album: state.album
+  album: state.album,
+  userstate:state.userstate
 });
 const mapDispatchToProps = dispatch => ({
   resetFeedbackForm: () => {
@@ -73,6 +74,7 @@ const mapDispatchToProps = dispatch => ({
     ),
   postFacebookLogin: (email, image, name) =>
     dispatch(postFacebookLogin(email, image, name))
+
 });
 
 class Main extends Component {
@@ -102,6 +104,7 @@ class Main extends Component {
                 id={this.props.id}
                 data={this.props.data}
                 handleLoginId={this.props.handleLoginId}
+                userstate={this.props.userstate}
               />
             )}
           />
