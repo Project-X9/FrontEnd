@@ -20,7 +20,7 @@ import {
   DropdownMenu,
   DropdownItem,
   Button,
-  DropdownToggle
+  DropdownToggle,
 } from "reactstrap";
 import "./PremiumComponent.css";
 
@@ -41,7 +41,7 @@ class Premium extends Component {
       isModalOpen: false,
       collapsed: true,
       Premium: false,
-      tempId: this.props.id.id
+      tempId: this.props.id.id,
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.togglemodal = this.togglemodal.bind(this);
@@ -49,18 +49,17 @@ class Premium extends Component {
     this.handlePremiumF = this.handlePremiumF.bind(this);
   }
 
-  handleData = () => {
-    let temp;
-    this.props.data.data.map(data => {
-      if (data.id === this.props.id.id) {
-        temp = data.premium;
-      }
-    });
-    this.setState({ Premium: temp });
-    return temp;
-  };
+  // handleData = () => {
+  //   let temp;
+  //   this.props.data.data.map((data) => {
+  //     if (data.id === this.props.id.id) {
+  //       temp = data.premium;
+  //     }
+  //   });
+  //   this.setState({ Premium: temp });
+  //   return temp;
+  // };
   togglemodal() {
-    const Checker = this.handleData();
     const Temp = !this.state.modal;
     this.setState({ modal: Temp });
   }
@@ -88,7 +87,7 @@ class Premium extends Component {
   toggleNav() {
     this.setState({
       isNavOpen: !this.state.isNavOpen,
-      collapsed: !this.state.collapsed
+      collapsed: !this.state.collapsed,
     });
   }
 
