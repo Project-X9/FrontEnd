@@ -10,3 +10,13 @@ export const SignUpState = (state = { userstate:null }, action) => {
       return state;
   }
 };
+export const SignInState = (state = { isSignedIn:null }, action) => {
+  switch (action.type) {
+    case ActionTypes.ADD_LOGIN:
+      return { ...state, isSignedIn: action.payload };
+    case ActionTypes.ADD_LOGOUT:
+      return {...state , isSignedIn: null}  
+    default:
+      return state;
+  }
+};

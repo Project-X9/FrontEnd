@@ -1,13 +1,14 @@
 import axios from "axios";
 import * as ActionTypes from "./ActionTypes";
-import { baseUrl ,SignUpUrl} from "../shared/baseUrl";
+import { baseUrl ,SignUpUrl,SignInUrl,PremiumUrl} from "../shared/baseUrl";
 
 export const PremiumPost = (id, isPremium) => dispatch => {
   const data = {
-    premium: isPremium
+    premium: isPremium,
+    previouslyPremium:true
   };
   data.date = new Date().toISOString();
-  axios.patch(`${baseUrl}users/${id}`, data);
+  axios.patch(`${PremiumUrl}/${id}`, data);
   // .then(response => alert(response.data.premium ));
 };
 export const fetchUserData = () => dispatch => {
@@ -170,5 +171,22 @@ export const EditProfile = (
     .patch(`${baseUrl}users${id}`, newFeedback);
 }
 /////////////////////////////////////////////////////// Not Mocking//////////////////////////////////
-
+//////////////sign in///////////////
+export const handleSignIn_BE = (data) => dispatch => {
+  axios.post(SignInUrl,data)
+  .then(response =>
+    {
+      dispatch(addLogin(true))
+      dispatch(addUserData_BE(response.data.user))
+    })
+  .catch(error=> dispatch(addLogin(false))) 
+};
+export const addUserData_BE = data => ({
+  type: ActionTypes.ADD_USERDATA_BE,
+  payload: data
+});
+export const addLogin = data => ({
+  type: ActionTypes.ADD_LOGIN,
+  payload: data
+});
 

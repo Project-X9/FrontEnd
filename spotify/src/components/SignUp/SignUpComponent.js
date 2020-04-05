@@ -59,14 +59,11 @@ class SignUp extends Component {
         submitted: true,
         submittedFromSignUp:true,
       })
-      alert(this.props.userstate.userstate)
     }
     else if(this.props.userstate.userstate === false){
       this.setState({
         existBefore:true
       })
-      alert(this.props.userstate.userstate)
-
     }
   }
   // testbackend(){

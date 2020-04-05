@@ -10,5 +10,10 @@ export const ADD_PLAYLIST = 'ADD_PLAYLIST';
 
 export const ADD_ARTIST = 'ADD_ARTIST';
 export const ADD_ALBUM = 'ADD_ALBUM';
-
+/////////////////////signUp/////////////////////
 export const ADD_USER = 'ADD_USER';
+////////////////////sign in //////////////////
+export const ADD_LOGIN = 'ADD_LOGIN';
+//////////////////add user data///////////
+export const ADD_USERDATA_BE ='ADD_USERDATA_BE';
+
