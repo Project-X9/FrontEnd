@@ -1,19 +1,22 @@
 import axios from "axios";
 import * as ActionTypes from "./ActionTypes";
-import { baseUrl } from "../shared/baseUrl";
+import { baseUrl ,SignUpUrl,SignInUrl,PremiumUrl} from "../shared/baseUrl";
 
 export const PremiumPost = (id, isPremium) => dispatch => {
   const data = {
-    premium: isPremium
+    premium: isPremium,
+    previouslyPremium:true
   };
   data.date = new Date().toISOString();
-  axios.patch(`${baseUrl}users/${id}`, data);
+  axios.patch(`${PremiumUrl}/${id}`, data);
   // .then(response => alert(response.data.premium ));
 };
 export const fetchUserData = () => dispatch => {
   return fetch(baseUrl + "users")
     .then(response => response.json())
     .then(data => dispatch(addUserData(data)));
+  // axios.get(`${baseUrl3}`)
+  // .then(data => dispatch(addUserData(JSON.stringify(data))));
 };
 export const addUserData = data => ({
   type: ActionTypes.ADD_USERDATA,
@@ -69,22 +72,24 @@ export const postFeedback = (
 
   newFeedback.date = new Date().toISOString();
   newFeedback.premium = false;
+  var d = new Date();
+  var n = d.getFullYear();
+  newFeedback.age = n-year;
   axios
-    .post(`${baseUrl}users`, newFeedback) //here where i send the post request to the server
-    .then(response => {
-      // here i want to get the id of the last elment i posted from the
-      // comming response which is coming in jason format and then i need
-      for (let index = 0; index < response.data.id + 1; index++) {
-        if (index === response.data.id) {
-          dispatch(addUserId(index)); //to send it to the function addUserId to add it in my store
-        }
-      }
-      // alert(response.data.id)
-    });
-  // .then((response) =>alert (JSON.stringify(response)));
-  // .then((response) =>dispatch(addUserId(JSON.parse(response.data.id))));
+    .post(SignUpUrl, newFeedback) 
+    .then(response =>dispatch(addUser(true)))
+    .catch(error =>dispatch(addUser(false)));
+        // for (let index = 0; index < response.data.id + 1; index++) {
+      //   if (index === response.data.id) {
+      //     dispatch(addUserId(index)); 
+      //   }
+      // }
 };
-
+export const addUser = data => ({
+  type: ActionTypes.ADD_USER,
+  payload: data
+});
+////////////////////////////////////////
 export const handleLoginId = id => dispatch => {
   dispatch(addUserId(id));
 };
@@ -165,3 +170,23 @@ export const EditProfile = (
   axios
     .patch(`${baseUrl}users${id}`, newFeedback);
 }
+/////////////////////////////////////////////////////// Not Mocking//////////////////////////////////
+//////////////sign in///////////////
+export const handleSignIn_BE = (data) => dispatch => {
+  axios.post(SignInUrl,data)
+  .then(response =>
+    {
+      dispatch(addLogin(true))
+      dispatch(addUserData_BE(response.data.user))
+    })
+  .catch(error=> dispatch(addLogin(false))) 
+};
+export const addUserData_BE = data => ({
+  type: ActionTypes.ADD_USERDATA_BE,
+  payload: data
+});
+export const addLogin = data => ({
+  type: ActionTypes.ADD_LOGIN,
+  payload: data
+});
+

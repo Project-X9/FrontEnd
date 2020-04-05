@@ -34,6 +34,19 @@ class SignIn extends Component {
     this.handleUser = this.handleUser.bind(this);
     this.handleuUserName = this.handleuUserName.bind(this);
   }
+  componentDidMount(){
+    this.props.resetSignInForm();
+    if(this.props.isSignedIn.isSignedIn===true){
+      this.setState({
+        isSuccessful: true
+      })
+    }
+    else if(this.props.isSignedIn.isSignedIn === false){
+      this.setState({
+        isSuccessful:false
+      })
+    }
+  }
   /**
    * Responsible for finding if the loginId exists in the database or not
    * @returns the found Id, either null or if it was found.
@@ -84,30 +97,35 @@ class SignIn extends Component {
    * @param {Object} values
    */
   handleLogin = values => {
-    this.props.resetSignInForm();
-    let userId = this.handleId(values.email);
-    let userEmail;
-    let userPassword;
-    let user;
-    let userName;
-    this.setState(
-      {
-        loginId: userId
-      },
-      () => {
-        userEmail = this.handleEmail();
-        userName = this.handleuUserName();
-        userPassword = this.handlePassword();
-        user = this.handleUser();
-        if (userEmail === values.email || userName === values.email) {
-          if (userPassword === values.password) {
-            this.setState({
-              isSuccessful: true
-            });
-          } else this.setState({ isSuccessful: false, loginId: "" });
-        } else this.setState({ isSuccessful: false });
-      }
-    );
+    const UserdataEntered={
+      email:values.email,
+      password:values.password
+    }
+    this.props.handleSignIn_BE(UserdataEntered);
+    // this.props.resetSignInForm();
+    // let userId = this.handleId(values.email);
+    // let userEmail;
+    // let userPassword;
+    // let user;
+    // let userName;
+    // this.setState(
+    //   {
+    //     loginId: userId
+    //   },
+    //   () => {
+    //     userEmail = this.handleEmail();
+    //     userName = this.handleuUserName();
+    //     userPassword = this.handlePassword();
+    //     user = this.handleUser();
+    //     if (userEmail === values.email || userName === values.email) {
+    //       if (userPassword === values.password) {
+    //         this.setState({
+    //           isSuccessful: true
+    //         });
+    //       } else this.setState({ isSuccessful: false, loginId: "" });
+    //     } else this.setState({ isSuccessful: false });
+    //   }
+    // );
   };
   /**
    * Responsible for receiving the email entered in the sign in form and checking if the email exists in the database.

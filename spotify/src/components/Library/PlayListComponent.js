@@ -14,8 +14,6 @@ class PlayList extends Component {
         };     
         // alert(this.state.tempId) 
     }
-
-   
     
     render(){
         

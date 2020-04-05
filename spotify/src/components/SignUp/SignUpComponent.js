@@ -35,16 +35,17 @@ class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
+      email: "",  
       selectedOption: false,
       confEmail: "",
-      submitted: false,
+      submitted: null,
       existBefore:null,
       FaceBookId: "",
       SignUpId:"",
       submittedFromFacebook:false,
       submittedFromSignUp:false,
-      length:this.props.data.data.length
+      length:this.props.data.data.length,
+      Succeded:null
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -53,7 +54,22 @@ class SignUp extends Component {
   }
   componentDidMount(){
     this.props.resetFeedbackForm(); 
+    if(this.props.userstate.userstate===true){
+      this.setState({
+        submitted: true,
+        submittedFromSignUp:true,
+      })
+    }
+    else if(this.props.userstate.userstate === false){
+      this.setState({
+        existBefore:true
+      })
+    }
   }
+  // testbackend(){
+  //   const id = "";
+  //   this.props.testPlayLists(id);
+  // }
 /**
  * This function takes the data fromthe input fields and assure that the all
  * the data is not empty (don't make the validations) and if all the data required is
@@ -65,6 +81,7 @@ class SignUp extends Component {
   handleSubmit(values) {
     // const { email, confirmEmail } = this.state;
     // console.log(`Current State :${JSON.stringify(values)}`);
+    this.props.resetFeedbackForm();
     let temp=this.handleExcistance(values.email)
     if(temp)
     {
@@ -85,12 +102,12 @@ class SignUp extends Component {
       values.sex !== ""
     ) {
       this.setState({
-        submitted: true,
         submittedFromSignUp:true,
+        submitted: true,
         SignUpId:this.props.data.data.length+1
       },()=>{
         this.props.resetFeedbackForm();
-        this.props.postFeedback( //the function that posts the user data
+         this.state.Succeded=this.props.postFeedback( //the function that posts the user data
           values.email,
           values.confirmemail,
           values.password,
@@ -100,6 +117,7 @@ class SignUp extends Component {
           values.year,
           values.sex
         );
+       
       }
       );
     } 
@@ -186,7 +204,8 @@ class SignUp extends Component {
       )
       }
       );
-      
+      this.props.resetFeedbackForm();
+
     }
   }
 }
@@ -475,6 +494,7 @@ class SignUp extends Component {
               <Row className="form-group">
                 <Col xs={12} md={{ size: 6, offset: 3 }}>
                   <Button model="submit" className="signupbtn">
+                  {/* <Button onClick={this.testbackend()} className="signupbtn"> */}
                     SignUp
                   </Button>
                 </Col>

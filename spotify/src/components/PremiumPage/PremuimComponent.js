@@ -40,18 +40,26 @@ class Premium extends Component {
       modal: false,
       isModalOpen: false,
       collapsed: true,
-      Premium: false,
+      Premium: this.props.data_be.data_be.premium,
       tempId: this.props.id.id,
+      isPrenium: !this.props.data_be.data_be.premium,
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.togglemodal = this.togglemodal.bind(this);
-    this.handlePremiumT = this.handlePremiumT.bind(this);
-    this.handlePremiumF = this.handlePremiumF.bind(this);
+    // this.handlePremiumT = this.handlePremiumT.bind(this);
+    // this.handlePremiumF = this.handlePremiumF.bind(this);
+    this.handlePremium_be = this.handlePremium_be.bind(this);
   }
+  // componentDidMount(){
+  //   if(this.state.isPrenium === this.state.premium)
+  //   {  this.setState({
+  //       isPrenium:!this.state.premium
+  //     })}
+  // }
 
   // handleData = () => {
   //   let temp;
-  //   this.props.data.data.map((data) => {
+  //   this.props.data.data.map(data => {
   //     if (data.id === this.props.id.id) {
   //       temp = data.premium;
   //     }
@@ -60,24 +68,34 @@ class Premium extends Component {
   //   return temp;
   // };
   togglemodal() {
+    // const Checker = this.handleData();
     const Temp = !this.state.modal;
     this.setState({ modal: Temp });
   }
   /**
    * Posts the claiming of premium membership
    */
-  handlePremiumT() {
-    if (this.state.Premium === false) {
-      this.props.PremiumPost(this.props.id.id, true);
-      this.togglemodal();
-    }
-  }
+  // handlePremiumT() {
+  //   if (this.state.Premium === false) {
+  //     this.props.PremiumPost(this.props.id.id, true);
+  //     this.togglemodal();
+  //   }
+  // }
   /**
    * Posts the Canceling of premium membership
    */
-  handlePremiumF() {
+  // handlePremiumF() {
+  //   if (this.state.Premium === true) {
+  //     this.props.PremiumPost(this.props.id.id, false);
+  //     this.togglemodal();
+  //   }
+  // }
+  handlePremium_be() {
     if (this.state.Premium === true) {
-      this.props.PremiumPost(this.props.id.id, false);
+      this.props.PremiumPost(this.props.data_be.data_be._id, false);
+      this.togglemodal();
+    } else if (this.state.Premium === false) {
+      this.props.PremiumPost(this.props.data_be.data_be._id, true);
       this.togglemodal();
     }
   }
@@ -190,14 +208,14 @@ class Premium extends Component {
                   <Button
                     hidden={this.state.Premium}
                     color="primary"
-                    onClick={this.handlePremiumT}
+                    onClick={this.handlePremium_be}
                   >
                     Claim{" "}
                   </Button>
                   <Button
                     hidden={!this.state.Premium}
                     color="primary"
-                    onClick={this.handlePremiumF}
+                    onClick={this.handlePremium_be}
                   >
                     Cancel Premium{" "}
                   </Button>
