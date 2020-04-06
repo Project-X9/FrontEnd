@@ -46,6 +46,7 @@ class AccountOverview extends Component {
     this.state = {
       isNavOpen: false,
       tempId: this.props.data_be.data_be._id,
+      Premium: this.props.data_be.data_be.premium,
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.state.nullID = this.nullID.bind(this);
@@ -106,68 +107,125 @@ class AccountOverview extends Component {
       redirect=<Redirect to="/signup" />
     }
    
-    const UserData = this.props.data.data.map((data) => {
-      if (data.id === this.state.tempId) {
-        return (
-          <div key={data.id}>
-            <div className="row">
-              <div className="col Content1">
-                <h5>Username</h5>
+    // const UserData = this.props.data.data.map((data) => {
+    //   if (data.id === this.state.tempId) {
+    //     return (
+    //       <div key={data.id}>
+    //         <div className="row">
+    //           <div className="col Content1">
+    //             <h5>Username</h5>
+    //           </div>
+    //           <div className="col Content2">
+    //             <h5>
+    //               {' '}
+    //               {data.name}
+    //               {' '}
+    //             </h5>
+    //           </div>
+    //         </div>
+    //         <hr />
+    //         <div className="row">
+    //           <div className="col Content1">
+    //             <h5>Email</h5>
+    //           </div>
+    //           <div className="col Content2">
+    //             <h5>{data.email}</h5>
+    //           </div>
+    //         </div>
+    //         <hr />
+    //         <div className="row">
+    //           <div className="col Content1">
+    //             <h5>Date of birth</h5>
+    //           </div>
+    //           <div className="col Content2">
+    //             <h5>
+    //               {data.day}
+    //               /
+    //               {data.month}
+    //               /
+    //               {data.year}
+    //             </h5>
+    //           </div>
+    //         </div>
+    //         <hr />
+    //       </div>
+    //     );
+    //   }
+    // });
+    
+    let  UserData=(
+            <div >
+              <div className="row">
+                <div className="col Content1">
+                  <h5>Username</h5>
+                </div>
+                <div className="col Content2">
+                  <h5>
+                    {' '}
+                    {this.props.data_be.data_be.name}
+                    {' '}
+                  </h5>
+                </div>
               </div>
-              <div className="col Content2">
-                <h5>
-                  {' '}
-                  {data.name}
-                  {' '}
-                </h5>
+              <hr />
+              <div className="row">
+                <div className="col Content1">
+                  <h5>Email</h5>
+                </div>
+                <div className="col Content2">
+                  <h5>{this.props.data_be.data_be.email}</h5>
+                </div>
               </div>
+              <hr />
+              <div className="row">
+                <div className="col Content1">
+                  <h5>Age</h5>
+                </div>
+                <div className="col Content2">
+                  <h5>
+                    {this.props.data_be.data_be.age}
+                  </h5>
+                </div>
+              </div>
+              <hr />
             </div>
-            <hr />
-            <div className="row">
-              <div className="col Content1">
-                <h5>Email</h5>
-              </div>
-              <div className="col Content2">
-                <h5>{data.email}</h5>
-              </div>
-            </div>
-            <hr />
-            <div className="row">
-              <div className="col Content1">
-                <h5>Date of birth</h5>
-              </div>
-              <div className="col Content2">
-                <h5>
-                  {data.day}
-                  /
-                  {data.month}
-                  /
-                  {data.year}
-                </h5>
-              </div>
-            </div>
-            <hr />
-          </div>
-        );
-      }
-    });
-    const showJumbotron = this.props.data.data.map(data => {
-      if (data.id === this.state.tempId) {
-        if (data.premium === false) {
-          return <FreeJumbotron />;
-        }
-        return <PremiumJumbotron />;
-      }
-    });
+          );
 
-    const showPlan = this.props.data.data.map(data => {
-      if (data.id === this.state.tempId) {
-        if (data.premium === false) {
-          return <FreePlan />;
-        }
-        return <PremiumPlan />;
-      }
-    });
+
+    // const showJumbotron = this.props.data.data.map(data => {
+    //   if (data.id === this.state.tempId) {
+    //     if (data.premium === false) {
+    //       return <FreeJumbotron />;
+    //     }
+    //     return <PremiumJumbotron />;
+    //   }
+    // });
+
+
+    let showJumbotron = "";
+    if (this.state.Premium === false) {
+      showJumbotron = <FreeJumbotron />;
+    }
+    else{
+      showJumbotron = <PremiumJumbotron />;
+    }
+
+    // const showPlan = this.props.data.data.map(data => {
+    //   if (data.id === this.state.tempId) {
+    //     if (data.premium === false) {
+    //       return <FreePlan />;
+    //     }
+    //     return <PremiumPlan />;
+    //   }
+    // });
+
+    let showPlan = "";
+    if (this.state.Premium === false) {
+      showPlan = <FreePlan />;
+    }
+    else{
+      showPlan = <PremiumPlan />;
+    }
 
     const showOverview = () => {
         return (
@@ -180,41 +238,7 @@ class AccountOverview extends Component {
                 </div>
 
                 <div>
-                <div>
-                  <div className="row">
-                    <div className="col Content1">
-                      <h5>Username</h5>
-                    </div>
-                    <div className="col Content2">
-                      <h5>
-                        {' '}
-                        {this.props.data_be.data_be.name}
-                        {' '}
-                      </h5>
-                    </div>
-                  </div>
-                  <hr />
-                  <div className="row">
-                    <div className="col Content1">
-                      <h5>Email</h5>
-                    </div>
-                    <div className="col Content2">
-                      <h5>{this.props.data_be.data_be.email}</h5>
-                    </div>
-                  </div>
-                  <hr />
-                  <div className="row">
-                    <div className="col Content1">
-                      <h5>Date of birth</h5>
-                    </div>
-                    <div className="col Content2">
-                      <h5>
-                        {this.props.data_be.data_be.age}
-                      </h5>
-                    </div>
-                  </div>
-                  <hr />
-                </div>
+                {UserData}
                 </div>
 
                 <div className="row">
