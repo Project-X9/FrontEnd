@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as ActionTypes from "./ActionTypes";
-import { baseUrl ,SignUpUrl,SignInUrl,PremiumUrl} from "../shared/baseUrl";
+import { baseUrl ,SignUpUrl,SignInUrl,PremiumUrl,PlaylistsUrl} from "../shared/baseUrl";
 
 export const PremiumPost = (id, isPremium) => dispatch => {
   const data = {
@@ -189,4 +189,13 @@ export const addLogin = data => ({
   type: ActionTypes.ADD_LOGIN,
   payload: data
 });
-
+////////////////////////////////////////fetch Playlist by id/////////////////////
+// export const fetchPlaylistById_be = (id) => dispatch => {
+//   axios.get(`${PlaylistsUrl}${id}`)
+//   .then(response =>)
+//   .catch(error=> dispatch(addLogin(false))) 
+// };
+// export const addPlayList = data => ({
+//   type: ActionTypes.ADD_PLAYLIST_BYID,
+//   payload: data
+// });

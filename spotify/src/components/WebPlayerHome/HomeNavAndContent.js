@@ -103,7 +103,7 @@ class HomeNavAndContentSigned extends Component {
                               <Nav className="mr-auto" href="/signup">
                               <NavItem className="CustomNavitems">
                                       <Button className="CustomButton">
-                                          <NavLink className="nav-link" to="/webplayer/library">
+                                          <NavLink className="nav-link" to="/webplayer/librarypage/playlists">
                                           <svg className="CustomSvg" viewBox="0 0 24 24">
                                           <path fill="currentColor" d="M15.54 21.15L5.095 12.23 15.54 3.31l.65.76-9.555 8.16 9.555 8.16"></path>                            </svg>    
                                           </NavLink>
@@ -181,7 +181,7 @@ class HomeNavAndContentSigned extends Component {
                               <Nav className="mr-auto" href="/signup">
                               <NavItem className="CustomNavitems">
                                       <Button className="CustomButton">
-                                          <NavLink className="nav-link" to="/webplayer/library">
+                                          <NavLink className="nav-link" to="/webplayer/librarypage/playlists">
                                           <svg className="CustomSvg" viewBox="0 0 24 24">
                                           <path fill="currentColor" d="M15.54 21.15L5.095 12.23 15.54 3.31l.65.76-9.555 8.16 9.555 8.16"></path>                            </svg>    
                                           </NavLink>

@@ -82,16 +82,16 @@ class SignUp extends Component {
     // const { email, confirmEmail } = this.state;
     // console.log(`Current State :${JSON.stringify(values)}`);
     this.props.resetFeedbackForm();
-    let temp=this.handleExcistance(values.email)
-    if(temp)
-    {
-      this.setState({
-        existBefore:true
-      })
-      this.props.resetFeedbackForm();
+    // let temp=this.handleExcistance(values.email)
+    // if(temp)
+    // {
+    //   this.setState({
+    //     existBefore:true
+    //   })
+    //   this.props.resetFeedbackForm();
 
-    }
-    else if (
+    // }
+   if (
       values.email !== "" &&
       values.confirmemail !== "" &&
       values.password !== "" &&
@@ -102,9 +102,9 @@ class SignUp extends Component {
       values.sex !== ""
     ) {
       this.setState({
-        submittedFromSignUp:true,
-        submitted: true,
-        SignUpId:this.props.data.data.length+1
+        // submittedFromSignUp:true,
+        // submitted: true,
+        // SignUpId:this.props.data.data.length+1
       },()=>{
         this.props.resetFeedbackForm();
          this.state.Succeded=this.props.postFeedback( //the function that posts the user data
