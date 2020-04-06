@@ -234,3 +234,158 @@ export default EditProfile;
             </div>
             
             </Form> */}
+    //         <Form
+    //         model="EditProfile"
+    //         onSubmit={values => this.handleSubmit(values)}>
+    //         <Row className="form-group">
+    //             <Col xs={12} md={{ size: 6, offset: 3 }}>
+    //             <Control.text
+    //                 className="form-control"
+    //                 model=".username"
+    //                 placeholder="Username"
+    //                 id="username"
+    //                 name="username"
+    //                 validators={{
+    //                 required
+    //                 }}
+    //             />
+    //             <Row className="ml-2">
+    //                 <Errors
+    //                 className="text-danger error"
+    //                 model=".username"
+    //                 show="touched"
+    //                 messages={{
+    //                     required: "Please enter username"
+    //                 }}
+    //                 />
+    //             </Row>
+    //             </Col>
+    //         </Row>
+    //   <Row className="form-group">
+    //     <Col xs={4} md={{ size: 2, offset: 3 }}>
+    //       <Control.text
+    //         className="form-control"
+    //         model=".editday"
+    //         placeholder="Day"
+    //         id="editday"
+    //         name="editday"
+    //         value={this.state.tempDay}
+    //         validators={{
+    //           required,
+    //           validDay
+    //         }}
+    //       />
+    //       <Errors
+    //         className="text-danger error"
+    //         model=".editday"
+    //         show="touched"
+    //         messages={{
+    //           validDay: "Enter a valid day of the month"
+    //         }}
+    //       />
+    //     </Col>
+    //     <Col xs={4} md={2}>
+    //       <Control.select
+    //         className="form-control"
+    //         model=".editmonth"
+    //         name="editmonth"
+            
+    //         validators={{
+    //           monthSelected,
+    //           required
+    //         }}
+    //       >
+    //         <option value="null">Month</option>
+    //         <option>January</option>
+    //         <option>February</option>
+    //         <option>March</option>
+    //         <option>April</option>
+    //         <option>May</option>
+    //         <option>June</option>
+    //         <option>July</option>
+    //         <option>August</option>
+    //         <option>September</option>
+    //         <option>October</option>
+    //         <option>November</option>
+    //         <option>December</option>
+    //       </Control.select>
+    //       <Errors
+    //         className="text-danger error"
+    //         model=".editmonth"
+    //         show="touched"
+    //         messages={{
+    //           required: "Required",
+    //           monthSelected: "Enter the month"
+    //         }}
+    //       />
+    //     </Col>
+    //     <Col xs={4} md={2}>
+    //       <Control.text
+    //         className="form-control"
+    //         model=".edityear"
+    //         placeholder="Year"
+    //         id="edityear"
+    //         name="edityear"
+    //         value={this.state.tempYear}
+    //         validators={{
+    //           required,
+    //           validYear
+    //         }}
+    //       />
+    //       <Errors
+    //         className="text-danger error"
+    //         model=".edityear"
+    //         show="touched"
+    //         messages={{
+    //           required: "Enter a year to continue",
+    //           validYear: " Enter a valid year"
+    //         }}
+    //       />
+    //     </Col>
+    //   </Row>
+    //   <Row className="form-group">
+    //     <Col xs={12} md={8}>
+    //       <div>
+    //         <label className="p-3">
+    //           <Control.radio
+    //             model=".sex"
+    //             value="male"
+    //             id="editsex"
+    //             name="editsex"
+    //             validators={{
+    //               typeSelected
+    //             }}
+    //           />{" "}
+    //           Male
+    //         </label>
+    //         <label className="p-3">
+    //           <Control.radio
+    //             model=".editsex"
+    //             value="female"
+    //             id="editsex"
+    //             name="editsex"
+    //             validators={{
+    //               typeSelected
+    //             }}
+    //           />{" "}
+    //           Female
+    //         </label>
+    //         <Errors
+    //           className="text-danger error"
+    //           model=".editsex"
+    //           show="touched"
+    //           messages={{
+    //             typeSelected: "Enter your gender"
+    //           }}
+    //         />
+    //       </div>
+    //     </Col>
+    //   </Row>
+    //   <Row className="form-group">
+    //     <Col xs={12} md={{ size: 6, offset: 3 }}>
+    //       <Button model="submit" className="signupbtn">
+    //         SignUp
+    //       </Button>
+    //     </Col>
+    //   </Row>
+    // </Form>
