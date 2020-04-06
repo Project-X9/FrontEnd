@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { 
     Nav,Navbar,NavItem,
    Button, Row, Col,DropdownItem,UncontrolledDropdown,DropdownToggle,DropdownMenu} from 'reactstrap'; 
-import {NavLink} from "react-router-dom";
+import {NavLink,Redirect} from "react-router-dom";
 
 import "./Page.css";
 
@@ -13,7 +13,7 @@ class LibraryNavbar extends Component {
     constructor(props){
         super(props);
         this.state={
-            tempId:''
+        
         };
  
     }
@@ -25,6 +25,11 @@ class LibraryNavbar extends Component {
   }
     
     render(){
+        // let redirected = null;
+        // if (this.props.id.id === "") {
+        // //   alert("hassona")
+        //   redirected = <Redirect to="/webplayer/home"></Redirect>
+        // }
         let playlistsActive=''
         let albumsActive=''
         let artistsActive=''
@@ -42,16 +47,18 @@ class LibraryNavbar extends Component {
             playlistsActive=''; albumsActive=''; artistsActive=' activeButton';
         }
         return(
+            
             <div>
-            {/* <div className="LibraryPageBody"> */}
-            <Navbar expand="md" className="customizedNavbar" >
+            {this.props.id.id !== "" ? (
+                <div>
+                    <Navbar expand="md" className="customizedNavbar" >
                     <div className="container customizedContainer">
                      <Row className="flexRowOfLibraryPage">
                          <Col md={12}>
                     <Nav navbar className="flexRowOfLibraryPage">
                         <NavItem className="customizedNavitems">
                             <Button className="customizedButton">
-                                <NavLink className="nav-link customizedArrows" to="/">
+                                <NavLink className="nav-link customizedArrows" to="/webplayer/search">
                                 <svg className="customizedSvg" viewBox="0 0 24 24">
                                 <path fill="currentColor" d="M15.54 21.15L5.095 12.23 15.54 3.31l.65.76-9.555 8.16 9.555 8.16"></path>                            </svg>    
                                 </NavLink>
@@ -59,7 +66,7 @@ class LibraryNavbar extends Component {
                         </NavItem>
                         <NavItem className="customizedNavitems">
                         <Button className="customizedButton">
-                                <NavLink className="nav-link customizedArrows" to="/">
+                                <NavLink className="nav-link customizedArrows" to="/webplayer/home">
                                 <svg className="customizedSvg" viewBox="0 0 24 24">
                                 <path fill="currentColor" d="M7.96 21.15l-.65-.76 9.555-8.16L7.31 4.07l.65-.76 10.445 8.92"></path>
                                 </svg>    
@@ -91,20 +98,21 @@ class LibraryNavbar extends Component {
                                 </DropdownToggle>
                             </Button>
                             <DropdownMenu className="StaticNav" right>
+                              
+                                <DropdownItem className="StaticNavChildContainer DisappearFromDropDowm">
+                                <NavLink
+                                    className="StaticNavChild "
+                                    to="/account/overview">
+                                    Account    
+                                </NavLink>{" "}
+                                </DropdownItem>
                                 <DropdownItem className="StaticNavChildContainer DisappearFromDropDowm">
                                 <Button
                                     onClick={() => { this.handleLogout() }} 
                                     className="StaticNavChild"
                                     >
-                                    Account
-                                </Button>{" "}
-                                </DropdownItem>
-                                <DropdownItem className="StaticNavChildContainer DisappearFromDropDowm">
-                                <NavLink
-                                    className="StaticNavChild "
-                                    to="">
                                     Log out
-                                </NavLink>{" "}
+                                </Button>{" "}
                                 </DropdownItem>
                                 <DropdownItem className="StaticNavChildContainer">
                                 <NavLink
@@ -129,6 +137,11 @@ class LibraryNavbar extends Component {
                 </Row>
             </div>
             </Navbar>
+        </div>
+            ):(
+                <div></div>
+            )}
+            
             {/* </div> */}
         </div>
         );

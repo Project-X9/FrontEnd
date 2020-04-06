@@ -45,7 +45,7 @@ class AccountOverview extends Component {
     super(props);
     this.state = {
       isNavOpen: false,
-      tempId: this.props.id.id,
+      tempId: this.props.data_be.data_be._id,
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.state.nullID = this.nullID.bind(this);
@@ -179,7 +179,43 @@ class AccountOverview extends Component {
                   <h3 className="SmallHeader">Profile</h3>
                 </div>
 
-                <div>{UserData}</div>
+                <div>
+                <div>
+                  <div className="row">
+                    <div className="col Content1">
+                      <h5>Username</h5>
+                    </div>
+                    <div className="col Content2">
+                      <h5>
+                        {' '}
+                        {this.props.data_be.data_be.name}
+                        {' '}
+                      </h5>
+                    </div>
+                  </div>
+                  <hr />
+                  <div className="row">
+                    <div className="col Content1">
+                      <h5>Email</h5>
+                    </div>
+                    <div className="col Content2">
+                      <h5>{this.props.data_be.data_be.email}</h5>
+                    </div>
+                  </div>
+                  <hr />
+                  <div className="row">
+                    <div className="col Content1">
+                      <h5>Date of birth</h5>
+                    </div>
+                    <div className="col Content2">
+                      <h5>
+                        {this.props.data_be.data_be.age}
+                      </h5>
+                    </div>
+                  </div>
+                  <hr />
+                </div>
+                </div>
 
                 <div className="row">
                   <div className="col Content1">

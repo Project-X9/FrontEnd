@@ -10,3 +10,11 @@ export const Data = (state = { data: [] }, action) => {
       return state;
   }
 };
+export const Data_BE = (state = { data_be: [] }, action) => {
+  switch (action.type) {
+    case ActionTypes.ADD_USERDATA_BE:
+      return { ...state, data_be: action.payload };
+    default:
+      return state;
+  }
+};

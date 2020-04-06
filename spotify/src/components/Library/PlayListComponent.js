@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { 
    Button, Row, Col,} from 'reactstrap'; 
-import {Link,} from "react-router-dom";
+import {Link,Redirect} from "react-router-dom";
 
 import "./Page.css";
 
@@ -14,10 +14,9 @@ class PlayList extends Component {
         };     
         // alert(this.state.tempId) 
     }
-
-   
     
     render(){
+        
         if(this.props.playLists.playLists.length === 0)
         {
             var RenderNoLikedplayLists=() =>{
@@ -62,7 +61,7 @@ class PlayList extends Component {
                                                     return( 
                                                     <span key={song.id}>
                                                     {/* <span>  </span> */}
-                                                    <span className="customizedSpan"></span>
+                                                    {/* <span className="customizedSpan"></span> */}
                                                     <span dir="auto">{song.artist}</span>
                                                     <span className="customizedSpan">{song.name}•</span>
                                                      </span>   

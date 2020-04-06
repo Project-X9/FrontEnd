@@ -41,7 +41,6 @@ class WebPlayer extends Component {
     }
     
   }
- 
   render() {
     let homeActive=''
     let searchActive=''

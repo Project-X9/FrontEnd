@@ -6,7 +6,7 @@ import PlayList from './PlayListComponent';
 import Albums from './AlbumsComponent';
 import Artists from './ArtistsComponent';
 import LibraryNavbar from './LibraryNavbar'
-import {Switch, Route} from "react-router-dom";
+import {Switch, Route,Redirect} from "react-router-dom";
 import { 
   Button, Row, Col,} from 'reactstrap'; 
 
@@ -19,9 +19,15 @@ class LibraryPage extends Component {
             isModalOpen:false
         };
     }
+    
     render(){
+      let redirected = null;
+      if (this.props.id.id === "") {
+        redirected = <Redirect to="/webplayer/home"></Redirect>
+      }
         return(
           <div className="container-fluid m-0 p-0">
+            {redirected}
             <Row>
               <Col md={12}>
             <div className="LibraryPageBody">

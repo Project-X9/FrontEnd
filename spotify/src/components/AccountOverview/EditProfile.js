@@ -24,9 +24,9 @@ class EditProfile extends Component {
     handleEditSubmit(values){
   
         alert("called")
-        if(values.username==="")
+        if(values.username === "")
         {values.username=this.state.tempUsername}
-        if(values.editday==="")
+        if(values.editday=== "")
         {values.editday=this.state.tempDay}
         if(values.editmonth==="")
         {values.editmonth=this.state.tempMonth}
@@ -35,9 +35,9 @@ class EditProfile extends Component {
         if(values.editsex==="")
         {values.editsex=this.state.tempGender}
         
-        this.props.EditProfile(values.username,values.editday,
-            values.editmonth,values.edityear,values.editsex,
-            this.state.tempId)
+        // this.props.EditProfile(values.username,values.editday,
+        //     values.editmonth,values.edityear,values.editsex,
+        //     this.state.tempId)
     }
 
 render(){
@@ -56,7 +56,7 @@ render(){
                             placeholder="Username"
                             id="username"
                             name="username"
-                        />
+                        ></Control.text>
                         </Col>
                     </Row>
                     <Row className="form-group">
