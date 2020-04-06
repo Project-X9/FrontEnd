@@ -3,8 +3,8 @@ import React, { Component } from "react";
 import { 
    Button, Row, Col,} from 'reactstrap'; 
 import {Link,Redirect} from "react-router-dom";
-
 import "./Page.css";
+
 
 class PlayList extends Component {
     constructor(props){
@@ -12,12 +12,14 @@ class PlayList extends Component {
         this.state={
             tempId: this.props.id.id
         };     
-        // alert(this.state.tempId) 
-    }
     
+
+    }
+
     render(){
+      
         
-        if(this.props.playLists.playLists.length === 0)
+        if(this.props.data_be.data_be.playlists.length === 0)
         {
             var RenderNoLikedplayLists=() =>{
                 return(
@@ -49,67 +51,65 @@ class PlayList extends Component {
                 )
             }
         }
-        const RenderLikedOrNot =this.props.playLists.playLists.map((PlayLists)=>
-        {
-            if(PlayLists.name==="Liked_Songs" && PlayLists.tracks.length !== 0){
-                return(
-                    <div className="LikedSongs">
-                                    <div draggable="true">
-                                        <div className="showLiked">
-                                            <div className="insideLiked">
-                                                { PlayLists.tracks.map((song)=>{
-                                                    return( 
-                                                    <span key={song.id}>
-                                                    {/* <span>  </span> */}
-                                                    {/* <span className="customizedSpan"></span> */}
-                                                    <span dir="auto">{song.artist}</span>
-                                                    <span className="customizedSpan">{song.name}•</span>
-                                                     </span>   
-                                                    )
-                                                }) 
-                                                }
-                                            </div>
-                                        </div>
-                                        <div className="titleLiked">
-                                            <Row className="displayFlex_hassan">
-                                                <Col  md={12}>
-                                                    <Link className="likedNav" to="/">
-                                                        <span dir="auto" className="likedSongsSpan">Liked Songs</span>
-                                                    </Link>
-                                                </Col>
-                                            </Row>
-                                            <Row>
-                                                <Col  md={12}>
-                                            <div className="noOflikedSongs flexRowOfLibraryPage">{PlayLists.tracks.length} Liked Songs</div>
-                                                </Col>
-                                            </Row>
+        // const RenderLikedOrNot =this.props.playLists.playLists.map((PlayLists)=>
+        // {
+        //     if(PlayLists.name==="Liked_Songs" && PlayLists.tracks.length !== 0){
+        //         return(
+        //             <div className="LikedSongs">
+        //                             <div draggable="true">
+        //                                 <div className="showLiked">
+        //                                     <div className="insideLiked">
+        //                                         { PlayLists.tracks.map((song)=>{
+        //                                             return( 
+        //                                             <span key={song.id}>
+        //                                             {/* <span>  </span> */}
+        //                                             {/* <span className="customizedSpan"></span> */}
+        //                                             <span dir="auto">{song.artist}</span>
+        //                                             <span className="customizedSpan">{song.name}•</span>
+        //                                              </span>   
+        //                                             )
+        //                                         }) 
+        //                                         }
+        //                                     </div>
+        //                                 </div>
+        //                                 <div className="titleLiked">
+        //                                     <Row className="displayFlex_hassan">
+        //                                         <Col  md={12}>
+        //                                             <Link className="likedNav" to="/">
+        //                                                 <span dir="auto" className="likedSongsSpan">Liked Songs</span>
+        //                                             </Link>
+        //                                         </Col>
+        //                                     </Row>
+        //                                     <Row>
+        //                                         <Col  md={12}>
+        //                                     <div className="noOflikedSongs flexRowOfLibraryPage">{PlayLists.tracks.length} Liked Songs</div>
+        //                                         </Col>
+        //                                     </Row>
 
-                                        </div>
+        //                                 </div>
                                        
-                                    </div>
-                                    <Row className="playButtonOfLikedSongs">
-                                        <Col  md={12}>
-                                            <div className="displayButton">
-                                            <Button className="PlayButton">
-                                            <svg height="24" role="img" width="24" viewBox="0 0 24 24">
-                                                <polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor">
-                                                </polygon>
-                                            </svg>
-                                            </Button>
-                                            </div>
-                                        </Col>
-                                    </Row>
-                                </div>
-                )
+        //                             </div>
+        //                             <Row className="playButtonOfLikedSongs">
+        //                                 <Col  md={12}>
+        //                                     <div className="displayButton">
+        //                                     <Button className="PlayButton">
+        //                                     <svg height="24" role="img" width="24" viewBox="0 0 24 24">
+        //                                         <polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor">
+        //                                         </polygon>
+        //                                     </svg>
+        //                                     </Button>
+        //                                     </div>
+        //                                 </Col>
+        //                             </Row>
+        //                         </div>
+        //         )
 
-            }
-        }
-        )
-        const RenderUserPlayLists = this.props.playLists.playLists.map((PlayLists)=>
+        //     }
+        // }
+        // )
+        const RenderUserPlayLists = this.props.data_be.data_be.playlists.map((PlayLists)=>
         {
             //make a condition if it requires in the future
-            if(PlayLists.name !== "Liked_Songs")
-            {
             return(
                 <div key= {PlayLists.id}className="CardsLibrary">
                     <Row>
@@ -154,7 +154,6 @@ class PlayList extends Component {
                     </Row>
                 </div>
             )
-        }
     }
         )
         
@@ -162,8 +161,9 @@ class PlayList extends Component {
             <div>
             <div className="container MainViewPlaylsit">
                 <div className="sectionPlayList">
-                    {this.props.playLists.playLists.length===0 ? (
+                    {this.props.data_be.data_be.playlists.length ===0 ? (
                         <div>{RenderNoLikedplayLists()}</div>
+                        // <div></div>
                     ) :(
                         <div>
                             <Row>
@@ -174,7 +174,7 @@ class PlayList extends Component {
                             <Row>
                                 <Col  md={12} className="m-0 customizedColForCards">
                                     <div className="gridView">
-                                        {RenderLikedOrNot}
+                                        {/* {RenderLikedOrNot} */}
                                         {RenderUserPlayLists}
                                     </div>
                                 </Col>

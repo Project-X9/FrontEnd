@@ -43,6 +43,7 @@ export const ConfigureStore = () => {
       userstate:SignUpState,
       isSignedIn:SignInState,
       data_be: Data_BE,
+      // playlist_BE:PlayList_BE,
       ...createForms({
         feedback: InitialFeedback,
         login: InitialLogin

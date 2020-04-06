@@ -139,6 +139,8 @@ class WebPlayer extends Component {
                                 artist={this.props.artist}
                                 album={this.props.album}
                                 handleLogoutId={this.props.handleLogoutId}
+                                ///////////////
+                                data_be={this.props.data_be} 
                               />
                             )}
                         />
@@ -152,6 +154,10 @@ class WebPlayer extends Component {
                             artist={this.props.artist}
                             album={this.props.album}
                             handleLogoutId={this.props.handleLogoutId}
+                            data_be={this.props.data_be}
+
+                            // fetchPlaylistById_be={this.props.fetchPlaylistById_be}
+                            // playlist_BE={this.props.playlist_BE}
                             />
                           )}
                         />
@@ -161,7 +167,8 @@ class WebPlayer extends Component {
                             component={() => (
                               <NowPlay id={this.props.id}
                                data={this.props.data} 
-                               playLists={this.props.playLists} />
+                               playLists={this.props.playLists}
+                               data_be={this.props.data_be} />
                             )}
                         />
                         <Redirect to="/webplayer/home" /> 

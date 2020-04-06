@@ -201,11 +201,11 @@ export const EditProfile = (
 //////////////sign in///////////////
 export const handleSignIn_BE = (data) => dispatch => {
   axios.post(SignInUrl,data)
-  .then(response =>
-    {
-      dispatch(addLogin(true))
-      dispatch(addUserData_BE(response.data.user))
-    })
+  .then(response => {
+    dispatch(addLogin(true))
+    axios.get(`${SignUpUrl}/${response.data.user._id}`)
+    .then(response2 =>dispatch(addUserData_BE(response2.data.data.user)) )
+  })
   .catch(error=> dispatch(addLogin(false))) 
 };
 export const addUserData_BE = data => ({
@@ -219,8 +219,7 @@ export const addLogin = data => ({
 ////////////////////////////////////////fetch Playlist by id/////////////////////
 // export const fetchPlaylistById_be = (id) => dispatch => {
 //   axios.get(`${PlaylistsUrl}${id}`)
-//   .then(response =>)
-//   .catch(error=> dispatch(addLogin(false))) 
+//   .then(response => console.log(response))
 // };
 // export const addPlayList = data => ({
 //   type: ActionTypes.ADD_PLAYLIST_BYID,

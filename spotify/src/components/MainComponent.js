@@ -27,13 +27,24 @@ import {
   fetchUserData,
   handleLoginId,
   handleLogoutId,
-  getName
+  fetchUserPlaylist,
+  fetchArtist,
+  fetchAlbum,
+  EditProfile,
+  handleSignIn_BE,
 } from "../redux/ActionCreators";
 
 
 const mapStateToProps = state => ({
   data: state.data,
-  id: state.id
+  id: state.id,
+  playLists: state.playLists,
+  artist: state.artist,
+  album: state.album,
+  userstate:state.userstate,
+  isSignedIn:state.isSignedIn,
+  data_be:state.data_be,
+ 
 });
 const mapDispatchToProps = dispatch => ({
   resetFeedbackForm: () => {
@@ -150,10 +161,18 @@ class Main extends Component {
             path="/webplayer"
             component={() => (
               <WebPlayer
-             //////////for WebPlayer and HomeNavAndComponents
-             data={this.props.data} 
-             id={this.props.id}
-             ///////////
+                //////////for Home page and Library page
+                data={this.props.data}
+                id={this.props.id}
+                playLists={this.props.playLists}
+                artist={this.props.artist}
+                album={this.props.album}
+                handleLogoutId={this.props.handleLogoutId}
+                data_be={this.props.data_be}
+                // fetchPlaylistById_be={this.props.fetchPlaylistById_be}
+                // playlist_BE={this.props.playlist_BE}
+                ///////////
+                data_be={this.props.data_be}
               />
             )}
           />
