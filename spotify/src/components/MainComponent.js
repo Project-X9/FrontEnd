@@ -167,6 +167,7 @@ class Main extends Component {
                 album={this.props.album}
                 handleLogoutId={this.props.handleLogoutId}
                 ///////////
+                data_be={this.props.data_be}
               />
             )}
           />
