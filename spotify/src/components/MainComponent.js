@@ -28,7 +28,8 @@ import {
   fetchAlbum,
   EditProfile,
   handleSignIn_BE,
-  makeSignupRedirectable
+  makeSignupRedirectable,
+  handleLogout_BE
 } from "../redux/ActionCreators";
 
 const mapStateToProps = state => ({
@@ -51,6 +52,9 @@ const mapDispatchToProps = dispatch => ({
   },
   fetchUserData: () => {
     dispatch(fetchUserData());
+  },
+  handleLogout_BE: () => {
+    dispatch(handleLogout_BE());
   },
   fetchUserPlaylist: () => {
     dispatch(fetchUserPlaylist());
@@ -120,13 +124,13 @@ class Main extends Component {
               />
             )}
           />
-          <Route
+          {/* <Route
             exact
             path="/library"
             component={() => (
               <Library id={this.props.id} data={this.props.data} />
             )}
-          />
+          /> */}
 
           <Route
             exact
@@ -137,6 +141,7 @@ class Main extends Component {
                 id={this.props.id}
                 data={this.props.data}
                 data_be={this.props.data_be}
+                handleLogout_BE={this.props.handleLogout_BE}
               />
             )}
           />
@@ -157,6 +162,7 @@ class Main extends Component {
               EditProfile={this.props.EditProfile}
               /////////
               data_be={this.props.data_be} 
+              handleLogout_BE={this.props.handleLogout_BE}
               />
             )}
           />
@@ -176,6 +182,7 @@ class Main extends Component {
                 // playlist_BE={this.props.playlist_BE}
                 ///////////
                 data_be={this.props.data_be}
+                handleLogout_BE={this.props.handleLogout_BE}
               />
             )}
           />
