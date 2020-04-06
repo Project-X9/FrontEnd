@@ -16,7 +16,7 @@ class Albums extends Component {
     }
     
     render(){
-        if(this.props.album.album.length === 0)
+        if(this.props.data_be.data_be.albums.length === 0)
         {
             var RenderNoLikedAlbums=() =>{
                 return(
@@ -45,7 +45,7 @@ class Albums extends Component {
                 )
             }
         }
-        const RenderUserAlbums = this.props.album.album.map((Album)=>
+        const RenderUserAlbums = this.props.data_be.data_be.albums.map((Album)=>
         {
             //make a condition if it requires in the future
             if(Album.name !== "Liked_Songs")
@@ -83,7 +83,7 @@ class Albums extends Component {
                         <Col md={12} >
                             <div>
                                 <Button className="theButtonItself"> 
-                                <svg height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
+                                    <svg height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
                                 </Button>
                             </div>
                         </Col>
@@ -99,7 +99,7 @@ class Albums extends Component {
             <div className="LibraryPageBody">
             <div className="container MainViewPlaylsit">
                 <div className="sectionPlayList">
-                    {this.props.album.album.length === 0 ? (
+                    {this.props.data_be.data_be.albums.length === 0 ? (
                         <div>{RenderNoLikedAlbums()}</div>
                         ) : (
                             <div>
