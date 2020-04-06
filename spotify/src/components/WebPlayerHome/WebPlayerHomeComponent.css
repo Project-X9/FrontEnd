@@ -117,6 +117,7 @@
     flex-wrap: wrap;
     width:100%;
     background-color: #141313;
+    padding:0;
   }
   /***************************************************Navbar & Content***************************************************/
   /***************************************************Navbar***************************************************/
@@ -143,11 +144,7 @@
     z-index: 1000;   
   }
   
-  @media(max-width: 768px){
-    div.WebPlayerHomeNav div.container .NavBar {
-      position: relative;
-    }
-  }
+  
 
   div.WebPlayerHomeNav div.container .Profile {
     height: 30px;
@@ -159,15 +156,46 @@
   
   div.WebPlayerHomeNav nav.NavBar.NavStyle{
     text-align: left;
+    width:84%;
+    margin-left:15px;
+    background-color: red;
   }
 
-  div.WebPlayerHomeNav div.container .nav-link {
-    color: white;
-    margin-left: 0px;
+  .WebPlayerHomeBody .container .Linkers{
+    padding:0;
+    background-color: black;
   }
-  
-  div.WebPlayerHomeNav div.container .nav-link:hover {
-    margin-left: 0px;
+  @media(min-width: 992px){
+    .WebPlayerHomeBody .container .Linkers{
+      padding:0;
+      background-color: black;
+    }
+  }
+
+  @media(max-width: 991px){
+    div.WebPlayerHomeNav nav.NavBar.NavStyle{
+      background-color: blue;
+      width:75%;
+    }
+  }
+
+
+  @media(max-width: 767px){
+    div.WebPlayerHomeNav div.container .NavBar {
+      position: relative;
+    }
+
+    div.WebPlayerHomeNav nav.NavBar.NavStyle{
+      text-align: left;
+      width:97%;
+      background-color: violet;
+    }
+  }
+
+  div.WebPlayerHomeNav div.container .nav-link.SpecificallyForTheButton {
+    color: white;
+    margin-top: -14px;
+    margin-left: 0;
   }
 
   div.WebPlayerHomeNav .CustomNavitems{
@@ -278,6 +306,14 @@
 
   .WebPlayerHomeNav ul.ml-auto.MakingTheButtonsHorizontal  {
     display: contents;
+  }
+
+  div.WebPlayerHomeNav div.container .WritingInsideAccountItself{
+    color:white;
+    margin-top:-7px;
+  }
+  div.WebPlayerHomeNav div.container .fa.fa-user-secret{
+    margin-right:10px;
   }
 
   .WebPlayerHomeNav Button.AccountItself {

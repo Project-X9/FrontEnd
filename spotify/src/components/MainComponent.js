@@ -172,10 +172,10 @@ class Main extends Component {
                 artist={this.props.artist}
                 album={this.props.album}
                 handleLogoutId={this.props.handleLogoutId}
-                data_be={this.props.data_be}
                 // fetchPlaylistById_be={this.props.fetchPlaylistById_be}
                 // playlist_BE={this.props.playlist_BE}
                 ///////////
+                data_be={this.props.data_be}
               />
             )}
           />
