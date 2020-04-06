@@ -94,7 +94,7 @@ class LibraryNavbar extends Component {
                             <Button className="AccountItself">
                                 <DropdownToggle nav caret className="profileNavItem">
                                     <i class="fa fa-user-secret"></i>
-                                    {/* {this.props.data.data[this.props.id.id -1].name} */}
+                                    {this.props.data_be.data_be.name}
                                 </DropdownToggle>
                             </Button>
                             <DropdownMenu className="StaticNav" right>
