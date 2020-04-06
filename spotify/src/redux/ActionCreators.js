@@ -124,7 +124,6 @@ export const removeUserId = (id) => ({  //it recieves an empty string
 /////////////////////////////////////////////////////////////////////
 /////////////////GetPlayListData////////by Ahmed M. Hassan//////
 
-<<<<<<< HEAD
 //////////////////////////////////Account overView///////////////////////////////
 
 ///////////////////////////////////////Artist////////////////////////////////////
@@ -152,7 +151,6 @@ export const getAbout = id => dispatch => {
     return response.data.about;
   });
 }
-=======
 /////it should take the id when we integrate with the back end
 export const fetchUserPlaylist = () => dispatch => {
   axios.get(`${baseUrl}playlist`)
@@ -228,4 +226,3 @@ export const addLogin = data => ({
 //   type: ActionTypes.ADD_PLAYLIST_BYID,
 //   payload: data
 // });
->>>>>>> 952bc96c9e796074cca24a1ae5061d5c28d4ca5d

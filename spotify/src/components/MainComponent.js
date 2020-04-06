@@ -6,20 +6,15 @@ import Home from "./Homepage/HomeComponent";
 import SignUp from "./SignUp/SignUpComponent";
 import PremiumComponent from "./PremiumPage/PremuimComponent";
 import AccountOverview from "./AccountOverview/AccountOverviewComponent";
-import WebPlayer from "./WebPlayerHome/WebPlayerComponent";
+import WebPlayer from "./WebPlayerHome/WebPlayerComponent"
 import SignIn from "./SignIn/SignInComponent";
 import PlayFotter from "./WebPlayer/PlayFotterComponent";
-<<<<<<< HEAD
 import Library from './Library/LibraryCompnent';
 import LibraryPage from  "./Library/LibraryPage";
 import Artists from  "./Library/ArtistsComponent";
 import PlayList from './Library/PlayListComponent';
 import Albums from './Library/AlbumsComponent';
 import Artist from "./ArtistInterface/ArtistComponent";
-=======
-import Library from "./Library/LibraryCompnent";
-
->>>>>>> 952bc96c9e796074cca24a1ae5061d5c28d4ca5d
 
 import {
   postFeedback,
@@ -32,27 +27,13 @@ import {
   fetchUserData,
   handleLoginId,
   handleLogoutId,
-<<<<<<< HEAD
   getName
-=======
-  fetchUserPlaylist,
-  fetchArtist,
-  fetchAlbum,
-  EditProfile,
-  handleSignIn_BE
->>>>>>> 952bc96c9e796074cca24a1ae5061d5c28d4ca5d
 } from "../redux/ActionCreators";
 
 
 const mapStateToProps = state => ({
   data: state.data,
-  id: state.id,
-  playLists: state.playLists,
-  artist: state.artist,
-  album: state.album,
-  userstate:state.userstate,
-  isSignedIn:state.isSignedIn,
-  data_be:state.data_be
+  id: state.id
 });
 const mapDispatchToProps = dispatch => ({
   resetFeedbackForm: () => {
@@ -64,19 +45,7 @@ const mapDispatchToProps = dispatch => ({
   fetchUserData: () => {
     dispatch(fetchUserData());
   },
-  fetchUserPlaylist: () => {
-    dispatch(fetchUserPlaylist());
-  },
-  fetchArtist: () => {
-    dispatch(fetchArtist());
-  },
-  fetchAlbum: () => {
-    dispatch(fetchAlbum());
-  },
-  handleSignIn_BE: (data) => {
-    dispatch(handleSignIn_BE(data));
-  },
-  handleLogoutId: id => dispatch(handleLogoutId(id)),
+  handleLogoutId:id=>dispatch(handleLogoutId(id)),
   PostPassword: (password, id) => dispatch(PostPassword(password, id)),
   GetPassword: id => dispatch(GetPassword(id)),
   getEmail: id => dispatch(getEmail(id)),
@@ -87,31 +56,15 @@ const mapDispatchToProps = dispatch => ({
     dispatch(
       postFeedback(email, confirmemail, password, name, day, month, year, sex)
     ),
-
-    EditProfile: (name, day, month, year, sex,id) =>
-    dispatch(
-      EditProfile(name, day, month, year, sex,id)
-    ),
   postFacebookLogin: (email, image, name) =>
-<<<<<<< HEAD
     dispatch(postFacebookLogin(email, image, name)),
   getName: id => dispatch(getName(id))
-=======
-    dispatch(postFacebookLogin(email, image, name))
-
->>>>>>> 952bc96c9e796074cca24a1ae5061d5c28d4ca5d
 });
 
 class Main extends Component {
   componentDidMount() {
     this.props.fetchUserData();
-<<<<<<< HEAD
-    this.props.getName();
-=======
-    this.props.fetchUserPlaylist();
-    this.props.fetchArtist();
-    this.props.fetchAlbum();
->>>>>>> 952bc96c9e796074cca24a1ae5061d5c28d4ca5d
+    this.props.getName;
   }
 
   render() {
@@ -142,18 +95,28 @@ class Main extends Component {
                 id={this.props.id}
                 data={this.props.data}
                 handleLoginId={this.props.handleLoginId}
-                userstate={this.props.userstate}
+
               />
             )}
           />
           <Route
-            exact
-            path="/library"
+            exact path="/library"
             component={() => (
-              <Library id={this.props.id} data={this.props.data} />
+              <Library
+                id={this.props.id}
+                data={this.props.data}
+              />
             )}
           />
-
+          <Route
+            path="/librarypage"
+            component={() => (
+              <LibraryPage
+                id={this.props.id}
+                data={this.props.data}
+              />
+            )}
+          />
           <Route
             exact
             path="/premium"
@@ -162,15 +125,15 @@ class Main extends Component {
                 PremiumPost={this.props.PremiumPost}
                 id={this.props.id}
                 data={this.props.data}
-                data_be={this.props.data_be}
               />
             )}
           />
-          <Route
+          <Route  
+            
             path="/account"
             component={() => (
               <AccountOverview 
-              //////////for overview and change password and edit profile and nowplay
+              //////////for overview and change password
               data={this.props.data} 
               id={this.props.id}
               handleLogoutId={this.props.handleLogoutId}
@@ -179,10 +142,6 @@ class Main extends Component {
               PostPassword={this.props.PostPassword}
               GetPassword={this.props.GetPassword}
               //////////
-              ///////// for edit profile
-              EditProfile={this.props.EditProfile}
-              /////////
-              data_be={this.props.data_be} 
               />
             )}
           />
@@ -191,14 +150,10 @@ class Main extends Component {
             path="/webplayer"
             component={() => (
               <WebPlayer
-                //////////for Home page and Library page
-                data={this.props.data}
-                id={this.props.id}
-                playLists={this.props.playLists}
-                artist={this.props.artist}
-                album={this.props.album}
-                handleLogoutId={this.props.handleLogoutId}
-                ///////////
+             //////////for WebPlayer and HomeNavAndComponents
+             data={this.props.data} 
+             id={this.props.id}
+             ///////////
               />
             )}
           />
@@ -214,9 +169,6 @@ class Main extends Component {
                 data={this.props.data}
                 id={this.props.id}
                 handleLoginId={this.props.handleLoginId}
-                isSignedIn={this.props.isSignedIn}
-                handleSignIn_BE={this.props.handleSignIn_BE}
-
               />
             )}
           />
