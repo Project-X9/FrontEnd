@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { Jumbotron, Button } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
+import { baseUrl2 } from "../../shared/baseUrl";
 
 /**
  * Class for the FreeJumbotron component which is a jumbotron shown for the free users
@@ -13,8 +14,14 @@ class FreeJumbotron extends Component {
    * @returns Components that will be display the jumbotron, and will be used in AccountOverview.js
    */
   render() {
+    let showJumbo="HideAccountOverviewJumbotron";
+    let currentURL=window.location.href;
+   if(currentURL===baseUrl2 + "account/overview")
+    {
+      showJumbo="JumbotronContainer";
+    }
     return (
-      <div className="JumbotronContainer">
+      <div className={showJumbo}>
         <Jumbotron className="AccountOverviewBodyJumbo">
           <div className="container">
             <div className="row">

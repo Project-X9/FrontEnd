@@ -22,7 +22,7 @@
 .customization {
   padding-left: 50px;
 }
-.modified-content{
+.modified-content {
   background-color: white;
 }
 li.seperating {
@@ -53,7 +53,7 @@ body {
   margin-left: 20px;
 }
 .JumboHeaderImg {
-  background-image: url("../SpotifyImg.png");
+  background-image: url("https://c4.wallpaperflare.com/wallpaper/197/665/297/stranger-things-tv-shows-hd-natalia-dyer-wallpaper-preview.jpg");
   left: 0px;
   top: 0px;
   background-size: cover;
@@ -69,10 +69,9 @@ body {
   height: 142px;
 }
 .JmbStyle {
-  padding: 7px;
   border-radius: 16px;
-  width: 80%;
-  margin: 170px;
+  width: 100%;
+  margin: auto;
 }
 .PremiumMargin {
   margin-top: 20px;

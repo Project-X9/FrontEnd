@@ -33,6 +33,8 @@
   }
   
   /* Sidebar links */
+
+  .WebPlayerHomeBody .SidebarLibraryButton.btn.btn-secondary,
   .WebPlayerHomeBody .sidebar a {
     font-size: 16px;
     line-height: 20px;
@@ -52,6 +54,15 @@
     border-radius: 0;
     box-sizing: border-box;
     font-family: Circular,Helvetica,Arial,sans-serif;
+    transition-property: none;
+  }
+
+  .WebPlayerHomeBody .SidebarLibraryButton.btn.btn-secondary:focus{
+    box-shadow: none;
+  }
+  
+  .WebPlayerHomeBody .SidebarLibraryButton{
+    width:100%;
   }
 
   .WebPlayerHomeBody .sidebarHeaderBetween{
@@ -68,20 +79,34 @@
   .WebPlayerHomeBody .sidebar a.AppearBigImage{
     margin: 0.5em 0;
   }
+
+  /* Links on mouse-over */
+  .WebPlayerHomeBody .SidebarLibraryButton.btn.btn-secondary:hover,
+  .WebPlayerHomeBody .sidebar a:hover:not(.active) {
+    color: white;
+    transition-property: color;
+    transition-duration: 0.4s;
+  }
   
   /* Active/current link */
+  .WebPlayerHomeBody button.SidebarLibraryButton.active.btn.btn-secondary,
   .WebPlayerHomeBody .sidebar a.active {
     background-color: #222326;
     color: white;
     border-radius: 7px;
     margin: 0 0.4em;
   }
-  
-  /* Links on mouse-over */
-  .WebPlayerHomeBody .sidebar a:hover:not(.active) {
+
+  .WebPlayerHomeBody .sidebar a.BottomTwoActive {
+
     color: white;
-    transition-property: color;
-    transition-duration: 0.4s;
+    border-radius: 7px;
+    margin: 0 0.4em;
+  }
+
+  .WebPlayerHomeBody button.SidebarLibraryButton.active.btn.btn-secondary{
+    width:94%;
+    border:none;
   }
   
   /***************************************************Sidebar***************************************************/
@@ -110,8 +135,20 @@
   
   div.WebPlayerHomeNav div.container .NavBar {
     background-color: #141313;
+    position: fixed;
+    top:0;
+    max-width:100%;
+    width:-webkit-available;
+    width:-moz-available;
+    z-index: 1000;   
   }
   
+  @media(max-width: 768px){
+    div.WebPlayerHomeNav div.container .NavBar {
+      position: relative;
+    }
+  }
+
   div.WebPlayerHomeNav div.container .Profile {
     height: 30px;
     width: 30px;
@@ -133,14 +170,14 @@
     margin-left: 0px;
   }
 
-  div.WebPlayerHomeNav .customizedNavitems{
+  div.WebPlayerHomeNav .CustomNavitems{
     margin:  10px;
     padding: 0px;
     border: 0;
     vertical-align: baseline;
   }
 
-  div.WebPlayerHomeNav .customizedButton{
+  div.WebPlayerHomeNav .CustomButton{
     border: none;
     height: 32px;
     width: 32px;
@@ -154,7 +191,7 @@
     opacity: .6;
   }
 
-  div.WebPlayerHomeNav .customizedSvg{
+  div.WebPlayerHomeNav .CustomSvg{
     border: none;
     height: 32px;
     width: 32px;
@@ -313,15 +350,94 @@
   }
   /***************************************************Navbar***************************************************/
   /***************************************************Components***************************************************/
+  .RowWebPlayerHomeContent{
+    display: block;
+  }
   div.WebPlayerHomeContent .container{
     padding:0;
   }
+
+  div.WebPlayerHomeContent .FirstHeaderAndSeeAll{
+    margin-top:4.5em;
+  }
+
+  @media(max-width: 768px){
+    div.WebPlayerHomeContent .FirstHeaderAndSeeAll {
+      margin-top:1em;
+    }
+  }
+
+  div.WebPlayerHomeContent .HeaderAndSeeAll{
+    display: flex;
+    flex-direction: row;
+    margin-top:1em;
+  }
+  
+  div.WebPlayerHomeContent .ContainerHeaderAboveGrid{
+    margin-bottom: 1em;
+    text-align:left;
+    margin-left:0;
+    padding-left:2em;
+    flex:70%;
+  }
+
+  div.WebPlayerHomeContent a.LinkHeaderAboveGrid{
+    text-decoration: none;
+  }
+
+  div.WebPlayerHomeContent .HeaderAboveGrid{
+    font-size: 28px;
+    line-height: 1.6;
+    font-weight: 600;
+    letter-spacing: -.36px;
+    display: inline;
+    white-space: nowrap;
+    color: #fff;
+    margin:0;
+  }
+
+  div.WebPlayerHomeContent a.LinkHeaderAboveGrid:hover{
+    text-decoration-line: underline;
+    text-decoration-color: white;
+  }
+
+  div.WebPlayerHomeContent .ContainerSeeAllAboveGrid{
+    padding-top:1em;
+    flex:30%;
+  }
+
+  div.WebPlayerHomeContent .SeeAllAboveGrid{
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 700;
+    letter-spacing: 1.76px;
+    text-transform: uppercase;
+    border:0;
+    background: transparent;
+    color: #b3b3b3;
+    -webkit-box-flex: 0;
+    flex: 0;
+    white-space: nowrap;
+    margin-left: 20px;
+  }
+
+  div.WebPlayerHomeContent a.SeeAllAboveGrid:hover{
+    font-size: small;
+  }
+
   div.WebPlayerHomeContent .GridView{
     display: grid;
     grid-gap: 16px;
     grid-template-columns: repeat(auto-fill,minmax(164px,1fr));
     grid-auto-rows: 1fr;
     min-height: 0;
+    margin: 0 10px;
+    margin-bottom:2em;
+  }
+
+  div.WebPlayerHomeContent .row.BelowImage
+  {
+    align-self: flex-start;
   }
 
   div.WebPlayerHomeContent .CardsHome{
@@ -332,8 +448,8 @@
     padding: 20px 20px 16px;
     background: #282828;
     border-radius: 8px;
-    isolation: isolate;
-}
+    align-items: center;
+  }
 
 div.WebPlayerHomeContent .CardPhoto{
   height: 156px;
@@ -342,6 +458,16 @@ div.WebPlayerHomeContent .CardPhoto{
   margin-bottom: 16px;
   background-color: #333;
   box-shadow: 0 10px 30px 0 rgba(0,0,0,.3), 0 1px 2px 0 rgba(0,0,0,.2);
+}
+
+div.WebPlayerHomeContent .ArtistCardPhoto{
+  height: 156px;
+  width: 156px;
+  position: relative;
+  margin-bottom: 16px;
+  background-color: #333;
+  box-shadow: 0 10px 30px 0 rgba(0,0,0,.3), 0 1px 2px 0 rgba(0,0,0,.2);
+  border-radius: 50%;
 }
 
 div.WebPlayerHomeContent .ImageHolder{
@@ -362,5 +488,84 @@ div.WebPlayerHomeContent .ImageItself{
   object-fit: cover;
   object-position: center center;
 }
+
+div.WebPlayerHomeContent .ArtistImageItself{
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: block;
+  object-fit: cover;
+  object-position: center center;
+}
+
+div.WebPlayerHomeContent .TitlePlaylistLink {
+  color: #fff;
+  overflow: hidden;
+  direction: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  letter-spacing: .24px;
+  text-align: left;  
+  text-decoration: none;
+}
+
+div.WebPlayerHomeContent .DescriptionPlaylistLink
+  {
+    font-size: 12px;
+    line-height: 18px;
+    text-overflow: ellipsis;
+    color: #b3b3b3;
+    padding: 0;
+    margin-top: 4px;
+    white-space: normal;
+    overflow: hidden;
+    direction: auto;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    text-align: left;
+  }
+
+  div.WebPlayerHomeContent .PlayButtonPlayList{
+    position: absolute;
+    left:70%;
+    bottom:12%;
+    height:20px;
+    width:50px;
+  }
+
+  div.WebPlayerHomeContent .ButtonItself{
+    position: relative;
+    border: 0;
+    border-radius: 500px;
+    color: #fff;
+    background-color: #1db954;
+    transition: transform 33ms cubic-bezier(.3,0,0,1),-webkit-transform 33ms cubic-bezier(.3,0,0,1);
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    display:none;
+  }
+
+  div.WebPlayerHomeContent .CardsHome:hover button{
+    display: block;
+  }
+
+  div.WebPlayerHomeContent .ArtistButtonItself:hover,
+  div.WebPlayerHomeContent .ButtonItself:hover{
+    transform: scale(1.06);
+  }
   /***************************************************Components***************************************************/
   

@@ -4,7 +4,7 @@ import {
     Form,FormGroup,Modal,ModalBody,ModalHeader,Button,Label,Input,Jumbotron, Row, Col,Mo} from 'reactstrap'; 
 import {Link} from "react-router-dom";
 
-// import "./Library.css";
+import "./Library.css";
 
 
 class Library extends Component {
@@ -72,7 +72,7 @@ class Library extends Component {
                             <div className="righPart">
                                 <div className="innerRight">
                                     <Button className="signupfree"><Link to="/signup"className="linksignup">Sign up free</Link></Button>
-                                    <div className="seperator"></div>
+                                    <div className="seperator_LibraryModal"></div>
                                     <div className="alreadyhaveanaccount">Already have an account?</div>
                                     <Button className="libraryloginbut"><Link to="/signin"className="linkLogin">Log in</Link></Button>
                                 </div>

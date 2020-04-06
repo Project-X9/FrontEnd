@@ -6,40 +6,67 @@ import PlayList from './PlayListComponent';
 import Albums from './AlbumsComponent';
 import Artists from './ArtistsComponent';
 import LibraryNavbar from './LibraryNavbar'
-import {Switch, Route} from "react-router-dom";
+import {Switch, Route,Redirect} from "react-router-dom";
+import { 
+  Button, Row, Col,} from 'reactstrap'; 
 
 
 class LibraryPage extends Component {
     constructor(props){
         super(props);
         this.state={
-            tempId:''
+            tempId:'',
+            isModalOpen:false
         };
     }
     
-    
     render(){
+      let redirected = null;
+      if (this.props.id.id === "") {
+        redirected = <Redirect to="/webplayer/home"></Redirect>
+      }
         return(
-            <div>
+          <div className="container-fluid m-0 p-0">
+            {redirected}
+            <Row>
+              <Col md={12}>
             <div className="LibraryPageBody">
-            <LibraryNavbar />
+            <LibraryNavbar 
+            data={this.props.data}
+            id={this.props.id}
+            handleLogoutId={this.props.handleLogoutId}/>
             <Switch>
                     <Route
-                      path="/librarypage/playlists"
+                      path="/webplayer/librarypage/playlists"
                       component={() => (
                         <PlayList
+                        data={this.props.data}
+                        id={this.props.id}
+                        playLists={this.props.playLists}
                         />
-                      )}                    />
+                      )} />
+                   <Route
+                      path="/webplayer/librarypage/albums"
+                      component={() => (
+                        <Albums
+                        data={this.props.data}
+                        id={this.props.id}
+                        album={this.props.album}
+                        />
+                      )} />
                     <Route
-                      path="/librarypage/albums"
-                      component={Albums}
-                    />    
-                      <Route
-                      path="/librarypage/artists"
-                      component={Artists}
-                    />    
+                      path="/webplayer/librarypage/artists"
+                      component={() => (
+                        <Artists
+                        data={this.props.data}
+                        id={this.props.id}
+                        artist={this.props.artist}
+                        />
+                      )} />
                 </Switch>
         </div>
+        </Col>
+        </Row>
         </div>
         );
   }

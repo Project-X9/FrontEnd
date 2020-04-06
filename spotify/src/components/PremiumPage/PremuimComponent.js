@@ -20,7 +20,7 @@ import {
   DropdownMenu,
   DropdownItem,
   Button,
-  DropdownToggle
+  DropdownToggle,
 } from "reactstrap";
 import "./PremiumComponent.css";
 
@@ -40,45 +40,64 @@ class Premium extends Component {
       modal: false,
       isModalOpen: false,
       collapsed: true,
-      Premium: false,
-      tempId: this.props.id.id
+      Premium: this.props.data_be.data_be.premium,
+      tempId: this.props.data_be.data_be._id,
+      isPrenium: !this.props.data_be.data_be.premium,
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.togglemodal = this.togglemodal.bind(this);
-    this.handlePremiumT = this.handlePremiumT.bind(this);
-    this.handlePremiumF = this.handlePremiumF.bind(this);
+    // this.handlePremiumT = this.handlePremiumT.bind(this);
+    // this.handlePremiumF = this.handlePremiumF.bind(this);
+    this.handlePremium_be = this.handlePremium_be.bind(this);
   }
+  // componentDidMount(){
+  //   if(this.state.isPrenium === this.state.premium)
+  //   {  this.setState({
+  //       isPrenium:!this.state.premium
+  //     })}
+  // }
 
-  handleData = () => {
-    let temp;
-    this.props.data.data.map(data => {
-      if (data.id === this.props.id.id) {
-        temp = data.premium;
-      }
-    });
-    this.setState({ Premium: temp });
-    return temp;
-  };
+  // handleData = () => {
+  //   let temp;
+  //   this.props.data.data.map(data => {
+  //     if (data.id === this.props.id.id) {
+  //       temp = data.premium;
+  //     }
+  //   });
+  //   this.setState({ Premium: temp });
+  //   return temp;
+  // };
   togglemodal() {
-    const Checker = this.handleData();
+    // const Checker = this.handleData();
     const Temp = !this.state.modal;
     this.setState({ modal: Temp });
   }
   /**
    * Posts the claiming of premium membership
    */
-  handlePremiumT() {
-    if (this.state.Premium === false) {
-      this.props.PremiumPost(this.props.id.id, true);
-      this.togglemodal();
-    }
-  }
+  // handlePremiumT() {
+  //   if (this.state.Premium === false) {
+  //     this.props.PremiumPost(this.props.id.id, true);
+  //     this.togglemodal();
+  //   }
+  // }
   /**
    * Posts the Canceling of premium membership
    */
-  handlePremiumF() {
+  // handlePremiumF() {
+  //   if (this.state.Premium === true) {
+  //     this.props.PremiumPost(this.props.id.id, false);
+  //     this.togglemodal();
+  //   }
+  // }
+  handlePremium_be() {
     if (this.state.Premium === true) {
-      this.props.PremiumPost(this.props.id.id, false);
+      this.props.PremiumPost(this.props.data_be.data_be._id, false);
+      this.setState({ Premium: false });
+      this.togglemodal();
+    } else if (this.state.Premium === false) {
+      this.props.PremiumPost(this.props.data_be.data_be._id, true);
+      this.setState({ Premium: true });
       this.togglemodal();
     }
   }
@@ -88,12 +107,15 @@ class Premium extends Component {
   toggleNav() {
     this.setState({
       isNavOpen: !this.state.isNavOpen,
-      collapsed: !this.state.collapsed
+      collapsed: !this.state.collapsed,
     });
   }
 
   render() {
- 
+    let redirect = "";
+    if (this.props.data_be.data_be._id === undefined) {
+      redirect = <Redirect to="/signup" />;
+    }
 
     let accLogStyleParent = "";
     let accChild = "";
@@ -109,6 +131,7 @@ class Premium extends Component {
     }
     return (
       <div>
+        {redirect}
         <div className="AccountOverviewNav">
           <div className="container">
             <Navbar className="NavBar" sticky="top" expand="md">
@@ -193,14 +216,14 @@ class Premium extends Component {
                   <Button
                     hidden={this.state.Premium}
                     color="primary"
-                    onClick={this.handlePremiumT}
+                    onClick={this.handlePremium_be}
                   >
                     Claim{" "}
                   </Button>
                   <Button
                     hidden={!this.state.Premium}
                     color="primary"
-                    onClick={this.handlePremiumF}
+                    onClick={this.handlePremium_be}
                   >
                     Cancel Premium{" "}
                   </Button>

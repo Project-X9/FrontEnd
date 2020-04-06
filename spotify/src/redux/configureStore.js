@@ -3,9 +3,13 @@ import { createForms } from "react-redux-form";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
 import { InitialFeedback, InitialLogin } from "./forms";
-import { Data } from "./userData";
+import { Data,Data_BE } from "./userData";
 import { UserID } from "./UserId";
-// import { persistState } from 'redux-localstorage';
+import {PlayList} from "./UserPlayLists"
+import { Artist } from './Artist';
+import { Album } from './Albums';
+import { SignUpState,SignInState } from './addUser';
+
 
 function saveState (state){
 
@@ -33,6 +37,12 @@ export const ConfigureStore = () => {
     combineReducers({
       data: Data,
       id: UserID,
+      playLists:PlayList,
+      artist:Artist,
+      album:Album,
+      userstate:SignUpState,
+      isSignedIn:SignInState,
+      data_be: Data_BE,
       ...createForms({
         feedback: InitialFeedback,
         login: InitialLogin

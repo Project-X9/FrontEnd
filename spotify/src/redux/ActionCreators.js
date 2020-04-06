@@ -1,19 +1,22 @@
 import axios from "axios";
 import * as ActionTypes from "./ActionTypes";
-import { baseUrl } from "../shared/baseUrl";
+import { baseUrl ,SignUpUrl,SignInUrl,PremiumUrl,PlaylistsUrl} from "../shared/baseUrl";
 
 export const PremiumPost = (id, isPremium) => dispatch => {
   const data = {
-    premium: isPremium
+    premium: isPremium,
+    previouslyPremium:true
   };
   data.date = new Date().toISOString();
-  axios.patch(`${baseUrl}users/${id}`, data);
+  axios.patch(`${PremiumUrl}/${id}`, data);
   // .then(response => alert(response.data.premium ));
 };
 export const fetchUserData = () => dispatch => {
   return fetch(baseUrl + "users")
     .then(response => response.json())
     .then(data => dispatch(addUserData(data)));
+  // axios.get(`${baseUrl3}`)
+  // .then(data => dispatch(addUserData(JSON.stringify(data))));
 };
 export const addUserData = data => ({
   type: ActionTypes.ADD_USERDATA,
@@ -69,22 +72,24 @@ export const postFeedback = (
 
   newFeedback.date = new Date().toISOString();
   newFeedback.premium = false;
+  var d = new Date();
+  var n = d.getFullYear();
+  newFeedback.age = n-year;
   axios
-    .post(`${baseUrl}users`, newFeedback) //here where i send the post request to the server
-    .then(response => {
-      // here i want to get the id of the last elment i posted from the
-      // comming response which is coming in jason format and then i need
-      for (let index = 0; index < response.data.id + 1; index++) {
-        if (index === response.data.id) {
-          dispatch(addUserId(index)); //to send it to the function addUserId to add it in my store
-        }
-      }
-      // alert(response.data.id)
-    });
-  // .then((response) =>alert (JSON.stringify(response)));
-  // .then((response) =>dispatch(addUserId(JSON.parse(response.data.id))));
+    .post(SignUpUrl, newFeedback) 
+    .then(response =>dispatch(addUser(true)))
+    .catch(error =>dispatch(addUser(false)));
+        // for (let index = 0; index < response.data.id + 1; index++) {
+      //   if (index === response.data.id) {
+      //     dispatch(addUserId(index)); 
+      //   }
+      // }
 };
-
+export const addUser = data => ({
+  type: ActionTypes.ADD_USER,
+  payload: data
+});
+////////////////////////////////////////
 export const handleLoginId = id => dispatch => {
   dispatch(addUserId(id));
 };
@@ -93,15 +98,6 @@ export const addUserId = data => ({
   type: ActionTypes.ADD_USERID,
   payload: data
 });
-//////////////////////////////////// LOGOUT /////////////////////// 
-export const handleLogoutId  = (id)=> dispatch => {
-  dispatch(removeUserId(id));
-};
-export const removeUserId = (id) => ({
-  type: ActionTypes.ADD_LOGOUT,
-  payload:id
-});
-/////////////////////////////////////////////////////////////////////
 export const getEmail = id => dispatch => {
   return axios
     .get(`${baseUrl}users/${id - 1}`)
@@ -113,7 +109,22 @@ export const getPassword = id => dispatch => {
     return response.data.password;
   });
 };
+//////////////////////////////////// LOGOUT /////////////////////// 
+export const handleLogoutId  = (id)=> dispatch => {
+  dispatch(removeUserId(id));
+  // dispatch(removeUserData());
+};
+// export const removeUserData= () => ({  
+//   type: ActionTypes.REMOVE_USERDATA
+// });
+export const removeUserId = (id) => ({  //it recieves an empty string 
+  type: ActionTypes.ADD_LOGOUT,
+  payload:id
+});
+/////////////////////////////////////////////////////////////////////
+/////////////////GetPlayListData////////by Ahmed M. Hassan//////
 
+<<<<<<< HEAD
 //////////////////////////////////Account overView///////////////////////////////
 
 ///////////////////////////////////////Artist////////////////////////////////////
@@ -141,3 +152,80 @@ export const getAbout = id => dispatch => {
     return response.data.about;
   });
 }
+=======
+/////it should take the id when we integrate with the back end
+export const fetchUserPlaylist = () => dispatch => {
+  axios.get(`${baseUrl}playlist`)
+  .then(response =>dispatch(addUserPlaylist(response.data)));
+};
+export const addUserPlaylist = data => ({
+  type: ActionTypes.ADD_PLAYLIST,
+  payload: data
+});
+/////////////////////////////////////////////////////////////////////
+/////////////////GetArtistData////////by Ahmed M. Hassan//////
+
+/////it should take the id when we integrate with the back end
+export const fetchArtist = () => dispatch => {
+  axios.get(`${baseUrl}artists`)
+  .then(response =>dispatch(addArtist(response.data)));
+};
+export const addArtist = data => ({
+  type: ActionTypes.ADD_ARTIST,
+  payload: data
+});
+/////////////////////////////////////////////////////////////////////
+/////////////////GetArtistData////////by Ahmed M. Hassan//////
+
+/////it should take the id when we integrate with the back end
+export const fetchAlbum = () => dispatch => {
+  axios.get(`${baseUrl}albums`)
+  .then(response =>dispatch(addAlbum(response.data)));
+};
+export const addAlbum = data => ({
+  type: ActionTypes.ADD_ALBUM,
+  payload: data
+});
+// export const removeUserPlayList= () => ({  
+//   type: ActionTypes.REMOVE_PLAYLIST
+// });
+////////////////////////////////////////Edit Profile/////////////////////////////////////////////
+export const EditProfile = (
+  name, day, month, year, sex,id
+) => dispatch => {
+  const newFeedback = {
+    name, day, month, year, sex
+  };
+  axios
+    .patch(`${baseUrl}users${id}`, newFeedback);
+}
+/////////////////////////////////////////////////////// Not Mocking//////////////////////////////////
+//////////////sign in///////////////
+export const handleSignIn_BE = (data) => dispatch => {
+  axios.post(SignInUrl,data)
+  .then(response =>
+    {
+      dispatch(addLogin(true))
+      dispatch(addUserData_BE(response.data.user))
+    })
+  .catch(error=> dispatch(addLogin(false))) 
+};
+export const addUserData_BE = data => ({
+  type: ActionTypes.ADD_USERDATA_BE,
+  payload: data
+});
+export const addLogin = data => ({
+  type: ActionTypes.ADD_LOGIN,
+  payload: data
+});
+////////////////////////////////////////fetch Playlist by id/////////////////////
+// export const fetchPlaylistById_be = (id) => dispatch => {
+//   axios.get(`${PlaylistsUrl}${id}`)
+//   .then(response =>)
+//   .catch(error=> dispatch(addLogin(false))) 
+// };
+// export const addPlayList = data => ({
+//   type: ActionTypes.ADD_PLAYLIST_BYID,
+//   payload: data
+// });
+>>>>>>> 952bc96c9e796074cca24a1ae5061d5c28d4ca5d

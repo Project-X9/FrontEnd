@@ -7,25 +7,26 @@
 /* eslint-disable react/destructuring-assignment */
 import "./WebPlayerHomeComponent.css";
 import React, { Component } from "react";
-import {
-  Navbar,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavbarToggler,
-  Collapse,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  Button
-} from "reactstrap";
-import { NavLink, Link, Redirect, Switch, Route} from "react-router-dom";
+import { Navbar,Nav,NavItem,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem,Button} from "reactstrap";
+import { NavLink} from "react-router-dom";
+import PopularNewHomeAndNavContent from "./PopularNewHomeAndNavContent";
+import PopularArtistsHomeAndNavContent from "./PopularArtistsHomeAndNavContent";
+import PopularAlbumsHomeAndNavContent from "./PopularAlbumsHomeAndNavContent";
 
 
-
+/**
+ * WebPlayer page
+ */
 class HomeNavAndContentSigned extends Component {
  
+   /**
+   *
+   * @param {Object} props
+   * @param props.data Essentially contains the data of the users in the database
+   * @param props.id Essentially contains the id of one of the users in the database
+   * @param props.playLists Essentially contains the data of the playlists in the database
+   * @param props.handleLogoutId Essentially taks an id (should be an empty string) and replaces the current user id with it
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -33,6 +34,19 @@ class HomeNavAndContentSigned extends Component {
     };
   }
 
+  /**
+   * Sets a variable to an empty string then passes it to
+   * handleLogoutId() functions which logs the user out
+   */
+  handleLogout(){
+    let id="";
+    this.props.handleLogoutId(id);
+  }
+
+  /**
+   * Responsible for showing everything on the webplayer page
+   * @returns Components that will be displayed on the page
+   */
  
   render() {
     const userName = this.props.data.data.map((data) => {
@@ -78,27 +92,27 @@ class HomeNavAndContentSigned extends Component {
         }
       });
 
-      const isSignedIn = this.props.data.data.map((data) => {
+      const SignedIn = this.props.data.data.map((data) => {
         if (data.id === this.state.tempId) {
           return (
             <div>
               <div className="row">
                   <div className="WebPlayerHomeNav">
                       <div className="container">
-                          <Navbar className="NavBar NavStyle" sticky="top" expand="md">
+                          <Navbar className="NavBar NavStyle" expand="md">
                               <Nav className="mr-auto" href="/signup">
-                              <NavItem className="customizedNavitems">
-                                      <Button className="customizedButton">
-                                          <NavLink className="nav-link" to="/webplayer/library">
-                                          <svg className="customizedSvg" viewBox="0 0 24 24">
+                              <NavItem className="CustomNavitems">
+                                      <Button className="CustomButton">
+                                          <NavLink className="nav-link" to="/webplayer/librarypage/playlists">
+                                          <svg className="CustomSvg" viewBox="0 0 24 24">
                                           <path fill="currentColor" d="M15.54 21.15L5.095 12.23 15.54 3.31l.65.76-9.555 8.16 9.555 8.16"></path>                            </svg>    
                                           </NavLink>
                                       </Button>   
                               </NavItem>
-                              <NavItem className="customizedNavitems">
-                                      <Button className="customizedButton">
-                                              <NavLink className="nav-link customizedArrows" to="/webplayer/search">
-                                              <svg className="customizedSvg" viewBox="0 0 24 24">
+                              <NavItem className="CustomNavitems">
+                                      <Button className="CustomButton">
+                                              <NavLink className="nav-link" to="/webplayer/search">
+                                              <svg className="CustomSvg" viewBox="0 0 24 24">
                                               <path fill="currentColor" d="M7.96 21.15l-.65-.76 9.555-8.16L7.31 4.07l.65-.76 10.445 8.92"></path>
                                               </svg>    
                                               </NavLink>
@@ -122,11 +136,11 @@ class HomeNavAndContentSigned extends Component {
                                           {showUpgrade2}
                                           </DropdownItem>
                                           <DropdownItem className="StaticNavChildContainer">
-                                          <NavLink
-                                              className="StaticNavChild"
-                                              to="accountoverview">
+                                          <Button
+                                              onClick={() => { this.handleLogout() }} 
+                                              className="StaticNavChild">
                                               Log out
-                                          </NavLink>
+                                          </Button>
                                           </DropdownItem>
                                       </DropdownMenu>
                                       </UncontrolledDropdown>
@@ -136,47 +150,27 @@ class HomeNavAndContentSigned extends Component {
                       </div>
                   </div>
               </div>
-              <div className="row">
+              <div className="row RowWebPlayerHomeContent">
                 <div className="WebPlayerHomeContent">
                   <div className="container">
-                    <div className="row">
-                      <div className="col-sm-12">
-                        <div className="GridView">
-                          <div className="CardsHome">
-                            <div className="row">
-                              <div className="col">
-                                <div>
-                                <div className="CardPhoto">
-                                    <div className="ImageHolder">
-                                        <img  className="ImageItself" src="https://a10.gaanacdn.com/images/albums/69/2437469/crop_480x480_2437469.jpg" alt=""></img>
-                                    </div>
-                                </div>
-                                </div>
-                              </div>
-                            </div>
-                          
-                        
-                            <div className="row">
-                              <div className="col">
-                                <div>
-                                <div className="CardPhoto">
-                                    <div className="ImageHolder">
-                                        <img  className="ImageItself" src="https://i.scdn.co/image/ab67706f000000021c6e257c426955c06bdfb9ef" alt=""></img>
-                                    </div>
-                                </div>
-                                </div>
-                              </div>
-                            </div>
-                            </div>
-                        </div>
-                      </div>
-                    </div>
+                  <PopularNewHomeAndNavContent
+                     playLists={this.props.playLists}
+                     artist={this.props.artist}
+                     album={this.props.album}
+                     />
+                    <PopularArtistsHomeAndNavContent
+                     artist={this.props.artist}
+                     />
+                    <PopularAlbumsHomeAndNavContent
+                     album={this.props.album}
+                     />
                   </div>
                 </div>
               </div>
            </div>
           );
         }
+      });
         if (''===this.state.tempId) {
           return(
             <div>
@@ -185,18 +179,18 @@ class HomeNavAndContentSigned extends Component {
                       <div className="container">
                           <Navbar className="NavBar NavStyle" sticky="top" expand="md">
                               <Nav className="mr-auto" href="/signup">
-                              <NavItem className="customizedNavitems">
-                                      <Button className="customizedButton">
-                                          <NavLink className="nav-link" to="/webplayer/library">
-                                          <svg className="customizedSvg" viewBox="0 0 24 24">
+                              <NavItem className="CustomNavitems">
+                                      <Button className="CustomButton">
+                                          <NavLink className="nav-link" to="/webplayer/librarypage/playlists">
+                                          <svg className="CustomSvg" viewBox="0 0 24 24">
                                           <path fill="currentColor" d="M15.54 21.15L5.095 12.23 15.54 3.31l.65.76-9.555 8.16 9.555 8.16"></path>                            </svg>    
                                           </NavLink>
                                       </Button>   
                               </NavItem>
-                              <NavItem className="customizedNavitems">
-                                      <Button className="customizedButton">
-                                              <NavLink className="nav-link customizedArrows" to="/webplayer/search">
-                                              <svg className="customizedSvg" viewBox="0 0 24 24">
+                              <NavItem className="CustomNavitems">
+                                      <Button className="CustomButton">
+                                              <NavLink className="nav-link" to="/webplayer/search">
+                                              <svg className="CustomSvg" viewBox="0 0 24 24">
                                               <path fill="currentColor" d="M7.96 21.15l-.65-.76 9.555-8.16L7.31 4.07l.65-.76 10.445 8.92"></path>
                                               </svg>    
                                               </NavLink>
@@ -219,17 +213,29 @@ class HomeNavAndContentSigned extends Component {
                       </div>
                   </div>
               </div>
-              <div className="row">
-                  <h1>Hello,uiviuviuviuvuiuiyvuyvutchwveufyewvuywe yuewv cfyuew fcutewvfywevfywev</h1>
+              <div className="row RowWebPlayerHomeContent">
+                <div className="WebPlayerHomeContent">
+                  <div className="container">
+                    <PopularNewHomeAndNavContent
+                     playLists={this.props.playLists}
+                     />
+                    <PopularArtistsHomeAndNavContent
+                     artist={this.props.artist}
+                     />
+                    <PopularAlbumsHomeAndNavContent
+                     album={this.props.album}
+                     />
+                  </div>
+                </div>
               </div>
           </div>
           )
         }
-      });
+      
 
     return (
       <div>
-      {isSignedIn}
+      {SignedIn}
       </div>
     );
   }

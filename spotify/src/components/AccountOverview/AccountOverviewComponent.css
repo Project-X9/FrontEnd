@@ -154,38 +154,78 @@
     border-left-color: white;
     border-left-width: 2px;
   }
-  
-  div.AccountOverviewNav div.container .OpenNav {
-    background-color: black;
-  }
-  
-  div.AccountOverviewNav div.container .OpenNav .OpenNavChild{
-    color: grey;
-  }
-  
-  div.AccountOverviewNav div.container .OpenNav .OpenNavChild:hover {
-    color: #1ed760;
-    background-color: black;
+
+  div.AccountOverviewNav div.container .HorizontalLine {
+    display:none;
   }
 
-  div.AccountOverviewNav div.container .StaticNav,
-  div.AccountOverviewNav div.container .StaticNav .StaticNavChild1Container{
+  div.AccountOverviewNav div.container .AccountWhenCollapsed {
+    display:none;
+    color:grey;
+  }
+  
+  div.AccountOverviewNav div.container .LogoutWhenCollapsed {
+    display:none;
+    color: grey;
+    background-color: black;
+    padding:0;
+    border:none;
+  }
+
+  div.AccountOverviewNav div.container .LogoutWhenCollapsed.btn.btn-secondary{
+    width: 100%;
+    text-align:left;
+  }
+
+  div.AccountOverviewNav div.container .LogoutWhenCollapsed.btn.btn-secondary:focus{
+    box-shadow: none;
+  }
+  
+ 
+  div.AccountOverviewNav div.container .StaticNav .StaticNavChildContainer.dropdown-item{
     background-color: white;  
+    width:100%;
+    padding:0;
+    padding-left:15px;
   }
 
   div.AccountOverviewNav div.container .StaticNav .StaticNavChild1{
     color: black;  
+    width:100%;
+  }
+
+  div.AccountOverviewNav div.container .StaticNav .StaticNavChild1.active{
+    display:block;
   }
   
   div.AccountOverviewNav div.container .StaticNav .StaticNavChild2{
     color: grey;
+    background-color: white;
+    padding:0;
+    border:none;
+  }
+
+  div.AccountOverviewNav div.container .StaticNav .StaticNavChild2.btn.btn-secondary{
+    display: block;
+    width: 100%;
+    text-align:left;
+  }
+
+  div.AccountOverviewNav div.container .StaticNav .StaticNavChild2.btn.btn-secondary:focus{
+    box-shadow: none;
   }
   
   div.AccountOverviewNav div.container .StaticNav .StaticNavChild1:hover,
-  div.AccountOverviewNav div.container .StaticNav .StaticNavChild2:hover{
+  div.AccountOverviewNav div.container .StaticNav .StaticNavChild2.btn.btn-secondary:hover{
     color: #1ed760;
     background-color: white;
     text-decoration:none;
+  }
+
+  div.AccountOverviewNav div.container .AccountWhenCollapsed:hover,
+  div.AccountOverviewNav div.container .LogoutWhenCollapsed.btn.btn-secondary:hover{
+  color: #1ed760;
+  text-decoration:none;
   }
   
   .NavBarToggle {
@@ -202,24 +242,44 @@
     margin-right: 50px;
   }
 
-  @media(max-width: 768px){
-
-    div.AccountOverviewNav div.container .StaticNav {
-      background-color: black;
-    }
-
-    div.AccountOverviewNav div.container .StaticNav .StaticNavChild1,
-    div.AccountOverviewNav div.container .StaticNav .StaticNavChild2{
-      color: rgb(94, 91, 91);
-      background-color: black;
-    }
-
-    div.AccountOverviewNav div.container .StaticNav .StaticNavChild1:hover,
-    div.AccountOverviewNav div.container .StaticNav .StaticNavChild2:hover{
-    color: #1ed760;
-    background-color: black;
-    text-decoration:none;
+  div.AccountOverviewNav div.container .ImageWhenCollapsed {
+    margin:40px 0;
+    margin-left:20px;
+    display:none;
   }
+
+  @media(max-width: 767px){
+
+    div.AccountOverviewNav div.container .nav-link {
+      color: white;
+      margin-left: 20px;
+      font-size:40px;
+    }
+    
+    div.AccountOverviewNav div.container .HorizontalLine {
+      display:block;
+    }
+
+    div.AccountOverviewNav div.container .HorizontalLine:hover{
+      color:white;
+    }
+
+    div.AccountOverviewNav div.container .AccountWhenCollapsed {
+      display:block;
+    }
+    
+    div.AccountOverviewNav div.container .LogoutWhenCollapsed.btn.btn-secondary {
+      display:block;
+    }
+
+    div.AccountOverviewNav div.container .AccountOverviewDropDown {
+      display:none;
+    }
+
+    div.AccountOverviewNav div.container .ImageWhenCollapsed {
+      display:block;
+    } 
+   
   }
   /***************************************************Nav Bar***************************************************/
   /***************************************************Body***************************************************/
@@ -235,6 +295,10 @@
   .AccountOverviewBody{
     padding-left:7%;
     padding-right:7%;
+  }
+
+  .AccountOverviewBody div.HideAccountOverviewJumbotron{
+    display:none;
   }
 
   .AccountOverviewBody div.AccountOverviewBodyJumbo.jumbotron{  
@@ -463,7 +527,7 @@
    
   }
   /***************************************************Sidebar***************************************************/
-  /***************************************************Sidebar Content***************************************************/
+  /***************************************************Sidebar Content Account Overview***************************************************/
   
   .AccountOverviewBody .container .Content{
     background-color: white;
@@ -657,5 +721,169 @@
     letter-spacing: -0.25px;
     box-sizing: border-box;
   }
-  /***************************************************Sidebar Content***************************************************/
+  /***************************************************Sidebar Content Account Overview***************************************************/
+  /***************************************************Sidebar Content Edit Profile***************************************************/
+  .AccountOverviewBody .container .Content.EditProfileContentAswell{
+    background-color: #F8F8F8;
+    padding:3em;
+  }
+
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .EditProfileContent{
+    background-color: white;
+    padding:3em;
+  }
+
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .PageEditProfileBigHeader{
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-right: 0px;
+    margin-bottom: 24px;
+    margin-left: 0px;
+    border-bottom: 1px solid #EFEFEF;
+    font-family: Circular, Helvetica, Arial, sans-serif, IosFix;
+  }
+
+  
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .EditJustForBorder{
+    padding-bottom: 24px;
+    border-bottom: 1px solid #EFEFEF;
+  }
+
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .EditProfileBigHeader{
+    font-size: 26px;
+    margin: .5em 0;
+    color: #1DB954;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    box-sizing: border-box;
+  }
+
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .EditProfileLabel{
+    color:#919496;
+    font-weight: 400;
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    box-sizing: border-box; 
+    display: flex;
+    align-self: flex-start;  
+  }
+
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .EditProfileLabelDate{
+    padding-left:20px;  
+  }
+
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .EditProfileInputText{
+    box-shadow: none;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+    -webkit-appearance: none;
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #222326;
+    background-color: #FFF;
+    background-image: none;
+    border: 1px solid #D9DADC;
+    border-radius: 0;
+    font-family: inherit;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .EditProfileInputSelection{
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    color: #222326;
+    padding-right: 48px;
+    text-indent: .01px;
+    text-overflow: '';
+    box-shadow: none;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: #FFF;
+    border: 1px solid #D9DADC;
+    border-radius: 0;
+    text-transform: none;
+    margin: 0;
+  }
+
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .EditProfileButtonsPositioning{
+    display:flex;
+    flex-direction: row-reverse;
+  }
+
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .EditProfileCancelButton{
+    margin-right: 20px;
+    float: right !important;
+    color: #000;
+    max-width: 290px;
+    font-size: 12px;
+    line-height: 1;
+    border-radius: 500px;
+    padding: 10px 32px;
+    transition-property: background-color, border-color, color, box-shadow, filter, -webkit-box-shadow, -webkit-filter;
+    transition-duration: .3s;
+    border-width: 0;
+    letter-spacing: 2px;
+    min-width: 160px;
+    text-transform: uppercase;
+    white-space: normal;
+    margin-bottom: 0;
+    font-weight: 700;
+    text-align: center;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    user-select: none;
+    text-decoration: none;
+    background-color: transparent;
+    box-sizing: border-box;
+    font-family: Circular, Helvetica, Arial, sans-serif, IosFix;
+  }
+
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .EditProfileSaveButton{
+    float: right !important;
+    max-width: 290px;
+    font-size: 12px;
+    line-height: 1;
+    border-radius: 500px;
+    padding: 10px 32px;
+    transition-property: background-color, border-color, color, box-shadow, filter, -webkit-box-shadow, -webkit-filter;
+    transition-duration: .3s;
+    border-width: 0;
+    letter-spacing: 2px;
+    min-width: 160px;
+    text-transform: uppercase;
+    white-space: normal;
+    margin-bottom: 0;
+    font-weight: 700;
+    text-align: center;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    user-select: none;
+    font-family: inherit;
+    -webkit-appearance: button;
+    overflow: visible;
+    box-sizing: border-box;
+    background-color: rgb(44, 173, 77);
+  }
+
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .EditProfileSaveButton:hover{
+    color: #FFF;
+    background-color: #1ED760;
+    border-color: #116e32;
+    text-decoration: none;
+  }
+  /***************************************************Sidebar Content Edit Profile***************************************************/
   /***************************************************Body***************************************************/
