@@ -28,6 +28,7 @@ import {
   fetchAlbum,
   EditProfile,
   handleSignIn_BE,
+  makeSignupRedirectable
 } from "../redux/ActionCreators";
 
 const mapStateToProps = state => ({
@@ -56,6 +57,9 @@ const mapDispatchToProps = dispatch => ({
   },
   fetchArtist: () => {
     dispatch(fetchArtist());
+  },
+  makeSignupRedirectable:() =>{
+    dispatch(makeSignupRedirectable());
   },
   fetchAlbum: () => {
     dispatch(fetchAlbum());
@@ -112,6 +116,7 @@ class Main extends Component {
                 data={this.props.data}
                 handleLoginId={this.props.handleLoginId}
                 userstate={this.props.userstate}
+                makeSignupRedirectable={this.props.makeSignupRedirectable}
               />
             )}
           />
@@ -188,6 +193,7 @@ class Main extends Component {
                 handleLoginId={this.props.handleLoginId}
                 isSignedIn={this.props.isSignedIn}
                 handleSignIn_BE={this.props.handleSignIn_BE}
+
 
               />
             )}
