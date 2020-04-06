@@ -27,7 +27,7 @@ import {
   fetchArtist,
   fetchAlbum,
   EditProfile,
-  handleSignIn_BE
+  handleSignIn_BE,
 } from "../redux/ActionCreators";
 
 const mapStateToProps = state => ({
@@ -38,7 +38,8 @@ const mapStateToProps = state => ({
   album: state.album,
   userstate:state.userstate,
   isSignedIn:state.isSignedIn,
-  data_be:state.data_be
+  data_be:state.data_be,
+ 
 });
 const mapDispatchToProps = dispatch => ({
   resetFeedbackForm: () => {
@@ -166,6 +167,9 @@ class Main extends Component {
                 artist={this.props.artist}
                 album={this.props.album}
                 handleLogoutId={this.props.handleLogoutId}
+                data_be={this.props.data_be}
+                // fetchPlaylistById_be={this.props.fetchPlaylistById_be}
+                // playlist_BE={this.props.playlist_BE}
                 ///////////
               />
             )}

@@ -19,7 +19,7 @@ class Artists extends Component {
 
     
     render(){
-        if(this.props.artist.artist.length === 0)
+        if(this.props.data_be.data_be.artists.length === 0)
         {
             var RenderNoLikedArtists=() =>{
                 return(
@@ -48,7 +48,7 @@ class Artists extends Component {
                 )
             }
         }
-        const RenderArtistsCard =this.props.artist.artist.map((artist)=>{
+        const RenderArtistsCard =this.props.data_be.data_be.artists.map((artist)=>{
             return(
                 <div key={artist.id} className="CardsLibrary">
                     <Row>
@@ -98,7 +98,7 @@ class Artists extends Component {
             <div className="LibraryPageBody">
             <div className="container MainViewPlaylsit">
                 <div className="sectionPlayList">
-                    {this.props.artist.artist.length === 0 ? (
+                    {this.props.data_be.data_be.artists.length === 0 ? (
                         <div>{RenderNoLikedArtists()}</div>
                     ):(
                         <div>
