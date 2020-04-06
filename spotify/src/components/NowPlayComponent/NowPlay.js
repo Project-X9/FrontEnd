@@ -9,7 +9,7 @@ import {
   DropdownMenu,
   DropdownItem,
   Button,
-  DropdownToggle
+  DropdownToggle,
 } from "reactstrap";
 import "./NowPlay.css";
 
@@ -19,16 +19,11 @@ class NowPlay extends Component {
     super(props);
     this.state = {
       isNavOpen: false,
-      modal: false,
-      isModalOpen: false,
-      collapsed: true,
-      Premium: false,
-      tempId: this.props.id.id
+
+      disabled: false,
+      tempId: this.props.id.id,
     };
     this.state.toggleNav = this.toggleNav.bind(this);
-    // this.togglemodal = this.togglemodal.bind(this);
-    // this.handlePremiumT = this.handlePremiumT.bind(this);
-    // this.handlePremiumF = this.handlePremiumF.bind(this);
   }
   changeBack(e) {
     e.target.style.background = "red";
@@ -36,7 +31,7 @@ class NowPlay extends Component {
   toggleNav() {
     this.setState({
       isNavOpen: !this.state.isNavOpen,
-      collapsed: !this.state.collapsed
+      collapsed: !this.state.collapsed,
     });
   }
 
@@ -64,6 +59,127 @@ class NowPlay extends Component {
       albumsActive = "";
       artistsActive = " activeButton";
     }
+    //////////////////////////////////////////////////////Functions here//////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////No-1 For Songs Rendering////////////////////////////////
+    const RenderPlaylisttracks = this.props.playLists.playLists.map(
+      (PlayLists) => {
+        if (PlayLists.name === "Best of 2015") {
+          if (PlayLists.tracks.length === 0) {
+            return (
+              <div className="NolikedLevelZero">
+                <div className="NolikedLevelOne">
+                  <div className="NolikedLevelTwo">
+                    <div className="row TakeitDown">
+                      <div className="col-xs-12 NolikedLevelThree">
+                        <div className="SomeheighPlease">
+                          <svg
+                            width="80"
+                            height="79"
+                            viewBox="0 0 80 79"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <title>Album</title>
+                            <path
+                              d="M76.8 3.138v72.126H3.2V3.138h73.6zM80 0H0v78.398h80V0zM40 20.8c-9.72 0-17.6 7.88-17.6 17.6C22.4 48.12 30.28 56 40 56c9.72 0 17.6-7.88 17.6-17.6 0-9.72-7.88-17.6-17.6-17.6zm0 3.2c7.94 0 14.4 6.46 14.4 14.4S47.94 52.8 40 52.8s-14.4-6.46-14.4-14.4S32.06 24 40 24z"
+                              fill="currentColor"
+                              fill-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </div>
+                        <Row>
+                          <Col md={12}>
+                            <h1 class="YourFirstInAll">
+                              Songs you’ve liked live here{" "}
+                            </h1>
+                            <h4 class="_1bfd68987bbac2dd824e5db895bd3c57-scss">
+                              Find more of the songs you love in Browse and save
+                              to your Liked Songs.
+                            </h4>
+                            <button
+                              class="_2221af4e93029bedeab751d04fab4b8b-scss _1edf52628d509e6baded2387f6267588-scss _4a19a959428c34075eef50bd44ab468f-scss"
+                              type="button"
+                            >
+                              DISCOVER
+                            </button>
+                          </Col>
+                        </Row>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          } else {
+            return PlayLists.tracks.map((Song) => {
+              return (
+                <section className="TrackListContainer">
+                  <ol className="olstyle TrackListContainer Orderedlist">
+                    <div className="Div textMenuWrapper">
+                      <div draggable="true">
+                        <li
+                          tabindex="0"
+                          role="button"
+                          aria-pressed="false"
+                          className="listyle TrackListRow"
+                        >
+                          <div className="DivStyle TrackListCol PositionOuter">
+                            <div
+                              role="button"
+                              className="DivStyle TrackListCol PositionOuter TopAlign PlayPause"
+                            >
+                              <svg class="icon-play" viewBox="0 0 85 100">
+                                <path
+                                  fill="currentColor"
+                                  d="M81 44.6c5 3 5 7.8 0 10.8L9 98.7c-5 3-9 .7-9-5V6.3c0-5.7 4-8 9-5l72 43.3z"
+                                >
+                                  <title>PLAY</title>
+                                </path>
+                              </svg>
+                            </div>
+                            <div
+                              role="button"
+                              className="DivStyle TrackListCol PositionOuter  Position"
+                            >
+                              <i className="fa fa-music"></i>
+                            </div>
+                          </div>
+                          <div className="DivStyle TrackListCol name">
+                            <div className="DivStyle TrackListCol TopAlign ">
+                              <div className="DivStyle InOneLine TrackListName">
+                                {Song.name}{" "}
+                              </div>
+                              <div className="DivStyle TrackListName SecondLine">
+                                By {Song.artist}
+                              </div>
+                            </div>
+                          </div>
+                          <div className="DivStyle TrackListCol more">
+                            <div className="DivStyle TrackListCol TopAlign">
+                              <div className="DivStyle TrackListRow more textMenuWrapper">
+                                <button className="buttonstyle MultiButton">
+                                  <i class="fa fa-ellipsis-h"></i>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="DivStyle TrackLisCol Duration">
+                            <div className="DivStyle TrackListHeader Body by">
+                              <span>3:21</span>
+                            </div>
+                          </div>
+                        </li>
+                      </div>
+                    </div>
+                  </ol>
+                </section>
+              );
+            });
+          }
+        }
+      }
+    );
+    /////////////////////////////////////////////////////////RenderSongsDone//////////////////////////////////////////////////
+
     return (
       <div className=" DivStyle LibraryPageBody">
         <Navbar expand="md" className="customizedNavbar Ezzat ">
@@ -133,21 +249,21 @@ class NowPlay extends Component {
             <section className="contentSection">
               <div className=" DivStyle container fluid">
                 <div className=" DivStyle row general">
-                  <div className="DivStyle col-xs-12 col-lg-4 col-xl-4">
+                  <div className="col-xs-12 col-lg-3 col-xl-4">
                     <div>
-                      <header className="headerstyle TrackListHeader">
+                      <header className="TrackListHeader">
                         <div>
                           <div draggable="true">
-                            <div className=" DivStyle TrackListHeader media object">
+                            <div className="TrackListHeader media object">
                               <div
-                                class="DivStyle TrackListHeader media object hoverable "
+                                class=" TrackListHeader media object hoverable "
                                 aria-hidden="true"
                               >
                                 <div
-                                  className="DivStyle cover art shadow"
+                                  className="cover art shadow"
                                   aria-hidden="true"
                                 >
-                                  <div class="DivStyle cover art icon">
+                                  <div class=" cover art icon">
                                     <svg
                                       width="80"
                                       height="81"
@@ -162,13 +278,14 @@ class NowPlay extends Component {
                                       ></path>
                                     </svg>
                                   </div>
-                                  <div className="DivStyle OneOpacity">
+                                  <div className="OneOpacity">
                                     <img
+                                      alt=""
                                       className="cover art image"
                                       src="https://i.scdn.co/image/ab67706f000000021b75b1478680dcb9448d3395"
                                     />
-                                    <div className="DivStyle overlay"></div>
-                                    <button class="buttonstyle cover art playback ButtonHover">
+                                    <div className="overlay"></div>
+                                    <button class="cover art playback ButtonHover">
                                       <svg
                                         class="cover art playback icon play"
                                         viewBox="0 0 85 100"
@@ -185,12 +302,14 @@ class NowPlay extends Component {
                                 </div>
                               </div>
                             </div>
-                            <div className="DivStyle TrackListHeader mo info">
-                              <div clasName="DivStyle textMenuWrapper">
-                                <div className="DivStyle TrackListHeader mo info Name">
-                                  <span dir="auto">Today's Top Hits</span>
+                            <div className="TrackListHeader mo info">
+                              <div clasName="textMenuWrapper">
+                                <div className="TrackListHeader mo info Name">
+                                  <span dir="auto">
+                                    Today's Top Hits(المفروض يجيلي في Props)
+                                  </span>
                                 </div>
-                                <div className="DivStyle mo meta ellipsis-one-line">
+                                <div className="mo meta ellipsis-one-line">
                                   <span>
                                     <a dir="auto" href="/user/spotify">
                                       Spotify
@@ -201,8 +320,8 @@ class NowPlay extends Component {
                             </div>
                           </div>
                         </div>{" "}
-                        <div className="DivStyle TrackListHeader Body">
-                          <div className="DivStyle TrackListHeader Body entity Name">
+                        <div className=" TrackListHeader Body">
+                          <div className="TrackListHeader Body entity Name">
                             <h2>Today's Top Hits</h2>
                             <span className="TrackListHeader Body by">
                               <a
@@ -213,19 +332,16 @@ class NowPlay extends Component {
                               </a>
                             </span>
                           </div>
-                          <div className="DivStyle TrackListHeader Body Inverter">
-                            <div className="DivStyle TrackListHeader Body Inverter Actions">
-                              <button
-                                className="buttonstyle signupbtn Transformed"
-                                type="submit"
-                              >
+                          <div className="TrackListHeader Body Inverter">
+                            <div className="TrackListHeader Body Inverter Actions">
+                              <button className="signupbtn" type="submit">
                                 PLAY
                               </button>
-                              <div className="DivStyle TrackListHeader ExtraButtons">
-                                <Button className="buttonstyle TransparentButton">
+                              <div className="TrackListHeader ExtraButtons">
+                                <Button className="Jumbostyle">
                                   <i class="fa fa-heart"></i>
                                 </Button>
-                                <Button className="buttonstyle TransparentButton">
+                                <Button className="Jumbostyle">
                                   <i class="fa fa-ellipsis-h"></i>
                                 </Button>
                               </div>
@@ -235,70 +351,9 @@ class NowPlay extends Component {
                         </div>
                       </header>
                     </div>
-                  </div>
-
-                  <div class="DivStyle col-xs-12 col-lg-9 col-xl-8">
-                    <section className="TrackListContainer">
-                      <ol className="olstyle TrackListContainer Orderedlist">
-                        <div className="Div textMenuWrapper">
-                          <div draggable="true">
-                            <li
-                              tabindex="0"
-                              role="button"
-                              aria-pressed="false"
-                              className="listyle TrackListRow"
-                            >
-                              <div className="DivStyle TrackListCol PositionOuter">
-                                <div
-                                  role="button"
-                                  className="DivStyle TrackListCol PositionOuter TopAlign PlayPause"
-                                >
-                                  <svg class="icon-play" viewBox="0 0 85 100">
-                                    <path
-                                      fill="currentColor"
-                                      d="M81 44.6c5 3 5 7.8 0 10.8L9 98.7c-5 3-9 .7-9-5V6.3c0-5.7 4-8 9-5l72 43.3z"
-                                    >
-                                      <title>PLAY</title>
-                                    </path>
-                                  </svg>
-                                </div>
-                                <div
-                                  role="button"
-                                  className="DivStyle TrackListCol PositionOuter  Position"
-                                >
-                                  <i className="fa fa-music"></i>
-                                </div>
-                              </div>
-                              <div className="DivStyle TrackListCol name">
-                                <div className="DivStyle TrackListCol TopAlign ">
-                                  <div className="DivStyle InOneLine TrackListName">
-                                    {" "}
-                                    Binding lights{" "}
-                                  </div>
-                                  <div className="DivStyle TrackListName SecondLine">
-                                    by Mr A7a
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="DivStyle TrackListCol more">
-                                <div className="DivStyle TrackListCol TopAlign">
-                                  <div className="DivStyle TrackListRow more textMenuWrapper">
-                                    <button className="buttonstyle MultiButton">
-                                      <i class="fa fa-ellipsis-h"></i>
-                                    </button>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="DivStyle TrackLisCol Duration">
-                                <div className="DivStyle TrackListHeader Body by">
-                                  <span>3:21</span>
-                                </div>
-                              </div>
-                            </li>
-                          </div>
-                        </div>
-                      </ol>
-                    </section>
+                  </div>{" "}
+                  <div class="DivStyle col-xs-12 col-lg-10 col-xl-8">
+                    {RenderPlaylisttracks}
                   </div>
                 </div>
               </div>
