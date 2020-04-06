@@ -64,9 +64,25 @@ class WebPlayer extends Component {
     if (this.state.SignedIn) {
       redirected = <Redirect to="/webplayer/librarypage/playlists"></Redirect>
     }
-    const showLikeAndCreate = this.props.data.data.map((data) => {
-      if (data.id === this.state.tempId) {
-        return(
+    // const showLikeAndCreate = this.props.data.data.map((data) => {
+    //   if (data.id === this.state.tempId) {
+    //     return(
+    //       <div>
+    //           <h3 className="sidebarHeaderBetween">PLAYLISTS</h3>
+    //           <Link to="/"  className={createPlaylistsActive}>
+    //               <i className="fa fa-plus-square"></i>
+    //               Create Playlist
+    //           </Link>
+    //           <Link to="/webplayer/nowplay"  className={likedSongsActive}>
+    //               <i className="fa fa-heart"></i>
+    //               Liked Songs
+    //           </Link>
+    //       </div>
+    //     )
+    //   }
+    // });
+
+    let showLikeAndCreate =(
           <div>
               <h3 className="sidebarHeaderBetween">PLAYLISTS</h3>
               <Link to="/"  className={createPlaylistsActive}>
@@ -79,8 +95,7 @@ class WebPlayer extends Component {
               </Link>
           </div>
         )
-      }
-    });
+      
     return (
       <div>
       {redirected}
@@ -148,7 +163,9 @@ class WebPlayer extends Component {
                             exact
                             path="/webplayer/nowplay"
                             component={() => (
-                              <NowPlay id={this.props.id} data={this.props.data} />
+                              <NowPlay id={this.props.id}
+                               data={this.props.data} 
+                               playLists={this.props.playLists} />
                             )}
                         />
                         <Redirect to="/webplayer/home" /> 

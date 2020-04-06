@@ -70,8 +70,8 @@
 
 .MainViewContainer {
   isolation: isolate;
-  padding-bottom: 32px;
-  padding: 0 32px;
+  /* padding-bottom: 32px; */
+  /* padding: 0 32px; */
   margin: 0;
   /* max-width: 1955px; */
 }
@@ -91,7 +91,7 @@
   padding-right: 8px;
 }
 .TrackListHeader {
-  margin: 0 auto 1.5em;
+  /* margin: 0 auto 1.5em; */
   text-align: center;
   /* max-width: 400px; */
 }
@@ -247,7 +247,7 @@
   text-transform: none;
 }
 .TrackListHeader.Body.Inverter.Actions {
-  margin-top: 16px;
+  /* margin-top: 16px; */
 }
 .TrackListHeader.ExtraButtons {
   -webkit-box-align: center;
@@ -322,7 +322,7 @@
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 .mo.info {
-  margin: 12px 0 4px;
+  /* margin: 12px 0 4px; */
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;

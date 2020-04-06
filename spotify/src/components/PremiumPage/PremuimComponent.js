@@ -20,7 +20,7 @@ import {
   DropdownMenu,
   DropdownItem,
   Button,
-  DropdownToggle
+  DropdownToggle,
 } from "reactstrap";
 import "./PremiumComponent.css";
 
@@ -41,14 +41,14 @@ class Premium extends Component {
       isModalOpen: false,
       collapsed: true,
       Premium: this.props.data_be.data_be.premium,
-      tempId: this.props.id.id,
-      isPrenium:!this.props.data_be.data_be.premium
+      tempId: this.props.data_be.data_be._id,
+      isPrenium: !this.props.data_be.data_be.premium,
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.togglemodal = this.togglemodal.bind(this);
     // this.handlePremiumT = this.handlePremiumT.bind(this);
     // this.handlePremiumF = this.handlePremiumF.bind(this);
-    this.handlePremium_be=this.handlePremium_be.bind(this);
+    this.handlePremium_be = this.handlePremium_be.bind(this);
   }
   // componentDidMount(){
   //   if(this.state.isPrenium === this.state.premium)
@@ -93,10 +93,11 @@ class Premium extends Component {
   handlePremium_be() {
     if (this.state.Premium === true) {
       this.props.PremiumPost(this.props.data_be.data_be._id, false);
+      this.setState({ Premium: false });
       this.togglemodal();
-    }
-    else if(this.state.Premium === false){
+    } else if (this.state.Premium === false) {
       this.props.PremiumPost(this.props.data_be.data_be._id, true);
+      this.setState({ Premium: true });
       this.togglemodal();
     }
   }
@@ -106,11 +107,16 @@ class Premium extends Component {
   toggleNav() {
     this.setState({
       isNavOpen: !this.state.isNavOpen,
-      collapsed: !this.state.collapsed
+      collapsed: !this.state.collapsed,
     });
   }
 
   render() {
+    let redirect = "";
+    if (this.props.data_be.data_be._id === undefined) {
+      redirect = <Redirect to="/signup" />;
+    }
+
     let accLogStyleParent = "";
     let accChild = "";
     let logChild = "";
@@ -125,6 +131,7 @@ class Premium extends Component {
     }
     return (
       <div>
+        {redirect}
         <div className="AccountOverviewNav">
           <div className="container">
             <Navbar className="NavBar" sticky="top" expand="md">
