@@ -263,13 +263,6 @@ class AccountOverview extends Component {
                 {showPlan}
                 <div className="row">
                   <Button className="EditProfile" color="success">
-                    <NavLink className="InsideEditProfile" to="/premium">
-                      JOIN PREMIUM
-                    </NavLink>
-                  </Button>
-                </div>
-                <div className="row">
-                  <Button className="EditProfile" color="success">
                     <NavLink className="InsideEditProfile" to="/">
                       SIGN OUT
                     </NavLink>

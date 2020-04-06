@@ -93,9 +93,9 @@ class PopularArtistsHomeAndNavContent extends Component {
                     <h2 className="HeaderAboveGrid">Popular Artists</h2>
                     </Link>
                 </div>
-                <div className="col-sm-3 ContainerSeeAllAboveGrid">
+                {/* <div className="col-sm-3 ContainerSeeAllAboveGrid">
                     <Link className="SeeAllAboveGrid">SEE ALL</Link>
-                </div>
+                </div> */}
             </div>
             <div className="row">
                 <div className="col-sm-12">

@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 import {
   Card, CardBody, CardText, CardSubtitle,
 } from 'reactstrap';
-
+import { NavLink} from "react-router-dom";
+import {Button} from "reactstrap";
 /**
  * Class for the freePlan component which is a container shown for the free users
  */
@@ -30,6 +31,13 @@ class FreePlan extends Component {
             </CardBody>
           </Card>
         </div>
+        <div className="row">
+            <Button className="EditProfile" color="success">
+              <NavLink className="InsideEditProfile" to="/premium">
+                JOIN PREMIUM
+              </NavLink>
+            </Button>
+          </div>
       </div>
     );
   }
