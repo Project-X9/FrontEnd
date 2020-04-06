@@ -9,7 +9,7 @@ import "./WebPlayerHomeComponent.css";
 import React, { Component } from "react";
 import { Navbar,Nav,NavItem,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem,Button} from "reactstrap";
 import { NavLink} from "react-router-dom";
-import PopularNewHomeAndNavContent from "./PopularNewHomeAndNavContent";
+import PopularPlaylistsContent from "./PopularPlaylistsContent";
 import PopularArtistsHomeAndNavContent from "./PopularArtistsHomeAndNavContent";
 import PopularAlbumsHomeAndNavContent from "./PopularAlbumsHomeAndNavContent";
 
@@ -195,10 +195,8 @@ class HomeNavAndContentSigned extends Component {
       //         <div className="row RowWebPlayerHomeContent">
       //           <div className="WebPlayerHomeContent">
       //             <div className="container">
-      //             <PopularNewHomeAndNavContent
-      //                playLists={this.props.playLists}
-      //                artist={this.props.artist}
-      //                album={this.props.album}
+      //             <PopularPlaylistsContent
+      //                playLists={this.props.playLists}            
       //                />
       //               <PopularArtistsHomeAndNavContent
       //                artist={this.props.artist}
@@ -258,9 +256,6 @@ class HomeNavAndContentSigned extends Component {
       //         <div className="row RowWebPlayerHomeContent">
       //           <div className="WebPlayerHomeContent">
       //             <div className="container">
-      //               <PopularNewHomeAndNavContent
-      //                playLists={this.props.playLists}
-      //                />
       //               <PopularArtistsHomeAndNavContent
       //                artist={this.props.artist}
       //                />
@@ -336,16 +331,17 @@ class HomeNavAndContentSigned extends Component {
           <div className="row RowWebPlayerHomeContent">
             <div className="WebPlayerHomeContent">
               <div className="container">
-              <PopularNewHomeAndNavContent
+                <PopularPlaylistsContent
                 playLists={this.props.playLists}
-                artist={this.props.artist}
-                album={this.props.album}
+                data_be={this.props.data_be}
                 />
                 <PopularArtistsHomeAndNavContent
                 artist={this.props.artist}
+                data_be={this.props.data_be}
                 />
                 <PopularAlbumsHomeAndNavContent
                 album={this.props.album}
+                data_be={this.props.data_be}
                 />
               </div>
             </div>
@@ -399,14 +395,13 @@ class HomeNavAndContentSigned extends Component {
           <div className="row RowWebPlayerHomeContent">
             <div className="WebPlayerHomeContent">
               <div className="container">
-                <PopularNewHomeAndNavContent
-                 playLists={this.props.playLists}
-                 />
                 <PopularArtistsHomeAndNavContent
                  artist={this.props.artist}
+                 data_be={this.props.data_be}
                  />
                 <PopularAlbumsHomeAndNavContent
                  album={this.props.album}
+                 data_be={this.props.data_be}
                  />
               </div>
             </div>
