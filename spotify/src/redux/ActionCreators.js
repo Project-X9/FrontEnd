@@ -115,3 +115,29 @@ export const getPassword = id => dispatch => {
 };
 
 //////////////////////////////////Account overView///////////////////////////////
+
+///////////////////////////////////////Artist////////////////////////////////////
+
+export const getName = id => dispatch => {
+  axios.get(`${baseUrl}artists/${id - 1}`).then(response => {
+    return response.data.name;
+  }).then(name=>console.log(name));
+}
+
+export const getPopularSongs = id => dispatch => {
+  axios.get(`${baseUrl}artists/${id - 1}`).then(response => {
+    return response.data.popularSongs;
+  });
+}
+
+export const getAlbums = id => dispatch => {
+  axios.get(`${baseUrl}artists/${id - 1}`).then(response => {
+    return response.data.albums;
+  });
+}
+
+export const getAbout = id => dispatch => {
+  axios.get(`${baseUrl}artists/${id - 1}`).then(response => {
+    return response.data.about;
+  });
+}

@@ -1,0 +1,164 @@
+.body {
+  background-color: #1a1a1a;
+}
+.NavBar {
+  margin: 0 auto;
+  padding: 10px 15px;
+  opacity: 1;
+  z-index: 100;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background-color: #808080;
+  color: white;
+}
+/*
+.Artist nav button {
+  align-items: flex-end;
+  font-size: 10px;
+  margin-top: 20px;
+  line-height: 1;
+  background-color: #808080;
+  color: #fff;
+  border-radius: 500px;
+  padding: 16px 48px 18px;
+  -webkit-transition-property: background-color, border-color, color,
+    -webkit-box-shadow, -webkit-filter;
+  transition-property: background-color, border-color, color, -webkit-box-shadow,
+    -webkit-filter;
+  transition-property: background-color, border-color, color, box-shadow, filter;
+  transition-property: background-color, border-color, color, box-shadow, filter,
+    -webkit-box-shadow, -webkit-filter;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  border-width: 0;
+  letter-spacing: 2px;
+  min-width: 80px;
+  text-transform: uppercase;
+  white-space: normal;
+  color: #fff;
+  background-color: #808080;
+  border-color: white;
+}
+.btn-secondary {
+  border: 1.5px solid white;
+  border-radius: 500px;
+}*/
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: black;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+svg {
+  overflow: hidden;
+  vertical-align: -webkit-baseline-middle;
+  padding-left: 0px;
+  text-align: left;
+  display: block;
+  color: white;
+  position: absolute;
+}
+/* Sidebar links */
+.sidebar a {
+  display: block;
+  color: #999999;
+  padding: 10px;
+  text-decoration: none;
+  -webkit-transition-property: background-color, border-color, color,
+    -webkit-box-shadow, -webkit-filter;
+  transition-property: background-color, border-color, color, -webkit-box-shadow,
+    -webkit-filter;
+  transition-property: background-color, border-color, color, box-shadow, filter;
+  transition-property: background-color, border-color, color, box-shadow, filter,
+    -webkit-box-shadow, -webkit-filter;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+
+/* Active/current link */
+.sidebar a.active {
+  background-color: #404040;
+  color: white;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+  color: white;
+}
+
+/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+#playButton {
+  width: 15%;
+  margin-left: 0px;
+  position: absolute;
+}
+#followButton {
+  background-color: transparent;
+  border: 2px solid #fff;
+  width: 15%;
+  position: absolute;
+  margin-left: 170px;
+}
+#followButton:hover {
+  transform: scale(1.05, 1.05);
+  -webkit-transform: scale(1.05, 1.05);
+  -moz-transform: scale(1.05, 1.05);
+}
+#playButton:hover {
+  transform: scale(1.05, 1.05);
+  -webkit-transform: scale(1.05, 1.05);
+  -moz-transform: scale(1.05, 1.05);
+}
+.menu-more:after {
+  content: "\2026";
+  font-size: 30px;
+  color: #fff;
+  position: absolute;
+  width: min-content;
+  margin-left: 0px;
+}
+.Header2{
+  display: inline;
+}
+.artistPage{
+  background-color: #1a1a1a;
+}
+.main-artist{
+  margin: 0px;
+  height: 100%;
+}
+.switchers{
+  margin: 0px;
+  width: fit-content;
+}
+.switchers .secondary{
+  background-color: transparent;
+  border: 0px;
+}
+#popular-songs{
+  color: white;
+  font-size: 36px;
+  
+  margin-top: 20px;
+
+}
+.artist-image{
+  float: left;
+}
+.song-text{
+  float: left;
+  margin-left: 10px;
+  margin-top: 10px;
+}

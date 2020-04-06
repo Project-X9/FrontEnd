@@ -11,8 +11,10 @@ import SignIn from "./SignIn/SignInComponent";
 import PlayFotter from "./WebPlayer/PlayFotterComponent";
 import Library from './Library/LibraryCompnent';
 import LibraryPage from  "./Library/LibraryPage";
+import Artists from  "./Library/ArtistsComponent";
 import PlayList from './Library/PlayListComponent';
 import Albums from './Library/AlbumsComponent';
+import Artist from "./ArtistInterface/ArtistComponent";
 
 import {
   postFeedback,
@@ -24,8 +26,10 @@ import {
   getPassword,
   fetchUserData,
   handleLoginId,
-  handleLogoutId
+  handleLogoutId,
+  getName
 } from "../redux/ActionCreators";
+
 
 const mapStateToProps = state => ({
   data: state.data,
@@ -53,12 +57,14 @@ const mapDispatchToProps = dispatch => ({
       postFeedback(email, confirmemail, password, name, day, month, year, sex)
     ),
   postFacebookLogin: (email, image, name) =>
-    dispatch(postFacebookLogin(email, image, name))
+    dispatch(postFacebookLogin(email, image, name)),
+  getName: id => dispatch(getName(id))
 });
 
 class Main extends Component {
   componentDidMount() {
     this.props.fetchUserData();
+    this.props.getName();
   }
 
   render() {
@@ -69,6 +75,15 @@ class Main extends Component {
         {/* <CSSTransition key={this.props.location.key} classNames="page" timeout={300}> */}
         <Switch>
           <Route exact path="/home" component={() => <Home />} />
+          <Route exact path="/artist" component={() => <Artist />} />
+         <Route exact path="/artists"
+            component={() => (
+              <Library
+                id={this.props.id}
+                data={this.props.data}
+              />
+            )}
+          />
           <Route
             exact
             path="/signup"
@@ -164,7 +179,7 @@ class Main extends Component {
               <PlayFotter data={this.props.data} id={this.props.id} />
             )}
           />
-          <Redirect to="/signup" />
+          <Redirect to="/artist" />
         </Switch>
         {/* </CSSTransition> */}
         {/* </TransitionGroup> */}
