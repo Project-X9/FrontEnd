@@ -12,7 +12,6 @@ import {
   DropdownToggle,
 } from "reactstrap";
 import "./NowPlay.css";
-
 import { NavLink } from "react-router-dom";
 class NowPlay extends Component {
   constructor(props) {
@@ -36,6 +35,223 @@ class NowPlay extends Component {
   }
 
   render() {
+    // const userName = this.props.data.data.map((data) => {
+    //     if (data.id === this.state.tempId) {
+    //       return (
+    //         <div>
+    //          <Button className="AccountItself">
+    //             <DropdownToggle nav caret>
+    //                 <i class="fa fa-user-secret"></i>
+    //                 {data.name}
+    //             </DropdownToggle>
+    //         </Button>
+    //         </div>
+    //       );
+    //     }
+    //   });
+
+    let userName = (
+      <div>
+        <Button className="AccountItself">
+          <DropdownToggle nav caret className="WritingInsideAccountItself">
+            <i class="fa fa-user-secret"></i>
+            {this.props.data_be.data_be.name}
+          </DropdownToggle>
+        </Button>
+      </div>
+    );
+
+    // const showUpgrade1 = this.props.data.data.map(data => {
+    //   if (data.id === this.state.tempId) {
+    //     if (data.premium === false) {
+    //       return (
+    //       <NavItem>
+    //           <Button className="NextToAccount" color="success">
+    //               <NavLink className="NextToAccount" to="/premium">UPGRADE</NavLink>
+    //           </Button>
+    //       </NavItem>
+    //       )}
+    //     return (<span></span>)
+    //   }
+    // });
+
+    let showUpgrade1 = "";
+    if (this.props.data_be.data_be.premium === false) {
+      showUpgrade1 = (
+        <NavItem>
+          <Button className="NextToAccount" color="success">
+            <NavLink className="NextToAccount" to="/premium">
+              UPGRADE
+            </NavLink>
+          </Button>
+        </NavItem>
+      );
+    } else {
+      showUpgrade1 = <span></span>;
+    }
+
+    // const showUpgrade2 = this.props.data.data.map(data => {
+    //   if (data.id === this.state.tempId) {
+    //     if (data.premium === false) {
+    //       return (
+    //       <NavLink
+    //           className="StaticNavChild Disappear"
+    //           to="/premium">
+    //           Upgarde to Premium
+    //       </NavLink>
+    //       )}
+    //     return (<span></span>)
+    //   }
+    // });
+
+    let showUpgrade2 = "";
+    if (this.props.data_be.data_be.premium === false) {
+      showUpgrade2 = (
+        <NavLink className="StaticNavChild Disappear" to="/premium">
+          Upgarde to Premium
+        </NavLink>
+      );
+    } else {
+      showUpgrade2 = <span></span>;
+    }
+
+    // const SignedIn = this.props.data.data.map((data) => {
+    //   if (data.id === this.state.tempId) {
+    //     return (
+    //       <div>
+    //         <div className="row">
+    //             <div className="WebPlayerHomeNav">
+    //                 <div className="container">
+    //                     <Navbar className="NavBar NavStyle" expand="md">
+    //                         <Nav className="mr-auto" href="/signup">
+    //                         <NavItem className="CustomNavitems">
+    //                                 <Button className="CustomButton">
+    //                                     <NavLink className="nav-link" to="/webplayer/librarypage/playlists">
+    //                                     <svg className="CustomSvg" viewBox="0 0 24 24">
+    //                                     <path fill="currentColor" d="M15.54 21.15L5.095 12.23 15.54 3.31l.65.76-9.555 8.16 9.555 8.16"></path>                            </svg>
+    //                                     </NavLink>
+    //                                 </Button>
+    //                         </NavItem>
+    //                         <NavItem className="CustomNavitems">
+    //                                 <Button className="CustomButton">
+    //                                         <NavLink className="nav-link" to="/webplayer/search">
+    //                                         <svg className="CustomSvg" viewBox="0 0 24 24">
+    //                                         <path fill="currentColor" d="M7.96 21.15l-.65-.76 9.555-8.16L7.31 4.07l.65-.76 10.445 8.92"></path>
+    //                                         </svg>
+    //                                         </NavLink>
+    //                                 </Button>
+    //                         </NavItem>
+    //                         </Nav>
+    //                         <Nav navbar className="ml-auto">
+    //                             {showUpgrade1}
+    //                             <NavItem>
+    //                                 <UncontrolledDropdown nav inNavbar>
+    //                                 {userName}
+    //                                 <DropdownMenu className="StaticNav" right>
+    //                                     <DropdownItem className="StaticNavChildContainer">
+    //                                     <NavLink
+    //                                         className="StaticNavChild"
+    //                                         to="/account/overview">
+    //                                         Account
+    //                                     </NavLink>
+    //                                     </DropdownItem>
+    //                                     <DropdownItem className="StaticNavChildContainer">
+    //                                     {showUpgrade2}
+    //                                     </DropdownItem>
+    //                                     <DropdownItem className="StaticNavChildContainer">
+    //                                     <Button
+    //                                         onClick={() => { this.handleLogout() }}
+    //                                         className="StaticNavChild">
+    //                                         Log out
+    //                                     </Button>
+    //                                     </DropdownItem>
+    //                                 </DropdownMenu>
+    //                                 </UncontrolledDropdown>
+    //                             </NavItem>
+    //                         </Nav>
+    //                     </Navbar>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //</div>
+    let SignedIn = "";
+    if (this.props.data_be.data_be._id !== "") {
+      SignedIn = (
+        <div>
+          <div className="row">
+            <div className="WebPlayerHomeNav">
+              <div className="container">
+                <Navbar className="NavBar NavStyle" expand="md">
+                  <Nav className="mr-auto" href="/signup">
+                    <NavItem className="CustomNavitems">
+                      <Button className="CustomButton">
+                        <NavLink
+                          className="nav-link SpecificallyForTheButton"
+                          to="/webplayer/librarypage/playlists"
+                        >
+                          <svg className="CustomSvg" viewBox="0 0 24 24">
+                            <path
+                              fill="currentColor"
+                              d="M15.54 21.15L5.095 12.23 15.54 3.31l.65.76-9.555 8.16 9.555 8.16"
+                            ></path>{" "}
+                          </svg>
+                        </NavLink>
+                      </Button>
+                    </NavItem>
+                    <NavItem className="CustomNavitems">
+                      <Button className="CustomButton">
+                        <NavLink
+                          className="nav-link SpecificallyForTheButton"
+                          to="/webplayer/search"
+                        >
+                          <svg className="CustomSvg" viewBox="0 0 24 24">
+                            <path
+                              fill="currentColor"
+                              d="M7.96 21.15l-.65-.76 9.555-8.16L7.31 4.07l.65-.76 10.445 8.92"
+                            ></path>
+                          </svg>
+                        </NavLink>
+                      </Button>
+                    </NavItem>
+                  </Nav>
+                  <Nav navbar className="ml-auto">
+                    {showUpgrade1}
+                    <NavItem>
+                      <UncontrolledDropdown nav inNavbar>
+                        {userName}
+                        <DropdownMenu className="StaticNav" right>
+                          <DropdownItem className="StaticNavChildContainer">
+                            <NavLink
+                              className="StaticNavChild"
+                              to="/account/overview"
+                            >
+                              Account
+                            </NavLink>
+                          </DropdownItem>
+                          <DropdownItem className="StaticNavChildContainer">
+                            {showUpgrade2}
+                          </DropdownItem>
+                          <DropdownItem className="StaticNavChildContainer">
+                            <Button
+                              onClick={() => {
+                                this.handleLogout();
+                              }}
+                              className="StaticNavChild"
+                            >
+                              Log out
+                            </Button>
+                          </DropdownItem>
+                        </DropdownMenu>
+                      </UncontrolledDropdown>
+                    </NavItem>
+                  </Nav>
+                </Navbar>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
     let playlistsActive = "";
     let albumsActive = "";
     let artistsActive = "";
@@ -182,68 +398,7 @@ class NowPlay extends Component {
 
     return (
       <div className=" DivStyle LibraryPageBody">
-        <Navbar expand="md" className="customizedNavbar Ezzat ">
-          <div className=" DivStyle container customizedContainer">
-            <Row className="flexRowOfLibraryPage">
-              <Col>
-                <Nav navbar className="flexRowOfLibraryPage">
-                  <NavItem className="customizedNavitems">
-                    <Button className="customizedButton">
-                      <NavLink className="nav-link customizedArrows" to="/">
-                        <svg className="customizedSvg" viewBox="0 0 24 24">
-                          <path
-                            fill="currentColor"
-                            d="M15.54 21.15L5.095 12.23 15.54 3.31l.65.76-9.555 8.16 9.555 8.16"
-                          ></path>{" "}
-                        </svg>
-                      </NavLink>
-                    </Button>
-                  </NavItem>
-                  <NavItem className="customizedNavitems">
-                    <Button className="buttonstyle customizedButton">
-                      <NavLink className="nav-link customizedArrows" to="/">
-                        <svg className="customizedSvg" viewBox="0 0 24 24">
-                          <path
-                            fill="currentColor"
-                            d="M7.96 21.15l-.65-.76 9.555-8.16L7.31 4.07l.65-.76 10.445 8.92"
-                          ></path>
-                        </svg>
-                      </NavLink>
-                    </Button>
-                  </NavItem>
-
-                  <Nav className="ml-auto" navbar>
-                    <NavItem className=" customizedNavLink ">
-                      <UncontrolledDropdown nav inNavbar>
-                        <Button className="buttonstyle AccountItself">
-                          <DropdownToggle nav caret className="profileNavItem">
-                            <i class="fa fa-user-secret"></i>
-                            Profile
-                          </DropdownToggle>
-                        </Button>
-                        <DropdownMenu className="StaticNav" right>
-                          <DropdownItem className="StaticNavChildContainer DisappearFromDropDowm">
-                            <NavLink
-                              className="StaticNavChild"
-                              to="accountoverview"
-                            >
-                              Account
-                            </NavLink>{" "}
-                          </DropdownItem>
-                          <DropdownItem className="StaticNavChildContainer DisappearFromDropDowm">
-                            <NavLink className="StaticNavChild " to="">
-                              Log out
-                            </NavLink>{" "}
-                          </DropdownItem>
-                        </DropdownMenu>
-                      </UncontrolledDropdown>
-                    </NavItem>
-                  </Nav>
-                </Nav>
-              </Col>
-            </Row>
-          </div>
-        </Navbar>
+        {SignedIn}
         <section className="Jumbostyle">
           <div className="DivStyle MainViewContainer">
             <section className="contentSection">
