@@ -45,7 +45,7 @@ class AccountOverview extends Component {
     super(props);
     this.state = {
       isNavOpen: false,
-      tempId: this.props.id.id,
+      tempId: this.props.data_be.data_be._id,
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.state.nullID = this.nullID.bind(this);

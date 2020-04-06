@@ -11,3 +11,8 @@ export const SignInUrl ='http://ec2-3-21-218-250.us-east-2.compute.amazonaws.com
 
 /////////////////////////////////premium///////////////////
 export const PremiumUrl ='http://ec2-3-21-218-250.us-east-2.compute.amazonaws.com:3000/api/v1/users'
+
+////////////////////////PlayLists/////////////////////////////
+export const PlaylistsUrl ='http://ec2-3-21-218-250.us-east-2.compute.amazonaws.com:3000/api/v1/playlist/'
+
+
