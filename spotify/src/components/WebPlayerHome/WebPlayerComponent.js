@@ -82,9 +82,7 @@ class WebPlayer extends Component {
     //   }
     // });
 
-    const showLikeAndCreate = this.props.data.data.map((data) => {
-      if (data.id === this.state.tempId) {
-        return(
+    let showLikeAndCreate =(
           <div>
               <h3 className="sidebarHeaderBetween">PLAYLISTS</h3>
               <Link to="/"  className={createPlaylistsActive}>
@@ -97,8 +95,7 @@ class WebPlayer extends Component {
               </Link>
           </div>
         )
-      }
-    });
+      
     return (
       <div>
       {redirected}
@@ -162,7 +159,9 @@ class WebPlayer extends Component {
                             exact
                             path="/webplayer/nowplay"
                             component={() => (
-                              <NowPlay id={this.props.id} data={this.props.data} />
+                              <NowPlay id={this.props.id}
+                               data={this.props.data} 
+                               playLists={this.props.playLists} />
                             )}
                         />
                         <Redirect to="/webplayer/home" /> 
