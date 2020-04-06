@@ -41,7 +41,7 @@ class Premium extends Component {
       isModalOpen: false,
       collapsed: true,
       Premium: this.props.data_be.data_be.premium,
-      tempId: this.props.id.id,
+      tempId: this.props.data_be.data_be._id,
       isPrenium: !this.props.data_be.data_be.premium,
     };
     this.state.toggleNav = this.toggleNav.bind(this);
@@ -93,9 +93,11 @@ class Premium extends Component {
   handlePremium_be() {
     if (this.state.Premium === true) {
       this.props.PremiumPost(this.props.data_be.data_be._id, false);
+      this.setState({ Premium: false });
       this.togglemodal();
     } else if (this.state.Premium === false) {
       this.props.PremiumPost(this.props.data_be.data_be._id, true);
+      this.setState({ Premium: true });
       this.togglemodal();
     }
   }
@@ -110,6 +112,11 @@ class Premium extends Component {
   }
 
   render() {
+    let redirect = "";
+    if (this.props.data_be.data_be._id === undefined) {
+      redirect = <Redirect to="/signup" />;
+    }
+
     let accLogStyleParent = "";
     let accChild = "";
     let logChild = "";
@@ -124,6 +131,7 @@ class Premium extends Component {
     }
     return (
       <div>
+        {redirect}
         <div className="AccountOverviewNav">
           <div className="container">
             <Navbar className="NavBar" sticky="top" expand="md">
