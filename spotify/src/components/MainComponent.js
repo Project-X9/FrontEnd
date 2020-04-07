@@ -32,6 +32,7 @@ import {
   fetchAlbum,
   EditProfile,
   handleSignIn_BE,
+  getArtist
 } from "../redux/ActionCreators";
 
 
@@ -69,13 +70,12 @@ const mapDispatchToProps = dispatch => ({
     ),
   postFacebookLogin: (email, image, name) =>
     dispatch(postFacebookLogin(email, image, name)),
-  getName: id => dispatch(getName(id))
+ //getName: id => dispatch(get(id))
 });
 
 class Main extends Component {
   componentDidMount() {
     this.props.fetchUserData();
-    this.props.getName;
   }
 
   render() {

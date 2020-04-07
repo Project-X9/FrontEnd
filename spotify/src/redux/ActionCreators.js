@@ -128,12 +128,12 @@ export const removeUserId = (id) => ({  //it recieves an empty string
 
 ///////////////////////////////////////Artist////////////////////////////////////
 
-export const getName = id => dispatch => {
-  axios.get(`${baseUrl}artists/${id - 1}`).then(response => {
-    return response.data.name;
-  }).then(name=>console.log(name));
-}
 
+export const getArtist = (id) => dispatch => {
+  axios.get(`${baseUrl}artists/${id}`)
+  .then(response =>dispatch(console.log(response.name)));
+};
+/*
 export const getPopularSongs = id => dispatch => {
   axios.get(`${baseUrl}artists/${id - 1}`).then(response => {
     return response.data.popularSongs;
@@ -150,7 +150,7 @@ export const getAbout = id => dispatch => {
   axios.get(`${baseUrl}artists/${id - 1}`).then(response => {
     return response.data.about;
   });
-}
+}*/
 /////it should take the id when we integrate with the back end
 export const fetchUserPlaylist = () => dispatch => {
   axios.get(`${baseUrl}playlist`)

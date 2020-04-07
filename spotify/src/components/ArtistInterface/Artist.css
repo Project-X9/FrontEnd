@@ -1,18 +1,4 @@
-.body {
-  background-color: #1a1a1a;
-}
-.NavBar {
-  margin: 0 auto;
-  padding: 10px 15px;
-  opacity: 1;
-  z-index: 100;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  min-height: 10vh;
-  background-color: #808080;
-  color: white;
-}
+
 /*
 .Artist nav button {
   align-items: flex-end;
@@ -134,6 +120,7 @@ div.content {
 }
 .artistPage{
   background-color: #1a1a1a;
+  height: 100%;
 }
 .main-artist{
   margin: 0px;
@@ -142,15 +129,35 @@ div.content {
 .switchers{
   margin: 0px;
   width: fit-content;
+  margin-left:50px ;
 }
 .switchers .secondary{
   background-color: transparent;
   border: 0px;
 }
+#ov{
+  font-size: 20px;
+  margin-top: 5px;
+  font-weight: 600;
+
+}
+#ab{
+  font-size: 20px;
+  margin-top: 10px;
+  font-weight: 600;
+}
+.switchers .secondary:focus{
+  background-color: #333;
+}
+
 #popular-songs{
   color: white;
-  font-size: 36px;
-  
+  font-size: 20px;
+  width: 100%;
+  background-color: #1a1a1a;
+  text-align: left;
+  float: left;
+  margin-left: 50px;
   margin-top: 20px;
 
 }
@@ -164,4 +171,21 @@ div.content {
 }
 .artist-song{
   width: 100%;
+  float: left;
+  color: white;
+  background-color: #1a1a1a;
+  margin-left: 50px;
+  margin-bottom: 3px;
+}
+.artist-song:hover{
+  background-color:rgb(51,51,51);
+  cursor: default;
+}
+#bio-body{
+  text-align: left;
+  margin-left: 50px;
+  color: white;
+  font-size: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding-bottom: 20px;
 }

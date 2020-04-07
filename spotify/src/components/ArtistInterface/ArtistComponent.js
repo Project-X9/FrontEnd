@@ -34,8 +34,22 @@ class Artist extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tempId: ""
+      tempId: "",
+      overview: true
     };
+
+    this.toggleOverview = this.toggleOverview.bind(this);
+    this.toggleAbout = this.toggleAbout.bind(this);
+  }
+  toggleOverview() {
+    // const Checker = this.handleData();
+    const Temp = true;
+    this.setState({ overview: Temp });
+  }
+  toggleAbout() {
+    // const Checker = this.handleData();
+    const Temp = false;
+    this.setState({ overview: Temp });
   }
 
   followArtist = () => {
@@ -50,57 +64,12 @@ class Artist extends Component {
   render() {
     return (
       <div className="artistPage container">
-        {/*<div class="sidebar">
-          <a class="active" href="#home">
-            <svg
-              viewBox="0 0 512 512"
-              width="24"
-              height="24"
-              xmlns="http://www.w3.org/2000/svg" 
-            >
-              <path
-                d="M 256.274 60.84 L 84.324 166.237 L 84.324 443.063 L 193.27 443.063 L 193.27 293.73 L 320.228 293.73 L 320.228 443.063 L 428.222 443.063 L 428.222 165.476 L 256.274 60.84 Z M 256.274 35.95 L 448.452 149.145 L 448.452 464.395 L 300 464.395 L 300 315.062 L 213.499 315.062 L 213.499 464.395 L 64.095 464.395 L 64.095 150.161 L 256.274 35.95 Z"
-                fill="currentColor"
-              ></path>
-            </svg>
-            Home
-          </a>
-          <a href="#news">
-            <svg
-              viewBox="0 0 512 512"
-              width="24"
-              height="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M349.714 347.937l93.714 109.969-16.254 13.969-93.969-109.969q-48.508 36.825-109.207 36.825-36.826 0-70.476-14.349t-57.905-38.603-38.603-57.905-14.349-70.476 14.349-70.476 38.603-57.905 57.905-38.603 70.476-14.349 70.476 14.349 57.905 38.603 38.603 57.905 14.349 70.476q0 37.841-14.73 71.619t-40.889 58.921zM224 377.397q43.428 0 80.254-21.461t58.286-58.286 21.461-80.254-21.461-80.254-58.286-58.285-80.254-21.46-80.254 21.46-58.285 58.285-21.46 80.254 21.46 80.254 58.285 58.286 80.254 21.461z"
-                fill="currentColor"
-                fill-rule="evenodd"
-              ></path>
-            </svg>
-            Search
-          </a>
-          <a href="#about">
-            <svg
-              viewBox="0 0 512 512"
-              width="24"
-              height="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M311.873 77.46l166.349 373.587-39.111 17.27-166.349-373.587zM64 463.746v-384h42.666v384h-42.666zM170.667 463.746v-384h42.667v384h-42.666z"
-                fill="currentColor"
-              ></path>
-            </svg>
-            Your Library
-          </a>
-    </div>{" "}*/}
         <div className="main-artist">
-          <div className="jumbotron-container">
+          <div className="jumbotron-container" width="100%">
             <Jumbotron className="JumboHeaderImg">
               <div className="App Headers">
                 <div>
-                  <header className="Header1">Amr Diab</header>
+                  <header className="Header1">Dua Lipa</header>
                 </div>
               </div>
               <div className="container">
@@ -143,51 +112,107 @@ class Artist extends Component {
             </Jumbotron>
           </div>
           <div className="switchers">
-            <Button className="secondary">Overview</Button>
-            <Button className="secondary">About</Button>
+            <Button
+              className="secondary Header1"
+              id="ov"
+              onClick={this.toggleOverview}
+            >
+              Overview
+            </Button>
+            <Button
+              className="secondary Header1"
+              id="ab"
+              onClick={this.toggleAbout}
+            >
+              About
+            </Button>
           </div>
-          <div className="container">
-            {" "}
-            <header className="Header1" id="popular-songs">
-              Popular
-            </header>
-          </div>
-
-          <div className="container">
-            <Link>
-              <div className="artist-song">
-                <img
-                  src="https://annsokoto.files.wordpress.com/2018/02/dualipa.jpg?w=356&h=356"
-                  width="50px"
-                  height="50px"
-                  className="artist-image"
-                />
-                <p className="song-text">One Kiss</p>
-              </div>
-            </Link>
-            <Link>
-              <div className="artist-song">
-                <img
-                  src="https://annsokoto.files.wordpress.com/2018/02/dualipa.jpg?w=356&h=356"
-                  width="50px"
-                  height="50px"
-                  className="artist-image"
-                />
-                <p className="song-text">New Rules</p>
-              </div>
-            </Link>
-            <Link>
-              <div className="artist-song">
-                <img
-                  src="https://annsokoto.files.wordpress.com/2018/02/dualipa.jpg?w=356&h=356"
-                  width="50px"
-                  height="50px"
-                  className="artist-image"
-                />
-                <p className="song-text">Don't start now</p>
-              </div>
-            </Link>
-          </div>
+          {this.state.overview && (
+            <div className="container">
+              <header className="Header1" id="popular-songs">
+                Popular
+              </header>
+              <Link>
+                <div className="artist-song">
+                  <img
+                    src="https://annsokoto.files.wordpress.com/2018/02/dualipa.jpg?w=356&h=356"
+                    width="50px"
+                    height="50px"
+                    className="artist-image"
+                  />
+                  <p className="song-text">One Kiss</p>
+                </div>
+              </Link>
+              <Link>
+                <div className="artist-song">
+                  <img
+                    src="https://annsokoto.files.wordpress.com/2018/02/dualipa.jpg?w=356&h=356"
+                    width="50px"
+                    height="50px"
+                    className="artist-image"
+                  />
+                  <p className="song-text">New Rules</p>
+                </div>
+              </Link>
+              <Link>
+                <div className="artist-song">
+                  <img
+                    src="https://annsokoto.files.wordpress.com/2018/02/dualipa.jpg?w=356&h=356"
+                    width="50px"
+                    height="50px"
+                    className="artist-image"
+                  />
+                  <p className="song-text">Don't start now</p>
+                </div>
+              </Link>
+              <Link>
+                <div className="artist-song">
+                  <img
+                    src="https://annsokoto.files.wordpress.com/2018/02/dualipa.jpg?w=356&h=356"
+                    width="50px"
+                    height="50px"
+                    className="artist-image"
+                  />
+                  <p className="song-text">Physical</p>
+                </div>
+              </Link>
+              <Link>
+                <div className="artist-song">
+                  <img
+                    src="https://annsokoto.files.wordpress.com/2018/02/dualipa.jpg?w=356&h=356"
+                    width="50px"
+                    height="50px"
+                    className="artist-image"
+                  />
+                  <p className="song-text">Break My Heart</p>
+                </div>
+              </Link>
+            </div>
+          )}
+          {!this.state.overview && (
+            <div className="container">
+              <header className="Header1" id="popular-songs">
+                Biography
+              </header>
+              <p id="bio-body">
+                Dua Lipa arrived in style in 2015 with her self-titled, chart
+                topping debut album which eclipsed 4 million sales worldwide
+                with single sales reaching over 40 million. Dua Lipa is also
+                officially the most streamed album by a female artist in Spotify
+                history. The video for her breakout global #1 hit "New Rules"
+                made her the youngest female solo artist to reach one billion
+                views on YouTube, and the track became the first to spend a
+                record 45 weeks on the Billboard Pop Songs Chart. Dua made BRIT
+                Award history in 2018 by becoming the first female artist to
+                pick up five nominations, with two wins for British Breakthrough
+                Act and British Female Solo Artist, all while selling out tours
+                around the world. In early 2019, she received two Grammy awards
+                for Best New Artist and Best Dance Recording. Her newest single
+                "Don't Start Now" debuted at #1 on the worldwide iTunes Chart
+                and was the #1 trending video on YouTube upon its release.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     );
