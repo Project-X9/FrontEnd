@@ -29,22 +29,32 @@ class PopularNewHomeAndNavContent extends Component {
       var redirected = <Redirect to="/webplayer/nowplay"></Redirect>;
     }
     let HomeSongs = "";
-    let x = 0;
     if (this.props.isSignedIn.isSignedIn === null) {
       HomeSongs = this.props.categories.categories.map((Category) => {
-        x = x + 1;
-        alert(x);
+        return(
+          <div>
+            <div className="row FirstHeaderAndSeeAll">
+                <div className="col-sm-9 ContainerHeaderAboveGrid">
+                  <Link className="LinkHeaderAboveGrid">
+                    <h2 className="HeaderAboveGrid">{Category.name}</h2>
+                  </Link>
+                </div>
+            </div>
+            <div className="row">
+              <div className="col-sm-12">
+                <div className="GridView">
         {
           Category.playlists.map((CategorySongs) => {
             return (
               <Button
                 className="WebplayerHomeNowPlayRedirectButton"
-                onClick={() => this.handleRenderingPlaylist(Category)}
+                onClick={() => this.handleRenderingPlaylist(CategorySongs._id)}
               >
                 <Link
                   className="WebplayerHomeNowPlayRedirectLink"
                   to="/webplayer/nowplay"
                 >
+            
                   <div key={CategorySongs._id} className="CardsHome">
                     <div className="row">
                       <div className="col">
@@ -52,7 +62,7 @@ class PopularNewHomeAndNavContent extends Component {
                           <div className="ImageHolder">
                             <img
                               className="ImageItself"
-                              src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSBmnPgQKW4JLrNcSFhPFCLHz3t8kT1pZl0PVkLYsa8FoScWYda"
+                              src={CategorySongs.image}
                               alt=""
                             ></img>
                           </div>
@@ -63,7 +73,7 @@ class PopularNewHomeAndNavContent extends Component {
                       <div className="col-md-12">
                         <div className="row">
                           <div className="col-md-12">
-                            <Link className="TitlePlaylistLink">"Hello"</Link>
+                            <Link className="TitlePlaylistLink">{CategorySongs.name}</Link>
                           </div>
                         </div>
                       </div>
@@ -71,7 +81,7 @@ class PopularNewHomeAndNavContent extends Component {
                     <div className="row">
                       <div className="col-md-12">
                         <div className="DescriptionPlaylistLink">
-                          <span>"artist"</span>
+                          <span>{CategorySongs.description}</span>
                         </div>
                       </div>
                     </div>
@@ -109,7 +119,7 @@ class PopularNewHomeAndNavContent extends Component {
                             <div className="HomeNotSignedInModalImageHolder">
                               <img
                                 className="HomeNotSignedInModalImage"
-                                src={CategorySongs.icon}
+                                src={CategorySongs.image}
                                 alt=""
                               ></img>
                             </div>
@@ -172,98 +182,113 @@ class PopularNewHomeAndNavContent extends Component {
                 </Link>
               </Button>
             );
-          });
-        }
+          })};
+            </div>
+              </div>
+                </div>
+        </div>
+      )
       });
     } else {
-      let x = 0;
-      HomeSongs = this.props.data_be.data_be.playlists.map((PlayLists) => {
-        alert(x);
-        x = x + 1;
-        return (
-          <Button
-            className="WebplayerHomeNowPlayRedirectButton"
-            onClick={() => this.handleRenderingPlaylist(PlayLists)}
-          >
-            <Link
-              className="WebplayerHomeNowPlayRedirectLink"
-              to="/webplayer/nowplay"
-            >
-              <div key={PlayLists.id} className="CardsHome">
-                <div className="row">
-                  <div className="col">
-                    <div className="CardPhoto">
-                      <div className="ImageHolder">
-                        <img
-                          className="ImageItself"
-                          src={PlayLists.image}
-                          alt=""
-                        ></img>
+      HomeSongs = this.props.categories.categories.map((Category) => {
+        return(
+          <div>
+            <div className="row FirstHeaderAndSeeAll">
+                <div className="col-sm-9 ContainerHeaderAboveGrid">
+                  <Link className="LinkHeaderAboveGrid">
+                    <h2 className="HeaderAboveGrid">{Category.name}</h2>
+                  </Link>
+                </div>
+            </div>
+            <div className="row">
+              <div className="col-sm-12">
+                <div className="GridView">
+        {
+          Category.playlists.map((CategorySongs) => {
+            return (
+              <Button
+                className="WebplayerHomeNowPlayRedirectButton"
+                onClick={() => this.handleRenderingPlaylist(CategorySongs._id)}
+              >
+                <Link
+                  className="WebplayerHomeNowPlayRedirectLink"
+                  to="/webplayer/nowplay"
+                >
+            
+                  <div key={CategorySongs._id} className="CardsHome">
+                    <div className="row">
+                      <div className="col">
+                        <div className="CardPhoto">
+                          <div className="ImageHolder">
+                            <img
+                              className="ImageItself"
+                              src={CategorySongs.image}
+                              alt=""
+                            ></img>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <div className="row BelowImage">
-                  <div className="col-md-12">
-                    <div className="row">
+                    <div className="row BelowImage">
                       <div className="col-md-12">
-                        <Link className="TitlePlaylistLink">
-                          {PlayLists.name}
-                        </Link>
+                        <div className="row">
+                          <div className="col-md-12">
+                            <Link className="TitlePlaylistLink">{CategorySongs.name}</Link>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div className="row">
                       <div className="col-md-12">
                         <div className="DescriptionPlaylistLink">
-                          <span>{PlayLists.artist}</span>
+                          <span>{CategorySongs.description}</span>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <div className="row PlayButtonPlayList">
-                  <div className="col-md-12">
-                    <div>
-                      <Button className="ButtonItself">
-                        <svg
-                          height="16"
-                          role="img"
-                          width="16"
-                          viewBox="0 0 24 24"
-                        >
-                          <polygon
-                            points="21.57 12 5.98 3 5.98 21 21.57 12"
-                            fill="currentColor"
-                          ></polygon>
-                        </svg>
-                      </Button>
+                    <div className="row PlayButtonPlayList">
+                      <div className="col-md-12">
+                        <div>
+                          <Button
+                            className="ButtonItself"
+                          >
+                            <svg
+                              height="16"
+                              role="img"
+                              width="16"
+                              viewBox="0 0 24 24"
+                            >
+                              <polygon
+                                points="21.57 12 5.98 3 5.98 21 21.57 12"
+                                fill="currentColor"
+                              ></polygon>
+                            </svg>
+                          </Button>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
+                    
+            </div>
+                </Link>
+              </Button>
+            );
+          })};
+            </div>
               </div>
-            </Link>
-          </Button>
-        );
+                </div>
+        </div>
+      )
       });
     }
     return (
       <div>
         {redirected}
-        <div className="row FirstHeaderAndSeeAll">
-          <div className="col-sm-9 ContainerHeaderAboveGrid">
-            <Link className="LinkHeaderAboveGrid">
-              <h2 className="HeaderAboveGrid">Popular playlists</h2>
-            </Link>
-          </div>
+        {HomeSongs}
+          
           {/* <div className="col-sm-3 ContainerSeeAllAboveGrid">
                         <Link className="SeeAllAboveGrid">SEE ALL</Link>
                     </div> */}
-        </div>
-        <div className="row">
-          <div className="col-sm-12">
-            <div className="GridView">{HomeSongs}</div>
-          </div>
-        </div>
+        
+        
       </div>
     );
   }
