@@ -6,6 +6,7 @@ import {
   SignInUrl,
   PremiumUrl,
   PlaylistsUrl,
+  CategoriesUrl
 } from "../shared/baseUrl";
 //////////////////////////////////////////////EditProfile//////////////////////////////////////////////////
 export const postupdatedFeedback = (id, isemail, isage, isID) => (dispatch) => {
@@ -197,9 +198,18 @@ export const handleSignIn_BE = (data) => (dispatch) => {
         .then((response2) =>
           dispatch(addUserData_BE(response2.data.data.user))
         );
+        axios
+        .get(`${CategoriesUrl}`)
+        .then((response2) =>
+          dispatch(addCategories(response2.data.data.Categories))
+        ); 
     })
-    .catch((error) => console.log("Response from sign in"));
+    .catch((error) => dispatch(addLogin(false)));
 };
+export const addCategories = (data) => ({
+  type: ActionTypes.ADD_CATEGORIES,
+  payload:data
+});
 export const addUserData_BE = (data) => ({
   type: ActionTypes.ADD_USERDATA_BE,
   payload: data,
@@ -240,3 +250,4 @@ export const addCurrentPlaylist = (data) => ({
   type: ActionTypes.ADD_CURRENT_PLAYLIST,
   payload:data
 });
+////////////////////////////////ADD Categoures//////////////////////

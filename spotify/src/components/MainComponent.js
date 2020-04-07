@@ -42,6 +42,7 @@ const mapStateToProps = (state) => ({
   isSignedIn: state.isSignedIn,
   data_be: state.data_be,
   currentPlaylist: state.currentPlaylist,
+  categories: state.categories,
 });
 const mapDispatchToProps = (dispatch) => ({
   resetFeedbackForm: () => {
@@ -103,6 +104,7 @@ class Main extends Component {
     this.props.fetchUserPlaylist();
     this.props.fetchArtist();
     this.props.fetchAlbum();
+    this.props.handleCurrentPlayList();
   }
 
   render() {
@@ -195,6 +197,7 @@ class Main extends Component {
                 currentPlaylist={this.props.currentPlaylist}
                 handleLogout_BE={this.props.handleLogout_BE}
                 isSignedIn={this.props.isSignedIn}
+                categories={this.props.categories}
               />
             )}
           />

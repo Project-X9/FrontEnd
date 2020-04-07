@@ -33,6 +33,7 @@ class SignIn extends Component {
     this.handlePassword = this.handlePassword.bind(this);
     this.handleUser = this.handleUser.bind(this);
     this.handleuUserName = this.handleuUserName.bind(this);
+  
   }
   componentDidMount(){
     this.props.resetSignInForm();

@@ -64,7 +64,7 @@ class Artists extends Component {
         }
         var RenderArtistsCard =this.props.data_be.data_be.artists.map((artist)=>{
             return(
-                <Button className="customizedButtonForOnclick" onClick={()=>this.handleRenderingPlaylist(artist)}>
+                <Button className="customizedButtonForOnclick" onClick={()=>this.handleRenderingPlaylist(artist._id)}>
                     <Link to="/webplayer/nowplay">
                 <div key={artist.id} className="CardsLibrary">
                     <Row>

@@ -21,3 +21,5 @@ export const ADD_PLAYLIST_BYID = "ADD_PLAYLIST_BYID";
 export const ADD_LOGOUT_BE = "ADD_LOGOUT_BE";
 ///////////////////////////////current playlists///////////
 export const ADD_CURRENT_PLAYLIST = "ADD_CURRENT_PLAYLIST";
+//////////////////////add categories//////////////////////
+export const ADD_CATEGORIES = "ADD_CATEGORIES";
