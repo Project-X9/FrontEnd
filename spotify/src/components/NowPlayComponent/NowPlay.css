@@ -39,8 +39,9 @@
   background-color: transparent;
   border: 1px solid white;
 }
-.JumbostyleWithPadding{
-  padding: 60px;
+.JumbostyleWithPadding {
+  margin-bottom: 100px;
+  padding: 100px;
   background: linear-gradient(
     160deg,
     #03140c,
