@@ -230,8 +230,10 @@ export const LogOut_BE = () => ({
   type: ActionTypes.ADD_LOGOUT_BE
 });
 ////////////////////currnt playlist////////////
-export const handleCurrentPlayList  = (data)=> dispatch => {
-  dispatch(addCurrentPlaylist(data));
+export const handleCurrentPlayList  = (id)=> dispatch => {
+  axios.get(`${PlaylistsUrl}/${id}`)
+  .then(response => dispatch(addCurrentPlaylist(response.data.data.playlist)))
+  // dispatch(addCurrentPlaylist(response))
   // dispatch(removeUserData());
 };
 export const addCurrentPlaylist = (data) => ({
