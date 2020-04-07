@@ -21,3 +21,9 @@ export const PlaylistsUrl =
 /////////////////////////////////////////////
 export const CategoriesUrl =
   "http://ec2-3-21-218-250.us-east-2.compute.amazonaws.com:3000/api/v1/browse/categories";
+//////////////////////////////////
+export const UnFollowURL =
+  "http://ec2-3-21-218-250.us-east-2.compute.amazonaws.com:3000/api/v1/follow/playlist/un";
+
+export const FollowURL =
+  "http://ec2-3-21-218-250.us-east-2.compute.amazonaws.com:3000/api/v1/follow/playlist";

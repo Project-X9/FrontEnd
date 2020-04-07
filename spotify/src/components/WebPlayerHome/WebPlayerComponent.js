@@ -194,6 +194,8 @@ class WebPlayer extends Component {
                         playLists={this.props.playLists}
                         data_be={this.props.data_be}
                         currentPlaylist={this.props.currentPlaylist}
+                        patchedunfollow={this.props.patchedunfollow}
+                        patchedfollow={this.props.patchedfollow}
                       />
                     )}
                   />

@@ -6,7 +6,9 @@ import {
   SignInUrl,
   PremiumUrl,
   PlaylistsUrl,
-  CategoriesUrl
+  CategoriesUrl,
+  FollowURL,
+  UnFollowURL,
 } from "../shared/baseUrl";
 //////////////////////////////////////////////EditProfile//////////////////////////////////////////////////
 export const postupdatedFeedback = (id, isemail, isage, isID) => (dispatch) => {
@@ -17,6 +19,25 @@ export const postupdatedFeedback = (id, isemail, isage, isID) => (dispatch) => {
   };
 
   axios.patch(`${PremiumUrl}/${id}`, newFeedback);
+};
+/////////////////////////////////////////////////////////////////////////////////////
+export const patchedunfollow = (iduser, idplaylist) => (dispatch) => {
+  const data = { id: iduser };
+  // data.date = new Date().toISOString();
+  console.log(data);
+  axios
+    .patch(`${UnFollowURL}/${idplaylist}`, data)
+    .then((response) => console.log("Ah" + response))
+    .catch((response) => console.log("ah" + response));
+};
+export const patchedfollow = (iduser, idplaylist) => (dispatch) => {
+  const data = { id: iduser };
+  // data.date = new Date().toISOString();
+  console.log(data);
+  axios
+    .patch(`${FollowURL}/${idplaylist}`, data)
+    .then((response) => console.log("Ah" + response))
+    .catch((response) => console.log("ah" + response));
 };
 /////////////////////////////////////////////////////////////////////////////////////////
 export const PremiumPost = (id, isPremium) => (dispatch) => {
@@ -47,7 +68,7 @@ export const GetPassword = (id) => (dispatch) => {
 };
 export const PostPassword = (password, id) => (dispatch) => {
   const newPassword = { password: password };
-  axios.patch(`${baseUrl}users/${id}`, newPassword);
+  axios.patch(`${PremiumUrl}/${id}`, newPassword);
 };
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const postFacebookLogin = (email, image, name) => (dispatch) => {
@@ -198,17 +219,17 @@ export const handleSignIn_BE = (data) => (dispatch) => {
         .then((response2) =>
           dispatch(addUserData_BE(response2.data.data.user))
         );
-        axios
+      axios
         .get(`${CategoriesUrl}`)
         .then((response2) =>
           dispatch(addCategories(response2.data.data.Categories))
-        ); 
+        );
     })
     .catch((error) => dispatch(addLogin(false)));
 };
 export const addCategories = (data) => ({
   type: ActionTypes.ADD_CATEGORIES,
-  payload:data
+  payload: data,
 });
 export const addUserData_BE = (data) => ({
   type: ActionTypes.ADD_USERDATA_BE,
@@ -237,17 +258,20 @@ export const handleLogout_BE = () => (dispatch) => {
   // dispatch(removeUserData());
 };
 export const LogOut_BE = () => ({
-  type: ActionTypes.ADD_LOGOUT_BE
+  type: ActionTypes.ADD_LOGOUT_BE,
 });
 ////////////////////currnt playlist////////////
-export const handleCurrentPlayList  = (id)=> dispatch => {
-  axios.get(`${PlaylistsUrl}/${id}`)
-  .then(response => dispatch(addCurrentPlaylist(response.data.data.playlist)))
+export const handleCurrentPlayList = (id) => (dispatch) => {
+  axios
+    .get(`${PlaylistsUrl}/${id}`)
+    .then((response) =>
+      dispatch(addCurrentPlaylist(response.data.data.playlist))
+    );
   // dispatch(addCurrentPlaylist(response))
   // dispatch(removeUserData());
 };
 export const addCurrentPlaylist = (data) => ({
   type: ActionTypes.ADD_CURRENT_PLAYLIST,
-  payload:data
+  payload: data,
 });
 ////////////////////////////////ADD Categoures//////////////////////

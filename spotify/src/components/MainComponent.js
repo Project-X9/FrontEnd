@@ -29,6 +29,8 @@ import {
   makeSignupRedirectable,
   handleLogout_BE,
   handleCurrentPlayList,
+  patchedunfollow,
+  patchedfollow,
   postupdatedFeedback,
 } from "../redux/ActionCreators";
 
@@ -87,6 +89,10 @@ const mapDispatchToProps = (dispatch) => ({
   getEmail: (id) => dispatch(getEmail(id)),
   getPassword: (id) => dispatch(getPassword(id)),
   PremiumPost: (id, isPremium) => dispatch(PremiumPost(id, isPremium)),
+  patchedunfollow: (idUser, idPlaylist) =>
+    dispatch(patchedunfollow(idUser, idPlaylist)),
+  patchedfollow: (idUser, idPlaylist) =>
+    dispatch(patchedfollow(idUser, idPlaylist)),
   handleLoginId: (id) => dispatch(handleLoginId(id)),
   postFeedback: (email, confirmemail, password, name, day, month, year, sex) =>
     dispatch(
@@ -175,6 +181,7 @@ class Main extends Component {
                 data_be={this.props.data_be}
                 handleLogout_BE={this.props.handleLogout_BE}
                 isSignedIn={this.props.isSignedIn}
+                ///////////////////////////
               />
             )}
           />
@@ -183,6 +190,9 @@ class Main extends Component {
             path="/webplayer"
             component={() => (
               <WebPlayer
+                //////////
+                patchedunfollow={this.props.patchedunfollow}
+                patchedfollow={this.props.patchedfollow}
                 //////////for Home page and Library page
                 data={this.props.data}
                 id={this.props.id}
