@@ -38,11 +38,10 @@ const mapStateToProps = (state) => ({
   playLists: state.playLists,
   artist: state.artist,
   album: state.album,
-  userstate:state.userstate,
-  isSignedIn:state.isSignedIn,
-  data_be:state.data_be,
-  currentPlaylist:state.currentPlaylist
- 
+  userstate: state.userstate,
+  isSignedIn: state.isSignedIn,
+  data_be: state.data_be,
+  currentPlaylist: state.currentPlaylist,
 });
 const mapDispatchToProps = (dispatch) => ({
   resetFeedbackForm: () => {
@@ -50,6 +49,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   resetSignInForm: () => {
     dispatch(actions.reset("login"));
+  },
+  reseteditprofile: () => {
+    dispatch(actions.reset("editprofie"));
+  },
+  resetChangePasswordForm: () => {
+    dispatch(actions.reset("changepassword"));
   },
   fetchUserData: () => {
     dispatch(fetchUserData());
@@ -59,7 +64,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
   fetchUserPlaylist: () => {
     dispatch(fetchUserPlaylist());
-  }, 
+  },
   handleCurrentPlayList: (data) => {
     dispatch(handleCurrentPlayList(data));
   },
@@ -151,7 +156,6 @@ class Main extends Component {
             path="/account"
             component={() => (
               <AccountOverview
-                postupdatedFeedback={this.props.postupdatedFeedback}
                 //////////for overview and change password and edit profile and nowplay
                 data={this.props.data}
                 id={this.props.id}
@@ -160,14 +164,15 @@ class Main extends Component {
                 ///////////for change password
                 PostPassword={this.props.PostPassword}
                 GetPassword={this.props.GetPassword}
+                resetChangePasswordForm={this.props.resetChangePasswordForm}
+                reseteditprofile={this.props.reseteditprofile}
                 //////////
                 ///////// for edit profile
-                EditProfile={this.props.EditProfile}
+                postupdatedFeedback={this.props.postupdatedFeedback}
                 /////////
                 data_be={this.props.data_be}
                 handleLogout_BE={this.props.handleLogout_BE}
                 isSignedIn={this.props.isSignedIn}
-
               />
             )}
           />
