@@ -24,22 +24,21 @@ class LibraryNavbar extends Component {
     render(){
         // let redirected = null;
         // if (this.props.isSignedIn.isSignedIn !== true) {
-        // // 
         //   redirected = <Redirect to="/webplayer/home"></Redirect>
         // }
         let playlistsActive=''
         let albumsActive=''
         let artistsActive=''
         let currentURL=window.location.href
-        if(currentURL==="http://localhost:3000/webplayer/librarypage/playlists")
+        if(currentURL==="http://ec2-3-21-218-250.us-east-2.compute.amazonaws.com:3000/api/v1/webplayer/librarypage/playlists")
         {
             playlistsActive=' activeButton'; albumsActive=''; artistsActive=''; 
         }
-        else if(currentURL==="http://localhost:3000/webplayer/librarypage/albums")
+        else if(currentURL==="http://ec2-3-21-218-250.us-east-2.compute.amazonaws.com:3000/api/v1/webplayer/librarypage/albums")
         {
             playlistsActive=''; artistsActive=''; albumsActive=' activeButton'; ;
         }
-        else if(currentURL==="http://localhost:3000/webplayer/librarypage/artists")
+        else if(currentURL==="http://ec2-3-21-218-250.us-east-2.compute.amazonaws.com:3000/api/v1/webplayer/librarypage/artists")
         {
             playlistsActive=''; albumsActive=''; artistsActive=' activeButton';
         }
@@ -114,14 +113,14 @@ class LibraryNavbar extends Component {
                                 <DropdownItem className="StaticNavChildContainer">
                                 <NavLink
                                     className="StaticNavChild Disappear"
-                                    to="/librarypage/artists">
+                                    to="/webplayer/librarypage/artists">
                                     Artistst
                                 </NavLink>{" "}
                                 </DropdownItem>
                                 <DropdownItem className="StaticNavChildContainer">
                                 <NavLink
                                     className="StaticNavChild Disappear"
-                                    to="/librarypage/albums">
+                                    to="/webplayer/librarypage/albums">
                                     Albums
                                 </NavLink>{" "}
                                 </DropdownItem>

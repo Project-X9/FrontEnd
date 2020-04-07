@@ -14,12 +14,12 @@ class PlayList extends Component {
             
         };     
    }
-   componentDidMount(){
-       if(this.props.currentPlaylist.currentPlaylist !== [])
-       {
+//    componentDidMount(){
+//        if(this.props.currentPlaylist.currentPlaylist !== [])
+//        {
        
-       }
-   }
+//        }
+//    }
     handleRenderingPlaylist(id){
 
         // alert(id)

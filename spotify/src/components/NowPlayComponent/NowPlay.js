@@ -13,6 +13,7 @@ import {
 } from "reactstrap";
 import "./NowPlay.css";
 import { NavLink, Redirect } from "react-router-dom";
+import { Loading } from './../Loading/LoadingComponent';
 class NowPlay extends Component {
   constructor(props) {
     super(props);
@@ -57,10 +58,19 @@ class NowPlay extends Component {
   }
 
   handleLogout() {
+    // alert(this.props.currentPlaylist.isLodaing)
     this.props.handleLogout_BE();
   }
 
   render() {
+    if(this.props.currentPlaylist.isLoading)
+    {
+      return(
+      <Loading />
+      );
+    }
+    else
+    {
     let redirect = "";
     if (this.props.isSignedIn.isSignedIn === null) {
       redirect = <Redirect to="/webplayer/home" />;
@@ -568,6 +578,7 @@ class NowPlay extends Component {
         </section>
       </div>
     );
+                        }
   }
 }
 export default NowPlay;

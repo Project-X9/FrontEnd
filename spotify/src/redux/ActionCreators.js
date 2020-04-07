@@ -292,6 +292,7 @@ export const LogOut_BE = () => ({
 });
 ////////////////////currnt playlist////////////
 export const handleCurrentPlayList = (id) => (dispatch) => {
+  dispatch(CurrentLoading(true))
   axios
     .get(`${PlaylistsUrl}/${id}`)
     .then((response) =>
@@ -301,12 +302,14 @@ export const handleCurrentPlayList = (id) => (dispatch) => {
   // dispatch(removeUserData());
 };
 export const handleCurrentArtists  = (id)=> dispatch => {
+  dispatch(CurrentLoading(true))
   axios.get(`${ArtistsUrl}/${id}`)
   .then(response => dispatch(addCurrentPlaylist(response.data.data.artist)))
   // dispatch(addCurrentPlaylist(response))
   // dispatch(removeUserData());
 };
 export const handleCurrentAlbums = (id)=> dispatch => {
+  dispatch(CurrentLoading(true))
   axios.get(`${AlbumsUrl}/${id}`)
   .then(response => dispatch(addCurrentPlaylist(response.data.data.album)))
   
@@ -317,4 +320,6 @@ export const addCurrentPlaylist = (data) => ({
   type: ActionTypes.ADD_CURRENT_PLAYLIST,
   payload: data,
 });
-////////////////////////////////ADD Categoures//////////////////////
+export const CurrentLoading = () => ({
+  type: ActionTypes.CURRENT_LOADING
+});

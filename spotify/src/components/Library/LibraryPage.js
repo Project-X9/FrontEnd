@@ -22,7 +22,7 @@ class LibraryPage extends Component {
     
     render(){
       let redirected = null;
-      if (this.props.id.id === "") {
+      if (this.props.isSignedIn.isSignedIn !== true) {
         redirected = <Redirect to="/webplayer/home"></Redirect>
       }
         return(

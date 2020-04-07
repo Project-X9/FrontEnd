@@ -54,7 +54,7 @@ class WebPlayer extends Component {
       libraryActive = " active";
       createPlaylistsActive = "";
       likedSongsActive = "";
-    } else if (currentURL === baseUrl2 + "webplayer/nowplay") {
+    } else if (currentURL === baseUrl2 + "webplayer/likedplay") {
       homeActive = "";
       searchActive = "";
       libraryActive = "";
