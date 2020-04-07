@@ -372,14 +372,7 @@ class PlayLikedSongs extends Component {
                               <button className="signupbtn" type="submit">
                                 PLAY
                               </button>
-                              <div className="TrackListHeader ExtraButtons">
-                                <Button className="Jumbostyle">
-                                  <i class="fa fa-heart"></i>
-                                </Button>
-                                <Button className="Jumbostyle">
-                                  <i class="fa fa-ellipsis-h"></i>
-                                </Button>
-                              </div>
+
                               <p>
                                 {this.props.data_be.data_be.tracks.length} Songs
                               </p>
