@@ -628,6 +628,42 @@
 .d121f0ba42b580ad9a173b53c622c11d-scss ._4a19a959428c34075eef50bd44ab468f-scss {
     margin-top: 36px;
 }
+
+.LibraryModalClose .LibraryModalCloseButton{
+  background: none;
+  border: none;
+  color: #fff;
+  display: block;
+  font-weight: 400;
+  text-transform: none;
+  width:100%;
+  padding: 13px;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 1.76px;
+  border-radius: 500px;
+  transition: all 33ms cubic-bezier(.3,0,0,1);
+  will-change: transform;
+  white-space: nowrap;
+  cursor: pointer;
+  text-align: left;
+  font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+  box-sizing: border-box;
+}
+
+.LibraryModalClose .LibraryModalCloseButton:hover{
+  outline: none;
+ text-decoration-line: underline;
+}
+
+.LibraryModalClose .LibraryModalCloseButton.btn.btn-success:focus{
+  box-shadow: none;
+}
+
+.LibraryModalClose .LibraryModalCloseButton.btn.btn-success:active{
+  background-color: transparent;
+  border: none;
+}
 .customizedButtonForOnclick.btn.btn-secondary{
   color:transparent;
   background-color: transparent;

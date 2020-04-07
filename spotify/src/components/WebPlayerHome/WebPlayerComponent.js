@@ -219,6 +219,11 @@ class WebPlayer extends Component {
                                         Play your favorite music, with ads
                                         </li>
                                     </ol>
+                                    <div className="row LibraryModalClose">
+                                      <Button className="LibraryModalCloseButton" color="success" onClick={this.toggleModal}>
+                                          Close
+                                      </Button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
