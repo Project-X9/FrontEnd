@@ -357,9 +357,7 @@ class PlayLikedSongs extends Component {
                         </div>{" "}
                         <div className=" TrackListHeader Body">
                           <div className="TrackListHeader Body entity Name">
-                            <h2>
-                              {this.props.currentPlaylist.currentPlaylist.name}
-                            </h2>
+                            <h2>Liked Songs</h2>
                             <span className="TrackListHeader Body by">
                               <a
                                 data-owner-uri="spotify:user:spotify"
@@ -383,11 +381,7 @@ class PlayLikedSongs extends Component {
                                 </Button>
                               </div>
                               <p>
-                                {
-                                  this.props.currentPlaylist.currentPlaylist
-                                    .tracks.length
-                                }{" "}
-                                Songs
+                                {this.props.data_be.data_be.tracks.length} Songs
                               </p>
                             </div>
                           </div>
