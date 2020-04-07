@@ -14,14 +14,26 @@ class PlayList extends Component {
             
         };     
    }
-
+   componentDidMount(){
+       if(this.props.currentPlaylist.currentPlaylist !== [])
+       {
+       
+       }
+   }
     handleRenderingPlaylist(id){
 
-        alert(id)
+        // alert(id)
         this.props.handleCurrentPlayList(id);
-        // this.setState({
-        //     playListadded:true
-        // })
+        setTimeout(() => {  console.log("World!"); }, 2000);
+        this.setState({
+            delayState: function() {
+                setTimeout(() => {
+                    this.setState({
+                    playListadded:true})
+                }, 2000);
+            }
+        })
+        
     }
     render(){
         if(this.state.playListadded === true)

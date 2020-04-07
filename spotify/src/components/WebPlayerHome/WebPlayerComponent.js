@@ -161,7 +161,7 @@ class WebPlayer extends Component {
                             handleCurrentPlayList={this.props.handleCurrentPlayList}
                             isSignedIn={this.props.isSignedIn}
                             handleLogout_BE={this.props.handleLogout_BE}
-
+                            currentPlaylist={this.props.currentPlaylist}
                             // fetchPlaylistById_be={this.props.fetchPlaylistById_be}
                             // playlist_BE={this.props.playlist_BE}
                             />

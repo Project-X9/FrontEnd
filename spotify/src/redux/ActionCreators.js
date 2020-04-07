@@ -198,7 +198,7 @@ export const handleSignIn_BE = (data) => (dispatch) => {
           dispatch(addUserData_BE(response2.data.data.user))
         );
     })
-    .catch((error) => console.log("Response from sign in"));
+    .catch((error) => dispatch(addLogin(false)));
 };
 export const addUserData_BE = (data) => ({
   type: ActionTypes.ADD_USERDATA_BE,

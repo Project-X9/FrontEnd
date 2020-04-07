@@ -98,6 +98,7 @@ class Main extends Component {
     this.props.fetchUserPlaylist();
     this.props.fetchArtist();
     this.props.fetchAlbum();
+    this.props.handleCurrentPlayList();
   }
 
   render() {
