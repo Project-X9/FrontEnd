@@ -109,7 +109,6 @@ class PopularNewHomeAndNavContent extends Component {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                
                                                 </div>
                                                 <div className="row HomeNotSignedInClose">
                                                     <Button className="HomeNotSignedInModalClosedButton" color="success" onClick={this.toggleModal}>
