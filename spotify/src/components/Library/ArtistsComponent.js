@@ -32,6 +32,8 @@ class Artists extends Component {
             var redirected = <Redirect to="/webplayer/nowplay"></Redirect>
 
         }
+        if(this.props.isSignedIn.isSignedIn === true)
+        {
         if(this.props.data_be.data_be.artists.length === 0)
         {
             var RenderNoLikedArtists=() =>{
@@ -60,7 +62,7 @@ class Artists extends Component {
                 )
             }
         }
-        const RenderArtistsCard =this.props.data_be.data_be.artists.map((artist)=>{
+        var RenderArtistsCard =this.props.data_be.data_be.artists.map((artist)=>{
             return(
                 <Button className="customizedButtonForOnclick" onClick={()=>this.handleRenderingPlaylist(artist)}>
                     <Link to="/webplayer/nowplay">
@@ -109,35 +111,45 @@ class Artists extends Component {
             </Button>
             )
         })
+    }
         return(
             <div>
-             {redirected}
-            <div className="LibraryPageBody">
-            <div className="container MainViewPlaylsit">
-                <div className="sectionPlayList">
-                    {this.props.data_be.data_be.artists.length === 0 ? (
-                        <div>{RenderNoLikedArtists()}</div>
-                    ):(
-                        <div>
-                             <Row>
-                                <Col  md={12}>
-                                    <h1 className="header_playList">Artists</h1>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col  md={12} className="customizedColForCards">
-                                    <div className="gridView">
-                                        {RenderArtistsCard}
+                {this.props.isSignedIn.isSignedIn === true ? (
+                    <div>
+                        {redirected}
+                        <div className="LibraryPageBody">
+                        <div className="container MainViewPlaylsit">
+                            <div className="sectionPlayList">
+                                {this.props.data_be.data_be.artists.length === 0 ? (
+                                    <div>{RenderNoLikedArtists()}</div>
+                                ):(
+                                    <div>
+                                        <Row>
+                                            <Col  md={12}>
+                                                <h1 className="header_playList">Artists</h1>
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col  md={12} className="customizedColForCards">
+                                                <div className="gridView">
+                                                    {RenderArtistsCard}
+                                                </div>
+                                            </Col>
+                                        </Row>
                                     </div>
-                                </Col>
-                            </Row>
+                                )}
+                            
+                            </div>
+                            
                         </div>
-                    )}
-                   
-                </div>
-                
-            </div>
-        </div>
+                    </div>
+                    </div>):(
+                        <div>
+                            
+                        </div>
+                    )
+                }
+             
         </div>        )
     }
 }

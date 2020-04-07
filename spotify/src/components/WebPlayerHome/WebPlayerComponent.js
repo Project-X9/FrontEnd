@@ -28,7 +28,7 @@ class WebPlayer extends Component {
     this.toggleModal=this.toggleModal.bind(this);
   }
   toggleModal(){
-    if(this.state.tempId !== "")
+    if(this.props.isSignedIn.isSignedIn === true)
     {
       this.setState({
         SignedIn:true
@@ -158,6 +158,8 @@ class WebPlayer extends Component {
                             handleLogoutId={this.props.handleLogoutId}
                             data_be={this.props.data_be}
                             handleCurrentPlayList={this.props.handleCurrentPlayList}
+                            isSignedIn={this.props.isSignedIn}
+                            handleLogout_BE={this.props.handleLogout_BE}
 
                             // fetchPlaylistById_be={this.props.fetchPlaylistById_be}
                             // playlist_BE={this.props.playlist_BE}
@@ -187,7 +189,7 @@ class WebPlayer extends Component {
            
           </div>
         </div>
-        <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal} className="ModalBackGround" 
+        <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal} className="ModalBackGround row" 
                     size="lg">
                 <div className="modal-content modalcontent">        
                 <ModalBody className="p-0 modalbody">
