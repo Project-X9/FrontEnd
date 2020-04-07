@@ -17,7 +17,8 @@ class PopularAlbumsHomeAndNavContent extends Component {
       });
     }
     handleRenderingPlaylist(data){
-        this.props.handleCurrentPlayList(data);
+        //this.props.handleCurrentPlayList(data);
+        this.props.handleCurrentAlbums(data)
         this.setState({
             playListadded:true
         })

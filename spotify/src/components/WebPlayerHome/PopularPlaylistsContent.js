@@ -29,8 +29,11 @@ class PopularNewHomeAndNavContent extends Component {
       var redirected = <Redirect to="/webplayer/nowplay"></Redirect>;
     }
     let HomeSongs = "";
+    let x = 0;
     if (this.props.isSignedIn.isSignedIn === null) {
       HomeSongs = this.props.categories.categories.map((Category) => {
+        x = x + 1;
+        alert(x);
         {
           Category.playlists.map((CategorySongs) => {
             return (
@@ -49,7 +52,7 @@ class PopularNewHomeAndNavContent extends Component {
                           <div className="ImageHolder">
                             <img
                               className="ImageItself"
-                              src={CategorySongs.image}
+                              src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSBmnPgQKW4JLrNcSFhPFCLHz3t8kT1pZl0PVkLYsa8FoScWYda"
                               alt=""
                             ></img>
                           </div>
@@ -60,9 +63,7 @@ class PopularNewHomeAndNavContent extends Component {
                       <div className="col-md-12">
                         <div className="row">
                           <div className="col-md-12">
-                            <Link className="TitlePlaylistLink">
-                              {CategorySongs.name}
-                            </Link>
+                            <Link className="TitlePlaylistLink">"Hello"</Link>
                           </div>
                         </div>
                       </div>
@@ -70,7 +71,7 @@ class PopularNewHomeAndNavContent extends Component {
                     <div className="row">
                       <div className="col-md-12">
                         <div className="DescriptionPlaylistLink">
-                          <span>{CategorySongs.artist}</span>
+                          <span>"artist"</span>
                         </div>
                       </div>
                     </div>
@@ -175,7 +176,10 @@ class PopularNewHomeAndNavContent extends Component {
         }
       });
     } else {
+      let x = 0;
       HomeSongs = this.props.data_be.data_be.playlists.map((PlayLists) => {
+        alert(x);
+        x = x + 1;
         return (
           <Button
             className="WebplayerHomeNowPlayRedirectButton"
