@@ -336,7 +336,9 @@ class HomeNavAndContentSigned extends Component {
                 <PopularPlaylistsContent
                 playLists={this.props.playLists}
                 data_be={this.props.data_be}
+                isSignedIn={this.props.isSignedIn}
                 handleCurrentPlayList={this.props.handleCurrentPlayList}
+                categories={this.props.categories}
                 />
                 <PopularArtistsHomeAndNavContent
                 artist={this.props.artist}
@@ -402,18 +404,13 @@ class HomeNavAndContentSigned extends Component {
           <div className="row RowWebPlayerHomeContent">
             <div className="WebPlayerHomeContent">
               <div className="container">
-                <PopularArtistsHomeAndNavContent
-                 artist={this.props.artist}
-                 data_be={this.props.data_be}
-                 isSignedIn={this.props.isSignedIn}
-                 handleCurrentPlayList={this.props.handleCurrentPlayList}
-                 />
-                <PopularAlbumsHomeAndNavContent
-                 album={this.props.album}
-                 data_be={this.props.data_be}
-                 isSignedIn={this.props.isSignedIn}
-                 handleCurrentPlayList={this.props.handleCurrentPlayList}
-                 />
+                <PopularPlaylistsContent
+                  playLists={this.props.playLists}
+                  data_be={this.props.data_be}
+                  isSignedIn={this.props.isSignedIn}
+                  handleCurrentPlayList={this.props.handleCurrentPlayList}
+                  categories={this.props.categories}
+                />
               </div>
             </div>
           </div>

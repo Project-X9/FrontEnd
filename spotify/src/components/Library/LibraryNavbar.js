@@ -17,14 +17,14 @@ class LibraryNavbar extends Component {
         };
  
     }
-  handleLogout(){
-    this.props.handleLogout_BE();
-  }
+    handleLogout(){
+        this.props.handleLogout_BE();
+    }
     
     render(){
         // let redirected = null;
-        // if (this.props.id.id === "") {
-        // //   alert("hassona")
+        // if (this.props.isSignedIn.isSignedIn !== true) {
+        // // 
         //   redirected = <Redirect to="/webplayer/home"></Redirect>
         // }
         let playlistsActive=''

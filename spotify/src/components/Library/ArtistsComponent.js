@@ -20,7 +20,7 @@ class Artists extends Component {
 
     handleRenderingPlaylist(data){
 
-        this.props.handleCurrentPlayList(data);
+        this.props.handleCurrentArtists(data);
         this.setState({
             playListadded:true
         })

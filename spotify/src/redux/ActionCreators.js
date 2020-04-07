@@ -9,7 +9,10 @@ import {
   CategoriesUrl,
   FollowURL,
   UnFollowURL,
+  AlbumsUrl,
 } from "../shared/baseUrl";
+import { ArtistsUrl } from "./../shared/baseUrl";
+
 //////////////////////////////////////////////EditProfile//////////////////////////////////////////////////
 export const postupdatedFeedback = (id, isemail, isage, isID) => (dispatch) => {
   const newFeedback = {
@@ -165,6 +168,33 @@ export const removeUserId = (id) => ({
 /////////////////////////////////////////////////////////////////////
 /////////////////GetPlayListData////////by Ahmed M. Hassan//////
 
+//////////////////////////////////Account overView///////////////////////////////
+
+///////////////////////////////////////Artist////////////////////////////////////
+
+export const getArtist = (id) => (dispatch) => {
+  axios
+    .get(`${baseUrl}artists/${id}`)
+    .then((response) => dispatch(console.log(response.name)));
+};
+/*
+export const getPopularSongs = id => dispatch => {
+  axios.get(`${baseUrl}artists/${id - 1}`).then(response => {
+    return response.data.popularSongs;
+  });
+}
+
+export const getAlbums = id => dispatch => {
+  axios.get(`${baseUrl}artists/${id - 1}`).then(response => {
+    return response.data.albums;
+  });
+}
+
+export const getAbout = id => dispatch => {
+  axios.get(`${baseUrl}artists/${id - 1}`).then(response => {
+    return response.data.about;
+  });
+}*/
 /////it should take the id when we integrate with the back end
 export const fetchUserPlaylist = () => (dispatch) => {
   axios
@@ -264,6 +294,24 @@ export const LogOut_BE = () => ({
 export const handleCurrentPlayList = (id) => (dispatch) => {
   axios
     .get(`${PlaylistsUrl}/${id}`)
+    .then((response) =>
+      dispatch(addCurrentPlaylist(response.data.data.playlist))
+    );
+  // dispatch(addCurrentPlaylist(response))
+  // dispatch(removeUserData());
+};
+export const handleCurrentArtists = (id) => (dispatch) => {
+  axios
+    .get(`${ArtistsUrl}/${id}`)
+    .then((response) =>
+      dispatch(addCurrentPlaylist(response.data.data.playlist))
+    );
+  // dispatch(addCurrentPlaylist(response))
+  // dispatch(removeUserData());
+};
+export const handleCurrentAlbums = (id) => (dispatch) => {
+  axios
+    .get(`${AlbumsUrl}/${id}`)
     .then((response) =>
       dispatch(addCurrentPlaylist(response.data.data.playlist))
     );

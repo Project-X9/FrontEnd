@@ -27,3 +27,9 @@ export const UnFollowURL =
 
 export const FollowURL =
   "http://ec2-3-21-218-250.us-east-2.compute.amazonaws.com:3000/api/v1/follow/playlist";
+////////////////////////////////////////
+export const AlbumsUrl =
+  "http://ec2-3-21-218-250.us-east-2.compute.amazonaws.com:3000/api/v1/album";
+//////////////////////////////////////////////
+export const ArtistsUrl =
+  "http://ec2-3-21-218-250.us-east-2.compute.amazonaws.com:3000/api/v1/artist/artists";

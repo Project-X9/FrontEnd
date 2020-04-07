@@ -239,7 +239,6 @@
 .Home .AccountOverviewFooter{
     position: relative;
     z-index: 10;
-    margin-top: 150px;
     bottom:0;
 }
 #NavSlash:hover{
@@ -249,6 +248,7 @@
 .getArtistBtn{
   font-size: 16px;
   margin-top: 0px;
+  margin-left: 30px;
   line-height: 1;
   z-index: 15;
   position: relative;

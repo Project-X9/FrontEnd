@@ -32,6 +32,8 @@ import {
   patchedunfollow,
   patchedfollow,
   postupdatedFeedback,
+  handleCurrentAlbums,
+  handleCurrentArtists
 } from "../redux/ActionCreators";
 
 const mapStateToProps = (state) => ({
@@ -70,6 +72,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleCurrentPlayList: (data) => {
     dispatch(handleCurrentPlayList(data));
+  },
+  handleCurrentArtists: (data) => {
+    dispatch(handleCurrentArtists(data));
+  },
+  handleCurrentAlbums: (data) => {
+    dispatch(handleCurrentAlbums(data));
   },
   fetchArtist: () => {
     dispatch(fetchArtist());
@@ -208,6 +216,9 @@ class Main extends Component {
                 handleLogout_BE={this.props.handleLogout_BE}
                 isSignedIn={this.props.isSignedIn}
                 categories={this.props.categories}
+                handleCurrentAlbums={this.props.handleCurrentAlbums}
+                handleCurrentArtists={this.props.handleCurrentArtists}
+          
               />
             )}
           />

@@ -30,8 +30,8 @@ class Home extends Component {
     return (
       <div className="Home">
         <NavbarHome />
-        <div className="bg-pic" />
-        <div className="row row-simplified homeContent">
+        <div class="bg-pic"></div>
+        <div class="row row-simplified homeContent">
           <h1>Music for everyone.</h1>
           <h4>Millions of songs. No credit card needed.</h4>
           <Link to="/signup">
@@ -40,9 +40,6 @@ class Home extends Component {
             </button>
           </Link>
         </div>
-        <button model="submit" className="getArtistBtn">
-              claim your artist account
-        </button>
         <Footer className="homeFooter" />
       </div>
     );
