@@ -22,7 +22,7 @@ class LibraryPage extends Component {
     
     render(){
       let redirected = null;
-      if (this.props.id.id === "") {
+      if (this.props.isSignedIn.isSignedIn !== true) {
         redirected = <Redirect to="/webplayer/home"></Redirect>
       }
         return(
@@ -52,7 +52,6 @@ class LibraryPage extends Component {
                         handleCurrentPlayList={this.props.handleCurrentPlayList}
                         isSignedIn={this.props.isSignedIn}
                         currentPlaylist={this.props.currentPlaylist}
-
                         />
                       )} />
                    <Route
@@ -63,10 +62,9 @@ class LibraryPage extends Component {
                         id={this.props.id}
                         album={this.props.album}
                         data_be={this.props.data_be}
-                        handleCurrentPlayList={this.props.handleCurrentPlayList}
                         isSignedIn={this.props.isSignedIn}
                         currentPlaylist={this.props.currentPlaylist}
-
+                        handleCurrentAlbums={this.props.handleCurrentAlbums}
                         />
                       )} />
                     <Route
@@ -77,7 +75,7 @@ class LibraryPage extends Component {
                         id={this.props.id}
                         artist={this.props.artist}
                         data_be={this.props.data_be}
-                        handleCurrentPlayList={this.props.handleCurrentPlayList}
+                        handleCurrentArtists={this.props.handleCurrentArtists}
                         isSignedIn={this.props.isSignedIn}
                         currentPlaylist={this.props.currentPlaylist}
                         />

@@ -23,3 +23,5 @@ export const ADD_LOGOUT_BE = "ADD_LOGOUT_BE";
 export const ADD_CURRENT_PLAYLIST = "ADD_CURRENT_PLAYLIST";
 //////////////////////add categories//////////////////////
 export const ADD_CATEGORIES = "ADD_CATEGORIES";
+//////////////////////////////////////////////////////////
+export const CURRENT_LOADING = 'CURRENT_LOADING';

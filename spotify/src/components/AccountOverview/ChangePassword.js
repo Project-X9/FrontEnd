@@ -22,34 +22,35 @@ class ChangePass extends Component {
       Password: "",
       CurrentPassword: "",
       ConfirmPassword: "",
-      tempId: this.props.id.id,
+      tempId: this.props.data_be.data_be._id,
     };
     this.handleChangePassword = this.handleChangePassword.bind(this);
-    this.handleData = this.handleData.bind(this);
+    // this.handleData = this.handleData.bind(this);
     this.handleConfirmPassword = this.handleConfirmPassword.bind(this);
   }
   /**
    * HandleData is for getting the current password of the user
    */
-  handleData = () => {
-    let temp;
-    this.props.data.data.map((data) => {
-      if (data.id === this.props.id.id) {
-        temp = data.password;
-      }
-    });
-    return temp;
-  };
+  // handleData = () => {
+  //   let temp;
+  //   this.props.data.data.map((data) => {
+  //     if (data.id === this.props.id.id) {
+  //       temp = data.password;
+  //     }
+  //   });
+  //   return temp;
+  // };
   /**
    * Posting the changed Password
    */
   handleChangePassword = (values) => {
     this.props.resetChangePasswordForm();
-    const temp = this.handleData();
-    if (temp === values.Currentpassword) {
-      const post = values.password;
-      this.props.PostPassword(post, this.state.tempId - 1);
-    } else alert("Password is Incorrect");
+    // const temp = this.handleData();
+    // if (temp === values.Currentpassword) {
+    //   const post = values.password;
+
+    this.props.PostPassword(values.password, this.props.data_be.data_be._id);
+    // } else alert("Password is Incorrect");
   };
   /**
    * Checking the same password
@@ -75,22 +76,6 @@ class ChangePass extends Component {
           model="changepassword"
           onSubmit={(values) => this.handleChangePassword(values)}
         >
-          <Row className="form-group">
-            <Col xs={12} md={{ size: 6, offset: 3 }}>
-              <Label>Current Password</Label>
-              <Control.text
-                type="password"
-                className="form-control"
-                model=".Currentpassword"
-                placeholder="Password"
-                id="Currentpassword"
-                name="Currentpassword"
-                validators={{
-                  required,
-                }}
-              />
-            </Col>
-          </Row>
           <Row className="form-group">
             <Col xs={12} md={{ size: 6, offset: 3 }}>
               <Label>New Password</Label>
@@ -161,3 +146,19 @@ class ChangePass extends Component {
 }
 
 export default ChangePass;
+//  <Row className="form-group">
+// <Col xs={12} md={{ size: 6, offset: 3 }}>
+// <Label>Current Password</Label>
+// <Control.text
+//   type="password"
+//   className="form-control"
+//   model=".Currentpassword"
+//   placeholder="Password"
+//   id="Currentpassword"
+//   name="Currentpassword"
+//   validators={{
+//     required,
+//   }}
+// />
+// </Col>
+// </Row>

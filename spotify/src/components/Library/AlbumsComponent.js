@@ -17,14 +17,16 @@ class Albums extends Component {
     }
     handleRenderingPlaylist(data){
 
-        this.props.handleCurrentPlayList(data);
+        alert(data);
+        this.props.handleCurrentAlbums(data);
         this.setState({
             playListadded:true
         })
     }
     render(){
         if(this.state.playListadded === true)
-        {
+        {   
+            // wait(2000);
             var redirected = <Redirect to="/webplayer/nowplay"></Redirect>
 
         }
@@ -65,7 +67,7 @@ class Albums extends Component {
             if(Album.name !== "Liked_Songs")
             {
             return(
-                <Button className="customizedButtonForOnclick" onClick={()=>this.handleRenderingPlaylist(Album)}>
+                <Button className="customizedButtonForOnclick" onClick={()=>this.handleRenderingPlaylist(Album._id)}>
                     <Link  to="/webplayer/nowplay">
                 <div key= {Album.id}className="CardsLibrary">
                     <Row>

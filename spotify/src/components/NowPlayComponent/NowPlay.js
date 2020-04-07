@@ -12,21 +12,44 @@ import {
   DropdownToggle,
 } from "reactstrap";
 import "./NowPlay.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
+import { Loading } from './../Loading/LoadingComponent';
 class NowPlay extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isNavOpen: false,
-
       disabled: false,
       tempId: this.props.id.id,
     };
     this.state.toggleNav = this.toggleNav.bind(this);
+    this.patchFollow = this.patchFollow.bind(this);
   }
-  changeBack(e) {
-    e.target.style.background = "red";
+  isPlaylistFollowed() {
+    const Temp = this.props.currentPlaylist.currentPlaylist.followers.find(
+      (element) => element == this.props.data_be.data_be._id
+    );
+    if (Temp !== undefined) {
+      return true;
+    } else {
+      return false;
+    }
+    this.state.handleLogout = this.handleLogout.bind(this);
   }
+  patchFollow() {
+    if (this.isPlaylistFollowed()) {
+      this.props.patchedunfollow(
+        this.props.data_be.data_be._id,
+        this.props.currentPlaylist.currentPlaylist._id
+      );
+    } else {
+      this.props.patchedfollow(
+        this.props.data_be.data_be._id,
+        this.props.currentPlaylist.currentPlaylist._id
+      );
+    }
+  }
+
   toggleNav() {
     this.setState({
       isNavOpen: !this.state.isNavOpen,
@@ -34,7 +57,24 @@ class NowPlay extends Component {
     });
   }
 
+  handleLogout() {
+    // alert(this.props.currentPlaylist.isLodaing)
+    this.props.handleLogout_BE();
+  }
+
   render() {
+    if(this.props.currentPlaylist.isLoading)
+    {
+      return(
+      <Loading />
+      );
+    }
+    else
+    {
+    let redirect = "";
+    if (this.props.isSignedIn.isSignedIn === null) {
+      redirect = <Redirect to="/webplayer/home" />;
+    }
     // const userName = this.props.data.data.map((data) => {
     //     if (data.id === this.state.tempId) {
     //       return (
@@ -383,11 +423,17 @@ class NowPlay extends Component {
                                 PLAY
                               </button>
                               <div className="TrackListHeader ExtraButtons">
-                                <Button className="Jumbostyle">
+                                <Button
+                                  className="Jumbostyle"
+                                  onClick={this.patchFollow}
+                                >
                                   <i class="fa fa-heart"></i>
                                 </Button>
-                                <Button className="Jumbostyle">
-                                  <i class="fa fa-ellipsis-h"></i>
+                                <Button
+                                  className="Jumbostyle"
+                                  onClick={this.patchFollow}
+                                >
+                                  <i class="fa fa-thumbs-down"></i>{" "}
                                 </Button>
                               </div>
                               <p>
@@ -493,7 +539,10 @@ class NowPlay extends Component {
                                               {Song.name}{" "}
                                             </div>
                                             <div className="DivStyle TrackListName SecondLine">
-                                              By {Song.artist}
+                                              By{" "}
+                                              {Song.artists.map((artisis) => {
+                                                return artisis.name;
+                                              })}{" "}
                                             </div>
                                           </div>
                                         </div>
@@ -529,6 +578,7 @@ class NowPlay extends Component {
         </section>
       </div>
     );
+                        }
   }
 }
 export default NowPlay;

@@ -12,7 +12,7 @@ import {
   DropdownToggle,
 } from "reactstrap";
 import "../NowPlayComponent/NowPlay.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 class PlayLikedSongs extends Component {
   constructor(props) {
     super(props);
@@ -33,7 +33,15 @@ class PlayLikedSongs extends Component {
     });
   }
 
+  handleLogout() {
+    this.props.handleLogout_BE();
+  }
+
   render() {
+    let redirect = "";
+    if (this.props.isSignedIn.isSignedIn === null) {
+      redirect = <Redirect to="/webplayer/home" />;
+    }
     // const userName = this.props.data.data.map((data) => {
     //     if (data.id === this.state.tempId) {
     //       return (
@@ -280,161 +288,155 @@ class PlayLikedSongs extends Component {
     return (
       <div className=" DivStyle LibraryPageBody">
         {SignedIn}
-        <section className="Jumbostyle">
-          <div className="DivStyle MainViewContainer">
-            <section className="contentSection">
-              <div className=" DivStyle container fluid">
-                <div className=" DivStyle row general">
-                  {" "}
-                  <div className="col-xs-12 col-lg-3 col-xl-4">
-                    <div>
-                      <header className="TrackListHeader">
-                        <div>
-                          <div draggable="true">
-                            <div className="TrackListHeader media object">
-                              <div
-                                class=" TrackListHeader media object hoverable "
-                                aria-hidden="true"
-                              >
+        {this.props.data_be.data_be.tracks.length === 0 ? (
+          <div className="NolikedLevelZero">
+            <div className="NolikedLevelOne">
+              <div className="NolikedLevelTwo">
+                <div className="row TakeitDown">
+                  <div className="col-xs-12 NolikedLevelThree">
+                    <div className="SomeheighPlease">
+                      <svg
+                        width="80"
+                        height="79"
+                        viewBox="0 0 80 79"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <title>Album</title>
+                        <path
+                          d="M76.8 3.138v72.126H3.2V3.138h73.6zM80 0H0v78.398h80V0zM40 20.8c-9.72 0-17.6 7.88-17.6 17.6C22.4 48.12 30.28 56 40 56c9.72 0 17.6-7.88 17.6-17.6 0-9.72-7.88-17.6-17.6-17.6zm0 3.2c7.94 0 14.4 6.46 14.4 14.4S47.94 52.8 40 52.8s-14.4-6.46-14.4-14.4S32.06 24 40 24z"
+                          fill="currentColor"
+                          fill-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </div>
+                    <Row>
+                      <Col md={12}>
+                        <h1 class="YourFirstInAll">
+                          Songs you’ve liked live here{" "}
+                        </h1>
+                        <h4 class="_1bfd68987bbac2dd824e5db895bd3c57-scss">
+                          Find more of the songs you love in Browse and save to
+                          your Liked Songs.
+                        </h4>
+                        <button
+                          class="_2221af4e93029bedeab751d04fab4b8b-scss _1edf52628d509e6baded2387f6267588-scss _4a19a959428c34075eef50bd44ab468f-scss"
+                          type="button"
+                        >
+                          DISCOVER
+                        </button>
+                      </Col>
+                    </Row>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <section className="JumbostyleWithPadding">
+            <div className="DivStyle MainViewContainer">
+              <section className="contentSection">
+                <div className=" DivStyle container fluid">
+                  <div className=" DivStyle row general">
+                    {" "}
+                    <div className="col-xs-12 col-lg-3 col-xl-4">
+                      <div>
+                        <header className="TrackListHeader">
+                          <div>
+                            <div draggable="true">
+                              <div className="TrackListHeader media object">
                                 <div
-                                  className="cover art shadow"
+                                  class=" TrackListHeader media object hoverable "
                                   aria-hidden="true"
                                 >
-                                  <div class=" cover art icon">
-                                    <svg
-                                      width="80"
-                                      height="81"
-                                      viewBox="0 0 80 81"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                      <title>Playlist Icon</title>
-                                      <path
-                                        d="M25.6 11.565v45.38c-2.643-3.27-6.68-5.37-11.2-5.37-7.94 0-14.4 6.46-14.4 14.4s6.46 14.4 14.4 14.4 14.4-6.46 14.4-14.4v-51.82l48-10.205V47.2c-2.642-3.27-6.678-5.37-11.2-5.37-7.94 0-14.4 6.46-14.4 14.4s6.46 14.4 14.4 14.4S80 64.17 80 56.23V0L25.6 11.565zm-11.2 65.61c-6.176 0-11.2-5.025-11.2-11.2 0-6.177 5.024-11.2 11.2-11.2 6.176 0 11.2 5.023 11.2 11.2 0 6.174-5.026 11.2-11.2 11.2zm51.2-9.745c-6.176 0-11.2-5.024-11.2-11.2 0-6.174 5.024-11.2 11.2-11.2 6.176 0 11.2 5.026 11.2 11.2 0 6.178-5.026 11.2-11.2 11.2z"
-                                        fill="currentColor"
-                                        fill-rule="evenodd"
-                                      ></path>
-                                    </svg>
-                                  </div>
-                                  <div className="OneOpacity">
-                                    <img
-                                      alt=""
-                                      className="cover art image"
-                                      src="https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png"
-                                    />
-                                    <div className="overlay"></div>
-                                    <button class="cover art playback ButtonHover">
-                                      <svg
-                                        class="cover art playback icon play"
-                                        viewBox="0 0 85 100"
-                                      >
-                                        <path
-                                          fill="currentColor"
-                                          d="M81 44.6c5 3 5 7.8 0 10.8L9 98.7c-5 3-9 .7-9-5V6.3c0-5.7 4-8 9-5l72 43.3z"
-                                        >
-                                          <title>PLAY</title>
-                                        </path>
-                                      </svg>
-                                    </button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="TrackListHeader mo info">
-                              <div clasName="textMenuWrapper">
-                                <div className="TrackListHeader mo info Name">
-                                  <span dir="auto">Liked Songs</span>
-                                </div>
-                                <div className="mo meta ellipsis-one-line">
-                                  <span>
-                                    <a dir="auto" href="/user/spotify">
-                                      Spotify
-                                    </a>
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>{" "}
-                        <div className=" TrackListHeader Body">
-                          <div className="TrackListHeader Body entity Name">
-                            <h2>Liked Songs</h2>
-                            <span className="TrackListHeader Body by">
-                              <a
-                                data-owner-uri="spotify:user:spotify"
-                                href="/user/spotify"
-                              >
-                                By Spotify
-                              </a>
-                            </span>
-                          </div>
-                          <div className="TrackListHeader Body Inverter">
-                            <div className="TrackListHeader Body Inverter Actions">
-                              <button className="signupbtn" type="submit">
-                                PLAY
-                              </button>
-                              <div className="TrackListHeader ExtraButtons">
-                                <Button className="Jumbostyle">
-                                  <i class="fa fa-heart"></i>
-                                </Button>
-                                <Button className="Jumbostyle">
-                                  <i class="fa fa-ellipsis-h"></i>
-                                </Button>
-                              </div>
-                              <p>
-                                {this.props.data_be.data_be.tracks.length} Songs
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </header>
-                    </div>
-                  </div>{" "}
-                  <div class="DivStyle col-xs-12 col-lg-10 col-xl-8">
-                    {" "}
-                    {this.props.data_be.data_be.tracks.length === 0 ? (
-                      <div className="NolikedLevelZero">
-                        <div className="NolikedLevelOne">
-                          <div className="NolikedLevelTwo">
-                            <div className="row TakeitDown">
-                              <div className="col-xs-12 NolikedLevelThree">
-                                <div className="SomeheighPlease">
-                                  <svg
-                                    width="80"
-                                    height="79"
-                                    viewBox="0 0 80 79"
-                                    xmlns="http://www.w3.org/2000/svg"
+                                  <div
+                                    className="cover art shadow"
+                                    aria-hidden="true"
                                   >
-                                    <title>Album</title>
-                                    <path
-                                      d="M76.8 3.138v72.126H3.2V3.138h73.6zM80 0H0v78.398h80V0zM40 20.8c-9.72 0-17.6 7.88-17.6 17.6C22.4 48.12 30.28 56 40 56c9.72 0 17.6-7.88 17.6-17.6 0-9.72-7.88-17.6-17.6-17.6zm0 3.2c7.94 0 14.4 6.46 14.4 14.4S47.94 52.8 40 52.8s-14.4-6.46-14.4-14.4S32.06 24 40 24z"
-                                      fill="currentColor"
-                                      fill-rule="evenodd"
-                                    ></path>
-                                  </svg>
+                                    <div class=" cover art icon">
+                                      <svg
+                                        width="80"
+                                        height="81"
+                                        viewBox="0 0 80 81"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                      >
+                                        <title>Playlist Icon</title>
+                                        <path
+                                          d="M25.6 11.565v45.38c-2.643-3.27-6.68-5.37-11.2-5.37-7.94 0-14.4 6.46-14.4 14.4s6.46 14.4 14.4 14.4 14.4-6.46 14.4-14.4v-51.82l48-10.205V47.2c-2.642-3.27-6.678-5.37-11.2-5.37-7.94 0-14.4 6.46-14.4 14.4s6.46 14.4 14.4 14.4S80 64.17 80 56.23V0L25.6 11.565zm-11.2 65.61c-6.176 0-11.2-5.025-11.2-11.2 0-6.177 5.024-11.2 11.2-11.2 6.176 0 11.2 5.023 11.2 11.2 0 6.174-5.026 11.2-11.2 11.2zm51.2-9.745c-6.176 0-11.2-5.024-11.2-11.2 0-6.174 5.024-11.2 11.2-11.2 6.176 0 11.2 5.026 11.2 11.2 0 6.178-5.026 11.2-11.2 11.2z"
+                                          fill="currentColor"
+                                          fill-rule="evenodd"
+                                        ></path>
+                                      </svg>
+                                    </div>
+                                    <div className="OneOpacity">
+                                      <img
+                                        alt=""
+                                        className="cover art image"
+                                        src="https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png"
+                                      />
+                                      <div className="overlay"></div>
+                                      <button class="cover art playback ButtonHover">
+                                        <svg
+                                          class="cover art playback icon play"
+                                          viewBox="0 0 85 100"
+                                        >
+                                          <path
+                                            fill="currentColor"
+                                            d="M81 44.6c5 3 5 7.8 0 10.8L9 98.7c-5 3-9 .7-9-5V6.3c0-5.7 4-8 9-5l72 43.3z"
+                                          >
+                                            <title>PLAY</title>
+                                          </path>
+                                        </svg>
+                                      </button>
+                                    </div>
+                                  </div>
                                 </div>
-                                <Row>
-                                  <Col md={12}>
-                                    <h1 class="YourFirstInAll">
-                                      Songs you’ve liked live here{" "}
-                                    </h1>
-                                    <h4 class="_1bfd68987bbac2dd824e5db895bd3c57-scss">
-                                      Find more of the songs you love in Browse
-                                      and save to your Liked Songs.
-                                    </h4>
-                                    <button
-                                      class="_2221af4e93029bedeab751d04fab4b8b-scss _1edf52628d509e6baded2387f6267588-scss _4a19a959428c34075eef50bd44ab468f-scss"
-                                      type="button"
-                                    >
-                                      DISCOVER
-                                    </button>
-                                  </Col>
-                                </Row>
+                              </div>
+                              <div className="TrackListHeader mo info">
+                                <div clasName="textMenuWrapper">
+                                  <div className="TrackListHeader mo info Name">
+                                    <span dir="auto">Liked Songs</span>
+                                  </div>
+                                  <div className="mo meta ellipsis-one-line">
+                                    <span>
+                                      <a dir="auto" href="/user/spotify">
+                                        Spotify
+                                      </a>
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>{" "}
+                          <div className=" TrackListHeader Body">
+                            <div className="TrackListHeader Body entity Name">
+                              <h2>Liked Songs</h2>
+                              <span className="TrackListHeader Body by">
+                                <a
+                                  data-owner-uri="spotify:user:spotify"
+                                  href="/user/spotify"
+                                >
+                                  By Spotify
+                                </a>
+                              </span>
+                            </div>
+                            <div className="TrackListHeader Body Inverter">
+                              <div className="TrackListHeader Body Inverter Actions">
+                                <button className="signupbtn" type="submit">
+                                  PLAY
+                                </button>
+
+                                <p>
+                                  {this.props.data_be.data_be.tracks.length}{" "}
+                                  Songs
+                                </p>
                               </div>
                             </div>
                           </div>
-                        </div>
+                        </header>
                       </div>
-                    ) : (
+                    </div>{" "}
+                    <div class="DivStyle col-xs-12 col-lg-10 col-xl-8">
+                      {" "}
                       <div>
                         {this.props.data_be.data_be.tracks.map((Song) => {
                           return (
@@ -507,13 +509,13 @@ class PlayLikedSongs extends Component {
                           );
                         })}
                       </div>
-                    )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </section>
-          </div>
-        </section>
+              </section>
+            </div>
+          </section>
+        )}
       </div>
     );
   }
