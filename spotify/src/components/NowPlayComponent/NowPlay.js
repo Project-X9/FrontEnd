@@ -284,7 +284,7 @@ class NowPlay extends Component {
     return (
       <div className=" DivStyle LibraryPageBody">
         {SignedIn}
-        <section className="Jumbostyle">
+        <section className="JumbostyleWithPadding">
           <div className="DivStyle MainViewContainer">
             <section className="contentSection">
               <div className=" DivStyle container fluid">

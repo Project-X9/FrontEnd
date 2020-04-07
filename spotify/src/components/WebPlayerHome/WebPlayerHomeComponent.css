@@ -482,6 +482,7 @@
 
   div.WebPlayerHomeContent .CardsHome{
     height: 100%;
+    width:100%;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -767,6 +768,5 @@ div.WebPlayerHomeContent .DescriptionPlaylistLink
     background-color: transparent;
     border: none;
   }
-
   /***************************************************Content***************************************************/
   

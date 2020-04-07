@@ -75,8 +75,13 @@ class EditProfile extends Component {
           </Row>
           <Row className="form-group">
             <Col>
-              <Button type="submit" className="signupbtn">
+              <Button type="submit" className="EditProfileSaveButton">
                 Save Changes
+              </Button>
+            </Col>
+            <Col>
+              <Button className="EditProfileCancelButton">
+                cancel
               </Button>
             </Col>
           </Row>
