@@ -278,13 +278,14 @@ export const handleCurrentPlayList  = (id)=> dispatch => {
 };
 export const handleCurrentArtists  = (id)=> dispatch => {
   axios.get(`${ArtistsUrl}/${id}`)
-  .then(response => dispatch(addCurrentPlaylist(response.data.data.playlist)))
+  .then(response => dispatch(addCurrentPlaylist(response.data.data.artist)))
   // dispatch(addCurrentPlaylist(response))
   // dispatch(removeUserData());
 };
 export const handleCurrentAlbums = (id)=> dispatch => {
   axios.get(`${AlbumsUrl}/${id}`)
-  .then(response => dispatch(addCurrentPlaylist(response.data.data.playlist)))
+  .then(response => dispatch(addCurrentPlaylist(response.data.data.album)))
+  
   // dispatch(addCurrentPlaylist(response))
   // dispatch(removeUserData());
 };
