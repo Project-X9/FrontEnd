@@ -152,7 +152,6 @@ class PlayList extends Component {
                             <Row>
                                 <Col  md={12} className="m-0 customizedColForCards">
                                     <div className="gridView">
-
                                         {this.props.data_be.data_be.tracks.length !== 0 ? (
                                                 <div className="LikedSongs">
                                                     <div draggable="true">
