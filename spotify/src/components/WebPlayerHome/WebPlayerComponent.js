@@ -90,7 +90,7 @@ class WebPlayer extends Component {
           <i className="fa fa-plus-square"></i>
           Create Playlist
         </Link>
-        <Link to="/webplayer/nowplay" className={likedSongsActive}>
+        <Link to="/webplayer/likedplay" className={likedSongsActive}>
           <i className="fa fa-heart"></i>
           Liked Songs
         </Link>
@@ -194,6 +194,8 @@ class WebPlayer extends Component {
                                playLists={this.props.playLists}
                                data_be={this.props.data_be} 
                                currentPlaylist={this.props.currentPlaylist}
+                               isSignedIn={this.props.isSignedIn}
+                               handleLogout_BE={this.props.handleLogout_BE}
                                />
                             )}
                         />

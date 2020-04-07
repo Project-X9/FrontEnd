@@ -12,7 +12,7 @@ import {
   DropdownToggle,
 } from "reactstrap";
 import "./NowPlay.css";
-import { NavLink } from "react-router-dom";
+import { NavLink,Redirect } from "react-router-dom";
 class NowPlay extends Component {
   constructor(props) {
     super(props);
@@ -23,6 +23,7 @@ class NowPlay extends Component {
       tempId: this.props.id.id,
     };
     this.state.toggleNav = this.toggleNav.bind(this);
+    this.state.handleLogout = this.handleLogout.bind(this);
   }
   changeBack(e) {
     e.target.style.background = "red";
@@ -34,7 +35,15 @@ class NowPlay extends Component {
     });
   }
 
+  handleLogout() {
+    this.props.handleLogout_BE();
+  }
+
   render() {
+    let redirect = "";
+    if (this.props.isSignedIn.isSignedIn === null) {
+      redirect = <Redirect to="/webplayer/home" />;
+    }
     // const userName = this.props.data.data.map((data) => {
     //     if (data.id === this.state.tempId) {
     //       return (
