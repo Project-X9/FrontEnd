@@ -63,6 +63,10 @@ class NowPlay extends Component {
   }
 
   render() {
+    var redirect = "";
+    if (this.props.isSignedIn.isSignedIn !== true) {
+      redirect = <Redirect to="/webplayer/home" />;
+    }
     if(this.props.currentPlaylist.isLoading)
     {
       return(
@@ -71,25 +75,8 @@ class NowPlay extends Component {
     }
     else
     {
-    let redirect = "";
-    if (this.props.isSignedIn.isSignedIn === null) {
-      redirect = <Redirect to="/webplayer/home" />;
-    }
-    // const userName = this.props.data.data.map((data) => {
-    //     if (data.id === this.state.tempId) {
-    //       return (
-    //         <div>
-    //          <Button className="AccountItself">
-    //             <DropdownToggle nav caret>
-    //                 <i class="fa fa-user-secret"></i>
-    //                 {data.name}
-    //             </DropdownToggle>
-    //         </Button>
-    //         </div>
-    //       );
-    //     }
-    //   });
-
+    if (this.props.isSignedIn.isSignedIn === null)
+    {
     let userName = (
       <div>
         <Button className="AccountItself">
@@ -101,19 +88,6 @@ class NowPlay extends Component {
       </div>
     );
 
-    // const showUpgrade1 = this.props.data.data.map(data => {
-    //   if (data.id === this.state.tempId) {
-    //     if (data.premium === false) {
-    //       return (
-    //       <NavItem>
-    //           <Button className="NextToAccount" color="success">
-    //               <NavLink className="NextToAccount" to="/premium">UPGRADE</NavLink>
-    //           </Button>
-    //       </NavItem>
-    //       )}
-    //     return (<span></span>)
-    //   }
-    // });
 
     let showUpgrade1 = "";
     if (this.props.data_be.data_be.premium === false) {
@@ -130,19 +104,6 @@ class NowPlay extends Component {
       showUpgrade1 = <span></span>;
     }
 
-    // const showUpgrade2 = this.props.data.data.map(data => {
-    //   if (data.id === this.state.tempId) {
-    //     if (data.premium === false) {
-    //       return (
-    //       <NavLink
-    //           className="StaticNavChild Disappear"
-    //           to="/premium">
-    //           Upgarde to Premium
-    //       </NavLink>
-    //       )}
-    //     return (<span></span>)
-    //   }
-    // });
 
     let showUpgrade2 = "";
     if (this.props.data_be.data_be.premium === false) {
@@ -155,67 +116,9 @@ class NowPlay extends Component {
       showUpgrade2 = <span></span>;
     }
 
-    // const SignedIn = this.props.data.data.map((data) => {
-    //   if (data.id === this.state.tempId) {
-    //     return (
-    //       <div>
-    //         <div className="row">
-    //             <div className="WebPlayerHomeNav">
-    //                 <div className="container">
-    //                     <Navbar className="NavBar NavStyle" expand="md">
-    //                         <Nav className="mr-auto" href="/signup">
-    //                         <NavItem className="CustomNavitems">
-    //                                 <Button className="CustomButton">
-    //                                     <NavLink className="nav-link" to="/webplayer/librarypage/playlists">
-    //                                     <svg className="CustomSvg" viewBox="0 0 24 24">
-    //                                     <path fill="currentColor" d="M15.54 21.15L5.095 12.23 15.54 3.31l.65.76-9.555 8.16 9.555 8.16"></path>                            </svg>
-    //                                     </NavLink>
-    //                                 </Button>
-    //                         </NavItem>
-    //                         <NavItem className="CustomNavitems">
-    //                                 <Button className="CustomButton">
-    //                                         <NavLink className="nav-link" to="/webplayer/search">
-    //                                         <svg className="CustomSvg" viewBox="0 0 24 24">
-    //                                         <path fill="currentColor" d="M7.96 21.15l-.65-.76 9.555-8.16L7.31 4.07l.65-.76 10.445 8.92"></path>
-    //                                         </svg>
-    //                                         </NavLink>
-    //                                 </Button>
-    //                         </NavItem>
-    //                         </Nav>
-    //                         <Nav navbar className="ml-auto">
-    //                             {showUpgrade1}
-    //                             <NavItem>
-    //                                 <UncontrolledDropdown nav inNavbar>
-    //                                 {userName}
-    //                                 <DropdownMenu className="StaticNav" right>
-    //                                     <DropdownItem className="StaticNavChildContainer">
-    //                                     <NavLink
-    //                                         className="StaticNavChild"
-    //                                         to="/account/overview">
-    //                                         Account
-    //                                     </NavLink>
-    //                                     </DropdownItem>
-    //                                     <DropdownItem className="StaticNavChildContainer">
-    //                                     {showUpgrade2}
-    //                                     </DropdownItem>
-    //                                     <DropdownItem className="StaticNavChildContainer">
-    //                                     <Button
-    //                                         onClick={() => { this.handleLogout() }}
-    //                                         className="StaticNavChild">
-    //                                         Log out
-    //                                     </Button>
-    //                                     </DropdownItem>
-    //                                 </DropdownMenu>
-    //                                 </UncontrolledDropdown>
-    //                             </NavItem>
-    //                         </Nav>
-    //                     </Navbar>
-    //                 </div>
-    //             </div>
-    //         </div>
-    //</div>
-    let SignedIn = "";
-    if (this.props.data_be.data_be._id !== "") {
+    
+    var SignedIn = "";
+    if (this.props.isSignedIn.isSignedIn === true) {
       SignedIn = (
         <div>
           <div className="row">
@@ -292,34 +195,13 @@ class NowPlay extends Component {
         </div>
       );
     }
-    let playlistsActive = "";
-    let albumsActive = "";
-    let artistsActive = "";
-    let currentURL = window.location.href;
-    if (
-      currentURL === "http://localhost:3000/webplayer/librarypage/playlists"
-    ) {
-      playlistsActive = " activeButton";
-      albumsActive = "";
-      artistsActive = "";
-    } else if (
-      currentURL === "http://localhost:3000/webplayer/librarypage/albums"
-    ) {
-      playlistsActive = "";
-      artistsActive = "";
-      albumsActive = " activeButton";
-    } else if (
-      currentURL === "http://localhost:3000/webplayer/librarypage/artists"
-    ) {
-      playlistsActive = "";
-      albumsActive = "";
-      artistsActive = " activeButton";
-    }
 
     /////////////////////////////////////////////////////////RenderSongsDone//////////////////////////////////////////////////
-
+  }
     return (
-      <div className=" DivStyle LibraryPageBody">
+    <div>
+      {this.props.isSignedIn.isSignedIn === true ? (
+        <div className=" DivStyle LibraryPageBody">
         {SignedIn}
         <section className="JumbostyleWithPadding">
           <div className="DivStyle MainViewContainer">
@@ -577,8 +459,15 @@ class NowPlay extends Component {
           </div>
         </section>
       </div>
+    
+      ):(
+        <div>
+          {redirect}
+        </div>
+      )}
+    </div>
     );
-                        }
+   }
   }
 }
 export default NowPlay;
