@@ -27,7 +27,11 @@ class Artists extends Component {
     }
     render(){
       
-     
+        if(this.state.playListadded === true)
+        {
+            var redirected = <Redirect to="/webplayer/nowplay"></Redirect>
+
+        }
         if(this.props.isSignedIn.isSignedIn === true)
         {
         if(this.props.data_be.data_be.artists.length === 0)
@@ -64,54 +68,42 @@ class Artists extends Component {
                     <Link to="/webplayer/nowplay">
                 <div key={artist.id} className="CardsLibrary">
                     <Row>
-                        <Col  md={12}>
-                            <h1 className="header_playList">Artists</h1>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col  md={12}>
-                            <div className="gridView">
-                                <div className="CardsLibrary">
-                                    <Row>
-                                        <Col>
-                                            <div>
-                                                <div className="cardPhoto_ArtistPage">
-                                                    <div className="imageHolder_ArtistPage">
-                                                        <img src="https://i.scdn.co/image/ee11ffb4c0f334e4c958ed051bbaf5f720751c9d" alt="" className="theimage_ArtistPage  "></img>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </Col>
-                                    </Row>
-                                    <Row className="mr-auto">
-                                        <Col md={12}>
-                                            <Row className="cardTitle" >
-                                                <Col md={12}>
-                                                    <Link className="titlePlaylistLink">Amr Diab</Link>
-                                                </Col>
-                                            </Row>
-                                            <Row>
-                                                <Col md={12}>
-                                                    <div className="desciptionPlaylistLink">
-                                                        <span>Artist</span>
-                                                    </div>
-                                                </Col>
-                                            </Row>
-                                            <Row>
-                                                <Col md={12}>
-                                                <div className="displayButton">
-                                                    <div className="playButtonPlayList">
-                                                        <Button className="theButtonItself "> 
-                                                        <svg height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
-                                                        </Button>
-                                                    </div>
-                                                </div>
-                                                </Col>
-                                            </Row>
-                                        </Col>
-                                    </Row>
+                        <Col>
+                            <div>
+                                <div className="cardPhoto_ArtistPage">
+                                    <div className="imageHolder_ArtistPage">
+                                        <img src={artist.image} alt="" className="theimage_ArtistPage"></img>
+                                    </div>
                                 </div>
                             </div>
+                        </Col>
+                    </Row>
+                    <Row className="TextBelowTheImage">
+                        <Col md={12}>
+                            <Row className="cardTitle" >
+                                <Col md={12}>
+                                    <Link className="titlePlaylistLink">{artist.name}</Link>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col md={12}>
+                                    <div className="desciptionPlaylistLink">
+                                        <span>Artist</span>
+                                    </div>
+                                </Col>
+                            </Row>
+                            
+                        </Col>
+                    </Row>
+                    <Row className="playButtonPlayList">
+                        <Col md={12}>
+                        <div className="displayButton">
+                            <div >
+                                <Button className="theButtonItself"> 
+                                <svg height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
+                                </Button>
+                            </div>
+                        </div>
                         </Col>
                     </Row>
                 </div>
@@ -119,11 +111,6 @@ class Artists extends Component {
             </Button>
             )
         })
-    }
-    if(this.state.playListadded === true)
-    {
-        var redirected = <Redirect to="/webplayer/nowplay"></Redirect>
-
     }
         return(
             <div>

@@ -6,11 +6,10 @@ import Home from "./Homepage/HomeComponent";
 import SignUp from "./SignUp/SignUpComponent";
 import PremiumComponent from "./PremiumPage/PremuimComponent";
 import AccountOverview from "./AccountOverview/AccountOverviewComponent";
-import WebPlayer from "./WebPlayerHome/WebPlayerComponent"
+import WebPlayer from "./WebPlayerHome/WebPlayerComponent";
 import SignIn from "./SignIn/SignInComponent";
 import PlayFotter from "./WebPlayer/PlayFotterComponent";
 import Library from "./Library/LibraryCompnent";
-import Artist from"./ArtistInterface/ArtistComponent"
 
 import {
   postFeedback,
@@ -124,15 +123,6 @@ class Main extends Component {
         {/* <CSSTransition key={this.props.location.key} classNames="page" timeout={300}> */}
         <Switch>
           <Route exact path="/home" component={() => <Home />} />
-          <Route exact path="/artist" component={() => <Artist />} />
-         <Route exact path="/artists"
-            component={() => (
-              <Library
-                id={this.props.id}
-                data={this.props.data}
-              />
-            )}
-          />
           <Route
             exact
             path="/signup"
@@ -154,19 +144,7 @@ class Main extends Component {
             exact
             path="/library"
             component={() => (
-              <Library
-                id={this.props.id}
-                data={this.props.data}
-              />
-            )}
-          />
-          <Route
-            path="/librarypage"
-            component={() => (
-              <LibraryPage
-                id={this.props.id}
-                data={this.props.data}
-              />
+              <Library id={this.props.id} data={this.props.data} />
             )}
           /> */}
 
@@ -184,8 +162,7 @@ class Main extends Component {
               />
             )}
           />
-          <Route  
-            
+          <Route
             path="/account"
             component={() => (
               <AccountOverview
@@ -229,6 +206,9 @@ class Main extends Component {
                 handleLogout_BE={this.props.handleLogout_BE}
                 isSignedIn={this.props.isSignedIn}
                 categories={this.props.categories}
+                handleCurrentAlbums={this.props.handleCurrentAlbums}
+                handleCurrentArtists={this.props.handleCurrentArtists}
+          
               />
             )}
           />

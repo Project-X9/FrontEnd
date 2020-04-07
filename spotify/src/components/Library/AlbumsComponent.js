@@ -25,7 +25,7 @@ class Albums extends Component {
     render(){
         if(this.state.playListadded === true)
         {   
-            wait(2000);
+            // wait(2000);
             var redirected = <Redirect to="/webplayer/nowplay"></Redirect>
 
         }
