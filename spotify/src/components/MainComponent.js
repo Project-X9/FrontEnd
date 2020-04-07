@@ -41,7 +41,8 @@ const mapStateToProps = (state) => ({
   userstate:state.userstate,
   isSignedIn:state.isSignedIn,
   data_be:state.data_be,
-  currentPlaylist:state.currentPlaylist
+  currentPlaylist:state.currentPlaylist,
+  categories:state.categories
  
 });
 const mapDispatchToProps = (dispatch) => ({
@@ -191,6 +192,7 @@ class Main extends Component {
                 currentPlaylist={this.props.currentPlaylist}
                 handleLogout_BE={this.props.handleLogout_BE}
                 isSignedIn={this.props.isSignedIn}
+                categories={this.props.categories}
               />
             )}
           />
