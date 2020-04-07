@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { 
    Button, Row, Col,} from 'reactstrap'; 
-import {Link,} from "react-router-dom";
+import {Link,Redirect} from "react-router-dom";
 
 import "./Page.css";
 
@@ -11,11 +11,23 @@ class Albums extends Component {
     constructor(props){
         super(props);
         this.state={
-            tempId:''
+            tempId:'',
+            playListadded:false
         };      
     }
-    
+    handleRenderingPlaylist(data){
+
+        this.props.handleCurrentPlayList(data);
+        this.setState({
+            playListadded:true
+        })
+    }
     render(){
+        if(this.state.playListadded === true)
+        {
+            var redirected = <Redirect to="/webplayer/nowplay"></Redirect>
+
+        }
         if(this.props.data_be.data_be.albums.length === 0)
         {
             var RenderNoLikedAlbums=() =>{
@@ -51,6 +63,8 @@ class Albums extends Component {
             if(Album.name !== "Liked_Songs")
             {
             return(
+                <Button className="customizedButtonForOnclick" onClick={()=>this.handleRenderingPlaylist(Album)}>
+                    <Link to="/webplayer/nowplay">
                 <div key= {Album.id}className="CardsLibrary">
                     <Row>
                         <Col>
@@ -88,7 +102,11 @@ class Albums extends Component {
                             </div>
                         </Col>
                     </Row>
+                    
                 </div>
+                </Link>
+            </Button>
+                
             )
         }
     }
@@ -96,6 +114,7 @@ class Albums extends Component {
         
         return(
             <div>
+             {redirected}
             <div className="LibraryPageBody">
             <div className="container MainViewPlaylsit">
                 <div className="sectionPlayList">

@@ -164,6 +164,8 @@ class Main extends Component {
                 /////////
                 data_be={this.props.data_be}
                 handleLogout_BE={this.props.handleLogout_BE}
+                isSignedIn={this.props.isSignedIn}
+
               />
             )}
           />

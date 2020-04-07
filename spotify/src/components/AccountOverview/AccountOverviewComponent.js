@@ -77,8 +77,8 @@ class AccountOverview extends Component {
    * handleLogoutId() functions which logs the user out
    */
   handleLogout() {
-    let id = "";
-    this.props.handleLogoutId(id);
+    // let id = "";
+    this.props.handleLogout_BE();
     // this.props.handleLogout_BE();
   }
   /**
@@ -107,7 +107,7 @@ class AccountOverview extends Component {
     }
 
     let redirect = "";
-    if (this.props.data_be.data_be === null) {
+    if (this.props.isSignedIn.isSignedIn === null) {
       redirect = <Redirect to="/signup" />;
     }
 

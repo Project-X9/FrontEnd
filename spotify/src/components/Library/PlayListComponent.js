@@ -13,9 +13,7 @@ class PlayList extends Component {
             playListadded:false
             
         };     
-    
-
-    }
+   }
 
     handleRenderingPlaylist(data){
 

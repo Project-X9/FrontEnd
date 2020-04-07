@@ -57,6 +57,7 @@ class LibraryPage extends Component {
                         id={this.props.id}
                         album={this.props.album}
                         data_be={this.props.data_be}
+                        handleCurrentPlayList={this.props.handleCurrentPlayList}
                         />
                       )} />
                     <Route
@@ -67,6 +68,7 @@ class LibraryPage extends Component {
                         id={this.props.id}
                         artist={this.props.artist}
                         data_be={this.props.data_be}
+                        handleCurrentPlayList={this.props.handleCurrentPlayList}
                         />
                       )} />
                 </Switch>

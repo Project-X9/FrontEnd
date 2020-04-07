@@ -275,125 +275,10 @@ class NowPlay extends Component {
       albumsActive = "";
       artistsActive = " activeButton";
     }
+    
     //////////////////////////////////////////////////////Functions here//////////////////////////////////////////////////////////
     /////////////////////////////////////////////////No-1 For Songs Rendering////////////////////////////////
-    const RenderPlaylisttracks = this.props.playLists.playLists.map(
-      (PlayLists) => {
-        if (PlayLists.name === "Best of 2015") {
-          if (PlayLists.tracks.length === 0) {
-            return (
-              <div className="NolikedLevelZero">
-                <div className="NolikedLevelOne">
-                  <div className="NolikedLevelTwo">
-                    <div className="row TakeitDown">
-                      <div className="col-xs-12 NolikedLevelThree">
-                        <div className="SomeheighPlease">
-                          <svg
-                            width="80"
-                            height="79"
-                            viewBox="0 0 80 79"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <title>Album</title>
-                            <path
-                              d="M76.8 3.138v72.126H3.2V3.138h73.6zM80 0H0v78.398h80V0zM40 20.8c-9.72 0-17.6 7.88-17.6 17.6C22.4 48.12 30.28 56 40 56c9.72 0 17.6-7.88 17.6-17.6 0-9.72-7.88-17.6-17.6-17.6zm0 3.2c7.94 0 14.4 6.46 14.4 14.4S47.94 52.8 40 52.8s-14.4-6.46-14.4-14.4S32.06 24 40 24z"
-                              fill="currentColor"
-                              fill-rule="evenodd"
-                            ></path>
-                          </svg>
-                        </div>
-                        <Row>
-                          <Col md={12}>
-                            <h1 class="YourFirstInAll">
-                              Songs you’ve liked live here{" "}
-                            </h1>
-                            <h4 class="_1bfd68987bbac2dd824e5db895bd3c57-scss">
-                              Find more of the songs you love in Browse and save
-                              to your Liked Songs.
-                            </h4>
-                            <button
-                              class="_2221af4e93029bedeab751d04fab4b8b-scss _1edf52628d509e6baded2387f6267588-scss _4a19a959428c34075eef50bd44ab468f-scss"
-                              type="button"
-                            >
-                              DISCOVER
-                            </button>
-                          </Col>
-                        </Row>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          } else {
-            return PlayLists.tracks.map((Song) => {
-              return (
-                <section className="TrackListContainer">
-                  <ol className="olstyle TrackListContainer Orderedlist">
-                    <div className="Div textMenuWrapper">
-                      <div draggable="true">
-                        <li
-                          tabindex="0"
-                          role="button"
-                          aria-pressed="false"
-                          className="listyle TrackListRow"
-                        >
-                          <div className="DivStyle TrackListCol PositionOuter">
-                            <div
-                              role="button"
-                              className="DivStyle TrackListCol PositionOuter TopAlign PlayPause"
-                            >
-                              <svg class="icon-play" viewBox="0 0 85 100">
-                                <path
-                                  fill="currentColor"
-                                  d="M81 44.6c5 3 5 7.8 0 10.8L9 98.7c-5 3-9 .7-9-5V6.3c0-5.7 4-8 9-5l72 43.3z"
-                                >
-                                  <title>PLAY</title>
-                                </path>
-                              </svg>
-                            </div>
-                            <div
-                              role="button"
-                              className="DivStyle TrackListCol PositionOuter  Position"
-                            >
-                              <i className="fa fa-music"></i>
-                            </div>
-                          </div>
-                          <div className="DivStyle TrackListCol name">
-                            <div className="DivStyle TrackListCol TopAlign ">
-                              <div className="DivStyle InOneLine TrackListName">
-                                {Song.name}{" "}
-                              </div>
-                              <div className="DivStyle TrackListName SecondLine">
-                                By {Song.artist}
-                              </div>
-                            </div>
-                          </div>
-                          <div className="DivStyle TrackListCol more">
-                            <div className="DivStyle TrackListCol TopAlign">
-                              <div className="DivStyle TrackListRow more textMenuWrapper">
-                                <button className="buttonstyle MultiButton">
-                                  <i class="fa fa-ellipsis-h"></i>
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="DivStyle TrackLisCol Duration">
-                            <div className="DivStyle TrackListHeader Body by">
-                              <span>3:21</span>
-                            </div>
-                          </div>
-                        </li>
-                      </div>
-                    </div>
-                  </ol>
-                </section>
-              );
-            });
-          }
-        }
-      }
-    );
+  
     /////////////////////////////////////////////////////////RenderSongsDone//////////////////////////////////////////////////
 
     return (
@@ -437,7 +322,7 @@ class NowPlay extends Component {
                                     <img
                                       alt=""
                                       className="cover art image"
-                                      src="https://i.scdn.co/image/ab67706f000000021b75b1478680dcb9448d3395"
+                                      src={this.props.currentPlaylist.currentPlaylist.image}
                                     />
                                     <div className="overlay"></div>
                                     <button class="cover art playback ButtonHover">
@@ -461,7 +346,7 @@ class NowPlay extends Component {
                               <div clasName="textMenuWrapper">
                                 <div className="TrackListHeader mo info Name">
                                   <span dir="auto">
-                                    Today's Top Hits(المفروض يجيلي في Props)
+                                    {this.props.currentPlaylist.currentPlaylist.name}
                                   </span>
                                 </div>
                                 <div className="mo meta ellipsis-one-line">
@@ -477,7 +362,7 @@ class NowPlay extends Component {
                         </div>{" "}
                         <div className=" TrackListHeader Body">
                           <div className="TrackListHeader Body entity Name">
-                            <h2>Today's Top Hits</h2>
+                            <h2>{this.props.currentPlaylist.currentPlaylist.name}</h2>
                             <span className="TrackListHeader Body by">
                               <a
                                 data-owner-uri="spotify:user:spotify"
@@ -500,7 +385,7 @@ class NowPlay extends Component {
                                   <i class="fa fa-ellipsis-h"></i>
                                 </Button>
                               </div>
-                              <p>50 songs</p>
+                              <p>{this.props.currentPlaylist.currentPlaylist.tracks.length} Songs</p>
                             </div>
                           </div>
                         </div>
@@ -508,7 +393,119 @@ class NowPlay extends Component {
                     </div>
                   </div>{" "}
                   <div class="DivStyle col-xs-12 col-lg-10 col-xl-8">
-                    {RenderPlaylisttracks}
+                    {this.props.currentPlaylist.currentPlaylist.tracks.length === 0 ? (
+                        <div className="NolikedLevelZero">
+                        <div className="NolikedLevelOne">
+                          <div className="NolikedLevelTwo">
+                            <div className="row TakeitDown">
+                              <div className="col-xs-12 NolikedLevelThree">
+                                <div className="SomeheighPlease">
+                                  <svg
+                                    width="80"
+                                    height="79"
+                                    viewBox="0 0 80 79"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <title>Album</title>
+                                    <path
+                                      d="M76.8 3.138v72.126H3.2V3.138h73.6zM80 0H0v78.398h80V0zM40 20.8c-9.72 0-17.6 7.88-17.6 17.6C22.4 48.12 30.28 56 40 56c9.72 0 17.6-7.88 17.6-17.6 0-9.72-7.88-17.6-17.6-17.6zm0 3.2c7.94 0 14.4 6.46 14.4 14.4S47.94 52.8 40 52.8s-14.4-6.46-14.4-14.4S32.06 24 40 24z"
+                                      fill="currentColor"
+                                      fill-rule="evenodd"
+                                    ></path>
+                                  </svg>
+                                </div>
+                                <Row>
+                                  <Col md={12}>
+                                    <h1 class="YourFirstInAll">
+                                      Songs you’ve liked live here{" "}
+                                    </h1>
+                                    <h4 class="_1bfd68987bbac2dd824e5db895bd3c57-scss">
+                                      Find more of the songs you love in Browse and save
+                                      to your Liked Songs.
+                                    </h4>
+                                    <button
+                                      class="_2221af4e93029bedeab751d04fab4b8b-scss _1edf52628d509e6baded2387f6267588-scss _4a19a959428c34075eef50bd44ab468f-scss"
+                                      type="button"
+                                    >
+                                      DISCOVER
+                                    </button>
+                                  </Col>
+                                </Row>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ):(
+                      <div>
+                        {this.props.currentPlaylist.currentPlaylist.tracks.map((Song)=>
+                        {
+                          return(
+                          <section className="TrackListContainer">
+                            <ol className="olstyle TrackListContainer Orderedlist">
+                              <div className="Div textMenuWrapper">
+                                <div draggable="true">
+                                  <li
+                                    tabindex="0"
+                                    role="button"
+                                    aria-pressed="false"
+                                    className="listyle TrackListRow"
+                                  >
+                                    <div className="DivStyle TrackListCol PositionOuter">
+                                      <div
+                                        role="button"
+                                        className="DivStyle TrackListCol PositionOuter TopAlign PlayPause"
+                                      >
+                                        <svg class="icon-play" viewBox="0 0 85 100">
+                                          <path
+                                            fill="currentColor"
+                                            d="M81 44.6c5 3 5 7.8 0 10.8L9 98.7c-5 3-9 .7-9-5V6.3c0-5.7 4-8 9-5l72 43.3z"
+                                          >
+                                            <title>PLAY</title>
+                                          </path>
+                                        </svg>
+                                      </div>
+                                      <div
+                                        role="button"
+                                        className="DivStyle TrackListCol PositionOuter  Position"
+                                      >
+                                        <i className="fa fa-music"></i>
+                                      </div>
+                                    </div>
+                                    <div className="DivStyle TrackListCol name">
+                                      <div className="DivStyle TrackListCol TopAlign ">
+                                        <div className="DivStyle InOneLine TrackListName">
+                                          {Song.name}{" "}
+                                        </div>
+                                        <div className="DivStyle TrackListName SecondLine">
+                                          By {Song.artist}
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div className="DivStyle TrackListCol more">
+                                      <div className="DivStyle TrackListCol TopAlign">
+                                        <div className="DivStyle TrackListRow more textMenuWrapper">
+                                          <button className="buttonstyle MultiButton">
+                                            <i class="fa fa-ellipsis-h"></i>
+                                          </button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div className="DivStyle TrackLisCol Duration">
+                                      <div className="DivStyle TrackListHeader Body by">
+                                        <span>3:21</span>
+                                      </div>
+                                    </div>
+                                  </li>
+                                </div>
+                              </div>
+                            </ol>
+                          </section>
+                          )
+                        }
+                        )}
+                       </div> 
+                    )}
                   </div>
                 </div>
               </div>

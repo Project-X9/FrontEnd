@@ -15,7 +15,7 @@ export const Data_BE = (state = { data_be: [] }, action) => {
     case ActionTypes.ADD_USERDATA_BE:
       return { ...state, data_be: action.payload };
       case ActionTypes.ADD_LOGOUT_BE:
-        return {...state , data_be:null}  
+        return {...state , data_be: [] }  
     default:
       return state;
   }
