@@ -25,57 +25,57 @@ class PopularNewHomeAndNavContent extends Component {
         }
         let HomeSongs=""
         if (this.props.isSignedIn.isSignedIn === null) {
-        HomeSongs=this.props.categories.categories.map((Playlists)=>{
-                {
-                    Playlists.playlists.map((CategorySongs)=>{
-                            return(  
-                                <Button className="WebplayerHomeNowPlayRedirectButton" onClick={()=>this.handleRenderingPlaylist(PlayLists)}>
-                                    <Link className="WebplayerHomeNowPlayRedirectLink" to="/webplayer/nowplay">
-                                    <div key={CategorySongs._id} className="CardsHome">
-                                        <div className="row">
-                                            <div className="col">
-                                            <div className="CardPhoto">
-                                                <div className="ImageHolder">
-                                                    <img  className="ImageItself" src={CategorySongs.image} alt=""></img>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        <div className="row BelowImage">
-                                            <div className="col-md-12">
-                                                <div className="row" >
-                                                    <div className="col-md-12">
-                                                        <Link className="TitlePlaylistLink">{CategorySongs.name}</Link>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="row" >
-                                            <div className="col-md-12">
-                                                <div className="DescriptionPlaylistLink">
-                                                    <span>{PlayLists.artist}</span>
-                                                </div>
-                                            </div>
-                                        </div> 
-                                        <div className="row PlayButtonPlayList">
-                                            <div className="col-md-12">
-                                                <div >
-                                                    <Button className="ButtonItself"> 
-                                                    <svg height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
-                                                    </Button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </Link>
-                                </Button>
-                            ) 
-                    }) 
-                }
+        // HomeSongs=this.props.categories.categories.map((Playlists)=>{
+        //         {
+        //             Playlists.playlists.map((CategorySongs)=>{
+        //                     return(  
+        //                         <Button className="WebplayerHomeNowPlayRedirectButton" onClick={()=>this.handleRenderingPlaylist(PlayLists)}>
+        //                             <Link className="WebplayerHomeNowPlayRedirectLink" to="/webplayer/nowplay">
+        //                             <div key={CategorySongs._id} className="CardsHome">
+        //                                 <div className="row">
+        //                                     <div className="col">
+        //                                     <div className="CardPhoto">
+        //                                         <div className="ImageHolder">
+        //                                             <img  className="ImageItself" src={CategorySongs.image} alt=""></img>
+        //                                         </div>
+        //                                     </div>
+        //                                     </div>
+        //                                 </div>
+        //                                 <div className="row BelowImage">
+        //                                     <div className="col-md-12">
+        //                                         <div className="row" >
+        //                                             <div className="col-md-12">
+        //                                                 <Link className="TitlePlaylistLink">{CategorySongs.name}</Link>
+        //                                             </div>
+        //                                         </div>
+        //                                     </div>
+        //                                 </div>
+        //                                 <div className="row" >
+        //                                     <div className="col-md-12">
+        //                                         <div className="DescriptionPlaylistLink">
+        //                                             <span>{PlayLists.artist}</span>
+        //                                         </div>
+        //                                     </div>
+        //                                 </div> 
+        //                                 <div className="row PlayButtonPlayList">
+        //                                     <div className="col-md-12">
+        //                                         <div >
+        //                                             <Button className="ButtonItself"> 
+        //                                             <svg height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
+        //                                             </Button>
+        //                                         </div>
+        //                                     </div>
+        //                                 </div>
+        //                             </div>
+        //                             </Link>
+        //                         </Button>
+        //                     ) 
+        //             }) 
+        //         }
                      
-        })
+        // })
         
-    }
+        }
     else{
         HomeSongs = this.props.data_be.data_be.playlists.map((PlayLists)=>{
             return(  
