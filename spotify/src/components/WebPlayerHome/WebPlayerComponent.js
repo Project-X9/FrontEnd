@@ -141,6 +141,8 @@ class WebPlayer extends Component {
                                 handleLogoutId={this.props.handleLogoutId}
                                 ///////////////
                                 data_be={this.props.data_be} 
+                                handleLogout_BE={this.props.handleLogout_BE}
+                                isSignedIn={this.props.isSignedIn}
                               />
                             )}
                         />

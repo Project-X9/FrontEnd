@@ -142,6 +142,7 @@ class Main extends Component {
                 data={this.props.data}
                 data_be={this.props.data_be}
                 handleLogout_BE={this.props.handleLogout_BE}
+                isSignedIn={this.props.isSignedIn}
               />
             )}
           />
@@ -181,13 +182,13 @@ class Main extends Component {
                 artist={this.props.artist}
                 album={this.props.album}
                 handleLogoutId={this.props.handleLogoutId}
-                // fetchPlaylistById_be={this.props.fetchPlaylistById_be}
-                // playlist_BE={this.props.playlist_BE}
                 ///////////
                 data_be={this.props.data_be}
                 handleLogout_BE={this.props.handleLogout_BE}
                 handleCurrentPlayList={this.props.handleCurrentPlayList}
                 currentPlaylist={this.props.currentPlaylist}
+                handleLogout_BE={this.props.handleLogout_BE}
+                isSignedIn={this.props.isSignedIn}
               />
             )}
           />

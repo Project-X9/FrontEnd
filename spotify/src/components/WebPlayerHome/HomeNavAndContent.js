@@ -32,6 +32,7 @@ class HomeNavAndContentSigned extends Component {
     this.state = {
         tempId: this.props.id.id,
     };
+    this.state.handleLogout = this.handleLogout.bind(this);
   }
 
   /**
@@ -39,8 +40,9 @@ class HomeNavAndContentSigned extends Component {
    * handleLogoutId() functions which logs the user out
    */
   handleLogout(){
-    let id="";
-    this.props.handleLogoutId(id);
+    // let id="";
+    // this.props.handleLogoutId(id);
+    this.props.handleLogout_BE();
   }
 
   /**
@@ -270,7 +272,7 @@ class HomeNavAndContentSigned extends Component {
       //   }
       
     let SignedIn=''
-    if(this.props.data_be.data_be._id!=='')
+    if(this.props.isSignedIn.isSignedIn!==null)
     {
       SignedIn=(
         <div>
@@ -338,10 +340,12 @@ class HomeNavAndContentSigned extends Component {
                 <PopularArtistsHomeAndNavContent
                 artist={this.props.artist}
                 data_be={this.props.data_be}
+                isSignedIn={this.props.isSignedIn}
                 />
                 <PopularAlbumsHomeAndNavContent
                 album={this.props.album}
                 data_be={this.props.data_be}
+                isSignedIn={this.props.isSignedIn}
                 />
               </div>
             </div>
@@ -398,10 +402,12 @@ class HomeNavAndContentSigned extends Component {
                 <PopularArtistsHomeAndNavContent
                  artist={this.props.artist}
                  data_be={this.props.data_be}
+                 isSignedIn={this.props.isSignedIn}
                  />
                 <PopularAlbumsHomeAndNavContent
                  album={this.props.album}
                  data_be={this.props.data_be}
+                 isSignedIn={this.props.isSignedIn}
                  />
               </div>
             </div>

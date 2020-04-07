@@ -50,6 +50,7 @@ class AccountOverview extends Component {
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.state.nullID = this.nullID.bind(this);
+    this.state.handleLogout = this.handleLogout.bind(this);
   }
 
   /**
@@ -253,13 +254,6 @@ class AccountOverview extends Component {
             <h3 className="SmallHeader2">Your plan</h3>
           </div>
           {showPlan}
-          <div className="row">
-            <Button className="EditProfile" color="success">
-              <NavLink className="InsideEditProfile" to="/premium">
-                JOIN PREMIUM
-              </NavLink>
-            </Button>
-          </div>
           <div className="row">
             <Button className="EditProfile" color="success">
               <NavLink className="InsideEditProfile" to="/">
