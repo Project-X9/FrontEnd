@@ -54,7 +54,7 @@ class WebPlayer extends Component {
       libraryActive = " active";
       createPlaylistsActive = "";
       likedSongsActive = "";
-    } else if (currentURL === baseUrl2 + "webplayer/nowplay") {
+    } else if (currentURL === baseUrl2 + "webplayer/likedplay") {
       homeActive = "";
       searchActive = "";
       libraryActive = "";
@@ -149,6 +149,8 @@ class WebPlayer extends Component {
                         isSignedIn={this.props.isSignedIn}
                         handleCurrentPlayList={this.props.handleCurrentPlayList}
                         categories={this.props.categories}
+                        handleCurrentAlbums={this.props.handleCurrentAlbums}
+                        handleCurrentArtists={this.props.handleCurrentArtists}
                       />
                     )}
                   />
@@ -185,6 +187,8 @@ class WebPlayer extends Component {
                         playLists={this.props.playLists}
                         data_be={this.props.data_be}
                         currentPlaylist={this.props.currentPlaylist}
+                        isSignedIn={this.props.isSignedIn}
+                        handleLogout_BE={this.props.handleLogout_BE}
                       />
                     )}
                   />
@@ -200,6 +204,8 @@ class WebPlayer extends Component {
                         currentPlaylist={this.props.currentPlaylist}
                         isSignedIn={this.props.isSignedIn}
                         handleLogout_BE={this.props.handleLogout_BE}
+                        patchedfollow={this.props.patchedfollow}
+                        patchedunfollow={this.props.patchedunfollow}
                       />
                     )}
                   />

@@ -12,7 +12,7 @@ import {
   DropdownToggle,
 } from "reactstrap";
 import "../NowPlayComponent/NowPlay.css";
-import { NavLink } from "react-router-dom";
+import { NavLink,Redirect } from "react-router-dom";
 class PlayLikedSongs extends Component {
   constructor(props) {
     super(props);
@@ -33,7 +33,16 @@ class PlayLikedSongs extends Component {
     });
   }
 
+
+  handleLogout() {
+    this.props.handleLogout_BE();
+  }
+
   render() {
+    let redirect = "";
+    if (this.props.isSignedIn.isSignedIn === null) {
+      redirect = <Redirect to="/webplayer/home" />;
+    }
     // const userName = this.props.data.data.map((data) => {
     //     if (data.id === this.state.tempId) {
     //       return (
