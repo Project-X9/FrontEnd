@@ -14,24 +14,25 @@ import LibraryPage from "../Library/LibraryPage";
 import NowPlay from "../NowPlayComponent/NowPlay";
 import { baseUrl2 } from "../../shared/baseUrl";
 import LikedPlay from "../PlayLikedSongs/PlayLikedSongs";
+import Artist from "../ArtistInterface/ArtistComponent"
 class WebPlayer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       tempId: this.props.id.id,
       isModalOpen: false,
-      SignedIn: false,
+      SignedIn: false
     };
     this.toggleModal = this.toggleModal.bind(this);
   }
   toggleModal() {
     if (this.props.isSignedIn.isSignedIn === true) {
       this.setState({
-        SignedIn: true,
+        SignedIn: true
       });
     } else {
       this.setState({
-        isModalOpen: !this.state.isModalOpen,
+        isModalOpen: !this.state.isModalOpen
       });
     }
   }
@@ -206,6 +207,21 @@ class WebPlayer extends Component {
                         handleLogout_BE={this.props.handleLogout_BE}
                         patchedfollow={this.props.patchedfollow}
                         patchedunfollow={this.props.patchedunfollow}
+                      />
+                    )}
+                  />
+                  <Route
+                    exact
+                    path="/webplayer/artist"
+                    component={() => (
+                      <Artist
+                      id={this.props.id}
+                      data={this.props.data}
+                      playLists={this.props.playLists}
+                      data_be={this.props.data_be}
+                      currentPlaylist={this.props.currentPlaylist}
+                      isSignedIn={this.props.isSignedIn}
+                      handleLogout_BE={this.props.handleLogout_BE}
                       />
                     )}
                   />
