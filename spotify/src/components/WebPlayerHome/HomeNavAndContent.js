@@ -345,12 +345,14 @@ class HomeNavAndContentSigned extends Component {
                 data_be={this.props.data_be}
                 isSignedIn={this.props.isSignedIn}
                 handleCurrentPlayList={this.props.handleCurrentPlayList}
+                handleCurrentArtists={this.props.handleCurrentArtists}
                 />
                 <PopularAlbumsHomeAndNavContent
                 album={this.props.album}
                 data_be={this.props.data_be}
                 isSignedIn={this.props.isSignedIn}
                 handleCurrentPlayList={this.props.handleCurrentPlayList}
+                handleCurrentAlbums={this.props.handleCurrentAlbums}
                 />
               </div>
             </div>

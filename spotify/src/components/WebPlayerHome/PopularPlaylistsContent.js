@@ -129,7 +129,10 @@ class PopularNewHomeAndNavContent extends Component {
         
         }
     else{
+        let x=0;
         HomeSongs = this.props.data_be.data_be.playlists.map((PlayLists)=>{
+            alert(x)
+            x=x+1
             return(  
                 <Button className="WebplayerHomeNowPlayRedirectButton" onClick={()=>this.handleRenderingPlaylist(PlayLists)}>
                     <Link className="WebplayerHomeNowPlayRedirectLink" to="/webplayer/nowplay">
