@@ -101,109 +101,119 @@ class WebPlayer extends Component {
       <div>
         {redirected}
         <div className="WebPlayerHomeBody">
-            <div className="container InfoContainer">
-                <div className="row InfoContainerRow">
-                    <div className="col-md-3 col-lg-2 Linkers">
-                        <div className="sidebar">
-                        <Link to="/home" className="AppearBigImage">
-                            <img
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSBmnPgQKW4JLrNcSFhPFCLHz3t8kT1pZl0PVkLYsa8FoScWYda"
-                            height="50px"
-                            width="145px"
-                            alt=""
-                            />
-                        </Link>
-                        <Link to="/webplayer/home"  className={homeActive}>
-                            <i className="fa fa-home" />
-                            Home
-                        </Link>
-                        <Link to="/webplayer/search" className={searchActive}>
-                            <i className="fa fa-search"></i>
-                            Search
-                        </Link>                                       
-                        <Button className={"SidebarLibraryButton" + libraryActive} onClick={this.toggleModal}>
-                          <i className="fa fa-bomb"></i>
-                          Your Library
-                        </Button>
-                        {showLikeAndCreate}
-                        </div>
-                    </div>
-                    <div className="col-md-9 col-lg-10 webPlayerHomeNavAndContent">
-                      <Switch>
-                        <Route
-                          path="/webplayer/home"
-                            component={() => (
-                              <HomeNavAndContent
-                                data={this.props.data} 
-                                id={this.props.id}
-                                playLists={this.props.playLists}
-                                artist={this.props.artist}
-                                album={this.props.album}
-                                handleLogoutId={this.props.handleLogoutId}
-                                ///////////////
-                                data_be={this.props.data_be} 
-                                handleLogout_BE={this.props.handleLogout_BE}
-                                isSignedIn={this.props.isSignedIn}
-                                handleCurrentPlayList={this.props.handleCurrentPlayList}
-                                categories={this.props.categories}
-                              />
-                            )}
-                        />
-                        <Route
-                          path="/webplayer/librarypage"
-                          component={() => (
-                            <LibraryPage
-                            data={this.props.data}
-                            id={this.props.id}
-                            playLists={this.props.playLists}
-                            artist={this.props.artist}
-                            album={this.props.album}
-                            handleLogoutId={this.props.handleLogoutId}
-                            data_be={this.props.data_be}
-                            handleCurrentPlayList={this.props.handleCurrentPlayList}
-                            isSignedIn={this.props.isSignedIn}
-                            handleLogout_BE={this.props.handleLogout_BE}
-                            currentPlaylist={this.props.currentPlaylist}
-                            handleCurrentAlbums={this.props.handleCurrentAlbums}
-                            handleCurrentArtists={this.props.handleCurrentArtists}
-                            // fetchPlaylistById_be={this.props.fetchPlaylistById_be}
-                            // playlist_BE={this.props.playlist_BE}
-                            />
-                          )}
-                        />
-                        />
-                        <Route
-                          exact
-                          path="/webplayer/likedplay"
-                          component={() => (
-                            <LikedPlay
-                              id={this.props.id}
-                              data={this.props.data}
-                              playLists={this.props.playLists}
-                              data_be={this.props.data_be}
-                              currentPlaylist={this.props.currentPlaylist}
-                            />
-                          )}
-                        />
-                        <Route
-                            exact
-                            path="/webplayer/nowplay"
-                            component={() => (
-                              <NowPlay id={this.props.id}
-                               data={this.props.data} 
-                               playLists={this.props.playLists}
-                               data_be={this.props.data_be} 
-                               currentPlaylist={this.props.currentPlaylist}
-                               isSignedIn={this.props.isSignedIn}
-                               handleLogout_BE={this.props.handleLogout_BE}
-                               />
-                            )}
-                        />
-                        <Redirect to="/webplayer/home" /> 
-                      </Switch>
-                    </div>            
+          <div className="container InfoContainer">
+            <div className="row InfoContainerRow">
+              <div className="col-md-3 col-lg-2 Linkers">
+                <div className="sidebar">
+                  <Link to="/home" className="AppearBigImage">
+                    <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSBmnPgQKW4JLrNcSFhPFCLHz3t8kT1pZl0PVkLYsa8FoScWYda"
+                      height="50px"
+                      width="145px"
+                      alt=""
+                    />
+                  </Link>
+                  <Link to="/webplayer/home" className={homeActive}>
+                    <i className="fa fa-home" />
+                    Home
+                  </Link>
+                  <Link to="/webplayer/search" className={searchActive}>
+                    <i className="fa fa-search"></i>
+                    Search
+                  </Link>
+                  <Button
+                    className={"SidebarLibraryButton" + libraryActive}
+                    onClick={this.toggleModal}
+                  >
+                    <i className="fa fa-bomb"></i>
+                    Your Library
+                  </Button>
+                  {showLikeAndCreate}
+                </div>
+              </div>
+              <div className="col-md-9 col-lg-10 webPlayerHomeNavAndContent">
+                <Switch>
+                  <Route
+                    path="/webplayer/home"
+                    component={() => (
+                      <HomeNavAndContent
+                        data={this.props.data}
+                        id={this.props.id}
+                        playLists={this.props.playLists}
+                        artist={this.props.artist}
+                        album={this.props.album}
+                        handleLogoutId={this.props.handleLogoutId}
+                        ///////////////
+                        data_be={this.props.data_be}
+                        handleLogout_BE={this.props.handleLogout_BE}
+                        isSignedIn={this.props.isSignedIn}
+                        handleCurrentPlayList={this.props.handleCurrentPlayList}
+                        categories={this.props.categories}
+                        handleCurrentAlbums={this.props.handleCurrentAlbums}
+                        handleCurrentArtists={this.props.handleCurrentArtists}
+                      />
+                    )}
+                  />
+                  <Route
+                    path="/webplayer/librarypage"
+                    component={() => (
+                      <LibraryPage
+                        data={this.props.data}
+                        id={this.props.id}
+                        playLists={this.props.playLists}
+                        artist={this.props.artist}
+                        album={this.props.album}
+                        handleLogoutId={this.props.handleLogoutId}
+                        data_be={this.props.data_be}
+                        handleCurrentPlayList={this.props.handleCurrentPlayList}
+                        isSignedIn={this.props.isSignedIn}
+                        handleLogout_BE={this.props.handleLogout_BE}
+                        currentPlaylist={this.props.currentPlaylist}
+                        handleCurrentAlbums={this.props.handleCurrentAlbums}
+                        handleCurrentArtists={this.props.handleCurrentArtists}
+                        // fetchPlaylistById_be={this.props.fetchPlaylistById_be}
+                        // playlist_BE={this.props.playlist_BE}
+                      />
+                    )}
+                  />
+                  />
+                  <Route
+                    exact
+                    path="/webplayer/likedplay"
+                    component={() => (
+                      <LikedPlay
+                        id={this.props.id}
+                        data={this.props.data}
+                        playLists={this.props.playLists}
+                        data_be={this.props.data_be}
+                        currentPlaylist={this.props.currentPlaylist}
+                        isSignedIn={this.props.isSignedIn}
+                        handleLogout_BE={this.props.handleLogout_BE}
+                      />
+                    )}
+                  />
+                  <Route
+                    exact
+                    path="/webplayer/nowplay"
+                    component={() => (
+                      <NowPlay
+                        id={this.props.id}
+                        data={this.props.data}
+                        playLists={this.props.playLists}
+                        data_be={this.props.data_be}
+                        currentPlaylist={this.props.currentPlaylist}
+                        isSignedIn={this.props.isSignedIn}
+                        handleLogout_BE={this.props.handleLogout_BE}
+                        patchedfollow={this.props.patchedfollow}
+                        patchedunfollow={this.props.patchedunfollow}
+                      />
+                    )}
+                  />
+                  <Redirect to="/webplayer/home" />
+                </Switch>
               </div>
             </div>
+          </div>
         </div>
         <div className="AccountOverviewFooter">
           <div className="container"></div>
