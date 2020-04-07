@@ -2,7 +2,6 @@ import React, { Component, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 //import NavbarHome from "./NavbarComponent";
 import "./Artist.css";
-import ContextMenu from "react-context-menu";
 import TopNav from "./TopNav";
 
 import {

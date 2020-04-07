@@ -30,13 +30,8 @@ class Home extends Component {
     return (
       <div className="Home">
         <NavbarHome />
-<<<<<<< HEAD
-        <div className="bg-pic" />
-        <div className="row row-simplified homeContent">
-=======
         <div class="bg-pic"></div>
         <div class="row row-simplified homeContent">
->>>>>>> parent of 16cf952... Claim artist button (no functionality)
           <h1>Music for everyone.</h1>
           <h4>Millions of songs. No credit card needed.</h4>
           <Link to="/signup">
