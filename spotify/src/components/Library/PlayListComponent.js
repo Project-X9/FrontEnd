@@ -15,12 +15,13 @@ class PlayList extends Component {
         };     
    }
 
-    handleRenderingPlaylist(data){
+    handleRenderingPlaylist(id){
 
-        this.props.handleCurrentPlayList(data);
-        this.setState({
-            playListadded:true
-        })
+        alert(id)
+        this.props.handleCurrentPlayList(id);
+        // this.setState({
+        //     playListadded:true
+        // })
     }
     render(){
         if(this.state.playListadded === true)
@@ -67,7 +68,7 @@ class PlayList extends Component {
             //make a condition if it requires in the future
             return(
 
-                <Button className="customizedButtonForOnclick" onClick={()=>this.handleRenderingPlaylist(PlayLists)}>
+                <Button className="customizedButtonForOnclick" onClick={()=>this.handleRenderingPlaylist(PlayLists._id)}>
                     <Link to="/webplayer/nowplay">
                 <div key= {PlayLists.id}className="CardsLibrary">
                     <Row>
@@ -104,7 +105,6 @@ class PlayList extends Component {
                     <Row className="playButtonPlayList">
                         <Col md={12} >
                             <div>
-                                
                                 <Button className="theButtonItself"> 
                                 <svg height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
                                 </Button>

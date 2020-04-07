@@ -38,6 +38,7 @@ class LibraryPage extends Component {
             data_be={this.props.data_be}
             isSignedIn={this.props.isSignedIn}
             handleLogout_BE={this.props.handleLogout_BE}
+            
             />
             <Switch>
                     <Route
