@@ -422,6 +422,7 @@ class AccountOverview extends Component {
                         GetPassword={this.props.GetPassword}
                         data={this.props.data}
                         id={this.props.id}
+                        data_be={this.props.data_be}
                       />
                     )}
                   />
