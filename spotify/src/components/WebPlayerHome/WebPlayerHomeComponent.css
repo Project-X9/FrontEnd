@@ -36,7 +36,7 @@
 
   .WebPlayerHomeBody .SidebarLibraryButton.btn.btn-secondary,
   .WebPlayerHomeBody .sidebar a {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.015em;
     text-transform: none;
@@ -117,6 +117,7 @@
     flex-wrap: wrap;
     width:100%;
     background-color: #141313;
+    padding:0;
   }
   /***************************************************Navbar & Content***************************************************/
   /***************************************************Navbar***************************************************/
@@ -155,17 +156,28 @@
   
   div.WebPlayerHomeNav nav.NavBar.NavStyle{
     text-align: left;
-    width:73%;
+    width:84%;
+    margin-left:15px;
   }
 
-  @media(max-width: 768px){
+  .WebPlayerHomeBody .container .Linkers{
+    padding:0;
+  }
+
+  @media(max-width: 991px){
+    div.WebPlayerHomeNav nav.NavBar.NavStyle{
+      width:75%;
+    }
+  }
+
+  @media(max-width: 767px){
     div.WebPlayerHomeNav div.container .NavBar {
       position: relative;
     }
 
     div.WebPlayerHomeNav nav.NavBar.NavStyle{
       text-align: left;
-      width:95%;
+      width:97%;
     }
   }
 
@@ -365,6 +377,7 @@
   /***************************************************Components***************************************************/
   .RowWebPlayerHomeContent{
     display: block;
+    margin-left:20px;
   }
   div.WebPlayerHomeContent .container{
     padding:0;
@@ -414,7 +427,7 @@
     text-decoration-color: white;
   }
 
-  div.WebPlayerHomeContent .ContainerSeeAllAboveGrid{
+  /* div.WebPlayerHomeContent .ContainerSeeAllAboveGrid{
     padding-top:1em;
     flex:30%;
   }
@@ -436,7 +449,7 @@
 
   div.WebPlayerHomeContent a.SeeAllAboveGrid:hover{
     font-size: small;
-  }
+  } */
 
   div.WebPlayerHomeContent .GridView{
     display: grid;

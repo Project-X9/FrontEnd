@@ -207,6 +207,11 @@ export const addLogin = (data) => ({
   type: ActionTypes.ADD_LOGIN,
   payload: data,
 });
+////////////////////////sign up ///////////////////////////////
+export const makeSignupRedirectable = () => dispatch =>
+{
+  dispatch(addUser(null))
+}
 ////////////////////////////////////////fetch Playlist by id/////////////////////
 // export const fetchPlaylistById_be = (id) => dispatch => {
 //   axios.get(`${PlaylistsUrl}${id}`)

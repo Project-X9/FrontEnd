@@ -65,6 +65,7 @@ class SignUp extends Component {
         existBefore:true
       })
     }
+    
   }
   // testbackend(){
   //   const id = "";
@@ -221,8 +222,13 @@ class SignUp extends Component {
     }
     else if(this.state.submitted && this.state.submittedFromSignUp)
     {
+      this.setState({
+        submitted:false
+      })
+      this.props.makeSignupRedirectable();  
       this.props.handleLoginId(this.state.SignUpId);
       redirected = <Redirect to="/signin"></Redirect>
+      
     }
     return (
       <div className="container signup">

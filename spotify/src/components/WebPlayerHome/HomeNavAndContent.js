@@ -9,7 +9,7 @@ import "./WebPlayerHomeComponent.css";
 import React, { Component } from "react";
 import { Navbar,Nav,NavItem,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem,Button} from "reactstrap";
 import { NavLink} from "react-router-dom";
-import PopularNewHomeAndNavContent from "./PopularNewHomeAndNavContent";
+import PopularPlaylistsContent from "./PopularPlaylistsContent";
 import PopularArtistsHomeAndNavContent from "./PopularArtistsHomeAndNavContent";
 import PopularAlbumsHomeAndNavContent from "./PopularAlbumsHomeAndNavContent";
 
@@ -145,7 +145,7 @@ class HomeNavAndContentSigned extends Component {
       //                         <Nav className="mr-auto" href="/signup">
       //                         <NavItem className="CustomNavitems">
       //                                 <Button className="CustomButton">
-      //                                     <NavLink className="nav-link" to="/webplayer/librarypage/playlists">
+      //                                     <NavLink className="nav-link SpecificallyForTheButton" to="/webplayer/librarypage/playlists">
       //                                     <svg className="CustomSvg" viewBox="0 0 24 24">
       //                                     <path fill="currentColor" d="M15.54 21.15L5.095 12.23 15.54 3.31l.65.76-9.555 8.16 9.555 8.16"></path>                            </svg>    
       //                                     </NavLink>
@@ -153,7 +153,7 @@ class HomeNavAndContentSigned extends Component {
       //                         </NavItem>
       //                         <NavItem className="CustomNavitems">
       //                                 <Button className="CustomButton">
-      //                                         <NavLink className="nav-link" to="/webplayer/search">
+      //                                         <NavLink className="nav-link SpecificallyForTheButton" to="/webplayer/search">
       //                                         <svg className="CustomSvg" viewBox="0 0 24 24">
       //                                         <path fill="currentColor" d="M7.96 21.15l-.65-.76 9.555-8.16L7.31 4.07l.65-.76 10.445 8.92"></path>
       //                                         </svg>    
@@ -195,10 +195,8 @@ class HomeNavAndContentSigned extends Component {
       //         <div className="row RowWebPlayerHomeContent">
       //           <div className="WebPlayerHomeContent">
       //             <div className="container">
-      //             <PopularNewHomeAndNavContent
-      //                playLists={this.props.playLists}
-      //                artist={this.props.artist}
-      //                album={this.props.album}
+      //             <PopularPlaylistsContent
+      //                playLists={this.props.playLists}            
       //                />
       //               <PopularArtistsHomeAndNavContent
       //                artist={this.props.artist}
@@ -223,7 +221,7 @@ class HomeNavAndContentSigned extends Component {
       //                         <Nav className="mr-auto" href="/signup">
       //                         <NavItem className="CustomNavitems">
       //                                 <Button className="CustomButton">
-      //                                     <NavLink className="nav-link" to="/webplayer/librarypage/playlists">
+      //                                     <NavLink className="nav-link SpecificallyForTheButton" to="/webplayer/librarypage/playlists">
       //                                     <svg className="CustomSvg" viewBox="0 0 24 24">
       //                                     <path fill="currentColor" d="M15.54 21.15L5.095 12.23 15.54 3.31l.65.76-9.555 8.16 9.555 8.16"></path>                            </svg>    
       //                                     </NavLink>
@@ -231,7 +229,7 @@ class HomeNavAndContentSigned extends Component {
       //                         </NavItem>
       //                         <NavItem className="CustomNavitems">
       //                                 <Button className="CustomButton">
-      //                                         <NavLink className="nav-link" to="/webplayer/search">
+      //                                         <NavLink className="nav-link SpecificallyForTheButton" to="/webplayer/search">
       //                                         <svg className="CustomSvg" viewBox="0 0 24 24">
       //                                         <path fill="currentColor" d="M7.96 21.15l-.65-.76 9.555-8.16L7.31 4.07l.65-.76 10.445 8.92"></path>
       //                                         </svg>    
@@ -258,9 +256,6 @@ class HomeNavAndContentSigned extends Component {
       //         <div className="row RowWebPlayerHomeContent">
       //           <div className="WebPlayerHomeContent">
       //             <div className="container">
-      //               <PopularNewHomeAndNavContent
-      //                playLists={this.props.playLists}
-      //                />
       //               <PopularArtistsHomeAndNavContent
       //                artist={this.props.artist}
       //                />
@@ -336,16 +331,17 @@ class HomeNavAndContentSigned extends Component {
           <div className="row RowWebPlayerHomeContent">
             <div className="WebPlayerHomeContent">
               <div className="container">
-              <PopularNewHomeAndNavContent
+                <PopularPlaylistsContent
                 playLists={this.props.playLists}
-                artist={this.props.artist}
-                album={this.props.album}
+                data_be={this.props.data_be}
                 />
                 <PopularArtistsHomeAndNavContent
                 artist={this.props.artist}
+                data_be={this.props.data_be}
                 />
                 <PopularAlbumsHomeAndNavContent
                 album={this.props.album}
+                data_be={this.props.data_be}
                 />
               </div>
             </div>
@@ -364,7 +360,7 @@ class HomeNavAndContentSigned extends Component {
                           <Nav className="mr-auto" href="/signup">
                           <NavItem className="CustomNavitems">
                                   <Button className="CustomButton">
-                                      <NavLink className="nav-link" to="/webplayer/librarypage/playlists">
+                                      <NavLink className="nav-link SpecificallyForTheButton" to="/webplayer/librarypage/playlists">
                                       <svg className="CustomSvg" viewBox="0 0 24 24">
                                       <path fill="currentColor" d="M15.54 21.15L5.095 12.23 15.54 3.31l.65.76-9.555 8.16 9.555 8.16"></path>                            </svg>    
                                       </NavLink>
@@ -372,7 +368,7 @@ class HomeNavAndContentSigned extends Component {
                           </NavItem>
                           <NavItem className="CustomNavitems">
                                   <Button className="CustomButton">
-                                          <NavLink className="nav-link" to="/webplayer/search">
+                                          <NavLink className="nav-link SpecificallyForTheButton" to="/webplayer/search">
                                           <svg className="CustomSvg" viewBox="0 0 24 24">
                                           <path fill="currentColor" d="M7.96 21.15l-.65-.76 9.555-8.16L7.31 4.07l.65-.76 10.445 8.92"></path>
                                           </svg>    
@@ -399,14 +395,13 @@ class HomeNavAndContentSigned extends Component {
           <div className="row RowWebPlayerHomeContent">
             <div className="WebPlayerHomeContent">
               <div className="container">
-                <PopularNewHomeAndNavContent
-                 playLists={this.props.playLists}
-                 />
                 <PopularArtistsHomeAndNavContent
                  artist={this.props.artist}
+                 data_be={this.props.data_be}
                  />
                 <PopularAlbumsHomeAndNavContent
                  album={this.props.album}
+                 data_be={this.props.data_be}
                  />
               </div>
             </div>

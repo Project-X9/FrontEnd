@@ -26,7 +26,7 @@ import {
   fetchArtist,
   fetchAlbum,
   handleSignIn_BE,
-  postupdatedFeedback,
+  makeSignupRedirectable,
 } from "../redux/ActionCreators";
 
 const mapStateToProps = (state) => ({
@@ -54,6 +54,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   fetchArtist: () => {
     dispatch(fetchArtist());
+  },
+  makeSignupRedirectable: () => {
+    dispatch(makeSignupRedirectable());
   },
   fetchAlbum: () => {
     dispatch(fetchAlbum());
@@ -106,6 +109,7 @@ class Main extends Component {
                 data={this.props.data}
                 handleLoginId={this.props.handleLoginId}
                 userstate={this.props.userstate}
+                makeSignupRedirectable={this.props.makeSignupRedirectable}
               />
             )}
           />
@@ -162,7 +166,6 @@ class Main extends Component {
                 artist={this.props.artist}
                 album={this.props.album}
                 handleLogoutId={this.props.handleLogoutId}
-                data_be={this.props.data_be}
                 // fetchPlaylistById_be={this.props.fetchPlaylistById_be}
                 // playlist_BE={this.props.playlist_BE}
                 ///////////

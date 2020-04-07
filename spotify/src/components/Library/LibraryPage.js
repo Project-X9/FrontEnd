@@ -34,7 +34,9 @@ class LibraryPage extends Component {
             <LibraryNavbar 
             data={this.props.data}
             id={this.props.id}
-            handleLogoutId={this.props.handleLogoutId}/>
+            handleLogoutId={this.props.handleLogoutId}
+            data_be={this.props.data_be}
+            />
             <Switch>
                     <Route
                       path="/webplayer/librarypage/playlists"
