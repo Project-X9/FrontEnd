@@ -1,0 +1,182 @@
+/*
+.Artist nav button {
+  align-items: flex-end;
+  font-size: 10px;
+  margin-top: 20px;
+  line-height: 1;
+  background-color: #808080;
+  color: #fff;
+  border-radius: 500px;
+  padding: 16px 48px 18px;
+  -webkit-transition-property: background-color, border-color, color,
+    -webkit-box-shadow, -webkit-filter;
+  transition-property: background-color, border-color, color, -webkit-box-shadow,
+    -webkit-filter;
+  transition-property: background-color, border-color, color, box-shadow, filter;
+  transition-property: background-color, border-color, color, box-shadow, filter,
+    -webkit-box-shadow, -webkit-filter;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  border-width: 0;
+  letter-spacing: 2px;
+  min-width: 80px;
+  text-transform: uppercase;
+  white-space: normal;
+  color: #fff;
+  background-color: #808080;
+  border-color: white;
+}
+.btn-secondary {
+  border: 1.5px solid white;
+  border-radius: 500px;
+}*/
+
+/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+.artistPage div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+  }
+  
+  .artistPage #playButton {
+    width: 15%;
+    margin-left: 0px;
+    position: absolute;
+  }
+  .artistPage #followButton {
+    background-color: transparent;
+    border: 2px solid #fff;
+    width: 15%;
+    position: absolute;
+    margin-left: 170px;
+  }
+  .artistPage #followButton:hover {
+    transform: scale(1.05, 1.05);
+    -webkit-transform: scale(1.05, 1.05);
+    -moz-transform: scale(1.05, 1.05);
+  }
+  .artistPage #playButton:hover {
+    transform: scale(1.05, 1.05);
+    -webkit-transform: scale(1.05, 1.05);
+    -moz-transform: scale(1.05, 1.05);
+  }
+  .artistPage .menu-more:after {
+    content: "\2026";
+    font-size: 30px;
+    color: #fff;
+    position: absolute;
+    width: min-content;
+    margin-left: 0px;
+  }
+  .artistPage .Header2{
+    display: inline;
+  }
+  .artistPage{
+    margin-bottom: 20px;
+    height: 100%;
+    padding-left: 0px;
+  }
+  .main-artist{
+    margin: 0px;
+    height: 100%;
+
+  }
+  .artistPage .switchers{
+    margin: 0px;
+    width: fit-content;
+    margin-left:50px ;
+  }
+  .artistPage .switchers .secondary{
+    background-color: transparent;
+    border: 0px;
+  }
+  .artistPage #ov{
+    font-size: 20px;
+    margin-top: 5px;
+    font-weight: 600;
+  
+  }
+  .artistPage #ab{
+    font-size: 20px;
+    margin-top: 10px;
+    font-weight: 600;
+  }
+  .artistPage .switchers .secondary:focus{
+    background-color: #333;
+  }
+  
+  .artistPage #popular-songs{
+    color: white;
+    font-size: 20px;
+    width: 100%;
+    text-align: left;
+    float: left;
+    margin-left: 50px;
+    margin-top: 20px;
+  
+  }
+  .artistPage .artist-image{
+    float: left;
+  }
+  .artistPage .song-text{
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+  .artistPage .artist-song{
+    width: 90%;
+    float: left;
+    color: white;
+    -webkit-transition-duration: 0.3s;
+    margin-left: 50px;
+    margin-bottom: 3px;
+  }
+  .artistPage .artist-song:hover{
+    background-color:rgb(51,51,51);
+    cursor: default;
+  }
+  .artistPage .artist-song:active{
+    background-color:rgb(51,51,51);
+    cursor: default;
+  }
+
+  .artistPage #bio-body{
+    text-align: left;
+    margin-left: 50px;
+    color: white;
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-bottom: 20px;
+  }
+  
+  .artistPage #album-img{
+    margin-left: 50px;
+  } 
+  .artistPage .caption{
+    display: block;
+    margin-left: 50px;
+    width: 100%;
+    color: white;
+  }
+.artistPage .album-card{
+  display: inline-block;
+  text-align: center;
+  float: left;
+  margin-right: 50px;
+  width: 120px;
+  font-size: 15px;
+  font-weight: 400;
+}
+.artistPage .artist-albums{
+  padding-bottom: 50px;
+}
+.artistPage .CardsLibrary{
+  width: fit-content;
+  margin-bottom: 20px;
+}
+.artistPage .duration{
+  padding-top: 10px;
+  text-align: end;
+  margin-right: 30px;
+  color: #7A7D7F;
+}
