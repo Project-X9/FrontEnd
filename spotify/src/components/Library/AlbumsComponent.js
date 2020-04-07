@@ -66,7 +66,7 @@ class Albums extends Component {
             {
             return(
                 <Button className="customizedButtonForOnclick" onClick={()=>this.handleRenderingPlaylist(Album)}>
-                    <Link to="/webplayer/nowplay">
+                    <Link  to="/webplayer/nowplay">
                 <div key= {Album.id}className="CardsLibrary">
                     <Row>
                         <Col>

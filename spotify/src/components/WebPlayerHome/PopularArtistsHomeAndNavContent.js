@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import {Button, Modal, ModalBody} from 'reactstrap';
-import {Link} from "react-router-dom";
+import {Link,Redirect} from "react-router-dom";
 
 class PopularArtistsHomeAndNavContent extends Component {
     constructor(props) {
         super(props);
         this.state = {
           isModalOpen:false,
-    
+          playListadded:false
         };
         this.toggleModal=this.toggleModal.bind(this);
     }
@@ -16,7 +16,19 @@ class PopularArtistsHomeAndNavContent extends Component {
           isModalOpen: !this.state.isModalOpen
       });
     }
+
+    handleRenderingPlaylist(data){
+        this.props.handleCurrentPlayList(data);
+        this.setState({
+            playListadded:true
+        })
+    }
     render(){
+        if(this.state.playListadded === true)
+        {
+            var redirected = <Redirect to="/webplayer/nowplay"></Redirect>
+
+        }
         // const HomeArtists = this.props.artist.artist.map((Artist)=>{
         //     return(
         //         <div key= {Artist.id} className="CardsHome">
@@ -62,6 +74,8 @@ class PopularArtistsHomeAndNavContent extends Component {
         if (this.props.isSignedIn.isSignedIn === null) {
             isHomeArtistsSingned = this.props.data_be.data_be.artists.map((Artist)=>{
                     return(
+                    <Button className="WebplayerHomeNowPlayRedirectButton" onClick={()=>this.handleRenderingPlaylist(Artist)}>
+                    <Link className="WebplayerHomeNowPlayRedirectLink" to="/webplayer/nowplay">
                         <div key= {Artist.id} className="CardsHome">
                             <div className="row">
                                 <div className="col">
@@ -139,6 +153,8 @@ class PopularArtistsHomeAndNavContent extends Component {
                                 </ModalBody> 
                         </Modal>
                         </div>
+                        </Link>
+                        </Button>
                     )
                 })
         }
@@ -146,6 +162,8 @@ class PopularArtistsHomeAndNavContent extends Component {
         {
             isHomeArtistsSingned = this.props.data_be.data_be.artists.map((Artist)=>{
                 return(
+                    <Button className="WebplayerHomeNowPlayRedirectButton" onClick={()=>this.handleRenderingPlaylist(Artist)}>
+                    <Link className="WebplayerHomeNowPlayRedirectLink" to="/webplayer/nowplay">
                     <div key= {Artist.id} className="CardsHome">
                         <div className="row">
                             <div className="col">
@@ -182,6 +200,8 @@ class PopularArtistsHomeAndNavContent extends Component {
                             </div>
                         </div>
                     </div>
+                    </Link>
+                    </Button>
                 )
             })
         }

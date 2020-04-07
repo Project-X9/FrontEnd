@@ -466,6 +466,20 @@
     align-self: flex-start;
   }
 
+  div.WebPlayerHomeContent .WebplayerHomeNowPlayRedirectButton.btn.btn-secondary{
+    color:transparent;
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  div.WebPlayerHomeContent .WebplayerHomeNowPlayRedirectButton.btn.btn-secondary:focus{
+    box-shadow: none;
+  }
+
+  div.WebPlayerHomeContent .WebplayerHomeNowPlayRedirectLink:hover{
+    text-decoration: none;
+  }
+
   div.WebPlayerHomeContent .CardsHome{
     height: 100%;
     display: flex;
@@ -478,8 +492,8 @@
   }
 
 div.WebPlayerHomeContent .CardPhoto{
-  height: 156px;
-  width: 156px;
+  height: 100%;
+  width: 100%;
   position: relative;
   margin-bottom: 16px;
   background-color: #333;
@@ -487,8 +501,8 @@ div.WebPlayerHomeContent .CardPhoto{
 }
 
 div.WebPlayerHomeContent .ArtistCardPhoto{
-  height: 156px;
-  width: 156px;
+  height: 100%;
+  width: 100%;
   position: relative;
   margin-bottom: 16px;
   background-color: #333;
@@ -501,8 +515,8 @@ div.WebPlayerHomeContent .ImageHolder{
   transition-property: opacity;
   transition-timing-function: cubic-bezier(.3,0,.4,1);
   opacity: 1;
-  height: 156px;
-  width: 156px;
+  height: 100%;
+  width: 100%;
 }
 
 div.WebPlayerHomeContent .ImageItself{
@@ -603,6 +617,7 @@ div.WebPlayerHomeContent .DescriptionPlaylistLink
     background: -moz-linear-gradient(to bottom,rgb(197, 200, 201),rgb(43, 44, 44)); /*for firefox*/
     background: linear-gradient(to bottom,rgb(197, 200, 201),rgb(43, 44, 44)); /*standard syntax*/
     padding:50px;
+    border-radius: 50%;
   }
 
   .HomeNotSignedInModal .HomeNotSignedInModalImageHolder{

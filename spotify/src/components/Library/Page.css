@@ -264,8 +264,8 @@
     /* isolation: isolate; */
 }
 .cardPhoto{
-  height: 156px;
-  width: 156px;
+  height: 100%;
+  width: 100%;
     /* padding-top: 100%; */
     position: relative;
     /* border-radius: 50%; */
@@ -284,8 +284,8 @@
     transition-property: opacity;
     transition-timing-function: cubic-bezier(.3,0,.4,1);
     opacity: 1;
-    height: 156px;
-    width: 156px;
+    height: 100%;
+    width: 100%;
 }
 .theimage{
     height: 100%;
@@ -669,8 +669,21 @@
   background-color: transparent;
   border-color: transparent;
 }
-.customizedButtonForOnclick.btn.btn-secondary:hover{
-  color:transparent;
+
+.customizedButtonForOnclick a:hover{
+  text-decoration: none;
+}
+
+.customizedButtonForOnclick.btn.btn-secondary:focus{
+  box-shadow: none;
+}
+
+.customizedButtonForOnclick.btn.btn-secondary:active{
+  box-shadow: none;
   background-color: transparent;
   border-color: transparent;
+  outline-color: transparent;
 }
+.customizedButtonForOnclick.btn-secondary:not(:disabled):not(.disabled):active:focus{
+  box-shadow: none;
+} 

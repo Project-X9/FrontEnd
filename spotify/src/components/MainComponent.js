@@ -185,7 +185,6 @@ class Main extends Component {
                 handleLogoutId={this.props.handleLogoutId}
                 ///////////
                 data_be={this.props.data_be}
-                handleLogout_BE={this.props.handleLogout_BE}
                 isSignedIn={this.props.isSignedIn}
                 handleCurrentPlayList={this.props.handleCurrentPlayList}
                 currentPlaylist={this.props.currentPlaylist}
