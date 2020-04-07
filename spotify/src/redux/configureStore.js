@@ -9,6 +9,7 @@ import {PlayList} from "./UserPlayLists"
 import { Artist } from './Artist';
 import { Album } from './Albums';
 import { SignUpState,SignInState } from './addUser';
+import {Current} from './CurrentPlaylist'
 
 
 function saveState (state){
@@ -43,6 +44,7 @@ export const ConfigureStore = () => {
       userstate:SignUpState,
       isSignedIn:SignInState,
       data_be: Data_BE,
+      currentPlaylist:Current,
       // playlist_BE:PlayList_BE,
       ...createForms({
         feedback: InitialFeedback,

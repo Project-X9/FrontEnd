@@ -212,3 +212,12 @@ export const handleLogout_BE  = ()=> dispatch => {
 export const LogOut_BE = () => ({
   type: ActionTypes.ADD_LOGOUT_BE
 });
+////////////////////currnt playlist////////////
+export const handleCurrentPlayList  = (data)=> dispatch => {
+  dispatch(addCurrentPlaylist(data));
+  // dispatch(removeUserData());
+};
+export const addCurrentPlaylist = (data) => ({
+  type: ActionTypes.ADD_CURRENT_PLAYLIST,
+  payload:data
+});

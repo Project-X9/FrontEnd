@@ -29,7 +29,8 @@ import {
   EditProfile,
   handleSignIn_BE,
   makeSignupRedirectable,
-  handleLogout_BE
+  handleLogout_BE,
+  handleCurrentPlayList
 } from "../redux/ActionCreators";
 
 const mapStateToProps = state => ({
@@ -41,6 +42,7 @@ const mapStateToProps = state => ({
   userstate:state.userstate,
   isSignedIn:state.isSignedIn,
   data_be:state.data_be,
+  currentPlaylist:state.currentPlaylist
  
 });
 const mapDispatchToProps = dispatch => ({
@@ -58,6 +60,9 @@ const mapDispatchToProps = dispatch => ({
   },
   fetchUserPlaylist: () => {
     dispatch(fetchUserPlaylist());
+  }, 
+  handleCurrentPlayList: (data) => {
+    dispatch(handleCurrentPlayList(data));
   },
   fetchArtist: () => {
     dispatch(fetchArtist());
@@ -183,6 +188,8 @@ class Main extends Component {
                 ///////////
                 data_be={this.props.data_be}
                 handleLogout_BE={this.props.handleLogout_BE}
+                handleCurrentPlayList={this.props.handleCurrentPlayList}
+                currentPlaylist={this.props.currentPlaylist}
               />
             )}
           />

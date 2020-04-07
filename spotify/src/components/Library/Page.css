@@ -628,3 +628,13 @@
 .d121f0ba42b580ad9a173b53c622c11d-scss ._4a19a959428c34075eef50bd44ab468f-scss {
     margin-top: 36px;
 }
+.customizedButtonForOnclick.btn.btn-secondary{
+  color:transparent;
+  background-color: transparent;
+  border-color: transparent;
+}
+.customizedButtonForOnclick.btn.btn-secondary:hover{
+  color:transparent;
+  background-color: transparent;
+  border-color: transparent;
+}

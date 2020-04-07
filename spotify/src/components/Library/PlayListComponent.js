@@ -10,15 +10,27 @@ class PlayList extends Component {
     constructor(props){
         super(props);
         this.state={
-            tempId: this.props.id.id
+            playListadded:false
+            
         };     
     
 
     }
 
+    handleRenderingPlaylist(data){
+
+        this.props.handleCurrentPlayList(data);
+        this.setState({
+            playListadded:true
+        })
+    }
     render(){
       
-        
+        if(this.state.playListadded === true)
+        {
+            var redirected = <Redirect to="/webplayer/nowplay"></Redirect>
+
+        }
         if(this.props.data_be.data_be.playlists.length === 0)
         {
             var RenderNoLikedplayLists=() =>{
@@ -55,6 +67,9 @@ class PlayList extends Component {
         {
             //make a condition if it requires in the future
             return(
+
+                <Button className="customizedButtonForOnclick" onClick={()=>this.handleRenderingPlaylist(PlayLists)}>
+                    <Link to="/webplayer/nowplay">
                 <div key= {PlayLists.id}className="CardsLibrary">
                     <Row>
                         <Col>
@@ -71,17 +86,17 @@ class PlayList extends Component {
                         <Col md={12}>
                             <Row className="cardTitle" >
                                 <Col md={12}>
-                                    <Link className="titlePlaylistLink">{PlayLists.name}</Link>
+                                    <Link className="titlePlaylistLink" >{PlayLists.name}</Link>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col md={12}>
                                     <div className="desciptionPlaylistLink">
-                                        {this.props.id.id === PlayLists.authorId ? (
+                                        {/* {this.props.id.id === PlayLists.authorId ? (
                                         <span>by {this.props.data.data[this.props.id.id-1].name}</span>
-                                        ) : (
+                                        ) : ( */}
                                         <span>{PlayLists.description}</span>
-                                        )}
+                                        {/* )} */}
                                     </div>
                                 </Col>
                             </Row>
@@ -90,6 +105,7 @@ class PlayList extends Component {
                     <Row className="playButtonPlayList">
                         <Col md={12} >
                             <div>
+                                
                                 <Button className="theButtonItself"> 
                                 <svg height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
                                 </Button>
@@ -97,12 +113,16 @@ class PlayList extends Component {
                         </Col>
                     </Row>
                 </div>
+                </Link>
+            </Button>
             )
     }
         )
         
         return(
+            
             <div>
+                {redirected}
             <div className="container MainViewPlaylsit">
                 <div className="sectionPlayList">
                     {this.props.data_be.data_be.playlists.length ===0 ? (
@@ -120,7 +140,6 @@ class PlayList extends Component {
                                     <div className="gridView">
 
                                         {this.props.data_be.data_be.tracks.length !== 0 ? (
-                    
                                                 <div className="LikedSongs">
                                                     <div draggable="true">
                                                         <div className="showLiked">
@@ -148,7 +167,7 @@ class PlayList extends Component {
                                                             </Row>
                                                             <Row>
                                                                 <Col  md={12}>
-                                                            <div className="noOflikedSongs flexRowOfLibraryPage">{this.props.data_be.data_be.tracks.length} Liked Songs</div>
+                                                                    <div className="noOflikedSongs flexRowOfLibraryPage">{this.props.data_be.data_be.tracks.length} Liked Songs</div>
                                                                 </Col>
                                                             </Row>
 
@@ -165,8 +184,7 @@ class PlayList extends Component {
                                                             </div>
                                                         </Col>
                                                     </Row>
-                                                </div>
-                                            
+                                                </div>  
                                         ):(
                                             <div></div>
                                         )}

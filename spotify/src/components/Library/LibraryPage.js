@@ -46,6 +46,7 @@ class LibraryPage extends Component {
                         id={this.props.id}
                         playLists={this.props.playLists}
                         data_be={this.props.data_be}
+                        handleCurrentPlayList={this.props.handleCurrentPlayList}
                         />
                       )} />
                    <Route
