@@ -155,6 +155,7 @@ class WebPlayer extends Component {
                             album={this.props.album}
                             handleLogoutId={this.props.handleLogoutId}
                             data_be={this.props.data_be}
+                            handleCurrentPlayList={this.props.handleCurrentPlayList}
 
                             // fetchPlaylistById_be={this.props.fetchPlaylistById_be}
                             // playlist_BE={this.props.playlist_BE}
@@ -168,7 +169,9 @@ class WebPlayer extends Component {
                               <NowPlay id={this.props.id}
                                data={this.props.data} 
                                playLists={this.props.playLists}
-                               data_be={this.props.data_be} />
+                               data_be={this.props.data_be} 
+                               currentPlaylist={this.props.currentPlaylist}
+                               />
                             )}
                         />
                         <Redirect to="/webplayer/home" /> 

@@ -11,7 +11,6 @@ import SignIn from "./SignIn/SignInComponent";
 import PlayFotter from "./WebPlayer/PlayFotterComponent";
 import Library from "./Library/LibraryCompnent";
 
-
 import {
   postFeedback,
   postFacebookLogin,
@@ -26,12 +25,14 @@ import {
   fetchUserPlaylist,
   fetchArtist,
   fetchAlbum,
-  EditProfile,
   handleSignIn_BE,
-  makeSignupRedirectable
+  makeSignupRedirectable,
+  handleLogout_BE,
+  handleCurrentPlayList,
+  postupdatedFeedback,
 } from "../redux/ActionCreators";
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   data: state.data,
   id: state.id,
   playLists: state.playLists,
@@ -40,9 +41,10 @@ const mapStateToProps = state => ({
   userstate:state.userstate,
   isSignedIn:state.isSignedIn,
   data_be:state.data_be,
+  currentPlaylist:state.currentPlaylist
  
 });
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   resetFeedbackForm: () => {
     dispatch(actions.reset("feedback"));
   },
@@ -52,13 +54,19 @@ const mapDispatchToProps = dispatch => ({
   fetchUserData: () => {
     dispatch(fetchUserData());
   },
+  handleLogout_BE: () => {
+    dispatch(handleLogout_BE());
+  },
   fetchUserPlaylist: () => {
     dispatch(fetchUserPlaylist());
+  }, 
+  handleCurrentPlayList: (data) => {
+    dispatch(handleCurrentPlayList(data));
   },
   fetchArtist: () => {
     dispatch(fetchArtist());
   },
-  makeSignupRedirectable:() =>{
+  makeSignupRedirectable: () => {
     dispatch(makeSignupRedirectable());
   },
   fetchAlbum: () => {
@@ -67,25 +75,21 @@ const mapDispatchToProps = dispatch => ({
   handleSignIn_BE: (data) => {
     dispatch(handleSignIn_BE(data));
   },
-  handleLogoutId: id => dispatch(handleLogoutId(id)),
+  handleLogoutId: (id) => dispatch(handleLogoutId(id)),
   PostPassword: (password, id) => dispatch(PostPassword(password, id)),
-  GetPassword: id => dispatch(GetPassword(id)),
-  getEmail: id => dispatch(getEmail(id)),
-  getPassword: id => dispatch(getPassword(id)),
+  GetPassword: (id) => dispatch(GetPassword(id)),
+  getEmail: (id) => dispatch(getEmail(id)),
+  getPassword: (id) => dispatch(getPassword(id)),
   PremiumPost: (id, isPremium) => dispatch(PremiumPost(id, isPremium)),
-  handleLoginId: id => dispatch(handleLoginId(id)),
+  handleLoginId: (id) => dispatch(handleLoginId(id)),
   postFeedback: (email, confirmemail, password, name, day, month, year, sex) =>
     dispatch(
       postFeedback(email, confirmemail, password, name, day, month, year, sex)
     ),
-
-    EditProfile: (name, day, month, year, sex,id) =>
-    dispatch(
-      EditProfile(name, day, month, year, sex,id)
-    ),
+  postupdatedFeedback: (id, isemail, isage, isID) =>
+    dispatch(postupdatedFeedback(id, isemail, isage, isID)),
   postFacebookLogin: (email, image, name) =>
-    dispatch(postFacebookLogin(email, image, name))
-
+    dispatch(postFacebookLogin(email, image, name)),
 });
 
 class Main extends Component {
@@ -120,13 +124,13 @@ class Main extends Component {
               />
             )}
           />
-          <Route
+          {/* <Route
             exact
             path="/library"
             component={() => (
               <Library id={this.props.id} data={this.props.data} />
             )}
-          />
+          /> */}
 
           <Route
             exact
@@ -137,26 +141,31 @@ class Main extends Component {
                 id={this.props.id}
                 data={this.props.data}
                 data_be={this.props.data_be}
+                handleLogout_BE={this.props.handleLogout_BE}
               />
             )}
           />
           <Route
             path="/account"
             component={() => (
-              <AccountOverview 
-              //////////for overview and change password and edit profile and nowplay
-              data={this.props.data} 
-              id={this.props.id}
-              handleLogoutId={this.props.handleLogoutId}
-              ///////////
-              ///////////for change password
-              PostPassword={this.props.PostPassword}
-              GetPassword={this.props.GetPassword}
-              //////////
-              ///////// for edit profile
-              EditProfile={this.props.EditProfile}
-              /////////
-              data_be={this.props.data_be} 
+              <AccountOverview
+                postupdatedFeedback={this.props.postupdatedFeedback}
+                //////////for overview and change password and edit profile and nowplay
+                data={this.props.data}
+                id={this.props.id}
+                handleLogoutId={this.props.handleLogoutId}
+                ///////////
+                ///////////for change password
+                PostPassword={this.props.PostPassword}
+                GetPassword={this.props.GetPassword}
+                //////////
+                ///////// for edit profile
+                EditProfile={this.props.EditProfile}
+                /////////
+                data_be={this.props.data_be}
+                handleLogout_BE={this.props.handleLogout_BE}
+                isSignedIn={this.props.isSignedIn}
+
               />
             )}
           />
@@ -176,6 +185,9 @@ class Main extends Component {
                 // playlist_BE={this.props.playlist_BE}
                 ///////////
                 data_be={this.props.data_be}
+                handleLogout_BE={this.props.handleLogout_BE}
+                handleCurrentPlayList={this.props.handleCurrentPlayList}
+                currentPlaylist={this.props.currentPlaylist}
               />
             )}
           />
@@ -193,8 +205,6 @@ class Main extends Component {
                 handleLoginId={this.props.handleLoginId}
                 isSignedIn={this.props.isSignedIn}
                 handleSignIn_BE={this.props.handleSignIn_BE}
-
-
               />
             )}
           />

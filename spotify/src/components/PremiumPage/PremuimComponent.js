@@ -98,6 +98,7 @@ class Premium extends Component {
     } else if (this.state.Premium === false) {
       this.props.PremiumPost(this.props.data_be.data_be._id, true);
       this.setState({ Premium: true });
+
       this.togglemodal();
     }
   }
