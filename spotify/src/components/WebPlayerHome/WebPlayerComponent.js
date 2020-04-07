@@ -90,7 +90,7 @@ class WebPlayer extends Component {
           <i className="fa fa-plus-square"></i>
           Create Playlist
         </Link>
-        <Link to="/webplayer/nowplay" className={likedSongsActive}>
+        <Link to="/webplayer/likedplay" className={likedSongsActive}>
           <i className="fa fa-heart"></i>
           Liked Songs
         </Link>
