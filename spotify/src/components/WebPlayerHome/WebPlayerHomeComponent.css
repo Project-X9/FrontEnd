@@ -36,7 +36,7 @@
 
   .WebPlayerHomeBody .SidebarLibraryButton.btn.btn-secondary,
   .WebPlayerHomeBody .sidebar a {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.015em;
     text-transform: none;
@@ -117,6 +117,7 @@
     flex-wrap: wrap;
     width:100%;
     background-color: #141313;
+    padding:0;
   }
   /***************************************************Navbar & Content***************************************************/
   /***************************************************Navbar***************************************************/
@@ -155,17 +156,28 @@
   
   div.WebPlayerHomeNav nav.NavBar.NavStyle{
     text-align: left;
-    width:73%;
+    width:84%;
+    margin-left:15px;
   }
 
-  @media(max-width: 768px){
+  .WebPlayerHomeBody .container .Linkers{
+    padding:0;
+  }
+
+  @media(max-width: 991px){
+    div.WebPlayerHomeNav nav.NavBar.NavStyle{
+      width:75%;
+    }
+  }
+
+  @media(max-width: 767px){
     div.WebPlayerHomeNav div.container .NavBar {
       position: relative;
     }
 
     div.WebPlayerHomeNav nav.NavBar.NavStyle{
       text-align: left;
-      width:95%;
+      width:97%;
     }
   }
 
@@ -362,9 +374,10 @@
     }
   }
   /***************************************************Navbar***************************************************/
-  /***************************************************Components***************************************************/
+  /***************************************************Content***************************************************/
   .RowWebPlayerHomeContent{
     display: block;
+    margin-left:20px;
   }
   div.WebPlayerHomeContent .container{
     padding:0;
@@ -414,7 +427,7 @@
     text-decoration-color: white;
   }
 
-  div.WebPlayerHomeContent .ContainerSeeAllAboveGrid{
+  /* div.WebPlayerHomeContent .ContainerSeeAllAboveGrid{
     padding-top:1em;
     flex:30%;
   }
@@ -436,7 +449,7 @@
 
   div.WebPlayerHomeContent a.SeeAllAboveGrid:hover{
     font-size: small;
-  }
+  } */
 
   div.WebPlayerHomeContent .GridView{
     display: grid;
@@ -453,6 +466,20 @@
     align-self: flex-start;
   }
 
+  div.WebPlayerHomeContent .WebplayerHomeNowPlayRedirectButton.btn.btn-secondary{
+    color:transparent;
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  div.WebPlayerHomeContent .WebplayerHomeNowPlayRedirectButton.btn.btn-secondary:focus{
+    box-shadow: none;
+  }
+
+  div.WebPlayerHomeContent .WebplayerHomeNowPlayRedirectLink:hover{
+    text-decoration: none;
+  }
+
   div.WebPlayerHomeContent .CardsHome{
     height: 100%;
     display: flex;
@@ -465,8 +492,8 @@
   }
 
 div.WebPlayerHomeContent .CardPhoto{
-  height: 156px;
-  width: 156px;
+  height: 100%;
+  width: 100%;
   position: relative;
   margin-bottom: 16px;
   background-color: #333;
@@ -474,8 +501,8 @@ div.WebPlayerHomeContent .CardPhoto{
 }
 
 div.WebPlayerHomeContent .ArtistCardPhoto{
-  height: 156px;
-  width: 156px;
+  height: 100%;
+  width: 100%;
   position: relative;
   margin-bottom: 16px;
   background-color: #333;
@@ -488,8 +515,8 @@ div.WebPlayerHomeContent .ImageHolder{
   transition-property: opacity;
   transition-timing-function: cubic-bezier(.3,0,.4,1);
   opacity: 1;
-  height: 156px;
-  width: 156px;
+  height: 100%;
+  width: 100%;
 }
 
 div.WebPlayerHomeContent .ImageItself{
@@ -580,5 +607,166 @@ div.WebPlayerHomeContent .DescriptionPlaylistLink
   div.WebPlayerHomeContent .ButtonItself:hover{
     transform: scale(1.06);
   }
-  /***************************************************Components***************************************************/
+
+  .HomeNotSignedInModal{
+    display: flex;
+    flex-direction: row;
+    background: rgb(72, 74, 75); /*for browsers that don't support gradient*/
+    background: -webkit-linear-gradient(to bottom,rgb(197, 200, 201),rgb(43, 44, 44)); /*for safari and chrome*/
+    background: -o-linear-gradient(to bottom,rgb(197, 200, 201),rgb(43, 44, 44)); /*for opera*/
+    background: -moz-linear-gradient(to bottom,rgb(197, 200, 201),rgb(43, 44, 44)); /*for firefox*/
+    background: linear-gradient(to bottom,rgb(197, 200, 201),rgb(43, 44, 44)); /*standard syntax*/
+    padding:50px;
+    border-radius: 50%;
+  }
+
+  .HomeNotSignedInModal .HomeNotSignedInModalImageHolder{
+    width: 100%;
+    height: auto;
+    margin:10px;
+  }
+
+  .HomeNotSignedInModal img.HomeNotSignedInModalImage{
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: block;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+
+  .HomeNotSignedInModal .HomeNotSignedInModalHeader2{
+    font-size: 32px;
+    margin: 8px 0 24px;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: -.4px;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    line-height: 32px;
+    text-align: center;
+    text-transform: none;
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+  }
+
+  .HomeNotSignedInModal .HomeNotSignedInModalButton{
+    font-weight: 600;
+    display: block;
+    padding: 13px;
+    width: 100%;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 1.76px;
+    text-transform: uppercase;
+    border: 2px solid transparent;
+    border-radius: 500px;
+    color: #fff;
+    transition: all 33ms cubic-bezier(.3,0,0,1);
+    will-change: transform;
+    white-space: nowrap;
+    cursor: pointer;
+    text-align: center;
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+    box-sizing: border-box;
+
+  }
+
+  .HomeNotSignedInModal .HomeNotSignedInModalLinkInsideButton{
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .HomeNotSignedInModal .HomeNotSignedInModalButton:hover{
+    outline: none;
+    background-color: #1ed760;
+    border-color: transparent;
+    transform: scale(1.06);
+  }
+
+  .HomeNotSignedInModal .HomeNotSignedInModalParagraph{
+    font-size: 12px;
+    line-height: 24px;
+    text-align: center;
+    margin: 32px 0 0;
+    padding: 0;
+    border: 0;
+    box-sizing:border-box;
+    color:#fff;
+    font-weight: 700;
+    letter-spacing: .015em;
+    text-transform: none;
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+  }
+
+  .HomeNotSignedInModal .HomeNotSignedInModalButtonInsideParagraph{
+    font-weight: 600;
+    padding: 0 10px;
+    background-color: transparent;
+    color: #fff;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 1.76px;
+    text-transform: uppercase;
+    border: 2px solid transparent;
+    border-radius: 500px;
+    transition: all 33ms cubic-bezier(.3,0,0,1);
+    will-change: transform;
+    white-space: nowrap;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;  
+    box-sizing: border-box;
+  }
+
+  .HomeNotSignedInModal .HomeNotSignedInModalLinkInsideButtonInsideParagraph{
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .HomeNotSignedInModal .HomeNotSignedInModalButtonInsideParagraph:hover{
+    outline: none;
+    transform: scale(1.06);
+  }
+  
+  .HomeNotSignedInClose .HomeNotSignedInModalClosedButton{
+    background: none;
+    border: none;
+    color: #fff;
+    display: block;
+    font-weight: 400;
+    text-transform: none;
+    width:100%;
+    padding: 13px;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 1.76px;
+    border-radius: 500px;
+    transition: all 33ms cubic-bezier(.3,0,0,1);
+    will-change: transform;
+    white-space: nowrap;
+    cursor: pointer;
+    text-align: center;
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+    box-sizing: border-box;
+  }
+  
+  .HomeNotSignedInClose .HomeNotSignedInModalClosedButton:hover{
+    outline: none;
+    transform: scale(1.06);
+  }
+
+  .HomeNotSignedInClose .HomeNotSignedInModalClosedButton.btn.btn-success:focus{
+    box-shadow: none;
+  }
+
+  .HomeNotSignedInClose .HomeNotSignedInModalClosedButton.btn.btn-success:active{
+    background-color: transparent;
+    border: none;
+  }
+
+  /***************************************************Content***************************************************/
   

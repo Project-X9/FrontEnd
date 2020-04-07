@@ -49,6 +49,7 @@ class Premium extends Component {
     // this.handlePremiumT = this.handlePremiumT.bind(this);
     // this.handlePremiumF = this.handlePremiumF.bind(this);
     this.handlePremium_be = this.handlePremium_be.bind(this);
+    this.state.handleLogout = this.handleLogout.bind(this);
   }
   // componentDidMount(){
   //   if(this.state.isPrenium === this.state.premium)
@@ -56,7 +57,9 @@ class Premium extends Component {
   //       isPrenium:!this.state.premium
   //     })}
   // }
-
+  handleLogout() {
+    this.props.handleLogout_BE();
+  }
   // handleData = () => {
   //   let temp;
   //   this.props.data.data.map(data => {
@@ -98,6 +101,7 @@ class Premium extends Component {
     } else if (this.state.Premium === false) {
       this.props.PremiumPost(this.props.data_be.data_be._id, true);
       this.setState({ Premium: true });
+
       this.togglemodal();
     }
   }
@@ -113,7 +117,7 @@ class Premium extends Component {
 
   render() {
     let redirect = "";
-    if (this.props.data_be.data_be._id === undefined) {
+    if (this.props.isSignedIn.isSignedIn === null) {
       redirect = <Redirect to="/signup" />;
     }
 
@@ -134,8 +138,8 @@ class Premium extends Component {
         {redirect}
         <div className="AccountOverviewNav">
           <div className="container">
-            <Navbar className="NavBar" sticky="top" expand="md">
-              <NavbarBrand className="mr-auto" href="/signup">
+          <Navbar className="NavBar NavStyle" sticky="top" expand="md">
+              <NavbarBrand className="mr-auto" href="/home">
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSBmnPgQKW4JLrNcSFhPFCLHz3t8kT1pZl0PVkLYsa8FoScWYda"
                   height="65px"
@@ -149,27 +153,60 @@ class Premium extends Component {
               >
                 ☰
               </NavbarToggler>
-
               <Collapse isOpen={this.state.isNavOpen} navbar>
                 <Nav navbar className="ml-auto">
                   <NavItem>
-                    <NavLink className="nav-link" to="/home">
-                      Home
+                    <NavLink className="nav-link" to="/premium">
+                      Premium
                     </NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink className="nav-link" to="/menu">
+                    <NavLink className="nav-link" to="/home">
                       Help
                     </NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink className="nav-link" to="/aboutus">
+                    <NavLink className="nav-link" to="/home">
                       Download
                     </NavLink>
                   </NavItem>
-
                   <NavItem>
-                    <UncontrolledDropdown nav inNavbar>
+                    <span className="nav-link HorizontalLine">──</span>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink
+                      className="nav-link AccountWhenCollapsed"
+                      to="/account/overview"
+                    >
+                      Account
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <Button
+                      onClick={() => {
+                        this.handleLogout();
+                      }}
+                      className="nav-link LogoutWhenCollapsed"
+                    >
+                      Log out
+                    </Button>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink className="ImageWhenCollapsed" to="/home">
+                      <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSBmnPgQKW4JLrNcSFhPFCLHz3t8kT1pZl0PVkLYsa8FoScWYda"
+                        height="25px"
+                        width="70px"
+                        alt=""
+                      />
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <UncontrolledDropdown
+                      nav
+                      inNavbar
+                      className="AccountOverviewDropDown"
+                    >
                       <DropdownToggle nav caret className="seperator">
                         <img
                           alt=""
@@ -178,11 +215,25 @@ class Premium extends Component {
                         />
                         Profile
                       </DropdownToggle>
-                      <DropdownMenu className={accLogStyleParent} right>
-                        <DropdownItem className={accChild}>
-                          <NavLink to="/accountoverview">Account</NavLink>
+                      <DropdownMenu className="StaticNav" right>
+                        <DropdownItem className="StaticNavChildContainer">
+                          <NavLink
+                            className="StaticNavChild1"
+                            to="/account/overview"
+                          >
+                            Account
+                          </NavLink>
                         </DropdownItem>
-                        <DropdownItem className={logChild}>LogOut</DropdownItem>
+                        <DropdownItem className="StaticNavChildContainer">
+                          <Button
+                            onClick={() => {
+                              this.handleLogout();
+                            }}
+                            className="StaticNavChild2"
+                          >
+                            Log out
+                          </Button>
+                        </DropdownItem>
                       </DropdownMenu>
                     </UncontrolledDropdown>
                   </NavItem>

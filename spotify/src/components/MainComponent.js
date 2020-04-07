@@ -9,12 +9,8 @@ import AccountOverview from "./AccountOverview/AccountOverviewComponent";
 import WebPlayer from "./WebPlayerHome/WebPlayerComponent"
 import SignIn from "./SignIn/SignInComponent";
 import PlayFotter from "./WebPlayer/PlayFotterComponent";
-import Library from './Library/LibraryCompnent';
-import LibraryPage from  "./Library/LibraryPage";
-import Artists from  "./Library/ArtistsComponent";
-import PlayList from './Library/PlayListComponent';
-import Albums from './Library/AlbumsComponent';
-import Artist from "./ArtistInterface/ArtistComponent";
+import Library from "./Library/LibraryCompnent";
+import Artist from"./ArtistInterface/ArtistComponent"
 
 import {
   postFeedback,
@@ -30,13 +26,14 @@ import {
   fetchUserPlaylist,
   fetchArtist,
   fetchAlbum,
-  EditProfile,
   handleSignIn_BE,
-  getArtist
+  makeSignupRedirectable,
+  handleLogout_BE,
+  handleCurrentPlayList,
+  postupdatedFeedback,
 } from "../redux/ActionCreators";
 
-
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   data: state.data,
   id: state.id,
   playLists: state.playLists,
@@ -45,9 +42,11 @@ const mapStateToProps = state => ({
   userstate:state.userstate,
   isSignedIn:state.isSignedIn,
   data_be:state.data_be,
+  currentPlaylist:state.currentPlaylist,
+  categories:state.categories
  
 });
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   resetFeedbackForm: () => {
     dispatch(actions.reset("feedback"));
   },
@@ -57,25 +56,51 @@ const mapDispatchToProps = dispatch => ({
   fetchUserData: () => {
     dispatch(fetchUserData());
   },
-  handleLogoutId:id=>dispatch(handleLogoutId(id)),
+  handleLogout_BE: () => {
+    dispatch(handleLogout_BE());
+  },
+  fetchUserPlaylist: () => {
+    dispatch(fetchUserPlaylist());
+  }, 
+  handleCurrentPlayList: (data) => {
+    dispatch(handleCurrentPlayList(data));
+  },
+  fetchArtist: () => {
+    dispatch(fetchArtist());
+  },
+  makeSignupRedirectable: () => {
+    dispatch(makeSignupRedirectable());
+  },
+  fetchAlbum: () => {
+    dispatch(fetchAlbum());
+  },
+  handleSignIn_BE: (data) => {
+    dispatch(handleSignIn_BE(data));
+  },
+  handleLogoutId: (id) => dispatch(handleLogoutId(id)),
   PostPassword: (password, id) => dispatch(PostPassword(password, id)),
-  GetPassword: id => dispatch(GetPassword(id)),
-  getEmail: id => dispatch(getEmail(id)),
-  getPassword: id => dispatch(getPassword(id)),
+  GetPassword: (id) => dispatch(GetPassword(id)),
+  getEmail: (id) => dispatch(getEmail(id)),
+  getPassword: (id) => dispatch(getPassword(id)),
   PremiumPost: (id, isPremium) => dispatch(PremiumPost(id, isPremium)),
-  handleLoginId: id => dispatch(handleLoginId(id)),
+  handleLoginId: (id) => dispatch(handleLoginId(id)),
   postFeedback: (email, confirmemail, password, name, day, month, year, sex) =>
     dispatch(
       postFeedback(email, confirmemail, password, name, day, month, year, sex)
     ),
+  postupdatedFeedback: (id, isemail, isage, isID) =>
+    dispatch(postupdatedFeedback(id, isemail, isage, isID)),
   postFacebookLogin: (email, image, name) =>
     dispatch(postFacebookLogin(email, image, name)),
- //getName: id => dispatch(get(id))
 });
 
 class Main extends Component {
   componentDidMount() {
     this.props.fetchUserData();
+    this.props.fetchUserPlaylist();
+    this.props.fetchArtist();
+    this.props.fetchAlbum();
+    this.props.handleCurrentPlayList();
   }
 
   render() {
@@ -106,12 +131,15 @@ class Main extends Component {
                 id={this.props.id}
                 data={this.props.data}
                 handleLoginId={this.props.handleLoginId}
-
+                userstate={this.props.userstate}
+                makeSignupRedirectable={this.props.makeSignupRedirectable}
+                isSignedIn={this.props.isSignedIn}
               />
             )}
           />
-          <Route
-            exact path="/library"
+          {/* <Route
+            exact
+            path="/library"
             component={() => (
               <Library
                 id={this.props.id}
@@ -127,7 +155,8 @@ class Main extends Component {
                 data={this.props.data}
               />
             )}
-          />
+          /> */}
+
           <Route
             exact
             path="/premium"
@@ -136,6 +165,9 @@ class Main extends Component {
                 PremiumPost={this.props.PremiumPost}
                 id={this.props.id}
                 data={this.props.data}
+                data_be={this.props.data_be}
+                handleLogout_BE={this.props.handleLogout_BE}
+                isSignedIn={this.props.isSignedIn}
               />
             )}
           />
@@ -143,16 +175,24 @@ class Main extends Component {
             
             path="/account"
             component={() => (
-              <AccountOverview 
-              //////////for overview and change password
-              data={this.props.data} 
-              id={this.props.id}
-              handleLogoutId={this.props.handleLogoutId}
-              ///////////
-              ///////////for change password
-              PostPassword={this.props.PostPassword}
-              GetPassword={this.props.GetPassword}
-              //////////
+              <AccountOverview
+                postupdatedFeedback={this.props.postupdatedFeedback}
+                //////////for overview and change password and edit profile and nowplay
+                data={this.props.data}
+                id={this.props.id}
+                handleLogoutId={this.props.handleLogoutId}
+                ///////////
+                ///////////for change password
+                PostPassword={this.props.PostPassword}
+                GetPassword={this.props.GetPassword}
+                //////////
+                ///////// for edit profile
+                EditProfile={this.props.EditProfile}
+                /////////
+                data_be={this.props.data_be}
+                handleLogout_BE={this.props.handleLogout_BE}
+                isSignedIn={this.props.isSignedIn}
+
               />
             )}
           />
@@ -168,11 +208,14 @@ class Main extends Component {
                 artist={this.props.artist}
                 album={this.props.album}
                 handleLogoutId={this.props.handleLogoutId}
-                data_be={this.props.data_be}
-                // fetchPlaylistById_be={this.props.fetchPlaylistById_be}
-                // playlist_BE={this.props.playlist_BE}
                 ///////////
                 data_be={this.props.data_be}
+                isSignedIn={this.props.isSignedIn}
+                handleCurrentPlayList={this.props.handleCurrentPlayList}
+                currentPlaylist={this.props.currentPlaylist}
+                handleLogout_BE={this.props.handleLogout_BE}
+                isSignedIn={this.props.isSignedIn}
+                categories={this.props.categories}
               />
             )}
           />
@@ -188,6 +231,8 @@ class Main extends Component {
                 data={this.props.data}
                 id={this.props.id}
                 handleLoginId={this.props.handleLoginId}
+                isSignedIn={this.props.isSignedIn}
+                handleSignIn_BE={this.props.handleSignIn_BE}
               />
             )}
           />
@@ -198,7 +243,7 @@ class Main extends Component {
               <PlayFotter data={this.props.data} id={this.props.id} />
             )}
           />
-          <Redirect to="/artist" />
+          <Redirect to="/signup" />
         </Switch>
         {/* </CSSTransition> */}
         {/* </TransitionGroup> */}

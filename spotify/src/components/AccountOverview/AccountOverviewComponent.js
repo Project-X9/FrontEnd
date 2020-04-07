@@ -17,9 +17,9 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  Button
+  Button,
 } from "reactstrap";
-import { NavLink, Link, Redirect, Switch, Route} from "react-router-dom";
+import { NavLink, Link, Redirect, Switch, Route } from "react-router-dom";
 import FreePlan from "./FreePlan";
 import PremiumPlan from "./PremiumPlan";
 import FreeJumbotron from "./FreeJumbotron";
@@ -50,7 +50,7 @@ class AccountOverview extends Component {
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.state.nullID = this.nullID.bind(this);
-    
+    this.state.handleLogout = this.handleLogout.bind(this);
   }
 
   /**
@@ -69,44 +69,49 @@ class AccountOverview extends Component {
    */
   nullID() {
     this.setState({
-      tempId: '',
+      tempId: "",
     });
-  } 
+  }
 
   /**
    * Sets a variable to an empty string then passes it to
    * handleLogoutId() functions which logs the user out
    */
-  handleLogout(){
-    let id="";
-    this.props.handleLogoutId(id);
+  handleLogout() {
+    // let id = "";
+    this.props.handleLogout_BE();
+    // this.props.handleLogout_BE();
   }
   /**
    * Responsible for showing everything on the Account Overview page
    * @returns Components that will be displayed on the page
    */
   render() {
+    let overviewActive = "";
+    let editProfileActive = "";
+    let changePasswordActive = "";
+    let recoverPlaylistsActive = "";
+    let redeemActive = "";
+    let currentURL = window.location.href;
+    if (currentURL === baseUrl2 + "account/overview") {
+      overviewActive = "active";
+      editProfileActive = "";
+      changePasswordActive = "";
+      recoverPlaylistsActive = "";
+      redeemActive = "";
+    } else if (currentURL === baseUrl2 + "account/changepassword") {
+      overviewActive = "";
+      editProfileActive = "";
+      changePasswordActive = "active";
+      recoverPlaylistsActive = "";
+      redeemActive = "";
+    }
 
-    let overviewActive=''
-    let editProfileActive=''
-    let changePasswordActive=''
-    let recoverPlaylistsActive=''
-    let redeemActive=''
-    let currentURL=window.location.href
-    if(currentURL===baseUrl2 + "account/overview")
-    {
-      overviewActive='active'; editProfileActive=''; changePasswordActive=''; recoverPlaylistsActive=''; redeemActive='';
-    }
-    else if(currentURL===baseUrl2 + "account/changepassword")
-    {
-      overviewActive=''; editProfileActive=''; changePasswordActive='active'; recoverPlaylistsActive=''; redeemActive='';
+    let redirect = "";
+    if (this.props.isSignedIn.isSignedIn === null) {
+      redirect = <Redirect to="/signup" />;
     }
 
-    let redirect=''
-    if (this.state.tempId === "") {
-      redirect=<Redirect to="/signup" />
-    }
-   
     // const UserData = this.props.data.data.map((data) => {
     //   if (data.id === this.state.tempId) {
     //     return (
@@ -152,45 +157,38 @@ class AccountOverview extends Component {
     //     );
     //   }
     // });
-    
-    let  UserData=(
-            <div >
-              <div className="row">
-                <div className="col Content1">
-                  <h5>Username</h5>
-                </div>
-                <div className="col Content2">
-                  <h5>
-                    {' '}
-                    {this.props.data_be.data_be.name}
-                    {' '}
-                  </h5>
-                </div>
-              </div>
-              <hr />
-              <div className="row">
-                <div className="col Content1">
-                  <h5>Email</h5>
-                </div>
-                <div className="col Content2">
-                  <h5>{this.props.data_be.data_be.email}</h5>
-                </div>
-              </div>
-              <hr />
-              <div className="row">
-                <div className="col Content1">
-                  <h5>Age</h5>
-                </div>
-                <div className="col Content2">
-                  <h5>
-                    {this.props.data_be.data_be.age}
-                  </h5>
-                </div>
-              </div>
-              <hr />
-            </div>
-          );
 
+    let UserData = (
+      <div>
+        <div className="row">
+          <div className="col Content1">
+            <h5>Username</h5>
+          </div>
+          <div className="col Content2">
+            <h5> {this.props.data_be.data_be.name} </h5>
+          </div>
+        </div>
+        <hr />
+        <div className="row">
+          <div className="col Content1">
+            <h5>Email</h5>
+          </div>
+          <div className="col Content2">
+            <h5>{this.props.data_be.data_be.email}</h5>
+          </div>
+        </div>
+        <hr />
+        <div className="row">
+          <div className="col Content1">
+            <h5>Age</h5>
+          </div>
+          <div className="col Content2">
+            <h5>{this.props.data_be.data_be.age}</h5>
+          </div>
+        </div>
+        <hr />
+      </div>
+    );
 
     // const showJumbotron = this.props.data.data.map(data => {
     //   if (data.id === this.state.tempId) {
@@ -201,12 +199,10 @@ class AccountOverview extends Component {
     //   }
     // });
 
-
     let showJumbotron = "";
     if (this.state.Premium === false) {
       showJumbotron = <FreeJumbotron />;
-    }
-    else{
+    } else {
       showJumbotron = <PremiumJumbotron />;
     }
 
@@ -222,61 +218,51 @@ class AccountOverview extends Component {
     let showPlan = "";
     if (this.state.Premium === false) {
       showPlan = <FreePlan />;
-    }
-    else{
+    } else {
       showPlan = <PremiumPlan />;
     }
 
     const showOverview = () => {
-        return (
-          <div>
-                <div className="row">
-                  <h1 className="BigHeader">Account overview</h1>
-                </div>
-                <div className="row">
-                  <h3 className="SmallHeader">Profile</h3>
-                </div>
+      return (
+        <div>
+          <div className="row">
+            <h1 className="BigHeader">Account overview</h1>
+          </div>
+          <div className="row">
+            <h3 className="SmallHeader">Profile</h3>
+          </div>
 
-                <div>
-                {UserData}
-                </div>
+          <div>{UserData}</div>
 
-                <div className="row">
-                  <div className="col Content1">
-                    <h5>Country</h5>
-                  </div>
-                  <div className="col Content2">
-                    <h5>EG</h5>
-                  </div>
-                </div>
-                <hr />
-                <div className="row">
-                  <Button className="EditProfile"  color="success">
-                    <NavLink className="InsideEditProfile" to="/account/edit">
-                      EDIT PROFILE
-                      </NavLink>
-                  </Button>
-                </div>
-                <div className="row">
-                  <h3 className="SmallHeader2">Your plan</h3>
-                </div>
-                {showPlan}
-                <div className="row">
-                  <Button className="EditProfile" color="success">
-                    <NavLink className="InsideEditProfile" to="/premium">
-                      JOIN PREMIUM
-                    </NavLink>
-                  </Button>
-                </div>
-                <div className="row">
-                  <Button className="EditProfile" color="success">
-                    <NavLink className="InsideEditProfile" to="/">
-                      SIGN OUT
-                    </NavLink>
-                  </Button>
+          <div className="row">
+            <div className="col Content1">
+              <h5>Country</h5>
+            </div>
+            <div className="col Content2">
+              <h5>EG</h5>
             </div>
           </div>
-        ); 
+          <hr />
+          <div className="row">
+            <Button className="EditProfile" color="success">
+              <NavLink className="InsideEditProfile" to="/account/edit">
+                EDIT PROFILE
+              </NavLink>
+            </Button>
+          </div>
+          <div className="row">
+            <h3 className="SmallHeader2">Your plan</h3>
+          </div>
+          {showPlan}
+          <div className="row">
+            <Button className="EditProfile" color="success">
+              <NavLink className="InsideEditProfile" to="/">
+                SIGN OUT
+              </NavLink>
+            </Button>
+          </div>
+        </div>
+      );
     };
 
     return (
@@ -295,7 +281,8 @@ class AccountOverview extends Component {
               </NavbarBrand>
               <NavbarToggler
                 className="NavBarToggle"
-                onClick={this.state.toggleNav}>
+                onClick={this.state.toggleNav}
+              >
                 ☰
               </NavbarToggler>
               <Collapse isOpen={this.state.isNavOpen} navbar>
@@ -316,19 +303,23 @@ class AccountOverview extends Component {
                     </NavLink>
                   </NavItem>
                   <NavItem>
-                    <span className="nav-link HorizontalLine">
-                    ──
-                    </span>
+                    <span className="nav-link HorizontalLine">──</span>
                   </NavItem>
                   <NavItem>
-                    <NavLink className="nav-link AccountWhenCollapsed" to="/account/overview">
+                    <NavLink
+                      className="nav-link AccountWhenCollapsed"
+                      to="/account/overview"
+                    >
                       Account
                     </NavLink>
                   </NavItem>
                   <NavItem>
-                    <Button 
-                      onClick={() => { this.handleLogout() }} 
-                      className="nav-link LogoutWhenCollapsed" >
+                    <Button
+                      onClick={() => {
+                        this.handleLogout();
+                      }}
+                      className="nav-link LogoutWhenCollapsed"
+                    >
                       Log out
                     </Button>
                   </NavItem>
@@ -343,7 +334,11 @@ class AccountOverview extends Component {
                     </NavLink>
                   </NavItem>
                   <NavItem>
-                    <UncontrolledDropdown nav inNavbar className="AccountOverviewDropDown">
+                    <UncontrolledDropdown
+                      nav
+                      inNavbar
+                      className="AccountOverviewDropDown"
+                    >
                       <DropdownToggle nav caret className="seperator">
                         <img
                           alt=""
@@ -356,16 +351,20 @@ class AccountOverview extends Component {
                         <DropdownItem className="StaticNavChildContainer">
                           <NavLink
                             className="StaticNavChild1"
-                            to="/account/overview">
+                            to="/account/overview"
+                          >
                             Account
                           </NavLink>
                         </DropdownItem>
                         <DropdownItem className="StaticNavChildContainer">
-                        <Button
-                            onClick={() => { this.handleLogout() }}
-                            className="StaticNavChild2">
+                          <Button
+                            onClick={() => {
+                              this.handleLogout();
+                            }}
+                            className="StaticNavChild2"
+                          >
                             Log out
-                        </Button>
+                          </Button>
                         </DropdownItem>
                       </DropdownMenu>
                     </UncontrolledDropdown>
@@ -392,11 +391,14 @@ class AccountOverview extends Component {
                     <i className="fa fa-edit" />
                     Edit profile
                   </Link>
-                  <Link to="/account/changepassword" className={changePasswordActive}>
+                  <Link
+                    to="/account/changepassword"
+                    className={changePasswordActive}
+                  >
                     <i className="fa fa-lock" />
                     Change password
                   </Link>
-                  <Link to="/"  className={recoverPlaylistsActive}>
+                  <Link to="/" className={recoverPlaylistsActive}>
                     <i className="fa fa-hashtag" />
                     Recover playlists
                   </Link>
@@ -408,32 +410,30 @@ class AccountOverview extends Component {
               </div>
               <div className="col-sm-12 col-md-12 col-lg-8 Content EditProfileContentAswell">
                 <Switch>
-                    <Route
-                      path="/account/overview"
-                      component={showOverview}
-                    />
-                    <Route
-                      path="/account/changepassword"
-                      component={() => (
-                        <ChangePass
-                          PostPassword={this.props.PostPassword}
-                          GetPassword={this.props.GetPassword}
-                          data={this.props.data}
-                          id={this.props.id}
-                        />
-                      )}
-                    />  
-                    <Route
-                      path="/account/edit"
-                      component={() => (
-                        <EditProfile
-                          data={this.props.data}
-                          id={this.props.id}
-                          EditProfile={this.props.EditProfile}
-                        />
-                      )}
-                    />
-                    <Redirect to="/account/overview" />   
+                  <Route path="/account/overview" component={showOverview} />
+                  <Route
+                    path="/account/changepassword"
+                    component={() => (
+                      <ChangePass
+                        PostPassword={this.props.PostPassword}
+                        GetPassword={this.props.GetPassword}
+                        data={this.props.data}
+                        id={this.props.id}
+                      />
+                    )}
+                  />
+                  <Route
+                    path="/account/edit"
+                    component={() => (
+                      <EditProfile
+                        postupdatedFeedback={this.props.postupdatedFeedback}
+                        id={this.props.id}
+                        data={this.props.data}
+                        data_be={this.props.data_be}
+                      />
+                    )}
+                  />
+                  <Redirect to="/account/overview" />
                 </Switch>
               </div>
             </div>
@@ -500,17 +500,20 @@ class AccountOverview extends Component {
                 <div className="col-sm-12 col-md-12 col-lg-4 icons">
                   <a
                     className="btn btn-social-icon btn-instagram"
-                    href="https://www.instagram.com/spotify/?hl=en">
+                    href="https://www.instagram.com/spotify/?hl=en"
+                  >
                     <i className="fa fa-instagram" />
                   </a>
                   <a
                     className="btn btn-social-icon btn-twitter"
-                    href="https://twitter.com/Spotify?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
+                    href="https://twitter.com/Spotify?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+                  >
                     <i className="fa fa-twitter" />
                   </a>
                   <a
                     className="btn btn-social-icon btn-facebook"
-                    href="https://www.facebook.com/Spotify/">
+                    href="https://www.facebook.com/Spotify/"
+                  >
                     <i className="fa fa-facebook" />
                   </a>
                 </div>

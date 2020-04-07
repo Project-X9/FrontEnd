@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { 
    Button, Row, Col,} from 'reactstrap'; 
-import {Link,} from "react-router-dom";
+import {Link,Redirect} from "react-router-dom";
 
 import "./Page.css";
 import "./ArtistCard.css"
@@ -12,11 +12,28 @@ class Artists extends Component {
     constructor(props){
         super(props);
         this.state={
-            tempId:''
-        };      
+            tempId:'',
+            playListadded:false
+        };
+        // alert(this.props.artist.artist.length)      
     }
 
+    handleRenderingPlaylist(data){
+
+        this.props.handleCurrentPlayList(data);
+        this.setState({
+            playListadded:true
+        })
+    }
     render(){
+      
+        if(this.state.playListadded === true)
+        {
+            var redirected = <Redirect to="/webplayer/nowplay"></Redirect>
+
+        }
+        if(this.props.isSignedIn.isSignedIn === true)
+        {
         if(this.props.data_be.data_be.artists.length === 0)
         {
             var RenderNoLikedArtists=() =>{
@@ -42,12 +59,13 @@ class Artists extends Component {
 
                     </div>                                    
                 </div>  
-
                 )
             }
         }
-        const RenderArtistsCard =this.props.data_be.data_be.artists.map((artist)=>{
+        var RenderArtistsCard =this.props.data_be.data_be.artists.map((artist)=>{
             return(
+                <Button className="customizedButtonForOnclick" onClick={()=>this.handleRenderingPlaylist(artist._id)}>
+                    <Link to="/webplayer/nowplay">
                 <div key={artist.id} className="CardsLibrary">
                     <Row>
                         <Col  md={12}>
@@ -101,36 +119,49 @@ class Artists extends Component {
                         </Col>
                     </Row>
                 </div>
+                </Link>
+            </Button>
             )
         })
+    }
         return(
             <div>
-            <div className="LibraryPageBody">
-            <div className="container MainViewPlaylsit">
-                <div className="sectionPlayList">
-                    {this.props.data_be.data_be.artists.length === 0 ? (
-                        <div>{RenderNoLikedArtists()}</div>
-                    ):(
-                        <div>
-                             <Row>
-                                <Col  md={12}>
-                                    <h1 className="header_playList">Artists</h1>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col  md={12} className="customizedColForCards">
-                                    <div className="gridView">
-                                        {RenderArtistsCard}
+                {this.props.isSignedIn.isSignedIn === true ? (
+                    <div>
+                        {redirected}
+                        <div className="LibraryPageBody">
+                        <div className="container MainViewPlaylsit">
+                            <div className="sectionPlayList">
+                                {this.props.data_be.data_be.artists.length === 0 ? (
+                                    <div>{RenderNoLikedArtists()}</div>
+                                ):(
+                                    <div>
+                                        <Row>
+                                            <Col  md={12}>
+                                                <h1 className="header_playList">Artists</h1>
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col  md={12} className="customizedColForCards">
+                                                <div className="gridView">
+                                                    {RenderArtistsCard}
+                                                </div>
+                                            </Col>
+                                        </Row>
                                     </div>
-                                </Col>
-                            </Row>
+                                )}
+                            
+                            </div>
+                            
                         </div>
-                    )}
-                   
-                </div>
-                
-            </div>
-        </div>
+                    </div>
+                    </div>):(
+                        <div>
+                            
+                        </div>
+                    )
+                }
+             
         </div>        )
     }
 }

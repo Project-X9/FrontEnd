@@ -33,6 +33,7 @@ class SignIn extends Component {
     this.handlePassword = this.handlePassword.bind(this);
     this.handleUser = this.handleUser.bind(this);
     this.handleuUserName = this.handleuUserName.bind(this);
+  
   }
   componentDidMount(){
     this.props.resetSignInForm();
@@ -218,8 +219,8 @@ class SignIn extends Component {
           <Col xs={12} md={{ size: 6, offset: 3 }}>
             <Link to="/home">
               <img
-                src="assets/images/logo2.png"
-                height="70"
+                src="https://www.adweek.com/wp-content/uploads/2019/11/Spotify-Logo-Black.png"
+                height="90"
                 width="230"
                 alt="spotify"
               />

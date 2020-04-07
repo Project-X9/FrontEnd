@@ -34,7 +34,12 @@ class LibraryPage extends Component {
             <LibraryNavbar 
             data={this.props.data}
             id={this.props.id}
-            handleLogoutId={this.props.handleLogoutId}/>
+            handleLogoutId={this.props.handleLogoutId}
+            data_be={this.props.data_be}
+            isSignedIn={this.props.isSignedIn}
+            handleLogout_BE={this.props.handleLogout_BE}
+            
+            />
             <Switch>
                     <Route
                       path="/webplayer/librarypage/playlists"
@@ -44,6 +49,10 @@ class LibraryPage extends Component {
                         id={this.props.id}
                         playLists={this.props.playLists}
                         data_be={this.props.data_be}
+                        handleCurrentPlayList={this.props.handleCurrentPlayList}
+                        isSignedIn={this.props.isSignedIn}
+                        currentPlaylist={this.props.currentPlaylist}
+
                         />
                       )} />
                    <Route
@@ -54,6 +63,10 @@ class LibraryPage extends Component {
                         id={this.props.id}
                         album={this.props.album}
                         data_be={this.props.data_be}
+                        handleCurrentPlayList={this.props.handleCurrentPlayList}
+                        isSignedIn={this.props.isSignedIn}
+                        currentPlaylist={this.props.currentPlaylist}
+
                         />
                       )} />
                     <Route
@@ -64,6 +77,9 @@ class LibraryPage extends Component {
                         id={this.props.id}
                         artist={this.props.artist}
                         data_be={this.props.data_be}
+                        handleCurrentPlayList={this.props.handleCurrentPlayList}
+                        isSignedIn={this.props.isSignedIn}
+                        currentPlaylist={this.props.currentPlaylist}
                         />
                       )} />
                 </Switch>
