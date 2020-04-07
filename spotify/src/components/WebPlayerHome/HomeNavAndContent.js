@@ -333,13 +333,13 @@ class HomeNavAndContentSigned extends Component {
           <div className="row RowWebPlayerHomeContent">
             <div className="WebPlayerHomeContent">
               <div className="container">
-                {/* <PopularPlaylistsContent
+                <PopularPlaylistsContent
                 playLists={this.props.playLists}
                 data_be={this.props.data_be}
                 isSignedIn={this.props.isSignedIn}
                 handleCurrentPlayList={this.props.handleCurrentPlayList}
                 categories={this.props.categories}
-                /> */}
+                />
                 <PopularArtistsHomeAndNavContent
                 artist={this.props.artist}
                 data_be={this.props.data_be}
@@ -404,13 +404,13 @@ class HomeNavAndContentSigned extends Component {
           <div className="row RowWebPlayerHomeContent">
             <div className="WebPlayerHomeContent">
               <div className="container">
-                {/* <PopularPlaylistsContent
+                <PopularPlaylistsContent
                   playLists={this.props.playLists}
                   data_be={this.props.data_be}
                   isSignedIn={this.props.isSignedIn}
                   handleCurrentPlayList={this.props.handleCurrentPlayList}
                   categories={this.props.categories}
-                /> */}
+                />
               </div>
             </div>
           </div>

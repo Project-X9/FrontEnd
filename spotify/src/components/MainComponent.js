@@ -30,6 +30,8 @@ import {
   handleLogout_BE,
   handleCurrentPlayList,
   postupdatedFeedback,
+  handleCurrentAlbums,
+  handleCurrentArtists
 } from "../redux/ActionCreators";
 
 const mapStateToProps = (state) => ({
@@ -68,6 +70,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleCurrentPlayList: (data) => {
     dispatch(handleCurrentPlayList(data));
+  },
+  handleCurrentArtists: (data) => {
+    dispatch(handleCurrentArtists(data));
+  },
+  handleCurrentAlbums: (data) => {
+    dispatch(handleCurrentAlbums(data));
   },
   fetchArtist: () => {
     dispatch(fetchArtist());

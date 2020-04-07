@@ -20,18 +20,14 @@ class Artists extends Component {
 
     handleRenderingPlaylist(data){
 
-        this.props.handleCurrentPlayList(data);
+        this.props.handleCurrentArtists(data);
         this.setState({
             playListadded:true
         })
     }
     render(){
       
-        if(this.state.playListadded === true)
-        {
-            var redirected = <Redirect to="/webplayer/nowplay"></Redirect>
-
-        }
+     
         if(this.props.isSignedIn.isSignedIn === true)
         {
         if(this.props.data_be.data_be.artists.length === 0)
@@ -111,6 +107,11 @@ class Artists extends Component {
             </Button>
             )
         })
+    }
+    if(this.state.playListadded === true)
+    {
+        var redirected = <Redirect to="/webplayer/nowplay"></Redirect>
+
     }
         return(
             <div>
