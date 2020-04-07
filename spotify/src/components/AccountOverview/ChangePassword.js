@@ -44,10 +44,11 @@ class ChangePass extends Component {
    * Posting the changed Password
    */
   handleChangePassword = (values) => {
+    this.props.resetChangePasswordForm();
     const temp = this.handleData();
     if (temp === values.Currentpassword) {
       const post = values.password;
-      this.props.PostPassword(post, this.props.id.id);
+      this.props.PostPassword(post, this.state.tempId - 1);
     } else alert("Password is Incorrect");
   };
   /**
@@ -71,7 +72,7 @@ class ChangePass extends Component {
         <h1 className="headerGreen">Change Your Password</h1>
         <hr />
         <Form
-          model="feedback"
+          model="changepassword"
           onSubmit={(values) => this.handleChangePassword(values)}
         >
           <Row className="form-group">

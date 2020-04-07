@@ -39,6 +39,20 @@
   background-color: transparent;
   border: 1px solid white;
 }
+.JumbostyleWithPadding{
+  padding: 60px;
+  background: linear-gradient(
+    160deg,
+    #03140c,
+    #051817,
+    #0c1c1f,
+    #141f26,
+    #181f2c,
+    #1a1b2f,
+    #221630,
+    #2c0d2c
+  );
+}
 .Jumbostyle {
   background: linear-gradient(
     160deg,

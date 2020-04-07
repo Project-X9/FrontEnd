@@ -6,9 +6,21 @@ export const InitialFeedback = {
   day: "",
   month: "",
   year: "",
-  sex: ""
+  sex: "",
 };
 export const InitialLogin = {
   email: "",
-  password: ""
+  password: "",
+};
+
+export const ChangePassword = {
+  currentpassword: "",
+  password: "",
+  confirmpassword: "",
+};
+
+export const EditProfile = {
+  ID: "",
+  email: "",
+  age: "",
 };

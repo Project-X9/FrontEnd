@@ -415,6 +415,9 @@ class AccountOverview extends Component {
                     path="/account/changepassword"
                     component={() => (
                       <ChangePass
+                        resetChangePasswordForm={
+                          this.props.resetChangePasswordForm
+                        }
                         PostPassword={this.props.PostPassword}
                         GetPassword={this.props.GetPassword}
                         data={this.props.data}
@@ -430,6 +433,7 @@ class AccountOverview extends Component {
                         id={this.props.id}
                         data={this.props.data}
                         data_be={this.props.data_be}
+                        reseteditprofile={this.props.reseteditprofile}
                       />
                     )}
                   />

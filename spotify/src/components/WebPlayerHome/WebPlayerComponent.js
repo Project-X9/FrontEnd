@@ -7,62 +7,63 @@
 /* eslint-disable react/destructuring-assignment */
 import "./WebPlayerHomeComponent.css";
 import React, { Component } from "react";
-import {Link, Switch, Route,Redirect} from "react-router-dom";
-import { Button, Modal, ModalBody} from 'reactstrap'; 
-import HomeNavAndContent from './HomeNavAndContent'
-import LibraryPage from  "../Library/LibraryPage";
+import { Link, Switch, Route, Redirect } from "react-router-dom";
+import { Button, Modal, ModalBody } from "reactstrap";
+import HomeNavAndContent from "./HomeNavAndContent";
+import LibraryPage from "../Library/LibraryPage";
 import NowPlay from "../NowPlayComponent/NowPlay";
 import { baseUrl2 } from "../../shared/baseUrl";
-
-
+import LikedPlay from "../PlayLikedSongs/PlayLikedSongs";
 class WebPlayer extends Component {
- 
   constructor(props) {
     super(props);
     this.state = {
       tempId: this.props.id.id,
-      isModalOpen:false,
-      SignedIn:false
-
+      isModalOpen: false,
+      SignedIn: false,
     };
-    this.toggleModal=this.toggleModal.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
   }
-  toggleModal(){
-    if(this.props.isSignedIn.isSignedIn === true)
-    {
+  toggleModal() {
+    if (this.props.isSignedIn.isSignedIn === true) {
       this.setState({
-        SignedIn:true
-    });
-    }
-    else {
+        SignedIn: true,
+      });
+    } else {
       this.setState({
-        isModalOpen: !this.state.isModalOpen
-    });
+        isModalOpen: !this.state.isModalOpen,
+      });
     }
-    
   }
   render() {
-    let homeActive=''
-    let searchActive=''
-    let libraryActive=''
-    let createPlaylistsActive=''
-    let likedSongsActive=''
-    let currentURL=window.location.href
-    if(currentURL===baseUrl2 + "webplayer/home")
-    {
-      homeActive='active'; searchActive=''; libraryActive=''; createPlaylistsActive=''; likedSongsActive='';
-    }
-    else if(currentURL===baseUrl2 + "webplayer/librarypage/playlists")
-    {
-      homeActive=''; searchActive=''; libraryActive=' active'; createPlaylistsActive=''; likedSongsActive='';
-    }
-    else if(currentURL===baseUrl2 + "webplayer/nowplay")
-    {
-      homeActive=''; searchActive=''; libraryActive=''; createPlaylistsActive=''; likedSongsActive='BottomTwoActive';
+    let homeActive = "";
+    let searchActive = "";
+    let libraryActive = "";
+    let createPlaylistsActive = "";
+    let likedSongsActive = "";
+    let currentURL = window.location.href;
+    if (currentURL === baseUrl2 + "webplayer/home") {
+      homeActive = "active";
+      searchActive = "";
+      libraryActive = "";
+      createPlaylistsActive = "";
+      likedSongsActive = "";
+    } else if (currentURL === baseUrl2 + "webplayer/librarypage/playlists") {
+      homeActive = "";
+      searchActive = "";
+      libraryActive = " active";
+      createPlaylistsActive = "";
+      likedSongsActive = "";
+    } else if (currentURL === baseUrl2 + "webplayer/nowplay") {
+      homeActive = "";
+      searchActive = "";
+      libraryActive = "";
+      createPlaylistsActive = "";
+      likedSongsActive = "BottomTwoActive";
     }
     let redirected = null;
     if (this.state.SignedIn) {
-      redirected = <Redirect to="/webplayer/librarypage/playlists"></Redirect>
+      redirected = <Redirect to="/webplayer/librarypage/playlists"></Redirect>;
     }
     // const showLikeAndCreate = this.props.data.data.map((data) => {
     //   if (data.id === this.state.tempId) {
@@ -82,23 +83,23 @@ class WebPlayer extends Component {
     //   }
     // });
 
-    let showLikeAndCreate =(
-          <div>
-              <h3 className="sidebarHeaderBetween">PLAYLISTS</h3>
-              <Link to="/"  className={createPlaylistsActive}>
-                  <i className="fa fa-plus-square"></i>
-                  Create Playlist
-              </Link>
-              <Link to="/webplayer/nowplay"  className={likedSongsActive}>
-                  <i className="fa fa-heart"></i>
-                  Liked Songs
-              </Link>
-          </div>
-        )
-      
+    let showLikeAndCreate = (
+      <div>
+        <h3 className="sidebarHeaderBetween">PLAYLISTS</h3>
+        <Link to="/" className={createPlaylistsActive}>
+          <i className="fa fa-plus-square"></i>
+          Create Playlist
+        </Link>
+        <Link to="/webplayer/nowplay" className={likedSongsActive}>
+          <i className="fa fa-heart"></i>
+          Liked Songs
+        </Link>
+      </div>
+    );
+
     return (
       <div>
-      {redirected}
+        {redirected}
         <div className="WebPlayerHomeBody">
             <div className="container InfoContainer">
                 <div className="row InfoContainerRow">
@@ -144,6 +145,7 @@ class WebPlayer extends Component {
                                 handleLogout_BE={this.props.handleLogout_BE}
                                 isSignedIn={this.props.isSignedIn}
                                 handleCurrentPlayList={this.props.handleCurrentPlayList}
+                                categories={this.props.categories}
                               />
                             )}
                         />
@@ -167,6 +169,20 @@ class WebPlayer extends Component {
                             />
                           )}
                         />
+                        />
+                        <Route
+                          exact
+                          path="/webplayer/likedplay"
+                          component={() => (
+                            <LikedPlay
+                              id={this.props.id}
+                              data={this.props.data}
+                              playLists={this.props.playLists}
+                              data_be={this.props.data_be}
+                              currentPlaylist={this.props.currentPlaylist}
+                            />
+                          )}
+                        />
                         <Route
                             exact
                             path="/webplayer/nowplay"
@@ -181,73 +197,109 @@ class WebPlayer extends Component {
                         />
                         <Redirect to="/webplayer/home" /> 
                       </Switch>
-                    </div>
-                </div>
+                    </div>            
+              </div>
             </div>
         </div>
         <div className="AccountOverviewFooter">
-          <div className="container">
-           
-          </div>
+          <div className="container"></div>
         </div>
-        <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal} className="ModalBackGround row" 
-                    size="lg">
-                <div className="modal-content modalcontent">        
-                <ModalBody className="p-0 modalbody">
-                    <div className="row flexer" >
-                        <div className="col-sm-6 col-md-6 col-lg-6 leftPart ">
-                            <div className="row">
-                                <div className="col-sm-12 col-md-12 col-lg-12 ">
-                                    <h2 className="theHeader">Get the most out of Spotify with a free account</h2>
-                                </div>
-                            </div>
-                            <div className="row flexer">
-                                <div className="col-sm-12 col-md-12 col-lg-12">
-                                    <ol className="libraryol">
-                                        <li className="libraryli flexer">
-                                            <svg className= "librarysvg flexer" xmlns="http://www.w3.org/1999/xlink" viewBox="0 0 16 18" width="16" height="16">
-                                            <polygon points="13.985,2.383 5.127,12.754 1.388,8.375 0.73,9.145 5.127,14.294 14.745,3.032"></polygon>
-                                            </svg>
-                                            No credit card, ever
-                                        </li>
-                                        <li className="libraryli flexer"><svg className= "librarysvg flexer" xmlns="http://www.w3.org/1999/xlink" viewBox="0 0 16 18" width="16" height="16">
-                                            <polygon points="13.985,2.383 5.127,12.754 1.388,8.375 0.73,9.145 5.127,14.294 14.745,3.032"></polygon>
-                                            </svg>
-                                            Get unlimited podcasts
-                                            </li>
-                                        <li className="libraryli flexer">
-                                        <svg className= "flexer librarysvg" xmlns="http://www.w3.org/1999/xlink" viewBox="0 0 16 18" width="16" height="16">
-                                            <polygon points="13.985,2.383 5.127,12.754 1.388,8.375 0.73,9.145 5.127,14.294 14.745,3.032"></polygon>
-                                        </svg>
-                                        Play your favorite music, with ads
-                                        </li>
-                                    </ol>
-                                    <div className="row LibraryModalClose">
-                                      <Button className="LibraryModalCloseButton" color="success" onClick={this.toggleModal}>
-                                          Close
-                                      </Button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-6 col-md-6 col-lg-6">   
-                            <div className="righPart">
-                                <div className="innerRight">
-                                    <Button className="signupfree"><Link to="/signup"className="linksignup">Sign up free</Link></Button>
-                                    <div className="seperator_LibraryModal"></div>
-                                    <div className="alreadyhaveanaccount">Already have an account?</div>
-                                    <Button className="libraryloginbut"><Link to="/signin"className="linkLogin">Log in</Link></Button>
-                                </div>
-                            </div>
-                        </div>
+        <Modal
+          isOpen={this.state.isModalOpen}
+          toggle={this.toggleModal}
+          className="ModalBackGround row"
+          size="lg"
+        >
+          <div className="modal-content modalcontent">
+            <ModalBody className="p-0 modalbody">
+              <div className="row flexer">
+                <div className="col-sm-6 col-md-6 col-lg-6 leftPart ">
+                  <div className="row">
+                    <div className="col-sm-12 col-md-12 col-lg-12 ">
+                      <h2 className="theHeader">
+                        Get the most out of Spotify with a free account
+                      </h2>
                     </div>
-                </ModalBody> 
+                  </div>
+                  <div className="row flexer">
+                    <div className="col-sm-12 col-md-12 col-lg-12">
+                      <ol className="libraryol">
+                        <li className="libraryli flexer">
+                          <svg
+                            className="librarysvg flexer"
+                            xmlns="http://www.w3.org/1999/xlink"
+                            viewBox="0 0 16 18"
+                            width="16"
+                            height="16"
+                          >
+                            <polygon points="13.985,2.383 5.127,12.754 1.388,8.375 0.73,9.145 5.127,14.294 14.745,3.032"></polygon>
+                          </svg>
+                          No credit card, ever
+                        </li>
+                        <li className="libraryli flexer">
+                          <svg
+                            className="librarysvg flexer"
+                            xmlns="http://www.w3.org/1999/xlink"
+                            viewBox="0 0 16 18"
+                            width="16"
+                            height="16"
+                          >
+                            <polygon points="13.985,2.383 5.127,12.754 1.388,8.375 0.73,9.145 5.127,14.294 14.745,3.032"></polygon>
+                          </svg>
+                          Get unlimited podcasts
+                        </li>
+                        <li className="libraryli flexer">
+                          <svg
+                            className="flexer librarysvg"
+                            xmlns="http://www.w3.org/1999/xlink"
+                            viewBox="0 0 16 18"
+                            width="16"
+                            height="16"
+                          >
+                            <polygon points="13.985,2.383 5.127,12.754 1.388,8.375 0.73,9.145 5.127,14.294 14.745,3.032"></polygon>
+                          </svg>
+                          Play your favorite music, with ads
+                        </li>
+                      </ol>
+                      <div className="row LibraryModalClose">
+                        <Button
+                          className="LibraryModalCloseButton"
+                          color="success"
+                          onClick={this.toggleModal}
+                        >
+                          Close
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-            </Modal>
-    </div>
-    
+                <div className="col-sm-6 col-md-6 col-lg-6">
+                  <div className="righPart">
+                    <div className="innerRight">
+                      <Button className="signupfree">
+                        <Link to="/signup" className="linksignup">
+                          Sign up free
+                        </Link>
+                      </Button>
+                      <div className="seperator_LibraryModal"></div>
+                      <div className="alreadyhaveanaccount">
+                        Already have an account?
+                      </div>
+                      <Button className="libraryloginbut">
+                        <Link to="/signin" className="linkLogin">
+                          Log in
+                        </Link>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ModalBody>
+          </div>
+        </Modal>
+      </div>
     );
   }
 }
 
-export default WebPlayer
+export default WebPlayer;
