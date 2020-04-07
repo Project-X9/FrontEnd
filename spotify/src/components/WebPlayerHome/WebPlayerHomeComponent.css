@@ -1,0 +1,772 @@
+ /***************************************************Sidebar, Navbar & Sidebar Content Container*************************/
+  .WebPlayerHomeBody div.container.InfoContainer{
+    padding:0;
+    margin:0;
+    max-width:100%;
+  }
+
+  .WebPlayerHomeBody div.row.InfoContainerRow{
+    margin:0;
+  }
+  /***************************************************Sidebar, Navbar & Sidebar Content Container************************/
+  /***************************************************Sidebar***************************************************/
+  .WebPlayerHomeBody .container .Linkers{
+    padding:0;
+    background-color: black;
+  }
+
+  
+  .WebPlayerHomeBody .sidebar {
+    text-align:left;
+  }
+
+  .WebPlayerHomeBody .sidebar .fa.fa-home,
+  .WebPlayerHomeBody .sidebar .fa.fa-search,
+  .WebPlayerHomeBody .sidebar .fa.fa-bomb,
+  .WebPlayerHomeBody .sidebar .fa.fa-plus-square,
+  .WebPlayerHomeBody .sidebar .fa.fa-heart
+  {
+    margin-right:1.5em;
+    font-size:23px;
+    width:5px;
+    height:5px;
+  }
+  
+  /* Sidebar links */
+
+  .WebPlayerHomeBody .SidebarLibraryButton.btn.btn-secondary,
+  .WebPlayerHomeBody .sidebar a {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.015em;
+    text-transform: none;
+    color: #b3b3b3;
+    text-align:left;
+    list-style: none;
+    padding-left: 20px;
+    padding-right: 15px;
+    text-decoration: none;
+    background-color: black;
+    display: block;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: none;
+    border-radius: 0;
+    box-sizing: border-box;
+    font-family: Circular,Helvetica,Arial,sans-serif;
+    transition-property: none;
+  }
+
+  .WebPlayerHomeBody .SidebarLibraryButton.btn.btn-secondary:focus{
+    box-shadow: none;
+  }
+  
+  .WebPlayerHomeBody .SidebarLibraryButton{
+    width:100%;
+  }
+
+  .WebPlayerHomeBody .sidebarHeaderBetween{
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.015em;
+    text-transform: none;
+    color: #b3b3b3;
+    text-align:left;
+    padding-left: 20px;
+    margin-top:1.5em;
+  }
+
+  .WebPlayerHomeBody .sidebar a.AppearBigImage{
+    margin: 0.5em 0;
+  }
+
+  /* Links on mouse-over */
+  .WebPlayerHomeBody .SidebarLibraryButton.btn.btn-secondary:hover,
+  .WebPlayerHomeBody .sidebar a:hover:not(.active) {
+    color: white;
+    transition-property: color;
+    transition-duration: 0.4s;
+  }
+  
+  /* Active/current link */
+  .WebPlayerHomeBody button.SidebarLibraryButton.active.btn.btn-secondary,
+  .WebPlayerHomeBody .sidebar a.active {
+    background-color: #222326;
+    color: white;
+    border-radius: 7px;
+    margin: 0 0.4em;
+  }
+
+  .WebPlayerHomeBody .sidebar a.BottomTwoActive {
+
+    color: white;
+    border-radius: 7px;
+    margin: 0 0.4em;
+  }
+
+  .WebPlayerHomeBody button.SidebarLibraryButton.active.btn.btn-secondary{
+    width:94%;
+    border:none;
+  }
+  
+  /***************************************************Sidebar***************************************************/
+  /***************************************************Navbar & Content***************************************************/
+  div.webPlayerHomeNavAndContent{
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width:100%;
+    background-color: #141313;
+    padding:0;
+  }
+  /***************************************************Navbar & Content***************************************************/
+  /***************************************************Navbar***************************************************/
+  div.WebPlayerHomeNav{
+    margin:0;
+    padding:0;
+    width:100%;
+  }
+
+  div.WebPlayerHomeNav .container{
+    margin:0;
+    padding:0;
+    width:100%;
+    max-width: 100%;
+  }
+  
+  div.WebPlayerHomeNav div.container .NavBar {
+    background-color: #141313;
+    position: fixed;
+    top:0;
+    max-width:100%;
+    width:-webkit-available;
+    width:-moz-available;
+    z-index: 1000;   
+  }
+  
+  
+
+  div.WebPlayerHomeNav div.container .Profile {
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+    margin-left: 0px;
+    margin-right: 10px;
+  }
+  
+  div.WebPlayerHomeNav nav.NavBar.NavStyle{
+    text-align: left;
+    width:84%;
+    margin-left:15px;
+  }
+
+  .WebPlayerHomeBody .container .Linkers{
+    padding:0;
+  }
+
+  @media(max-width: 991px){
+    div.WebPlayerHomeNav nav.NavBar.NavStyle{
+      width:75%;
+    }
+  }
+
+  @media(max-width: 767px){
+    div.WebPlayerHomeNav div.container .NavBar {
+      position: relative;
+    }
+
+    div.WebPlayerHomeNav nav.NavBar.NavStyle{
+      text-align: left;
+      width:97%;
+    }
+  }
+
+  div.WebPlayerHomeNav div.container .nav-link.SpecificallyForTheButton {
+    color: white;
+    margin-top: -14px;
+    margin-left: 0;
+  }
+
+  div.WebPlayerHomeNav .CustomNavitems{
+    margin:  10px;
+    padding: 0px;
+    border: 0;
+    vertical-align: baseline;
+  }
+
+  div.WebPlayerHomeNav .CustomButton{
+    border: none;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,.7);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    opacity: .6;
+  }
+
+  div.WebPlayerHomeNav .CustomSvg{
+    border: none;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background-color: black;
+    cursor: pointer;
+    opacity: .6;
+    margin: 0px;
+  }
+
+
+  .WebPlayerHomeNav Button.NextToAccount {
+    background-color: transparent;
+    border: 2px solid #fff;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 700;
+    letter-spacing: 1.76px;
+    text-transform: uppercase;
+    border-radius: 500px;
+    color: #fff;
+    transition: all 33ms cubic-bezier(.3,0,0,1);
+    padding: 8px 34px;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .WebPlayerHomeNav Button.HomeNotSignedUp {
+    background-color: black;
+    border: none;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 700;
+    letter-spacing: 1.76px;
+    text-transform: uppercase;
+    border-radius: 500px;
+    color: #fff;
+    transition: all 33ms cubic-bezier(.3,0,0,1);
+    padding: 8px 15px;
+    margin-right:2em;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .WebPlayerHomeNav Button.HomeNotLoggedin {
+    background-color: white;
+    border: none;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 700;
+    letter-spacing: 1.76px;
+    text-transform: uppercase;
+    border-radius: 500px;
+    color: black;
+    transition: all 33ms cubic-bezier(.3,0,0,1);
+    padding: 8px 34px;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .WebPlayerHomeNav a.HomeNotSignedUp,
+  .WebPlayerHomeNav a.NextToAccount {
+    color:white;
+  }
+  
+  .WebPlayerHomeNav a.HomeNotLoggedin{
+    color:black;
+  }
+
+  .WebPlayerHomeNav Button.HomeNotLoggedin:hover,
+  .WebPlayerHomeNav Button.HomeNotSignedUp:hover,
+  .WebPlayerHomeNav Button.NextToAccount:hover {
+    transform: scale(1.06);
+  }
+
+  .WebPlayerHomeNav a.HomeNotLoggedin:hover,
+  .WebPlayerHomeNav a.HomeNotSignedUp:hover,
+  .WebPlayerHomeNav a.NextToAccount:hover {
+    text-decoration:none;
+  }
+
+  .WebPlayerHomeNav ul.ml-auto.MakingTheButtonsHorizontal  {
+    display: contents;
+  }
+
+  div.WebPlayerHomeNav div.container .WritingInsideAccountItself{
+    color:white;
+    margin-top:-7px;
+  }
+  div.WebPlayerHomeNav div.container .fa.fa-user-secret{
+    margin-right:10px;
+  }
+
+  .WebPlayerHomeNav Button.AccountItself {
+    border-radius: 23px;
+    height: 32px;
+    min-width: 32px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    border:0;
+    cursor: pointer;
+    color: #fff;
+    padding: 2px;
+    margin-left: 16px;
+    background-color: black;   
+  }
+
+  .WebPlayerHomeNav a.AccountItselfIcons.nav-link {
+    margin:0px;  
+  }
+
+  .WebPlayerHomeNav Button.AccountItself:hover {
+    background-color: #282828;
+  }
+  
+  div.WebPlayerHomeNav div.container .StaticNav {
+    background-color: #282828;  
+  }
+
+  div.WebPlayerHomeNav div.container .StaticNav .StaticNavChildContainer{
+    padding:0;
+  }
+
+  div.WebPlayerHomeNav div.container .StaticNav .StaticNavChild{
+    width: 100%;
+    color: rgb(168, 167, 167);
+    padding: 3px 20px;
+    line-height: 32px;
+    white-space: nowrap;
+    background: none;
+    border: 0;
+    user-select: none;
+    cursor: default;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative; 
+  }
+  
+  div.WebPlayerHomeNav div.container .StaticNav .StaticNavChildContainer:hover,
+  div.WebPlayerHomeNav div.container .StaticNav .StaticNavChild:hover{
+    color: #fff;
+    background-color: #333;
+    text-decoration:none;
+  }
+  
+
+  @media(min-width: 769px){
+    div.WebPlayerHomeNav div.container .StaticNav .StaticNavChild.Disappear{
+    display: none;
+    }
+  }
+
+  @media(max-width: 768px){
+    .WebPlayerHomeNav Button.NextToAccount {
+      display: none;
+    }
+  }
+  /***************************************************Navbar***************************************************/
+  /***************************************************Content***************************************************/
+  .RowWebPlayerHomeContent{
+    display: block;
+    margin-left:20px;
+  }
+  div.WebPlayerHomeContent .container{
+    padding:0;
+  }
+
+  div.WebPlayerHomeContent .FirstHeaderAndSeeAll{
+    margin-top:4.5em;
+  }
+
+  @media(max-width: 768px){
+    div.WebPlayerHomeContent .FirstHeaderAndSeeAll {
+      margin-top:1em;
+    }
+  }
+
+  div.WebPlayerHomeContent .HeaderAndSeeAll{
+    display: flex;
+    flex-direction: row;
+    margin-top:1em;
+  }
+  
+  div.WebPlayerHomeContent .ContainerHeaderAboveGrid{
+    margin-bottom: 1em;
+    text-align:left;
+    margin-left:0;
+    padding-left:2em;
+    flex:70%;
+  }
+
+  div.WebPlayerHomeContent a.LinkHeaderAboveGrid{
+    text-decoration: none;
+  }
+
+  div.WebPlayerHomeContent .HeaderAboveGrid{
+    font-size: 28px;
+    line-height: 1.6;
+    font-weight: 600;
+    letter-spacing: -.36px;
+    display: inline;
+    white-space: nowrap;
+    color: #fff;
+    margin:0;
+  }
+
+  div.WebPlayerHomeContent a.LinkHeaderAboveGrid:hover{
+    text-decoration-line: underline;
+    text-decoration-color: white;
+  }
+
+  /* div.WebPlayerHomeContent .ContainerSeeAllAboveGrid{
+    padding-top:1em;
+    flex:30%;
+  }
+
+  div.WebPlayerHomeContent .SeeAllAboveGrid{
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 700;
+    letter-spacing: 1.76px;
+    text-transform: uppercase;
+    border:0;
+    background: transparent;
+    color: #b3b3b3;
+    -webkit-box-flex: 0;
+    flex: 0;
+    white-space: nowrap;
+    margin-left: 20px;
+  }
+
+  div.WebPlayerHomeContent a.SeeAllAboveGrid:hover{
+    font-size: small;
+  } */
+
+  div.WebPlayerHomeContent .GridView{
+    display: grid;
+    grid-gap: 16px;
+    grid-template-columns: repeat(auto-fill,minmax(164px,1fr));
+    grid-auto-rows: 1fr;
+    min-height: 0;
+    margin: 0 10px;
+    margin-bottom:2em;
+  }
+
+  div.WebPlayerHomeContent .row.BelowImage
+  {
+    align-self: flex-start;
+  }
+
+  div.WebPlayerHomeContent .WebplayerHomeNowPlayRedirectButton.btn.btn-secondary{
+    color:transparent;
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  div.WebPlayerHomeContent .WebplayerHomeNowPlayRedirectButton.btn.btn-secondary:focus{
+    box-shadow: none;
+  }
+
+  div.WebPlayerHomeContent .WebplayerHomeNowPlayRedirectLink:hover{
+    text-decoration: none;
+  }
+
+  div.WebPlayerHomeContent .CardsHome{
+    height: 100%;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 20px 20px 16px;
+    background: #282828;
+    border-radius: 8px;
+    align-items: center;
+  }
+
+div.WebPlayerHomeContent .CardPhoto{
+  height: 100%;
+  width: 100%;
+  position: relative;
+  margin-bottom: 16px;
+  background-color: #333;
+  box-shadow: 0 10px 30px 0 rgba(0,0,0,.3), 0 1px 2px 0 rgba(0,0,0,.2);
+}
+
+div.WebPlayerHomeContent .ArtistCardPhoto{
+  height: 100%;
+  width: 100%;
+  position: relative;
+  margin-bottom: 16px;
+  background-color: #333;
+  box-shadow: 0 10px 30px 0 rgba(0,0,0,.3), 0 1px 2px 0 rgba(0,0,0,.2);
+  border-radius: 50%;
+}
+
+div.WebPlayerHomeContent .ImageHolder{
+  transition-duration: .3s;
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(.3,0,.4,1);
+  opacity: 1;
+  height: 100%;
+  width: 100%;
+}
+
+div.WebPlayerHomeContent .ImageItself{
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: block;
+  object-fit: cover;
+  object-position: center center;
+}
+
+div.WebPlayerHomeContent .ArtistImageItself{
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: block;
+  object-fit: cover;
+  object-position: center center;
+}
+
+div.WebPlayerHomeContent .TitlePlaylistLink {
+  color: #fff;
+  overflow: hidden;
+  direction: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  letter-spacing: .24px;
+  text-align: left;  
+  text-decoration: none;
+}
+
+div.WebPlayerHomeContent .DescriptionPlaylistLink
+  {
+    font-size: 12px;
+    line-height: 18px;
+    text-overflow: ellipsis;
+    color: #b3b3b3;
+    padding: 0;
+    margin-top: 4px;
+    white-space: normal;
+    overflow: hidden;
+    direction: auto;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    text-align: left;
+  }
+
+  div.WebPlayerHomeContent .PlayButtonPlayList{
+    position: absolute;
+    left:70%;
+    bottom:12%;
+    height:20px;
+    width:50px;
+  }
+
+  div.WebPlayerHomeContent .ButtonItself{
+    position: relative;
+    border: 0;
+    border-radius: 500px;
+    color: #fff;
+    background-color: #1db954;
+    transition: transform 33ms cubic-bezier(.3,0,0,1),-webkit-transform 33ms cubic-bezier(.3,0,0,1);
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    display:none;
+  }
+
+  div.WebPlayerHomeContent .CardsHome:hover button{
+    display: block;
+  }
+
+  div.WebPlayerHomeContent .ArtistButtonItself:hover,
+  div.WebPlayerHomeContent .ButtonItself:hover{
+    transform: scale(1.06);
+  }
+
+  .HomeNotSignedInModal{
+    display: flex;
+    flex-direction: row;
+    background: rgb(72, 74, 75); /*for browsers that don't support gradient*/
+    background: -webkit-linear-gradient(to bottom,rgb(197, 200, 201),rgb(43, 44, 44)); /*for safari and chrome*/
+    background: -o-linear-gradient(to bottom,rgb(197, 200, 201),rgb(43, 44, 44)); /*for opera*/
+    background: -moz-linear-gradient(to bottom,rgb(197, 200, 201),rgb(43, 44, 44)); /*for firefox*/
+    background: linear-gradient(to bottom,rgb(197, 200, 201),rgb(43, 44, 44)); /*standard syntax*/
+    padding:50px;
+    border-radius: 50%;
+  }
+
+  .HomeNotSignedInModal .HomeNotSignedInModalImageHolder{
+    width: 100%;
+    height: auto;
+    margin:10px;
+  }
+
+  .HomeNotSignedInModal img.HomeNotSignedInModalImage{
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: block;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+
+  .HomeNotSignedInModal .HomeNotSignedInModalHeader2{
+    font-size: 32px;
+    margin: 8px 0 24px;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: -.4px;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    line-height: 32px;
+    text-align: center;
+    text-transform: none;
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+  }
+
+  .HomeNotSignedInModal .HomeNotSignedInModalButton{
+    font-weight: 600;
+    display: block;
+    padding: 13px;
+    width: 100%;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 1.76px;
+    text-transform: uppercase;
+    border: 2px solid transparent;
+    border-radius: 500px;
+    color: #fff;
+    transition: all 33ms cubic-bezier(.3,0,0,1);
+    will-change: transform;
+    white-space: nowrap;
+    cursor: pointer;
+    text-align: center;
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+    box-sizing: border-box;
+
+  }
+
+  .HomeNotSignedInModal .HomeNotSignedInModalLinkInsideButton{
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .HomeNotSignedInModal .HomeNotSignedInModalButton:hover{
+    outline: none;
+    background-color: #1ed760;
+    border-color: transparent;
+    transform: scale(1.06);
+  }
+
+  .HomeNotSignedInModal .HomeNotSignedInModalParagraph{
+    font-size: 12px;
+    line-height: 24px;
+    text-align: center;
+    margin: 32px 0 0;
+    padding: 0;
+    border: 0;
+    box-sizing:border-box;
+    color:#fff;
+    font-weight: 700;
+    letter-spacing: .015em;
+    text-transform: none;
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+  }
+
+  .HomeNotSignedInModal .HomeNotSignedInModalButtonInsideParagraph{
+    font-weight: 600;
+    padding: 0 10px;
+    background-color: transparent;
+    color: #fff;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 1.76px;
+    text-transform: uppercase;
+    border: 2px solid transparent;
+    border-radius: 500px;
+    transition: all 33ms cubic-bezier(.3,0,0,1);
+    will-change: transform;
+    white-space: nowrap;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;  
+    box-sizing: border-box;
+  }
+
+  .HomeNotSignedInModal .HomeNotSignedInModalLinkInsideButtonInsideParagraph{
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .HomeNotSignedInModal .HomeNotSignedInModalButtonInsideParagraph:hover{
+    outline: none;
+    transform: scale(1.06);
+  }
+  
+  .HomeNotSignedInClose .HomeNotSignedInModalClosedButton{
+    background: none;
+    border: none;
+    color: #fff;
+    display: block;
+    font-weight: 400;
+    text-transform: none;
+    width:100%;
+    padding: 13px;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 1.76px;
+    border-radius: 500px;
+    transition: all 33ms cubic-bezier(.3,0,0,1);
+    will-change: transform;
+    white-space: nowrap;
+    cursor: pointer;
+    text-align: center;
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+    box-sizing: border-box;
+  }
+  
+  .HomeNotSignedInClose .HomeNotSignedInModalClosedButton:hover{
+    outline: none;
+    transform: scale(1.06);
+  }
+
+  .HomeNotSignedInClose .HomeNotSignedInModalClosedButton.btn.btn-success:focus{
+    box-shadow: none;
+  }
+
+  .HomeNotSignedInClose .HomeNotSignedInModalClosedButton.btn.btn-success:active{
+    background-color: transparent;
+    border: none;
+  }
+  /***************************************************Content***************************************************/
+  

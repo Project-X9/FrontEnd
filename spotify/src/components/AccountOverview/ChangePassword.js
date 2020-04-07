@@ -1,58 +1,80 @@
+/**
+ * Change Password Component
+ */
+import { Redirect } from "react-router-dom";
+
 import React, { Component } from "react";
 import { Col, Button, Row } from "reactstrap";
 import { Control, Form, Errors } from "react-redux-form";
 import { Label } from "reactstrap";
-import IdObj from "../../Global";
-const required = val => val && val.length;
-const minLength = len => val => val && val.length >= len;
-const confPass = val => val2 => val === val2;
+const required = (val) => val && val.length;
+const minLength = (len) => (val) => val && val.length >= len;
+const confPass = (val) => (val2) => val === val2;
 
 class ChangePass extends Component {
+  /**@param{tempId} is the ID of the incoming user
+   * @param{Password} is the new password entered by the user
+   * @param{ConfirmPassword} for the checking of matching
+   */
   constructor(props) {
     super(props);
     this.state = {
       Password: "",
       CurrentPassword: "",
       ConfirmPassword: "",
-      tempId: this.props.id.id.length + 1
+      tempId: this.props.id.id,
     };
     this.handleChangePassword = this.handleChangePassword.bind(this);
     this.handleData = this.handleData.bind(this);
     this.handleConfirmPassword = this.handleConfirmPassword.bind(this);
   }
+  /**
+   * HandleData is for getting the current password of the user
+   */
   handleData = () => {
     let temp;
-    this.props.data.data.map(data => {
-      if (data.id === this.state.tempId - 1) {
+    this.props.data.data.map((data) => {
+      if (data.id === this.props.id.id) {
         temp = data.password;
       }
     });
     return temp;
   };
-
-  handleChangePassword = values => {
-    alert(this.state.tempId);
+  /**
+   * Posting the changed Password
+   */
+  handleChangePassword = (values) => {
+    this.props.resetChangePasswordForm();
     const temp = this.handleData();
     if (temp === values.Currentpassword) {
       const post = values.password;
       this.props.PostPassword(post, this.state.tempId - 1);
     } else alert("Password is Incorrect");
   };
-
-  handleConfirmPassword = event => {
+  /**
+   * Checking the same password
+   */
+  handleConfirmPassword = (event) => {
     this.setState({
-      Password: event.target.value
+      Password: event.target.value,
     });
   };
 
   render() {
+    let redirect = "";
+    if (this.state.tempId === "") {
+      redirect = <Redirect to="/signup" />;
+    }
+
     return (
       <div className="container">
+        {redirect}
         <h1 className="headerGreen">Change Your Password</h1>
         <hr />
         <Form
-          model="feedback"
-          onSubmit={values => this.handleChangePassword(values)}>
+          model="changepassword"
+          onSubmit={(values) => this.handleChangePassword(values)}
+        >
           <Row className="form-group">
             <Col xs={12} md={{ size: 6, offset: 3 }}>
               <Label>Current Password</Label>
@@ -64,7 +86,7 @@ class ChangePass extends Component {
                 id="Currentpassword"
                 name="Currentpassword"
                 validators={{
-                  required
+                  required,
                 }}
               />
             </Col>
@@ -82,7 +104,7 @@ class ChangePass extends Component {
                 name="password"
                 validators={{
                   required,
-                  minLength: minLength(7)
+                  minLength: minLength(7),
                 }}
               />
               <Row className="ml-2">
@@ -92,7 +114,7 @@ class ChangePass extends Component {
                   show="touched"
                   messages={{
                     required: "Enter your password to continue, ",
-                    minLength: "Your password is too short"
+                    minLength: "Your password is too short",
                   }}
                 />
               </Row>
@@ -110,7 +132,7 @@ class ChangePass extends Component {
                 name="confirmPassword"
                 validators={{
                   required,
-                  confPass: confPass(this.state.Password)
+                  confPass: confPass(this.state.Password),
                 }}
               />
               <Row className="ml-2">
@@ -119,7 +141,7 @@ class ChangePass extends Component {
                   model=".confirmpassword"
                   show="touched"
                   messages={{
-                    confPass: "Password does not match"
+                    confPass: "Password does not match",
                   }}
                 />
               </Row>
@@ -127,7 +149,7 @@ class ChangePass extends Component {
           </Row>
           <Row className="form-group">
             <Col xs={12} md={{ size: 6, offset: 3 }}>
-              <Button model="submit" className="signupbtn">
+              <Button type="submit" className="signupbtn">
                 Change Password
               </Button>
             </Col>

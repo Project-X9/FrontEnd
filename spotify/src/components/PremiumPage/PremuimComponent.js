@@ -1,3 +1,6 @@
+/**
+ * Premium Component
+ */
 import React, { Component } from "react";
 import {
   Navbar,
@@ -17,14 +20,19 @@ import {
   DropdownMenu,
   DropdownItem,
   Button,
-  DropdownToggle
+  DropdownToggle,
 } from "reactstrap";
 import "./PremiumComponent.css";
-import IdObj from "../../Global";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 
 class Premium extends Component {
+  /**
+   *
+   * @param props.data Essentially contains the data of the users in the database
+   * @param props.id Essentially contains the id of one of the users in the database
+
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -32,44 +40,87 @@ class Premium extends Component {
       modal: false,
       isModalOpen: false,
       collapsed: true,
-      Premium: false,
-      tempId: ""
+      Premium: this.props.data_be.data_be.premium,
+      tempId: this.props.data_be.data_be._id,
+      isPrenium: !this.props.data_be.data_be.premium,
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.togglemodal = this.togglemodal.bind(this);
-    this.handlePremium = this.handlePremium.bind(this);
+    // this.handlePremiumT = this.handlePremiumT.bind(this);
+    // this.handlePremiumF = this.handlePremiumF.bind(this);
+    this.handlePremium_be = this.handlePremium_be.bind(this);
+    this.state.handleLogout = this.handleLogout.bind(this);
   }
-
+  // componentDidMount(){
+  //   if(this.state.isPrenium === this.state.premium)
+  //   {  this.setState({
+  //       isPrenium:!this.state.premium
+  //     })}
+  // }
+  handleLogout() {
+    this.props.handleLogout_BE();
+  }
+  // handleData = () => {
+  //   let temp;
+  //   this.props.data.data.map(data => {
+  //     if (data.id === this.props.id.id) {
+  //       temp = data.premium;
+  //     }
+  //   });
+  //   this.setState({ Premium: temp });
+  //   return temp;
+  // };
   togglemodal() {
+    // const Checker = this.handleData();
     const Temp = !this.state.modal;
     this.setState({ modal: Temp });
   }
+  /**
+   * Posts the claiming of premium membership
+   */
+  // handlePremiumT() {
+  //   if (this.state.Premium === false) {
+  //     this.props.PremiumPost(this.props.id.id, true);
+  //     this.togglemodal();
+  //   }
+  // }
+  /**
+   * Posts the Canceling of premium membership
+   */
+  // handlePremiumF() {
+  //   if (this.state.Premium === true) {
+  //     this.props.PremiumPost(this.props.id.id, false);
+  //     this.togglemodal();
+  //   }
+  // }
+  handlePremium_be() {
+    if (this.state.Premium === true) {
+      this.props.PremiumPost(this.props.data_be.data_be._id, false);
+      this.setState({ Premium: false });
+      this.togglemodal();
+    } else if (this.state.Premium === false) {
+      this.props.PremiumPost(this.props.data_be.data_be._id, true);
+      this.setState({ Premium: true });
 
-  handlePremium() {
-    // this.setState({
-    //   tempId: this.props.id.id.length + 1
-    // });
-    // alert(this.state.tempId);
-    // this.props.PremiumPost({ Premium: true });
-    // this.setState({ Premium: true });
-    // const post = {
-    //   Premium: true,
-    //   id: this.state.tempId
-    // };
-    // this.props.PremiumPost(post);
-    // alert(this.props.id.id.length + 1);
-    this.props.PremiumPost(this.props.id.id);
-    this.togglemodal();
+      this.togglemodal();
+    }
   }
-
+  /**
+   * Toggles the Navigation bar by switching isNavOpen from true to false and vice versa
+   */
   toggleNav() {
     this.setState({
       isNavOpen: !this.state.isNavOpen,
-      collapsed: !this.state.collapsed
+      collapsed: !this.state.collapsed,
     });
   }
 
   render() {
+    let redirect = "";
+    if (this.props.isSignedIn.isSignedIn === null) {
+      redirect = <Redirect to="/signup" />;
+    }
+
     let accLogStyleParent = "";
     let accChild = "";
     let logChild = "";
@@ -84,10 +135,11 @@ class Premium extends Component {
     }
     return (
       <div>
+        {redirect}
         <div className="AccountOverviewNav">
           <div className="container">
-            <Navbar className="NavBar" sticky="top" expand="md">
-              <NavbarBrand className="mr-auto" href="/signup">
+          <Navbar className="NavBar NavStyle" sticky="top" expand="md">
+              <NavbarBrand className="mr-auto" href="/home">
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSBmnPgQKW4JLrNcSFhPFCLHz3t8kT1pZl0PVkLYsa8FoScWYda"
                   height="65px"
@@ -97,30 +149,64 @@ class Premium extends Component {
               </NavbarBrand>
               <NavbarToggler
                 className="NavBarToggle"
-                onClick={this.state.toggleNav}>
+                onClick={this.state.toggleNav}
+              >
                 ☰
               </NavbarToggler>
-
               <Collapse isOpen={this.state.isNavOpen} navbar>
                 <Nav navbar className="ml-auto">
                   <NavItem>
-                    <NavLink className="nav-link" to="/home">
-                      Home
+                    <NavLink className="nav-link" to="/premium">
+                      Premium
                     </NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink className="nav-link" to="/menu">
+                    <NavLink className="nav-link" to="/home">
                       Help
                     </NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink className="nav-link" to="/aboutus">
+                    <NavLink className="nav-link" to="/home">
                       Download
                     </NavLink>
                   </NavItem>
-
                   <NavItem>
-                    <UncontrolledDropdown nav inNavbar>
+                    <span className="nav-link HorizontalLine">──</span>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink
+                      className="nav-link AccountWhenCollapsed"
+                      to="/account/overview"
+                    >
+                      Account
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <Button
+                      onClick={() => {
+                        this.handleLogout();
+                      }}
+                      className="nav-link LogoutWhenCollapsed"
+                    >
+                      Log out
+                    </Button>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink className="ImageWhenCollapsed" to="/home">
+                      <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSBmnPgQKW4JLrNcSFhPFCLHz3t8kT1pZl0PVkLYsa8FoScWYda"
+                        height="25px"
+                        width="70px"
+                        alt=""
+                      />
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <UncontrolledDropdown
+                      nav
+                      inNavbar
+                      className="AccountOverviewDropDown"
+                    >
                       <DropdownToggle nav caret className="seperator">
                         <img
                           alt=""
@@ -129,11 +215,25 @@ class Premium extends Component {
                         />
                         Profile
                       </DropdownToggle>
-                      <DropdownMenu className={accLogStyleParent} right>
-                        <DropdownItem className={accChild}>
-                          <NavLink to="/accountoverview">Account</NavLink>
+                      <DropdownMenu className="StaticNav" right>
+                        <DropdownItem className="StaticNavChildContainer">
+                          <NavLink
+                            className="StaticNavChild1"
+                            to="/account/overview"
+                          >
+                            Account
+                          </NavLink>
                         </DropdownItem>
-                        <DropdownItem className={logChild}>LogOut</DropdownItem>
+                        <DropdownItem className="StaticNavChildContainer">
+                          <Button
+                            onClick={() => {
+                              this.handleLogout();
+                            }}
+                            className="StaticNavChild2"
+                          >
+                            Log out
+                          </Button>
+                        </DropdownItem>
                       </DropdownMenu>
                     </UncontrolledDropdown>
                   </NavItem>
@@ -158,18 +258,31 @@ class Premium extends Component {
               Get Premium
             </Button>
             <Modal isOpen={this.state.modal}>
-              <ModalHeader>Claiming Premium</ModalHeader>
-              <ModalBody>
-                Pay 5 EGP please for claiming your Premium account
-              </ModalBody>
-              <ModalFooter>
-                <Button color="primary" onClick={this.handlePremium}>
-                  Claim{" "}
-                </Button>{" "}
-                <Button color="secondary" onClick={this.togglemodal}>
-                  Cancel
-                </Button>
-              </ModalFooter>
+              <div className="modified-content">
+                <ModalHeader>Claiming Premium</ModalHeader>
+                <ModalBody>
+                  Pay 5 EGP please for claiming your Premium account
+                </ModalBody>
+                <ModalFooter>
+                  <Button
+                    hidden={this.state.Premium}
+                    color="primary"
+                    onClick={this.handlePremium_be}
+                  >
+                    Claim{" "}
+                  </Button>
+                  <Button
+                    hidden={!this.state.Premium}
+                    color="primary"
+                    onClick={this.handlePremium_be}
+                  >
+                    Cancel Premium{" "}
+                  </Button>
+                  <Button color="secondary" onClick={this.togglemodal}>
+                    Cancel
+                  </Button>
+                </ModalFooter>
+              </div>
             </Modal>
           </p>
         </Jumbotron>
@@ -241,7 +354,8 @@ class Premium extends Component {
             <Button
               model="submit"
               className="signupbtn"
-              onClick={this.togglemodal}>
+              onClick={this.togglemodal}
+            >
               Get Premium
             </Button>
           </p>

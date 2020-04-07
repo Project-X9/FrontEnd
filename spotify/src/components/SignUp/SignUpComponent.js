@@ -35,16 +35,48 @@ class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
+      email: "",  
       selectedOption: false,
       confEmail: "",
-      submitted: false,
-      existBefore:null
+      submitted: null,
+      existBefore:null,
+      FaceBookId: "",
+      SignUpId:"",
+      submittedFromFacebook:false,
+      submittedFromSignUp:false,
+      length:this.props.data.data.length,
+      Succeded:null
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.responseFacebook = this.responseFacebook.bind(this);
+    
   }
+  componentDidMount(){
+    this.props.resetFeedbackForm(); 
+    if(this.props.userstate.userstate===true){
+      this.setState({
+        submitted: true,
+        submittedFromSignUp:true,
+        alreadySignedIn:false
+      })
+    }
+    else if(this.props.userstate.userstate === false){
+      this.setState({
+        existBefore:true
+      })
+    }
+    if(this.props.isSignedIn.isSignedIn === true)
+    {
+      this.setState({
+        alreadySignedIn:true
+      })
+    }
+  }
+  // testbackend(){
+  //   const id = "";
+  //   this.props.testPlayLists(id);
+  // }
 /**
  * This function takes the data fromthe input fields and assure that the all
  * the data is not empty (don't make the validations) and if all the data required is
@@ -56,16 +88,17 @@ class SignUp extends Component {
   handleSubmit(values) {
     // const { email, confirmEmail } = this.state;
     // console.log(`Current State :${JSON.stringify(values)}`);
-    let temp=this.handleExcistance(values.email)
-    if(temp)
-    {
-      this.setState({
-        existBefore:true
-      })
-      this.props.resetFeedbackForm();
+    this.props.resetFeedbackForm();
+    // let temp=this.handleExcistance(values.email)
+    // if(temp)
+    // {
+    //   this.setState({
+    //     existBefore:true
+    //   })
+    //   this.props.resetFeedbackForm();
 
-    }
-    else if (
+    // }
+   if (
       values.email !== "" &&
       values.confirmemail !== "" &&
       values.password !== "" &&
@@ -75,20 +108,25 @@ class SignUp extends Component {
       values.year !== "" &&
       values.sex !== ""
     ) {
-      this.props.resetFeedbackForm();
-      this.props.postFeedback(
-        values.email,
-        values.confirmemail,
-        values.password,
-        values.name,
-        values.day,
-        values.month,
-        values.year,
-        values.sex
-      );
       this.setState({
-        submitted: true
-      });
+        // submittedFromSignUp:true,
+        // submitted: true,
+        // SignUpId:this.props.data.data.length+1
+      },()=>{
+        this.props.resetFeedbackForm();
+         this.state.Succeded=this.props.postFeedback( //the function that posts the user data
+          values.email,
+          values.confirmemail,
+          values.password,
+          values.name,
+          values.day,
+          values.month,
+          values.year,
+          values.sex
+        );
+       
+      }
+      );
     } 
     else {
       this.props.resetFeedbackForm();
@@ -118,7 +156,26 @@ class SignUp extends Component {
       email: event.target.value
     });
   };
-
+  // componentWillReceiveProps(nextProbs){
+  //   if(nextProbs.data.data !== this.props.data.data )
+  //   {
+  //     this.setState({
+  //     })
+  //   }
+  // }
+  handleIdIfExist = email => {
+    let temp;
+    this.props.data.data.map(data => {
+      if (data.email === email || data.name === email) {
+        for (let index = 0; index < data.id + 1; index++) {
+          if (index === data.id) {
+            temp = index;
+          }
+        }
+      }
+    });
+    return temp;
+  };
   /**
    * This function recieves the responce of the facebook login and uses the same functions i used in handleSubmit to
    * post the users data and set Submitted to true to be redirected
@@ -126,38 +183,76 @@ class SignUp extends Component {
    */
   responseFacebook(response) {
     if (response.status !== "unknown") {
+      let exist = this.handleExcistance(response.email);
+      if(exist)
+      {
+      var id=this.handleIdIfExist(response.email)
+      // this.props.handleLoginId(id);
+      // this.state.tempId=id;  
       this.setState({
-        submitted: true
+        submitted: true,
+        FaceBookId:id,
+        submittedFromFacebook:true
       });
       this.props.resetFeedbackForm();
+    }
+    else if(!exist)
+    {
+      this.setState({
+        submitted: true,
+        FaceBookId:this.props.data.data.length + 1,
+        submittedFromFacebook:true
+      },()=>{
+      this.props.resetFeedbackForm()
       this.props.postFacebookLogin(
         response.email,
         response.image,
         response.name
+      )
+      }
       );
+      this.props.resetFeedbackForm();
+
     }
   }
-  
+}
   /**
    * Responsible for showing everything on the Sign Up page
    * @returns Components that will be displayed on the page
    */
   render() {
     let redirected = null;
-    if (this.state.submitted) {
-      redirected = <Redirect to="/premium"></Redirect>;
+    let redirectIfSignedIn=null;
+    if (this.state.submitted && this.state.submittedFromFacebook) {
+      this.props.handleLoginId(this.state.FaceBookId);
+      redirected = <Redirect to="/signin"></Redirect>
+    }
+    else if(this.state.submitted && this.state.submittedFromSignUp)
+    {
+      this.setState({
+        submitted:false
+      })
+      this.props.makeSignupRedirectable();  
+      this.props.handleLoginId(this.state.SignUpId);
+      redirected = <Redirect to="/signin"></Redirect>
+      
+    }
+    if(this.state.alreadySignedIn)
+    {
+      redirectIfSignedIn= <Redirect to="/account/overview"></Redirect>
     }
     return (
       <div className="container signup">
         {redirected}
+        {redirectIfSignedIn}
         <div className="row somepadding">
           <Col xs={12} md={{ size: 6, offset: 3 }}>
             <Link to="/home">
               <img
-                src="assets/images/logo2.png"
-                height="59"
-                width="172"
-                alt="spotify"
+                  src="https://www.adweek.com/wp-content/uploads/2019/11/Spotify-Logo-Black.png"
+                  height="90"
+                  width="172"
+                  alt="spotify"
               />
             </Link>
             <hr />
@@ -417,6 +512,7 @@ class SignUp extends Component {
               <Row className="form-group">
                 <Col xs={12} md={{ size: 6, offset: 3 }}>
                   <Button model="submit" className="signupbtn">
+                  {/* <Button onClick={this.testbackend()} className="signupbtn"> */}
                     SignUp
                   </Button>
                 </Col>

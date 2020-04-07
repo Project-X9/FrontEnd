@@ -1,0 +1,29 @@
+.cardPhoto_ArtistPage{
+    height: 159px;
+    width: 159px;
+      /* padding-top: 100%; */
+      position: relative;
+      margin-bottom: 16px;
+      background-color: #333;
+      box-shadow: 0 10px 30px 0 rgba(0,0,0,.3), 0 1px 2px 0 rgba(0,0,0,.2);
+      border-radius: 50%;
+  }
+  .imageHolder_Artist{
+    transition-duration: .3s;
+    transition-property: opacity;
+    transition-timing-function: cubic-bezier(.3,0,.4,1);
+    opacity: 1;
+    height: 159px;
+    width: 159px;
+}
+  .theimage_ArtistPage{
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    display: block;
+    object-fit: cover;
+    object-position: center center;
+  }

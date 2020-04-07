@@ -1,0 +1,690 @@
+.LibraryPageBody{
+    background-color: #141313;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .015em;
+    font-weight: var(--glue-font-weight-normal);
+    color: #b3b3b3;
+    text-transform: none;
+    font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+    /* max-height: 2000px;
+    height: 100%; */
+  }
+/* .backGround_LibraryPage{
+  background-color: #191919;
+  max-height: 100%;
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+  
+  } */
+.customizedButton{
+    border: none;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,.7);
+    color: #fff;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    opacity: .6;
+    
+
+}
+.customizedSvg{
+    border: none;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    background-color: black;
+    color: #fff;
+    /* display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; */
+    cursor: pointer;
+    opacity: .6;
+    margin: -21px 20px 1px 0;
+
+}
+.customizedPath{
+    color: #fff;
+}
+.customizedNavitems{
+    margin:  10px;
+    padding: 0px;
+    border: 0;
+    vertical-align: baseline;
+}
+.customizedNavLink{
+    white-space: nowrap;
+    pointer-events: auto;
+    text-transform: capitalize;
+    font-size: 18px;
+    line-height: 16px;
+    font-weight: 700;
+    color: #fff;
+    position: relative;
+    border: 0;
+    display: inline-block;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin: 0 8px;
+}
+.customizedNavLink:hover{
+    color: white;
+}
+.MainViewPlaylsit{
+    width: 100%;
+    position: relative;
+    isolation: isolate;
+    padding-bottom: 32px;
+    /* margin: 0; */
+    /* padding: 0; */
+    border: 0;
+    vertical-align: baseline;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    height: 100%;
+    /* overflow-y: scroll; */
+    transform: translateZ(0);
+    
+}
+.sectionPlayList{
+    padding: 0 32px;
+    margin: 0;
+    max-width: 1955px;
+    margin-top: 4%;
+    
+}
+.header_playList{
+    font-size: 28px;
+    line-height: 1.6;
+    font-weight: 600;
+    letter-spacing: -.36px;
+    color: #fff;
+    margin: 24px 0;
+    margin-right: 90%;
+    background-color: #141313;
+
+}
+.gridView{
+    display: grid;
+    grid-gap: 16px;
+    grid-template-columns: repeat(auto-fill,minmax(164px,1fr));
+    grid-auto-rows: 1fr;
+    min-height: 0;
+}
+.LikedSongs{
+    grid-column: span 2;
+    height: inherit;
+    background: linear-gradient(149.46deg,#450af5,#8e8ee5 99.16%);
+    color: #fff;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 20px 20px 16px;
+    border-radius: 8px;
+    isolation: isolate;
+}
+.showLiked
+{
+    display: flex;
+    align-items: center;
+    padding-top: 25px;
+    padding-bottom: 40px;
+      /* height: 100%; */
+    
+}
+
+.insideLiked{
+  text-overflow: ellipsis;
+  padding: 0;
+  margin-top: 4px;
+  white-space: normal;
+  overflow: hidden;
+  direction: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  height: 70px;
+
+}
+.customizedSpan{
+    opacity: .7
+}
+.titleLiked{
+    min-height: 62px;
+    text-align: left;
+}
+.displayFlex_hassan{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  /* margin-right: 50%; */
+}
+.likedNav{
+    text-decoration: none;
+    font-size: 28px;
+    /* line-height: 36px; */
+    font-weight: 700;
+    letter-spacing: -.36px;
+    padding-bottom: 2px;
+    position: relative;
+    z-index: 1;
+}
+.likedSongsSpan{
+    color: #fff;
+    /* overflow: hidden;
+    direction: auto;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    position: relative;
+    margin-right: 55% ; */
+    /* margin-right:; */
+}
+.likedNav:hover{
+    text-decoration: none;
+}
+.noOflikedSongs{
+    text-transform: lowercase;
+    color: #fff;
+    font-size: 16px;
+    line-height: 24px;
+    margin-right: 75% ;
+  
+}
+.playButtonOfLikedSongs{
+    /* right: 24px; */
+    /* bottom: 36px; */
+    /* opacity: 0; */
+    /* pointer-events: none; */
+    /* position: absolute; */
+    /* box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12), 0 1px 5px 0 rgba(0,0,0,.2); */
+    z-index: 2;
+    border-radius: 500px;
+    margin-left: 82%;
+    padding-bottom: 15px;
+    
+}
+.PlayButton{
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 700;
+    letter-spacing: 1.76px;
+    /* text-transform: uppercase; */
+    border: 0;
+    border-radius: 500px;
+    color: #fff;
+    background-color: #1db954;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 48px;
+    position: absolute;
+    top: -3em;
+    right:1em;
+}
+.theButtonItself:hover{
+  background-color: #1db954;
+
+}
+.NavBarToggle_Hassan{
+    color: white;
+}
+
+.row.TextBelowTheImage
+  {
+    align-self: flex-start;
+  }
+
+.CardsLibrary{
+    height: 100%;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 20px 20px 16px;
+    background: #282828;
+    border-radius: 8px;
+    align-items: center;
+    /* isolation: isolate; */
+}
+.cardPhoto{
+  height: 100%;
+  width: 100%;
+    /* padding-top: 100%; */
+    position: relative;
+    /* border-radius: 50%; */
+    margin-bottom: 16px;
+    background-color: #333;
+    box-shadow: 0 10px 30px 0 rgba(0,0,0,.3), 0 1px 2px 0 rgba(0,0,0,.2);
+
+}
+.customizedColForCards{
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.imageHolder{
+    transition-duration: .3s;
+    transition-property: opacity;
+    transition-timing-function: cubic-bezier(.3,0,.4,1);
+    opacity: 1;
+    height: 100%;
+    width: 100%;
+}
+.theimage{
+    height: 100%;
+    width: 100%;
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    display: block;
+    object-fit: cover;
+    object-position: center center;
+}
+.CustomizedNavForTheDropDownItem{
+  margin-left: 25%;
+}
+.customizedNavbar{
+  background-color: #141313;
+  position: fixed;
+  top:0;
+  max-width:100%;
+  width:100%;
+  z-index: 1000;  
+}
+
+@media(max-width: 768px){
+  .customizedNavbar {
+    position: relative;
+  }
+}
+
+  .customizedNavbar Button.NextToAccount {
+    background-color: transparent;
+    border: 2px solid #fff;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 700;
+    letter-spacing: 1.76px;
+    text-transform: uppercase;
+    border-radius: 500px;
+    color: #fff;
+    transition: all 33ms cubic-bezier(.3,0,0,1);
+    padding: 8px 34px;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .customizedNavbar a.NextToAccount {
+    color:white;
+  }
+
+  .customizedNavbar Button.NextToAccount:hover {
+    transform: scale(1.06);
+  }
+
+  .customizedNavbar a.NextToAccount:hover {
+    text-decoration:none;
+  }
+  .customizedNavbar Button.AccountItself {
+    border-radius: 23px;
+    height: 32px;
+    min-width: 32px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    border:0;
+    cursor: pointer;
+    color: #fff;
+    padding: 2px;
+    margin-left: 16px;
+    background-color: black;   
+    
+  }
+
+  .customizedNavbar a.AccountItselfIcons.nav-link {
+    margin:0px;  
+  }
+
+  .customizedNavbar Button.AccountItself:hover {
+    background-color: #282828;
+  }
+  .customizedNavbar div.container .StaticNav {
+    background-color: #282828;  
+  }
+
+  .customizedNavbar div.container .StaticNav .StaticNavChildContainer{
+    padding:0;
+  }
+
+  .customizedNavbar div.container .StaticNav .StaticNavChild{
+    width: 100%;
+    color: rgb(168, 167, 167);
+    padding: 3px 20px;
+    line-height: 32px;
+    white-space: nowrap;
+    background: none;
+    border: 0;
+    user-select: none;
+    cursor: default;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative; 
+  }
+  
+  .customizedNavbar div.container .StaticNav .StaticNavChildContainer:hover,
+  .customizedNavbar div.container .StaticNav .StaticNavChild:hover{
+    color: #fff;
+    background-color: #333;
+    text-decoration:none;
+  }
+  
+
+  @media(min-width: 769px){
+    .customizedNavbar div.container .StaticNav .StaticNavChild.Disappear{
+    display: none;
+    }
+  }
+  @media(max-width: 769px){
+    .customizedNavbar .Disappear{
+    display: none;
+    }
+  }
+
+  @media(max-width: 769px){
+    .customizedNavbar .DisappearFromDropDowm{
+    display: none;
+    }
+  }
+  @media(max-width: 768px){
+    .customizedNavbar Button.NextToAccount {
+      display: none;
+    }
+  }
+  .customizedNavbar .profileNavItem{
+      
+    color: white;
+    padding: 0;
+    margin: 0;
+    
+  }
+  /* not used */
+  .customizedContainer{
+    width: 100%;
+    margin: 0;
+    max-width: 100%;
+  }
+  .flexRowOfLibraryPage{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+ .titlePlaylistLink {
+    color: #fff;
+    overflow: hidden;
+    direction: auto;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+    letter-spacing: .24px;
+    text-align: left;  
+  }
+  .titlePlaylistLink:hover{
+    text-decoration: none;
+    color: white;
+  }
+  .desciptionPlaylistLink
+  {
+    font-size: 12px;
+    line-height: 18px;
+    text-overflow: ellipsis;
+    color: #b3b3b3;
+    padding: 0;
+    margin-top: 4px;
+    white-space: normal;
+    overflow: hidden;
+    direction: auto;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    text-align: left;
+  }
+
+  .playButtonPlayList{
+    position: absolute;
+    left:70%;
+    bottom:12%;
+    height:20px;
+    width:50px;
+  }
+
+  .displayButton {
+   height: 15px;
+  }
+  
+  .displayButton:hover button{
+    display: block;
+    background-color: #1db954;
+
+  }
+  .displayButton:hover button {
+    display: block; /* On :hover of div show button */
+ }
+  
+  .theButtonItself{
+  position: relative;
+  z-index: 1;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 700;
+  letter-spacing: 1.76px;
+  text-transform: uppercase;
+  --size: 40px;
+  border: 0;
+  border-radius: 500px;
+  color: #fff;
+  background-color: #1db954;
+  transition: transform 33ms cubic-bezier(.3,0,0,1),-webkit-transform 33ms cubic-bezier(.3,0,0,1);
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  display: none;
+}
+/* .theButtonItself:hover{
+  background-color: yellow;
+} */
+
+.CardsLibrary:hover button{
+  display: block;
+}
+
+.LikedSongs:hover button{
+  display: block;
+}
+
+.theButtonItself:hover{
+  transform: scale(1.06);
+}
+.toTheLeft{
+    margin-left: 60% ;
+}
+.activeButton{
+  background-color: #333;
+}
+/* /////////////////////////////////////////////// If no liked PlayLists */
+.NolikedLevelZero{
+  isolation: isolate;
+  padding-bottom: 32px;
+
+}
+.NolikedLevelOne{
+  padding: 0 32px;
+  margin: 0;
+  max-width: 1955px;
+  display: block;
+}
+.NolikedLevelTwo{
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 8px;
+  padding-right: 8px;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  margin-bottom: 1em;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  align-items: center;
+}
+.NolikedLevelThree{
+  text-align: center;
+  margin-bottom: 64px;
+  
+
+}
+.TakeitDown{
+  margin-top: 6em;
+  
+}
+.YourFirstInAll{
+  font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -.005em;
+    font-weight: 700;
+    color: #fff;
+    text-transform: none;
+    text-align: center;
+    margin-bottom: 36px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    
+}
+.SomeheighPlease{
+  height: 90px;
+}
+._1bfd68987bbac2dd824e5db895bd3c57-scss {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: .015em;
+  font-weight: var(--glue-font-weight-normal);
+  color: #b3b3b3;
+  text-transform: none;
+}
+._2221af4e93029bedeab751d04fab4b8b-scss {
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 700;
+  letter-spacing: 1.76px;
+  text-transform: uppercase;
+  border: 2px solid transparent;
+  border-radius: 500px;
+  color: #fff;
+  -webkit-transition: all 33ms cubic-bezier(.3,0,0,1);
+  transition: all 33ms cubic-bezier(.3,0,0,1);
+  will-change: transform;
+  white-space: nowrap;
+  padding: 8px 34px;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 36px;
+
+}
+._1edf52628d509e6baded2387f6267588-scss {
+  background-color: #fff;
+  color: #181818;
+}
+.d121f0ba42b580ad9a173b53c622c11d-scss ._4a19a959428c34075eef50bd44ab468f-scss {
+    margin-top: 36px;
+}
+
+.LibraryModalClose .LibraryModalCloseButton{
+  background: none;
+  border: none;
+  color: #fff;
+  display: block;
+  font-weight: 400;
+  text-transform: none;
+  width:100%;
+  padding: 13px;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 1.76px;
+  border-radius: 500px;
+  transition: all 33ms cubic-bezier(.3,0,0,1);
+  will-change: transform;
+  white-space: nowrap;
+  cursor: pointer;
+  text-align: left;
+  font-family: spotify-circular,spotify-circular-cyrillic,spotify-circular-arabic,spotify-circular-hebrew,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,Meiryo,MS Gothic,sans-serif;
+  box-sizing: border-box;
+}
+
+.LibraryModalClose .LibraryModalCloseButton:hover{
+  outline: none;
+ text-decoration-line: underline;
+}
+
+.LibraryModalClose .LibraryModalCloseButton.btn.btn-success:focus{
+  box-shadow: none;
+}
+
+.LibraryModalClose .LibraryModalCloseButton.btn.btn-success:active{
+  background-color: transparent;
+  border: none;
+}
+.customizedButtonForOnclick.btn.btn-secondary{
+  color:transparent;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.customizedButtonForOnclick a:hover{
+  text-decoration: none;
+}
+
+.customizedButtonForOnclick.btn.btn-secondary:focus{
+  box-shadow: none;
+}
+
+.customizedButtonForOnclick.btn.btn-secondary:active{
+  box-shadow: none;
+  background-color: transparent;
+  border-color: transparent;
+  outline-color: transparent;
+}
+.customizedButtonForOnclick.btn-secondary:not(:disabled):not(.disabled):active:focus{
+  box-shadow: none;
+} 
