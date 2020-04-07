@@ -16,6 +16,7 @@ class EditProfile extends Component {
   }
 
   handlePatchedInfo = (values) => {
+    this.props.reseteditprofile();
     this.props.postupdatedFeedback(
       this.state.tempId,
       values.email,
@@ -36,7 +37,7 @@ class EditProfile extends Component {
         <h1 className="headerGreen">Edit Profile</h1>
         <hr />
         <Form
-          model="feedback"
+          model="editprofie"
           onSubmit={(values) => this.handlePatchedInfo(values)}
         >
           {" "}
@@ -48,6 +49,7 @@ class EditProfile extends Component {
                 model=".ID"
                 id="ID"
                 name="ID"
+                placeholder="New Name"
               />
             </Col>
           </Row>
@@ -59,6 +61,7 @@ class EditProfile extends Component {
                 model=".email"
                 id="email"
                 name="email"
+                placeholder="New Email"
               />
             </Col>
           </Row>
@@ -70,6 +73,7 @@ class EditProfile extends Component {
                 model=".age"
                 id="age"
                 name="age"
+                placeholder="New Age"
               />
             </Col>
           </Row>
