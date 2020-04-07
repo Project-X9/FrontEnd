@@ -121,6 +121,7 @@ class Main extends Component {
                 handleLoginId={this.props.handleLoginId}
                 userstate={this.props.userstate}
                 makeSignupRedirectable={this.props.makeSignupRedirectable}
+                isSignedIn={this.props.isSignedIn}
               />
             )}
           />
@@ -186,6 +187,7 @@ class Main extends Component {
                 ///////////
                 data_be={this.props.data_be}
                 handleLogout_BE={this.props.handleLogout_BE}
+                isSignedIn={this.props.isSignedIn}
                 handleCurrentPlayList={this.props.handleCurrentPlayList}
                 currentPlaylist={this.props.currentPlaylist}
               />

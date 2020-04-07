@@ -28,6 +28,8 @@ class Albums extends Component {
             var redirected = <Redirect to="/webplayer/nowplay"></Redirect>
 
         }
+        if(this.props.isSignedIn.isSignedIn === true)
+        {
         if(this.props.data_be.data_be.albums.length === 0)
         {
             var RenderNoLikedAlbums=() =>{
@@ -57,7 +59,7 @@ class Albums extends Component {
                 )
             }
         }
-        const RenderUserAlbums = this.props.data_be.data_be.albums.map((Album)=>
+        var RenderUserAlbums = this.props.data_be.data_be.albums.map((Album)=>
         {
             //make a condition if it requires in the future
             if(Album.name !== "Liked_Songs")
@@ -111,36 +113,43 @@ class Albums extends Component {
         }
     }
         )
-        
+}
+
         return(
             <div>
-             {redirected}
-            <div className="LibraryPageBody">
-            <div className="container MainViewPlaylsit">
-                <div className="sectionPlayList">
-                    {this.props.data_be.data_be.albums.length === 0 ? (
-                        <div>{RenderNoLikedAlbums()}</div>
-                        ) : (
-                            <div>
-                            <Row>
-                                <Col  md={12}>
-                                    <h1 className="header_playList">Albums</h1>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col  md={12} className="m-0 customizedColForCards">
-                                    <div className="gridView">
-                                        {RenderUserAlbums}
-                                    
+                 {this.props.isSignedIn.isSignedIn === true ? (
+                    <div>
+                        {redirected}
+                        <div className="LibraryPageBody">
+                        <div className="container MainViewPlaylsit">
+                            <div className="sectionPlayList">
+                                {this.props.data_be.data_be.albums.length === 0 ? (
+                                    <div>{RenderNoLikedAlbums()}</div>
+                                    ) : (
+                                        <div>
+                                        <Row>
+                                            <Col  md={12}>
+                                                <h1 className="header_playList">Albums</h1>
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col  md={12} className="m-0 customizedColForCards">
+                                                <div className="gridView">
+                                                    {RenderUserAlbums}
+                                                
+                                                </div>
+                                            </Col>
+                                        </Row>
                                     </div>
-                                </Col>
-                            </Row>
+                                    )}
+                            </div>
                         </div>
-                        )}
-                </div>
-            </div>
-            
-        </div>
+                        
+                    </div>
+                    </div> ):(
+                       <div></div> 
+                    )}
+             
     </div>)
     }
 }

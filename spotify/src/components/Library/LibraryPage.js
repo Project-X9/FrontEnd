@@ -36,6 +36,8 @@ class LibraryPage extends Component {
             id={this.props.id}
             handleLogoutId={this.props.handleLogoutId}
             data_be={this.props.data_be}
+            isSignedIn={this.props.isSignedIn}
+            handleLogout_BE={this.props.handleLogout_BE}
             />
             <Switch>
                     <Route
@@ -47,6 +49,8 @@ class LibraryPage extends Component {
                         playLists={this.props.playLists}
                         data_be={this.props.data_be}
                         handleCurrentPlayList={this.props.handleCurrentPlayList}
+                        isSignedIn={this.props.isSignedIn}
+
                         />
                       )} />
                    <Route
@@ -58,6 +62,7 @@ class LibraryPage extends Component {
                         album={this.props.album}
                         data_be={this.props.data_be}
                         handleCurrentPlayList={this.props.handleCurrentPlayList}
+                        isSignedIn={this.props.isSignedIn}
                         />
                       )} />
                     <Route
@@ -69,6 +74,7 @@ class LibraryPage extends Component {
                         artist={this.props.artist}
                         data_be={this.props.data_be}
                         handleCurrentPlayList={this.props.handleCurrentPlayList}
+                        isSignedIn={this.props.isSignedIn}
                         />
                       )} />
                 </Switch>

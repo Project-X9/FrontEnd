@@ -58,6 +58,7 @@ class SignUp extends Component {
       this.setState({
         submitted: true,
         submittedFromSignUp:true,
+        alreadySignedIn:false
       })
     }
     else if(this.props.userstate.userstate === false){
@@ -65,7 +66,12 @@ class SignUp extends Component {
         existBefore:true
       })
     }
-    
+    if(this.props.isSignedIn.isSignedIn === true)
+    {
+      this.setState({
+        alreadySignedIn:true
+      })
+    }
   }
   // testbackend(){
   //   const id = "";
@@ -216,6 +222,7 @@ class SignUp extends Component {
    */
   render() {
     let redirected = null;
+    let redirectIfSignedIn=null;
     if (this.state.submitted && this.state.submittedFromFacebook) {
       this.props.handleLoginId(this.state.FaceBookId);
       redirected = <Redirect to="/signin"></Redirect>
@@ -230,17 +237,22 @@ class SignUp extends Component {
       redirected = <Redirect to="/signin"></Redirect>
       
     }
+    if(this.state.alreadySignedIn)
+    {
+      redirectIfSignedIn= <Redirect to="/account/overview"></Redirect>
+    }
     return (
       <div className="container signup">
         {redirected}
+        {redirectIfSignedIn}
         <div className="row somepadding">
           <Col xs={12} md={{ size: 6, offset: 3 }}>
             <Link to="/home">
               <img
-                src="assets/images/logo2.png"
-                height="59"
-                width="172"
-                alt="spotify"
+                  src="https://www.adweek.com/wp-content/uploads/2019/11/Spotify-Logo-Black.png"
+                  height="90"
+                  width="172"
+                  alt="spotify"
               />
             </Link>
             <hr />

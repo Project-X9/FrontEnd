@@ -17,11 +17,8 @@ class LibraryNavbar extends Component {
         };
  
     }
-    
-
   handleLogout(){
-    let id="";
-    this.props.handleLogoutId(id);
+    this.props.handleLogout_BE();
   }
     
     render(){
@@ -49,7 +46,7 @@ class LibraryNavbar extends Component {
         return(
             
             <div>
-            {this.props.id.id !== "" ? (
+            {this.props.isSignedIn.isSignedIn === true ? (
                 <div>
                     <Navbar expand="md" className="customizedNavbar" >
                     <div className="container customizedContainer">

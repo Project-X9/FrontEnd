@@ -23,12 +23,13 @@ class PlayList extends Component {
         })
     }
     render(){
-      
         if(this.state.playListadded === true)
         {
             var redirected = <Redirect to="/webplayer/nowplay"></Redirect>
 
         }
+        if(this.props.isSignedIn.isSignedIn === true)
+        {
         if(this.props.data_be.data_be.playlists.length === 0)
         {
             var RenderNoLikedplayLists=() =>{
@@ -61,7 +62,7 @@ class PlayList extends Component {
                 )
             }
         }
-        const RenderUserPlayLists = this.props.data_be.data_be.playlists.map((PlayLists)=>
+        var RenderUserPlayLists = this.props.data_be.data_be.playlists.map((PlayLists)=>
         {
             //make a condition if it requires in the future
             return(
@@ -116,11 +117,14 @@ class PlayList extends Component {
             )
     }
         )
-        
+}
+
         return(
             
             <div>
-                {redirected}
+                {this.props.isSignedIn.isSignedIn === true ? (
+                    <div>
+                    {redirected}
             <div className="container MainViewPlaylsit">
                 <div className="sectionPlayList">
                     {this.props.data_be.data_be.playlists.length ===0 ? (
@@ -196,7 +200,12 @@ class PlayList extends Component {
                    
                 </div>
              </div>
+                    </div>
+                ):(
+                    <div></div>
+                )}
+          
         </div>        )
-    }
+}
 }
 export default PlayList;
