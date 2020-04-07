@@ -138,7 +138,7 @@ class Premium extends Component {
         {redirect}
         <div className="AccountOverviewNav">
           <div className="container">
-          <Navbar className="NavBar NavStyle" sticky="top" expand="md">
+            <Navbar className="NavBar NavStyle" sticky="top" expand="md">
               <NavbarBrand className="mr-auto" href="/home">
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSBmnPgQKW4JLrNcSFhPFCLHz3t8kT1pZl0PVkLYsa8FoScWYda"
