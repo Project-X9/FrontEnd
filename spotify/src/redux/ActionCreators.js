@@ -190,6 +190,7 @@ export const handleSignIn_BE = (data) => (dispatch) => {
   axios
     .post(SignInUrl, data)
     .then((response) => {
+      console.log("Response from sign in", response);
       dispatch(addLogin(true));
       axios
         .get(`${SignUpUrl}/${response.data.user._id}`)
@@ -197,7 +198,7 @@ export const handleSignIn_BE = (data) => (dispatch) => {
           dispatch(addUserData_BE(response2.data.data.user))
         );
     })
-    .catch((error) => dispatch(addLogin(false)));
+    .catch((error) => console.log("Response from sign in"));
 };
 export const addUserData_BE = (data) => ({
   type: ActionTypes.ADD_USERDATA_BE,
@@ -208,10 +209,9 @@ export const addLogin = (data) => ({
   payload: data,
 });
 ////////////////////////sign up ///////////////////////////////
-export const makeSignupRedirectable = () => dispatch =>
-{
-  dispatch(addUser(null))
-}
+export const makeSignupRedirectable = () => (dispatch) => {
+  dispatch(addUser(null));
+};
 ////////////////////////////////////////fetch Playlist by id/////////////////////
 // export const fetchPlaylistById_be = (id) => dispatch => {
 //   axios.get(`${PlaylistsUrl}${id}`)
@@ -221,3 +221,11 @@ export const makeSignupRedirectable = () => dispatch =>
 //   type: ActionTypes.ADD_PLAYLIST_BYID,
 //   payload: data
 // });
+//////////////////////////////log out///////////////////////////
+export const handleLogout_BE = () => (dispatch) => {
+  dispatch(LogOut_BE());
+  // dispatch(removeUserData());
+};
+export const LogOut_BE = () => ({
+  type: ActionTypes.ADD_LOGOUT_BE,
+});

@@ -79,6 +79,7 @@ class AccountOverview extends Component {
   handleLogout() {
     let id = "";
     this.props.handleLogoutId(id);
+    // this.props.handleLogout_BE();
   }
   /**
    * Responsible for showing everything on the Account Overview page
@@ -106,7 +107,7 @@ class AccountOverview extends Component {
     }
 
     let redirect = "";
-    if (this.state.tempId === "") {
+    if (this.props.data_be.data_be === null) {
       redirect = <Redirect to="/signup" />;
     }
 

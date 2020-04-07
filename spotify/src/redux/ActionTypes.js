@@ -18,3 +18,5 @@ export const ADD_LOGIN = 'ADD_LOGIN';
 export const ADD_USERDATA_BE ='ADD_USERDATA_BE';
 ///////////////// ADD PL
 export const ADD_PLAYLIST_BYID ='ADD_PLAYLIST_BYID';
+////////////////////////////logout_be//////////////////
+export const ADD_LOGOUT_BE ='ADD_LOGOUT_BE';
