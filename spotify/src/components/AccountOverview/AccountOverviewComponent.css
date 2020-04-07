@@ -851,6 +851,14 @@
     font-family: Circular, Helvetica, Arial, sans-serif, IosFix;
   }
 
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .EditProfileLinkInsideCancelButton{
+    color:black;
+  }
+
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .EditProfileLinkInsideCancelButton:hover{
+    text-decoration: none;
+  }
+
   .AccountOverviewBody .container .Content.EditProfileContentAswell .EditProfileSaveButton{
     float: right !important;
     max-width: 290px;
@@ -885,5 +893,6 @@
     border-color: #116e32;
     text-decoration: none;
   }
+  
   /***************************************************Sidebar Content Edit Profile***************************************************/
   /***************************************************Body***************************************************/

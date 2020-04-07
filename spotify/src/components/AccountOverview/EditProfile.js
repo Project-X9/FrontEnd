@@ -1,11 +1,23 @@
-import { Redirect } from "react-router-dom";
+import { Redirect,Link } from "react-router-dom";
 
 import React, { Component } from "react";
 import { Col, Button, Row } from "reactstrap";
 import { Control, Form, Errors } from "react-redux-form";
 import { Label } from "reactstrap";
 
-const typeSelected = (val) => val === "male" || val === "female";
+const required = val => val && val.length;
+// const maxLength = (len) => (val) => !(val) || (val.length <= len);
+const minLength = len => val => val && val.length >= len;
+// const isNumber = (val) => !isNaN(Number(val));
+const validEmail = val => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
+const validDay = val => /^([1-9]|0[1-9]|[12]\d|3[01])$/i.test(val);
+const validYear = val =>
+  /^(181[2-9]|18[2-9]\d|19\d\d|2\d{3}|30[0-3]\d|304[0-8])$/i.test(val); //1812 - 3048
+const confEmail = val => val2 => val === val2;
+const typeSelected = val => val === "male" || val === "female";
+const monthSelected = val => val !== "null";
+
+
 class EditProfile extends Component {
   constructor(props) {
     super(props);
@@ -49,7 +61,7 @@ class EditProfile extends Component {
                 model=".ID"
                 id="ID"
                 name="ID"
-                placeholder="New Name"
+                placeholder="New Username"
               />
             </Col>
           </Row>
@@ -79,13 +91,15 @@ class EditProfile extends Component {
           </Row>
           <Row className="form-group">
             <Col>
-              <Button type="submit" className="EditProfileSaveButton">
-                Save Changes
+              <Button className="EditProfileCancelButton">
+                <Link className="EditProfileLinkInsideCancelButton" to="/account/overview">
+                  cancel
+                </Link>
               </Button>
             </Col>
             <Col>
-              <Button className="EditProfileCancelButton">
-                cancel
+              <Button type="submit" className="EditProfileSaveButton">
+                Save Changes
               </Button>
             </Col>
           </Row>
