@@ -7,9 +7,9 @@ import React, { Component } from "react";
 import { Col, Button, Row } from "reactstrap";
 import { Control, Form, Errors } from "react-redux-form";
 import { Label } from "reactstrap";
-const required = val => val && val.length;
-const minLength = len => val => val && val.length >= len;
-const confPass = val => val2 => val === val2;
+const required = (val) => val && val.length;
+const minLength = (len) => (val) => val && val.length >= len;
+const confPass = (val) => (val2) => val === val2;
 
 class ChangePass extends Component {
   /**@param{tempId} is the ID of the incoming user
@@ -22,7 +22,7 @@ class ChangePass extends Component {
       Password: "",
       CurrentPassword: "",
       ConfirmPassword: "",
-      tempId: this.props.id.id
+      tempId: this.props.id.id,
     };
     this.handleChangePassword = this.handleChangePassword.bind(this);
     this.handleData = this.handleData.bind(this);
@@ -33,7 +33,7 @@ class ChangePass extends Component {
    */
   handleData = () => {
     let temp;
-    this.props.data.data.map(data => {
+    this.props.data.data.map((data) => {
       if (data.id === this.props.id.id) {
         temp = data.password;
       }
@@ -43,8 +43,7 @@ class ChangePass extends Component {
   /**
    * Posting the changed Password
    */
-  handleChangePassword = values => {
-    alert(this.props.id.id);
+  handleChangePassword = (values) => {
     const temp = this.handleData();
     if (temp === values.Currentpassword) {
       const post = values.password;
@@ -54,16 +53,15 @@ class ChangePass extends Component {
   /**
    * Checking the same password
    */
-  handleConfirmPassword = event => {
+  handleConfirmPassword = (event) => {
     this.setState({
-      Password: event.target.value
+      Password: event.target.value,
     });
   };
 
   render() {
     let redirect = "";
     if (this.state.tempId === "") {
-      alert("help");
       redirect = <Redirect to="/signup" />;
     }
 
@@ -74,7 +72,7 @@ class ChangePass extends Component {
         <hr />
         <Form
           model="feedback"
-          onSubmit={values => this.handleChangePassword(values)}
+          onSubmit={(values) => this.handleChangePassword(values)}
         >
           <Row className="form-group">
             <Col xs={12} md={{ size: 6, offset: 3 }}>
@@ -87,7 +85,7 @@ class ChangePass extends Component {
                 id="Currentpassword"
                 name="Currentpassword"
                 validators={{
-                  required
+                  required,
                 }}
               />
             </Col>
@@ -105,7 +103,7 @@ class ChangePass extends Component {
                 name="password"
                 validators={{
                   required,
-                  minLength: minLength(7)
+                  minLength: minLength(7),
                 }}
               />
               <Row className="ml-2">
@@ -115,7 +113,7 @@ class ChangePass extends Component {
                   show="touched"
                   messages={{
                     required: "Enter your password to continue, ",
-                    minLength: "Your password is too short"
+                    minLength: "Your password is too short",
                   }}
                 />
               </Row>
@@ -133,7 +131,7 @@ class ChangePass extends Component {
                 name="confirmPassword"
                 validators={{
                   required,
-                  confPass: confPass(this.state.Password)
+                  confPass: confPass(this.state.Password),
                 }}
               />
               <Row className="ml-2">
@@ -142,7 +140,7 @@ class ChangePass extends Component {
                   model=".confirmpassword"
                   show="touched"
                   messages={{
-                    confPass: "Password does not match"
+                    confPass: "Password does not match",
                   }}
                 />
               </Row>
@@ -150,7 +148,7 @@ class ChangePass extends Component {
           </Row>
           <Row className="form-group">
             <Col xs={12} md={{ size: 6, offset: 3 }}>
-              <Button model="submit" className="signupbtn">
+              <Button type="submit" className="signupbtn">
                 Change Password
               </Button>
             </Col>
