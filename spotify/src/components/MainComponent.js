@@ -33,7 +33,7 @@ import {
   patchedfollow,
   postupdatedFeedback,
   handleCurrentAlbums,
-  handleCurrentArtists
+  handleCurrentArtists,
 } from "../redux/ActionCreators";
 
 const mapStateToProps = (state) => ({
@@ -218,7 +218,6 @@ class Main extends Component {
                 categories={this.props.categories}
                 handleCurrentAlbums={this.props.handleCurrentAlbums}
                 handleCurrentArtists={this.props.handleCurrentArtists}
-          
               />
             )}
           />

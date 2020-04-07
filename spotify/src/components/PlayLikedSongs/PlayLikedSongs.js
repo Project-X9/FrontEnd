@@ -12,7 +12,7 @@ import {
   DropdownToggle,
 } from "reactstrap";
 import "../NowPlayComponent/NowPlay.css";
-import { NavLink,Redirect } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 class PlayLikedSongs extends Component {
   constructor(props) {
     super(props);
@@ -32,7 +32,6 @@ class PlayLikedSongs extends Component {
       collapsed: !this.state.collapsed,
     });
   }
-
 
   handleLogout() {
     this.props.handleLogout_BE();
