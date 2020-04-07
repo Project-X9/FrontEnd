@@ -28,6 +28,7 @@ import {
   handleSignIn_BE,
   makeSignupRedirectable,
   handleLogout_BE,
+  postupdatedFeedback,
 } from "../redux/ActionCreators";
 
 const mapStateToProps = (state) => ({
@@ -142,6 +143,7 @@ class Main extends Component {
             path="/account"
             component={() => (
               <AccountOverview
+                postupdatedFeedback={this.props.postupdatedFeedback}
                 //////////for overview and change password and edit profile and nowplay
                 data={this.props.data}
                 id={this.props.id}
