@@ -192,6 +192,8 @@ class WebPlayer extends Component {
                                playLists={this.props.playLists}
                                data_be={this.props.data_be} 
                                currentPlaylist={this.props.currentPlaylist}
+                               isSignedIn={this.props.isSignedIn}
+                               handleLogout_BE={this.props.handleLogout_BE}
                                />
                             )}
                         />
