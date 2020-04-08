@@ -24,6 +24,7 @@ class NowPlay extends Component {
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.patchFollow = this.patchFollow.bind(this);
+    this.patchunFollow = this.patchunFollow.bind(this);
   }
   isPlaylistFollowed() {
     const Temp = this.props.currentPlaylist.currentPlaylist.followers.find(
@@ -37,13 +38,16 @@ class NowPlay extends Component {
     this.state.handleLogout = this.handleLogout.bind(this);
   }
   patchFollow() {
-    if (this.isPlaylistFollowed()) {
-      this.props.patchedunfollow(
+    if (!this.isPlaylistFollowed()) {
+      this.props.patchedfollow(
         this.props.data_be.data_be._id,
         this.props.currentPlaylist.currentPlaylist._id
       );
-    } else {
-      this.props.patchedfollow(
+    }
+  }
+  patchunFollow() {
+    if (this.isPlaylistFollowed()) {
+      this.props.patchedunfollow(
         this.props.data_be.data_be._id,
         this.props.currentPlaylist.currentPlaylist._id
       );
@@ -302,12 +306,14 @@ class NowPlay extends Component {
                                       <Button
                                         className="Jumbostyle"
                                         onClick={this.patchFollow}
+                                        hidden={this.isPlaylistFollowed()}
                                       >
                                         <i class="fa fa-heart"></i>
                                       </Button>
                                       <Button
                                         className="Jumbostyle"
-                                        onClick={this.patchFollow}
+                                        onClick={this.patchunFollow}
+                                        hidden={!this.isPlaylistFollowed()}
                                       >
                                         <i class="fa fa-thumbs-down"></i>{" "}
                                       </Button>
