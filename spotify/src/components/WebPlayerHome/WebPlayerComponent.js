@@ -14,7 +14,7 @@ import LibraryPage from "../Library/LibraryPage";
 import NowPlay from "../NowPlayComponent/NowPlay";
 import { baseUrl2 } from "../../shared/baseUrl";
 import LikedPlay from "../PlayLikedSongs/PlayLikedSongs";
-import Artist from "../ArtistInterface/ArtistComponent"
+import Artist from "../ArtistInterface/ArtistComponent";
 class WebPlayer extends Component {
   constructor(props) {
     super(props);
@@ -215,13 +215,13 @@ class WebPlayer extends Component {
                     path="/webplayer/artist"
                     component={() => (
                       <Artist
-                      id={this.props.id}
-                      data={this.props.data}
-                      playLists={this.props.playLists}
-                      data_be={this.props.data_be}
-                      currentPlaylist={this.props.currentPlaylist}
-                      isSignedIn={this.props.isSignedIn}
-                      handleLogout_BE={this.props.handleLogout_BE}
+                        id={this.props.id}
+                        data={this.props.data}
+                        playLists={this.props.playLists}
+                        data_be={this.props.data_be}
+                        currentPlaylist={this.props.currentPlaylist}
+                        isSignedIn={this.props.isSignedIn}
+                        handleLogout_BE={this.props.handleLogout_BE}
                       />
                     )}
                   />
