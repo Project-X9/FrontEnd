@@ -28,25 +28,27 @@ export const patchedunfollow = (iduser, idplaylist) => (dispatch) => {
   const data = { id: iduser };
   // data.date = new Date().toISOString();
   console.log(data);
-  axios.patch(`${UnFollowURL}/${idplaylist}`, data).then((response) => {
-    console.log("Response from sign in", response);
+  axios.patch(`${UnFollowURL}/${idplaylist}`, data);
+  // .then((response) => {
+  //   console.log("Response from sign in", response);
 
-    axios
-      .get(`${SignUpUrl}/${iduser}`)
-      .then((response2) => dispatch(addUserData_BE(response2.data.data.user)));
-  });
+  //   axios
+  //     .get(`${SignUpUrl}/${iduser}`)
+  //     .then((response2) => dispatch(addUserData_BE(response2.data.data.user)));
+  // });
 };
 export const patchedfollow = (iduser, idplaylist) => (dispatch) => {
   const data = { id: iduser };
   // data.date = new Date().toISOString();
   console.log(data);
-  axios.patch(`${FollowURL}/${idplaylist}`, data).then((response) => {
-    console.log("Response from sign in", response);
-    dispatch(addLogin(true));
-    axios
-      .get(`${SignUpUrl}/${iduser}`)
-      .then((response2) => dispatch(addUserData_BE(response2.data.data.user)));
-  });
+  axios.patch(`${FollowURL}/${idplaylist}`, data);
+  // .then((response) => {
+  //   console.log("Response from sign in", response);
+  //   dispatch(addLogin(true));
+  //   axios
+  //     .get(`${SignUpUrl}/${iduser}`)
+  //     .then((response2) => dispatch(addUserData_BE(response2.data.data.user)));
+  // });
 };
 /////////////////////////////////////////////////////////////////////////////////////////
 export const PremiumPost = (id, isPremium) => (dispatch) => {
@@ -250,10 +252,12 @@ export const handleSignIn_BE = (data) => (dispatch) => {
     .then((response) => {
       console.log("Response from sign in", response);
       dispatch(addLogin(true));
-      var token=response.data.token
-      const Authstr='Bearer '.concat(token)
+      var token = response.data.token;
+      const Authstr = "Bearer ".concat(token);
       axios
-        .get(`${SignUpUrl}/${response.data.user._id}`,{headers:{Authorization:Authstr}})
+        .get(`${SignUpUrl}/${response.data.user._id}`, {
+          headers: { Authorization: Authstr },
+        })
         .then((response2) =>
           dispatch(addUserData_BE(response2.data.data.user))
         );
