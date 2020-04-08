@@ -618,7 +618,7 @@ div.WebPlayerHomeContent .DescriptionPlaylistLink
     background: -moz-linear-gradient(to bottom,rgb(197, 200, 201),rgb(43, 44, 44)); /*for firefox*/
     background: linear-gradient(to bottom,rgb(197, 200, 201),rgb(43, 44, 44)); /*standard syntax*/
     padding:50px;
-    border-radius: 50%;
+    border-radius: 10px;
   }
 
   .HomeNotSignedInModal .HomeNotSignedInModalImageHolder{
