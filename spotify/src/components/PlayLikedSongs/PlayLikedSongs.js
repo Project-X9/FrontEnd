@@ -68,7 +68,7 @@ class PlayLikedSongs extends Component {
     if (this.props.isSignedIn.isSignedIn === null) {
       redirect = <Redirect to="/webplayer/home" />;
     }
-    if (this.props.currentPlaylist.isLoading) {
+    if (this.props.data_be.isLoading) {
       return <Loading />;
     } else {
       if (this.props.isSignedIn.isSignedIn === true) {
@@ -187,8 +187,6 @@ class PlayLikedSongs extends Component {
             </div>
           );
         }
-
-        /////////////////////////////////////////////////////////RenderSongsDone//////////////////////////////////////////////////
       }
       return (
         <div>
@@ -290,10 +288,7 @@ class PlayLikedSongs extends Component {
                                       >
                                         <i class="fa fa-heart"></i>
                                       </Button>
-                                      <Button
-                                        className="Jumbostyle"
-                                        onClick={this.patchFollow}
-                                      >
+                                      <Button className="Jumbostyle">
                                         <i class="fa fa-thumbs-down"></i>{" "}
                                       </Button>
                                     </div>

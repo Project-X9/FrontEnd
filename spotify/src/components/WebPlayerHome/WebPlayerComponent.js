@@ -21,18 +21,18 @@ class WebPlayer extends Component {
     this.state = {
       tempId: this.props.id.id,
       isModalOpen: false,
-      SignedIn: false
+      SignedIn: false,
     };
     this.toggleModal = this.toggleModal.bind(this);
   }
   toggleModal() {
     if (this.props.isSignedIn.isSignedIn === true) {
       this.setState({
-        SignedIn: true
+        SignedIn: true,
       });
     } else {
       this.setState({
-        isModalOpen: !this.state.isModalOpen
+        isModalOpen: !this.state.isModalOpen,
       });
     }
   }
@@ -190,6 +190,8 @@ class WebPlayer extends Component {
                         currentPlaylist={this.props.currentPlaylist}
                         isSignedIn={this.props.isSignedIn}
                         handleLogout_BE={this.props.handleLogout_BE}
+                        patchedfollow={this.props.patchedfollow}
+                        patchedunfollow={this.props.patchedunfollow}
                       />
                     )}
                   />
