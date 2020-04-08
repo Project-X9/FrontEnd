@@ -244,8 +244,10 @@ export const handleSignIn_BE = (data) => (dispatch) => {
     .then((response) => {
       console.log("Response from sign in", response);
       dispatch(addLogin(true));
+      var token=response.data.token
+      const Authstr='Bearer '.concat(token)
       axios
-        .get(`${SignUpUrl}/${response.data.user._id}`)
+        .get(`${SignUpUrl}/${response.data.user._id}`,{headers:{Authorization:Authstr}})
         .then((response2) =>
           dispatch(addUserData_BE(response2.data.data.user))
         );
