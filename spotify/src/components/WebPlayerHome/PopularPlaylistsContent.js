@@ -48,11 +48,12 @@ class PopularNewHomeAndNavContent extends Component {
             return (
               <Button
                 className="WebplayerHomeNowPlayRedirectButton"
-                onClick={() => this.handleRenderingPlaylist(CategorySongs._id)}
+                // onClick={() => this.handleRenderingPlaylist(CategorySongs._id)}
+                onClick={this.toggleModal}
               >
                 <Link
                   className="WebplayerHomeNowPlayRedirectLink"
-                  to="/webplayer/nowplay"
+                  // to="/webplayer/nowplay"
                 >
             
                   <div key={CategorySongs._id} className="CardsHome">
@@ -90,7 +91,7 @@ class PopularNewHomeAndNavContent extends Component {
                         <div>
                           <Button
                             className="ButtonItself"
-                            onClick={this.toggleModal}
+                            // onClick={this.toggleModal}
                           >
                             <svg
                               height="16"
