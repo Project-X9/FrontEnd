@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import "./Artist.css";
 import Artists from "../Library/ArtistsComponent";
 import LibraryNavbar from "../Library/LibraryNavbar";
+import { Loading } from './../Loading/LoadingComponent';
 
 import {
   Navbar,
@@ -91,6 +92,14 @@ class Artist extends Component {
                 this.props.currentplaylist.currentplaylist.email*/
 
   render() {
+    if(this.props.currentPlaylist.isLoading)
+    {
+      return(
+      <Loading />
+      );
+    }
+    else
+    {
     return (
       <div className="artistPage container">
         <div className="container-fluid m-0 p-0">
@@ -125,7 +134,7 @@ class Artist extends Component {
                     <Button
                       className="signupbtn"
                       id="playButton"
-                      onClick={this.playHandler}
+                      onClick={()=>this.playHandler}
                     >
                       Play
                     </Button>
@@ -133,7 +142,7 @@ class Artist extends Component {
                       <Button
                         className="signupbtn"
                         id="followButton"
-                        onClick={this.toggleFollow}
+                        onClick={()=>this.toggleFollow}
                       >
                         follow
                       </Button>
@@ -142,7 +151,7 @@ class Artist extends Component {
                       <Button
                         className="signupbtn"
                         id="followButton"
-                        onClick={this.toggleFollow}
+                        onClick={()=>this.toggleFollow}
                       >
                         unfollow
                       </Button>
@@ -155,21 +164,21 @@ class Artist extends Component {
               <Button
                 className="secondary Header1"
                 id="ov"
-                onClick={this.toggleOverview}
+                onClick={()=>this.toggleOverview}
               >
                 Overview
               </Button>
               <Button
                 className="secondary Header1"
                 id="ab"
-                onClick={this.toggleRelated}
+                onClick={()=>this.toggleRelated}
               >
                 Related Artists
               </Button>
               <Button
                 className="secondary Header1"
                 id="ab"
-                onClick={this.toggleAbout}
+                onClick={() => this.toggleAbout}
               >
                 About
               </Button>
@@ -193,7 +202,7 @@ class Artist extends Component {
                     <p className="duration">3:03</p>
                   </div>
                 </Link>
-                <Link>
+                {/* <Link>
                   <div className="artist-song">
                     <img
                       src="https://annsokoto.files.wordpress.com/2018/02/dualipa.jpg?w=356&h=356"
@@ -204,8 +213,8 @@ class Artist extends Component {
                     <p className="song-text">{this.props.currentPlaylist.currentPlaylist.tracks[1]}</p>
                     <p className="duration">3:29</p>
                   </div>
-                </Link>
-                <Link>
+                </Link> */}
+                {/* <Link>
                   <div className="artist-song">
                     <img
                       src="https://annsokoto.files.wordpress.com/2018/02/dualipa.jpg?w=356&h=356"
@@ -240,7 +249,7 @@ class Artist extends Component {
                     <p className="song-text">{this.props.currentPlaylist.currentPlaylist.tracks[4]}</p>
                     <p className="duration">3:13</p>
                   </div>
-                </Link>
+                </Link> */}
                 <header className="Header1" id="popular-songs">
                   Albums
                 </header>
@@ -278,7 +287,7 @@ class Artist extends Component {
                   Biography
                 </header>
                 <p id="bio-body">
-                  {this.props.currentPlaylist.currentPlaylist.bio}
+                  {this.props.currentPlaylist.currentPlaylist.Bio}
                 </p>
               </div>
             )}
@@ -315,7 +324,7 @@ class Artist extends Component {
                                 <Row className="cardTitle">
                                   <Col md={12}>
                                     <Link className="titlePlaylistLink">
-                                      {this.props.currentPlaylist.currentPlaylist.related}
+                                      {this.props.currentPlaylist.currentPlaylist.relatedArtists}
                                     </Link>
                                   </Col>
                                 </Row>
@@ -361,6 +370,7 @@ class Artist extends Component {
         </div>
       </div>
     );
+            }
   }
 }
 export default Artist;
