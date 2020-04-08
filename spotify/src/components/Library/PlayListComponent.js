@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import { 
-   Button, Row, Col,} from 'reactstrap'; 
+   Button, Row, Col, Nav,} from 'reactstrap'; 
 import {Link,Redirect} from "react-router-dom";
 import "./Page.css";
 
@@ -190,9 +190,11 @@ class PlayList extends Component {
                                                         <Col  md={12}>
                                                             <div className="displayButton">
                                                             <Button className="PlayButton">
+                                                                <Link to='/webplayer/likedplay'>
                                                                 <svg height="24" role="img" width="24" viewBox="0 0 24 24">
                                                                     <polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon>
                                                                 </svg>
+                                                                </Link>
                                                             </Button>
                                                             </div>
                                                         </Col>
