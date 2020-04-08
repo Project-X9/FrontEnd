@@ -17,7 +17,7 @@ class Albums extends Component {
     }
     handleRenderingPlaylist(data){
 
-        alert(data);
+        // alert(data);
         this.props.handleCurrentAlbums(data);
         this.setState({
             playListadded:true
