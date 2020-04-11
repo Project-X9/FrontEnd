@@ -20,7 +20,6 @@ class Artist extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tempId: this.props.id.id,
       overview: 1,
       following: false,
       isNavOpen: false
@@ -78,7 +77,7 @@ class Artist extends Component {
    * Responsible for showing everything on the Artist page
    * @returns Components that will be displayed on the page
    */
-  
+
   render() {
     if (this.props.currentPlaylist.isLoading) {
       return <Loading />;
