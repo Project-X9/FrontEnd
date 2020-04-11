@@ -28,29 +28,13 @@ class ChangePass extends Component {
     // this.handleData = this.handleData.bind(this);
     this.handleConfirmPassword = this.handleConfirmPassword.bind(this);
   }
-  /**
-   * HandleData is for getting the current password of the user
-   */
-  // handleData = () => {
-  //   let temp;
-  //   this.props.data.data.map((data) => {
-  //     if (data.id === this.props.id.id) {
-  //       temp = data.password;
-  //     }
-  //   });
-  //   return temp;
-  // };
+
   /**
    * Posting the changed Password
    */
   handleChangePassword = (values) => {
     this.props.resetChangePasswordForm();
-    // const temp = this.handleData();
-    // if (temp === values.Currentpassword) {
-    //   const post = values.password;
-
     this.props.PostPassword(values.password, this.props.data_be.data_be._id);
-    // } else alert("Password is Incorrect");
   };
   /**
    * Checking the same password

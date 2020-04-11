@@ -139,7 +139,7 @@ class PlayList extends Component {
                     {redirected}
             <div className="container MainViewPlaylsit">
                 <div className="sectionPlayList">
-                    {this.props.data_be.data_be.playlists.length ===0 ? (
+                    {this.props.data_be.data_be.playlists.length ===0 && this.props.data_be.data_be.tracks.length === 0 ? (
                         <div>{RenderNoLikedplayLists()}</div>
                         // <div></div>
                     ) :(
@@ -173,7 +173,7 @@ class PlayList extends Component {
                                                         <div className="titleLiked">
                                                             <Row className="displayFlex_hassan">
                                                                 <Col  md={12}>
-                                                                    <Link className="likedNav" to="/">
+                                                                    <Link className="likedNav" to="/webplayer/likedplay">
                                                                         <span dir="auto" className="likedSongsSpan">Liked Songs</span>
                                                                     </Link>
                                                                 </Col>

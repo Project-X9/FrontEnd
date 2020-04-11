@@ -29,8 +29,7 @@ import { NavLink, Redirect } from "react-router-dom";
 class Premium extends Component {
   /**
    *
-   * @param props.data Essentially contains the data of the users in the database
-   * @param props.id Essentially contains the id of one of the users in the database
+   * @param tempId this is for the ID of the user entered right now
 
    */
   constructor(props) {
@@ -46,53 +45,22 @@ class Premium extends Component {
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.togglemodal = this.togglemodal.bind(this);
-    // this.handlePremiumT = this.handlePremiumT.bind(this);
-    // this.handlePremiumF = this.handlePremiumF.bind(this);
+
     this.handlePremium_be = this.handlePremium_be.bind(this);
     this.state.handleLogout = this.handleLogout.bind(this);
   }
-  // componentDidMount(){
-  //   if(this.state.isPrenium === this.state.premium)
-  //   {  this.setState({
-  //       isPrenium:!this.state.premium
-  //     })}
-  // }
+
   handleLogout() {
     this.props.handleLogout_BE();
   }
-  // handleData = () => {
-  //   let temp;
-  //   this.props.data.data.map(data => {
-  //     if (data.id === this.props.id.id) {
-  //       temp = data.premium;
-  //     }
-  //   });
-  //   this.setState({ Premium: temp });
-  //   return temp;
-  // };
+
   togglemodal() {
-    // const Checker = this.handleData();
     const Temp = !this.state.modal;
     this.setState({ modal: Temp });
   }
   /**
    * Posts the claiming of premium membership
    */
-  // handlePremiumT() {
-  //   if (this.state.Premium === false) {
-  //     this.props.PremiumPost(this.props.id.id, true);
-  //     this.togglemodal();
-  //   }
-  // }
-  /**
-   * Posts the Canceling of premium membership
-   */
-  // handlePremiumF() {
-  //   if (this.state.Premium === true) {
-  //     this.props.PremiumPost(this.props.id.id, false);
-  //     this.togglemodal();
-  //   }
-  // }
   handlePremium_be() {
     if (this.state.Premium === true) {
       this.props.PremiumPost(this.props.data_be.data_be._id, false);
