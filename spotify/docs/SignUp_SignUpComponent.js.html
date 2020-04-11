@@ -63,16 +63,48 @@ class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
+      email: "",  
       selectedOption: false,
       confEmail: "",
-      submitted: false,
-      existBefore:null
+      submitted: null,
+      existBefore:null,
+      FaceBookId: "",
+      SignUpId:"",
+      submittedFromFacebook:false,
+      submittedFromSignUp:false,
+      length:this.props.data.data.length,
+      Succeded:null
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.responseFacebook = this.responseFacebook.bind(this);
+    
   }
+  componentDidMount(){
+    this.props.resetFeedbackForm(); 
+    if(this.props.userstate.userstate===true){
+      this.setState({
+        submitted: true,
+        submittedFromSignUp:true,
+        alreadySignedIn:false
+      })
+    }
+    else if(this.props.userstate.userstate === false){
+      this.setState({
+        existBefore:true
+      })
+    }
+    if(this.props.isSignedIn.isSignedIn === true)
+    {
+      this.setState({
+        alreadySignedIn:true
+      })
+    }
+  }
+  // testbackend(){
+  //   const id = "";
+  //   this.props.testPlayLists(id);
+  // }
 /**
  * This function takes the data fromthe input fields and assure that the all
  * the data is not empty (don't make the validations) and if all the data required is
@@ -84,16 +116,17 @@ class SignUp extends Component {
   handleSubmit(values) {
     // const { email, confirmEmail } = this.state;
     // console.log(`Current State :${JSON.stringify(values)}`);
-    let temp=this.handleExcistance(values.email)
-    if(temp)
-    {
-      this.setState({
-        existBefore:true
-      })
-      this.props.resetFeedbackForm();
+    this.props.resetFeedbackForm();
+    // let temp=this.handleExcistance(values.email)
+    // if(temp)
+    // {
+    //   this.setState({
+    //     existBefore:true
+    //   })
+    //   this.props.resetFeedbackForm();
 
-    }
-    else if (
+    // }
+   if (
       values.email !== "" &amp;&amp;
       values.confirmemail !== "" &amp;&amp;
       values.password !== "" &amp;&amp;
@@ -103,20 +136,25 @@ class SignUp extends Component {
       values.year !== "" &amp;&amp;
       values.sex !== ""
     ) {
-      this.props.resetFeedbackForm();
-      this.props.postFeedback(
-        values.email,
-        values.confirmemail,
-        values.password,
-        values.name,
-        values.day,
-        values.month,
-        values.year,
-        values.sex
-      );
       this.setState({
-        submitted: true
-      });
+        // submittedFromSignUp:true,
+        // submitted: true,
+        // SignUpId:this.props.data.data.length+1
+      },()=>{
+        this.props.resetFeedbackForm();
+         this.state.Succeded=this.props.postFeedback( //the function that posts the user data
+          values.email,
+          values.confirmemail,
+          values.password,
+          values.name,
+          values.day,
+          values.month,
+          values.year,
+          values.sex
+        );
+       
+      }
+      );
     } 
     else {
       this.props.resetFeedbackForm();
@@ -146,7 +184,26 @@ class SignUp extends Component {
       email: event.target.value
     });
   };
-
+  // componentWillReceiveProps(nextProbs){
+  //   if(nextProbs.data.data !== this.props.data.data )
+  //   {
+  //     this.setState({
+  //     })
+  //   }
+  // }
+  handleIdIfExist = email => {
+    let temp;
+    this.props.data.data.map(data => {
+      if (data.email === email || data.name === email) {
+        for (let index = 0; index &lt; data.id + 1; index++) {
+          if (index === data.id) {
+            temp = index;
+          }
+        }
+      }
+    });
+    return temp;
+  };
   /**
    * This function recieves the responce of the facebook login and uses the same functions i used in handleSubmit to
    * post the users data and set Submitted to true to be redirected
@@ -154,38 +211,76 @@ class SignUp extends Component {
    */
   responseFacebook(response) {
     if (response.status !== "unknown") {
+      let exist = this.handleExcistance(response.email);
+      if(exist)
+      {
+      var id=this.handleIdIfExist(response.email)
+      // this.props.handleLoginId(id);
+      // this.state.tempId=id;  
       this.setState({
-        submitted: true
+        submitted: true,
+        FaceBookId:id,
+        submittedFromFacebook:true
       });
       this.props.resetFeedbackForm();
+    }
+    else if(!exist)
+    {
+      this.setState({
+        submitted: true,
+        FaceBookId:this.props.data.data.length + 1,
+        submittedFromFacebook:true
+      },()=>{
+      this.props.resetFeedbackForm()
       this.props.postFacebookLogin(
         response.email,
         response.image,
         response.name
+      )
+      }
       );
+      this.props.resetFeedbackForm();
+
     }
   }
-  
+}
   /**
    * Responsible for showing everything on the Sign Up page
    * @returns Components that will be displayed on the page
    */
   render() {
     let redirected = null;
-    if (this.state.submitted) {
-      redirected = &lt;Redirect to="/premium">&lt;/Redirect>;
+    let redirectIfSignedIn=null;
+    if (this.state.submitted &amp;&amp; this.state.submittedFromFacebook) {
+      this.props.handleLoginId(this.state.FaceBookId);
+      redirected = &lt;Redirect to="/signin">&lt;/Redirect>
+    }
+    else if(this.state.submitted &amp;&amp; this.state.submittedFromSignUp)
+    {
+      this.setState({
+        submitted:false
+      })
+      this.props.makeSignupRedirectable();  
+      this.props.handleLoginId(this.state.SignUpId);
+      redirected = &lt;Redirect to="/signin">&lt;/Redirect>
+      
+    }
+    if(this.state.alreadySignedIn)
+    {
+      redirectIfSignedIn= &lt;Redirect to="/account/overview">&lt;/Redirect>
     }
     return (
       &lt;div className="container signup">
         {redirected}
+        {redirectIfSignedIn}
         &lt;div className="row somepadding">
           &lt;Col xs={12} md={{ size: 6, offset: 3 }}>
             &lt;Link to="/home">
               &lt;img
-                src="assets/images/logo2.png"
-                height="59"
-                width="172"
-                alt="spotify"
+                  src="https://www.adweek.com/wp-content/uploads/2019/11/Spotify-Logo-Black.png"
+                  height="90"
+                  width="172"
+                  alt="spotify"
               />
             &lt;/Link>
             &lt;hr />
@@ -445,6 +540,7 @@ class SignUp extends Component {
               &lt;Row className="form-group">
                 &lt;Col xs={12} md={{ size: 6, offset: 3 }}>
                   &lt;Button model="submit" className="signupbtn">
+                  {/* &lt;Button onClick={this.testbackend()} className="signupbtn"> */}
                     SignUp
                   &lt;/Button>
                 &lt;/Col>
@@ -473,13 +569,13 @@ export default SignUp;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AccountOverview.html">AccountOverview</a></li><li><a href="ChangePass.html">ChangePass</a></li><li><a href="FreeJumbotron.html">FreeJumbotron</a></li><li><a href="FreePlan.html">FreePlan</a></li><li><a href="Home.html">Home</a></li><li><a href="NavbarHome.html">NavbarHome</a></li><li><a href="Premium.html">Premium</a></li><li><a href="PremiumJumbotron.html">PremiumJumbotron</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Footer">Footer</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AccountOverview.html">AccountOverview</a></li><li><a href="ChangePass.html">ChangePass</a></li><li><a href="EditProfile.html">EditProfile</a></li><li><a href="FreeJumbotron.html">FreeJumbotron</a></li><li><a href="FreePlan.html">FreePlan</a></li><li><a href="Home.html">Home</a></li><li><a href="HomeNavAndContentSigned.html">HomeNavAndContentSigned</a></li><li><a href="NavbarHome.html">NavbarHome</a></li><li><a href="PopularAlbumsHomeAndNavContent.html">PopularAlbumsHomeAndNavContent</a></li><li><a href="PopularArtistsHomeAndNavContent.html">PopularArtistsHomeAndNavContent</a></li><li><a href="PopularNewHomeAndNavContent.html">PopularNewHomeAndNavContent</a></li><li><a href="Premium.html">Premium</a></li><li><a href="PremiumJumbotron.html">PremiumJumbotron</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="TopNav.html">TopNav</a></li><li><a href="WebPlayer.html">WebPlayer</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Footer">Footer</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Fri Mar 27 2020 23:48:15 GMT+0200 (Eastern European Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Sat Apr 11 2020 19:57:16 GMT+0200 (Eastern European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

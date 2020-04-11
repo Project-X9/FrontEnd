@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: AccountOverview/PremiumJumbotron.js</title>
+    <title>JSDoc: Source: ArtistInterface/TopNav.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: AccountOverview/PremiumJumbotron.js</h1>
+    <h1 class="page-title">Source: ArtistInterface/TopNav.js</h1>
 
     
 
@@ -26,55 +26,80 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/* eslint-disable react/jsx-filename-extension */
-/* eslint-disable react/prefer-stateless-function */
-import React, { Component } from 'react';
-import { Jumbotron } from 'reactstrap';
-import { baseUrl2 } from "../../shared/baseUrl";
+            <pre class="prettyprint source linenums"><code>import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+import {
+  Navbar,
+  NavbarBrand,
+  Jumbotron,
+  Nav,
+  NavItem,
+  NavbarToggler,
+  Collapse,
+  Row,
+  Col,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  UncontrolledDropdown,
+  DropdownMenu,
+  DropdownItem,
+  Button,
+  DropdownToggle
+} from "reactstrap";
 
-/**
- * Class for the PremiumJumbotron component which is a jumbotron shown for the premium users
- */
-class PremiumJumbotron extends Component {
+class TopNav extends Component {
   /**
-     * Responsible for showing a jumbotron customized for premium users
-     * @returns Components that will be display the jumbotron,
-     *  and will be used in AccountOverview.js
-     */
+   *
+   * @param {Object} props
+   * @param props.isNavOpen Originally set to false as navbar starts closed
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      isNavOpen: false
+    };
+    this.state.toggleNav = this.toggleNav.bind(this);
+  }
+  /**
+   * Toggles the Navigation bar by switching isNavOpen from true to false and vice versa
+   */
+  toggleNav() {
+    this.setState({
+      isNavOpen: !this.state.isNavOpen
+    });
+  }
+  /**
+   * Responsible for rendering the navbar and its elements on the screen
+   * @returns a navbar component designed for an un-logged user
+   */
   render() {
-    let showJumbo="HideAccountOverviewJumbotron";
-    let currentURL=window.location.href;
-    if(currentURL===baseUrl2 + "account/overview")
-    {
-      showJumbo="JumbotronContainer";
-    }
     return (
-      &lt;div className={showJumbo}>
-        &lt;Jumbotron className="AccountOverviewBodyJumbo">
-          &lt;div className="container">
-            &lt;div className="row">
-              &lt;div className="col-sm-12 col-md-12 col-lg-7">
-                &lt;h1 className="Header">Hello!&lt;/h1>
-                &lt;p className="UnderHeader">
-                  Want to edit your profile? Find an old playlist? Put off work
-                  for a while? You can do it all here.
-                &lt;/p>
-              &lt;/div>
-              &lt;div className="col-sm-12 col-md-12 col-lg-5">
-                &lt;img
-                  className="Phone"
-                  src="https://www.scdn.co/i/account/overview/iphone-ddd9e69.png"
-                  alt=""
-                />
-              &lt;/div>
-            &lt;/div>
-          &lt;/div>
-        &lt;/Jumbotron>
-      &lt;/div>
+      &lt;Navbar className="NavBar" sticky="top" expand="md">
+        &lt;div className="container">
+          &lt;NavbarToggler
+            className="NavBarToggle"
+            onClick={this.state.toggleNav}
+          >
+            ☰
+          &lt;/NavbarToggler>
+
+          &lt;Collapse isOpen={this.state.isNavOpen} navbar>
+            &lt;Nav navbar className="ml-auto">
+              &lt;NavItem>
+                &lt;NavLink className="nav-link" to="/premium">
+                  &lt;Button>UPGRADE&lt;/Button>
+                &lt;/NavLink>
+              &lt;/NavItem>
+            &lt;/Nav>
+          &lt;/Collapse>
+        &lt;/div>
+      &lt;/Navbar>
     );
   }
 }
-export default PremiumJumbotron;
+export default TopNav;
 </code></pre>
         </article>
     </section>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: SignUp</title>
+    <title>JSDoc: Class: PopularNewHomeAndNavContent</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: SignUp</h1>
+    <h1 class="page-title">Class: PopularNewHomeAndNavContent</h1>
 
     
 
@@ -28,9 +28,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>SignUp<span class="signature">(props)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>PopularNewHomeAndNavContent<span class="signature">(props)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description"><p>Sign Up Page</p></div>
+            <div class="class-description"><p>Playlists inside the webplayer home</p></div>
         
     
 </header>
@@ -45,7 +45,7 @@
     
 
     
-    <h4 class="name" id="SignUp"><span class="type-signature"></span>new SignUp<span class="signature">(props)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="PopularNewHomeAndNavContent"><span class="type-signature"></span>new PopularNewHomeAndNavContent<span class="signature">(props)</span><span class="type-signature"></span></h4>
     
 
     
@@ -127,7 +127,7 @@
 
         <tr>
             
-                <td class="name"><code>postFeedback</code></td>
+                <td class="name"><code>data_be</code></td>
             
 
             <td class="type">
@@ -138,14 +138,14 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Essentially contains the data of the users in the database after integrating with backend</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>resetFeedbackForm</code></td>
+                <td class="name"><code>isSignedIn</code></td>
             
 
             <td class="type">
@@ -156,7 +156,61 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Essentially used to check if a user is signed in or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>playLists</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Essentially contains playlist data</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>handleCurrentPlayList</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Essentially used to display playlist's data after integrating with the backend</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>categories</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Essentially contains an array of categories that contain playlists</p></td>
         </tr>
 
     
@@ -204,7 +258,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SignUp_SignUpComponent.js.html">SignUp/SignUpComponent.js</a>, <a href="SignUp_SignUpComponent.js.html#line35">line 35</a>
+        <a href="WebPlayerHome_PopularPlaylistsContent.js.html">WebPlayerHome/PopularPlaylistsContent.js</a>, <a href="WebPlayerHome_PopularPlaylistsContent.js.html#line17">line 17</a>
     </li></ul></dd>
     
 
@@ -250,135 +304,6 @@
     
 
     
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id="handleEmailChange"><span class="type-signature"></span>handleEmailChange<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    <p>This function set the this.state.email with the value the user fill in the input
-field of email to be able to check the email in the confirm email</p>
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SignUp_SignUpComponent.js.html">SignUp/SignUpComponent.js</a>, <a href="SignUp_SignUpComponent.js.html#line154">line 154</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="handleExcistance"><span class="type-signature"></span>handleExcistance<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    <p>Function to test the excistance of the email</p>
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SignUp_SignUpComponent.js.html">SignUp/SignUpComponent.js</a>, <a href="SignUp_SignUpComponent.js.html#line140">line 140</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -389,7 +314,7 @@ field of email to be able to check the email in the confirm email</p>
     
 
     
-    <h4 class="name" id="handleSubmit"><span class="type-signature"></span>handleSubmit<span class="signature">(values)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="handleRenderingPlaylist"><span class="type-signature"></span>handleRenderingPlaylist<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -397,11 +322,7 @@ field of email to be able to check the email in the confirm email</p>
 
 
 <div class="description">
-    <p>This function takes the data fromthe input fields and assure that the all
-the data is not empty (don't make the validations) and if all the data required is
-avaliable it gives the data to the function (PostFeedback) to post the data to the
-server and resets the input fields using resetFeedBack form and also state the submitted
-state to true to be redirected to the next page.</p>
+    <p>Reponsible for getting a specific playlist's data from the database by calling handleCurrentPlayList</p>
 </div>
 
 
@@ -410,55 +331,6 @@ state to true to be redirected to the next page.</p>
 
 
 
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>values</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -494,7 +366,7 @@ state to true to be redirected to the next page.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SignUp_SignUpComponent.js.html">SignUp/SignUpComponent.js</a>, <a href="SignUp_SignUpComponent.js.html#line88">line 88</a>
+        <a href="WebPlayerHome_PopularPlaylistsContent.js.html">WebPlayerHome/PopularPlaylistsContent.js</a>, <a href="WebPlayerHome_PopularPlaylistsContent.js.html#line38">line 38</a>
     </li></ul></dd>
     
 
@@ -538,7 +410,7 @@ state to true to be redirected to the next page.</p>
 
 
 <div class="description">
-    <p>Responsible for showing everything on the Sign Up page</p>
+    <p>Responsible for showing the playlists in the webplayer home page</p>
 </div>
 
 
@@ -582,7 +454,7 @@ state to true to be redirected to the next page.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SignUp_SignUpComponent.js.html">SignUp/SignUpComponent.js</a>, <a href="SignUp_SignUpComponent.js.html#line223">line 223</a>
+        <a href="WebPlayerHome_PopularPlaylistsContent.js.html">WebPlayerHome/PopularPlaylistsContent.js</a>, <a href="WebPlayerHome_PopularPlaylistsContent.js.html#line49">line 49</a>
     </li></ul></dd>
     
 
@@ -628,7 +500,7 @@ state to true to be redirected to the next page.</p>
     
 
     
-    <h4 class="name" id="responseFacebook"><span class="type-signature"></span>responseFacebook<span class="signature">(response)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="toggleModal"><span class="type-signature"></span>toggleModal<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -636,8 +508,7 @@ state to true to be redirected to the next page.</p>
 
 
 <div class="description">
-    <p>This function recieves the responce of the facebook login and uses the same functions i used in handleSubmit to
-post the users data and set Submitted to true to be redirected</p>
+    <p>Toggles a Modal (has been removed) by switching isModalOpen from true to false and vice versa</p>
 </div>
 
 
@@ -646,55 +517,6 @@ post the users data and set Submitted to true to be redirected</p>
 
 
 
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>response</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Response</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -730,7 +552,7 @@ post the users data and set Submitted to true to be redirected</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="SignUp_SignUpComponent.js.html">SignUp/SignUpComponent.js</a>, <a href="SignUp_SignUpComponent.js.html#line184">line 184</a>
+        <a href="WebPlayerHome_PopularPlaylistsContent.js.html">WebPlayerHome/PopularPlaylistsContent.js</a>, <a href="WebPlayerHome_PopularPlaylistsContent.js.html#line29">line 29</a>
     </li></ul></dd>
     
 
