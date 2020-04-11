@@ -1,8 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { configure, shallow } from "enzyme";
-import "jest-enzyme";
-import Adapter from "enzyme-adapter-react-16";
-import Login from "./LogIn";
-import "@testing-library/jest-dom/extend-expect";
 import { BrowserRouter as Router } from "react-router-dom";
+import Adapter from "enzyme-adapter-react-16";
+import PremiumPlan from "../AccountOverview/PremiumPlan";
+
+configure({ adapter: new Adapter() });
+describe("<PremiumPlan />", () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(<PremiumPlan />);
+  });
+  it("renders without crashing", () => {
+    const div = document.createElement("div");
+    ReactDOM.render(
+      <Router>
+        <PremiumPlan />
+      </Router>,
+      div
+    );
+  });
+});
