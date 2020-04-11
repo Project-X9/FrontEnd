@@ -187,8 +187,10 @@ class WebPlayer extends Component {
                         data={this.props.data}
                         playLists={this.props.playLists}
                         data_be={this.props.data_be}
+                        ///////fetching the playlist of the user
                         currentPlaylist={this.props.currentPlaylist}
                         isSignedIn={this.props.isSignedIn}
+                        /// for logging out
                         handleLogout_BE={this.props.handleLogout_BE}
                         patchedfollow={this.props.patchedfollow}
                         patchedunfollow={this.props.patchedunfollow}
@@ -204,9 +206,11 @@ class WebPlayer extends Component {
                         data={this.props.data}
                         playLists={this.props.playLists}
                         data_be={this.props.data_be}
+                        ///////fetching the playlist of the user logged in
                         currentPlaylist={this.props.currentPlaylist}
                         isSignedIn={this.props.isSignedIn}
                         handleLogout_BE={this.props.handleLogout_BE}
+                        ///////Handling the follow and unfollow of the users
                         patchedfollow={this.props.patchedfollow}
                         patchedunfollow={this.props.patchedunfollow}
                       />
