@@ -44,7 +44,7 @@ class SignUp extends Component {
       SignUpId:"",
       submittedFromFacebook:false,
       submittedFromSignUp:false,
-      length:this.props.data.data.length,
+      // length:this.props.data.data.length,
       Succeded:null
     };
     this.handleSubmit = this.handleSubmit.bind(this);

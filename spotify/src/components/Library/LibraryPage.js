@@ -10,7 +10,10 @@ import {Switch, Route,Redirect} from "react-router-dom";
 import { 
   Button, Row, Col,} from 'reactstrap'; 
 
-
+/**
+ * The library page in the web player interface 
+ * @param {props} probs
+ */
 class LibraryPage extends Component {
     constructor(props){
         super(props);

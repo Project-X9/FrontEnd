@@ -1,5 +1,7 @@
 import React from 'react';
-
+/**
+ * This is aloading component that it will be rendered till the fetch is done
+ */
 export const Loading = () => {
     return(
         <div className="col-12">
