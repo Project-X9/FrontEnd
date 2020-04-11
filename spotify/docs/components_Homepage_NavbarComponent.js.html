@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: FreePlan</title>
+    <title>JSDoc: Source: components/Homepage/NavbarComponent.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,239 +17,113 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: FreePlan</h1>
+    <h1 class="page-title">Source: components/Homepage/NavbarComponent.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>FreePlan<span class="signature">()</span><span class="type-signature"></span></h2>
-        
-            <div class="class-description"><p>Class for the freePlan component which is a container shown for the free users</p></div>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-    
-    <h2>Constructor</h2>
-    
-
-    
-    <h4 class="name" id="FreePlan"><span class="type-signature"></span>new FreePlan<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_AccountOverview_FreePlan.js.html">components/AccountOverview/FreePlan.js</a>, <a href="components_AccountOverview_FreePlan.js.html#line12">line 12</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="render"><span class="type-signature"></span>render<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p>Responsible for showing a container customized for free users</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_AccountOverview_FreePlan.js.html">components/AccountOverview/FreePlan.js</a>, <a href="components_AccountOverview_FreePlan.js.html#line17">line 17</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>Components that will be display the container, and will be used in AccountOverview.js</p>
-</div>
-
-
-
-    
-
-
-
-
-
-        
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
+import {
+  Navbar,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavbarToggler,
+  Collapse,
+} from 'reactstrap';
+/**
+ * Navbar main component 
+*/
+class NavbarHome extends Component {
+  /**
+   * 
+   * @param {Object} props
+   * @param props.isNavOpen Originally set to false as navbar starts closed 
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      isNavOpen: false,
+    };
+    this.state.toggleNav = this.toggleNav.bind(this);
+  }
+/**
+ * Toggles the Navigation bar by switching isNavOpen from true to false and vice versa
+ */
+  toggleNav() {
+    this.setState({
+      isNavOpen: !this.state.isNavOpen,
+    });
+  }
+/**
+ * Responsible for rendering the navbar and its elements on the screen
+ * @returns a navbar component designed for an un-logged user
+ */
+  render() {
+    return (
+      &lt;Navbar className="NavBar" sticky="top" expand="md">
+        &lt;div className="container">
+          &lt;NavbarBrand className="mr-auto" href="/">
+            &lt;img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSBmnPgQKW4JLrNcSFhPFCLHz3t8kT1pZl0PVkLYsa8FoScWYda"
+              height="65px"
+              width="200px"
+              alt=""
+            />
+          &lt;/NavbarBrand>
+          &lt;NavbarToggler
+            className="NavBarToggle"
+            onClick={this.state.toggleNav}
+          >
+            ☰
+          &lt;/NavbarToggler>
+
+          &lt;Collapse isOpen={this.state.isNavOpen} navbar>
+            &lt;Nav navbar className="ml-auto">
+              &lt;NavItem>
+                &lt;NavLink className="nav-link" to="/premium">
+                  Premium
+                &lt;/NavLink>
+              &lt;/NavItem>
+              &lt;NavItem>
+                &lt;NavLink className="nav-link" to="">
+                  Help
+                &lt;/NavLink>
+              &lt;/NavItem>
+              &lt;NavItem>
+                &lt;NavLink className="nav-link" to="/">
+                  Download
+                &lt;/NavLink>
+              &lt;/NavItem>
+              &lt;NavItem className="nav-link" id="NavSlash">
+                |
+              &lt;/NavItem>
+              &lt;NavItem>
+                &lt;NavLink className="nav-link" to="/signup">
+                  Sign up
+                &lt;/NavLink>
+              &lt;/NavItem>
+              &lt;NavItem>
+                &lt;NavLink className="nav-link" to="/signin">
+                  Log In
+                &lt;/NavLink>
+              &lt;/NavItem>
+            &lt;/Nav>
+          &lt;/Collapse>
+        &lt;/div>
+      &lt;/Navbar>
+    );
+  }
+}
+export default NavbarHome;
+</code></pre>
+        </article>
+    </section>
 
 
 

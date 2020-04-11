@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: FreePlan</title>
+    <title>JSDoc: Class: NowPlay</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: FreePlan</h1>
+    <h1 class="page-title">Class: NowPlay</h1>
 
     
 
@@ -28,9 +28,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>FreePlan<span class="signature">()</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>NowPlay<span class="signature">(tempId)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description"><p>Class for the freePlan component which is a container shown for the free users</p></div>
+            <div class="class-description"><p>This Component is for Displaying the playlist and following or unfollowing it</p></div>
         
     
 </header>
@@ -45,7 +45,7 @@
     
 
     
-    <h4 class="name" id="FreePlan"><span class="type-signature"></span>new FreePlan<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="NowPlay"><span class="type-signature"></span>new NowPlay<span class="signature">(tempId)</span><span class="type-signature"></span></h4>
     
 
     
@@ -58,6 +58,50 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>tempId</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>this is for the ID of the user entered right now</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -93,7 +137,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_AccountOverview_FreePlan.js.html">components/AccountOverview/FreePlan.js</a>, <a href="components_AccountOverview_FreePlan.js.html#line12">line 12</a>
+        <a href="components_NowPlayComponent_NowPlay.js.html">components/NowPlayComponent/NowPlay.js</a>, <a href="components_NowPlayComponent_NowPlay.js.html#line25">line 25</a>
     </li></ul></dd>
     
 
@@ -149,7 +193,7 @@
     
 
     
-    <h4 class="name" id="render"><span class="type-signature"></span>render<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="handleLogout"><span class="type-signature"></span>handleLogout<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -157,7 +201,7 @@
 
 
 <div class="description">
-    <p>Responsible for showing a container customized for free users</p>
+    <p>HandleLogout is for logging out of the user (It also clears the entire storage)</p>
 </div>
 
 
@@ -201,7 +245,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_AccountOverview_FreePlan.js.html">components/AccountOverview/FreePlan.js</a>, <a href="components_AccountOverview_FreePlan.js.html#line17">line 17</a>
+        <a href="components_NowPlayComponent_NowPlay.js.html">components/NowPlayComponent/NowPlay.js</a>, <a href="components_NowPlayComponent_NowPlay.js.html#line82">line 82</a>
     </li></ul></dd>
     
 
@@ -226,16 +270,270 @@
 
 
 
-<h5>Returns:</h5>
+
+
+
+
 
         
-<div class="param-desc">
-    <p>Components that will be display the container, and will be used in AccountOverview.js</p>
+            
+
+    
+
+    
+    <h4 class="name" id="isPlaylistFollowed"><span class="type-signature"></span>isPlaylistFollowed<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>isPlaylistFollowed returns if the users already follows this playlist or not</p>
 </div>
 
 
 
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
     
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_NowPlayComponent_NowPlay.js.html">components/NowPlayComponent/NowPlay.js</a>, <a href="components_NowPlayComponent_NowPlay.js.html#line39">line 39</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="patchFollow"><span class="type-signature"></span>patchFollow<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>patchFollow function is for following the playlist</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_NowPlayComponent_NowPlay.js.html">components/NowPlayComponent/NowPlay.js</a>, <a href="components_NowPlayComponent_NowPlay.js.html#line53">line 53</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="patchunFollow"><span class="type-signature"></span>patchunFollow<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>patchunFollow function is for unfollowing the playlist</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_NowPlayComponent_NowPlay.js.html">components/NowPlayComponent/NowPlay.js</a>, <a href="components_NowPlayComponent_NowPlay.js.html#line64">line 64</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
