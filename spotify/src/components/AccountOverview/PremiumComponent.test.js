@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { configure, shallow } from "enzyme";
 import { BrowserRouter as Router } from "react-router-dom";
 import Adapter from "enzyme-adapter-react-16";
-import PremiumPlan from "../AccountOverview/PremiumPlan";
+import PremiumPlan from "./PremiumPlan";
 
 configure({ adapter: new Adapter() });
 describe("<PremiumPlan />", () => {
