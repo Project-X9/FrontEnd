@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: FreePlan</title>
+    <title>JSDoc: Source: components/AccountOverview/FreeJumbotron.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,239 +17,70 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: FreePlan</h1>
+    <h1 class="page-title">Source: components/AccountOverview/FreeJumbotron.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>FreePlan<span class="signature">()</span><span class="type-signature"></span></h2>
-        
-            <div class="class-description"><p>Class for the freePlan component which is a container shown for the free users</p></div>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-    
-    <h2>Constructor</h2>
-    
-
-    
-    <h4 class="name" id="FreePlan"><span class="type-signature"></span>new FreePlan<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_AccountOverview_FreePlan.js.html">components/AccountOverview/FreePlan.js</a>, <a href="components_AccountOverview_FreePlan.js.html#line12">line 12</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="render"><span class="type-signature"></span>render<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p>Responsible for showing a container customized for free users</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_AccountOverview_FreePlan.js.html">components/AccountOverview/FreePlan.js</a>, <a href="components_AccountOverview_FreePlan.js.html#line17">line 17</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>Components that will be display the container, and will be used in AccountOverview.js</p>
-</div>
-
-
-
-    
-
-
-
-
-
-        
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable react/prefer-stateless-function */
+import React, { Component } from 'react';
+import { Jumbotron, Button } from 'reactstrap';
+import { NavLink } from 'react-router-dom';
+import { baseUrl2 } from "../../shared/baseUrl";
+
+/**
+ * Class for the FreeJumbotron component which is a jumbotron shown for the free users
+ */
+class FreeJumbotron extends Component {
+  /**
+   * Responsible for showing a jumbotron customized for free users
+   * @returns Components that will be display the jumbotron, and will be used in AccountOverview.js
+   */
+  render() {
+    let showJumbo="HideAccountOverviewJumbotron";
+    let currentURL=window.location.href;
+   if(currentURL===baseUrl2 + "account/overview")
+    {
+      showJumbo="JumbotronContainer";
+    }
+    return (
+      &lt;div className={showJumbo}>
+        &lt;Jumbotron className="AccountOverviewBodyJumbo">
+          &lt;div className="container">
+            &lt;div className="row">
+              &lt;div className="col-sm-12 col-md-12 col-lg-7">
+                &lt;h1 className="Header">Music without limits&lt;/h1>
+                &lt;p className="UnderHeader">
+                  Premium lets you play any song, anytime. You can even listen
+                  when you’re offline. No restrictions. No ads.
+                &lt;/p>
+                &lt;Button className="UnderParagraph" color="success">
+                  &lt;NavLink className="UnderParagraph" to="/premium">GET PREMIUM&lt;/NavLink>
+                &lt;/Button>
+              &lt;/div>
+              &lt;div className="col-sm-12 col-md-12 col-lg-5">
+                &lt;img
+                  alt=""
+                  className="Phone"
+                  src="https://www.scdn.co/i/account/overview/iphone-ddd9e69.png"
+                />
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+        &lt;/Jumbotron>
+      &lt;/div>
+    );
+  }
+}
+export default FreeJumbotron;
+</code></pre>
+        </article>
+    </section>
 
 
 

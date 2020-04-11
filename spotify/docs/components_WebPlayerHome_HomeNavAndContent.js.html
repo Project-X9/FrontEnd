@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/WebPlayerHome/HomeNavAndContent.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/WebPlayerHome/HomeNavAndContent.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* eslint-disable react/button-has-type */
+/* eslint-disable consistent-return */
+/* eslint-disable array-callback-return */
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable react/destructuring-assignment */
+import "./WebPlayerHomeComponent.css";
+import React, { Component } from "react";
+import { Navbar,Nav,NavItem,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem,Button} from "reactstrap";
+import { NavLink} from "react-router-dom";
+import PopularPlaylistsContent from "./PopularPlaylistsContent";
+import PopularArtistsHomeAndNavContent from "./PopularArtistsHomeAndNavContent";
+import PopularAlbumsHomeAndNavContent from "./PopularAlbumsHomeAndNavContent";
+
+
+/**
+ * Home inside Webplayer page
+ */
+class HomeNavAndContentSigned extends Component {
+ 
+   /**
+   *
+   * @param {Object} props
+   * @param props.data Essentially contains the data of the users in the database
+   * @param props.id Essentially contains the id of one of the users in the database
+   * @param props.handleLogoutId Essentially taks an id (should be an empty string) and replaces the current user id with it
+   * @param props.data_be Essentially contains the data of the users in the database after integrating with backend
+   * @param props.handleLogout_BE Essentially used to remove user id along with his other data instead of handleLogoutId
+   * @param props.isSignedIn Essentially used to check if a user is signed in or not
+   * @param props.artist Essentially contains artist data
+   * @param props.album Essentially contains album data
+   * @param props.playLists Essentially contains playlist data
+   * @param props.handleCurrentArtists Essentially used to display artists' data after integrating with the backend
+   * @param props.handleCurrentAlbums Essentially used to display albums' data after integrating with the backend
+   * @param props.handleCurrentPlayList Essentially used to display playlists' data after integrating with the backend
+   * @param props.categories Essentially contains an array of categories that contain playlists
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+        tempId: this.props.id.id,
+    };
+    this.state.handleLogout = this.handleLogout.bind(this);
+  }
+
+  /**
+   * Sets a variable to an empty string then passes it to
+   * handleLogoutId() functions which logs the user out
+   */
+  handleLogout(){
+    // let id="";
+    // this.props.handleLogoutId(id);
+    this.props.handleLogout_BE();
+  }
+
+  /**
+   * Responsible for showing everything on the home page inside the webplayer page
+   * @returns Components that will be displayed on the page
+   */
+ 
+  render() {
+    // const userName = this.props.data.data.map((data) => {
+    //     if (data.id === this.state.tempId) {
+    //       return (
+    //         &lt;div>
+    //          &lt;Button className="AccountItself">
+    //             &lt;DropdownToggle nav caret>
+    //                 &lt;i class="fa fa-user-secret">&lt;/i>
+    //                 {data.name}
+    //             &lt;/DropdownToggle>
+    //         &lt;/Button>
+    //         &lt;/div>
+    //       );
+    //     }
+    //   });
+
+    
+      
+    let userName =(
+            &lt;div>
+             &lt;Button className="AccountItself">
+                &lt;DropdownToggle nav caret className="WritingInsideAccountItself">
+                    &lt;i class="fa fa-user-secret">&lt;/i>
+                    {this.props.data_be.data_be.name}
+                &lt;/DropdownToggle>
+            &lt;/Button>
+            &lt;/div>
+          );
+        
+      
+
+      // const showUpgrade1 = this.props.data.data.map(data => {
+      //   if (data.id === this.state.tempId) {
+      //     if (data.premium === false) {
+      //       return (
+      //       &lt;NavItem>
+      //           &lt;Button className="NextToAccount" color="success">
+      //               &lt;NavLink className="NextToAccount" to="/premium">UPGRADE&lt;/NavLink>
+      //           &lt;/Button> 
+      //       &lt;/NavItem>
+      //       )}
+      //     return (&lt;span>&lt;/span>)
+      //   }
+      // });
+
+      let showUpgrade1="" 
+      if (this.props.data_be.data_be.premium === false) {
+        showUpgrade1= (
+        &lt;NavItem>
+            &lt;Button className="NextToAccount" color="success">
+                &lt;NavLink className="NextToAccount" to="/premium">UPGRADE&lt;/NavLink>
+            &lt;/Button> 
+        &lt;/NavItem>
+        )}
+      else{
+        showUpgrade1=(&lt;span>&lt;/span>)
+      } 
+      
+
+      // const showUpgrade2 = this.props.data.data.map(data => {
+      //   if (data.id === this.state.tempId) {
+      //     if (data.premium === false) {
+      //       return (
+      //       &lt;NavLink
+      //           className="StaticNavChild Disappear"
+      //           to="/premium">
+      //           Upgarde to Premium
+      //       &lt;/NavLink>
+      //       )}
+      //     return (&lt;span>&lt;/span>)
+      //   }
+      // });
+
+      let showUpgrade2="" 
+      if (this.props.data_be.data_be.premium === false) {
+        showUpgrade2= (
+          &lt;NavLink
+              className="StaticNavChild Disappear"
+              to="/premium">
+              Upgarde to Premium
+          &lt;/NavLink>
+        )}
+      else{
+        showUpgrade2=(&lt;span>&lt;/span>)
+      } 
+
+      // const SignedIn = this.props.data.data.map((data) => {
+      //   if (data.id === this.state.tempId) {
+      //     return (
+      //       &lt;div>
+      //         &lt;div className="row">
+      //             &lt;div className="WebPlayerHomeNav">
+      //                 &lt;div className="container">
+      //                     &lt;Navbar className="NavBar NavStyle" expand="md">
+      //                         &lt;Nav className="mr-auto" href="/signup">
+      //                         &lt;NavItem className="CustomNavitems">
+      //                                 &lt;Button className="CustomButton">
+      //                                     &lt;NavLink className="nav-link SpecificallyForTheButton" to="/webplayer/librarypage/playlists">
+      //                                     &lt;svg className="CustomSvg" viewBox="0 0 24 24">
+      //                                     &lt;path fill="currentColor" d="M15.54 21.15L5.095 12.23 15.54 3.31l.65.76-9.555 8.16 9.555 8.16">&lt;/path>                            &lt;/svg>    
+      //                                     &lt;/NavLink>
+      //                                 &lt;/Button>   
+      //                         &lt;/NavItem>
+      //                         &lt;NavItem className="CustomNavitems">
+      //                                 &lt;Button className="CustomButton">
+      //                                         &lt;NavLink className="nav-link SpecificallyForTheButton" to="/webplayer/search">
+      //                                         &lt;svg className="CustomSvg" viewBox="0 0 24 24">
+      //                                         &lt;path fill="currentColor" d="M7.96 21.15l-.65-.76 9.555-8.16L7.31 4.07l.65-.76 10.445 8.92">&lt;/path>
+      //                                         &lt;/svg>    
+      //                                         &lt;/NavLink>
+      //                                 &lt;/Button>  
+      //                         &lt;/NavItem>
+      //                         &lt;/Nav>
+      //                         &lt;Nav navbar className="ml-auto">
+      //                             {showUpgrade1}
+      //                             &lt;NavItem>
+      //                                 &lt;UncontrolledDropdown nav inNavbar>
+      //                                 {userName}
+      //                                 &lt;DropdownMenu className="StaticNav" right>
+      //                                     &lt;DropdownItem className="StaticNavChildContainer">
+      //                                     &lt;NavLink
+      //                                         className="StaticNavChild"
+      //                                         to="/account/overview">
+      //                                         Account
+      //                                     &lt;/NavLink>
+      //                                     &lt;/DropdownItem>
+      //                                     &lt;DropdownItem className="StaticNavChildContainer">
+      //                                     {showUpgrade2}
+      //                                     &lt;/DropdownItem>
+      //                                     &lt;DropdownItem className="StaticNavChildContainer">
+      //                                     &lt;Button
+      //                                         onClick={() => { this.handleLogout() }} 
+      //                                         className="StaticNavChild">
+      //                                         Log out
+      //                                     &lt;/Button>
+      //                                     &lt;/DropdownItem>
+      //                                 &lt;/DropdownMenu>
+      //                                 &lt;/UncontrolledDropdown>
+      //                             &lt;/NavItem>
+      //                         &lt;/Nav>   
+      //                     &lt;/Navbar>
+      //                 &lt;/div>
+      //             &lt;/div>
+      //         &lt;/div>
+      //         &lt;div className="row RowWebPlayerHomeContent">
+      //           &lt;div className="WebPlayerHomeContent">
+      //             &lt;div className="container">
+      //             &lt;PopularPlaylistsContent
+      //                playLists={this.props.playLists}            
+      //                />
+      //               &lt;PopularArtistsHomeAndNavContent
+      //                artist={this.props.artist}
+      //                />
+      //               &lt;PopularAlbumsHomeAndNavContent
+      //                album={this.props.album}
+      //                />
+      //             &lt;/div>
+      //           &lt;/div>
+      //         &lt;/div>
+      //      &lt;/div>
+      //     );
+      //   }
+      // });
+      //   if (''===this.state.tempId) {
+      //     return(
+      //       &lt;div>
+      //         &lt;div className="row">
+      //             &lt;div className="WebPlayerHomeNav">
+      //                 &lt;div className="container">
+      //                     &lt;Navbar className="NavBar NavStyle" sticky="top" expand="md">
+      //                         &lt;Nav className="mr-auto" href="/signup">
+      //                         &lt;NavItem className="CustomNavitems">
+      //                                 &lt;Button className="CustomButton">
+      //                                     &lt;NavLink className="nav-link SpecificallyForTheButton" to="/webplayer/librarypage/playlists">
+      //                                     &lt;svg className="CustomSvg" viewBox="0 0 24 24">
+      //                                     &lt;path fill="currentColor" d="M15.54 21.15L5.095 12.23 15.54 3.31l.65.76-9.555 8.16 9.555 8.16">&lt;/path>                            &lt;/svg>    
+      //                                     &lt;/NavLink>
+      //                                 &lt;/Button>   
+      //                         &lt;/NavItem>
+      //                         &lt;NavItem className="CustomNavitems">
+      //                                 &lt;Button className="CustomButton">
+      //                                         &lt;NavLink className="nav-link SpecificallyForTheButton" to="/webplayer/search">
+      //                                         &lt;svg className="CustomSvg" viewBox="0 0 24 24">
+      //                                         &lt;path fill="currentColor" d="M7.96 21.15l-.65-.76 9.555-8.16L7.31 4.07l.65-.76 10.445 8.92">&lt;/path>
+      //                                         &lt;/svg>    
+      //                                         &lt;/NavLink>
+      //                                 &lt;/Button>  
+      //                         &lt;/NavItem>
+      //                         &lt;/Nav>
+      //                         &lt;Nav navbar className="ml-auto MakingTheButtonsHorizontal">
+      //                           &lt;NavItem>
+      //                             &lt;Button className="HomeNotSignedUp" color="success">
+      //                                 &lt;NavLink className="HomeNotSignedUp" to="/signup">SIGN UP&lt;/NavLink>
+      //                             &lt;/Button> 
+      //                           &lt;/NavItem>
+      //                           &lt;NavItem>
+      //                             &lt;Button className="HomeNotLoggedin" color="success">
+      //                                 &lt;NavLink className="HomeNotLoggedin" to="/signin">LOG IN&lt;/NavLink>
+      //                             &lt;/Button> 
+      //                           &lt;/NavItem>
+      //                         &lt;/Nav>   
+      //                     &lt;/Navbar>
+      //                 &lt;/div>
+      //             &lt;/div>
+      //         &lt;/div>
+      //         &lt;div className="row RowWebPlayerHomeContent">
+      //           &lt;div className="WebPlayerHomeContent">
+      //             &lt;div className="container">
+      //               &lt;PopularArtistsHomeAndNavContent
+      //                artist={this.props.artist}
+      //                />
+      //               &lt;PopularAlbumsHomeAndNavContent
+      //                album={this.props.album}
+      //                />
+      //             &lt;/div>
+      //           &lt;/div>
+      //         &lt;/div>
+      //     &lt;/div>
+      //     )
+      //   }
+      
+    let SignedIn=''
+    if(this.props.isSignedIn.isSignedIn!==null)
+    {
+      SignedIn=(
+        &lt;div>
+          &lt;div className="row">
+              &lt;div className="WebPlayerHomeNav">
+                  &lt;div className="container">
+                      &lt;Navbar className="NavBar NavStyle" expand="md">
+                          &lt;Nav className="mr-auto" href="/signup">
+                          &lt;NavItem className="CustomNavitems">
+                                  &lt;Button className="CustomButton">
+                                      &lt;NavLink className="nav-link SpecificallyForTheButton" to="/webplayer/librarypage/playlists">
+                                      &lt;svg className="CustomSvg" viewBox="0 0 24 24">
+                                      &lt;path fill="currentColor" d="M15.54 21.15L5.095 12.23 15.54 3.31l.65.76-9.555 8.16 9.555 8.16">&lt;/path>                            &lt;/svg>    
+                                      &lt;/NavLink>
+                                  &lt;/Button>   
+                          &lt;/NavItem>
+                          &lt;NavItem className="CustomNavitems">
+                                  &lt;Button className="CustomButton">
+                                          &lt;NavLink className="nav-link SpecificallyForTheButton" to="/webplayer/search">
+                                          &lt;svg className="CustomSvg" viewBox="0 0 24 24">
+                                          &lt;path fill="currentColor" d="M7.96 21.15l-.65-.76 9.555-8.16L7.31 4.07l.65-.76 10.445 8.92">&lt;/path>
+                                          &lt;/svg>    
+                                          &lt;/NavLink>
+                                  &lt;/Button>  
+                          &lt;/NavItem>
+                          &lt;/Nav>
+                          &lt;Nav navbar className="ml-auto">
+                              {showUpgrade1}
+                              &lt;NavItem>
+                                  &lt;UncontrolledDropdown nav inNavbar>
+                                  {userName}
+                                  &lt;DropdownMenu className="StaticNav" right>
+                                      &lt;DropdownItem className="StaticNavChildContainer">
+                                      &lt;NavLink
+                                          className="StaticNavChild"
+                                          to="/account/overview">
+                                          Account
+                                      &lt;/NavLink>
+                                      &lt;/DropdownItem>
+                                      &lt;DropdownItem className="StaticNavChildContainer">
+                                      {showUpgrade2}
+                                      &lt;/DropdownItem>
+                                      &lt;DropdownItem className="StaticNavChildContainer">
+                                      &lt;Button
+                                          onClick={() => { this.handleLogout() }} 
+                                          className="StaticNavChild">
+                                          Log out
+                                      &lt;/Button>
+                                      &lt;/DropdownItem>
+                                  &lt;/DropdownMenu>
+                                  &lt;/UncontrolledDropdown>
+                              &lt;/NavItem>
+                          &lt;/Nav>   
+                      &lt;/Navbar>
+                  &lt;/div>
+              &lt;/div>
+          &lt;/div>
+          &lt;div className="row RowWebPlayerHomeContent">
+            &lt;div className="WebPlayerHomeContent">
+              &lt;div className="container">
+                &lt;PopularPlaylistsContent
+                playLists={this.props.playLists}
+                data_be={this.props.data_be}
+                isSignedIn={this.props.isSignedIn}
+                handleCurrentPlayList={this.props.handleCurrentPlayList}
+                categories={this.props.categories}
+                />
+                &lt;PopularArtistsHomeAndNavContent
+                artist={this.props.artist}
+                data_be={this.props.data_be}
+                isSignedIn={this.props.isSignedIn}
+                handleCurrentArtists={this.props.handleCurrentArtists}
+                />
+                &lt;PopularAlbumsHomeAndNavContent
+                album={this.props.album}
+                data_be={this.props.data_be}
+                isSignedIn={this.props.isSignedIn}
+                handleCurrentAlbums={this.props.handleCurrentAlbums}
+                />
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+      &lt;/div>
+      );
+    }
+    else
+    {
+      SignedIn=(
+        &lt;div>
+          &lt;div className="row">
+              &lt;div className="WebPlayerHomeNav">
+                  &lt;div className="container">
+                      &lt;Navbar className="NavBar NavStyle" sticky="top" expand="md">
+                          &lt;Nav className="mr-auto" href="/signup">
+                          &lt;NavItem className="CustomNavitems">
+                                  &lt;Button className="CustomButton">
+                                      &lt;NavLink className="nav-link SpecificallyForTheButton" to="/webplayer/librarypage/playlists">
+                                      &lt;svg className="CustomSvg" viewBox="0 0 24 24">
+                                      &lt;path fill="currentColor" d="M15.54 21.15L5.095 12.23 15.54 3.31l.65.76-9.555 8.16 9.555 8.16">&lt;/path>                            &lt;/svg>    
+                                      &lt;/NavLink>
+                                  &lt;/Button>   
+                          &lt;/NavItem>
+                          &lt;NavItem className="CustomNavitems">
+                                  &lt;Button className="CustomButton">
+                                          &lt;NavLink className="nav-link SpecificallyForTheButton" to="/webplayer/search">
+                                          &lt;svg className="CustomSvg" viewBox="0 0 24 24">
+                                          &lt;path fill="currentColor" d="M7.96 21.15l-.65-.76 9.555-8.16L7.31 4.07l.65-.76 10.445 8.92">&lt;/path>
+                                          &lt;/svg>    
+                                          &lt;/NavLink>
+                                  &lt;/Button>  
+                          &lt;/NavItem>
+                          &lt;/Nav>
+                          &lt;Nav navbar className="ml-auto MakingTheButtonsHorizontal">
+                            &lt;NavItem>
+                              &lt;Button className="HomeNotSignedUp" color="success">
+                                  &lt;NavLink className="HomeNotSignedUp" to="/signup">SIGN UP&lt;/NavLink>
+                              &lt;/Button> 
+                            &lt;/NavItem>
+                            &lt;NavItem>
+                              &lt;Button className="HomeNotLoggedin" color="success">
+                                  &lt;NavLink className="HomeNotLoggedin" to="/signin">LOG IN&lt;/NavLink>
+                              &lt;/Button> 
+                            &lt;/NavItem>
+                          &lt;/Nav>   
+                      &lt;/Navbar>
+                  &lt;/div>
+              &lt;/div>
+          &lt;/div>
+          &lt;div className="row RowWebPlayerHomeContent">
+            &lt;div className="WebPlayerHomeContent">
+              &lt;div className="container">
+                &lt;PopularPlaylistsContent
+                  playLists={this.props.playLists}
+                  data_be={this.props.data_be}
+                  isSignedIn={this.props.isSignedIn}
+                  handleCurrentPlayList={this.props.handleCurrentPlayList}
+                  categories={this.props.categories}
+                />
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+      &lt;/div>
+      )
+    }
+    return (
+      &lt;div>
+      {SignedIn}
+      &lt;/div>
+    );
+  }
+}
+
+export default HomeNavAndContentSigned;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AccountOverview.html">AccountOverview</a></li><li><a href="ChangePass.html">ChangePass</a></li><li><a href="EditProfile.html">EditProfile</a></li><li><a href="FreeJumbotron.html">FreeJumbotron</a></li><li><a href="FreePlan.html">FreePlan</a></li><li><a href="Home.html">Home</a></li><li><a href="HomeNavAndContentSigned.html">HomeNavAndContentSigned</a></li><li><a href="NavbarHome.html">NavbarHome</a></li><li><a href="NowPlay.html">NowPlay</a></li><li><a href="PlayLikedSongs.html">PlayLikedSongs</a></li><li><a href="PopularAlbumsHomeAndNavContent.html">PopularAlbumsHomeAndNavContent</a></li><li><a href="PopularArtistsHomeAndNavContent.html">PopularArtistsHomeAndNavContent</a></li><li><a href="PopularNewHomeAndNavContent.html">PopularNewHomeAndNavContent</a></li><li><a href="Premium.html">Premium</a></li><li><a href="PremiumJumbotron.html">PremiumJumbotron</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="TopNav.html">TopNav</a></li><li><a href="WebPlayer.html">WebPlayer</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addAlbum">addAlbum</a></li><li><a href="global.html#addArtist">addArtist</a></li><li><a href="global.html#addCategories">addCategories</a></li><li><a href="global.html#addCurrentPlaylist">addCurrentPlaylist</a></li><li><a href="global.html#addUser">addUser</a></li><li><a href="global.html#addUserData">addUserData</a></li><li><a href="global.html#addUserId">addUserId</a></li><li><a href="global.html#addUserPlaylist">addUserPlaylist</a></li><li><a href="global.html#CurrentLoading">CurrentLoading</a></li><li><a href="global.html#fetchAlbum">fetchAlbum</a></li><li><a href="global.html#fetchArtist">fetchArtist</a></li><li><a href="global.html#fetchUserData">fetchUserData</a></li><li><a href="global.html#fetchUserPlaylist">fetchUserPlaylist</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#getArtist">getArtist</a></li><li><a href="global.html#getEmail">getEmail</a></li><li><a href="global.html#getPassword">getPassword</a></li><li><a href="global.html#handleCurrentAlbums">handleCurrentAlbums</a></li><li><a href="global.html#handleCurrentArtists">handleCurrentArtists</a></li><li><a href="global.html#handleCurrentPlayList">handleCurrentPlayList</a></li><li><a href="global.html#handleLoginId">handleLoginId</a></li><li><a href="global.html#handleLogout_BE">handleLogout_BE</a></li><li><a href="global.html#handleLogoutId">handleLogoutId</a></li><li><a href="global.html#handleSignIn_BE">handleSignIn_BE</a></li><li><a href="global.html#LogOut_BE">LogOut_BE</a></li><li><a href="global.html#makeSignupRedirectable">makeSignupRedirectable</a></li><li><a href="global.html#postFacebookLogin">postFacebookLogin</a></li><li><a href="global.html#postFeedback">postFeedback</a></li><li><a href="global.html#removeUserId">removeUserId</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 21:30:45 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

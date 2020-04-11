@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: FreePlan</title>
+    <title>JSDoc: Source: components/Homepage/HomeComponent.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,239 +17,66 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: FreePlan</h1>
+    <h1 class="page-title">Source: components/Homepage/HomeComponent.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>FreePlan<span class="signature">()</span><span class="type-signature"></span></h2>
-        
-            <div class="class-description"><p>Class for the freePlan component which is a container shown for the free users</p></div>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-    
-    <h2>Constructor</h2>
-    
-
-    
-    <h4 class="name" id="FreePlan"><span class="type-signature"></span>new FreePlan<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_AccountOverview_FreePlan.js.html">components/AccountOverview/FreePlan.js</a>, <a href="components_AccountOverview_FreePlan.js.html#line12">line 12</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="render"><span class="type-signature"></span>render<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p>Responsible for showing a container customized for free users</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_AccountOverview_FreePlan.js.html">components/AccountOverview/FreePlan.js</a>, <a href="components_AccountOverview_FreePlan.js.html#line17">line 17</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>Components that will be display the container, and will be used in AccountOverview.js</p>
-</div>
-
-
-
-    
-
-
-
-
-
-        
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import NavbarHome from "./NavbarComponent";
+import "./Home.css";
+import Footer from "./FooterComponent";
+
+/**Class of the main component which is the main page the user sees before logging in, it contains 
+ * the 3 component that form the homepage: the navbar, the main interface and the footer. The instance 
+ * of this component is created and loaded as soon as the user opens Spotify's website.
+ */
+class Home extends Component {
+  /**A built in function that check if the component is on the screen, in other words
+   * makes sure we are on the home page to prevent CSS problems that causes the homepage's 
+   * styling to be visible in other pages with different components
+   */
+  componentDidMount() {
+    document.body.classList.add("homeBody");
+  }
+/**The opposite of the componentDidMount() function, used to remove the styling after leaving homepage.
+ * Also a built in function.
+ */
+  componentWillUnmount() {
+    document.body.classList.remove("homeBody");
+  }
+/**
+ * Renders the main page to un-logged users loading Spotify
+ */
+  render() {
+     /**@return: returns the homepage component consisting of a navbar component, main part and a footer component. */
+    return (
+      &lt;div className="Home">
+        &lt;NavbarHome />
+        &lt;div class="bg-pic">&lt;/div>
+        &lt;div class="row row-simplified homeContent">
+          &lt;h1>Music for everyone.&lt;/h1>
+          &lt;h4>Millions of songs. No credit card needed.&lt;/h4>
+          &lt;Link to="/signup">
+            &lt;button model="submit" className="getSpotifyBtn">
+              get spotify free
+            &lt;/button>
+          &lt;/Link>
+        &lt;/div>
+        &lt;Footer className="homeFooter" />
+      &lt;/div>
+    );
+  }
+}
+export default Home;
+</code></pre>
+        </article>
+    </section>
 
 
 

@@ -7,12 +7,19 @@ import LibraryNavbar from "../Library/LibraryNavbar";
 import { Loading } from "./../Loading/LoadingComponent";
 
 import { Jumbotron, Row, Col, Button, DropdownToggle } from "reactstrap";
-
+/**
+ * Artist Interface page
+ */
 class Artist extends Component {
+  /**
+   * 
+   * @param {Object} props
+   * @param overview The parameter that indicates which of the 3 views will be displayed, default at 1 for overview on the artist, 2 for related artists and 3 for the biography of the artists
+   * @param props.currentPlaylist.currentPlaylist Calls the current playlist elements from the database, contains all the info we need about the artist 
+   */
   constructor(props) {
     super(props);
     this.state = {
-      tempId: this.props.id.id,
       overview: 1,
       following: false,
       isNavOpen: false
@@ -24,60 +31,52 @@ class Artist extends Component {
     this.toggleFollow = this.toggleFollow.bind(this);
     this.toggleRelated = this.toggleRelated.bind(this);
   }
+
+  /**Toggles the Navigation bar by switching isNavOpen from true to false and vice versa */
   toggleNav() {
     this.setState({
       isNavOpen: !this.state.isNavOpen,
       collapsed: !this.state.collapsed
     });
   }
+
+  /**Handles when a user logs out */
   handleLogout() {
     // alert(this.props.currentPlaylist.isLodaing)
     this.props.handleLogout_BE();
   }
+
+  /**The function that handles clicking the overview button, sets the value of overview to 1 in the state */
   toggleOverview() {
     // const Checker = this.handleData();
     const Temp = 1;
     this.setState({ overview: Temp });
   }
+
+  /**The function that handles clicking the related artists button, sets the value of overview to 2 in the state */
   toggleRelated() {
     // const Checker = this.handleData();
     const Temp = 2;
     this.setState({ overview: Temp });
   }
+
+  /**The function that handles clicking the about button, sets the value of overview to 3 in the state */
   toggleAbout() {
     // const Checker = this.handleData();
     const Temp = 3;
     this.setState({ overview: Temp });
   }
 
+/**Follow artist function, currently only changes the button on click, to be implemented later */
   toggleFollow() {
     const temp = this.state.following;
     this.setState({ following: !temp });
   }
 
-  /*followArtist() {
-    if (this.state.Followed != null) {
-      this.props.FollowPost(this.props.data_be.data_be.following.id, null);
-      this.setState({ Followed: false });
-
-    } else if (this.state.Followed) {
-      this.props.FollowPost(this.props.data_be.data_be.following.id, id);
-      this.setState({ Followed: true });
-      this.togglemodal();
-    }
-  }*/
-  /*
-                followers
-                generes
-                tracks
-                related 
-                artists
-                id
-                name 
-                bio 
-                img 
-                email
-                this.props.currentplaylist.currentplaylist.email*/
+  /**
+   * Responsible for showing everything on the Artist page
+   * @returns Components that will be displayed on the page
+   */
 
   render() {
     if (this.props.currentPlaylist.isLoading) {
