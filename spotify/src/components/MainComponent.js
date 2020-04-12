@@ -8,7 +8,6 @@ import PremiumComponent from "./PremiumPage/PremuimComponent";
 import AccountOverview from "./AccountOverview/AccountOverviewComponent";
 import WebPlayer from "./WebPlayerHome/WebPlayerComponent";
 import SignIn from "./SignIn/SignInComponent";
-import PlayFotter from "./WebPlayer/PlayFotterComponent";
 import Library from "./Library/LibraryCompnent";
 
 import {
@@ -236,13 +235,6 @@ class Main extends Component {
                 isSignedIn={this.props.isSignedIn}
                 handleSignIn_BE={this.props.handleSignIn_BE}
               />
-            )}
-          />
-          <Route
-            exact
-            path="/webplayer"
-            component={() => (
-              <PlayFotter data={this.props.data} id={this.props.id} />
             )}
           />
           <Redirect to="/signup" />
