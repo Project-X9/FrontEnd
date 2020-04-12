@@ -40,6 +40,12 @@ class AccountOverview extends Component {
    * @param props.handleLogoutId Essentially taks an id (should be an empty string) and replaces the current user id with it
    * @param props.PostPassword Essentially passed to ChangePass component, and is used to set a password
    * @param props.GetPassword Essentially passed to ChangePass component, and is used to get a password
+   * @param props.resetChangePasswordForm Essentially passed to ChangePass component.
+   * @param props.reseteditprofile Essentially passed to EditProfile component.
+   * @param props.postupdatedFeedback Essentially passed to EditProfile component, and is used to post edited data
+   * @param props.data_be Essentially contains the data of the users in the database after integrating with backend
+   * @param props.handleLogout_BE Essentially used to remove user id along with his other data instead of handleLogoutId
+   * @param props.isSignedIn Essentially used to check if a user is signed in or not
    */
   constructor(props) {
     super(props);
@@ -74,8 +80,7 @@ class AccountOverview extends Component {
   }
 
   /**
-   * Sets a variable to an empty string then passes it to
-   * handleLogoutId() functions which logs the user out
+   * calls handleLogout_BE function to sign the user out
    */
   handleLogout() {
     // let id = "";

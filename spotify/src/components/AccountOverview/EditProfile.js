@@ -17,8 +17,17 @@ const confEmail = val => val2 => val === val2;
 const typeSelected = val => val === "male" || val === "female";
 const monthSelected = val => val !== "null";
 
-
+/**
+ * Class for the Edit component which is shown when the edit profile button is pressed in the account overview page
+ */
 class EditProfile extends Component {
+  /**
+   * @param {Object} props
+   * @param props.data Essentially contains the data of the users in the database
+   * @param props.id Essentially contains the id of one of the users in the database
+   * @param props.postupdatedFeedback Used to post edited data
+   * @param props.data_be Essentially contains the data of the users in the database after integrating with backend
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -27,6 +36,9 @@ class EditProfile extends Component {
     this.handlePatchedInfo = this.handlePatchedInfo.bind(this);
   }
 
+    /**
+   * post the new values entered by the user
+   */
   handlePatchedInfo = (values) => {
     this.props.reseteditprofile();
     this.props.postupdatedFeedback(
@@ -36,6 +48,11 @@ class EditProfile extends Component {
       values.ID
     );
   };
+
+  /**
+   * Responsible for showing everything on the EditProfile
+   * @returns Component that will be displayed on the page
+   */
 
   render() {
     let redirect = "";

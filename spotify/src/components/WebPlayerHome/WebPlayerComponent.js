@@ -16,7 +16,29 @@ import NowPlay from "../NowPlayComponent/NowPlay";
 import { baseUrl2 } from "../../shared/baseUrl";
 import LikedPlay from "../PlayLikedSongs/PlayLikedSongs";
 import Artist from "../ArtistInterface/ArtistComponent";
+/**
+ * Web Player page
+ */
 class WebPlayer extends Component {
+  /**
+   *
+   * @param {Object} props
+   * @param props.data Essentially contains the data of the users in the database
+   * @param props.id Essentially contains the id of one of the users in the database
+   * @param props.handleLogoutId Essentially taks an id (should be an empty string) and replaces the current user id with it
+   * @param props.data_be Essentially contains the data of the users in the database after integrating with backend
+   * @param props.handleLogout_BE Essentially used to remove user id along with his other data instead of handleLogoutId
+   * @param props.isSignedIn Essentially used to check if a user is signed in or not
+   * @param props.patchedfollow Essentially used to by the LikedPlay & NowPlay Components for following
+   * @param props.patchedunfollow Essentially used to by the LikedPlay & NowPlay Components for unfollowing
+   * @param props.artist Essentially contains artist data
+   * @param props.album Essentially contains album data
+   * @param props.playLists Essentially contains playlist data
+   * @param props.handleCurrentArtists Essentially used to display artists' data after integrating with the backend
+   * @param props.handleCurrentAlbums Essentially used to display albums' data after integrating with the backend
+   * @param props.handleCurrentPlayList Essentially used to display playlists' data after integrating with the backend
+   * @param props.categories Essentially contains an array of categories that contain playlists
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -54,6 +76,10 @@ class WebPlayer extends Component {
   componentWillUnmount() {
     clearInterval(this.interval);
   }
+
+  /**
+   * Toggles the Modal in the library by switching isModalOpen from true to false and vice versa
+   */
   toggleModal() {
     if (this.props.isSignedIn.isSignedIn === true) {
       this.setState({
@@ -191,6 +217,11 @@ class WebPlayer extends Component {
       });
     }
   };
+
+  /**
+   * Responsible for showing everything on the Webplayer
+   * @returns Components that will be displayed on the page
+   */
   render() {
     let homeActive = "";
     let searchActive = "";
@@ -341,8 +372,10 @@ class WebPlayer extends Component {
                         data={this.props.data}
                         playLists={this.props.playLists}
                         data_be={this.props.data_be}
+                        ///////fetching the playlist of the user
                         currentPlaylist={this.props.currentPlaylist}
                         isSignedIn={this.props.isSignedIn}
+                        /// for logging out
                         handleLogout_BE={this.props.handleLogout_BE}
                         patchedfollow={this.props.patchedfollow}
                         patchedunfollow={this.props.patchedunfollow}
@@ -358,9 +391,11 @@ class WebPlayer extends Component {
                         data={this.props.data}
                         playLists={this.props.playLists}
                         data_be={this.props.data_be}
+                        ///////fetching the playlist of the user logged in
                         currentPlaylist={this.props.currentPlaylist}
                         isSignedIn={this.props.isSignedIn}
                         handleLogout_BE={this.props.handleLogout_BE}
+                        ///////Handling the follow and unfollow of the users
                         patchedfollow={this.props.patchedfollow}
                         patchedunfollow={this.props.patchedunfollow}
                       />

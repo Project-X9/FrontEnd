@@ -158,10 +158,13 @@ class Main extends Component {
             path="/premium"
             component={() => (
               <PremiumComponent
+                ///////////for Handling the premium membership of the user
                 PremiumPost={this.props.PremiumPost}
                 id={this.props.id}
                 data={this.props.data}
+                /////getting all the info of the user
                 data_be={this.props.data_be}
+                ///////logging of the user
                 handleLogout_BE={this.props.handleLogout_BE}
                 isSignedIn={this.props.isSignedIn}
               />
@@ -192,7 +195,6 @@ class Main extends Component {
               />
             )}
           />
-
           <Route
             path="/webplayer"
             component={() => (
@@ -220,7 +222,6 @@ class Main extends Component {
               />
             )}
           />
-
           <Route
             exact
             path="/signin"

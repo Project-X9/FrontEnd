@@ -14,41 +14,18 @@ import {
 import "../NowPlayComponent/NowPlay.css";
 import { NavLink, Redirect } from "react-router-dom";
 import { Loading } from "./../Loading/LoadingComponent";
-
+/**
+ * PlayLikedSongs gets the liked songs of the user and displays it
+ */
 class PlayLikedSongs extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isNavOpen: false,
-      disabled: false,
-      tempId: this.props.id.id,
+      tempId: this.props.data_be.data_be.id,
     };
     this.state.toggleNav = this.toggleNav.bind(this);
-    this.patchFollow = this.patchFollow.bind(this);
-  }
-  isPlaylistFollowed() {
-    const Temp = this.props.currentPlaylist.currentPlaylist.followers.find(
-      (element) => element == this.props.data_be.data_be._id
-    );
-    if (Temp !== undefined) {
-      return true;
-    } else {
-      return false;
-    }
     this.state.handleLogout = this.handleLogout.bind(this);
-  }
-  patchFollow() {
-    if (this.isPlaylistFollowed()) {
-      this.props.patchedunfollow(
-        this.props.data_be.data_be._id,
-        this.props.currentPlaylist.currentPlaylist._id
-      );
-    } else {
-      this.props.patchedfollow(
-        this.props.data_be.data_be._id,
-        this.props.currentPlaylist.currentPlaylist._id
-      );
-    }
   }
 
   toggleNav() {
@@ -57,9 +34,10 @@ class PlayLikedSongs extends Component {
       collapsed: !this.state.collapsed,
     });
   }
-
+  /**
+   * handleLogout for logging out of the user
+   */
   handleLogout() {
-    // alert(this.props.currentPlaylist.isLodaing)
     this.props.handleLogout_BE();
   }
 
@@ -281,17 +259,6 @@ class PlayLikedSongs extends Component {
                                     <button className="signupbtn" type="submit">
                                       PLAY
                                     </button>
-                                    <div className="TrackListHeader ExtraButtons">
-                                      <Button
-                                        className="Jumbostyle"
-                                        onClick={this.patchFollow}
-                                      >
-                                        <i class="fa fa-heart"></i>
-                                      </Button>
-                                      <Button className="Jumbostyle">
-                                        <i class="fa fa-thumbs-down"></i>{" "}
-                                      </Button>
-                                    </div>
                                     <p>
                                       {this.props.data_be.data_be.tracks.length}{" "}
                                       Songs

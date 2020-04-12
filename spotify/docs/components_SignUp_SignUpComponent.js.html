@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/SignUp/SignUpComponent.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/SignUp/SignUpComponent.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from 'react';
+import {
+  Col, Button, Row, Label, NavLink,
+} from 'reactstrap';
+import {
+  Control, Form, Errors,
+} from 'react-redux-form';
+import { Link ,Redirect } from 'react-router-dom';
+import FacebookLogin from 'react-facebook-login';
+
+const required = val => val &amp;&amp; val.length;
+// const maxLength = (len) => (val) => !(val) || (val.length &lt;= len);
+const minLength = len => val => val &amp;&amp; val.length >= len;
+// const isNumber = (val) => !isNaN(Number(val));
+const validEmail = val => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
+const validDay = val => /^([1-9]|0[1-9]|[12]\d|3[01])$/i.test(val);
+const validYear = val =>
+  /^(181[2-9]|18[2-9]\d|19\d\d|2\d{3}|30[0-3]\d|304[0-8])$/i.test(val); //1812 - 3048
+const confEmail = val => val2 => val === val2;
+const typeSelected = val => val === "male" || val === "female";
+const monthSelected = val => val !== "null";
+
+
+
+/**
+ * Sign Up Page
+ */
+class SignUp extends Component {
+  /**
+   * 
+   * @param {Object} props 
+   * @param props.postFeedback
+   * @param props.resetFeedbackForm
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",  
+      selectedOption: false,
+      confEmail: "",
+      submitted: null,
+      existBefore:null,
+      FaceBookId: "",
+      SignUpId:"",
+      submittedFromFacebook:false,
+      submittedFromSignUp:false,
+      length:this.props.data.data.length,
+      Succeded:null
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.responseFacebook = this.responseFacebook.bind(this);
+    
+  }
+  /**
+   * Here i check the response from the data base if it already exist the userstate will be 
+   * equal to false else it will go the sign in page
+   */
+  componentDidMount(){
+    // this.props.makeSignupRedirectable();
+    this.props.resetFeedbackForm(); 
+    if(this.props.userstate.userstate===true){
+      this.setState({
+        submitted: true,
+        submittedFromSignUp:true,
+        alreadySignedIn:false
+      })
+    }
+    else if(this.props.userstate.userstate === false){
+      this.setState({
+        existBefore:true
+      })
+    }
+    if(this.props.isSignedIn.isSignedIn === true)
+    {
+      this.setState({
+        alreadySignedIn:true
+      })
+    }
+  }
+  // testbackend(){
+  //   const id = "";
+  //   this.props.testPlayLists(id);
+  // }
+/**
+ * This function takes the data fromthe input fields and assure that the all
+ * the data is not empty (don't make the validations) and if all the data required is
+ * avaliable it gives the data to the function (PostFeedback) to post the data to the 
+ * server and resets the input fields using resetFeedBack form and also state the submitted 
+ * state to true to be redirected to the next page.
+ * @param {Object} values 
+ */
+  handleSubmit(values) {
+    // const { email, confirmEmail } = this.state;
+    // console.log(`Current State :${JSON.stringify(values)}`);
+    this.props.resetFeedbackForm();
+    // let temp=this.handleExcistance(values.email)
+    // if(temp)
+    // {
+    //   this.setState({
+    //     existBefore:true
+    //   })
+    //   this.props.resetFeedbackForm();
+
+    // }
+   if (
+      values.email !== "" &amp;&amp;
+      values.confirmemail !== "" &amp;&amp;
+      values.password !== "" &amp;&amp;
+      values.name !== "" &amp;&amp;
+      values.day !== "" &amp;&amp;
+      values.month !== "" &amp;&amp;
+      values.year !== "" &amp;&amp;
+      values.sex !== ""
+    ) {
+      this.setState({
+        // submittedFromSignUp:true,
+        // submitted: true,
+        // SignUpId:this.props.data.data.length+1
+      },()=>{
+        this.props.resetFeedbackForm();
+         this.state.Succeded=this.props.postFeedback( //the function that posts the user data
+          values.email,
+          values.confirmemail,
+          values.password,
+          values.name,
+          values.day,
+          values.month,
+          values.year,
+          values.sex
+        );
+       
+      }
+      );
+    } 
+    else {
+      this.props.resetFeedbackForm();
+    }
+    //  this.props.history.push("/premium")
+  }
+  /**
+   * Function to test the excistance of the email
+   * @param {String} email
+   */
+  handleExcistance = (email) => {
+    let temp=false;
+    this.props.data.data.map(data => {
+      if (data.email === email) {
+        temp=true;
+      }
+    });
+    return temp;
+  };
+  /**
+   * This function set the this.state.email with the value the user fill in the input 
+   * field of email to be able to check the email in the confirm email 
+   * @param {Event} event
+   */
+  handleEmailChange = event => {
+    this.setState({
+      email: event.target.value
+    });
+  };
+  // componentWillReceiveProps(nextProbs){
+  //   if(nextProbs.data.data !== this.props.data.data )
+  //   {
+  //     this.setState({
+  //     })
+  //   }
+  // }
+  handleIdIfExist = email => {
+    let temp;
+    this.props.data.data.map(data => {
+      if (data.email === email || data.name === email) {
+        for (let index = 0; index &lt; data.id + 1; index++) {
+          if (index === data.id) {
+            temp = index;
+          }
+        }
+      }
+    });
+    return temp;
+  };
+  /**
+   * This function recieves the responce of the facebook login and uses the same functions i used in handleSubmit to
+   * post the users data and set Submitted to true to be redirected
+   * @param {Response} response 
+   */
+  responseFacebook(response) {
+    if (response.status !== "unknown") {
+      let exist = this.handleExcistance(response.email);
+      if(exist)
+      {
+      var id=this.handleIdIfExist(response.email)
+      // this.props.handleLoginId(id);
+      // this.state.tempId=id;  
+      this.setState({
+        submitted: true,
+        FaceBookId:id,
+        submittedFromFacebook:true
+      });
+      this.props.resetFeedbackForm();
+    }
+    else if(!exist)
+    {
+      this.setState({
+        submitted: true,
+        FaceBookId:this.props.data.data.length + 1,
+        submittedFromFacebook:true
+      },()=>{
+      this.props.resetFeedbackForm()
+      this.props.postFacebookLogin(
+        response.email,
+        response.image,
+        response.name
+      )
+      }
+      );
+      this.props.resetFeedbackForm();
+
+    }
+  }
+}
+  /**
+   * Responsible for showing everything on the Sign Up page
+   * @returns Components that will be displayed on the page
+   */
+  render() {
+    let redirected = null;
+    let redirectIfSignedIn=null;
+    if (this.state.submitted &amp;&amp; this.state.submittedFromFacebook) {
+      this.props.handleLoginId(this.state.FaceBookId);
+      redirected = &lt;Redirect to="/signin">&lt;/Redirect>
+    }
+    else if(this.state.submitted &amp;&amp; this.state.submittedFromSignUp)
+    {
+      this.setState({
+        submitted:false
+      })
+      this.props.makeSignupRedirectable();  
+      this.props.handleLoginId(this.state.SignUpId);
+      redirected = &lt;Redirect to="/signin">&lt;/Redirect>
+      
+    }
+    if(this.state.alreadySignedIn)
+    {
+      redirectIfSignedIn= &lt;Redirect to="/account/overview">&lt;/Redirect>
+    }
+    return (
+      &lt;div className="container signup">
+        {redirected}
+        {redirectIfSignedIn}
+        &lt;div className="row somepadding">
+          &lt;Col xs={12} md={{ size: 6, offset: 3 }}>
+            &lt;Link to="/home">
+              &lt;img
+                  src="https://www.adweek.com/wp-content/uploads/2019/11/Spotify-Logo-Black.png"
+                  height="90"
+                  width="172"
+                  alt="spotify"
+              />
+            &lt;/Link>
+            &lt;hr />
+          &lt;/Col>
+          &lt;Col xs={12} md={{ size: 6, offset: 3 }}>
+            &lt;FacebookLogin
+              cssClass="facebookButton"
+              appId="723287988413715"
+              autoLoad={false}
+              fields="name,email,picture,birthday"
+              callback={this.responseFacebook}
+            />
+            {/* &lt;a className="btn facebookButton">&lt;b className="textcolour">SIGN UP WITH FACEBOOK&lt;/b>&lt;/a> */}
+          &lt;/Col>
+          &lt;Col xs={12} md={{ size: 6, offset: 3 }}>
+            &lt;strong className="line-thru">or&lt;/strong>
+          &lt;/Col>
+          &lt;div className="col-12">
+            &lt;h3>Sign up with your email address &lt;/h3>
+            {this.state.existBefore === true ? (
+              &lt;h5 id="invalid">This email already exist&lt;/h5>
+            ) : (
+              &lt;span>&lt;/span>
+            )}
+          &lt;/div>
+        &lt;/div>
+        &lt;div className="row signup-field">
+          &lt;div>
+            &lt;Form
+              model="feedback"
+              onSubmit={values => this.handleSubmit(values)}
+            >
+              &lt;Row className="form-group">
+                &lt;Col xs={12} md={{ size: 6, offset: 3 }}>
+                  &lt;Control.text
+                    onChange={this.handleEmailChange}
+                    className="form-control"
+                    model=".email"
+                    placeholder="Email"
+                    id="email"
+                    name="email"
+                    validators={{
+                      required,
+                      validEmail
+                    }}
+                  />
+                  &lt;Row className="ml-2">
+                    &lt;Errors
+                      className="text-danger error"
+                      model=".email"
+                      show="touched"
+                      messages={{
+                        required: "Enter your Email address ,",
+                        validEmail: " Invalid Email Address"
+                      }}
+                    />
+                  &lt;/Row>
+                &lt;/Col>
+              &lt;/Row>
+              &lt;Row className="form-group">
+                &lt;Col xs={12} md={{ size: 6, offset: 3 }}>
+                  &lt;Control.text
+                    onChange={this.handleConfEmailChange}
+                    className="form-control"
+                    model=".confirmemail"
+                    placeholder="Confirm Email"
+                    id="confirmemail"
+                    name="confirmemail"
+                    validators={{
+                      required,
+                      validEmail,
+                      confEmail: confEmail(this.state.email)
+                    }}
+                  />
+                  &lt;Row className="ml-2">
+                    &lt;Errors
+                      className="text-danger error"
+                      model=".confirmemail"
+                      show="touched"
+                      messages={{
+                        // required: 'Required',
+                        // validEmail: 'Invalid Email Address',
+                        confEmail: "Email does not match"
+                      }}
+                    />
+                  &lt;/Row>
+                &lt;/Col>
+              &lt;/Row>
+              &lt;Row className="form-group">
+                &lt;Col xs={12} md={{ size: 6, offset: 3 }}>
+                  &lt;Control.text
+                    type="password"
+                    className="form-control"
+                    model=".password"
+                    placeholder="Password"
+                    id="password"
+                    name="password"
+                    validators={{
+                      required,
+                      minLength: minLength(7)
+                    }}
+                  />
+                  &lt;Row className="ml-2">
+                    &lt;Errors
+                      className="text-danger error"
+                      model=".password"
+                      show="touched"
+                      messages={{
+                        required: "Enter your password to continue, ",
+                        minLength: " Your password is too short"
+                      }}
+                    />
+                  &lt;/Row>
+                &lt;/Col>
+              &lt;/Row>
+              &lt;Row className="form-group">
+                &lt;Col xs={12} md={{ size: 6, offset: 3 }}>
+                  &lt;Control.text
+                    className="form-control"
+                    model=".name"
+                    placeholder="What should we call you ?"
+                    id="name"
+                    name="name"
+                    validators={{
+                      required
+                    }}
+                  />
+                  &lt;Row className="ml-2">
+                    &lt;Errors
+                      className="text-danger error"
+                      model=".name"
+                      show="touched"
+                      messages={{
+                        required: "What should we call you ?"
+                      }}
+                    />
+                  &lt;/Row>
+                &lt;/Col>
+              &lt;/Row>
+              &lt;Row className="form-group">
+                &lt;Col xs={4} md={{ size: 2, offset: 3 }}>
+                  &lt;Control.text
+                    className="form-control"
+                    model=".day"
+                    placeholder="Day"
+                    id="day"
+                    name="day"
+                    validators={{
+                      required,
+                      validDay
+                    }}
+                  />
+                  &lt;Errors
+                    className="text-danger error"
+                    model=".day"
+                    show="touched"
+                    messages={{
+                      validDay: "Enter a valid day of the month"
+                    }}
+                  />
+                &lt;/Col>
+                &lt;Col xs={4} md={2}>
+                  &lt;Control.select
+                    className="form-control"
+                    model=".month"
+                    name="month"
+                    validators={{
+                      monthSelected,
+                      required
+                    }}
+                  >
+                    &lt;option value="null">Month&lt;/option>
+                    &lt;option>January&lt;/option>
+                    &lt;option>February&lt;/option>
+                    &lt;option>March&lt;/option>
+                    &lt;option>April&lt;/option>
+                    &lt;option>May&lt;/option>
+                    &lt;option>June&lt;/option>
+                    &lt;option>July&lt;/option>
+                    &lt;option>August&lt;/option>
+                    &lt;option>September&lt;/option>
+                    &lt;option>October&lt;/option>
+                    &lt;option>November&lt;/option>
+                    &lt;option>December&lt;/option>
+                  &lt;/Control.select>
+                  &lt;Errors
+                    className="text-danger error"
+                    model=".month"
+                    show="touched"
+                    messages={{
+                      required: "Required",
+                      monthSelected: "Enter the month"
+                    }}
+                  />
+                &lt;/Col>
+                &lt;Col xs={4} md={2}>
+                  &lt;Control.text
+                    className="form-control"
+                    model=".year"
+                    placeholder="Year"
+                    id="year"
+                    name="year"
+                    validators={{
+                      required,
+                      validYear
+                    }}
+                  />
+                  &lt;Errors
+                    className="text-danger error"
+                    model=".year"
+                    show="touched"
+                    messages={{
+                      required: "Enter a year to continue",
+                      validYear: " Enter a valid year"
+                    }}
+                  />
+                &lt;/Col>
+              &lt;/Row>
+              &lt;Row className="form-group">
+                &lt;Col xs={12} md={8}>
+                  &lt;div>
+                    &lt;label className="p-3">
+                      &lt;Control.radio
+                        model=".sex"
+                        value="male"
+                        id="sex"
+                        name="sex"
+                        validators={{
+                          typeSelected
+                        }}
+                      />{" "}
+                      Male
+                    &lt;/label>
+                    &lt;label className="p-3">
+                      &lt;Control.radio
+                        model=".sex"
+                        value="female"
+                        id="sex"
+                        name="sex"
+                        validators={{
+                          typeSelected
+                        }}
+                      />{" "}
+                      Female
+                    &lt;/label>
+                    &lt;Errors
+                      className="text-danger error"
+                      model=".sex"
+                      show="touched"
+                      messages={{
+                        typeSelected: "Enter your gender"
+                      }}
+                    />
+                  &lt;/div>
+                &lt;/Col>
+              &lt;/Row>
+              &lt;Row className="form-group">
+                &lt;Col xs={12} md={{ size: 6, offset: 3 }}>
+                  &lt;Button model="submit" className="signupbtn">
+                  {/* &lt;Button onClick={this.testbackend()} className="signupbtn"> */}
+                    SignUp
+                  &lt;/Button>
+                &lt;/Col>
+              &lt;/Row>
+              &lt;Row>
+                &lt;Col xs={12} md={12}>
+                  &lt;Label>Already have an account ?&lt;/Label>&lt;Link className="text-green" to="/signin"> LogIn&lt;/Link>
+                &lt;/Col>
+              &lt;/Row>
+            &lt;/Form>
+
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    );
+  }
+}
+export default SignUp;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AccountOverview.html">AccountOverview</a></li><li><a href="ChangePass.html">ChangePass</a></li><li><a href="EditProfile.html">EditProfile</a></li><li><a href="FreeJumbotron.html">FreeJumbotron</a></li><li><a href="FreePlan.html">FreePlan</a></li><li><a href="Home.html">Home</a></li><li><a href="HomeNavAndContentSigned.html">HomeNavAndContentSigned</a></li><li><a href="NavbarHome.html">NavbarHome</a></li><li><a href="NowPlay.html">NowPlay</a></li><li><a href="PlayLikedSongs.html">PlayLikedSongs</a></li><li><a href="PopularAlbumsHomeAndNavContent.html">PopularAlbumsHomeAndNavContent</a></li><li><a href="PopularArtistsHomeAndNavContent.html">PopularArtistsHomeAndNavContent</a></li><li><a href="PopularNewHomeAndNavContent.html">PopularNewHomeAndNavContent</a></li><li><a href="Premium.html">Premium</a></li><li><a href="PremiumJumbotron.html">PremiumJumbotron</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="TopNav.html">TopNav</a></li><li><a href="WebPlayer.html">WebPlayer</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addAlbum">addAlbum</a></li><li><a href="global.html#addArtist">addArtist</a></li><li><a href="global.html#addCategories">addCategories</a></li><li><a href="global.html#addCurrentPlaylist">addCurrentPlaylist</a></li><li><a href="global.html#addUser">addUser</a></li><li><a href="global.html#addUserData">addUserData</a></li><li><a href="global.html#addUserId">addUserId</a></li><li><a href="global.html#addUserPlaylist">addUserPlaylist</a></li><li><a href="global.html#CurrentLoading">CurrentLoading</a></li><li><a href="global.html#fetchAlbum">fetchAlbum</a></li><li><a href="global.html#fetchArtist">fetchArtist</a></li><li><a href="global.html#fetchUserData">fetchUserData</a></li><li><a href="global.html#fetchUserPlaylist">fetchUserPlaylist</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#getArtist">getArtist</a></li><li><a href="global.html#getEmail">getEmail</a></li><li><a href="global.html#getPassword">getPassword</a></li><li><a href="global.html#handleCurrentAlbums">handleCurrentAlbums</a></li><li><a href="global.html#handleCurrentArtists">handleCurrentArtists</a></li><li><a href="global.html#handleCurrentPlayList">handleCurrentPlayList</a></li><li><a href="global.html#handleLoginId">handleLoginId</a></li><li><a href="global.html#handleLogout_BE">handleLogout_BE</a></li><li><a href="global.html#handleLogoutId">handleLogoutId</a></li><li><a href="global.html#handleSignIn_BE">handleSignIn_BE</a></li><li><a href="global.html#LogOut_BE">LogOut_BE</a></li><li><a href="global.html#makeSignupRedirectable">makeSignupRedirectable</a></li><li><a href="global.html#postFacebookLogin">postFacebookLogin</a></li><li><a href="global.html#postFeedback">postFeedback</a></li><li><a href="global.html#removeUserId">removeUserId</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 21:30:45 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

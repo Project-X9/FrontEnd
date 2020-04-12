@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Homepage/HomeComponent.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Homepage/HomeComponent.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import NavbarHome from "./NavbarComponent";
+import "./Home.css";
+import Footer from "./FooterComponent";
+
+/**Class of the main component which is the main page the user sees before logging in, it contains 
+ * the 3 component that form the homepage: the navbar, the main interface and the footer. The instance 
+ * of this component is created and loaded as soon as the user opens Spotify's website.
+ */
+class Home extends Component {
+  /**A built in function that check if the component is on the screen, in other words
+   * makes sure we are on the home page to prevent CSS problems that causes the homepage's 
+   * styling to be visible in other pages with different components
+   */
+  componentDidMount() {
+    document.body.classList.add("homeBody");
+  }
+/**The opposite of the componentDidMount() function, used to remove the styling after leaving homepage.
+ * Also a built in function.
+ */
+  componentWillUnmount() {
+    document.body.classList.remove("homeBody");
+  }
+/**
+ * Renders the main page to un-logged users loading Spotify
+ */
+  render() {
+     /**@return: returns the homepage component consisting of a navbar component, main part and a footer component. */
+    return (
+      &lt;div className="Home">
+        &lt;NavbarHome />
+        &lt;div class="bg-pic">&lt;/div>
+        &lt;div class="row row-simplified homeContent">
+          &lt;h1>Music for everyone.&lt;/h1>
+          &lt;h4>Millions of songs. No credit card needed.&lt;/h4>
+          &lt;Link to="/signup">
+            &lt;button model="submit" className="getSpotifyBtn">
+              get spotify free
+            &lt;/button>
+          &lt;/Link>
+        &lt;/div>
+        &lt;Footer className="homeFooter" />
+      &lt;/div>
+    );
+  }
+}
+export default Home;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AccountOverview.html">AccountOverview</a></li><li><a href="ChangePass.html">ChangePass</a></li><li><a href="EditProfile.html">EditProfile</a></li><li><a href="FreeJumbotron.html">FreeJumbotron</a></li><li><a href="FreePlan.html">FreePlan</a></li><li><a href="Home.html">Home</a></li><li><a href="HomeNavAndContentSigned.html">HomeNavAndContentSigned</a></li><li><a href="NavbarHome.html">NavbarHome</a></li><li><a href="NowPlay.html">NowPlay</a></li><li><a href="PlayLikedSongs.html">PlayLikedSongs</a></li><li><a href="PopularAlbumsHomeAndNavContent.html">PopularAlbumsHomeAndNavContent</a></li><li><a href="PopularArtistsHomeAndNavContent.html">PopularArtistsHomeAndNavContent</a></li><li><a href="PopularNewHomeAndNavContent.html">PopularNewHomeAndNavContent</a></li><li><a href="Premium.html">Premium</a></li><li><a href="PremiumJumbotron.html">PremiumJumbotron</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="TopNav.html">TopNav</a></li><li><a href="WebPlayer.html">WebPlayer</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addAlbum">addAlbum</a></li><li><a href="global.html#addArtist">addArtist</a></li><li><a href="global.html#addCategories">addCategories</a></li><li><a href="global.html#addCurrentPlaylist">addCurrentPlaylist</a></li><li><a href="global.html#addUser">addUser</a></li><li><a href="global.html#addUserData">addUserData</a></li><li><a href="global.html#addUserId">addUserId</a></li><li><a href="global.html#addUserPlaylist">addUserPlaylist</a></li><li><a href="global.html#CurrentLoading">CurrentLoading</a></li><li><a href="global.html#fetchAlbum">fetchAlbum</a></li><li><a href="global.html#fetchArtist">fetchArtist</a></li><li><a href="global.html#fetchUserData">fetchUserData</a></li><li><a href="global.html#fetchUserPlaylist">fetchUserPlaylist</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#getArtist">getArtist</a></li><li><a href="global.html#getEmail">getEmail</a></li><li><a href="global.html#getPassword">getPassword</a></li><li><a href="global.html#handleCurrentAlbums">handleCurrentAlbums</a></li><li><a href="global.html#handleCurrentArtists">handleCurrentArtists</a></li><li><a href="global.html#handleCurrentPlayList">handleCurrentPlayList</a></li><li><a href="global.html#handleLoginId">handleLoginId</a></li><li><a href="global.html#handleLogout_BE">handleLogout_BE</a></li><li><a href="global.html#handleLogoutId">handleLogoutId</a></li><li><a href="global.html#handleSignIn_BE">handleSignIn_BE</a></li><li><a href="global.html#LogOut_BE">LogOut_BE</a></li><li><a href="global.html#makeSignupRedirectable">makeSignupRedirectable</a></li><li><a href="global.html#postFacebookLogin">postFacebookLogin</a></li><li><a href="global.html#postFeedback">postFeedback</a></li><li><a href="global.html#removeUserId">removeUserId</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 11 2020 21:30:45 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
