@@ -5,8 +5,8 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable react/destructuring-assignment */
-import "./WebPlayerHomeComponent.css";
 import "./PlayFooterComponent.css";
+import "./WebPlayerHomeComponent.css";
 import React, { Component } from "react";
 import { Link, Switch, Route, Redirect } from "react-router-dom";
 import { Button, Modal, ModalBody } from "reactstrap";
@@ -20,7 +20,7 @@ import Artist from "../ArtistInterface/ArtistComponent";
  * Web Player page
  */
 class WebPlayer extends Component {
-  /**
+   /**
    *
    * @param {Object} props
    * @param props.data Essentially contains the data of the users in the database
@@ -70,27 +70,7 @@ class WebPlayer extends Component {
     this.audio.src = this.url;
     this.toggleModal = this.toggleModal.bind(this);
   }
-  componentDidMount() {
-    this.interval = setInterval(() => this.handleTime());
-  }
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
 
-  /**
-   * Toggles the Modal in the library by switching isModalOpen from true to false and vice versa
-   */
-  toggleModal() {
-    if (this.props.isSignedIn.isSignedIn === true) {
-      this.setState({
-        SignedIn: true,
-      });
-    } else {
-      this.setState({
-        isModalOpen: !this.state.isModalOpen,
-      });
-    }
-  }
   shuffle = (array) => {
     var j, x, i;
     for (i = array.length - 1; i > 0; i--) {
@@ -218,6 +198,23 @@ class WebPlayer extends Component {
     }
   };
 
+
+
+  /**
+   * Toggles the Modal in the library by switching isModalOpen from true to false and vice versa
+   */
+  toggleModal() {
+    if (this.props.isSignedIn.isSignedIn === true) {
+      this.setState({
+        SignedIn: true,
+      });
+    } else {
+      this.setState({
+        isModalOpen: !this.state.isModalOpen,
+      });
+    }
+  }
+
   /**
    * Responsible for showing everything on the Webplayer
    * @returns Components that will be displayed on the page
@@ -310,7 +307,8 @@ class WebPlayer extends Component {
                   </Link>
                   <Button
                     className={"SidebarLibraryButton" + libraryActive}
-                    onClick={this.toggleModal}>
+                    onClick={this.toggleModal}
+                  >
                     <i className="fa fa-bomb"></i>
                     Your Library
                   </Button>
@@ -422,136 +420,158 @@ class WebPlayer extends Component {
             </div>
           </div>
         </div>
-        <div className="footer-main">
-          <div className="left-side">
-            <div className="photo-area"></div>
-            <div className="song-details">
-              <p className="song-name">Song</p>
-              <p className="artist-name">Artist</p>
+        <div className="container-fluid">
+          <div className="footer-main row">
+            <div className="col-sm-3 left-side">
+              <div className="song-details">
+                <p className="song-name">Song</p>
+                <p className="artist-name">Artist</p>
+              </div>
+              <div className="like">
+                <button className="like-button" onClick={this.toggleLiked}>
+                  {this.state.liked == false ? (
+                    <img src="../assets/images/unliked.png" alt="" />
+                  ) : (
+                    <img src="../assets/images/liked.png" alt="" />
+                  )}
+                </button>
+              </div>
             </div>
-            <div className="like">
-              <button className="like-button" onClick={this.toggleLiked}>
-                {this.state.liked == false ? (
-                  <img src="../assets/images/unliked.png" alt="" />
+            <div className="col-sm-6">
+              <div className="buttons-area">
+                <ul className="buttons-list">
+                  <li className="shuffle">
+                    <button
+                      className="shuffle-button"
+                      onClick={this.toggleShuffle}>
+                      {this.state.shuffle == true ? (
+                        <img src="../assets/images/shuffle.png" alt="shuffle" />
+                      ) : (
+                        <img
+                          src="../assets/images/shuffle-disabled.png"
+                          alt="shuffle"
+                        />
+                      )}
+                    </button>
+                  </li>
+                  <li className="previous">
+                    <button className="previous-button" onClick={this.nextSong}>
+                      <img src="../assets/images/previous.png" alt="previous" />
+                    </button>
+                  </li>
+                  <li className="play">
+                    <button className="play-button" onClick={this.togglePlay}>
+                      {this.state.paused == true ? (
+                        <img src="../assets/images/play.png" alt="play" />
+                      ) : (
+                        <img src="../assets/images/pause.png" alt="play" />
+                      )}
+                    </button>
+                  </li>
+                  <li className="next">
+                    <button className="next-button" onClick={this.nextSong}>
+                      <img src="../assets/images/next.png" alt="next" />
+                    </button>
+                  </li>
+                  <li className="repeat">
+                    <button
+                      className="repeat-button"
+                      onClick={this.changeRepeat}>
+                      {this.state.repeat == 0 ? (
+                        <img src="../assets/images/repeat.png" alt="repeat" />
+                      ) : this.state.repeat == 1 ? (
+                        <img
+                          src="../assets/images/repeat-once.png"
+                          alt="repeat"
+                        />
+                      ) : (
+                        <img
+                          src="../assets/images/repeat-off.png"
+                          alt="repeat"
+                        />
+                      )}
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              <div className="control-area">
+                <div className="time-before">
+                  <p className="time-before-text">
+                    {this.state.seekMins}:
+                    {this.state.seekSeconds < 10 ? (
+                      <span>0</span>
+                    ) : (
+                      <span></span>
+                    )}
+                    {this.state.seekSeconds}
+                  </p>
+                </div>
+                <input
+                  id="seek-slider"
+                  name="seek-slider"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value={(this.audio.currentTime / this.audio.duration) * 100}
+                  step="1"
+                  onMouseDown={this.handleMouseDown}
+                  onMouseUp={this.handleMouseUp}
+                  onMouseMove={this.handleSeek}
+                  ref={this.seekSlider}
+                />
+                <div className="time-after">
+                  <p className="time-after-text">
+                    {Number.isNaN(this.state.lengthMins) ? (
+                      <span>0</span>
+                    ) : (
+                      this.state.lengthMins
+                    )}
+                    :
+                    {this.state.lengthSeconds < 10 ? (
+                      <span>0</span>
+                    ) : (
+                      <span></span>
+                    )}
+                    {Number.isNaN(this.state.lengthSeconds) ? (
+                      <span>00</span>
+                    ) : (
+                      this.state.lengthSeconds
+                    )}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-3 right-side">
+              <button className="queue-button">
+                <img src="../assets/images/queue.png" alt="queue" />
+              </button>
+              <button className="volume-button" onClick={this.toggleMute}>
+                {this.state.muted == false ? (
+                  <img src="../assets/images/volume-high.png" alt="volume" />
                 ) : (
-                  <img src="../assets/images/liked.png" alt="" />
+                  <img src="../assets/images/volume-mute.png" alt="volume" />
                 )}
               </button>
+              <input
+                id="volume-slider"
+                name="volume-slider"
+                type="range"
+                min="0"
+                max="100"
+                defaultValue={this.state.volume}
+                step="1"
+                onMouseMove={this.handleVolume}
+                ref={this.volumeSlider}
+              />
             </div>
-          </div>
-          <div className="buttons-area">
-            <ul className="buttons-list">
-              <li className="shuffle">
-                <button className="shuffle-button" onClick={this.toggleShuffle}>
-                  {this.state.shuffle == true ? (
-                    <img src="../assets/images/shuffle.png" alt="shuffle" />
-                  ) : (
-                    <img
-                      src="../assets/images/shuffle-disabled.png"
-                      alt="shuffle"
-                    />
-                  )}
-                </button>
-              </li>
-              <li className="previous">
-                <button className="previous-button" onClick={this.nextSong}>
-                  <img src="../assets/images/previous.png" alt="previous" />
-                </button>
-              </li>
-              <li className="play">
-                <button className="play-button" onClick={this.togglePlay}>
-                  {this.state.paused == true ? (
-                    <img src="../assets/images/play.png" alt="play" />
-                  ) : (
-                    <img src="../assets/images/pause.png" alt="play" />
-                  )}
-                </button>
-              </li>
-              <li className="next">
-                <button className="next-button" onClick={this.nextSong}>
-                  <img src="../assets/images/next.png" alt="next" />
-                </button>
-              </li>
-              <li className="repeat">
-                <button className="repeat-button" onClick={this.changeRepeat}>
-                  {this.state.repeat == 0 ? (
-                    <img src="../assets/images/repeat.png" alt="repeat" />
-                  ) : this.state.repeat == 1 ? (
-                    <img src="../assets/images/repeat-once.png" alt="repeat" />
-                  ) : (
-                    <img src="../assets/images/repeat-off.png" alt="repeat" />
-                  )}
-                </button>
-              </li>
-            </ul>
-          </div>
-          <div className="control-area">
-            <div className="time-before">
-              <p className="time-before-text">
-                {this.state.seekMins}:
-                {this.state.seekSeconds < 10 ? <span>0</span> : <span></span>}
-                {this.state.seekSeconds}
-              </p>
-            </div>
-            <input
-              id="seek-slider"
-              name="seek-slider"
-              type="range"
-              min="0"
-              max="100"
-              value={(this.audio.currentTime / this.audio.duration) * 100}
-              step="1"
-              onMouseDown={this.handleMouseDown}
-              onMouseUp={this.handleMouseUp}
-              onMouseMove={this.handleSeek}
-              ref={this.seekSlider}
-            />
-            <div className="time-after">
-              <p className="time-after-text">
-                {Number.isNaN(this.state.lengthMins) ? (
-                  <span>0</span>
-                ) : (
-                  this.state.lengthMins
-                )}
-                :
-                {this.state.lengthSeconds < 10 ? <span>0</span> : <span></span>}
-                {Number.isNaN(this.state.lengthSeconds) ? (
-                  <span>00</span>
-                ) : (
-                  this.state.lengthSeconds
-                )}
-              </p>
-            </div>
-          </div>
-          <div className="right-side">
-            <button className="queue-button">
-              <img src="../assets/images/queue.png" alt="queue" />
-            </button>
-            <button className="volume-button" onClick={this.toggleMute}>
-              {this.state.muted == false ? (
-                <img src="../assets/images/volume-high.png" alt="volume" />
-              ) : (
-                <img src="../assets/images/volume-mute.png" alt="volume" />
-              )}
-            </button>
-            <input
-              id="volume-slider"
-              name="volume-slider"
-              type="range"
-              min="0"
-              max="100"
-              defaultValue={this.state.volume}
-              step="1"
-              onMouseMove={this.handleVolume}
-              ref={this.volumeSlider}
-            />
           </div>
         </div>
         <Modal
           isOpen={this.state.isModalOpen}
           toggle={this.toggleModal}
           className="ModalBackGround row"
-          size="lg">
+          size="lg"
+        >
           <div className="modal-content modalcontent">
             <ModalBody className="p-0 modalbody">
               <div className="row flexer">
@@ -572,7 +592,8 @@ class WebPlayer extends Component {
                             xmlns="http://www.w3.org/1999/xlink"
                             viewBox="0 0 16 18"
                             width="16"
-                            height="16">
+                            height="16"
+                          >
                             <polygon points="13.985,2.383 5.127,12.754 1.388,8.375 0.73,9.145 5.127,14.294 14.745,3.032"></polygon>
                           </svg>
                           No credit card, ever
@@ -583,7 +604,8 @@ class WebPlayer extends Component {
                             xmlns="http://www.w3.org/1999/xlink"
                             viewBox="0 0 16 18"
                             width="16"
-                            height="16">
+                            height="16"
+                          >
                             <polygon points="13.985,2.383 5.127,12.754 1.388,8.375 0.73,9.145 5.127,14.294 14.745,3.032"></polygon>
                           </svg>
                           Get unlimited podcasts
@@ -594,7 +616,8 @@ class WebPlayer extends Component {
                             xmlns="http://www.w3.org/1999/xlink"
                             viewBox="0 0 16 18"
                             width="16"
-                            height="16">
+                            height="16"
+                          >
                             <polygon points="13.985,2.383 5.127,12.754 1.388,8.375 0.73,9.145 5.127,14.294 14.745,3.032"></polygon>
                           </svg>
                           Play your favorite music, with ads
@@ -604,7 +627,8 @@ class WebPlayer extends Component {
                         <Button
                           className="LibraryModalCloseButton"
                           color="success"
-                          onClick={this.toggleModal}>
+                          onClick={this.toggleModal}
+                        >
                           Close
                         </Button>
                       </div>

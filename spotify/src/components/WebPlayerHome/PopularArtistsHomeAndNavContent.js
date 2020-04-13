@@ -99,7 +99,7 @@ class PopularArtistsHomeAndNavContent extends Component {
             isHomeArtistsSingned = this.props.data_be.data_be.artists.map((Artist)=>{
                 return(
                     <Button className="WebplayerHomeNowPlayRedirectButton" onClick={()=>this.handleRenderingPlaylist(Artist._id)}>
-                    <Link className="WebplayerHomeNowPlayRedirectLink" to="/webplayer/nowplay">
+                    <Link className="WebplayerHomeNowPlayRedirectLink" to="/webplayer/artist">
                     <div key= {Artist.id} className="CardsHome">
                         <div className="row">
                             <div className="col">
@@ -130,7 +130,9 @@ class PopularArtistsHomeAndNavContent extends Component {
                             <div className="col-md-12">
                                 <div>
                                     <Button className="ButtonItself"> 
+                                    <Link to="/account/overview">
                                     <svg height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
+                                    </Link>
                                     </Button>
                                 </div>
                             </div>

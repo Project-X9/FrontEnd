@@ -1,10 +1,8 @@
 .footer-main {
     height: 90px;
-    width: 100%;
     position: sticky;
     background-color: #282828;
     bottom: 0;
-    min-width: 820px;
 }
 
 .footer-main button:focus {
@@ -20,9 +18,9 @@
 }
 
 .buttons-area {
-    width: 40%;
     min-width: 295;
     height: 40px;
+    top: 25px;
 }
 
 .buttons-list {
@@ -41,12 +39,16 @@ button img {
 }
 
 #seek-slider {
-    width: 80%;
-    min-width: 240px;
+    width: 60%;
     max-width: 450px;
     height: 6px;
     border-radius: 25px;
     display: inline-block;
+}
+
+.time-before-text,
+.time-after-text {
+    width: 10%;
 }
 
 .right-side button img {
@@ -65,10 +67,10 @@ button img {
 }
 
 .control-area {
-    width: 40%;
     position: absolute;
+    right: 0%;
+    width: 100%;
     top: 60%;
-    right: 30%;
     height: 20px;
     bottom: 0px;
 }
@@ -78,7 +80,7 @@ button img {
 }
 
 .like-button {
-    width: 20px;
+    width: 50%;
     height: 16px;
     margin: 5px;
     background-color: inherit;
@@ -110,8 +112,8 @@ button img {
 .buttons-list li {
     list-style-type: none;
     display: inline-block;
-    margin: auto;
-    padding: 20px;
+    padding: 3%;
+    width: 10%;
 }
 
 .shuffle-button,
@@ -131,9 +133,9 @@ button img {
 }
 
 .right-side button {
-    margin: 5px;
-    width: 20px;
+    width: 10%;
     height: 16px;
+    margin-right: 1%;
     padding: 0;
     background-color: inherit;
     justify-content: center;
@@ -161,15 +163,16 @@ button img {
 
 .right-side {
     width: 30%;
+    top: 35px;
 }
 
 .photo-area {
-    width: 30%;
+    width: 20%;
     height: 70%;
 }
 
 #volume-slider {
-    width: 100%;
+    width: 70%;
     height: 5px;
     padding: 0;
     position: relative;
@@ -180,7 +183,6 @@ button img {
 
 .left-side {
     width: 30%;
-    text-align: start;
     margin: 0;
 }
 
@@ -214,10 +216,9 @@ input[type="range"] {
     height: 13px;
 }
 
-
-/* #volume-slider:hover {
-  background-color: rgb(11, 197, 11);
-} */
+#volume-slider:hover {
+    background-color: rgb(11, 197, 11);
+}
 
 input[type="range"]::-ms-fill-lower {
     background: white;
@@ -266,10 +267,21 @@ input[type="range"]::-ms-thumb {
     cursor: pointer;
 }
 
+.left-side p {
+    font-size: 80%;
+}
+
 @media (max-width: 1440px) {
     .buttons-list li {
         margin: 0.5em;
         padding: 0.5em;
+    }
+}
+
+@media (max-width: 600px) {
+    .song-name,
+    .artist-name {
+        display: none;
     }
 }
 

@@ -27,15 +27,16 @@ class PopularNewHomeAndNavContent extends Component {
    * Toggles a Modal (has been removed) by switching isModalOpen from true to false and vice versa
    */
   toggleModal() {
+    alert(this.state.isModalOpen)
     this.setState({
       isModalOpen: !this.state.isModalOpen,
     });
   }
-
    /**
    * Reponsible for getting a specific playlist's data from the database by calling handleCurrentPlayList
    */
   handleRenderingPlaylist(data) {
+    
     this.props.handleCurrentPlayList(data);
     this.setState({
       playListadded: true,
@@ -50,6 +51,7 @@ class PopularNewHomeAndNavContent extends Component {
     if (this.state.playListadded === true) {
       var redirected = <Redirect to="/webplayer/nowplay"></Redirect>;
     }
+  
     let HomeSongs = "";
     if (this.props.isSignedIn.isSignedIn === null) {
       HomeSongs = this.props.categories.categories.map((Category) => {
@@ -70,12 +72,11 @@ class PopularNewHomeAndNavContent extends Component {
             return (
               <Button
                 className="WebplayerHomeNowPlayRedirectButton"
-                // onClick={() => this.handleRenderingPlaylist(CategorySongs._id)}
-                onClick={this.toggleModal}
+                onClick={() => this.handleRenderingPlaylist(CategorySongs._id)}
               >
                 <Link
                   className="WebplayerHomeNowPlayRedirectLink"
-                  // to="/webplayer/nowplay"
+                  //to="/webplayer/nowplay"
                 >
             
                   <div key={CategorySongs._id} className="CardsHome">
@@ -113,7 +114,7 @@ class PopularNewHomeAndNavContent extends Component {
                         <div>
                           <Button
                             className="ButtonItself"
-                            // onClick={this.toggleModal}
+                            onClick={this.toggleModal}
                           >
                             <svg
                               height="16"
@@ -304,9 +305,10 @@ class PopularNewHomeAndNavContent extends Component {
     }
     return (
       <div>
+     
         {redirected}
         {HomeSongs}
-          
+       
           {/* <div className="col-sm-3 ContainerSeeAllAboveGrid">
                         <Link className="SeeAllAboveGrid">SEE ALL</Link>
                     </div> */}
