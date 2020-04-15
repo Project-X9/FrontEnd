@@ -20,7 +20,7 @@ import Artist from "../ArtistInterface/ArtistComponent";
  * Web Player page
  */
 class WebPlayer extends Component {
-   /**
+  /**
    *
    * @param {Object} props
    * @param props.data Essentially contains the data of the users in the database
@@ -70,7 +70,12 @@ class WebPlayer extends Component {
     this.audio.src = this.url;
     this.toggleModal = this.toggleModal.bind(this);
   }
-
+  componentDidMount() {
+    this.interval = setInterval(() => this.handleTime());
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
   shuffle = (array) => {
     var j, x, i;
     for (i = array.length - 1; i > 0; i--) {
@@ -198,8 +203,6 @@ class WebPlayer extends Component {
     }
   };
 
-
-
   /**
    * Toggles the Modal in the library by switching isModalOpen from true to false and vice versa
    */
@@ -307,8 +310,7 @@ class WebPlayer extends Component {
                   </Link>
                   <Button
                     className={"SidebarLibraryButton" + libraryActive}
-                    onClick={this.toggleModal}
-                  >
+                    onClick={this.toggleModal}>
                     <i className="fa fa-bomb"></i>
                     Your Library
                   </Button>
@@ -570,8 +572,7 @@ class WebPlayer extends Component {
           isOpen={this.state.isModalOpen}
           toggle={this.toggleModal}
           className="ModalBackGround row"
-          size="lg"
-        >
+          size="lg">
           <div className="modal-content modalcontent">
             <ModalBody className="p-0 modalbody">
               <div className="row flexer">
@@ -592,8 +593,7 @@ class WebPlayer extends Component {
                             xmlns="http://www.w3.org/1999/xlink"
                             viewBox="0 0 16 18"
                             width="16"
-                            height="16"
-                          >
+                            height="16">
                             <polygon points="13.985,2.383 5.127,12.754 1.388,8.375 0.73,9.145 5.127,14.294 14.745,3.032"></polygon>
                           </svg>
                           No credit card, ever
@@ -604,8 +604,7 @@ class WebPlayer extends Component {
                             xmlns="http://www.w3.org/1999/xlink"
                             viewBox="0 0 16 18"
                             width="16"
-                            height="16"
-                          >
+                            height="16">
                             <polygon points="13.985,2.383 5.127,12.754 1.388,8.375 0.73,9.145 5.127,14.294 14.745,3.032"></polygon>
                           </svg>
                           Get unlimited podcasts
@@ -616,8 +615,7 @@ class WebPlayer extends Component {
                             xmlns="http://www.w3.org/1999/xlink"
                             viewBox="0 0 16 18"
                             width="16"
-                            height="16"
-                          >
+                            height="16">
                             <polygon points="13.985,2.383 5.127,12.754 1.388,8.375 0.73,9.145 5.127,14.294 14.745,3.032"></polygon>
                           </svg>
                           Play your favorite music, with ads
@@ -627,8 +625,7 @@ class WebPlayer extends Component {
                         <Button
                           className="LibraryModalCloseButton"
                           color="success"
-                          onClick={this.toggleModal}
-                        >
+                          onClick={this.toggleModal}>
                           Close
                         </Button>
                       </div>
