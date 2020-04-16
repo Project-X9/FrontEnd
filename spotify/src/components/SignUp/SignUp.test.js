@@ -15,7 +15,7 @@ import SignUp from './SignUpComponent';
 configure({adapter: new Adapter()});
 describe(" testing the SignUp page",()=>{
     let wrapper;
-    const props = {
+    const props = { 
         isSignedIn: {
             isSignedIn:null,
         },
@@ -25,10 +25,10 @@ describe(" testing the SignUp page",()=>{
     }
     beforeEach(()=> {wrapper=shallow(<SignUp {...props}/>); });
 
-    it('includes the form that will be rendered',()=>{
-        // expect(wrapper.find('Form').to.have.lengthOf(1) );
-        const div =document.createElement('div');
-        ReactDOM.render(<Router><SignUp {...props}/></Router>,div);
+    // it('includes the form that will be rendered',()=>{
+    //     // expect(wrapper.find('Form').to.have.lengthOf(1) );
+    //     const div =document.createElement('div');
+    //     ReactDOM.render(<Router><SignUp {...props}/></Router>,div);
     
-    })
+    // })
 })
