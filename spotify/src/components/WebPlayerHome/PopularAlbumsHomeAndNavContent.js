@@ -2,18 +2,7 @@ import React, { Component } from "react";
 import {Button, Modal, ModalBody} from 'reactstrap';
 import {Link,Redirect} from "react-router-dom";
 
-/**
- * Albums inside the webplayer home
- */
 class PopularAlbumsHomeAndNavContent extends Component {
-   /**
-   *
-   * @param {Object} props
-   * @param props.data_be Essentially contains the data of the users in the database after integrating with backend
-   * @param props.isSignedIn Essentially used to check if a user is signed in or not
-   * @param props.album Essentially contains album data
-   * @param props.handleCurrentAlbums Essentially used to display album's data after integrating with the backend
-   */
     constructor(props) {
         super(props);
         this.state = {
@@ -22,18 +11,11 @@ class PopularAlbumsHomeAndNavContent extends Component {
         };
         this.toggleModal=this.toggleModal.bind(this);
     }
-   /**
-   * Toggles a Modal (has been removed) by switching isModalOpen from true to false and vice versa
-   */
     toggleModal(){
         this.setState({
           isModalOpen: !this.state.isModalOpen
       });
     }
-
-   /**
-   * Reponsible for getting a specific album's data from the database by calling handleCurrentAlbums
-   */
     handleRenderingPlaylist(data){
         //this.props.handleCurrentPlayList(data);
         this.props.handleCurrentAlbums(data)
@@ -41,11 +23,6 @@ class PopularAlbumsHomeAndNavContent extends Component {
             playListadded:true
         })
     }
-
-   /**
-   * Responsible for showing the albums in the webplayer home page
-   * @returns Components that will be displayed on the page
-   */
     render(){
         if(this.state.playListadded === true)
         {
@@ -129,9 +106,7 @@ class PopularAlbumsHomeAndNavContent extends Component {
                             <div className="col-md-12">
                                 <div >
                                     <Button className="ButtonItself"> 
-                                    <Link to="/account/overview">
                                     <svg height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
-                                    </Link>
                                     </Button>
                                 </div>
                             </div>

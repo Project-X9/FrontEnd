@@ -44,7 +44,7 @@ class SignUp extends Component {
       SignUpId:"",
       submittedFromFacebook:false,
       submittedFromSignUp:false,
-      // length:this.props.data.data.length,
+      length:this.props.data.data.length,
       Succeded:null
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -52,12 +52,7 @@ class SignUp extends Component {
     this.responseFacebook = this.responseFacebook.bind(this);
     
   }
-  /**
-   * Here i check the response from the data base if it already exist the userstate will be 
-   * equal to false else it will go the sign in page
-   */
   componentDidMount(){
-    // this.props.makeSignupRedirectable();
     this.props.resetFeedbackForm(); 
     if(this.props.userstate.userstate===true){
       this.setState({

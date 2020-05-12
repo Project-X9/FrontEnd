@@ -1,19 +1,8 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalBody } from "reactstrap";
 import { Link, Redirect } from "react-router-dom";
-/**
- * Playlists inside the webplayer home
- */
+
 class PopularNewHomeAndNavContent extends Component {
-   /**
-   *
-   * @param {Object} props
-   * @param props.data_be Essentially contains the data of the users in the database after integrating with backend
-   * @param props.isSignedIn Essentially used to check if a user is signed in or not
-   * @param props.playLists Essentially contains playlist data
-   * @param props.handleCurrentPlayList Essentially used to display playlist's data after integrating with the backend
-   * @param props.categories Essentially contains an array of categories that contain playlists
-   */
   constructor(props) {
     super(props);
     this.state = {
@@ -23,35 +12,22 @@ class PopularNewHomeAndNavContent extends Component {
     this.toggleModal = this.toggleModal.bind(this);
   }
 
-  /**
-   * Toggles a Modal (has been removed) by switching isModalOpen from true to false and vice versa
-   */
   toggleModal() {
-    alert(this.state.isModalOpen)
     this.setState({
       isModalOpen: !this.state.isModalOpen,
     });
   }
-   /**
-   * Reponsible for getting a specific playlist's data from the database by calling handleCurrentPlayList
-   */
+
   handleRenderingPlaylist(data) {
-    
     this.props.handleCurrentPlayList(data);
     this.setState({
       playListadded: true,
     });
   }
-
-  /**
-   * Responsible for showing the playlists in the webplayer home page
-   * @returns Components that will be displayed on the page
-   */
   render() {
     if (this.state.playListadded === true) {
       var redirected = <Redirect to="/webplayer/nowplay"></Redirect>;
     }
-  
     let HomeSongs = "";
     if (this.props.isSignedIn.isSignedIn === null) {
       HomeSongs = this.props.categories.categories.map((Category) => {
@@ -72,11 +48,12 @@ class PopularNewHomeAndNavContent extends Component {
             return (
               <Button
                 className="WebplayerHomeNowPlayRedirectButton"
-                onClick={() => this.handleRenderingPlaylist(CategorySongs._id)}
+                // onClick={() => this.handleRenderingPlaylist(CategorySongs._id)}
+                onClick={this.toggleModal}
               >
                 <Link
                   className="WebplayerHomeNowPlayRedirectLink"
-                  //to="/webplayer/nowplay"
+                  // to="/webplayer/nowplay"
                 >
             
                   <div key={CategorySongs._id} className="CardsHome">
@@ -114,7 +91,7 @@ class PopularNewHomeAndNavContent extends Component {
                         <div>
                           <Button
                             className="ButtonItself"
-                            onClick={this.toggleModal}
+                            // onClick={this.toggleModal}
                           >
                             <svg
                               height="16"
@@ -305,10 +282,9 @@ class PopularNewHomeAndNavContent extends Component {
     }
     return (
       <div>
-     
         {redirected}
         {HomeSongs}
-       
+          
           {/* <div className="col-sm-3 ContainerSeeAllAboveGrid">
                         <Link className="SeeAllAboveGrid">SEE ALL</Link>
                     </div> */}

@@ -2,18 +2,7 @@ import React, { Component } from "react";
 import {Button, Modal, ModalBody} from 'reactstrap';
 import {Link,Redirect} from "react-router-dom";
 
-/**
- * Artists inside the webplayer home
- */
 class PopularArtistsHomeAndNavContent extends Component {
-   /**
-   *
-   * @param {Object} props
-   * @param props.data_be Essentially contains the data of the users in the database after integrating with backend
-   * @param props.isSignedIn Essentially used to check if a user is signed in or not
-   * @param props.artist Essentially contains artist data
-   * @param props.handleCurrentArtists Essentially used to display artist's data after integrating with the backend
-   */
     constructor(props) {
         super(props);
         this.state = {
@@ -22,19 +11,12 @@ class PopularArtistsHomeAndNavContent extends Component {
         };
         this.toggleModal=this.toggleModal.bind(this);
     }
-
-   /**
-   * Toggles a Modal (has been removed) by switching isModalOpen from true to false and vice versa
-   */
     toggleModal(){
         this.setState({
           isModalOpen: !this.state.isModalOpen
       });
     }
 
-   /**
-   * Reponsible for getting a specific artist's data from the database by calling handleCurrentArtists
-   */
     handleRenderingPlaylist(data){
         //this.props.handleCurrentPlayList(data);
         this.props.handleCurrentArtists(data);
@@ -42,11 +24,6 @@ class PopularArtistsHomeAndNavContent extends Component {
             playListadded:true
         })
     }
-
-   /**
-   * Responsible for showing the artists in the webplayer home page
-   * @returns Components that will be displayed on the page
-   */
     render(){
         if(this.state.playListadded === true)
         {
@@ -99,7 +76,7 @@ class PopularArtistsHomeAndNavContent extends Component {
             isHomeArtistsSingned = this.props.data_be.data_be.artists.map((Artist)=>{
                 return(
                     <Button className="WebplayerHomeNowPlayRedirectButton" onClick={()=>this.handleRenderingPlaylist(Artist._id)}>
-                    <Link className="WebplayerHomeNowPlayRedirectLink" to="/webplayer/artist">
+                    <Link className="WebplayerHomeNowPlayRedirectLink" to="/webplayer/nowplay">
                     <div key= {Artist.id} className="CardsHome">
                         <div className="row">
                             <div className="col">
@@ -130,9 +107,7 @@ class PopularArtistsHomeAndNavContent extends Component {
                             <div className="col-md-12">
                                 <div>
                                     <Button className="ButtonItself"> 
-                                    <Link to="/account/overview">
                                     <svg height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
-                                    </Link>
                                     </Button>
                                 </div>
                             </div>

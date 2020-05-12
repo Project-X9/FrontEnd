@@ -48,7 +48,7 @@ import {
   DropdownMenu,
   DropdownItem,
   Button,
-  DropdownToggle,
+  DropdownToggle
 } from "reactstrap";
 import "./PremiumComponent.css";
 
@@ -68,68 +68,46 @@ class Premium extends Component {
       modal: false,
       isModalOpen: false,
       collapsed: true,
-      Premium: this.props.data_be.data_be.premium,
-      tempId: this.props.data_be.data_be._id,
-      isPrenium: !this.props.data_be.data_be.premium,
+      Premium: false,
+      tempId: this.props.id.id
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.togglemodal = this.togglemodal.bind(this);
-    // this.handlePremiumT = this.handlePremiumT.bind(this);
-    // this.handlePremiumF = this.handlePremiumF.bind(this);
-    this.handlePremium_be = this.handlePremium_be.bind(this);
-    this.state.handleLogout = this.handleLogout.bind(this);
+    this.handlePremiumT = this.handlePremiumT.bind(this);
+    this.handlePremiumF = this.handlePremiumF.bind(this);
   }
-  // componentDidMount(){
-  //   if(this.state.isPrenium === this.state.premium)
-  //   {  this.setState({
-  //       isPrenium:!this.state.premium
-  //     })}
-  // }
-  handleLogout() {
-    this.props.handleLogout_BE();
-  }
-  // handleData = () => {
-  //   let temp;
-  //   this.props.data.data.map(data => {
-  //     if (data.id === this.props.id.id) {
-  //       temp = data.premium;
-  //     }
-  //   });
-  //   this.setState({ Premium: temp });
-  //   return temp;
-  // };
+
+  handleData = () => {
+    let temp;
+    this.props.data.data.map(data => {
+      if (data.id === this.props.id.id) {
+        temp = data.premium;
+      }
+    });
+    this.setState({ Premium: temp });
+    return temp;
+  };
   togglemodal() {
-    // const Checker = this.handleData();
+    const Checker = this.handleData();
     const Temp = !this.state.modal;
     this.setState({ modal: Temp });
   }
   /**
    * Posts the claiming of premium membership
    */
-  // handlePremiumT() {
-  //   if (this.state.Premium === false) {
-  //     this.props.PremiumPost(this.props.id.id, true);
-  //     this.togglemodal();
-  //   }
-  // }
+  handlePremiumT() {
+    if (this.state.Premium === false) {
+      this.props.PremiumPost(this.props.id.id, true);
+      this.togglemodal();
+    }
+  }
+
   /**
    * Posts the Canceling of premium membership
    */
-  // handlePremiumF() {
-  //   if (this.state.Premium === true) {
-  //     this.props.PremiumPost(this.props.id.id, false);
-  //     this.togglemodal();
-  //   }
-  // }
-  handlePremium_be() {
+  handlePremiumF() {
     if (this.state.Premium === true) {
-      this.props.PremiumPost(this.props.data_be.data_be._id, false);
-      this.setState({ Premium: false });
-      this.togglemodal();
-    } else if (this.state.Premium === false) {
-      this.props.PremiumPost(this.props.data_be.data_be._id, true);
-      this.setState({ Premium: true });
-
+      this.props.PremiumPost(this.props.id.id, false);
       this.togglemodal();
     }
   }
@@ -139,14 +117,14 @@ class Premium extends Component {
   toggleNav() {
     this.setState({
       isNavOpen: !this.state.isNavOpen,
-      collapsed: !this.state.collapsed,
+      collapsed: !this.state.collapsed
     });
   }
 
   render() {
-    let redirect = "";
-    if (this.props.isSignedIn.isSignedIn === null) {
-      redirect = &lt;Redirect to="/signup" />;
+    let forRedirect = "";
+    if (this.props.id.id === "") {
+      forRedirect = &lt;Redirect to="/signup" />;
     }
 
     let accLogStyleParent = "";
@@ -163,11 +141,10 @@ class Premium extends Component {
     }
     return (
       &lt;div>
-        {redirect}
         &lt;div className="AccountOverviewNav">
           &lt;div className="container">
-            &lt;Navbar className="NavBar NavStyle" sticky="top" expand="md">
-              &lt;NavbarBrand className="mr-auto" href="/home">
+            &lt;Navbar className="NavBar" sticky="top" expand="md">
+              &lt;NavbarBrand className="mr-auto" href="/signup">
                 &lt;img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSBmnPgQKW4JLrNcSFhPFCLHz3t8kT1pZl0PVkLYsa8FoScWYda"
                   height="65px"
@@ -181,60 +158,27 @@ class Premium extends Component {
               >
                 ☰
               &lt;/NavbarToggler>
+
               &lt;Collapse isOpen={this.state.isNavOpen} navbar>
                 &lt;Nav navbar className="ml-auto">
                   &lt;NavItem>
-                    &lt;NavLink className="nav-link" to="/premium">
-                      Premium
+                    &lt;NavLink className="nav-link" to="/home">
+                      Home
                     &lt;/NavLink>
                   &lt;/NavItem>
                   &lt;NavItem>
-                    &lt;NavLink className="nav-link" to="/home">
+                    &lt;NavLink className="nav-link" to="/menu">
                       Help
                     &lt;/NavLink>
                   &lt;/NavItem>
                   &lt;NavItem>
-                    &lt;NavLink className="nav-link" to="/home">
+                    &lt;NavLink className="nav-link" to="/aboutus">
                       Download
                     &lt;/NavLink>
                   &lt;/NavItem>
+
                   &lt;NavItem>
-                    &lt;span className="nav-link HorizontalLine">──&lt;/span>
-                  &lt;/NavItem>
-                  &lt;NavItem>
-                    &lt;NavLink
-                      className="nav-link AccountWhenCollapsed"
-                      to="/account/overview"
-                    >
-                      Account
-                    &lt;/NavLink>
-                  &lt;/NavItem>
-                  &lt;NavItem>
-                    &lt;Button
-                      onClick={() => {
-                        this.handleLogout();
-                      }}
-                      className="nav-link LogoutWhenCollapsed"
-                    >
-                      Log out
-                    &lt;/Button>
-                  &lt;/NavItem>
-                  &lt;NavItem>
-                    &lt;NavLink className="ImageWhenCollapsed" to="/home">
-                      &lt;img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSBmnPgQKW4JLrNcSFhPFCLHz3t8kT1pZl0PVkLYsa8FoScWYda"
-                        height="25px"
-                        width="70px"
-                        alt=""
-                      />
-                    &lt;/NavLink>
-                  &lt;/NavItem>
-                  &lt;NavItem>
-                    &lt;UncontrolledDropdown
-                      nav
-                      inNavbar
-                      className="AccountOverviewDropDown"
-                    >
+                    &lt;UncontrolledDropdown nav inNavbar>
                       &lt;DropdownToggle nav caret className="seperator">
                         &lt;img
                           alt=""
@@ -243,25 +187,11 @@ class Premium extends Component {
                         />
                         Profile
                       &lt;/DropdownToggle>
-                      &lt;DropdownMenu className="StaticNav" right>
-                        &lt;DropdownItem className="StaticNavChildContainer">
-                          &lt;NavLink
-                            className="StaticNavChild1"
-                            to="/account/overview"
-                          >
-                            Account
-                          &lt;/NavLink>
+                      &lt;DropdownMenu className={accLogStyleParent} right>
+                        &lt;DropdownItem className={accChild}>
+                          &lt;NavLink to="/accountoverview">Account&lt;/NavLink>
                         &lt;/DropdownItem>
-                        &lt;DropdownItem className="StaticNavChildContainer">
-                          &lt;Button
-                            onClick={() => {
-                              this.handleLogout();
-                            }}
-                            className="StaticNavChild2"
-                          >
-                            Log out
-                          &lt;/Button>
-                        &lt;/DropdownItem>
+                        &lt;DropdownItem className={logChild}>LogOut&lt;/DropdownItem>
                       &lt;/DropdownMenu>
                     &lt;/UncontrolledDropdown>
                   &lt;/NavItem>
@@ -286,31 +216,29 @@ class Premium extends Component {
               Get Premium
             &lt;/Button>
             &lt;Modal isOpen={this.state.modal}>
-              &lt;div className="modified-content">
-                &lt;ModalHeader>Claiming Premium&lt;/ModalHeader>
-                &lt;ModalBody>
-                  Pay 5 EGP please for claiming your Premium account
-                &lt;/ModalBody>
-                &lt;ModalFooter>
-                  &lt;Button
-                    hidden={this.state.Premium}
-                    color="primary"
-                    onClick={this.handlePremium_be}
-                  >
-                    Claim{" "}
-                  &lt;/Button>
-                  &lt;Button
-                    hidden={!this.state.Premium}
-                    color="primary"
-                    onClick={this.handlePremium_be}
-                  >
-                    Cancel Premium{" "}
-                  &lt;/Button>
-                  &lt;Button color="secondary" onClick={this.togglemodal}>
-                    Cancel
-                  &lt;/Button>
-                &lt;/ModalFooter>
-              &lt;/div>
+              &lt;ModalHeader>Claiming Premium&lt;/ModalHeader>
+              &lt;ModalBody>
+                Pay 5 EGP please for claiming your Premium account
+              &lt;/ModalBody>
+              &lt;ModalFooter>
+                &lt;Button
+                  hidden={this.state.Premium}
+                  color="primary"
+                  onClick={this.handlePremiumT}
+                >
+                  Claim{" "}
+                &lt;/Button>
+                &lt;Button
+                  hidden={!this.state.Premium}
+                  color="primary"
+                  onClick={this.handlePremiumF}
+                >
+                  Cancel Premium{" "}
+                &lt;/Button>
+                &lt;Button color="secondary" onClick={this.togglemodal}>
+                  Cancel
+                &lt;/Button>
+              &lt;/ModalFooter>
             &lt;/Modal>
           &lt;/p>
         &lt;/Jumbotron>
@@ -404,13 +332,13 @@ export default Premium;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AccountOverview.html">AccountOverview</a></li><li><a href="ChangePass.html">ChangePass</a></li><li><a href="EditProfile.html">EditProfile</a></li><li><a href="FreeJumbotron.html">FreeJumbotron</a></li><li><a href="FreePlan.html">FreePlan</a></li><li><a href="Home.html">Home</a></li><li><a href="HomeNavAndContentSigned.html">HomeNavAndContentSigned</a></li><li><a href="NavbarHome.html">NavbarHome</a></li><li><a href="PopularAlbumsHomeAndNavContent.html">PopularAlbumsHomeAndNavContent</a></li><li><a href="PopularArtistsHomeAndNavContent.html">PopularArtistsHomeAndNavContent</a></li><li><a href="PopularNewHomeAndNavContent.html">PopularNewHomeAndNavContent</a></li><li><a href="Premium.html">Premium</a></li><li><a href="PremiumJumbotron.html">PremiumJumbotron</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="TopNav.html">TopNav</a></li><li><a href="WebPlayer.html">WebPlayer</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Footer">Footer</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AccountOverview.html">AccountOverview</a></li><li><a href="ChangePass.html">ChangePass</a></li><li><a href="FreeJumbotron.html">FreeJumbotron</a></li><li><a href="FreePlan.html">FreePlan</a></li><li><a href="Home.html">Home</a></li><li><a href="NavbarHome.html">NavbarHome</a></li><li><a href="Premium.html">Premium</a></li><li><a href="PremiumJumbotron.html">PremiumJumbotron</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Footer">Footer</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Sat Apr 11 2020 19:57:16 GMT+0200 (Eastern European Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Fri Mar 27 2020 23:48:15 GMT+0200 (Eastern European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

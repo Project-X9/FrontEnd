@@ -14,28 +14,18 @@ import {
 import "./NowPlay.css";
 import { NavLink, Redirect } from "react-router-dom";
 import { Loading } from "./../Loading/LoadingComponent";
-/**
- * This Component is for Displaying the playlist and following or unfollowing it
- */
 class NowPlay extends Component {
-  /**
-   *
-   * @param tempId this is for the ID of the user entered right now
-   */
   constructor(props) {
     super(props);
     this.state = {
       isNavOpen: false,
+      disabled: false,
       tempId: this.props.id.id,
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.patchFollow = this.patchFollow.bind(this);
-    this.state.handleLogout = this.handleLogout.bind(this);
     this.patchunFollow = this.patchunFollow.bind(this);
   }
-  /**
-   * isPlaylistFollowed returns if the users already follows this playlist or not
-   */
   isPlaylistFollowed() {
     const Temp = this.props.currentPlaylist.currentPlaylist.followers.find(
       (element) => element == this.props.data_be.data_be._id
@@ -45,11 +35,8 @@ class NowPlay extends Component {
     } else {
       return false;
     }
+    this.state.handleLogout = this.handleLogout.bind(this);
   }
-
-  /**
-   * patchFollow function is for following the playlist
-   */
   patchFollow() {
     if (!this.isPlaylistFollowed()) {
       this.props.patchedfollow(
@@ -58,9 +45,6 @@ class NowPlay extends Component {
       );
     }
   }
-  /**
-   * patchunFollow function is for unfollowing the playlist
-   */
   patchunFollow() {
     if (this.isPlaylistFollowed()) {
       this.props.patchedunfollow(
@@ -76,12 +60,12 @@ class NowPlay extends Component {
       collapsed: !this.state.collapsed,
     });
   }
-  /**
-   *HandleLogout is for logging out of the user (It also clears the entire storage)
-   */
+
   handleLogout() {
+    // alert(this.props.currentPlaylist.isLodaing)
     this.props.handleLogout_BE();
   }
+
   render() {
     var redirect = "";
     if (this.props.isSignedIn.isSignedIn === null) {
@@ -206,6 +190,8 @@ class NowPlay extends Component {
             </div>
           );
         }
+
+        /////////////////////////////////////////////////////////RenderSongsDone//////////////////////////////////////////////////
       }
       return (
         <div>

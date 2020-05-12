@@ -6,9 +6,7 @@ import {Link} from "react-router-dom";
 
 import "./Library.css";
 
-/**
- * the modal that appears when the user clicked the library page and he is not signed in
- */
+
 class Library extends Component {
     constructor(props){
         super(props);

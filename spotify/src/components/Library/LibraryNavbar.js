@@ -8,10 +8,7 @@ import {NavLink,Redirect} from "react-router-dom";
 
 import "./Page.css";
 
-/**
- * Renders the library navbar 
- * @param {props} props
- */
+
 class LibraryNavbar extends Component {
     constructor(props){
         super(props);
@@ -20,10 +17,6 @@ class LibraryNavbar extends Component {
         };
  
     }
-    /**
-     * handels the log out since when the user press on logout it calls the logout action
-     *  
-     */
     handleLogout(){
         this.props.handleLogout_BE();
     }

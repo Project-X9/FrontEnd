@@ -15,7 +15,7 @@ import PopularAlbumsHomeAndNavContent from "./PopularAlbumsHomeAndNavContent";
 
 
 /**
- * Home inside Webplayer page
+ * WebPlayer page
  */
 class HomeNavAndContentSigned extends Component {
  
@@ -24,17 +24,8 @@ class HomeNavAndContentSigned extends Component {
    * @param {Object} props
    * @param props.data Essentially contains the data of the users in the database
    * @param props.id Essentially contains the id of one of the users in the database
+   * @param props.playLists Essentially contains the data of the playlists in the database
    * @param props.handleLogoutId Essentially taks an id (should be an empty string) and replaces the current user id with it
-   * @param props.data_be Essentially contains the data of the users in the database after integrating with backend
-   * @param props.handleLogout_BE Essentially used to remove user id along with his other data instead of handleLogoutId
-   * @param props.isSignedIn Essentially used to check if a user is signed in or not
-   * @param props.artist Essentially contains artist data
-   * @param props.album Essentially contains album data
-   * @param props.playLists Essentially contains playlist data
-   * @param props.handleCurrentArtists Essentially used to display artists' data after integrating with the backend
-   * @param props.handleCurrentAlbums Essentially used to display albums' data after integrating with the backend
-   * @param props.handleCurrentPlayList Essentially used to display playlists' data after integrating with the backend
-   * @param props.categories Essentially contains an array of categories that contain playlists
    */
   constructor(props) {
     super(props);
@@ -55,7 +46,7 @@ class HomeNavAndContentSigned extends Component {
   }
 
   /**
-   * Responsible for showing everything on the home page inside the webplayer page
+   * Responsible for showing everything on the webplayer page
    * @returns Components that will be displayed on the page
    */
  

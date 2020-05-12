@@ -7,10 +7,7 @@ import {Link,Redirect} from "react-router-dom";
 import "./Page.css";
 import "./ArtistCard.css"
 
-/**
- * Responsiple for the rendering of the Artists the user is following in library page
- * @param {props} props
- */
+
 class Artists extends Component {
     constructor(props){
         super(props);
@@ -20,11 +17,7 @@ class Artists extends Component {
         };
         // alert(this.props.artist.artist.length)      
     }
-    /**
-     * takes the id of the artist and pass it to the function handleCurrentArtists to get the the data of that artist 
-     * to render it in the artist interface
-     * @param {String} data 
-     */
+
     handleRenderingPlaylist(data){
 
         this.props.handleCurrentArtists(data);
@@ -33,6 +26,7 @@ class Artists extends Component {
         })
     }
     render(){
+      
         if(this.state.playListadded === true)
         {
             var redirected = <Redirect to="/webplayer/nowplay"></Redirect>
@@ -62,6 +56,7 @@ class Artists extends Component {
                                 </div>
                             </div>                        
                         </div>                         
+
                     </div>                                    
                 </div>  
                 )

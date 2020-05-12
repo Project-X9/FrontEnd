@@ -8,6 +8,7 @@ import PremiumComponent from "./PremiumPage/PremuimComponent";
 import AccountOverview from "./AccountOverview/AccountOverviewComponent";
 import WebPlayer from "./WebPlayerHome/WebPlayerComponent";
 import SignIn from "./SignIn/SignInComponent";
+import PlayFotter from "./WebPlayer/PlayFotterComponent";
 import Library from "./Library/LibraryCompnent";
 
 import {
@@ -158,13 +159,10 @@ class Main extends Component {
             path="/premium"
             component={() => (
               <PremiumComponent
-                ///////////for Handling the premium membership of the user
                 PremiumPost={this.props.PremiumPost}
                 id={this.props.id}
                 data={this.props.data}
-                /////getting all the info of the user
                 data_be={this.props.data_be}
-                ///////logging of the user
                 handleLogout_BE={this.props.handleLogout_BE}
                 isSignedIn={this.props.isSignedIn}
               />
@@ -195,6 +193,7 @@ class Main extends Component {
               />
             )}
           />
+
           <Route
             path="/webplayer"
             component={() => (
@@ -222,6 +221,7 @@ class Main extends Component {
               />
             )}
           />
+
           <Route
             exact
             path="/signin"
@@ -236,6 +236,13 @@ class Main extends Component {
                 isSignedIn={this.props.isSignedIn}
                 handleSignIn_BE={this.props.handleSignIn_BE}
               />
+            )}
+          />
+          <Route
+            exact
+            path="/webplayer"
+            component={() => (
+              <PlayFotter data={this.props.data} id={this.props.id} />
             )}
           />
           <Redirect to="/signup" />
