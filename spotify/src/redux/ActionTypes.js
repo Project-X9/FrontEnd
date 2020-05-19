@@ -25,3 +25,6 @@ export const ADD_CURRENT_PLAYLIST = "ADD_CURRENT_PLAYLIST";
 export const ADD_CATEGORIES = "ADD_CATEGORIES";
 //////////////////////////////////////////////////////////
 export const CURRENT_LOADING = 'CURRENT_LOADING';
+///////////////////////////////////////////////////// PLAY FOOTER STATES
+export const CURRENT_SONG_URL = 'CURRENT_SONG_URL';
+

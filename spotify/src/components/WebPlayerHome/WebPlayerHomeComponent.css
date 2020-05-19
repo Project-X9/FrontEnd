@@ -769,4 +769,8 @@ div.WebPlayerHomeContent .DescriptionPlaylistLink
     border: none;
   }
   /***************************************************Content***************************************************/
-  
+  .playFooterFixed{
+    position: fixed;
+    bottom: 0;
+    width:100%
+  }

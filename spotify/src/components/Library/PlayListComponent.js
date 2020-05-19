@@ -29,24 +29,15 @@ class PlayList extends Component {
        
 //        }
 //    }
+handleplay(){
+alert("Played : yes")
+}
 /**
  * Takes the id of the playlist to get the data of the playlist that is going to be rendered 
  * @param {String} id 
  */
 handleRenderingPlaylist(id){
-
-    // alert(id)
-    this.props.handleCurrentPlayList(id);
-    setTimeout(() => {  console.log("World!"); }, 2000);
-    this.setState({
-        delayState: function() {
-            setTimeout(() => {
-                this.setState({
-                playListadded:true})
-            }, 2000);
-        }
-    })
-    
+    this.props.handleCurrentPlayList(id);   
 }
 render(){
     if(this.state.playListadded === true)
@@ -60,7 +51,7 @@ render(){
     {
         var RenderNoLikedplayLists=() =>{
             return(
-                <div className="NolikedLevelZero">
+            <div className="NolikedLevelZero">
                 <div className="NolikedLevelOne">
                     <div className="NolikedLevelTwo">
                         <div className="row TakeitDown">
@@ -93,7 +84,11 @@ render(){
         //make a condition if it requires in the future
         return(
 
-            <Button className="customizedButtonForOnclick" onClick={()=>this.handleRenderingPlaylist(PlayLists._id)}>
+            <Button className="customizedButtonForOnclick" onClick={()=> {
+                this.handleRenderingPlaylist(PlayLists._id);
+                this.handleplay();
+             }
+              }>
                 <Link to="/webplayer/nowplay">
             <div key= {PlayLists.id}className="CardsLibrary">
                 <Row>
@@ -130,7 +125,7 @@ render(){
                 <Row className="playButtonPlayList">
                     <Col md={12} >
                         <div>
-                            <Button className="theButtonItself"> 
+                            <Button className="theButtonItself" > 
                             <svg height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
                             </Button>
                         </div>
@@ -202,7 +197,7 @@ render(){
                                                 <Row className="playButtonOfLikedSongs">
                                                     <Col  md={12}>
                                                         <div className="displayButton">
-                                                        <Button className="PlayButton">
+                                                        <Button className="PlayButton" onClick={()=>this.handleplay}>
                                                             <Link to='/webplayer/likedplay'>
                                                             <svg height="24" role="img" width="24" viewBox="0 0 24 24">
                                                                 <polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon>

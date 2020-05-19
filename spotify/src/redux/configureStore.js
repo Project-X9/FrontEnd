@@ -16,6 +16,7 @@ import { Album } from "./Albums";
 import { SignUpState, SignInState } from "./addUser";
 import { Current } from "./CurrentPlaylist";
 import { Categories } from "./addCategories";
+import { Song } from './SongsPlay';
 
 function saveState(state) {
   try {
@@ -48,6 +49,7 @@ export const ConfigureStore = () => {
       data_be: Data_BE,
       currentPlaylist: Current,
       categories: Categories,
+      song:Song,
       // playlist_BE:PlayList_BE,
       ...createForms({
         feedback: InitialFeedback,

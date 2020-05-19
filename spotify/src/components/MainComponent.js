@@ -9,6 +9,7 @@ import AccountOverview from "./AccountOverview/AccountOverviewComponent";
 import WebPlayer from "./WebPlayerHome/WebPlayerComponent";
 import SignIn from "./SignIn/SignInComponent";
 import Library from "./Library/LibraryCompnent";
+import PlayFooter from "./PlayFooter/PlayFooter";
 
 import {
   postFeedback,
@@ -33,6 +34,7 @@ import {
   postupdatedFeedback,
   handleCurrentAlbums,
   handleCurrentArtists,
+  PlayTheFooter
 } from "../redux/ActionCreators";
 
 const mapStateToProps = (state) => ({
@@ -57,6 +59,7 @@ const mapDispatchToProps = (dispatch) => ({
   reseteditprofile: () => {
     dispatch(actions.reset("editprofie"));
   },
+  
   resetChangePasswordForm: () => {
     dispatch(actions.reset("changepassword"));
   },
@@ -109,6 +112,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(postupdatedFeedback(id, isemail, isage, isID)),
   postFacebookLogin: (email, image, name) =>
     dispatch(postFacebookLogin(email, image, name)),
+    PlayTheFooter: (songSrc) => {
+      dispatch(PlayTheFooter(songSrc));
+    },
 });
 
 class Main extends Component {
@@ -147,9 +153,9 @@ class Main extends Component {
           />
           {/* <Route
             exact
-            path="/library"
+            path="/footer"
             component={() => (
-              <Library id={this.props.id} data={this.props.data} />
+              <PlayFooter />
             )}
           /> */}
 
@@ -219,6 +225,7 @@ class Main extends Component {
                 categories={this.props.categories}
                 handleCurrentAlbums={this.props.handleCurrentAlbums}
                 handleCurrentArtists={this.props.handleCurrentArtists}
+                PlayTheFooter={this.props.PlayTheFooter}
               />
             )}
           />

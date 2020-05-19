@@ -426,4 +426,11 @@ export const PremiumPost = (id, isPremium) => (dispatch) => {
   axios.patch(`${PremiumUrl}/${id}`, data);
   // .then(response => alert(response.data.premium ));
 };
+export const PlayTheFooter = (songSrc) => (dispatch) => {
 
+ dispatch(addSongSrc(songSrc));
+};
+export const addSongSrc = (data) => ({
+  type: ActionTypes.CURRENT_SONG_URL,
+  payload: data,
+});

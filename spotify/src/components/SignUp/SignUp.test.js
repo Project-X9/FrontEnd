@@ -1,9 +1,60 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { configure,shallow } from 'enzyme';
-import { BrowserRouter as Router } from 'react-router-dom';
-import Adapter from 'enzyme-adapter-react-16';
+import { Provider } from 'react-redux';
+import renderer from 'react-test-renderer';
 import SignUp from './SignUpComponent';
+
+// import configureStore from 'redux-mock-store' //ES6 modules
+
+var { configureStore } = require('redux-mock-store') 
+var middlewares = []
+var mockStore = configureStore(middlewares)
+
+describe('My Connected React-Redux Component', () => {
+  let store;
+  let component;
+  
+  beforeEach(() => {
+    store = mockStore({
+        data: [],
+        id:'',
+        playLists: [],
+        artist: [],
+        album: [],
+        userstate: null,
+        isSignedIn: null,
+        data_be: [],
+        currentPlaylist: [],
+        categories: [],
+    });
+    component = renderer.create(
+        <Provider store={store}>
+          <SignUp />
+        </Provider>
+      );
+  });
+ 
+  it('should render with given state from Redux store', () => {
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+ 
+  it('should dispatch an action on button click', () => {
+ 
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const mockStore = configureStore();
 // it('renders without crashing', () => {
 //     const div = document.createElement('div');
 //     ReactDOM.render(<SignUp />, div);
@@ -12,23 +63,14 @@ import SignUp from './SignUpComponent';
 //     shallow(<SignUp />);
 // })
 
-configure({adapter: new Adapter()});
-describe(" testing the SignUp page",()=>{
-    let wrapper;
-    const props = { 
-        isSignedIn: {
-            isSignedIn:null,
-        },
-        userstate: {
-            userstate:null
-        }
-    }
-    beforeEach(()=> {wrapper=shallow(<SignUp {...props}/>); });
-
-    // it('includes the form that will be rendered',()=>{
-    //     // expect(wrapper.find('Form').to.have.lengthOf(1) );
-    //     const div =document.createElement('div');
-    //     ReactDOM.render(<Router><SignUp {...props}/></Router>,div);
+// configure({adapter: new Adapter()});
+// describe(" testing the SignUp page",()=>{
+//     it('includes the form that will be rendered',()=>{
+//         // expect(wrapper.find('Form').to.have.lengthOf(1) );
+//         const div =document.createElement('div');
+//         ReactDOM.render(<Router><Provider store={mockStore}>
+//             <SignUp />
+//          </Provider></Router>,div);
     
-    // })
-})
+//     })
+// })

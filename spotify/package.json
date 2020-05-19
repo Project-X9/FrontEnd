@@ -18,6 +18,7 @@
     "react-context-menu": "^3.0.2",
     "react-dom": "^16.13.0",
     "react-facebook-login": "^4.1.1",
+    "react-notifications-component": "^2.4.0",
     "react-redux": "^7.2.0",
     "react-redux-form": "^1.16.14",
     "react-router-dom": "^5.1.2",
@@ -28,7 +29,8 @@
     "redux": "^4.0.5",
     "redux-localstorage": "^0.4.1",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "superagent": "^5.2.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -61,6 +63,7 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
     "jsdoc": "^3.6.3",
+    "redux-mock-store": "^1.5.4",
     "ws": "3.3.2"
   }
 }
