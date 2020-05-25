@@ -8,6 +8,7 @@ import PremiumComponent from "./PremiumPage/PremuimComponent";
 import AccountOverview from "./AccountOverview/AccountOverviewComponent";
 import WebPlayer from "./WebPlayerHome/WebPlayerComponent";
 import SignIn from "./SignIn/SignInComponent";
+import ArtistInterface from "./ForArtists/ArtistInterfaceComponent"
 import Library from "./Library/LibraryCompnent";
 import PlayFooter from "./PlayFooter/PlayFooter";
 
@@ -59,7 +60,7 @@ const mapDispatchToProps = (dispatch) => ({
   reseteditprofile: () => {
     dispatch(actions.reset("editprofie"));
   },
-  
+
   resetChangePasswordForm: () => {
     dispatch(actions.reset("changepassword"));
   },
@@ -112,9 +113,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(postupdatedFeedback(id, isemail, isage, isID)),
   postFacebookLogin: (email, image, name) =>
     dispatch(postFacebookLogin(email, image, name)),
-    PlayTheFooter: (songSrc) => {
-      dispatch(PlayTheFooter(songSrc));
-    },
+  PlayTheFooter: (songSrc) => {
+    dispatch(PlayTheFooter(songSrc));
+  },
 });
 
 class Main extends Component {
@@ -197,7 +198,7 @@ class Main extends Component {
                 data_be={this.props.data_be}
                 handleLogout_BE={this.props.handleLogout_BE}
                 isSignedIn={this.props.isSignedIn}
-                ///////////////////////////
+              ///////////////////////////
               />
             )}
           />
@@ -242,6 +243,14 @@ class Main extends Component {
                 handleLoginId={this.props.handleLoginId}
                 isSignedIn={this.props.isSignedIn}
                 handleSignIn_BE={this.props.handleSignIn_BE}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/forartists"
+            component={() => (
+              <ArtistInterface
               />
             )}
           />

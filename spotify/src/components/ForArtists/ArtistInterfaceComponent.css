@@ -1,0 +1,49 @@
+.artist-img {
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.artist-interface {
+    background-color: #212529;
+}
+
+.sidebar {
+    background-color: #222326;
+}
+
+.sidebar a {
+    fill: var(--white);
+    color: #919496;
+    padding-left: 50px;
+    padding-right: 15px;
+    position: relative;
+    text-decoration: none;
+    background-color: #222326;
+    display: block;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: none;
+    border-radius: 0;
+    letter-spacing: 0;
+    text-transform: none;
+    box-sizing: border-box;
+    font-size: 25px;
+    list-style: none;
+    font-family: 'Courier New', Courier, monospace;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-top-width: 0.1em;
+    border-bottom-width: 0.1em;
+    border-top-color: rgb(22, 22, 21);
+    border-bottom-color: rgb(22, 22, 21);
+    line-height: 1.5;
+}
+
+.top-logo {
+    max-width: 250px;
+    height: auto;
+}
+
+.header {
+    background-color: black;
+}

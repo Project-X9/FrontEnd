@@ -261,9 +261,9 @@ class AccountOverview extends Component {
           {showPlan}
           <div className="row">
             <Button onClick={() => {
-                        this.handleLogout();
-                      }}
-                      className="EditProfile" color="success">
+              this.handleLogout();
+            }}
+              className="EditProfile" color="success">
               <NavLink className="InsideEditProfile" to="/">
                 SIGN OUT
               </NavLink>
@@ -483,7 +483,7 @@ class AccountOverview extends Component {
                   <h5 className="FooterHeader">COMMUNITIES</h5>
                   <ul>
                     <li>
-                      <Link to="/">For Artists</Link>
+                      <Link to="/forartists">For Artists</Link>
                     </li>
                     <li>
                       <Link to="/">Developers</Link>
