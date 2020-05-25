@@ -14,23 +14,34 @@ class ArtistFooter extends Component {
                         </Link>
                     </Col>
                     <Col xs="12" md="12" sm="12" lg="4">
+                        <h5 className="list-header">Useful Links</h5>
                         <ul>
                             <li className="list-element"><Link to="/home">Home</Link></li>
-                            <li className="list-element"><Link to="/home">About</Link></li>
-                        </ul>
-                    </Col>
-                    <Col xs="12" md="12" sm="12" lg="4">
-                        <ul>
+                            <li className="list-element">
+                                <Link to="/webplayer/home">Web Player</Link>
+                            </li>
+                            <li className="list-element">
+                                <Link to="/signin">Back to User</Link>
+                            </li>
                             <li className="list-element">
                                 <Link to="/home">
                                     Help
                                 </Link>
                             </li>
+                        </ul>
+                    </Col>
+                    <Col xs="12" md="12" sm="12" lg="4">
+                        <h5 className="list-header">Company</h5>
+                        <ul>
                             <li className="list-element">
-                                <Link to="/webplayer/home">Web Player</Link>
+                                <Link to="/home">
+                                    About
+                                </Link>
                             </li>
                             <li className="list-element">
-                                <Link to="/signin">Login as User</Link>
+                                <Link to="/home">
+                                    Jobs
+                                </Link>
                             </li>
                         </ul>
                     </Col>

@@ -27,3 +27,10 @@
     height: auto;
     top: 5px
 }
+
+.footer h5 {
+    text-align: center;
+    padding-left: 40px;
+    color: rgba(211, 211, 211, 0.644);
+    margin-top: 15px;
+}
