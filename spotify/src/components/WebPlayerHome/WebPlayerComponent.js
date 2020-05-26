@@ -46,164 +46,11 @@ class WebPlayer extends Component {
       tempId: this.props.id.id,
       isModalOpen: false,
       SignedIn: false,
-      // paused: true,
-      // shuffle: false,
-      // liked: false,
-      // muted: false,
-      // repeat: 0,
-      // volume: 100,
-      // seekMins: 0,
-      // seekSeconds: 0,
-      // lengthMins: 0,
-      // lengthSeconds: 0,
-      // seeking: false,
     };
-    // this.playlist = [
-    //   "http://www.hochmuth.com/mp3/Haydn_Cello_Concerto_D-1.mp3",
-    //   "http://www.hochmuth.com/mp3/Tchaikovsky_Rococo_Var_orch.mp3",
-    //   "http://www.hochmuth.com/mp3/Vivaldi_Sonata_eminor_.mp3",
-    // ];
-    // this.playlistIndex = 0;
-    // this.volumeSlider = React.createRef();
-    // this.seekSlider = React.createRef();
-    // this.url = this.playlist[this.playlistIndex];
-    // this.audio = new Audio();
-    // this.audio.src = this.url;
+    
     this.toggleModal = this.toggleModal.bind(this);
   }
-  // componentDidMount() {
-  //   this.interval = setInterval(() => this.handleTime());
-  // }
-  // componentWillUnmount() {
-  //   clearInterval(this.interval);
-  // }
-  // shuffle = (array) => {
-  //   var j, x, i;
-  //   for (i = array.length - 1; i > 0; i--) {
-  //     j = Math.floor(Math.random() * (i + 1));
-  //     x = array[i];
-  //     array[i] = array[j];
-  //     array[j] = x;
-  //   }
-  //   return array;
-  // };
-  // nextSong = () => {
-  //   if (
-  //     this.playlistIndex == this.playlist.length - 1 &&
-  //     this.state.shuffle == false
-  //   ) {
-  //     this.playlistIndex = 0;
-  //   } else if (this.state.shuffle == true) {
-  //     if (this.playlistIndex == this.playlist.length - 1)
-  //       this.playlistIndex = 0;
-  //     this.shuffle(this.playlist);
-  //     this.playlistIndex++;
-  //   } else this.playlistIndex++;
-  //   this.audio.src = this.playlist[this.playlistIndex];
-  //   if (this.state.paused == false) {
-  //     this.audio.play();
-  //   }
-  // };
-  // togglePlay = () => {
-  //   this.setState(
-  //     {
-  //       paused: !this.state.paused,
-  //     },
-  //     () => {
-  //       if (this.state.paused == false) {
-  //         this.audio.play();
-  //       } else this.audio.pause();
-  //     }
-  //   );
-  // };
-  // toggleShuffle = () => {
-  //   this.setState({
-  //     shuffle: !this.state.shuffle,
-  //   });
-  // };
-  // handleTime = () => {
-  //   this.setState({
-  //     lengthMins: Math.floor(this.audio.duration / 60),
-  //     lengthSeconds: Math.floor(
-  //       this.audio.duration - Math.floor(this.audio.duration / 60) * 60
-  //     ),
-  //     seekMins: Math.floor(this.audio.currentTime / 60),
-  //     seekSeconds: Math.floor(
-  //       this.audio.currentTime - Math.floor(this.audio.currentTime / 60) * 60
-  //     ),
-  //   });
-  // };
-  // handleSeek = () => {
-  //   if (this.state.seeking) {
-  //     this.seekSlider.current.value =
-  //       this.seekSlider.current.clientX - this.seekSlider.current.offsetLeft;
-  //     console.log(this.seekSlider.current.offsetLeft);
-  //     console.log(this.seekSlider.current.clientX);
-  //     this.audio.currentTime =
-  //       this.audio.duration * (this.seekSlider.current.value / 100);
-  //   }
-  // };
-  // handleVolume = () => {
-  //   this.setState(
-  //     {
-  //       volume: this.volumeSlider.current.value,
-  //     },
-  //     () => {
-  //       this.audio.volume = this.volumeSlider.current.value / 100;
-  //     }
-  //   );
-  // };
-  // handleMouseDown = () => {
-  //   this.setState({ seeking: !this.state.seeking }, () => {
-  //     this.handleSeek();
-  //   });
-  // };
-  // handleMouseUp = () => {
-  //   this.state.seeking = false;
-  // };
-  // toggleLiked = () => {
-  //   this.setState({
-  //     liked: !this.state.liked,
-  //   });
-  // };
-  // toggleMute = () => {
-  //   if (this.state.muted == false) {
-  //     this.setState(
-  //       {
-  //         muted: !this.state.muted,
-  //       },
-  //       () => {
-  //         this.audio.muted = true;
-  //       }
-  //     );
-  //   } else {
-  //     this.setState(
-  //       {
-  //         muted: !this.state.muted,
-  //       },
-  //       () => {
-  //         this.audio.muted = false;
-  //       }
-  //     );
-  //   }
-  // };
-  // changeRepeat = () => {
-  //   if (this.state.repeat < 2) {
-  //     this.setState(
-  //       {
-  //         repeat: this.state.repeat + 1,
-  //       },
-  //       () => {
-  //         this.audio.loop = true;
-  //       }
-  //     );
-  //   } else {
-  //     this.setState({ repeat: 0 }, () => {
-  //       this.audio.loop = false;
-  //     });
-  //   }
-  // };
-
+  
   /**
    * Toggles the Modal in the library by switching isModalOpen from true to false and vice versa
    */
@@ -358,6 +205,10 @@ class WebPlayer extends Component {
                         currentPlaylist={this.props.currentPlaylist}
                         handleCurrentAlbums={this.props.handleCurrentAlbums}
                         handleCurrentArtists={this.props.handleCurrentArtists}
+                        PlayTheFooter={this.props.PlayTheFooter}
+                        PlaySong={this.props.PlaySong}
+                        PauseSong={this.props.PauseSong}
+                        isPlaying={this.props.isPlaying}
                         // fetchPlaylistById_be={this.props.fetchPlaylistById_be}
                         // playlist_BE={this.props.playlist_BE}
                       />
@@ -380,6 +231,10 @@ class WebPlayer extends Component {
                         handleLogout_BE={this.props.handleLogout_BE}
                         patchedfollow={this.props.patchedfollow}
                         patchedunfollow={this.props.patchedunfollow}
+                        PlayTheFooter={this.props.PlayTheFooter}
+                        PlaySong={this.props.PlaySong}
+                        PauseSong={this.props.PauseSong}
+                        isPlaying={this.props.isPlaying}
                       />
                     )}
                   />
@@ -399,6 +254,10 @@ class WebPlayer extends Component {
                         ///////Handling the follow and unfollow of the users
                         patchedfollow={this.props.patchedfollow}
                         patchedunfollow={this.props.patchedunfollow}
+                        PlayTheFooter={this.props.PlayTheFooter}
+                        PlaySong={this.props.PlaySong}
+                        PauseSong={this.props.PauseSong}
+                        isPlaying={this.props.isPlaying}
                       />
                     )}
                   />
@@ -414,6 +273,10 @@ class WebPlayer extends Component {
                         currentPlaylist={this.props.currentPlaylist}
                         isSignedIn={this.props.isSignedIn}
                         handleLogout_BE={this.props.handleLogout_BE}
+                        PlayTheFooter={this.props.PlayTheFooter}
+                        PlaySong={this.props.PlaySong}
+                        PauseSong={this.props.PauseSong}
+                        isPlaying={this.props.isPlaying}
                       />
                     )}
                   />
@@ -424,7 +287,25 @@ class WebPlayer extends Component {
           </div>
         </div>
         <div className="playFooterFixed">
-              <PlayFooter />
+              <PlayFooter     
+                currentPlaylist={this.props.currentPlaylist}          
+                song={this.props.song}
+                PlaySong={this.props.PlaySong}
+                PauseSong={this.props.PauseSong}
+                isPlaying={this.props.isPlaying}
+                ChangeSongProgress={this.props.ChangeSongProgress}
+                progress={this.props.progress}
+                ChangeProgressMode={this.props.ChangeProgressMode}
+                in_set_progress_mode={this.props.in_set_progress_mode}
+                ChangeProgressDirty={this.props.ChangeProgressDirty}
+                is_progress_dirty ={this.props.is_progress_dirty}
+                PlayTheFooter={this.props.PlayTheFooter}
+                ChangeTotalTime={this.props.ChangeTotalTime}
+                ChangeCurrentTime={this.props.ChangeCurrentTime}
+                currentTime ={this.props.currentTime}
+                totalTime ={this.props.totalTime}
+
+               />
         </div>
         <Modal
           isOpen={this.state.isModalOpen}

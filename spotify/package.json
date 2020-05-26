@@ -11,6 +11,7 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "bootstrap-social": "^5.1.1",
+    "emailjs-com": "^2.4.1",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "react": "^16.13.0",

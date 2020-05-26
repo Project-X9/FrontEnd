@@ -26,5 +26,16 @@ export const ADD_CATEGORIES = "ADD_CATEGORIES";
 //////////////////////////////////////////////////////////
 export const CURRENT_LOADING = 'CURRENT_LOADING';
 ///////////////////////////////////////////////////// PLAY FOOTER STATES
+export const START_SONG = 'START_SONG';
+export const PAUSE_SONG = 'PAUSE_SONG';
 export const CURRENT_SONG_URL = 'CURRENT_SONG_URL';
+export const CHANGE_SONG_PROGRESS = 'CHANGE_SONG_PROGRESS';
+export const CHANGE_PROGRESS_Mode = 'CHANGE_PROGRESS_Mode';
+export const CHANGE_PROGRESS_Dirty = 'CHANGE_PROGRESS_Dirty';
+
+export const CURRENT_TIME = 'CURRENT_TIME';
+export const TOTAL_TIME = 'TOTAL_TIME';
+
+
+
 

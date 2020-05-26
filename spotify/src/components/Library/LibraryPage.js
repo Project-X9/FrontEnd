@@ -55,6 +55,11 @@ class LibraryPage extends Component {
                         handleCurrentPlayList={this.props.handleCurrentPlayList}
                         isSignedIn={this.props.isSignedIn}
                         currentPlaylist={this.props.currentPlaylist}
+                        PlayTheFooter={this.props.PlayTheFooter}
+                        PlaySong={this.props.PlaySong}
+                        PauseSong={this.props.PauseSong}
+                        isPlaying={this.props.isPlaying}
+        
                         />
                       )} />
                    <Route
@@ -68,6 +73,11 @@ class LibraryPage extends Component {
                         isSignedIn={this.props.isSignedIn}
                         currentPlaylist={this.props.currentPlaylist}
                         handleCurrentAlbums={this.props.handleCurrentAlbums}
+                        PlayTheFooter={this.props.PlayTheFooter}
+                        PlaySong={this.props.PlaySong}
+                        PauseSong={this.props.PauseSong}
+                        isPlaying={this.props.isPlaying}
+        
                         />
                       )} />
                     <Route
@@ -81,6 +91,11 @@ class LibraryPage extends Component {
                         handleCurrentArtists={this.props.handleCurrentArtists}
                         isSignedIn={this.props.isSignedIn}
                         currentPlaylist={this.props.currentPlaylist}
+                        PlayTheFooter={this.props.PlayTheFooter}
+                        PlaySong={this.props.PlaySong}
+                        PauseSong={this.props.PauseSong}
+                        isPlaying={this.props.isPlaying}
+        
                         />
                       )} />
                 </Switch>

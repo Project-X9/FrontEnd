@@ -34,7 +34,14 @@ import {
   postupdatedFeedback,
   handleCurrentAlbums,
   handleCurrentArtists,
-  PlayTheFooter
+  PlayTheFooter,
+  PlaySong,
+  PauseSong,
+  ChangeSongProgress,
+  ChangeProgressMode,
+  ChangeProgressDirty,
+  ChangeTotalTime,
+  ChangeCurrentTime
 } from "../redux/ActionCreators";
 
 const mapStateToProps = (state) => ({
@@ -48,6 +55,13 @@ const mapStateToProps = (state) => ({
   data_be: state.data_be,
   currentPlaylist: state.currentPlaylist,
   categories: state.categories,
+  song:state.song,
+  isPlaying:state.isPlaying,
+  progress:state.progress,
+  in_set_progress_mode:state.in_set_progress_mode,
+  is_progress_dirty:state.is_progress_dirty,
+  currentTime:state.currentTime,
+  totalTime:state.totalTime,
 });
 const mapDispatchToProps = (dispatch) => ({
   resetFeedbackForm: () => {
@@ -59,7 +73,6 @@ const mapDispatchToProps = (dispatch) => ({
   reseteditprofile: () => {
     dispatch(actions.reset("editprofie"));
   },
-  
   resetChangePasswordForm: () => {
     dispatch(actions.reset("changepassword"));
   },
@@ -112,9 +125,32 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(postupdatedFeedback(id, isemail, isage, isID)),
   postFacebookLogin: (email, image, name) =>
     dispatch(postFacebookLogin(email, image, name)),
-    PlayTheFooter: (songSrc) => {
-      dispatch(PlayTheFooter(songSrc));
+  PlayTheFooter: (songSrc) => {
+    dispatch(PlayTheFooter(songSrc));
     },
+  PlaySong: () => {
+  dispatch(PlaySong());
+  },
+  PauseSong: () => {
+  dispatch(PauseSong());
+  },
+  ChangeSongProgress: (progress) => {
+    dispatch(ChangeSongProgress(progress));
+    }
+  ,
+  ChangeProgressMode: (progressMode) => {
+  dispatch(ChangeProgressMode(progressMode));
+  },
+  ChangeProgressDirty: (progressDirty) => {
+    dispatch(ChangeProgressDirty(progressDirty));
+    }       
+    ,
+  ChangeTotalTime: (time) => {
+    dispatch(ChangeTotalTime(time));
+  },
+  ChangeCurrentTime: (time) => {
+    dispatch(ChangeCurrentTime(time));
+    }    
 });
 
 class Main extends Component {
@@ -123,7 +159,6 @@ class Main extends Component {
     this.props.fetchUserPlaylist();
     this.props.fetchArtist();
     this.props.fetchAlbum();
-    this.props.handleCurrentPlayList();
   }
 
   render() {
@@ -226,6 +261,21 @@ class Main extends Component {
                 handleCurrentAlbums={this.props.handleCurrentAlbums}
                 handleCurrentArtists={this.props.handleCurrentArtists}
                 PlayTheFooter={this.props.PlayTheFooter}
+                song={this.props.song}
+                PlaySong={this.props.PlaySong}
+                PauseSong={this.props.PauseSong}
+                isPlaying={this.props.isPlaying}
+                ChangeSongProgress={this.props.ChangeSongProgress}
+                progress={this.props.progress}
+                ChangeProgressMode={this.props.ChangeProgressMode}
+                in_set_progress_mode={this.props.in_set_progress_mode}
+                ChangeProgressDirty={this.props.ChangeProgressDirty}
+                is_progress_dirty ={this.props.is_progress_dirty}
+                ChangeTotalTime={this.props.ChangeTotalTime}
+                ChangeCurrentTime={this.props.ChangeCurrentTime}
+                currentTime ={this.props.currentTime}
+                totalTime ={this.props.totalTime}
+                
               />
             )}
           />
@@ -242,6 +292,7 @@ class Main extends Component {
                 handleLoginId={this.props.handleLoginId}
                 isSignedIn={this.props.isSignedIn}
                 handleSignIn_BE={this.props.handleSignIn_BE}
+                
               />
             )}
           />

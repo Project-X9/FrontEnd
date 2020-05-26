@@ -16,7 +16,9 @@ import { Album } from "./Albums";
 import { SignUpState, SignInState } from "./addUser";
 import { Current } from "./CurrentPlaylist";
 import { Categories } from "./addCategories";
-import { Song } from './SongsPlay';
+import { Song, CurrentTime,TotalTime } from './PlayFooterStuff/SongsPlay';
+import { SongState } from './PlayFooterStuff/SongState';
+import { SongProgress, ProgressMode ,ProgressDirty} from './PlayFooterStuff/SongProgress';
 
 function saveState(state) {
   try {
@@ -50,6 +52,12 @@ export const ConfigureStore = () => {
       currentPlaylist: Current,
       categories: Categories,
       song:Song,
+      isPlaying:SongState,
+      progress:SongProgress,
+      in_set_progress_mode:ProgressMode,
+      is_progress_dirty:ProgressDirty,
+      currentTime:CurrentTime,
+      totalTime:TotalTime,
       // playlist_BE:PlayList_BE,
       ...createForms({
         feedback: InitialFeedback,

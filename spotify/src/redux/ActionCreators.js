@@ -427,10 +427,90 @@ export const PremiumPost = (id, isPremium) => (dispatch) => {
   // .then(response => alert(response.data.premium ));
 };
 export const PlayTheFooter = (songSrc) => (dispatch) => {
-
  dispatch(addSongSrc(songSrc));
+//  dispatch(Play());
+
 };
 export const addSongSrc = (data) => ({
   type: ActionTypes.CURRENT_SONG_URL,
   payload: data,
 });
+
+export const PlaySong = () => (dispatch) => {
+  dispatch(Play());
+ };
+ export const Play = () => ({
+   type: ActionTypes.START_SONG
+ });
+
+ export const PauseSong = () => (dispatch) => {
+  dispatch(Pause());
+ };
+ export const Pause = () => ({
+   type: ActionTypes.PAUSE_SONG
+ });
+
+ export const ChangeSongProgress = (progress) => (dispatch) => {
+  dispatch(songProgress(progress));
+ };
+ export const songProgress = (data) => ({
+   type: ActionTypes.CHANGE_SONG_PROGRESS,
+   payload: data,
+ });
+
+ export const ChangeProgressMode = (progress_mode) => (dispatch) => {
+  dispatch(progressMode(progress_mode));
+ };
+ export const progressMode = (data) => ({
+   type: ActionTypes.CHANGE_PROGRESS_Mode,
+   payload: data,
+ });
+
+ export const ChangeProgressDirty = (progress_dirty) => (dispatch) => {
+  dispatch(progressDirty(progress_dirty));
+ };
+ export const progressDirty = (data) => ({
+   type: ActionTypes.CHANGE_PROGRESS_Dirty,
+   payload: data,
+ });
+ 
+
+
+
+
+ export const ChangeTotalTime = (time) => (dispatch) => {
+  dispatch(totalTime(time));
+ };
+ export const totalTime = (data) => ({
+   type: ActionTypes.TOTAL_TIME,
+   payload: data,
+ }); export const ChangeCurrentTime = (time) => (dispatch) => {
+  dispatch(currentTime(time));
+ };
+ export const currentTime = (data) => ({
+   type: ActionTypes.CURRENT_TIME,
+   payload: data,
+ });
+
+
+ function startTimer(baseTime = 0) {
+  return {
+    type: "START_TIMER",
+    baseTime: baseTime,
+    now: new Date().getTime()
+  };
+}
+
+function stopTimer() {
+  return {
+    type: "STOP_TIMER",
+    now: new Date().getTime()
+  };
+}
+
+function resetTimer() {
+  return {
+    type: "RESET_TIMER",
+    now: new Date().getTime()
+  }
+}

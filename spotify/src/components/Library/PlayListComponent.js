@@ -30,7 +30,10 @@ class PlayList extends Component {
 //        }
 //    }
 handleplay(){
-alert("Played : yes")
+    if(this.props.currentPlaylist.currentPlaylist.tracks)
+    {
+    this.props.PlayTheFooter(this.props.currentPlaylist.currentPlaylist.tracks[0])
+    }
 }
 /**
  * Takes the id of the playlist to get the data of the playlist that is going to be rendered 
@@ -72,7 +75,6 @@ render(){
                             </div>
                         </div>                        
                     </div>                         
-
                 </div>                                    
             </div>  
 
