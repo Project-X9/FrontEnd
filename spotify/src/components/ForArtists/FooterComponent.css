@@ -25,12 +25,12 @@
 .logo {
     max-width: 130px;
     height: auto;
-    top: 5px
+    top: 15px;
 }
 
 .footer h5 {
     text-align: center;
     padding-left: 40px;
     color: rgba(211, 211, 211, 0.644);
-    margin-top: 15px;
+    margin-top: 30px;
 }
