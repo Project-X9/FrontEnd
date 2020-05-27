@@ -121,7 +121,7 @@ class WebPlayer extends Component {
     let showLikeAndCreate = (
       <div>
         <h3 className="sidebarHeaderBetween">PLAYLISTS</h3>
-        <Link to="/" className={createPlaylistsActive}>
+        <Link to="/" className={createPlaylistsActive} onClick={()=>this.test()}>
           <i className="fa fa-plus-square"></i>
           Create Playlist
         </Link>

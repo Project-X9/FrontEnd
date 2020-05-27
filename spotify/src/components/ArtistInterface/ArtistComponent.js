@@ -1,7 +1,7 @@
 import React, { Component, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 //import NavbarHome from "./NavbarComponent";
-import "./Artist.css";
+// import "./Artist.css";
 import Artists from "../Library/ArtistsComponent";
 import LibraryNavbar from "../Library/LibraryNavbar";
 import { Loading } from "./../Loading/LoadingComponent";
