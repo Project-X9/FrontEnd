@@ -1,0 +1,36 @@
+.footer {
+    background-color: black;
+}
+
+.footer ul {
+    list-style-type: none;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.footer ul li a {
+    color: white;
+    font-size: 13px;
+}
+
+.footer ul li {
+    margin-top: 10px;
+}
+
+.footer ul li a:hover {
+    text-decoration: none;
+    color: #1ed760;
+}
+
+.logo {
+    max-width: 130px;
+    height: auto;
+    top: 15px;
+}
+
+.footer h5 {
+    text-align: center;
+    padding-left: 40px;
+    color: rgba(211, 211, 211, 0.644);
+    margin-top: 30px;
+}

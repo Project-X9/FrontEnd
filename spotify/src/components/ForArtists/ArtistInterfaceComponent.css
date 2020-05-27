@@ -1,0 +1,184 @@
+.artist-img {
+    max-width: 150px;
+    max-height: 150px;
+    margin-top: 15px;
+}
+
+.artist-interface {
+    background-color: #212529;
+}
+
+.sidebar {
+    background-color: #222326;
+    height: inherit;
+}
+
+.sidebar-col {
+    background-color: #222326;
+}
+
+.top-logo {
+    margin: 10px;
+}
+
+.sidebar Button {
+    fill: var(--white);
+    color: #919496;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+    text-decoration: none;
+    background-color: #222326;
+    display: block;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: none;
+    border-radius: 0;
+    letter-spacing: 0;
+    text-transform: none;
+    box-sizing: border-box;
+    font-size: 18px;
+    list-style: none;
+    font-family: 'Courier New', Courier, monospace;
+    border-style: none;
+    line-height: 1.5;
+    margin: 15px;
+    outline: none;
+    margin-left: 25%;
+}
+
+.sidebar Button:hover {
+    fill: var(--white);
+    color: #919496;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+    text-decoration: none;
+    background-color: #222326;
+    display: block;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: none;
+    border-radius: 0;
+    letter-spacing: 0;
+    text-transform: none;
+    box-sizing: border-box;
+    font-size: 18px;
+    list-style: none;
+    font-family: 'Courier New', Courier, monospace;
+    border-style: none;
+    line-height: 1.5;
+    margin: 15px;
+    margin-left: 25%;
+}
+
+.sidebar Button:enabled {
+    fill: var(--white);
+    color: #919496;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+    text-decoration: none;
+    background-color: #222326;
+    display: block;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: none;
+    border-radius: 0;
+    letter-spacing: 0;
+    text-transform: none;
+    box-sizing: border-box;
+    font-size: 18px;
+    list-style: none;
+    font-family: 'Courier New', Courier, monospace;
+    border-style: none;
+    line-height: 1.5;
+    margin: 15px;
+    margin-left: 25%;
+}
+
+.sidebar Button .sidebar i:hover {
+    cursor: pointer;
+}
+
+.top-logo {
+    max-width: 250px;
+    height: auto;
+    max-height: 50px;
+}
+
+.header {
+    background-color: black;
+}
+
+.song-title,
+.song-duration,
+.song-info,
+.album-title,
+.album-header {
+    color: lightgray;
+}
+
+.album-header {
+    margin-top: 15px;
+    text-align: left;
+    margin-left: 13px;
+}
+
+@media(max-width:991px) {
+    .album-header {
+        text-align: center;
+        margin: auto;
+    }
+}
+
+.album-title,
+.song-title,
+.song-duration {
+    margin-left: 30px;
+}
+
+.song-img,
+.album-img {
+    margin: 15px;
+    cursor: pointer;
+}
+
+.edit-btn,
+.back-btn {
+    margin: 15px;
+}
+
+.bio-header,
+.name-header,
+.email-header,
+.songs-header,
+.albums-header {
+    color: lightgray;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.email,
+.bio,
+.name,
+.songs-count,
+.albums-count {
+    color: lightgray;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.row-area {
+    border: 1px solid whitesmoke;
+    padding: 10px;
+    border-radius: 20px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.profile-header {
+    color: lightgray;
+    text-align: left;
+    margin-top: 15px;
+}
