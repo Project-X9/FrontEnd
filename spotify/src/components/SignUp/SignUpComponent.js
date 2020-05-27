@@ -92,70 +92,41 @@ class SignUp extends Component {
  * @param {Object} values 
  */
   handleSubmit(values) {
-    // const { email, confirmEmail } = this.state;
-    // console.log(`Current State :${JSON.stringify(values)}`);
     this.props.resetFeedbackForm();
-    // let temp=this.handleExcistance(values.email)
-    // if(temp)
-    // {
-    //   this.setState({
-    //     existBefore:true
-    //   })
-    //   this.props.resetFeedbackForm();
 
-    // }
-
-    var email = require("emailjs-com");
-
-    var server = email.server.connect({
-      user: 'ahahmed202025@gmail.com',
-      password: '01002112494',
-      host:    "smtp.gmail.com",
-      ssl: true
-    });
-    
-    server.send({
-      text: 'Hey howdy',
-      from: 'NodeJS',
-      to: 'Wilson <ahmedhashish@ymail.com>',
-      cc: '',
-      subject: 'Greetings'
-    }, function (err, message) {
-      console.log(err || message);
-    });
-  //  if (
-  //     values.email !== "" &&
-  //     values.confirmemail !== "" &&
-  //     values.password !== "" &&
-  //     values.name !== "" &&
-  //     values.day !== "" &&
-  //     values.month !== "" &&
-  //     values.year !== "" &&
-  //     values.sex !== ""
-  //   ) {
-  //     this.setState({
-  //       // submittedFromSignUp:true,
-  //       // submitted: true,
-  //       // SignUpId:this.props.data.data.length+1
-  //     },()=>{
-  //       this.props.resetFeedbackForm();
-  //        this.state.Succeded=this.props.postFeedback( //the function that posts the user data
-  //         values.email,
-  //         values.confirmemail,
-  //         values.password,
-  //         values.name,
-  //         values.day,
-  //         values.month,
-  //         values.year,
-  //         values.sex
-  //       );
+   if (
+      values.email !== "" &&
+      values.confirmemail !== "" &&
+      values.password !== "" &&
+      values.name !== "" &&
+      values.day !== "" &&
+      values.month !== "" &&
+      values.year !== "" &&
+      values.sex !== ""
+    ) {
+      this.setState({
+        // submittedFromSignUp:true,
+        // submitted: true,
+        // SignUpId:this.props.data.data.length+1
+      },()=>{
+        this.props.resetFeedbackForm();
+         this.state.Succeded=this.props.postFeedback( //the function that posts the user data
+          values.email,
+          values.confirmemail,
+          values.password,
+          values.name,
+          values.day,
+          values.month,
+          values.year,
+          values.sex
+        );
        
-  //     }
-  //     );
-  //   } 
-  //   else {
-  //     this.props.resetFeedbackForm();
-  //   }
+      }
+      );
+    } 
+    else {
+      this.props.resetFeedbackForm();
+    }
   //   //  this.props.history.push("/premium")
   }
   /**
