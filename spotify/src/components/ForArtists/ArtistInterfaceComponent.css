@@ -8,12 +8,12 @@
     background-color: #212529;
 }
 
-.sidebar {
+.sidebar-area {
     background-color: #222326;
     height: inherit;
 }
 
-.sidebar-col {
+.sidebar-area-col {
     background-color: #222326;
 }
 
@@ -21,7 +21,7 @@
     margin: 10px;
 }
 
-.sidebar Button {
+.sidebar-area Button {
     fill: var(--white);
     color: #919496;
     padding-left: 15px;
@@ -47,7 +47,7 @@
     margin-left: 25%;
 }
 
-.sidebar Button:hover {
+.sidebar-area Button:hover {
     fill: var(--white);
     color: #919496;
     padding-left: 15px;
@@ -72,7 +72,7 @@
     margin-left: 25%;
 }
 
-.sidebar Button:enabled {
+.sidebar-area Button:enabled {
     fill: var(--white);
     color: #919496;
     padding-left: 15px;
@@ -97,7 +97,7 @@
     margin-left: 25%;
 }
 
-.sidebar Button .sidebar i:hover {
+.sidebar-area Button .sidebar-area i:hover {
     cursor: pointer;
 }
 
@@ -141,6 +141,9 @@
 .song-img,
 .album-img {
     margin: 15px;
+}
+
+.album-img {
     cursor: pointer;
 }
 
