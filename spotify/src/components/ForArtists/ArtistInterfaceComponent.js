@@ -44,8 +44,8 @@ class ArtistInterface extends Component {
                         </Col>
                     </Row>
                     <Row className="m-auto">
-                        <Col className="sidebar-col" xs="12" sm="12" md="12" lg="4">
-                            <div className="sidebar">
+                        <Col className="sidebar-area-col" xs="12" sm="12" md="12" lg="4">
+                            <div className="sidebar-area">
                                 <Link className="AppearBig">
                                     <img src="https://res.cloudinary.com/dyki04uxl/image/upload/v1590425257/G7qS7TVN_400x400_ic5jm9.jpg" alt="your-image" className="artist-img rounded-circle img-fluid" />
                                 </Link>
