@@ -106,30 +106,30 @@ class AccountOverview extends Component {
       changePasswordActive = "";
       recoverPlaylistsActive = "";
       redeemActive = "";
-      reviewNotificationsActive="";
+      reviewNotificationsActive = "";
     } else if (currentURL === baseUrl2 + "account/edit") {
       overviewActive = "";
       editProfileActive = "active";
       changePasswordActive = "";
       recoverPlaylistsActive = "";
       redeemActive = "";
-      reviewNotificationsActive="";
+      reviewNotificationsActive = "";
     } else if (currentURL === baseUrl2 + "account/changepassword") {
       overviewActive = "";
       editProfileActive = "";
       changePasswordActive = "active";
       recoverPlaylistsActive = "";
       redeemActive = "";
-      reviewNotificationsActive="";
+      reviewNotificationsActive = "";
     } else if (currentURL === baseUrl2 + "account/notifications") {
       overviewActive = "";
       editProfileActive = "";
       changePasswordActive = "";
       recoverPlaylistsActive = "";
       redeemActive = "";
-      reviewNotificationsActive="active";
+      reviewNotificationsActive = "active";
     }
-    
+
 
     let redirect = "";
     if (this.props.isSignedIn.isSignedIn === null) {
@@ -434,7 +434,7 @@ class AccountOverview extends Component {
                     Redeem
                   </Link>
                   <Link to="/account/notifications" className={reviewNotificationsActive}>
-                  <i className="fa fa-bell" />
+                    <i className="fa fa-bell" />
                     Notifications
                   </Link>
                 </div>
@@ -514,7 +514,7 @@ class AccountOverview extends Component {
                   <h5 className="FooterHeader">COMMUNITIES</h5>
                   <ul>
                     <li>
-                      <Link to="/forartists">For Artists</Link>
+                      <Link to="/forartists/profile">For Artists</Link>
                     </li>
                     <li>
                       <Link to="/">Developers</Link>

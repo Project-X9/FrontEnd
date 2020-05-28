@@ -9,6 +9,7 @@ import AccountOverview from "./AccountOverview/AccountOverviewComponent";
 import WebPlayer from "./WebPlayerHome/WebPlayerComponent";
 import SignIn from "./SignIn/SignInComponent";
 import ArtistInterface from "./ForArtists/ArtistInterfaceComponent"
+import "./ForArtists/ArtistInterfaceComponent.css";
 import Library from "./Library/LibraryCompnent";
 import PlayFooter from "./PlayFooter/PlayFooter";
 
@@ -44,6 +45,8 @@ import {
   ChangeTotalTime,
   ChangeCurrentTime
 } from "../redux/ActionCreators";
+import MyAlbums from "./ForArtists/MyAlbumsComponent";
+import MySongs from "./ForArtists/MySongsComponent";
 
 const mapStateToProps = (state) => ({
   data: state.data,
@@ -56,13 +59,13 @@ const mapStateToProps = (state) => ({
   data_be: state.data_be,
   currentPlaylist: state.currentPlaylist,
   categories: state.categories,
-  song:state.song,
-  isPlaying:state.isPlaying,
-  progress:state.progress,
-  in_set_progress_mode:state.in_set_progress_mode,
-  is_progress_dirty:state.is_progress_dirty,
-  currentTime:state.currentTime,
-  totalTime:state.totalTime,
+  song: state.song,
+  isPlaying: state.isPlaying,
+  progress: state.progress,
+  in_set_progress_mode: state.in_set_progress_mode,
+  is_progress_dirty: state.is_progress_dirty,
+  currentTime: state.currentTime,
+  totalTime: state.totalTime,
 });
 const mapDispatchToProps = (dispatch) => ({
   resetFeedbackForm: () => {
@@ -128,30 +131,30 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(postFacebookLogin(email, image, name)),
   PlayTheFooter: (songSrc) => {
     dispatch(PlayTheFooter(songSrc));
-    },
+  },
   PlaySong: () => {
-  dispatch(PlaySong());
+    dispatch(PlaySong());
   },
   PauseSong: () => {
-  dispatch(PauseSong());
+    dispatch(PauseSong());
   },
   ChangeSongProgress: (progress) => {
     dispatch(ChangeSongProgress(progress));
-    }
+  }
   ,
   ChangeProgressMode: (progressMode) => {
-  dispatch(ChangeProgressMode(progressMode));
+    dispatch(ChangeProgressMode(progressMode));
   },
   ChangeProgressDirty: (progressDirty) => {
     dispatch(ChangeProgressDirty(progressDirty));
-    }       
-    ,
+  }
+  ,
   ChangeTotalTime: (time) => {
     dispatch(ChangeTotalTime(time));
   },
   ChangeCurrentTime: (time) => {
     dispatch(ChangeCurrentTime(time));
-    }    
+  }
 });
 
 class Main extends Component {
@@ -271,12 +274,12 @@ class Main extends Component {
                 ChangeProgressMode={this.props.ChangeProgressMode}
                 in_set_progress_mode={this.props.in_set_progress_mode}
                 ChangeProgressDirty={this.props.ChangeProgressDirty}
-                is_progress_dirty ={this.props.is_progress_dirty}
+                is_progress_dirty={this.props.is_progress_dirty}
                 ChangeTotalTime={this.props.ChangeTotalTime}
                 ChangeCurrentTime={this.props.ChangeCurrentTime}
-                currentTime ={this.props.currentTime}
-                totalTime ={this.props.totalTime}
-                
+                currentTime={this.props.currentTime}
+                totalTime={this.props.totalTime}
+
               />
             )}
           />
@@ -293,12 +296,11 @@ class Main extends Component {
                 handleLoginId={this.props.handleLoginId}
                 isSignedIn={this.props.isSignedIn}
                 handleSignIn_BE={this.props.handleSignIn_BE}
-                
+
               />
             )}
           />
           <Route
-            exact
             path="/forartists"
             component={() => (
               <ArtistInterface

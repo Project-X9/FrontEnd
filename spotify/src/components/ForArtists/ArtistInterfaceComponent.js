@@ -1,32 +1,25 @@
 import React, { Component } from "react";
 import { Row, Col, Button, Container } from "reactstrap";
-import { Link } from "react-router-dom";
-import ArtistFooter from "./FooterComponent";
+import { Link, Switch, Route, Redirect } from "react-router-dom";
 import "./ArtistInterfaceComponent.css";
 import ArtistProfile from "./ArtistProfileComponent";
 import MyAlbums from "./MyAlbumsComponent";
 import MySongs from "./MySongsComponent";
+import ArtistFooter from "./FooterComponent";
+import AlbumDescription from "./AlbumDescriptionComponent";
+import EditAlbumsComponent from "./EditAlbumsComponent";
+import AddAlbum from "./AddAlbumComponent";
+import EditAlbum from "./EditAlbumFormComponent";
+import EditSongs from "./EditSongsComponent";
+import EditSongsForm from "./EditSongsFormComponent";
+import AddSong from "./AddSongsComponent";
+import EditArtistProfile from "./EditProfileComponent";
 class ArtistInterface extends Component {
     constructor(props) {
         super(props);
         this.state = {
             active: "profile"
         }
-    }
-    showArtistProfile = () => {
-        this.setState({
-            active: "profile"
-        });
-    }
-    showArtistSongs = () => {
-        this.setState({
-            active: "songs"
-        });
-    }
-    showArtistAlbums = () => {
-        this.setState({
-            active: "albums"
-        });
     }
 
     render() {
@@ -46,32 +39,99 @@ class ArtistInterface extends Component {
                     <Row className="m-auto">
                         <Col className="sidebar-area-col" xs="12" sm="12" md="12" lg="4">
                             <div className="sidebar-area">
-                                <Link className="AppearBig">
+                                <Link className="AppearBig" to="forartists/profile">
                                     <img src="https://res.cloudinary.com/dyki04uxl/image/upload/v1590425257/G7qS7TVN_400x400_ic5jm9.jpg" alt="your-image" className="artist-img rounded-circle img-fluid" />
                                 </Link>
-                                <Button onClick={this.showArtistProfile}>
-                                    <i className="fa fa-home"> My Profile</i>
+                                <Button>
+                                    <Link to="/forartists/profile" >
+                                        <i className="fa fa-home"> My Profile</i>
+                                    </Link>
                                 </Button>
-                                <Button onClick={this.showArtistSongs}>
-                                    <i className="fa fa-music"> My Songs</i>
+                                <Button>
+                                    <Link to="/forartists/songs">
+                                        <i className="fa fa-music"> My Songs</i>
+                                    </Link>
                                 </Button>
-                                <Button onClick={this.showArtistAlbums}>
-                                    <i className="fa fa-bars"> My Albums</i>
+                                <Button>
+                                    <Link to="/forartists/albums">
+                                        <i className="fa fa-bars"> My Albums</i>
+                                    </Link>
                                 </Button>
                             </div>
                         </Col>
                         <Col xs="12" sm="12" md="12" lg="8">
-                            {this.state.active == "profile" ?
-                                <ArtistProfile />
+                            <Switch>
+                                <Route
+                                    exact
+                                    path="/forartists/profile"
+                                    component={() => <ArtistProfile />}
+                                />
 
-                                : this.state.active == "songs" ?
-                                    <MySongs />
-                                    :
-                                    <MyAlbums />}
+                                <Route
+                                    exact
+                                    path="/forartists/songs"
+                                    component={() => <MySongs />}
+                                />
+
+                                <Route
+                                    exact
+                                    path="/forartists/albums"
+                                    component={() => <MyAlbums />}
+                                />
+
+                                <Route
+                                    exact
+                                    path="/forartists/albums/description"
+                                    component={() => <AlbumDescription />}
+                                />
+
+                                <Route
+                                    exact
+                                    path="/forartists/albums/edit"
+                                    component={() => <EditAlbumsComponent />}
+                                />
+
+                                <Route
+                                    exact
+                                    path="/forartists/albums/add"
+                                    component={() => <AddAlbum />}
+                                />
+
+                                <Route
+                                    exact
+                                    path="/forartists/albums/edit/form"
+                                    component={() => <EditAlbum />}
+                                />
+
+                                <Route
+                                    exact
+                                    path="/forartists/songs/edit"
+                                    component={() => <EditSongs />}
+                                />
+
+                                <Route
+                                    exact
+                                    path="/forartists/songs/edit/form"
+                                    component={() => <EditSongsForm />}
+                                />
+
+                                <Route
+                                    exact
+                                    path="/forartists/songs/add"
+                                    component={() => <AddSong />}
+                                />
+
+                                <Route
+                                    exact
+                                    path="/forartists/profile/edit"
+                                    component={() => <EditArtistProfile />}
+                                />
+                                <Redirect to="/forartists/profile" />
+                            </Switch>
                         </Col>
                     </Row>
+                    <ArtistFooter />
                 </Container>
-                <ArtistFooter />
             </div>
         );
     }

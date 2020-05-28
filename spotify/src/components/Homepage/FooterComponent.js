@@ -38,7 +38,7 @@ function Footer(props) {
               <h5 className="FooterHeader">COMMUNITIES</h5>
               <ul>
                 <li className="FooterElement">
-                  <Link to="/forartists">For Artists</Link>
+                  <Link to="/forartists/profile">For Artists</Link>
                 </li>
                 <li className="FooterElement">
                   <a href="http://google.com">Developers</a>
