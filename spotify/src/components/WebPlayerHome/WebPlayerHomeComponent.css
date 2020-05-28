@@ -18,12 +18,14 @@
   
   .WebPlayerHomeBody .sidebar {
     text-align:left;
+    margin-bottom:100px;
   }
 
   .WebPlayerHomeBody .sidebar .fa.fa-home,
   .WebPlayerHomeBody .sidebar .fa.fa-search,
   .WebPlayerHomeBody .sidebar .fa.fa-bomb,
   .WebPlayerHomeBody .sidebar .fa.fa-plus-square,
+  .WebPlayerHomeBody .sidebar .fa.fa-music,
   .WebPlayerHomeBody .sidebar .fa.fa-heart
   {
     margin-right:1.5em;
@@ -183,7 +185,7 @@
 
   div.WebPlayerHomeNav div.container .nav-link.SpecificallyForTheButton {
     color: white;
-    margin-top: -14px;
+    margin-top: 0px;
     margin-left: 0;
   }
 
@@ -459,6 +461,16 @@
     min-height: 0;
     margin: 0 10px;
     margin-bottom:2em;
+  }
+
+  div.WebPlayerHomeContent .AlbumsGridView{
+    display: grid;
+    grid-gap: 16px;
+    grid-template-columns: repeat(auto-fill,minmax(164px,1fr));
+    grid-auto-rows: 1fr;
+    min-height: 0;
+    margin: 0 10px;
+    margin-bottom:10em;
   }
 
   div.WebPlayerHomeContent .row.BelowImage
@@ -772,5 +784,5 @@ div.WebPlayerHomeContent .DescriptionPlaylistLink
   .playFooterFixed{
     position: fixed;
     bottom: 0;
-    width:100%
+    width:100%;
   }

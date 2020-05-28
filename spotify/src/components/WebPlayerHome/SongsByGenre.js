@@ -5,7 +5,7 @@ import {Link,Redirect} from "react-router-dom";
 /**
  * Albums inside the webplayer home
  */
-class PopularAlbumsHomeAndNavContent extends Component {
+class SongsByGenres extends Component {
    /**
    *
    * @param {Object} props
@@ -52,46 +52,7 @@ class PopularAlbumsHomeAndNavContent extends Component {
             var redirected = <Redirect to="/webplayer/nowplay"></Redirect>
 
         }
-        // const HomeAlbums = this.props.album.album.map((Album)=>{
-        //     return(
-        //         <div key= {Album.id} className="CardsHome">
-        //             <div className="row">
-        //                 <div className="col">
-        //                     <div className="CardPhoto">
-        //                         <div className="ImageHolder">
-        //                             <img  className="ImageItself" src={Album.image} alt=""></img>
-        //                         </div>
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //             <div className="row BelowImage">
-        //                 <div className="col-md-12">
-        //                     <div className="row" >
-        //                         <div className="col-md-12">
-        //                             <Link className="TitlePlaylistLink">{Album.name}</Link>
-        //                         </div>
-        //                     </div>
-        //                     <div className="row" >
-        //                         <div className="col-md-12">
-        //                             <div className="DescriptionPlaylistLink">
-        //                                 <span>{Album.artist}</span>
-        //                             </div>
-        //                         </div>
-        //                     </div> 
-        //                 </div>
-        //             </div>
-        //             <div className="row PlayButtonPlayList">
-        //                 <div className="col-md-12">
-        //                     <div >
-        //                         <Button className="ButtonItself"> 
-        //                         <svg height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
-        //                         </Button>
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //         </div>
-        //     )
-        // })
+   
         let isHomeAlbumsSingned=""
         if (this.props.isSignedIn.isSignedIn !== null) {
             isHomeAlbumsSingned = this.props.data_be.data_be.albums.map((Album)=>
@@ -156,7 +117,7 @@ class PopularAlbumsHomeAndNavContent extends Component {
             </div>
             <div className="row">
                 <div className="col-sm-12">
-                    <div className="AlbumsGridView">
+                    <div className="GridView">
                         {isHomeAlbumsSingned}
                     </div>
                 </div>
@@ -165,4 +126,4 @@ class PopularAlbumsHomeAndNavContent extends Component {
     )
     }
 }
-export default PopularAlbumsHomeAndNavContent;
+export default SongsByGenres;
