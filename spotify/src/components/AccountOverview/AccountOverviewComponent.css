@@ -427,7 +427,8 @@
   .AccountOverviewBody .sidebar .fa.fa-edit,
   .AccountOverviewBody .sidebar .fa.fa-lock,
   .AccountOverviewBody .sidebar .fa.fa-hashtag,
-  .AccountOverviewBody .sidebar .fa.fa-credit-card
+  .AccountOverviewBody .sidebar .fa.fa-credit-card,
+  .AccountOverviewBody .sidebar .fa.fa-bell
   {
     margin-right:1.5em;
     font-size:23px;
