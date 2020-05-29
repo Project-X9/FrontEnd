@@ -18,6 +18,7 @@ import { baseUrl2 } from "../../shared/baseUrl";
 import LikedPlay from "../PlayLikedSongs/PlayLikedSongs";
 import Artist from "../ArtistInterface/ArtistComponent";
 import PlayFooter from './../PlayFooter/PlayFooter';
+import Search from "../SearchComponent/Search";
 /**
  * Web Player page
  */
@@ -309,6 +310,25 @@ handleSubmit() {
                     path="/webplayer/artist"
                     component={() => (
                       <Artist
+                        id={this.props.id}
+                        data={this.props.data}
+                        playLists={this.props.playLists}
+                        data_be={this.props.data_be}
+                        currentPlaylist={this.props.currentPlaylist}
+                        isSignedIn={this.props.isSignedIn}
+                        handleLogout_BE={this.props.handleLogout_BE}
+                        PlayTheFooter={this.props.PlayTheFooter}
+                        PlaySong={this.props.PlaySong}
+                        PauseSong={this.props.PauseSong}
+                        isPlaying={this.props.isPlaying}
+                      />
+                    )}
+                  />
+                   <Route
+                    exact
+                    path="/webplayer/search"
+                    component={() => (
+                      <Search
                         id={this.props.id}
                         data={this.props.data}
                         playLists={this.props.playLists}
