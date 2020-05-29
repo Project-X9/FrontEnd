@@ -250,6 +250,7 @@ handleSubmit() {
                         handleCurrentAlbums={this.props.handleCurrentAlbums}
                         handleCurrentArtists={this.props.handleCurrentArtists}
                         PlayTheFooter={this.props.PlayTheFooter}
+                        AddPrevSong={this.props.AddPrevSong}
                         PlaySong={this.props.PlaySong}
                         PauseSong={this.props.PauseSong}
                         isPlaying={this.props.isPlaying}
@@ -389,7 +390,10 @@ handleSubmit() {
                 ChangeCurrentTime={this.props.ChangeCurrentTime}
                 currentTime ={this.props.currentTime}
                 totalTime ={this.props.totalTime}
-
+                isSignedIn={this.props.isSignedIn}
+                PlayTheFooter={this.props.PlayTheFooter}
+                AddPrevSong={this.props.AddPrevSong}
+                prevsong={this.props.prevsong}
                />
         </div>
         <Modal

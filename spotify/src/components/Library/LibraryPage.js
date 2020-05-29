@@ -59,7 +59,7 @@ class LibraryPage extends Component {
                         PlaySong={this.props.PlaySong}
                         PauseSong={this.props.PauseSong}
                         isPlaying={this.props.isPlaying}
-        
+                        AddPrevSong={this.props.AddPrevSong}
                         />
                       )} />
                    <Route
@@ -77,6 +77,8 @@ class LibraryPage extends Component {
                         PlaySong={this.props.PlaySong}
                         PauseSong={this.props.PauseSong}
                         isPlaying={this.props.isPlaying}
+                        AddPrevSong={this.props.AddPrevSong}
+
         
                         />
                       )} />

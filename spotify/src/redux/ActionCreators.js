@@ -435,7 +435,15 @@ export const addSongSrc = (data) => ({
   type: ActionTypes.CURRENT_SONG_URL,
   payload: data,
 });
-
+export const AddPrevSong = (songSrc) => (dispatch) => {
+  dispatch(addPrevSong(songSrc));
+ //  dispatch(Play());
+ 
+ };
+ export const addPrevSong = (data) => ({
+   type: ActionTypes.ADD_PREVIOUS,
+   payload: data,
+ });
 export const PlaySong = () => (dispatch) => {
   dispatch(Play());
  };
