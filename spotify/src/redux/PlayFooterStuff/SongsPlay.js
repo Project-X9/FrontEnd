@@ -11,6 +11,17 @@ export const Song = (state = {song:null}, action) => {
       return state;
   }
 };
+export const PrevSong = (state = {prevsong:null}, action) => {
+  switch (action.type) {
+    case ActionTypes.ADD_PREVIOUS:
+      return { ...state, prevsong: action.payload };
+    // case ActionTypes.ADD_LOGOUT:
+    //   return { ...state, prevsong:null };
+    default:
+      return state;
+  }
+};
+
 export const TotalTime = (state = {totalTime:0}, action) => {
   switch (action.type) {
     case ActionTypes.TOTAL_TIME:

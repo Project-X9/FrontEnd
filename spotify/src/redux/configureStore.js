@@ -16,7 +16,7 @@ import { Album } from "./Albums";
 import { SignUpState, SignInState } from "./addUser";
 import { Current } from "./CurrentPlaylist";
 import { Categories } from "./addCategories";
-import { Song, CurrentTime,TotalTime } from './PlayFooterStuff/SongsPlay';
+import { Song, CurrentTime,TotalTime,PrevSong } from './PlayFooterStuff/SongsPlay';
 import { SongState } from './PlayFooterStuff/SongState';
 import { SongProgress, ProgressMode ,ProgressDirty} from './PlayFooterStuff/SongProgress';
 
@@ -58,6 +58,7 @@ export const ConfigureStore = () => {
       is_progress_dirty:ProgressDirty,
       currentTime:CurrentTime,
       totalTime:TotalTime,
+      prevsong:PrevSong,
       // playlist_BE:PlayList_BE,
       ...createForms({
         feedback: InitialFeedback,
