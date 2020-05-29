@@ -1,129 +1,235 @@
+import "./WebPlayerHomeComponent.css";
 import React, { Component } from "react";
-import {Button, Modal, ModalBody} from 'reactstrap';
-import {Link,Redirect} from "react-router-dom";
-
+import { Navbar,Nav,NavItem,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem,Button} from "reactstrap";
+import { NavLink} from "react-router-dom";
+import PopularPlaylistsContent from "./PopularPlaylistsContent";
+import PopularArtistsHomeAndNavContent from "./PopularArtistsHomeAndNavContent";
+import PopularAlbumsHomeAndNavContent from "./PopularAlbumsHomeAndNavContent";
+import ShowSongs from "./ShowSongs";
 /**
- * Albums inside the webplayer home
+ * Songs inside Webplayer page
  */
 class SongsByGenres extends Component {
    /**
    *
    * @param {Object} props
+   * @param props.data Essentially contains the data of the users in the database
+   * @param props.id Essentially contains the id of one of the users in the database
+   * @param props.handleLogoutId Essentially taks an id (should be an empty string) and replaces the current user id with it
    * @param props.data_be Essentially contains the data of the users in the database after integrating with backend
+   * @param props.handleLogout_BE Essentially used to remove user id along with his other data instead of handleLogoutId
    * @param props.isSignedIn Essentially used to check if a user is signed in or not
+   * @param props.artist Essentially contains artist data
    * @param props.album Essentially contains album data
-   * @param props.handleCurrentAlbums Essentially used to display album's data after integrating with the backend
+   * @param props.playLists Essentially contains playlist data
+   * @param props.handleCurrentArtists Essentially used to display artists' data after integrating with the backend
+   * @param props.handleCurrentAlbums Essentially used to display albums' data after integrating with the backend
+   * @param props.handleCurrentPlayList Essentially used to display playlists' data after integrating with the backend
+   * @param props.categories Essentially contains an array of categories that contain playlists
    */
-    constructor(props) {
-        super(props);
-        this.state = {
-          isModalOpen:false,
-          playListadded:false
-        };
-        this.toggleModal=this.toggleModal.bind(this);
-    }
-   /**
-   * Toggles a Modal (has been removed) by switching isModalOpen from true to false and vice versa
-   */
-    toggleModal(){
-        this.setState({
-          isModalOpen: !this.state.isModalOpen
-      });
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+        tempId: this.props.id.id,
+    };
+    this.state.handleLogout = this.handleLogout.bind(this);
+  }
 
-   /**
-   * Reponsible for getting a specific album's data from the database by calling handleCurrentAlbums
+  /**
+   * Sets a variable to an empty string then passes it to
+   * handleLogoutId() functions which logs the user out
    */
-    handleRenderingPlaylist(data){
-        //this.props.handleCurrentPlayList(data);
-        this.props.handleCurrentAlbums(data)
-        this.setState({
-            playListadded:true
-        })
-    }
+  handleLogout(){
+    // let id="";
+    // this.props.handleLogoutId(id);
+    this.props.handleLogout_BE();
+  }
 
-   /**
-   * Responsible for showing the albums in the webplayer home page
+  /**
+   * Responsible for showing everything on the songs page inside the webplayer page
    * @returns Components that will be displayed on the page
    */
-    render(){
-        if(this.state.playListadded === true)
-        {
-            var redirected = <Redirect to="/webplayer/nowplay"></Redirect>
 
+    render(){
+        let userName =(
+            <div>
+             <Button className="AccountItself">
+                <DropdownToggle nav caret className="WritingInsideAccountItself">
+                    <i class="fa fa-user-secret"></i>
+                    {this.props.data_be.data_be.name}
+                </DropdownToggle>
+            </Button>
+            </div>
+          );
+
+        let showUpgrade1="" 
+        if (this.props.data_be.data_be.premium === false) {
+            showUpgrade1= (
+            <NavItem>
+                <Button className="NextToAccount" color="success">
+                    <NavLink className="NextToAccount" to="/premium">UPGRADE</NavLink>
+                </Button> 
+            </NavItem>
+            )}
+        else{
+            showUpgrade1=(<span></span>)
+        } 
+
+        let showUpgrade2="" 
+        if (this.props.data_be.data_be.premium === false) {
+                showUpgrade2= (
+                <NavLink
+                    className="StaticNavChild Disappear"
+                    to="/premium">
+                    Upgarde to Premium
+                </NavLink>
+                )}
+        else{
+            showUpgrade2=(<span></span>)
+        } 
+
+
+        let SignedIn=''
+        if(this.props.isSignedIn.isSignedIn!==null)
+        {
+          SignedIn=(
+            <div>
+              <div className="row">
+                  <div className="WebPlayerHomeNav">
+                      <div className="container">
+                          <Navbar className="NavBar NavStyle" expand="md">
+                              <Nav className="mr-auto" href="/signup">
+                              <NavItem className="CustomNavitems">
+                                      <Button className="CustomButton">
+                                          <NavLink className="nav-link SpecificallyForTheButton" to="/webplayer/librarypage/playlists">
+                                          <svg className="CustomSvg" viewBox="0 0 24 24">
+                                          <path fill="currentColor" d="M15.54 21.15L5.095 12.23 15.54 3.31l.65.76-9.555 8.16 9.555 8.16"></path>                            </svg>    
+                                          </NavLink>
+                                      </Button>   
+                              </NavItem>
+                              <NavItem className="CustomNavitems">
+                                      <Button className="CustomButton">
+                                              <NavLink className="nav-link SpecificallyForTheButton" to="/webplayer/search">
+                                              <svg className="CustomSvg" viewBox="0 0 24 24">
+                                              <path fill="currentColor" d="M7.96 21.15l-.65-.76 9.555-8.16L7.31 4.07l.65-.76 10.445 8.92"></path>
+                                              </svg>    
+                                              </NavLink>
+                                      </Button>  
+                              </NavItem>
+                              </Nav>
+                              <Nav navbar className="ml-auto">
+                                  {showUpgrade1}
+                                  <NavItem>
+                                      <UncontrolledDropdown nav inNavbar>
+                                      {userName}
+                                      <DropdownMenu className="StaticNav" right>
+                                          <DropdownItem className="StaticNavChildContainer">
+                                          <NavLink
+                                              className="StaticNavChild"
+                                              to="/account/overview">
+                                              Account
+                                          </NavLink>
+                                          </DropdownItem>
+                                          <DropdownItem className="StaticNavChildContainer">
+                                          {showUpgrade2}
+                                          </DropdownItem>
+                                          <DropdownItem className="StaticNavChildContainer">
+                                          <Button
+                                              onClick={() => { this.handleLogout() }} 
+                                              className="StaticNavChild">
+                                              Log out
+                                          </Button>
+                                          </DropdownItem>
+                                      </DropdownMenu>
+                                      </UncontrolledDropdown>
+                                  </NavItem>
+                              </Nav>   
+                          </Navbar>
+                      </div>
+                  </div>
+              </div>
+              <div className="row RowWebPlayerHomeContent">
+                <div className="WebPlayerHomeContent">
+                  <div className="container">
+                    <ShowSongs
+                    playLists={this.props.playLists}
+                    data_be={this.props.data_be}
+                    isSignedIn={this.props.isSignedIn}
+                    handleCurrentPlayList={this.props.handleCurrentPlayList}
+                    categories={this.props.categories}
+                    />
+                  </div>
+                </div>
+              </div>
+          </div>
+          );
+        }
+        else
+        {
+          SignedIn=(
+            <div>
+              <div className="row">
+                  <div className="WebPlayerHomeNav">
+                      <div className="container">
+                          <Navbar className="NavBar NavStyle" sticky="top" expand="md">
+                              <Nav className="mr-auto" href="/signup">
+                              <NavItem className="CustomNavitems">
+                                      <Button className="CustomButton">
+                                          <NavLink className="nav-link SpecificallyForTheButton" to="/webplayer/librarypage/playlists">
+                                          <svg className="CustomSvg" viewBox="0 0 24 24">
+                                          <path fill="currentColor" d="M15.54 21.15L5.095 12.23 15.54 3.31l.65.76-9.555 8.16 9.555 8.16"></path>                            </svg>    
+                                          </NavLink>
+                                      </Button>   
+                              </NavItem>
+                              <NavItem className="CustomNavitems">
+                                      <Button className="CustomButton">
+                                              <NavLink className="nav-link SpecificallyForTheButton" to="/webplayer/search">
+                                              <svg className="CustomSvg" viewBox="0 0 24 24">
+                                              <path fill="currentColor" d="M7.96 21.15l-.65-.76 9.555-8.16L7.31 4.07l.65-.76 10.445 8.92"></path>
+                                              </svg>    
+                                              </NavLink>
+                                      </Button>  
+                              </NavItem>
+                              </Nav>
+                              <Nav navbar className="ml-auto MakingTheButtonsHorizontal">
+                                <NavItem>
+                                  <Button className="HomeNotSignedUp" color="success">
+                                      <NavLink className="HomeNotSignedUp" to="/signup">SIGN UP</NavLink>
+                                  </Button> 
+                                </NavItem>
+                                <NavItem>
+                                  <Button className="HomeNotLoggedin" color="success">
+                                      <NavLink className="HomeNotLoggedin" to="/signin">LOG IN</NavLink>
+                                  </Button> 
+                                </NavItem>
+                              </Nav>   
+                          </Navbar>
+                      </div>
+                  </div>
+              </div>
+              <div className="row RowWebPlayerHomeContent">
+                <div className="WebPlayerHomeContent">
+                  <div className="container">
+                    <ShowSongs
+                      playLists={this.props.playLists}
+                      data_be={this.props.data_be}
+                      isSignedIn={this.props.isSignedIn}
+                      handleCurrentPlayList={this.props.handleCurrentPlayList}
+                      categories={this.props.categories}
+                    />
+                  </div>
+                </div>
+              </div>
+          </div>
+          )
         }
    
-        let isHomeAlbumsSingned=""
-        if (this.props.isSignedIn.isSignedIn !== null) {
-            isHomeAlbumsSingned = this.props.data_be.data_be.albums.map((Album)=>
-        {
-                return(
-                    <Button className="WebplayerHomeNowPlayRedirectButton" onClick={()=>this.handleRenderingPlaylist(Album._id)}>
-                    <Link className="WebplayerHomeNowPlayRedirectLink" to="/webplayer/nowplay">
-                    <div key= {Album.id} className="CardsHome">
-                        <div className="row">
-                            <div className="col">
-                                <div className="CardPhoto">
-                                    <div className="ImageHolder">
-                                        <img  className="ImageItself" src={Album.image} alt=""></img>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="row BelowImage">
-                            <div className="col-md-12">
-                                <div className="row" >
-                                    <div className="col-md-12">
-                                        <Link className="TitlePlaylistLink">{Album.name}</Link>
-                                    </div>
-                                </div>
-                                <div className="row" >
-                                    <div className="col-md-12">
-                                        <div className="DescriptionPlaylistLink">
-                                            <span>{Album.artist}</span>
-                                        </div>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                        <div className="row PlayButtonPlayList">
-                            <div className="col-md-12">
-                                <div >
-                                    <Button className="ButtonItself"> 
-                                    <Link to="/account/overview">
-                                    <svg height="16" role="img" width="16" viewBox="0 0 24 24"><polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon></svg>
-                                    </Link>
-                                    </Button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </Link>
-                    </Button>
-                )
-            })
-        }
-        return(
+        
+        return (
             <div>
-            <div className="row HeaderAndSeeAll">
-                <div className="col-sm-9 ContainerHeaderAboveGrid">
-                    <Link className="LinkHeaderAboveGrid">
-                    <h2 className="HeaderAboveGrid">Popular albums</h2>
-                    </Link>
-                </div>
-                {/* <div className="col-sm-3 ContainerSeeAllAboveGrid">
-                    <Link className="SeeAllAboveGrid">SEE ALL</Link>
-                </div> */}
+            {SignedIn}
             </div>
-            <div className="row">
-                <div className="col-sm-12">
-                    <div className="GridView">
-                        {isHomeAlbumsSingned}
-                    </div>
-                </div>
-            </div>  
-        </div>      
-    )
+          );
     }
 }
 export default SongsByGenres;

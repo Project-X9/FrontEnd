@@ -301,21 +301,20 @@ class WebPlayer extends Component {
                     path="/webplayer/songs"
                     component={() => (
                       <SongsByGenres
-                      id={this.props.id}
-                      data={this.props.data}
-                      playLists={this.props.playLists}
-                      data_be={this.props.data_be}
-                      ///////fetching the playlist of the user
-                      currentPlaylist={this.props.currentPlaylist}
-                      isSignedIn={this.props.isSignedIn}
-                      /// for logging out
-                      handleLogout_BE={this.props.handleLogout_BE}
-                      patchedfollow={this.props.patchedfollow}
-                      patchedunfollow={this.props.patchedunfollow}
-                      PlayTheFooter={this.props.PlayTheFooter}
-                      PlaySong={this.props.PlaySong}
-                      PauseSong={this.props.PauseSong}
-                      isPlaying={this.props.isPlaying}
+                        data={this.props.data}
+                        id={this.props.id}
+                        playLists={this.props.playLists}
+                        artist={this.props.artist}
+                        album={this.props.album}
+                        handleLogoutId={this.props.handleLogoutId}
+                        ///////////////
+                        data_be={this.props.data_be}
+                        handleLogout_BE={this.props.handleLogout_BE}
+                        isSignedIn={this.props.isSignedIn}
+                        handleCurrentPlayList={this.props.handleCurrentPlayList}
+                        categories={this.props.categories}
+                        handleCurrentAlbums={this.props.handleCurrentAlbums}
+                        handleCurrentArtists={this.props.handleCurrentArtists}
                       />
                     )}
                   />
