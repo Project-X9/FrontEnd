@@ -26,6 +26,7 @@ import FreeJumbotron from "./FreeJumbotron";
 import PremiumJumbotron from "./PremiumJumbotron";
 import ChangePass from "./ChangePassword";
 import EditProfile from "./EditProfile";
+import ReviewNotifications from "./ReviewNotifications";
 import { baseUrl2 } from "../../shared/baseUrl";
 
 /**
@@ -97,6 +98,7 @@ class AccountOverview extends Component {
     let changePasswordActive = "";
     let recoverPlaylistsActive = "";
     let redeemActive = "";
+    let reviewNotificationsActive = "";
     let currentURL = window.location.href;
     if (currentURL === baseUrl2 + "account/overview") {
       overviewActive = "active";
@@ -104,13 +106,30 @@ class AccountOverview extends Component {
       changePasswordActive = "";
       recoverPlaylistsActive = "";
       redeemActive = "";
+      reviewNotificationsActive = "";
+    } else if (currentURL === baseUrl2 + "account/edit") {
+      overviewActive = "";
+      editProfileActive = "active";
+      changePasswordActive = "";
+      recoverPlaylistsActive = "";
+      redeemActive = "";
+      reviewNotificationsActive = "";
     } else if (currentURL === baseUrl2 + "account/changepassword") {
       overviewActive = "";
       editProfileActive = "";
       changePasswordActive = "active";
       recoverPlaylistsActive = "";
       redeemActive = "";
+      reviewNotificationsActive = "";
+    } else if (currentURL === baseUrl2 + "account/notifications") {
+      overviewActive = "";
+      editProfileActive = "";
+      changePasswordActive = "";
+      recoverPlaylistsActive = "";
+      redeemActive = "";
+      reviewNotificationsActive = "active";
     }
+
 
     let redirect = "";
     if (this.props.isSignedIn.isSignedIn === null) {
@@ -414,6 +433,10 @@ class AccountOverview extends Component {
                     <i className="fa fa-credit-card" />
                     Redeem
                   </Link>
+                  <Link to="/account/notifications" className={reviewNotificationsActive}>
+                    <i className="fa fa-bell" />
+                    Notifications
+                  </Link>
                 </div>
               </div>
               <div className="col-sm-12 col-md-12 col-lg-8 Content EditProfileContentAswell">
@@ -443,6 +466,14 @@ class AccountOverview extends Component {
                         data={this.props.data}
                         data_be={this.props.data_be}
                         reseteditprofile={this.props.reseteditprofile}
+                      />
+                    )}
+                  />
+                  <Route
+                    path="/account/notifications"
+                    component={() => (
+                      <ReviewNotifications
+                        data_be={this.props.data_be}
                       />
                     )}
                   />
@@ -483,7 +514,7 @@ class AccountOverview extends Component {
                   <h5 className="FooterHeader">COMMUNITIES</h5>
                   <ul>
                     <li>
-                      <Link to="/forartists">For Artists</Link>
+                      <Link to="/forartists/profile">For Artists</Link>
                     </li>
                     <li>
                       <Link to="/">Developers</Link>

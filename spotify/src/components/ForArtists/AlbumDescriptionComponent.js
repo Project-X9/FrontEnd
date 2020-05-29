@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Col, Row, Container } from 'reactstrap';
+import { Col, Row, Container, Button } from 'reactstrap';
+import { Link, Route, Switch } from 'react-router-dom';
+import MyAlbums from './MyAlbumsComponent';
 class AlbumDescription extends Component {
     render() {
         return (
@@ -36,8 +38,15 @@ class AlbumDescription extends Component {
                             03:14
                         </h6>
                     </Col>
-                </Row>
 
+                </Row>
+                <Row>
+                    <Col offset="6" className="back-btn">
+                        <Button outline color="success" size="lg" onClick={this.handleBackClick}>
+                            <Link to="/forartists/albums">Back</Link>
+                        </Button>
+                    </Col>
+                </Row>
             </Container>
         );
     }

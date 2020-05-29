@@ -1,4 +1,4 @@
-/* .artist-img {
+.artist-img {
     max-width: 150px;
     max-height: 150px;
     margin-top: 15px;
@@ -72,6 +72,10 @@
     margin-left: 25%;
 }
 
+.sidebar-area Button i {
+    color: lightgrey;
+}
+
 .sidebar-area Button:enabled {
     fill: var(--white);
     color: #919496;
@@ -119,6 +123,17 @@
     color: lightgray;
 }
 
+.add-album-label {
+    color: lightgray;
+    border: 1px solid lightgray;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.add-album-form {
+    margin: 50px;
+}
+
 .album-header {
     margin-top: 15px;
     text-align: left;
@@ -130,6 +145,10 @@
         text-align: center;
         margin: auto;
     }
+}
+
+.edit-albums-btn {
+    margin-left: 10px;
 }
 
 .album-title,
@@ -184,4 +203,4 @@
     color: lightgray;
     text-align: left;
     margin-top: 15px;
-} */
+}

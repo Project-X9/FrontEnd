@@ -206,7 +206,7 @@ class PopularNewHomeAndNavContent extends Component {
                 </Link>
               </Button>
             );
-          })};
+          })}
             </div>
               </div>
                 </div>
@@ -295,7 +295,7 @@ class PopularNewHomeAndNavContent extends Component {
                 </Link>
               </Button>
             );
-          })};
+          })}
             </div>
               </div>
                 </div>

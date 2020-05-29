@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Col, Row, Container, Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 class ArtistProfile extends Component {
     render() {
         return (
@@ -54,11 +55,12 @@ class ArtistProfile extends Component {
                 <Row>
                     <Col offset="6" className="edit-btn">
                         <Button outline color="success" size="lg">
-                            Edit Profile
-                                            </Button>
+                            <Link to="/forartists/profile/edit">
+                                Edit Profile
+                            </Link>
+                        </Button>
                     </Col>
                 </Row>
-
             </Container>
         );
     }

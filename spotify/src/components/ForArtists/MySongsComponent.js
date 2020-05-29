@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Col, Row, Button, Container } from 'reactstrap';
+import { Link } from 'react-router-dom'
 class MySongs extends Component {
     render() {
         return (
@@ -36,8 +37,13 @@ class MySongs extends Component {
                 <Row>
                     <Col offset="6" className="edit-btn">
                         <Button outline color="success" size="lg">
-                            Edit Songs
-                </Button>
+                            <Link to="/forartists/songs/edit">
+                                Edit Songs
+                            </Link>
+                        </Button>
+                        <Button outline color="success" size="lg" className="edit-albums-btn">
+                            <Link to="/forartists/songs/add">Add Song</Link>
+                        </Button>
                     </Col>
                 </Row>
             </Container>

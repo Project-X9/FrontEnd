@@ -11,6 +11,7 @@ import React, { Component } from "react";
 import { Link, Switch, Route, Redirect } from "react-router-dom";
 import { Button, Modal, ModalBody , Row, Col} from "reactstrap";
 import HomeNavAndContent from "./HomeNavAndContent";
+import SongsByGenres from "./SongsByGenre";
 import LibraryPage from "../Library/LibraryPage";
 import NowPlay from "../NowPlayComponent/NowPlay";
 import { baseUrl2 } from "../../shared/baseUrl";
@@ -101,6 +102,7 @@ handleSubmit() {
     let homeActive = "";
     let searchActive = "";
     let libraryActive = "";
+    let songsActive = "";
     let createPlaylistsActive = "";
     let likedSongsActive = "";
     let currentURL = window.location.href;
@@ -110,18 +112,28 @@ handleSubmit() {
       libraryActive = "";
       createPlaylistsActive = "";
       likedSongsActive = "";
+      songsActive="";
     } else if (currentURL === baseUrl2 + "webplayer/librarypage/playlists") {
       homeActive = "";
       searchActive = "";
       libraryActive = " active";
       createPlaylistsActive = "";
       likedSongsActive = "";
+      songsActive="";
     } else if (currentURL === baseUrl2 + "webplayer/likedplay") {
       homeActive = "";
       searchActive = "";
       libraryActive = "";
       createPlaylistsActive = "";
       likedSongsActive = "BottomTwoActive";
+      songsActive="";
+    } else if (currentURL === baseUrl2 + "webplayer/songs") {
+      homeActive = "";
+      searchActive = "";
+      libraryActive = "";
+      createPlaylistsActive = "";
+      likedSongsActive = "";
+      songsActive="active";
     }
     let redirected = null;
     if (this.state.SignedIn) {
@@ -189,6 +201,10 @@ handleSubmit() {
                     <i className="fa fa-bomb"></i>
                     Your Library
                   </Button>
+                  <Link to="/webplayer/songs" className={songsActive}>
+                    <i className="fa fa-music" />
+                    Songs
+                  </Link>
                   {showLikeAndCreate}
                 </div>
               </div>
@@ -304,6 +320,29 @@ handleSubmit() {
                         PlaySong={this.props.PlaySong}
                         PauseSong={this.props.PauseSong}
                         isPlaying={this.props.isPlaying}
+                      />
+                    )}
+                  />
+                  <Route
+                    exact
+                    path="/webplayer/songs"
+                    component={() => (
+                      <SongsByGenres
+                      id={this.props.id}
+                      data={this.props.data}
+                      playLists={this.props.playLists}
+                      data_be={this.props.data_be}
+                      ///////fetching the playlist of the user
+                      currentPlaylist={this.props.currentPlaylist}
+                      isSignedIn={this.props.isSignedIn}
+                      /// for logging out
+                      handleLogout_BE={this.props.handleLogout_BE}
+                      patchedfollow={this.props.patchedfollow}
+                      patchedunfollow={this.props.patchedunfollow}
+                      PlayTheFooter={this.props.PlayTheFooter}
+                      PlaySong={this.props.PlaySong}
+                      PauseSong={this.props.PauseSong}
+                      isPlaying={this.props.isPlaying}
                       />
                     )}
                   />
