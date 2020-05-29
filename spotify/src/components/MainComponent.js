@@ -44,7 +44,8 @@ import {
   ChangeProgressMode,
   ChangeProgressDirty,
   ChangeTotalTime,
-  ChangeCurrentTime
+  ChangeCurrentTime,
+  AddPrevSong
 } from "../redux/ActionCreators";
 import MyAlbums from "./ForArtists/MyAlbumsComponent";
 import MySongs from "./ForArtists/MySongsComponent";
@@ -67,6 +68,7 @@ const mapStateToProps = (state) => ({
   is_progress_dirty: state.is_progress_dirty,
   currentTime: state.currentTime,
   totalTime: state.totalTime,
+  prevsong:state.prevsong
 });
 const mapDispatchToProps = (dispatch) => ({
   resetFeedbackForm: () => {
@@ -156,6 +158,11 @@ const mapDispatchToProps = (dispatch) => ({
   ChangeCurrentTime: (time) => {
     dispatch(ChangeCurrentTime(time));
   }
+  ,
+  AddPrevSong: (song) => {
+    dispatch(AddPrevSong(song));
+  }
+  
 });
 
 class Main extends Component {
@@ -217,15 +224,6 @@ class Main extends Component {
             )}
           />
           
-          <Route
-            exact
-            path="/createplaylist"
-            component={() => (
-              <CreatePlayList
-                
-              />
-            )}
-          />
           <Route
             path="/account"
             component={() => (
@@ -290,6 +288,8 @@ class Main extends Component {
                 ChangeCurrentTime={this.props.ChangeCurrentTime}
                 currentTime={this.props.currentTime}
                 totalTime={this.props.totalTime}
+                AddPrevSong={this.props.AddPrevSong}
+                prevsong={this.props.prevsong}
 
               />
             )}

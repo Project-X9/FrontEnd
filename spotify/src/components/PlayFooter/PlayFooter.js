@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Col, Button, Row, Label, NavLink,
+  Col, Button, Row, Modal,ModalBody
 } from 'reactstrap';
 import {
   Control, Form, Errors,
@@ -8,6 +8,7 @@ import {
 import { Link ,Redirect } from 'react-router-dom';
 import "./PlayFooter.css";
 import { totalTime } from '../../redux/ActionCreators';
+
 
 function format2Number(num) {
     var str = num + '';
@@ -60,16 +61,15 @@ function format2Number(num) {
         volume:1,
         in_set_progress_mode: false,
         in_set_volume_mode: false,
-        songs:["https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3","https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
-      ,"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3","http://www.hochmuth.com/mp3/Haydn_Cello_Concerto_D-1.mp3",
-       "http://www.hochmuth.com/mp3/Tchaikovsky_Rococo_Var_orch.mp3",
-       "http://www.hochmuth.com/mp3/Vivaldi_Sonata_eminor_.mp3"],
-          song_src:null
+        isModalOpen:false,
+        songs:this.props.currentPlaylist.currentPlaylist.tracks,
+        song_src:this.props.song.song
       };
-      this.history = [];
+      // this.history=[];
       this.is_progress_dirty = false;
       this.interval_id = setInterval(this.onUpdate.bind(this), 250);
-      this.onPlayerNext();
+      // this.onPlayerNext();
+      this.togglePlay=this.togglePlay.bind(this);
     }
 
     
@@ -80,15 +80,20 @@ function format2Number(num) {
             progress: this._player.currentTime / this._player.duration
           });
         }
-  
         if (this._player.ended){
           this.onPlayerNext();
   
         }
       }
     }
+   
     togglePlay() {
-        if(this.state.song_src)
+      if (this.props.isSignedIn.isSignedIn !== true) {
+        this.setState({
+          isModalOpen: !this.state.isModalOpen,
+        });
+      }
+      else if(this.props.song.song)
         {
           this.setState({ is_playing: !this.state.is_playing });
         }
@@ -106,20 +111,24 @@ function format2Number(num) {
       this.setProgress(evt);
     }
     setProgress(evt) {
-      if (this.state.in_set_progress_mode) {
-        var progress = (evt.clientX - offsetLeft(this._progress_bar)) / this._progress_bar.clientWidth;
-        if(progress>1)
-        {
-          progress=1;
+      if(this.props.song.song)
+      {
+        if (this.state.in_set_progress_mode) {
+          var progress = (evt.clientX - offsetLeft(this._progress_bar)) / this._progress_bar.clientWidth;
+          if(progress>1)
+          {
+            progress=1;
+          }
+          else if(progress<0){
+            progress=0;
+          }
+          this.setState({
+            progress: progress
+          });
+          this.is_progress_dirty = true;
         }
-        else if(progress<0){
-          progress=0;
-        }
-        this.setState({
-          progress: progress
-        });
-        this.is_progress_dirty = true;
       }
+    
     }
     ////////////////////////////// volume
     startSetVolume(evt) {
@@ -135,6 +144,8 @@ function format2Number(num) {
       this.setVolume(evt);
     }
     setVolume(evt) {
+      if(this.props.song.song)
+      {
       if (this.state.in_set_volume_mode) {
         var volume = (evt.clientX - offsetLeft(this._volume_bar)) / this._volume_bar.clientWidth;
         if(volume>1)
@@ -150,38 +161,43 @@ function format2Number(num) {
         this._player.volume=Math.abs(volume);
       }
     }
+    }
    ///////////////////////// prev and 
     onPlayerNext() {
-      if (this.state.song_src) {
-        this.history.push(this.state.song_src);
-      }
+      if (this.props.song.song) {
+        // alert("entered here")
+        // this.history.push(this.props.song.song);
+        // AddPrevSong={this.props.AddPrevSong}
+        // prevsong={this.props.prevsong}
+      this.props.AddPrevSong(this.props.song.song)
       var song;
-      do {
+      // do {
         song = this.state.songs[Math.floor(Math.random() * this.state.songs.length)];
   
-      } while (this.history.length > 0 && this.history[this.history.length - 1] === song);
-      this.setState({
-        song_src: song
-      },()=>{
-          this._player.pause();
-          this._player.load();
-          this._player.play();
-      }
-      );
-  
+      // } while (this.history.length > 0 && this.history[this.history.length - 1] === song);
+
+      this.props.PlayTheFooter(song);
+      this._player.pause();
+      this._player.load();
+      this._player.play();
+    
+    }
     }
     onPlayerPrev() {
-      this.setState({
-        song_src: this.history.pop()
-      },()=>{
-  
+      if(this.props.prevsong.prevsong)
+      {
+      this.props.PlayTheFooter(this.props.prevsong.prevsong);
       this._player.pause();
       this._player.load();
       this._player.play(); 
-      });
-  
+      this.props.AddPrevSong(null)
+      }
+      
+
   }
   Stop() {
+    if(this.props.song.song)
+    {
     this.setState({
       progress:0,
       is_playing:false
@@ -189,8 +205,9 @@ function format2Number(num) {
     this._player.currentTime=0;
     this._player.pause();
     this._player.pause();
-
+   
     });
+  }
 
 }
     /**
@@ -201,6 +218,8 @@ function format2Number(num) {
       var currentTime = 0;
       var totalTime = 0;
   
+      if(this.props.song.song)
+      {
       if (this._player) {
       //   if (this._player.currentSrc !== this.props.src) {
       //     this._player.src = this.props.src;
@@ -223,7 +242,7 @@ function format2Number(num) {
         currentTime = this._player.currentTime;
         totalTime = this._player.duration;
       }
-  
+    }
   
       return (
   
@@ -239,34 +258,58 @@ function format2Number(num) {
                                       <div className="imageholder_playFooter">
                                           <a aria-label="Now playing: Euphrosyne by Arlette Leduc" href="" > 
                                               <div className="now-playing__cover-art">
-                                                  <div className="cover-art shadow" aria-hidden="true" width= "56px" height= "56px">
-                                                      <img  src="https://i.scdn.co/image/ab67616d0000485197cef6d6d204cd04aebc4798" alt="" class="_31deeacc1d30b0519bfefa0e970ef31d-scss cover-art-image"></img>
-                                                  </div>
+                                                {this.props.song.song ? (
+                                                    <div className="cover-art shadow" aria-hidden="true" width= "56px" height= "56px">
+                                                    <img  src={this.props.song.song.imageUrl} alt="" class="_31deeacc1d30b0519bfefa0e970ef31d-scss cover-art-image"></img>
+                                                </div>
+                                                ):(
+                                                  <div></div>
+                                                )}
+                                                  
                                               </div>
                                           </a>
                                       </div>
                                       <div className="besideImage ellipsis-one-line">
                                           <div className="LinkBesideImage ellipsis-one-line" dir="auto">
                                               <div className="react-contextmenu-wrapper">
-                                                  <span draggable="true">
-                                                      <a href="">Euphrosyne</a>
+                                                {
+                                                  this.props.song.song ? (
+                                                    <span draggable="true">
+                                                    <a href="">{this.props.song.song.name}</a>
                                                   </span>
+                                                  ):(
+                                                    <div></div>
+                                                  )
+                                                }
+                                                  
                                               </div>
                                           </div>
                                           <div className="ArtistNamePlayFooter ellipsis-one-line" dir="auto">
                                               <span>
                                                   <span className="react-contextmenu-wrapper">
-                                                  <span draggable="true">
-                                                      <a href="">Arlette Leduc</a>
+                                                    {
+                                                      this.props.song.song ? (
+                                                        <span draggable="true">
+                                                      <a href="">{this.props.song.song.artists[0].name}</a>
                                                   </span>
+                                                      ) : (
+                                                        <div></div>
+                                                      )
+                                                    }
+                                                  
                                               </span>
                                               </span>
                                           </div>
                                       </div>
                                       <div className="control-button-wrapper">
-                                          <button className="control-button spoticon-heart-16" title="Save to your Liked Songs">
-                                              <i className="fa fa-heart"></i>
-                                          </button>
+                                        {this.props.song.song ? (
+                                            <button className="control-button spoticon-heart-16" title="Save to your Liked Songs">
+                                            <i className="fa fa-heart"></i>
+                                        </button>
+                                        ):(
+                                          <div></div>
+                                        )}
+                                        
                                       </div>
                                   </div>
                               </div>
@@ -277,7 +320,7 @@ function format2Number(num) {
                                           <div className="player-controls__buttons">
                                               <div className="control-button-wrapper">
                                                   <button onClick={()=>this.onPlayerPrev()} className="control-button"  title="Previous">
-                                                      {this.history.length > 0 ? (
+                                                      {this.props.prevsong.prevsong !== null ? (
                                                           <i  className="fa fa-backward fa-lg"></i>
                                                       ):(
                                                           <i  className="fa fa-backward fa-lg hassouna"></i>
@@ -357,12 +400,115 @@ function format2Number(num) {
                       </footer>
                   </div>
               </Col>
-              <audio ref={(ref) => this._player = ref} autoPlay={this.state.is_playing}>
-              <source src={this.state.song_src}/>
-              <source/>
-              </audio>
-            </Row>
+              {
+                this.props.isSignedIn.isSignedIn === true ? (
+                  
+                  <audio ref={(ref) => this._player = ref} autoPlay={this.state.is_playing}>
+                    {
+                      this.props.song.song ? (
+                        <source src={this.props.song.song.url}/>
+                      ):(
+                        <div></div>
+                      )
+                    }
+                  
+                  </audio>
+                ):(
+                  <div></div>
+                )
+              }
+             
+              <Modal
+            isOpen={this.state.isModalOpen}
+            toggle={this.togglePlay}
+            className="ModalBackGround row"
+            size="lg">
+            <div className="modal-content modalcontent">
+              <ModalBody className="p-0 modalbody">
+                <div className="row flexer">
+                  <div className="col-sm-6 col-md-6 col-lg-6 leftPart ">
+                    <div className="row">
+                      <div className="col-sm-12 col-md-12 col-lg-12 ">
+                        <h2 className="theHeader">
+                          Get the most out of Spotify with a free account
+                        </h2>
+                      </div>
+                    </div>
+                    <div className="row flexer">
+                      <div className="col-sm-12 col-md-12 col-lg-12">
+                        <ol className="libraryol">
+                          <li className="libraryli flexer">
+                            <svg
+                              className="librarysvg flexer"
+                              xmlns="http://www.w3.org/1999/xlink"
+                              viewBox="0 0 16 18"
+                              width="16"
+                              height="16">
+                              <polygon points="13.985,2.383 5.127,12.754 1.388,8.375 0.73,9.145 5.127,14.294 14.745,3.032"></polygon>
+                            </svg>
+                            No credit card, ever
+                          </li>
+                          <li className="libraryli flexer">
+                            <svg
+                              className="librarysvg flexer"
+                              xmlns="http://www.w3.org/1999/xlink"
+                              viewBox="0 0 16 18"
+                              width="16"
+                              height="16">
+                              <polygon points="13.985,2.383 5.127,12.754 1.388,8.375 0.73,9.145 5.127,14.294 14.745,3.032"></polygon>
+                            </svg>
+                            Get unlimited podcasts
+                          </li>
+                          <li className="libraryli flexer">
+                            <svg
+                              className="flexer librarysvg"
+                              xmlns="http://www.w3.org/1999/xlink"
+                              viewBox="0 0 16 18"
+                              width="16"
+                              height="16">
+                              <polygon points="13.985,2.383 5.127,12.754 1.388,8.375 0.73,9.145 5.127,14.294 14.745,3.032"></polygon>
+                            </svg>
+                            Play your favorite music, with ads
+                          </li>
+                        </ol>
+                        <div className="row LibraryModalClose">
+                          <Button
+                            className="LibraryModalCloseButton"
+                            color="success"
+                            onClick={this.togglePlay}>
+                            Close
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-sm-6 col-md-6 col-lg-6">
+                    <div className="righPart">
+                      <div className="innerRight">
+                        <Button className="signupfree">
+                          <Link to="/signup" className="linksignup">
+                            Sign up free
+                          </Link>
+                        </Button>
+                        <div className="seperator_LibraryModal"></div>
+                        <div className="alreadyhaveanaccount">
+                          Already have an account?
+                        </div>
+                        <Button className="libraryloginbut">
+                          <Link to="/signin" className="linkLogin">
+                            Log in
+                          </Link>
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ModalBody>
+            </div>
+          </Modal>
   
+            </Row>
+            
       );
     }
   }
