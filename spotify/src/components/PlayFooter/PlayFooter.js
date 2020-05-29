@@ -88,7 +88,7 @@ function format2Number(num) {
       }
     }
     togglePlay() {
-        if(this.props.song.song.url)
+        if(this.state.song_src)
         {
           this.setState({ is_playing: !this.state.is_playing });
         }
@@ -152,8 +152,8 @@ function format2Number(num) {
     }
    ///////////////////////// prev and 
     onPlayerNext() {
-      if (this.props.song.song.url) {
-        this.history.push(this.props.song.song.url);
+      if (this.state.song_src) {
+        this.history.push(this.state.song_src);
       }
       var song;
       do {
@@ -358,7 +358,7 @@ function format2Number(num) {
                   </div>
               </Col>
               <audio ref={(ref) => this._player = ref} autoPlay={this.state.is_playing}>
-              <source src={this.props.song.song.url}/>
+              <source src={this.state.song_src}/>
               <source/>
               </audio>
             </Row>
