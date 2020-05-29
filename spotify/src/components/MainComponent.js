@@ -11,6 +11,7 @@ import SignIn from "./SignIn/SignInComponent";
 import ArtistInterface from "./ForArtists/ArtistInterfaceComponent"
 import Library from "./Library/LibraryCompnent";
 import PlayFooter from "./PlayFooter/PlayFooter";
+import CreatePlayList from "./WebPlayerHome/CreatePlayListModel";
 
 import {
   postFeedback,
@@ -209,6 +210,16 @@ class Main extends Component {
                 ///////logging of the user
                 handleLogout_BE={this.props.handleLogout_BE}
                 isSignedIn={this.props.isSignedIn}
+              />
+            )}
+          />
+          
+          <Route
+            exact
+            path="/createplaylist"
+            component={() => (
+              <CreatePlayList
+                
               />
             )}
           />

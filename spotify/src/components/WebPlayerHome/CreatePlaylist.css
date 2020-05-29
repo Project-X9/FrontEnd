@@ -1,0 +1,111 @@
+.createPlayLsitBody
+{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.9);
+    z-index: 104;
+   
+}
+.exitButton_CP{
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid transparent;
+    margin-top: 15%;
+    margin-left: 55px;
+
+}
+@media (max-width: 500px){
+    .exitButton_CP {
+        margin-left: -10px;
+    }
+}
+.Create_new_playlist{
+    text-align: center;
+    color: #fff;
+    
+    margin-top: 16px;
+    margin-bottom: 16px;
+    
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+.inputField_CP{
+    width: 100%;
+    background-color: #282828;
+}
+.inputBox_CP{
+    position: relative;
+    background-color: #282828;
+    padding: 32px 0;
+}
+.contentSpacing_CP {
+    padding: 0 32px;
+    margin: 0;
+    max-width: 1955px;
+}
+.inputBox-label_CP {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .015em;
+    color: #fff;
+    text-transform: none;
+    margin-bottom: .5em;
+    /* margin-left: 10%; */
+
+}
+.inputBox-input_CP {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -.005em;
+    font-weight: var(--glue-font-weight-black);
+    color: #fff;
+    text-transform: none;
+    caret-color: #1db954;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    /* margin-left: 10%; */
+    border: none;
+}
+.create_Cancel_CP{
+    padding: 28px 0;
+}
+.CancelButton_CP{
+    background-color: transparent;
+    border: 1px solid #535353;    
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 700;
+    letter-spacing: 1.76px;
+    border-radius: 500px;
+    color: #fff;
+    white-space: nowrap;
+    padding: 8px 34px;
+    cursor: pointer;
+    text-align: center;
+    /* margin-left: 40%; */
+}
+.CreateButton_CP{
+    background-color: #1db954;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 700;
+    letter-spacing: 1.76px;
+    border: 2px solid transparent;
+    border-radius: 500px;
+    color: #fff;
+    white-space: nowrap;
+    padding: 8px 34px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+@media (max-width: 1200px){
+.inputField_CP {
+    padding: 0;
+}
+}
