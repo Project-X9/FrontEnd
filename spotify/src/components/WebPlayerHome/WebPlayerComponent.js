@@ -342,6 +342,10 @@ handleSubmit() {
                         categories={this.props.categories}
                         handleCurrentAlbums={this.props.handleCurrentAlbums}
                         handleCurrentArtists={this.props.handleCurrentArtists}
+                        PlayTheFooter={this.props.PlayTheFooter}
+                        PlaySong={this.props.PlaySong}
+                        PauseSong={this.props.PauseSong}
+                        isPlaying={this.props.isPlaying}
                       />
                     )}
                   />
