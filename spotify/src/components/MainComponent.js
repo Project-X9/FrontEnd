@@ -38,8 +38,8 @@ import {
   handleCurrentAlbums,
   handleCurrentArtists,
   PlayTheFooter,
-  PlaySong,
-  PauseSong,
+  PlayShuffle,
+  PauseShuffle,
   ChangeSongProgress,
   ChangeProgressMode,
   ChangeProgressDirty,
@@ -64,7 +64,7 @@ const mapStateToProps = (state) => ({
   currentPlaylist: state.currentPlaylist,
   categories: state.categories,
   song: state.song,
-  isPlaying: state.isPlaying,
+  shuffle: state.shuffle,
   progress: state.progress,
   in_set_progress_mode: state.in_set_progress_mode,
   is_progress_dirty: state.is_progress_dirty,
@@ -72,7 +72,8 @@ const mapStateToProps = (state) => ({
   totalTime: state.totalTime,
   prevsong:state.prevsong,
   signupdata:state.signupdata,
-  isModalOpen:state.isModalOpen
+  isModalOpen:state.isModalOpen,
+
 
 });
 const mapDispatchToProps = (dispatch) => ({
@@ -140,11 +141,11 @@ const mapDispatchToProps = (dispatch) => ({
   PlayTheFooter: (songSrc) => {
     dispatch(PlayTheFooter(songSrc));
   },
-  PlaySong: () => {
-    dispatch(PlaySong());
+  PlayShuffle: () => {
+    dispatch(PlayShuffle());
   },
-  PauseSong: () => {
-    dispatch(PauseSong());
+  PauseShuffle: () => {
+    dispatch(PauseShuffle());
   },
   ChangeSongProgress: (progress) => {
     dispatch(ChangeSongProgress(progress));
@@ -173,6 +174,7 @@ const mapDispatchToProps = (dispatch) => ({
   , ControlModal: (data) => {
     dispatch(ControlModal(data));
   }
+ 
   
 });
 
@@ -291,9 +293,9 @@ class Main extends Component {
                 handleCurrentArtists={this.props.handleCurrentArtists}
                 PlayTheFooter={this.props.PlayTheFooter}
                 song={this.props.song}
-                PlaySong={this.props.PlaySong}
-                PauseSong={this.props.PauseSong}
-                isPlaying={this.props.isPlaying}
+                PlayShuffle={this.props.PlayShuffle}
+                PauseShuffle={this.props.PauseShuffle}
+                shuffle={this.props.shuffle}
                 ChangeSongProgress={this.props.ChangeSongProgress}
                 progress={this.props.progress}
                 ChangeProgressMode={this.props.ChangeProgressMode}
@@ -306,6 +308,7 @@ class Main extends Component {
                 totalTime={this.props.totalTime}
                 AddPrevSong={this.props.AddPrevSong}
                 prevsong={this.props.prevsong}
+                
 
               />
             )}
