@@ -37,6 +37,7 @@ export const CURRENT_TIME = 'CURRENT_TIME';
 export const TOTAL_TIME = 'TOTAL_TIME';
 export const ADD_PREVIOUS = 'ADD_PREVIOUS';
 
-
+////////////////////For Full Songs
+export const ADD_FULLSONGS = "ADD_FULLSONGS";
 
 

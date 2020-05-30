@@ -10,7 +10,12 @@ import {
   DropdownItem,
   Button,
   DropdownToggle,
+  Form,Input,
+  InputGroup,
 } from "reactstrap";
+import axios from 'axios';
+
+import "../SearchComponent/Search.css";
 import "../NowPlayComponent/NowPlay.css";
 import { NavLink, Redirect } from "react-router-dom";
 import { Loading } from "./../Loading/LoadingComponent";
@@ -23,10 +28,13 @@ class Search extends Component {
     this.state = {
       isNavOpen: false,
       tempId: this.props.data_be.data_be.id,
+      search:'',suggestions:'',ReservedSongs:this.props.fullsongs.fullSongs
     };
+    this.handleinput=this.handleinput.bind(this);
     this.state.toggleNav = this.toggleNav.bind(this);
     this.state.handleLogout = this.handleLogout.bind(this);
   }
+  
 
   toggleNav() {
     this.setState({
@@ -41,6 +49,31 @@ class Search extends Component {
     this.props.handleLogout_BE();
   }
 
+  handleinput=(e)=>{
+    alert(this.state.ReservedSongs.tracks)
+    const value = e.target.value;
+    let suggestions=[];
+    if(value.length > 0){
+        const regex=new RegExp(`^${value}`,'i')
+        suggestions=this.state.ReservedSongs.sort().filter(v=>regex.test(v));
+    }
+    this.setState({suggestions:suggestions,search: value})
+}
+suggestionselected(value){
+    this.setState(()=>({
+    search:value,
+    suggestions:[]
+    }))}
+
+renderSuggestion(){
+     const {suggestions}=this.state;
+     if(suggestions.length===0){return null}
+     return(<div className="AutoComplete">
+         <ul>
+             {suggestions
+                 .map(item=><li className="AutoComplete ul"
+                                onClick={()=>this.suggestionselected(item)}>{item}</li>)}</ul></div>)}
+
   render() {
     var redirect = "";
     if (this.props.isSignedIn.isSignedIn === null) {
@@ -54,7 +87,7 @@ class Search extends Component {
           <div>
             <Button className="AccountItself">
               <DropdownToggle nav caret className="WritingInsideAccountItself">
-                <i class="fa fa-user-secret"></i>
+                <i className="fa fa-user-secret"></i>
                 {this.props.data_be.data_be.name}
               </DropdownToggle>
             </Button>
@@ -127,12 +160,13 @@ class Search extends Component {
                           </Button>
                          </NavItem>
                       <NavItem>
-            
-
-
-
-
-
+                      <div className="SearchingDiv">
+                 <div className="SearchingDiv Smallerdiv" >
+                    <input type="text" className="SearchingDiv Smallerdiv InputStyle"
+                        placeholder="Search for Artists or Songs" 
+                            onChange={this.handleinput}/>
+                           </div>
+                       </div>
                       </NavItem>                    
                       </Nav>
                       <Nav navbar className="ml-auto">
@@ -176,10 +210,14 @@ class Search extends Component {
       }
       return (
         <div>
-          {this.props.isSignedIn.isSignedIn === true ? (
+         {this.props.isSignedIn.isSignedIn === true ? (
             <div className=" DivStyle LibraryPageBody">
               {SignedIn}
-              </div>): (
+              <section className="JumbostyleWithPadding">
+             
+              </section>
+            </div>
+          ) : (
             <div>{redirect}</div>
           )}
               </div>);

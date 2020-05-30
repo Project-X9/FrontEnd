@@ -34,4 +34,7 @@ export const AlbumsUrl =
 export const ArtistsUrl =
   "http://localhost:3000/api/v1/artist/artists";
 ///////////////////////////////////////////////////////////////
-export const ForActive= "http://localhost:3000/api/v1/"  
+export const ForActive= "http://localhost:3000/api/v1/";  
+///////////////////////////////////////////////////////
+export const AllSongsUrl =
+  "http://localhost:3000/api/v1/track";

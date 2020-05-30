@@ -61,6 +61,7 @@ const mapStateToProps = (state) => ({
   data_be: state.data_be,
   currentPlaylist: state.currentPlaylist,
   categories: state.categories,
+  fullsongs: state.fullsongs,
   song: state.song,
   isPlaying: state.isPlaying,
   progress: state.progress,
@@ -253,6 +254,7 @@ class Main extends Component {
             path="/webplayer"
             component={() => (
               <WebPlayer
+              fullsongs={this.props.fullsongs}
                 //////////
                 patchedunfollow={this.props.patchedunfollow}
                 patchedfollow={this.props.patchedfollow}
