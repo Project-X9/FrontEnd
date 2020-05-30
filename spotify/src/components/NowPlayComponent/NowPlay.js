@@ -36,6 +36,11 @@ class NowPlay extends Component {
   /**
    * isPlaylistFollowed returns if the users already follows this playlist or not
    */
+  handlePlay(song)
+  {
+    alert("entered here");
+    this.props.PlayTheFooter(song)
+  }
   isPlaylistFollowed() {
     const Temp = this.props.currentPlaylist.currentPlaylist.followers.find(
       (element) => element == this.props.data_be.data_be._id
@@ -410,6 +415,7 @@ class NowPlay extends Component {
                                                   role="button"
                                                   className="DivStyle TrackListCol PositionOuter TopAlign PlayPause"
                                                 >
+                                                  <button onClick={()=>this.handlePlay(Song)}>
                                                   <svg
                                                     class="icon-play"
                                                     viewBox="0 0 85 100"
@@ -421,6 +427,7 @@ class NowPlay extends Component {
                                                       <title>PLAY</title>
                                                     </path>
                                                   </svg>
+                                                  </button>
                                                 </div>
                                                 <div
                                                   role="button"
