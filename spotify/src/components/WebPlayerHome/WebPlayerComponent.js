@@ -47,11 +47,13 @@ class WebPlayer extends Component {
       tempId: this.props.id.id,
       isModalOpen: false,
       isModalOpenNew: false,
+      isModalOpenSong: false,
       SignedIn: false,
       inputValue:null
     };
     
     this.toggleModal = this.toggleModal.bind(this);
+    this.toggleModalSong = this.toggleModalSong.bind(this);
     this.handleChange=this.handleChange.bind(this);
     this.handleSubmit=this.handleSubmit.bind(this);
 
@@ -71,6 +73,24 @@ class WebPlayer extends Component {
         isModalOpen: !this.state.isModalOpen,
       });
     }
+  }
+
+  toggleModalSong() {
+    // if (this.props.isSignedIn.isSignedIn !== true) {
+    //   alert("hi")
+    //   this.setState({
+    //     isModalOpenSong: !this.state.isModalOpenSong,
+    //   });
+     
+      
+    // } 
+    // else
+    // {
+    //   alert("hello")
+    //   this.setState({
+    //     isModalOpenSong: null,
+    //   });
+    // }
   }
 handleChange(e){
     this.setState({
@@ -139,6 +159,20 @@ handleSubmit() {
     if (this.state.SignedIn) {
       redirected = <Redirect to="/webplayer/librarypage/playlists"></Redirect>;
     }
+
+    let songsSidebar = <div>adsgsfgd</div>;
+    if (this.props.isSignedIn.isSignedIn === false) {
+      songsSidebar=
+        <Button  
+        className="SidebarSongButton "
+        onClick={()=>this.toggleModalSong()}>
+          <Link to="/webplayer/songs" className={songsActive}>
+          <i className="fa fa-music" />
+          Songs
+          </Link >
+        </Button>
+      
+    }
     // const showLikeAndCreate = this.props.data.data.map((data) => {
     //   if (data.id === this.state.tempId) {
     //     return(
@@ -201,10 +235,7 @@ handleSubmit() {
                     <i className="fa fa-bomb"></i>
                     Your Library
                   </Button>
-                  <Link to="/webplayer/songs" className={songsActive}>
-                    <i className="fa fa-music" />
-                    Songs
-                  </Link>
+                  {songsSidebar}
                   {showLikeAndCreate}
                 </div>
               </div>
@@ -344,9 +375,6 @@ handleSubmit() {
                         handleCurrentAlbums={this.props.handleCurrentAlbums}
                         handleCurrentArtists={this.props.handleCurrentArtists}
                         PlayTheFooter={this.props.PlayTheFooter}
-                        PlaySong={this.props.PlaySong}
-                        PauseSong={this.props.PauseSong}
-                        isPlaying={this.props.isPlaying}
                       />
                     )}
                   />
@@ -512,6 +540,77 @@ handleSubmit() {
                     </Row>
                 </ModalBody> 
             </Modal>
+            <Modal
+            isOpen={this.state.isModalOpenSong}
+            toggle={this.toggleModalSong}
+            className="row"
+            size="lg"
+            >
+            <ModalBody>
+            <div className="row HomeNotSignedInModal">
+                <div className="col-sm-6 col-md-6 col-lg-6 HomeNotSignedInModalFlexer">
+                <div className="HomeNotSignedInModalImageHolder">
+                    <img
+                    className="HomeNotSignedInModalImage"
+                    src="https://image.freepik.com/free-photo/vertical-image-woman-listening-music-floor_171337-17778.jpg"
+                    alt="Song Modal Image"
+                    ></img>
+                </div>
+                </div>
+                <div className="col-sm-6 col-md-6 col-lg-6 HomeNotSignedInModalFlexer">
+                <div className="row">
+                    <div className="col-sm-12 col-md-12 col-lg-12 ">
+                    <h2 className="HomeNotSignedInModalHeader2">
+                        Start listening with a free Spotify account
+                    </h2>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-12 col-md-12 col-lg-12">
+                    <Button
+                        className="HomeNotSignedInModalButton"
+                        color="success"
+                    >
+                        <Link
+                        className="HomeNotSignedInModalLinkInsideButton"
+                        to="/signup"
+                        >
+                        SIGN UP FREE
+                        </Link>
+                    </Button>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-12 col-md-12 col-lg-12">
+                    <p className="HomeNotSignedInModalParagraph">
+                        Already have an account?
+                        <Button
+                        className="HomeNotSignedInModalButtonInsideParagraph"
+                        color="success"
+                        >
+                        <Link
+                            className="HomeNotSignedInModalLinkInsideButtonInsideParagraph"
+                            to="/signup"
+                        >
+                            LOG IN
+                        </Link>
+                        </Button>
+                    </p>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div className="row HomeNotSignedInClose">
+                <Button
+                className="HomeNotSignedInModalClosedButton"
+                color="success"
+                onClick={()=>this.toggleModalSong()}
+                >
+                Close
+                </Button>
+            </div>
+            </ModalBody>
+        </Modal>
       </div>
     );
   }

@@ -157,6 +157,7 @@ class SongsByGenres extends Component {
                     isSignedIn={this.props.isSignedIn}
                     handleCurrentPlayList={this.props.handleCurrentPlayList}
                     categories={this.props.categories}
+                    PlayTheFooter={this.props.PlayTheFooter}
                     />
                   </div>
                 </div>
@@ -216,6 +217,7 @@ class SongsByGenres extends Component {
                       isSignedIn={this.props.isSignedIn}
                       handleCurrentPlayList={this.props.handleCurrentPlayList}
                       categories={this.props.categories}
+                      PlayTheFooter={this.props.PlayTheFooter}
                     />
                   </div>
                 </div>

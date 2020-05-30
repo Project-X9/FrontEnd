@@ -92,6 +92,7 @@
   
   /* Active/current link */
   .WebPlayerHomeBody button.SidebarLibraryButton.active.btn.btn-secondary,
+  .WebPlayerHomeBody button.SidebarSongButton.active.btn.btn-secondary,
   .WebPlayerHomeBody .sidebar a.active {
     background-color: #222326;
     color: white;
@@ -111,6 +112,13 @@
     border:none;
   }
   
+  .WebPlayerHomeBody button.SidebarSongButton.btn.btn-secondary{
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
   /***************************************************Sidebar***************************************************/
   /***************************************************Navbar & Content***************************************************/
   div.webPlayerHomeNavAndContent{
@@ -635,18 +643,33 @@ div.WebPlayerHomeContent .DescriptionPlaylistLink
 
   .HomeNotSignedInModal .HomeNotSignedInModalImageHolder{
     width: 100%;
-    height: auto;
+    Height: 100%;
     margin:10px;
   }
 
   .HomeNotSignedInModal img.HomeNotSignedInModalImage{
-    height: 100%;
-    width: 100%;
+    height: 300px;
+    width: 200px;
     top: 0;
     left: 0;
     display: block;
     object-fit: cover;
     object-position: center center;
+  }
+
+  @media(max-width: 991px){
+    .HomeNotSignedInModal img.HomeNotSignedInModalImage{
+    height: 200px;
+    width: 150px;
+    }
+  }
+
+  @media(max-width: 575px){
+    .HomeNotSignedInModal img.HomeNotSignedInModalImage{
+    height: 180px;
+    width: 140px;
+    margin-left:30%;
+    }
   }
 
 

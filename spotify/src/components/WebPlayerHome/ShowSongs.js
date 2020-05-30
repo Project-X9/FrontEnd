@@ -21,29 +21,10 @@ class ShowSongs extends Component {
       image:"",
       name:"",
     };
-    this.toggleModal = this.toggleModal.bind(this);
-    this.Func = this.Func.bind(this);
+    
   }
 
-  /**
-   * Toggles a Modal (has been removed) by switching isModalOpen from true to false and vice versa
-   */
-  toggleModal() {
-    alert(this.state.isModalOpen)
-    this.setState({
-      isModalOpen: !this.state.isModalOpen,
-    });
-  }
-
-  Func() {
-      alert("hello")
-    this.setState({
-        isModalOpen: !this.state.isModalOpen,
-      
-      });
-  }
   
-
   /**
    * Responsible for showing the playlists in the webplayer home page
    * @returns Components that will be displayed on the page
@@ -74,14 +55,6 @@ class ShowSongs extends Component {
               
                 insidePlaylist.tracks.map((track) => {
                     return(
-                        <Button
-                className="WebplayerHomeNowPlayRedirectButton"
-                onClick={()=>this.Func()}
-              >
-                <Link
-                  className="WebplayerHomeNowPlayRedirectLink"
-                  //to="/webplayer/nowplay"
-                >
             
                   <div key={track._id} className="CardsHome">
                     <div className="row">
@@ -103,13 +76,6 @@ class ShowSongs extends Component {
                           <div className="col-md-12">
                             <Link className="TitlePlaylistLink">{track.name}</Link>
                           </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-12">
-                        <div className="DescriptionPlaylistLink">
-                          <span>{track.description}</span>
                         </div>
                       </div>
                     </div>
@@ -137,8 +103,7 @@ class ShowSongs extends Component {
                     </div>
                     
                   </div>
-                </Link>
-                </Button>
+
                   )
                 })
             )
@@ -170,10 +135,7 @@ class ShowSongs extends Component {
                 insidePlaylist.tracks.map((track) => {
                     return(
 
-                        <Link
-                        className="WebplayerHomeNowPlayRedirectLink"
-                        to="/webplayer/nowplay"
-                        >
+                       
                     
                         <div key={track._id} className="CardsHome">
                             <div className="row">
@@ -195,13 +157,6 @@ class ShowSongs extends Component {
                                 <div className="col-md-12">
                                     <Link className="TitlePlaylistLink">{track.name}</Link>
                                 </div>
-                                </div>
-                            </div>
-                            </div>
-                            <div className="row">
-                            <div className="col-md-12">
-                                <div className="DescriptionPlaylistLink">
-                                <span>{track.description}</span>
                                 </div>
                             </div>
                             </div>
@@ -228,7 +183,7 @@ class ShowSongs extends Component {
                             </div>
                             
                     </div>
-                        </Link>
+                        
                     )
                 })
             )
@@ -242,81 +197,8 @@ class ShowSongs extends Component {
     }
     return (
       <div>
-     {HomeSongs}
-     
-        <Modal
-            isOpen={this.state.isModalOpen}
-            toggle={this.Func}
-            className="row"
-            size="lg"
-        >
-            <ModalBody>
-            <div className="row HomeNotSignedInModal">
-                <div className="col-sm-6 col-md-6 col-lg-6 HomeNotSignedInModalFlexer">
-                <div className="HomeNotSignedInModalImageHolder">
-                    <img
-                    className="HomeNotSignedInModalImage"
-                    src={this.state.image}
-                    alt=""
-                    ></img>
-                </div>
-                </div>
-                <div className="col-sm-6 col-md-6 col-lg-6 HomeNotSignedInModalFlexer">
-                <div className="row">
-                    <div className="col-sm-12 col-md-12 col-lg-12 ">
-                    <h2 className="HomeNotSignedInModalHeader2">
-                        Start listening with a free Spotify account
-                    </h2>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-sm-12 col-md-12 col-lg-12">
-                    <Button
-                        className="HomeNotSignedInModalButton"
-                        color="success"
-                    >
-                        <Link
-                        className="HomeNotSignedInModalLinkInsideButton"
-                        to="/signup"
-                        >
-                        SIGN UP FREE
-                        </Link>
-                    </Button>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-sm-12 col-md-12 col-lg-12">
-                    <p className="HomeNotSignedInModalParagraph">
-                        Already have an account?
-                        <Button
-                        className="HomeNotSignedInModalButtonInsideParagraph"
-                        color="success"
-                        >
-                        <Link
-                            className="HomeNotSignedInModalLinkInsideButtonInsideParagraph"
-                            to="/signup"
-                        >
-                            LOG IN
-                        </Link>
-                        </Button>
-                    </p>
-                    </div>
-                </div>
-                </div>
-            </div>
-            <div className="row HomeNotSignedInClose">
-                <Button
-                className="HomeNotSignedInModalClosedButton"
-                color="success"
-                onClick={this.toggleModal}
-                >
-                Close
-                </Button>
-            </div>
-            </ModalBody>
-        </Modal>
-        
-        
+     {redirected}
+     {HomeSongs}  
       </div>
     );
   }
