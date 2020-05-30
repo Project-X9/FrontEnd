@@ -77,21 +77,11 @@ class WebPlayer extends Component {
   }
 
   toggleModalSong() {
-    // if (this.props.isSignedIn.isSignedIn !== true) {
-    //   alert("hi")
-    //   this.setState({
-    //     isModalOpenSong: !this.state.isModalOpenSong,
-    //   });
-     
-      
-    // } 
-    // else
-    // {
-    //   alert("hello")
-    //   this.setState({
-    //     isModalOpenSong: null,
-    //   });
-    // }
+    if (this.props.isSignedIn.isSignedIn === null) {
+      this.setState({
+        isModalOpenSong: !this.state.isModalOpenSong,
+      }); 
+    }
   }
 handleChange(e){
     this.setState({
@@ -161,19 +151,26 @@ handleSubmit() {
       redirected = <Redirect to="/webplayer/librarypage/playlists"></Redirect>;
     }
 
-    let songsSidebar = <div>adsgsfgd</div>;
-    if (this.props.isSignedIn.isSignedIn === false) {
-      songsSidebar=
-        <Button  
-        className="SidebarSongButton "
-        onClick={()=>this.toggleModalSong()}>
+    let songsSidebar = null;
+    if (this.props.isSignedIn.isSignedIn === true) {
+      songsSidebar=(
           <Link to="/webplayer/songs" className={songsActive}>
           <i className="fa fa-music" />
           Songs
           </Link >
-        </Button>
-      
+      );
     }
+    else{
+      songsSidebar=(
+        <Button  
+        className={"SidebarSongButton " + songsActive}
+        onClick={()=>this.toggleModalSong()}>
+          <i className="fa fa-music" />
+          Songs
+        </Button>
+      );
+    }
+      
     // const showLikeAndCreate = this.props.data.data.map((data) => {
     //   if (data.id === this.state.tempId) {
     //     return(
@@ -568,24 +565,16 @@ handleSubmit() {
             >
             <ModalBody>
             <div className="row HomeNotSignedInModal">
-                <div className="col-sm-6 col-md-6 col-lg-6 HomeNotSignedInModalFlexer">
-                <div className="HomeNotSignedInModalImageHolder">
-                    <img
-                    className="HomeNotSignedInModalImage"
-                    src="https://image.freepik.com/free-photo/vertical-image-woman-listening-music-floor_171337-17778.jpg"
-                    alt="Song Modal Image"
-                    ></img>
-                </div>
-                </div>
-                <div className="col-sm-6 col-md-6 col-lg-6 HomeNotSignedInModalFlexer">
-                <div className="row">
+                
+              <div className="col-sm-12 col-md-12 col-lg-12">
+                <div className="row HomeNotSignedInModalTextAndLinks">
                     <div className="col-sm-12 col-md-12 col-lg-12 ">
                     <h2 className="HomeNotSignedInModalHeader2">
-                        Start listening with a free Spotify account
+                        Your Favorite Songs Are All In One Place
                     </h2>
                     </div>
                 </div>
-                <div className="row">
+                <div className="row HomeNotSignedInModalTextAndLinks">
                     <div className="col-sm-12 col-md-12 col-lg-12">
                     <Button
                         className="HomeNotSignedInModalButton"
@@ -600,7 +589,7 @@ handleSubmit() {
                     </Button>
                     </div>
                 </div>
-                <div className="row">
+                <div className="row HomeNotSignedInModalTextAndLinks">
                     <div className="col-sm-12 col-md-12 col-lg-12">
                     <p className="HomeNotSignedInModalParagraph">
                         Already have an account?
@@ -618,7 +607,7 @@ handleSubmit() {
                     </p>
                     </div>
                 </div>
-                </div>
+              </div>
             </div>
             <div className="row HomeNotSignedInClose">
                 <Button

@@ -37,6 +37,7 @@
   /* Sidebar links */
 
   .WebPlayerHomeBody .SidebarLibraryButton.btn.btn-secondary,
+  .WebPlayerHomeBody .SidebarSongButton.btn.btn-secondary,
   .WebPlayerHomeBody .sidebar a {
     font-size: 14px;
     line-height: 20px;
@@ -59,11 +60,13 @@
     transition-property: none;
   }
 
-  .WebPlayerHomeBody .SidebarLibraryButton.btn.btn-secondary:focus{
+  .WebPlayerHomeBody .SidebarLibraryButton.btn.btn-secondary:focus,
+  .WebPlayerHomeBody .SidebarSongButton.btn.btn-secondary:focus{
     box-shadow: none;
   }
   
-  .WebPlayerHomeBody .SidebarLibraryButton{
+  .WebPlayerHomeBody .SidebarLibraryButton,
+  .WebPlayerHomeBody .SidebarSongButton{
     width:100%;
   }
 
@@ -84,6 +87,7 @@
 
   /* Links on mouse-over */
   .WebPlayerHomeBody .SidebarLibraryButton.btn.btn-secondary:hover,
+  .WebPlayerHomeBody .SidebarSongButton.btn.btn-secondary:hover,
   .WebPlayerHomeBody .sidebar a:hover:not(.active) {
     color: white;
     transition-property: color;
@@ -92,7 +96,6 @@
   
   /* Active/current link */
   .WebPlayerHomeBody button.SidebarLibraryButton.active.btn.btn-secondary,
-  .WebPlayerHomeBody button.SidebarSongButton.active.btn.btn-secondary,
   .WebPlayerHomeBody .sidebar a.active {
     background-color: #222326;
     color: white;
@@ -110,13 +113,6 @@
   .WebPlayerHomeBody button.SidebarLibraryButton.active.btn.btn-secondary{
     width:94%;
     border:none;
-  }
-  
-  .WebPlayerHomeBody button.SidebarSongButton.btn.btn-secondary{
-    width: 100%;
-    padding: 0;
-    border: 0;
-    background: transparent;
   }
 
   /***************************************************Sidebar***************************************************/
@@ -632,13 +628,15 @@ div.WebPlayerHomeContent .DescriptionPlaylistLink
   .HomeNotSignedInModal{
     display: flex;
     flex-direction: row;
-    background: rgb(72, 74, 75); /*for browsers that don't support gradient*/
-    background: -webkit-linear-gradient(to bottom,rgb(197, 200, 201),rgb(43, 44, 44)); /*for safari and chrome*/
-    background: -o-linear-gradient(to bottom,rgb(197, 200, 201),rgb(43, 44, 44)); /*for opera*/
-    background: -moz-linear-gradient(to bottom,rgb(197, 200, 201),rgb(43, 44, 44)); /*for firefox*/
-    background: linear-gradient(to bottom,rgb(197, 200, 201),rgb(43, 44, 44)); /*standard syntax*/
+    background-image: url(https://www.ubackground.com/_ph/86/849751921.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
     padding:50px;
     border-radius: 10px;
+  }
+
+  .HomeNotSignedInModal .HomeNotSignedInModalTextAndLinks{
+    margin-top: 20px;
   }
 
   .HomeNotSignedInModal .HomeNotSignedInModalImageHolder{
@@ -676,8 +674,8 @@ div.WebPlayerHomeContent .DescriptionPlaylistLink
   .HomeNotSignedInModal .HomeNotSignedInModalHeader2{
     font-size: 32px;
     margin: 8px 0 24px;
-    color: #fff;
-    font-weight: 700;
+    color:rgb(253, 253, 253);
+    font-weight: 900;
     letter-spacing: -.4px;
     padding: 0;
     border: 0;
@@ -711,6 +709,7 @@ div.WebPlayerHomeContent .DescriptionPlaylistLink
   }
 
   .HomeNotSignedInModal .HomeNotSignedInModalLinkInsideButton{
+    font-size: 20px;
     color: #fff;
     text-decoration: none;
   }
@@ -723,7 +722,7 @@ div.WebPlayerHomeContent .DescriptionPlaylistLink
   }
 
   .HomeNotSignedInModal .HomeNotSignedInModalParagraph{
-    font-size: 12px;
+    font-size: 18px;
     line-height: 24px;
     text-align: center;
     margin: 32px 0 0;
@@ -759,6 +758,7 @@ div.WebPlayerHomeContent .DescriptionPlaylistLink
   }
 
   .HomeNotSignedInModal .HomeNotSignedInModalLinkInsideButtonInsideParagraph{
+    font-size: 18px;
     color: #fff;
     text-decoration: none;
   }

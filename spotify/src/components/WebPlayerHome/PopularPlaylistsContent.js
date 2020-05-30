@@ -27,7 +27,6 @@ class PopularNewHomeAndNavContent extends Component {
    * Toggles a Modal (has been removed) by switching isModalOpen from true to false and vice versa
    */
   toggleModal() {
-    alert(this.state.isModalOpen)
     this.setState({
       isModalOpen: !this.state.isModalOpen,
     });
@@ -36,11 +35,18 @@ class PopularNewHomeAndNavContent extends Component {
    * Reponsible for getting a specific playlist's data from the database by calling handleCurrentPlayList
    */
   handleRenderingPlaylist(data) {
-    
+
     this.props.handleCurrentPlayList(data);
     this.setState({
       playListadded: true,
     });
+    
+  }
+
+  Doublefunc(data) {
+    this.toggleModal();
+    this.handleRenderingPlaylist(data);
+    
   }
 
   /**
@@ -73,11 +79,12 @@ class PopularNewHomeAndNavContent extends Component {
               <Button
                 className="WebplayerHomeNowPlayRedirectButton"
                 onClick={() => this.handleRenderingPlaylist(CategorySongs._id)}
+                //onClick={() => this.Doublefunc(CategorySongs._id)}
               >
-                <Link
+                {/* <Link
                   className="WebplayerHomeNowPlayRedirectLink"
                   //to="/webplayer/nowplay"
-                >
+                > */}
             
                   <div key={CategorySongs._id} className="CardsHome">
                     <div className="row">
@@ -114,7 +121,7 @@ class PopularNewHomeAndNavContent extends Component {
                         <div>
                           <Button
                             className="ButtonItself"
-                            onClick={this.toggleModal}
+                            // onClick={this.toggleModal}
                           >
                             <svg
                               height="16"
@@ -203,7 +210,7 @@ class PopularNewHomeAndNavContent extends Component {
                       </ModalBody>
                     </Modal>
                   </div>
-                </Link>
+                {/* </Link> */}
               </Button>
             );
           })}
