@@ -15,8 +15,8 @@ export const PrevSong = (state = {prevsong:null}, action) => {
   switch (action.type) {
     case ActionTypes.ADD_PREVIOUS:
       return { ...state, prevsong: action.payload };
-    // case ActionTypes.ADD_LOGOUT:
-    //   return { ...state, prevsong:null };
+      case ActionTypes.ADD_LOGOUT_BE:
+        return { ...state, prevsong: null };
     default:
       return state;
   }

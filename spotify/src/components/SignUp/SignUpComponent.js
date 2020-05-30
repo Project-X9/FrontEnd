@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import {
-  Col, Button, Row, Label, NavLink,
+  Col, Button, Row, Label, NavLink, ModalBody,Modal
 } from 'reactstrap';
 import {
   Control, Form, Errors,
 } from 'react-redux-form';
 import { Link, Redirect } from 'react-router-dom';
 import FacebookLogin from 'react-facebook-login';
-// import emailjs from 'emailjs-com';
+import emailjs from 'emailjs-com';
 
 const required = val => val && val.length;
 // const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -46,20 +46,45 @@ class SignUp extends Component {
       submittedFromFacebook: false,
       submittedFromSignUp: false,
       // length:this.props.data.data.length,
-      Succeded: null
+      Succeded: null,
+      inputValue:null,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.responseFacebook = this.responseFacebook.bind(this);
 
+    this.handleSubmitModal=this.handleSubmitModal.bind(this);
+    this.handleChange=this.handleChange.bind(this);
+
   }
+  
+handleChange(e){
+    this.setState({
+        inputValue:e.target.value
+    })
+}
+
+handleSubmitModal() {
+    
+    if(this.state.inputValue == this.props.signupdata.signupdata.randomId)
+    {
+      alert("this.state.password")
+      this.props.ControlModal(false)
+      this.props.resetFeedbackForm();
+      this.state.Succeded = this.props.postFeedback(this.props.signupdata.signupdata); 
+    }
+    else{
+      alert("Wrong Code")
+    }
+
+}
   /**
    * Here i check the response from the data base if it already exist the userstate will be 
    * equal to false else it will go the sign in page
    */
   componentDidMount() {
     // this.props.makeSignupRedirectable();
-    this.props.resetFeedbackForm();
+    // this.props.resetFeedbackForm();
     if (this.props.userstate.userstate === true) {
       this.setState({
         submitted: true,
@@ -77,11 +102,9 @@ class SignUp extends Component {
         alreadySignedIn: true
       })
     }
+    // this.props.ControlModal(false);
   }
-  // testbackend(){
-  //   const id = "";
-  //   this.props.testPlayLists(id);
-  // }
+
   /**
    * This function takes the data fromthe input fields and assure that the all
    * the data is not empty (don't make the validations) and if all the data required is
@@ -92,7 +115,6 @@ class SignUp extends Component {
    */
   handleSubmit(values) {
     this.props.resetFeedbackForm();
-
     if (
       values.email !== "" &&
       values.confirmemail !== "" &&
@@ -103,31 +125,47 @@ class SignUp extends Component {
       values.year !== "" &&
       values.sex !== ""
     ) {
-      this.setState({
-        // submittedFromSignUp:true,
-        // submitted: true,
-        // SignUpId:this.props.data.data.length+1
-      }, () => {
-        this.props.resetFeedbackForm();
-        this.state.Succeded = this.props.postFeedback( //the function that posts the user data
-          values.email,
-          values.confirmemail,
-          values.password,
-          values.name,
-          values.day,
-          values.month,
-          values.year,
-          values.sex
-        );
+      var min = 1;
+        var max = 100;
+        var rand =  min + (Math.random() * (max-min));
+        rand=Math.ceil(rand);
+        var NewObject={
+          email:values.email, 
+          confirmemail:values.confirmemail,
+          password:values.password, 
+          name:values.name,
+          day:values.day ,
+          month:values.month, 
+          year:values.year ,
+          sex:values.sex,
+          randomId:rand 
+        }
+        this.props.ControlModal(true);
+        this.props.ForSignUpVerification(NewObject);
+        var service_id = "ahahmed202025_gmail_com";
+        var template_id = "template_6Gzc6XQv";
+        var UserID ="user_ZGAt1STrmZuTHMLbdVnkr"
+        emailjs.init("user_ZGAt1STrmZuTHMLbdVnkr");
+        
+        var template_params={
+          message_html: rand,
+          user_email: values.email
+      }
+        emailjs.send(service_id, template_id,template_params)
+        .then(function(){ 
+           alert("Sent!");
+         }, function(err) {
+           alert("Send email failed!\r\n Response:\n " + JSON.stringify(err));
+        });
 
       }
-      );
+     
     }
-    else {
-      this.props.resetFeedbackForm();
-    }
-    //   //  this.props.history.push("/premium")
-  }
+    // else {
+    //   this.props.resetFeedbackForm();
+    // }
+
+  
   /**
    * Function to test the excistance of the email
    * @param {String} email
@@ -150,26 +188,6 @@ class SignUp extends Component {
     this.setState({
       email: event.target.value
     });
-  };
-  // componentWillReceiveProps(nextProbs){
-  //   if(nextProbs.data.data !== this.props.data.data )
-  //   {
-  //     this.setState({
-  //     })
-  //   }
-  // }
-  handleIdIfExist = email => {
-    let temp;
-    this.props.data.data.map(data => {
-      if (data.email === email || data.name === email) {
-        for (let index = 0; index < data.id + 1; index++) {
-          if (index === data.id) {
-            temp = index;
-          }
-        }
-      }
-    });
-    return temp;
   };
   /**
    * This function recieves the responce of the facebook login and uses the same functions i used in handleSubmit to
@@ -209,6 +227,7 @@ class SignUp extends Component {
       }
     }
   }
+  
   /**
    * Responsible for showing everything on the Sign Up page
    * @returns Components that will be displayed on the page
@@ -234,6 +253,50 @@ class SignUp extends Component {
     }
     return (
       <div className="container signup">
+        <Modal isOpen={this.props.isModalOpen.isModalOpen} className="">
+                <ModalBody className="createPlayLsitBody">
+                    <Row>
+                        <Col md={12} xs={12} sm={12}>
+                                <Row>
+                                    <Col md={{ size: 6, offset: 5 }} xs={{ size: 6, offset: 3 }} sm={{ size: 6, offset: 3 }}>
+                                        <Button className="exitButton_CP" onClick={()=>this.props.ControlModal(false)}>
+                                        <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                            <title>Close</title>
+                                            <path d="M31.098 29.794L16.955 15.65 31.097 1.51 29.683.093 15.54 14.237 1.4.094-.016 1.508 14.126 15.65-.016 29.795l1.414 1.414L15.54 17.065l14.144 14.143" fill="#fff" fill-rule="evenodd"></path>
+                                        </svg>
+                                        </Button>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={{ size: 6, offset:3}} xs={{ size: 6, offset:3}} sm={{ size: 6, offset:3}} className="Create_new_playlist">
+                                        <h1>Enter The Code Send To Your Email</h1>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col className="inputField_CP" md={12} xs={12} sm={12}>
+                                        <div className="inputBox_CP">
+                                                <Row>
+                                                    <Col md={{size:10, offset:2}} xs={12} sm={12} >
+                                                    <div className="contentSpacing_CP">
+                                                        <input type="text" className="inputBox-input_CP" placeholder="Code" onChange={this.handleChange}></input>                                          
+                                                    </div>
+                                                    </Col>
+                                                </Row>
+                                            </div>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={{size:7,offset:5}} xs={12} sm={12} className="create_Cancel_CP">
+                                            <button class="CancelButton_CP" type="button" onClick={()=>this.props.ControlModal(false)}>CANCEL</button>
+                                            <button  class="CreateButton_CP" type="button" onClick={()=>this.handleSubmitModal()}>CREATE</button>
+                                    </Col>
+                                </Row>
+                               
+                        </Col>
+                    </Row>
+                </ModalBody> 
+            
+            </Modal>
         {redirected}
         {redirectIfSignedIn}
         <div className="row somepadding">
@@ -275,6 +338,7 @@ class SignUp extends Component {
             <Form
               model="feedback"
               onSubmit={values => this.handleSubmit(values)}
+              id="myform"
             >
               <Row className="form-group">
                 <Col xs={12} md={{ size: 6, offset: 3 }}>

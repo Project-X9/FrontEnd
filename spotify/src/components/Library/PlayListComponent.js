@@ -30,6 +30,7 @@ class PlayList extends Component {
 //        }
 //    }
 handleplay(){
+    alert("hello")
     if(this.props.currentPlaylist.currentPlaylist.tracks)
     {
     this.props.PlayTheFooter(this.props.currentPlaylist.currentPlaylist.tracks[0])
@@ -145,6 +146,7 @@ render(){
     return(
         
         <div>
+            
             {this.props.isSignedIn.isSignedIn === true ? (
                 <div>
                 {redirected}
@@ -197,11 +199,12 @@ render(){
 
                                                     </div>
                                                 </div>
+
                                                 <Row className="playButtonOfLikedSongs">
                                                     <Col  md={12}>
                                                         <div className="displayButton">
-                                                        <Button className="PlayButton" onClick={()=>this.handleplay}>
-                                                            <Link to='/webplayer/likedplay'>
+                                                        <Button className="PlayButton" >
+                                                            <Link to='/webplayer/likedplay' onClick={()=>this.handleplay()}>
                                                             <svg height="24" role="img" width="24" viewBox="0 0 24 24">
                                                                 <polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon>
                                                             </svg>

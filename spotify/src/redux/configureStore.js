@@ -19,6 +19,7 @@ import { Categories } from "./addCategories";
 import { Song, CurrentTime,TotalTime,PrevSong } from './PlayFooterStuff/SongsPlay';
 import { SongState } from './PlayFooterStuff/SongState';
 import { SongProgress, ProgressMode ,ProgressDirty} from './PlayFooterStuff/SongProgress';
+import { SignUpData, SignUpModal} from './SignupData';
 
 function saveState(state) {
   try {
@@ -59,6 +60,8 @@ export const ConfigureStore = () => {
       currentTime:CurrentTime,
       totalTime:TotalTime,
       prevsong:PrevSong,
+      signupdata:SignUpData,
+      isModalOpen:SignUpModal,
       // playlist_BE:PlayList_BE,
       ...createForms({
         feedback: InitialFeedback,
