@@ -359,30 +359,14 @@ export const CurrentLoading = () => ({
  * @param {String} sex 
  */
 export const postFeedback = (
-  email,
-  confirmemail,
-  password,
-  name,
-  day,
-  month,
-  year,
-  sex
+  newFeedback
 ) => (dispatch) => {
-  const newFeedback = {
-    email,
-    confirmemail,
-    password,
-    name,
-    day,
-    month,
-    year,
-    sex,
-  };
+
   newFeedback.date = new Date().toISOString();
   newFeedback.premium = false;
   var d = new Date();
   var n = d.getFullYear();
-  newFeedback.age = n - year;
+  newFeedback.age = n - newFeedback.year;
   axios
     .post(SignUpUrl, newFeedback)
     .then((response) => dispatch(addUser(true)))
@@ -427,6 +411,24 @@ export const patchedfollow = (iduser, idplaylist) => (dispatch) => {
   //     .then((response2) => dispatch(addUserData_BE(response2.data.data.user)));
   // });
 };
+export const ForSignUpVerification = (data) => (dispatch) => {
+  dispatch(addNewUser(data));
+ //  dispatch(Play());
+ 
+ };
+ export const addNewUser = (data) => ({
+   type: ActionTypes.ADD_NEW_USER,
+   payload: data,
+ });
+ export const ControlModal = (data) => (dispatch) => {
+  dispatch(changeModalState(data));
+ //  dispatch(Play());
+ 
+ };
+ export const changeModalState = (data) => ({
+   type: ActionTypes.CONTROLMODAL,
+   payload: data,
+ });
 export const PremiumPost = (id, isPremium) => (dispatch) => {
   const data = {
     premium: isPremium,
@@ -491,11 +493,6 @@ export const PlaySong = () => (dispatch) => {
    type: ActionTypes.CHANGE_PROGRESS_Dirty,
    payload: data,
  });
- 
-
-
-
-
  export const ChangeTotalTime = (time) => (dispatch) => {
   dispatch(totalTime(time));
  };

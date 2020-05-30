@@ -45,7 +45,9 @@ import {
   ChangeProgressDirty,
   ChangeTotalTime,
   ChangeCurrentTime,
-  AddPrevSong
+  AddPrevSong,
+  ForSignUpVerification,
+  ControlModal
 } from "../redux/ActionCreators";
 import MyAlbums from "./ForArtists/MyAlbumsComponent";
 import MySongs from "./ForArtists/MySongsComponent";
@@ -69,7 +71,10 @@ const mapStateToProps = (state) => ({
   is_progress_dirty: state.is_progress_dirty,
   currentTime: state.currentTime,
   totalTime: state.totalTime,
-  prevsong:state.prevsong
+  prevsong:state.prevsong,
+  signupdata:state.signupdata,
+  isModalOpen:state.isModalOpen
+
 });
 const mapDispatchToProps = (dispatch) => ({
   resetFeedbackForm: () => {
@@ -163,6 +168,12 @@ const mapDispatchToProps = (dispatch) => ({
   AddPrevSong: (song) => {
     dispatch(AddPrevSong(song));
   }
+  , ForSignUpVerification: (data) => {
+    dispatch(ForSignUpVerification(data));
+  }
+  , ControlModal: (data) => {
+    dispatch(ControlModal(data));
+  }
   
 });
 
@@ -196,6 +207,11 @@ class Main extends Component {
                 userstate={this.props.userstate}
                 makeSignupRedirectable={this.props.makeSignupRedirectable}
                 isSignedIn={this.props.isSignedIn}
+                ForSignUpVerification={this.props.ForSignUpVerification}
+                signupdata={this.props.signupdata}
+                isModalOpen={this.props.isModalOpen}
+                ControlModal={this.props.ControlModal}
+
               />
             )}
           />

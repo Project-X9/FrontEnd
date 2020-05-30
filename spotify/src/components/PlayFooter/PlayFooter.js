@@ -177,9 +177,14 @@ function format2Number(num) {
       // } while (this.history.length > 0 && this.history[this.history.length - 1] === song);
 
       this.props.PlayTheFooter(song);
-      this._player.pause();
-      this._player.load();
-      this._player.play();
+      // this.setState({
+      //   is_playing:true
+      // },async()=>{
+      //   this._player.pause();
+      //   this._player.load();
+      //   this._player.play();
+      // })
+      
     
     }
     }

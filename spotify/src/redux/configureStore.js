@@ -20,6 +20,7 @@ import { Song, CurrentTime,TotalTime,PrevSong } from './PlayFooterStuff/SongsPla
 import { SongState } from './PlayFooterStuff/SongState';
 import { SongProgress, ProgressMode ,ProgressDirty} from './PlayFooterStuff/SongProgress';
 import { FullSongs } from "./addFullSongs";
+import { SignUpData, SignUpModal} from './SignupData';
 
 function saveState(state) {
   try {
@@ -61,6 +62,8 @@ export const ConfigureStore = () => {
       fullsongs:FullSongs,
       totalTime:TotalTime,
       prevsong:PrevSong,
+      signupdata:SignUpData,
+      isModalOpen:SignUpModal,
       // playlist_BE:PlayList_BE,
       ...createForms({
         feedback: InitialFeedback,
