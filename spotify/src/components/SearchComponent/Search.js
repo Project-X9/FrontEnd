@@ -28,7 +28,7 @@ class Search extends Component {
     this.state = {
       isNavOpen: false,
       tempId: this.props.data_be.data_be.id,
-      search:'',suggestions:'',ReservedSongs:this.props.fullsongs.fullSongs
+      search:'',suggestions:'',FullSongs:this.props.fullsongs.fullSongs,SongsList:[]
     };
     this.handleinput=this.handleinput.bind(this);
     this.state.toggleNav = this.toggleNav.bind(this);
@@ -48,14 +48,16 @@ class Search extends Component {
   handleLogout() {
     this.props.handleLogout_BE();
   }
-
+componentDidMount(){
+  this.setState({SongsList:this.state.FullSongs.map(x=>x.name)})
+}
   handleinput=(e)=>{
-    alert(this.state.ReservedSongs.tracks)
+    alert(this.state.SongsList)
     const value = e.target.value;
     let suggestions=[];
     if(value.length > 0){
         const regex=new RegExp(`^${value}`,'i')
-        suggestions=this.state.ReservedSongs.sort().filter(v=>regex.test(v));
+        suggestions=this.state.SongsList.sort().filter(v=>regex.test(v));
     }
     this.setState({suggestions:suggestions,search: value})
 }
@@ -214,7 +216,7 @@ renderSuggestion(){
             <div className=" DivStyle LibraryPageBody">
               {SignedIn}
               <section className="JumbostyleWithPadding">
-             
+             {this.renderSuggestion()}
               </section>
             </div>
           ) : (
