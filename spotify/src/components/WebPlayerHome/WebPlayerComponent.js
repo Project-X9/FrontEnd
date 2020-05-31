@@ -429,9 +429,9 @@ handleSubmit() {
               <PlayFooter     
                 currentPlaylist={this.props.currentPlaylist}          
                 song={this.props.song}
-                PlaySong={this.props.PlaySong}
-                PauseSong={this.props.PauseSong}
-                isPlaying={this.props.isPlaying}
+                PlayShuffle={this.props.PlayShuffle}
+                PauseShuffle={this.props.PauseShuffle}
+                shuffle={this.props.shuffle}
                 ChangeSongProgress={this.props.ChangeSongProgress}
                 progress={this.props.progress}
                 ChangeProgressMode={this.props.ChangeProgressMode}
@@ -447,6 +447,8 @@ handleSubmit() {
                 PlayTheFooter={this.props.PlayTheFooter}
                 AddPrevSong={this.props.AddPrevSong}
                 prevsong={this.props.prevsong}
+                audio={this.props.audio}
+                AudioControl={this.props.AudioControl}
                />
         </div>
         <Modal

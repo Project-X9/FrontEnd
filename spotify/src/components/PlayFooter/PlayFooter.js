@@ -72,7 +72,6 @@ function format2Number(num) {
       this.togglePlay=this.togglePlay.bind(this);
     }
 
-    
     onUpdate() {
       if (this._player) {
         if (!this.is_progress_dirty) {
@@ -172,11 +171,31 @@ function format2Number(num) {
       this.props.AddPrevSong(this.props.song.song)
       var song;
       // do {
+        if(this.props.shuffle.shuffle === true )
+        {
         song = this.state.songs[Math.floor(Math.random() * this.state.songs.length)];
+        this.props.PlayTheFooter(song);
+        }
+        else{
+          this.props.currentPlaylist.currentPlaylist.tracks.map((track,i)=>{
+            if(track._id===this.props.song.song._id)
+            {
+              if(this.props.currentPlaylist.currentPlaylist.tracks.length <= i+1)
+              {
+                song = this.state.songs[0];
+                this.props.PlayTheFooter(song);
+              }
+              else{
+                song = this.state.songs[i+1];
+                this.props.PlayTheFooter(song);
+              }
+            }
+          })
+        }
+        
   
       // } while (this.history.length > 0 && this.history[this.history.length - 1] === song);
 
-      this.props.PlayTheFooter(song);
       // this.setState({
       //   is_playing:true
       // },async()=>{
@@ -215,6 +234,17 @@ function format2Number(num) {
   }
 
 }
+onHandleShuffle(){
+  if(this.props.shuffle.shuffle === true)
+  {
+    this.props.PauseShuffle();
+  }
+  else
+  {
+    this.props.PlayShuffle();
+
+  }
+}
     /**
      * Responsible for showing everything on the Sign Up page
      * @returns Components that will be displayed on the page
@@ -248,7 +278,7 @@ function format2Number(num) {
         totalTime = this._player.duration;
       }
     }
-  
+    
       return (
   
             <Row>
@@ -323,6 +353,15 @@ function format2Number(num) {
                                       <div className="now-playing-bar__center">
                                       <div className="player-controls" dir="ltr"  aria-label="Player controls">
                                           <div className="player-controls__buttons">
+                                          <div className="control-button-wrapper">
+                                                  <button onClick={()=>this.onHandleShuffle()} className="control-button"  title="Previous">
+                                                      {this.props.shuffle.shuffle !== false ? (
+                                                          <i  className="fa fa-random fa-lg"></i>
+                                                      ):(
+                                                          <i  className="fa fa-random fa-lg hassouna"></i>
+                                                      )}
+                                                  </button>
+                                              </div>
                                               <div className="control-button-wrapper">
                                                   <button onClick={()=>this.onPlayerPrev()} className="control-button"  title="Previous">
                                                       {this.props.prevsong.prevsong !== null ? (
@@ -379,6 +418,9 @@ function format2Number(num) {
                                       <div className="now-playing-bar__right__inner">
                                           <div className="ExtraControls">
                                               <div className="volume-bar">
+                                                  <button className="control-button volume-bar__icon" aria-label="Queue" title="Queue">
+                                                      <i class="fa fa-list"></i>
+                                                  </button>
                                                   <button className="control-button volume-bar__icon" aria-label="Mute">
                                                       <i class="fa fa-volume-up"></i>
                                                   </button>

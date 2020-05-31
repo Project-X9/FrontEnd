@@ -53,7 +53,7 @@ export const ConfigureStore = () => {
       currentPlaylist: Current,
       categories: Categories,
       song:Song,
-      isPlaying:SongState,
+      shuffle:SongState,
       progress:SongProgress,
       in_set_progress_mode:ProgressMode,
       is_progress_dirty:ProgressDirty,
