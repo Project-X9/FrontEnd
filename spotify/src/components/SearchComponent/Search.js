@@ -40,7 +40,6 @@ class Search extends Component {
   handleLogout() {
     this.props.handleLogout_BE();
   }
-
   render() {
     var redirect = "";
     if (this.props.isSignedIn.isSignedIn === null) {
