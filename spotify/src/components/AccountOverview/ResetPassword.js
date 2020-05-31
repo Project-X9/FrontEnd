@@ -30,7 +30,6 @@ class ResetPassword extends Component {
   }
   componentDidMount(){
     this.props.resetpassword();
-
   }
 
   handleChange(e){
@@ -102,7 +101,7 @@ handleSubmitModal() {
             <div className="col">
               <Label className="ResetPasswordLabel">Reset Password</Label>
               <Control.text
-                type="password"
+                type="text"
                 className="form-control"
                 model=".password"
                 placeholder="Enter New Password"

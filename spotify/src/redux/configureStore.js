@@ -22,6 +22,7 @@ import { SongState } from './PlayFooterStuff/SongState';
 import { SongProgress, ProgressMode ,ProgressDirty} from './PlayFooterStuff/SongProgress';
 import { FullSongs } from "./addFullSongs";
 import { SignUpData, SignUpModal} from './SignupData';
+import { AddToken } from './AddToken';
 
 function saveState(state) {
   try {
@@ -65,6 +66,7 @@ export const ConfigureStore = () => {
       prevsong:PrevSong,
       signupdata:SignUpData,
       isModalOpen:SignUpModal,
+      token:AddToken,
       // playlist_BE:PlayList_BE,
       ...createForms({
         feedback: InitialFeedback,
