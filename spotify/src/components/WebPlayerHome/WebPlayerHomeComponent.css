@@ -803,6 +803,40 @@ div.WebPlayerHomeContent .DescriptionPlaylistLink
     background-color: transparent;
     border: none;
   }
+
+  .QueueMainHeader{
+    margin-top:7%;
+    margin-left: 5%;
+    font-size: 32px;
+    line-height: 1.6;
+    font-weight: 600;
+    letter-spacing: -.36px;
+    color: #fff;
+    box-sizing: border-box;
+    text-align: left;
+  }
+
+  .QueueNowPlayingHeader{
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: .015em;
+    font-weight: var(--glue-font-weight-normal);
+    color: #fff;
+    margin-top:1%;
+    margin-bottom:3%;
+    margin-left: 5%;
+    text-align: left;
+  }
+
+  .QueueNowPlayingFirstRow{
+    text-align: left;
+    color:#1ed760;
+  }
+
+  .QueueNowPlayingSecondRow{
+    text-align: left;
+    color:rgb(160, 160, 160);
+  }
   /***************************************************Content***************************************************/
   .playFooterFixed{
     position: fixed;

@@ -262,6 +262,12 @@ class Main extends Component {
                 handleLogout_BE={this.props.handleLogout_BE}
                 isSignedIn={this.props.isSignedIn}
               ///////////////////////////
+                ///////// for reset password
+                isModalOpen={this.props.isModalOpen}
+                ControlModal={this.props.ControlModal}
+                ForSignUpVerification={this.props.ForSignUpVerification}
+                signupdata={this.props.signupdata}
+                /////////
               />
             )}
           />

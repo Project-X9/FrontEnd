@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Modal, ModalBody } from "reactstrap";
+import { Button} from "reactstrap";
 import { Link, Redirect } from "react-router-dom";
 /**
  * Playlists inside the webplayer home

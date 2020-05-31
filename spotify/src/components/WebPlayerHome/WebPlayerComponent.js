@@ -19,6 +19,7 @@ import LikedPlay from "../PlayLikedSongs/PlayLikedSongs";
 import Artist from "../ArtistInterface/ArtistComponent";
 import PlayFooter from './../PlayFooter/PlayFooter';
 import Search from "../SearchComponent/Search";
+import Queue from "./Queue";
 /**
  * Web Player page
  */
@@ -377,6 +378,29 @@ handleSubmit() {
                     path="/webplayer/songs"
                     component={() => (
                       <SongsByGenres
+                        data={this.props.data}
+                        id={this.props.id}
+                        playLists={this.props.playLists}
+                        artist={this.props.artist}
+                        album={this.props.album}
+                        handleLogoutId={this.props.handleLogoutId}
+                        ///////////////
+                        data_be={this.props.data_be}
+                        handleLogout_BE={this.props.handleLogout_BE}
+                        isSignedIn={this.props.isSignedIn}
+                        handleCurrentPlayList={this.props.handleCurrentPlayList}
+                        categories={this.props.categories}
+                        handleCurrentAlbums={this.props.handleCurrentAlbums}
+                        handleCurrentArtists={this.props.handleCurrentArtists}
+                        PlayTheFooter={this.props.PlayTheFooter}
+                      />
+                    )}
+                  />
+                  <Route
+                    exact
+                    path="/webplayer/queue"
+                    component={() => (
+                      <Queue
                         data={this.props.data}
                         id={this.props.id}
                         playLists={this.props.playLists}

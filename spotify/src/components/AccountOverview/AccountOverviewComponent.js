@@ -28,6 +28,7 @@ import ChangePass from "./ChangePassword";
 import EditProfile from "./EditProfile";
 import ReviewNotifications from "./ReviewNotifications";
 import { baseUrl2 } from "../../shared/baseUrl";
+import ResetPassword from "./ResetPassword";
 
 /**
  * Account Overview page
@@ -99,6 +100,7 @@ class AccountOverview extends Component {
     let recoverPlaylistsActive = "";
     let redeemActive = "";
     let reviewNotificationsActive = "";
+    let resetPasswordActive="";
     let currentURL = window.location.href;
     if (currentURL === baseUrl2 + "account/overview") {
       overviewActive = "active";
@@ -107,6 +109,7 @@ class AccountOverview extends Component {
       recoverPlaylistsActive = "";
       redeemActive = "";
       reviewNotificationsActive = "";
+      resetPasswordActive="";
     } else if (currentURL === baseUrl2 + "account/edit") {
       overviewActive = "";
       editProfileActive = "active";
@@ -114,6 +117,7 @@ class AccountOverview extends Component {
       recoverPlaylistsActive = "";
       redeemActive = "";
       reviewNotificationsActive = "";
+      resetPasswordActive="";
     } else if (currentURL === baseUrl2 + "account/changepassword") {
       overviewActive = "";
       editProfileActive = "";
@@ -121,6 +125,7 @@ class AccountOverview extends Component {
       recoverPlaylistsActive = "";
       redeemActive = "";
       reviewNotificationsActive = "";
+      resetPasswordActive="";
     } else if (currentURL === baseUrl2 + "account/notifications") {
       overviewActive = "";
       editProfileActive = "";
@@ -128,6 +133,16 @@ class AccountOverview extends Component {
       recoverPlaylistsActive = "";
       redeemActive = "";
       reviewNotificationsActive = "active";
+      resetPasswordActive="";
+    }
+    else if (currentURL === baseUrl2 + "account/reset") {
+      overviewActive = "";
+      editProfileActive = "";
+      changePasswordActive = "";
+      recoverPlaylistsActive = "";
+      redeemActive = "";
+      reviewNotificationsActive = "";
+      resetPasswordActive="active";
     }
 
 
@@ -437,6 +452,10 @@ class AccountOverview extends Component {
                     <i className="fa fa-bell" />
                     Notifications
                   </Link>
+                  <Link to="/account/reset" className={resetPasswordActive}>
+                    <i className="fa fa-unlock-alt" />
+                    Reset Password
+                  </Link>
                 </div>
               </div>
               <div className="col-sm-12 col-md-12 col-lg-8 Content EditProfileContentAswell">
@@ -474,6 +493,19 @@ class AccountOverview extends Component {
                     component={() => (
                       <ReviewNotifications
                         data_be={this.props.data_be}
+                      />
+                    )}
+                  />
+                  <Route
+                    path="/account/reset"
+                    component={() => (
+                      <ResetPassword
+                        isModalOpen={this.props.isModalOpen}
+                        ControlModal={this.props.ControlModal}
+                        PostPassword={this.props.PostPassword}
+                        data_be={this.props.data_be}
+                        ForSignUpVerification={this.props.ForSignUpVerification}
+                        signupdata={this.props.signupdata}
                       />
                     )}
                   />
