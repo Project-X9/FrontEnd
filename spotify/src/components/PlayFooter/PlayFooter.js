@@ -418,9 +418,12 @@ onHandleShuffle(){
                                       <div className="now-playing-bar__right__inner">
                                           <div className="ExtraControls">
                                               <div className="volume-bar">
-                                                  <button className="control-button volume-bar__icon" aria-label="Queue" title="Queue">
-                                                      <i class="fa fa-list"></i>
-                                                  </button>
+                                                  <Link to="/webplayer/queue">
+                                                    <button className="control-button volume-bar__icon" aria-label="Queue" title="Queue">
+                                                        <i class="fa fa-list"></i>
+                                                        
+                                                    </button>
+                                                  </Link>
                                                   <button className="control-button volume-bar__icon" aria-label="Mute">
                                                       <i class="fa fa-volume-up"></i>
                                                   </button>

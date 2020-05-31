@@ -118,7 +118,7 @@ class Queue extends Component {
                             </div>
                         </div>
                         <div className="col-2">
-                            Hello
+                            3:12
                         </div>
                     </div>
                 </div>
