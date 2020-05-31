@@ -17,8 +17,16 @@ import axios from 'axios';
 
 import "../SearchComponent/Search.css";
 import "../NowPlayComponent/NowPlay.css";
-import { NavLink, Redirect } from "react-router-dom";
-import { Loading } from "./../Loading/LoadingComponent";
+import {Link, NavLink, Redirect} from "react-router-dom";
+import { Loading } from "../Loading/LoadingComponent";
+import {Container} from "react-bootstrap";
+import CardSubtitle from "reactstrap/es/CardSubtitle";
+import CardTitle from "reactstrap/es/CardTitle";
+import CardBody from "reactstrap/es/CardBody";
+import Card from "@material-ui/core/Card";
+import CardLink from "reactstrap/es/CardLink";
+import CardText from "reactstrap/es/CardText";
+import CardImg from "react-bootstrap/CardImg";
 /**
  * Search for a song dynamically
  */
@@ -28,7 +36,8 @@ class Search extends Component {
     this.state = {
       isNavOpen: false,
       tempId: this.props.data_be.data_be.id,
-      search:'',suggestions:'',FullSongs:this.props.fullsongs.fullSongs,SongsList:[]
+      search:'',suggestionSongs:[],suggestionArtists:[],FullSongs:this.props.fullsongs.fullSongs,categories:this.props.categories.categories,
+artists:this.props.data_be.data_be.artists
     };
     this.handleinput=this.handleinput.bind(this);
     this.state.toggleNav = this.toggleNav.bind(this);
@@ -49,35 +58,93 @@ class Search extends Component {
     this.props.handleLogout_BE();
   }
 componentDidMount(){
-  this.setState({SongsList:this.state.FullSongs.map(x=>x.name)})
+  this.setState({SongsList:this.state.FullSongs.map(x=>x.name),ArtistList:this.state.FullSongs.map(x=>x.name)})
 }
   handleinput=(e)=>{
-    alert(this.state.SongsList)
     const value = e.target.value;
-    let suggestions=[];
+    let suggestionsForSongs=[];let suggestionsForArtists=[];
     if(value.length > 0){
         const regex=new RegExp(`^${value}`,'i')
-        suggestions=this.state.SongsList.sort().filter(v=>regex.test(v));
+      suggestionsForSongs=this.state.FullSongs.sort().filter(v=>regex.test(v.name));
+      suggestionsForArtists=this.state.artists.sort().filter(v=>regex.test(v.name));
     }
-    this.setState({suggestions:suggestions,search: value})
+
+    this.setState({suggestionArtists:suggestionsForArtists,suggestionSongs:suggestionsForSongs,search: value})
+
 }
-suggestionselected(value){
-    this.setState(()=>({
-    search:value,
-    suggestions:[]
-    }))}
+
 
 renderSuggestion(){
-     const {suggestions}=this.state;
-     if(suggestions.length===0){return null}
-     return(<div className="AutoComplete">
-         <ul>
-             {suggestions
-                 .map(item=><li className="AutoComplete ul"
-                                onClick={()=>this.suggestionselected(item)}>{item}</li>)}</ul></div>)}
+     const {suggestionSongs,suggestionArtists}=this.state;
+     if(suggestionSongs.length===0 & suggestionArtists.length===0){return (<div>
+         <h1 className="BrowseAll">Browse All</h1>
+       <Row className=" RowSearch" lg="3">
+         {this.state.categories.map(item=>{return( <Col className="PaddingColoumns"><Card>
+           <CardImg top width="100%" src={item.icon} alt="Card image cap" />
+           <CardBody>
+             <CardTitle>Playlist: {item.name}</CardTitle>
+             <Button className="bg-primary">Go To {item.name}</Button>
+           </CardBody>
+         </Card></Col>)})}
+
+       </Row></div>
+     )}
+     else if(suggestionSongs.length===0 & suggestionArtists.length>0 ){
+         return (
+             <div className="DivStyle">
+             <section className="JumbostyleWithPadding">
+                 <h1>Related Songs</h1>
+                  <br/>
+                  <hr/>
+                <h3 >Opps!.. No Related Songs</h3>
+
+
+    <h1 >Related Artists</h1>
+
+    <Row xs="3">
+  {suggestionArtists.map(Artist=>{return(
+      <Col className="PaddingColoumns"><Card>
+          <CardImg top width="100%" src={Artist.image} alt="Card image cap" />
+          <CardBody>
+              <CardTitle>{Artist.name}</CardTitle>
+              <Button className="bg-primary">Go To {Artist.name}</Button>
+          </CardBody>
+      </Card>
+  </Col>)})}
+</Row>
+</section>
+         </div>)
+       }
+       else if(suggestionSongs.length>0 & suggestionArtists.length===0){
+         return (
+             <div className="DivStyle">
+                 <section className="JumbostyleWithPadding">
+                     <h1 >Related Artists</h1>
+                     <h5>Opps!.. No Related Artists</h5>
+
+
+                     <h1 >Related Songs</h1>
+
+                     <Row xs="3">
+                         {suggestionSongs.map(Song=>{return(
+                             <Col className="PaddingColoumns"><Card>
+                                 <CardImg top width="100%" src={Song.imageUrl} alt="Card image cap" />
+                                 <CardBody>
+                                     <CardTitle>{Song.name}</CardTitle>
+                                     <Button className="bg-primary">Go To {Song.name}</Button>
+                                 </CardBody>
+                             </Card>
+                             </Col>)})}
+                     </Row>
+                 </section>
+             </div>)
+       }
+       else{return (<div><p>Your Related Songs are {suggestionSongs.map(x=>x.name)}</p><p>Your Related Artists are{suggestionArtists.map(x=>x.name)}</p></div>)}
+
+    }
 
   render() {
-    var redirect = "";
+    let redirect = "";
     if (this.props.isSignedIn.isSignedIn === null) {
       redirect = <Redirect to="/webplayer/home" />;
     }
@@ -164,7 +231,7 @@ renderSuggestion(){
                       <NavItem>
                       <div className="SearchingDiv">
                  <div className="SearchingDiv Smallerdiv" >
-                    <input type="text" className="SearchingDiv Smallerdiv InputStyle"
+                    <input type="text"  value={this.state.search} className="SearchingDiv Smallerdiv InputStyle"
                         placeholder="Search for Artists or Songs" 
                             onChange={this.handleinput}/>
                            </div>
@@ -215,8 +282,9 @@ renderSuggestion(){
          {this.props.isSignedIn.isSignedIn === true ? (
             <div className=" DivStyle LibraryPageBody">
               {SignedIn}
-              <section className="JumbostyleWithPadding">
-             {this.renderSuggestion()}
+              <section className="WrappingSection">
+                {this.renderSuggestion()}
+
               </section>
             </div>
           ) : (
