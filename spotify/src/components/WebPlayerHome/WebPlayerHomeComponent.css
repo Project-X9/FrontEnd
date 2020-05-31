@@ -37,6 +37,7 @@
   /* Sidebar links */
 
   .WebPlayerHomeBody .SidebarLibraryButton.btn.btn-secondary,
+  .WebPlayerHomeBody .SidebarSongButton.btn.btn-secondary,
   .WebPlayerHomeBody .sidebar a {
     font-size: 14px;
     line-height: 20px;
@@ -59,11 +60,13 @@
     transition-property: none;
   }
 
-  .WebPlayerHomeBody .SidebarLibraryButton.btn.btn-secondary:focus{
+  .WebPlayerHomeBody .SidebarLibraryButton.btn.btn-secondary:focus,
+  .WebPlayerHomeBody .SidebarSongButton.btn.btn-secondary:focus{
     box-shadow: none;
   }
   
-  .WebPlayerHomeBody .SidebarLibraryButton{
+  .WebPlayerHomeBody .SidebarLibraryButton,
+  .WebPlayerHomeBody .SidebarSongButton{
     width:100%;
   }
 
@@ -84,6 +87,7 @@
 
   /* Links on mouse-over */
   .WebPlayerHomeBody .SidebarLibraryButton.btn.btn-secondary:hover,
+  .WebPlayerHomeBody .SidebarSongButton.btn.btn-secondary:hover,
   .WebPlayerHomeBody .sidebar a:hover:not(.active) {
     color: white;
     transition-property: color;
@@ -110,7 +114,7 @@
     width:94%;
     border:none;
   }
-  
+
   /***************************************************Sidebar***************************************************/
   /***************************************************Navbar & Content***************************************************/
   div.webPlayerHomeNavAndContent{
@@ -624,24 +628,26 @@ div.WebPlayerHomeContent .DescriptionPlaylistLink
   .HomeNotSignedInModal{
     display: flex;
     flex-direction: row;
-    background: rgb(72, 74, 75); /*for browsers that don't support gradient*/
-    background: -webkit-linear-gradient(to bottom,rgb(197, 200, 201),rgb(43, 44, 44)); /*for safari and chrome*/
-    background: -o-linear-gradient(to bottom,rgb(197, 200, 201),rgb(43, 44, 44)); /*for opera*/
-    background: -moz-linear-gradient(to bottom,rgb(197, 200, 201),rgb(43, 44, 44)); /*for firefox*/
-    background: linear-gradient(to bottom,rgb(197, 200, 201),rgb(43, 44, 44)); /*standard syntax*/
+    background-image: url(https://www.ubackground.com/_ph/86/849751921.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
     padding:50px;
     border-radius: 10px;
   }
 
+  .HomeNotSignedInModal .HomeNotSignedInModalTextAndLinks{
+    margin-top: 20px;
+  }
+
   .HomeNotSignedInModal .HomeNotSignedInModalImageHolder{
     width: 100%;
-    height: auto;
+    Height: 100%;
     margin:10px;
   }
 
   .HomeNotSignedInModal img.HomeNotSignedInModalImage{
-    height: 100%;
-    width: 100%;
+    height: 300px;
+    width: 200px;
     top: 0;
     left: 0;
     display: block;
@@ -649,12 +655,27 @@ div.WebPlayerHomeContent .DescriptionPlaylistLink
     object-position: center center;
   }
 
+  @media(max-width: 991px){
+    .HomeNotSignedInModal img.HomeNotSignedInModalImage{
+    height: 200px;
+    width: 150px;
+    }
+  }
+
+  @media(max-width: 575px){
+    .HomeNotSignedInModal img.HomeNotSignedInModalImage{
+    height: 180px;
+    width: 140px;
+    margin-left:30%;
+    }
+  }
+
 
   .HomeNotSignedInModal .HomeNotSignedInModalHeader2{
     font-size: 32px;
     margin: 8px 0 24px;
-    color: #fff;
-    font-weight: 700;
+    color:rgb(253, 253, 253);
+    font-weight: 900;
     letter-spacing: -.4px;
     padding: 0;
     border: 0;
@@ -688,6 +709,7 @@ div.WebPlayerHomeContent .DescriptionPlaylistLink
   }
 
   .HomeNotSignedInModal .HomeNotSignedInModalLinkInsideButton{
+    font-size: 20px;
     color: #fff;
     text-decoration: none;
   }
@@ -700,7 +722,7 @@ div.WebPlayerHomeContent .DescriptionPlaylistLink
   }
 
   .HomeNotSignedInModal .HomeNotSignedInModalParagraph{
-    font-size: 12px;
+    font-size: 18px;
     line-height: 24px;
     text-align: center;
     margin: 32px 0 0;
@@ -736,6 +758,7 @@ div.WebPlayerHomeContent .DescriptionPlaylistLink
   }
 
   .HomeNotSignedInModal .HomeNotSignedInModalLinkInsideButtonInsideParagraph{
+    font-size: 18px;
     color: #fff;
     text-decoration: none;
   }
@@ -779,6 +802,40 @@ div.WebPlayerHomeContent .DescriptionPlaylistLink
   .HomeNotSignedInClose .HomeNotSignedInModalClosedButton.btn.btn-success:active{
     background-color: transparent;
     border: none;
+  }
+
+  .QueueMainHeader{
+    margin-top:7%;
+    margin-left: 5%;
+    font-size: 32px;
+    line-height: 1.6;
+    font-weight: 600;
+    letter-spacing: -.36px;
+    color: #fff;
+    box-sizing: border-box;
+    text-align: left;
+  }
+
+  .QueueNowPlayingHeader{
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: .015em;
+    font-weight: var(--glue-font-weight-normal);
+    color: #fff;
+    margin-top:1%;
+    margin-bottom:3%;
+    margin-left: 5%;
+    text-align: left;
+  }
+
+  .QueueNowPlayingFirstRow{
+    text-align: left;
+    color:#1ed760;
+  }
+
+  .QueueNowPlayingSecondRow{
+    text-align: left;
+    color:rgb(160, 160, 160);
   }
   /***************************************************Content***************************************************/
   .playFooterFixed{

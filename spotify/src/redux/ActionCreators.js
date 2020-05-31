@@ -447,6 +447,7 @@ export const addSongSrc = (data) => ({
   type: ActionTypes.CURRENT_SONG_URL,
   payload: data,
 });
+
 export const AddPrevSong = (songSrc) => (dispatch) => {
   dispatch(addPrevSong(songSrc));
  //  dispatch(Play());
@@ -456,18 +457,18 @@ export const AddPrevSong = (songSrc) => (dispatch) => {
    type: ActionTypes.ADD_PREVIOUS,
    payload: data,
  });
-export const PlaySong = () => (dispatch) => {
+export const PlayShuffle = () => (dispatch) => {
   dispatch(Play());
  };
  export const Play = () => ({
-   type: ActionTypes.START_SONG
+   type: ActionTypes.START_SHUFFLE
  });
 
- export const PauseSong = () => (dispatch) => {
+ export const PauseShuffle = () => (dispatch) => {
   dispatch(Pause());
  };
  export const Pause = () => ({
-   type: ActionTypes.PAUSE_SONG
+   type: ActionTypes.PAUSE_SHUFFLE
  });
 
  export const ChangeSongProgress = (progress) => (dispatch) => {

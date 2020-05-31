@@ -428,7 +428,8 @@
   .AccountOverviewBody .sidebar .fa.fa-lock,
   .AccountOverviewBody .sidebar .fa.fa-hashtag,
   .AccountOverviewBody .sidebar .fa.fa-credit-card,
-  .AccountOverviewBody .sidebar .fa.fa-bell
+  .AccountOverviewBody .sidebar .fa.fa-bell,
+  .AccountOverviewBody .sidebar .fa.fa-unlock-alt
   {
     margin-right:1.5em;
     font-size:23px;
@@ -896,4 +897,57 @@
   }
   
   /***************************************************Sidebar Content Edit Profile***************************************************/
+  /***************************************************Sidebar Content Reset Password***************************************************/
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .ResetPasswordButton{
+    border:0;
+    padding:0;
+    box-sizing: border-box;
+    max-width: 290px;
+    font-size: 12px;
+    line-height: 1;
+    border-radius: 500px;
+    padding: 10px 32px;
+    color:#FFF;
+    background-color: #1DB954;
+    transition-property: background-color, border-color, color, box-shadow, filter, -webkit-box-shadow, -webkit-filter;
+    transition-duration: .3s;
+    border-width: 0;
+    letter-spacing: 2px;
+    min-width: 160px;
+    text-transform: uppercase;
+    white-space: normal;
+    margin-bottom: 0;
+    font-weight: 700;
+    text-align: center;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+  }
+
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .ResetPasswordButton:hover{
+    background-color: #1ED760;
+  }
+
+  .AccountOverviewBody .container .Content.EditProfileContentAswell .ResetPasswordLabel{
+    font-size: 20px;
+    font-style: italic;
+  }
+
+  .ResetPasswordXButtonInModal{
+    text-align: center;
+  }
+
+  .ResetPasswordInsideTextboxInModal{
+    background-color: rgb(56, 26, 26);
+  }
+
+  .ResetPasswordInsideTextboxInModalInside{
+   text-align: center;
+  }
+
+  .ResetPasswordLowerButtonsInModal{
+    text-align: center;
+  }
+  /***************************************************Sidebar Content Reset Password***************************************************/
   /***************************************************Body***************************************************/

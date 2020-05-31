@@ -19,6 +19,7 @@ import LikedPlay from "../PlayLikedSongs/PlayLikedSongs";
 import Artist from "../ArtistInterface/ArtistComponent";
 import PlayFooter from './../PlayFooter/PlayFooter';
 import Search from "../SearchComponent/Search";
+import Queue from "./Queue";
 /**
  * Web Player page
  */
@@ -48,11 +49,13 @@ class WebPlayer extends Component {
       tempId: this.props.id.id,
       isModalOpen: false,
       isModalOpenNew: false,
+      isModalOpenSong: false,
       SignedIn: false,
       inputValue:null
     };
     
     this.toggleModal = this.toggleModal.bind(this);
+    this.toggleModalSong = this.toggleModalSong.bind(this);
     this.handleChange=this.handleChange.bind(this);
     this.handleSubmit=this.handleSubmit.bind(this);
 
@@ -71,6 +74,14 @@ class WebPlayer extends Component {
       this.setState({
         isModalOpen: !this.state.isModalOpen,
       });
+    }
+  }
+
+  toggleModalSong() {
+    if (this.props.isSignedIn.isSignedIn === null) {
+      this.setState({
+        isModalOpenSong: !this.state.isModalOpenSong,
+      }); 
     }
   }
 handleChange(e){
@@ -140,6 +151,27 @@ handleSubmit() {
     if (this.state.SignedIn) {
       redirected = <Redirect to="/webplayer/librarypage/playlists"></Redirect>;
     }
+
+    let songsSidebar = null;
+    if (this.props.isSignedIn.isSignedIn === true) {
+      songsSidebar=(
+          <Link to="/webplayer/songs" className={songsActive}>
+          <i className="fa fa-music" />
+          Songs
+          </Link >
+      );
+    }
+    else{
+      songsSidebar=(
+        <Button  
+        className={"SidebarSongButton " + songsActive}
+        onClick={()=>this.toggleModalSong()}>
+          <i className="fa fa-music" />
+          Songs
+        </Button>
+      );
+    }
+      
     // const showLikeAndCreate = this.props.data.data.map((data) => {
     //   if (data.id === this.state.tempId) {
     //     return(
@@ -202,10 +234,7 @@ handleSubmit() {
                     <i className="fa fa-bomb"></i>
                     Your Library
                   </Button>
-                  <Link to="/webplayer/songs" className={songsActive}>
-                    <i className="fa fa-music" />
-                    Songs
-                  </Link>
+                  {songsSidebar}
                   {showLikeAndCreate}
                 </div>
               </div>
@@ -365,6 +394,30 @@ handleSubmit() {
                         categories={this.props.categories}
                         handleCurrentAlbums={this.props.handleCurrentAlbums}
                         handleCurrentArtists={this.props.handleCurrentArtists}
+                        PlayTheFooter={this.props.PlayTheFooter}
+                      />
+                    )}
+                  />
+                  <Route
+                    exact
+                    path="/webplayer/queue"
+                    component={() => (
+                      <Queue
+                        data={this.props.data}
+                        id={this.props.id}
+                        playLists={this.props.playLists}
+                        artist={this.props.artist}
+                        album={this.props.album}
+                        handleLogoutId={this.props.handleLogoutId}
+                        ///////////////
+                        data_be={this.props.data_be}
+                        handleLogout_BE={this.props.handleLogout_BE}
+                        isSignedIn={this.props.isSignedIn}
+                        handleCurrentPlayList={this.props.handleCurrentPlayList}
+                        categories={this.props.categories}
+                        handleCurrentAlbums={this.props.handleCurrentAlbums}
+                        handleCurrentArtists={this.props.handleCurrentArtists}
+                        PlayTheFooter={this.props.PlayTheFooter}
                       />
                     )}
                   />
@@ -378,9 +431,9 @@ handleSubmit() {
               <PlayFooter     
                 currentPlaylist={this.props.currentPlaylist}          
                 song={this.props.song}
-                PlaySong={this.props.PlaySong}
-                PauseSong={this.props.PauseSong}
-                isPlaying={this.props.isPlaying}
+                PlayShuffle={this.props.PlayShuffle}
+                PauseShuffle={this.props.PauseShuffle}
+                shuffle={this.props.shuffle}
                 ChangeSongProgress={this.props.ChangeSongProgress}
                 progress={this.props.progress}
                 ChangeProgressMode={this.props.ChangeProgressMode}
@@ -396,6 +449,8 @@ handleSubmit() {
                 PlayTheFooter={this.props.PlayTheFooter}
                 AddPrevSong={this.props.AddPrevSong}
                 prevsong={this.props.prevsong}
+                audio={this.props.audio}
+                AudioControl={this.props.AudioControl}
                />
         </div>
         <Modal
@@ -530,6 +585,69 @@ handleSubmit() {
                     </Row>
                 </ModalBody> 
             </Modal>
+            <Modal
+            isOpen={this.state.isModalOpenSong}
+            toggle={this.toggleModalSong}
+            className="row"
+            size="lg"
+            >
+            <ModalBody>
+            <div className="row HomeNotSignedInModal">
+                
+              <div className="col-sm-12 col-md-12 col-lg-12">
+                <div className="row HomeNotSignedInModalTextAndLinks">
+                    <div className="col-sm-12 col-md-12 col-lg-12 ">
+                    <h2 className="HomeNotSignedInModalHeader2">
+                        Your Favorite Songs Are All In One Place
+                    </h2>
+                    </div>
+                </div>
+                <div className="row HomeNotSignedInModalTextAndLinks">
+                    <div className="col-sm-12 col-md-12 col-lg-12">
+                    <Button
+                        className="HomeNotSignedInModalButton"
+                        color="success"
+                    >
+                        <Link
+                        className="HomeNotSignedInModalLinkInsideButton"
+                        to="/signup"
+                        >
+                        SIGN UP FREE
+                        </Link>
+                    </Button>
+                    </div>
+                </div>
+                <div className="row HomeNotSignedInModalTextAndLinks">
+                    <div className="col-sm-12 col-md-12 col-lg-12">
+                    <p className="HomeNotSignedInModalParagraph">
+                        Already have an account?
+                        <Button
+                        className="HomeNotSignedInModalButtonInsideParagraph"
+                        color="success"
+                        >
+                        <Link
+                            className="HomeNotSignedInModalLinkInsideButtonInsideParagraph"
+                            to="/signup"
+                        >
+                            LOG IN
+                        </Link>
+                        </Button>
+                    </p>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div className="row HomeNotSignedInClose">
+                <Button
+                className="HomeNotSignedInModalClosedButton"
+                color="success"
+                onClick={()=>this.toggleModalSong()}
+                >
+                Close
+                </Button>
+            </div>
+            </ModalBody>
+        </Modal>
       </div>
     );
   }

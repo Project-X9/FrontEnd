@@ -129,6 +129,7 @@ handleSubmitModal() {
         var max = 100;
         var rand =  min + (Math.random() * (max-min));
         rand=Math.ceil(rand);
+        alert(rand);
         var NewObject={
           email:values.email, 
           confirmemail:values.confirmemail,

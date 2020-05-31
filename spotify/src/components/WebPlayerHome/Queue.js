@@ -2,11 +2,14 @@ import "./WebPlayerHomeComponent.css";
 import React, { Component } from "react";
 import { Navbar,Nav,NavItem,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem,Button} from "reactstrap";
 import { NavLink} from "react-router-dom";
+import PopularPlaylistsContent from "./PopularPlaylistsContent";
+import PopularArtistsHomeAndNavContent from "./PopularArtistsHomeAndNavContent";
+import PopularAlbumsHomeAndNavContent from "./PopularAlbumsHomeAndNavContent";
 import ShowSongs from "./ShowSongs";
 /**
  * Songs inside Webplayer page
  */
-class SongsByGenres extends Component {
+class Queue extends Component {
    /**
    *
    * @param {Object} props
@@ -84,12 +87,57 @@ class SongsByGenres extends Component {
         else{
             showUpgrade2=(<span></span>)
         } 
+        let song="Lose Yourself"
+        let artist="Eminem";
+        let album="a new album";
+        let nowPlaying= (
+            <div>
+                <div className="row">
+                    <div className="col">
+                        <h2 className="QueueNowPlayingHeader">
+                            Now Playing
+                        </h2>
+                    </div>
+                </div>
+                <div className="row">
+                <div className="col">
+                    <div className="row">
+                        <div className="col-1">
+                            Hello
+                        </div>
+                        <div className="col-9">
+                            <div className="row">
+                                <div className="col QueueNowPlayingFirstRow">
+                                    {song}
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col QueueNowPlayingSecondRow">
+                                    {artist} . {album}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-2">
+                            Hello
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        )
+       
+        
+        let nextUp= (
+            <NavLink
+                className="StaticNavChild Disappear"
+                to="/premium">
+                Upgarde to Premium
+            </NavLink>
+        )
 
-
-        let SignedIn=''
-        if(this.props.isSignedIn.isSignedIn!==null)
-        {
-          SignedIn=(
+   
+        
+        return (
             <div>
               <div className="row">
                   <div className="WebPlayerHomeNav">
@@ -145,90 +193,20 @@ class SongsByGenres extends Component {
                       </div>
                   </div>
               </div>
-              <div className="row RowWebPlayerHomeContent">
-                <div className="WebPlayerHomeContent">
-                  <div className="container">
-                    <ShowSongs
-                    playLists={this.props.playLists}
-                    data_be={this.props.data_be}
-                    isSignedIn={this.props.isSignedIn}
-                    handleCurrentPlayList={this.props.handleCurrentPlayList}
-                    categories={this.props.categories}
-                    PlayTheFooter={this.props.PlayTheFooter}
-                    />
-                  </div>
-                </div>
-              </div>
-          </div>
-          );
-        }
-        else
-        {
-          SignedIn=(
-            <div>
               <div className="row">
-                  <div className="WebPlayerHomeNav">
-                      <div className="container">
-                          <Navbar className="NavBar NavStyle" sticky="top" expand="md">
-                              <Nav className="mr-auto" href="/signup">
-                              <NavItem className="CustomNavitems">
-                                      <Button className="CustomButton">
-                                          <NavLink className="nav-link SpecificallyForTheButton" to="/webplayer/librarypage/playlists">
-                                          <svg className="CustomSvg" viewBox="0 0 24 24">
-                                          <path fill="currentColor" d="M15.54 21.15L5.095 12.23 15.54 3.31l.65.76-9.555 8.16 9.555 8.16"></path>                            </svg>    
-                                          </NavLink>
-                                      </Button>   
-                              </NavItem>
-                              <NavItem className="CustomNavitems">
-                                      <Button className="CustomButton">
-                                              <NavLink className="nav-link SpecificallyForTheButton" to="/webplayer/search">
-                                              <svg className="CustomSvg" viewBox="0 0 24 24">
-                                              <path fill="currentColor" d="M7.96 21.15l-.65-.76 9.555-8.16L7.31 4.07l.65-.76 10.445 8.92"></path>
-                                              </svg>    
-                                              </NavLink>
-                                      </Button>  
-                              </NavItem>
-                              </Nav>
-                              <Nav navbar className="ml-auto MakingTheButtonsHorizontal">
-                                <NavItem>
-                                  <Button className="HomeNotSignedUp" color="success">
-                                      <NavLink className="HomeNotSignedUp" to="/signup">SIGN UP</NavLink>
-                                  </Button> 
-                                </NavItem>
-                                <NavItem>
-                                  <Button className="HomeNotLoggedin" color="success">
-                                      <NavLink className="HomeNotLoggedin" to="/signin">LOG IN</NavLink>
-                                  </Button> 
-                                </NavItem>
-                              </Nav>   
-                          </Navbar>
-                      </div>
+                  <div className="col">
+                    <h1 className="QueueMainHeader">
+                        Play Queue
+                    </h1>
                   </div>
               </div>
-              <div className="row RowWebPlayerHomeContent">
-                <div className="WebPlayerHomeContent">
-                  <div className="container">
-                    <ShowSongs
-                      playLists={this.props.playLists}
-                      data_be={this.props.data_be}
-                      isSignedIn={this.props.isSignedIn}
-                      handleCurrentPlayList={this.props.handleCurrentPlayList}
-                      categories={this.props.categories}
-                      PlayTheFooter={this.props.PlayTheFooter}
-                    />
-                  </div>
-                </div>
+              <div>
+                {nowPlaying}
               </div>
+             
+              
           </div>
-          )
-        }
-   
-        
-        return (
-            <div>
-            {SignedIn}
-            </div>
           );
     }
 }
-export default SongsByGenres;
+export default Queue;

@@ -26,8 +26,8 @@ export const ADD_CATEGORIES = "ADD_CATEGORIES";
 //////////////////////////////////////////////////////////
 export const CURRENT_LOADING = 'CURRENT_LOADING';
 ///////////////////////////////////////////////////// PLAY FOOTER STATES
-export const START_SONG = 'START_SONG';
-export const PAUSE_SONG = 'PAUSE_SONG';
+export const START_SHUFFLE = 'START_SHUFFLE';
+export const PAUSE_SHUFFLE = 'PAUSE_SHUFFLE';
 export const CURRENT_SONG_URL = 'CURRENT_SONG_URL';
 export const CHANGE_SONG_PROGRESS = 'CHANGE_SONG_PROGRESS';
 export const CHANGE_PROGRESS_Mode = 'CHANGE_PROGRESS_Mode';
