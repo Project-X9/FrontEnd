@@ -8,7 +8,7 @@ import {
   PlaylistsUrl,
   CategoriesUrl,
   FollowURL,
-  UnFollowURL,
+  UnFollowURL,AllSongsUrl,
   AlbumsUrl,
 } from "../shared/baseUrl";
 import { ArtistsUrl } from "./../shared/baseUrl";
@@ -227,6 +227,11 @@ export const handleSignIn_BE = (data) => (dispatch) => {
         .then((response2) =>
           dispatch(addCategories(response2.data.data.Categories))
         );
+        axios
+        .get(`${AllSongsUrl}`)
+        .then((response2) =>
+          dispatch(addAllTracks(response2.data.data.tracks))
+        );
     })
     .catch((error) => dispatch(addLogin(false)));
 };
@@ -244,6 +249,10 @@ export const handleChangeData_BE = (id,token) => (dispatch) => {
     dispatch(addUserData_BE(response.data.data.user))
   );
 };
+export const addAllTracks = (data) => ({
+  type: ActionTypes.ADD_FULLSONGS,
+  payload: data,
+});
 
 /**
  * 

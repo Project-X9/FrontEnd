@@ -361,6 +361,8 @@ handleSubmit() {
                     path="/webplayer/search"
                     component={() => (
                       <Search
+                          categories={this.props.categories}
+                          fullsongs={this.props.fullsongs}
                         id={this.props.id}
                         data={this.props.data}
                         playLists={this.props.playLists}

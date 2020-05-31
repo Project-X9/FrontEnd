@@ -1,0 +1,38 @@
+.InputStyle{
+    color: black;
+    padding: 6px 48px;
+    height: 40px;
+    width: 100%;
+    border: 0;
+    border-radius: 500px;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .015em;
+    text-transform: none;
+}
+.WrappingSection{ margin-bottom: 100px;
+    padding: 100px;
+    background: transparent;}
+.BrowseAll{
+    font-size: 24px;
+    line-height: 1.3em;
+    letter-spacing: -.04em;
+    overflow-wrap: break-word;
+    position: absolute;
+}
+.BrowseAllArtists{
+    font-size: 24px;
+
+    line-height: 1.3em;
+    letter-spacing: -.04em;
+    overflow-wrap: break-word;
+    position: absolute;
+}
+.RowSearch{
+    padding-top: 70px;
+}
+.PaddingColoumns{
+    padding: 10px;
+    color: #212529;
+}

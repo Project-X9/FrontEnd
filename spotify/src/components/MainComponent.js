@@ -64,6 +64,7 @@ const mapStateToProps = (state) => ({
   data_be: state.data_be,
   currentPlaylist: state.currentPlaylist,
   categories: state.categories,
+  fullsongs: state.fullsongs,
   song: state.song,
   shuffle: state.shuffle,
   progress: state.progress,
@@ -248,6 +249,10 @@ class Main extends Component {
                 isSignedIn={this.props.isSignedIn}
                 handleChangeData_BE={this.props.handleChangeData_BE}
                 token={this.props.token}
+                ForSignUpVerification={this.props.ForSignUpVerification}
+                signupdata={this.props.signupdata}
+                isModalOpen={this.props.isModalOpen}
+                ControlModal={this.props.ControlModal}
               />
             )}
           />
@@ -290,6 +295,7 @@ class Main extends Component {
             path="/webplayer"
             component={() => (
               <WebPlayer
+              fullsongs={this.props.fullsongs}
                 //////////
                 patchedunfollow={this.props.patchedunfollow}
                 patchedfollow={this.props.patchedfollow}
