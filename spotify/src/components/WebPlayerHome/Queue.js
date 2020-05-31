@@ -99,11 +99,18 @@ class Queue extends Component {
                         </h2>
                     </div>
                 </div>
-                <div className="row">
+                <div className="row QueueNowPlayingBiggestRow">
                 <div className="col">
                     <div className="row">
-                        <div className="col-1">
-                            Hello
+                        <div className="col-1 QueueNowPlayingFirstColumnFirstIcon">
+                            <div>
+                            <i class="fa fa-music"></i>
+                            </div>
+                        </div>
+                        <div className="col-1 QueueNowPlayingFirstColumnSecondIcon">
+                            <Button className="QueueNowPlayingFirstColumnSecondIconButton">
+                            <i class="fa fa-play"></i>
+                            </Button>
                         </div>
                         <div className="col-9">
                             <div className="row">
@@ -117,7 +124,7 @@ class Queue extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-2">
+                        <div className="col-1 QueueNowPlayingThirdColumn">
                             3:12
                         </div>
                     </div>
@@ -128,11 +135,41 @@ class Queue extends Component {
        
         
         let nextUp= (
-            <NavLink
-                className="StaticNavChild Disappear"
-                to="/premium">
-                Upgarde to Premium
-            </NavLink>
+            <div>
+                <div className="row">
+                    <div className="col">
+                        <h2 className="QueueNextUpHeader">
+                            Next Up
+                        </h2>
+                    </div>
+                </div>
+                <div className="row QueueNextUpBiggestRow">
+                <div className="col">
+                    <div className="row">
+                        <div className="col-1 QueueNextUpFirstColumnFirstIcon">
+                            <div>
+                            <i class="fa fa-music"></i>
+                            </div>
+                        </div>
+                        <div className="col-9">
+                            <div className="row">
+                                <div className="col QueueNextUpFirstRow">
+                                    {song}
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col QueueNextUpSecondRow">
+                                    {artist} . {album}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-1 QueueNextUpThirdColumn">
+                            3:16
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
         )
 
    
@@ -200,8 +237,9 @@ class Queue extends Component {
                     </h1>
                   </div>
               </div>
-              <div>
+              <div className="QueueMakingSomeSpace">
                 {nowPlaying}
+                {nextUp}
               </div>
              
               

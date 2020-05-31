@@ -804,6 +804,10 @@ div.WebPlayerHomeContent .DescriptionPlaylistLink
     border: none;
   }
 
+  .QueueMakingSomeSpace{
+    margin-bottom:100px;
+  }
+
   .QueueMainHeader{
     margin-top:7%;
     margin-left: 5%;
@@ -829,14 +833,140 @@ div.WebPlayerHomeContent .DescriptionPlaylistLink
   }
 
   .QueueNowPlayingFirstRow{
+    font-size: 20px;
     text-align: left;
     color:#1ed760;
   }
 
   .QueueNowPlayingSecondRow{
+    font-size: 20px;
     text-align: left;
     color:rgb(160, 160, 160);
   }
+
+  .QueueNowPlayingThirdColumn{
+    font-size: 20px;
+    color:#1ed760;
+  }
+
+  .QueueNowPlayingFirstColumnFirstIcon{
+    padding:0;
+    max-width:10px;
+    height:30px;
+    margin-left:70px;
+    margin-top:3px;
+    color:rgb(19, 150, 52);
+  }
+
+  .QueueNowPlayingFirstColumnSecondIcon{
+    background-color: transparent;
+    border: transparent;
+    display: none;
+    padding:0;
+    max-width:20px;
+    margin-left:65px;
+    height:2px;
+    margin-top:-2px;
+  }
+
+  .QueueNowPlayingFirstColumnSecondIconButton{
+    background-color: transparent;
+    color:#1ed760 ; 
+    border: transparent;
+    display:none;  
+  }
+
+  .QueueNowPlayingFirstColumnSecondIconButton:hover{
+    background-color: transparent;
+    border: transparent;
+    color:#1ed760 ; 
+  }
+
+  .QueueNowPlayingFirstColumnSecondIconButton.btn.btn-secondary:active{
+    background-color: transparent;
+    border: none;
+    color:#1ed760; 
+  }
+
+  .QueueNowPlayingFirstColumnSecondIconButton.btn.btn-secondary:focus{
+    background-color: transparent;
+    border-color: transparent;
+    color:#1ed760; 
+    box-shadow: none;
+    outline: transparent;
+  }
+
+  .QueueNowPlayingBiggestRow{
+    margin-left:3%;
+    margin-right:3%;
+  }
+
+  .QueueNowPlayingBiggestRow:hover .QueueNowPlayingFirstColumnFirstIcon{
+    display: none;
+  }
+  .QueueNowPlayingBiggestRow:hover .QueueNowPlayingFirstColumnSecondIcon{
+    display: block;
+  }
+  .QueueNowPlayingBiggestRow:hover .QueueNowPlayingFirstColumnSecondIconButton{
+    display: block;
+  }
+  .QueueNowPlayingBiggestRow:hover{
+    background-color: rgb(63, 63, 63);
+    transition-property: background-color, border-color, color, box-shadow, filter;
+    transition-duration: .7s;
+  }
+
+  .QueueNextUpHeader{
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: .015em;
+    font-weight: var(--glue-font-weight-normal);
+    color: #fff;
+    margin-top:2%;
+    margin-bottom:2%;
+    margin-left: 5%;
+    text-align: left;
+  }
+
+  .QueueNextUpBiggestRow{
+    margin-left:3%;
+    margin-right:3%;
+  }
+
+  .QueueNextUpFirstRow{
+    font-size: 20px;
+    text-align: left;
+    color:rgb(133, 133, 133);
+  }
+
+  .QueueNextUpSecondRow{
+    font-size: 20px;
+    text-align: left;
+    color:rgb(105, 105, 105);
+  }
+
+  .QueueNextUpThirdColumn{
+    font-size: 20px;
+    color:rgb(105, 105, 105);
+  }
+
+  .QueueNextUpFirstColumnFirstIcon{
+    padding:0;
+    max-width:10px;
+    height:30px;
+    margin-left:70px;
+    margin-top:3px;
+    color:rgb(133, 133, 133);
+  }
+
+  @media(max-width: 767px){
+    .QueueNowPlayingFirstColumnFirstIcon,
+    .QueueNowPlayingFirstColumnSecondIcon,
+    .QueueNextUpFirstColumnFirstIcon{
+      margin-left:0px;
+    }
+  }
+
   /***************************************************Content***************************************************/
   .playFooterFixed{
     position: fixed;
