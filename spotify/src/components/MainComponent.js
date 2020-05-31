@@ -242,6 +242,11 @@ class Main extends Component {
                 ///////logging of the user
                 handleLogout_BE={this.props.handleLogout_BE}
                 isSignedIn={this.props.isSignedIn}
+                ForSignUpVerification={this.props.ForSignUpVerification}
+
+                signupdata={this.props.signupdata}
+                isModalOpen={this.props.isModalOpen}
+                ControlModal={this.props.ControlModal}
               />
             )}
           />

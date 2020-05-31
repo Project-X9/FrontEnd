@@ -2,6 +2,8 @@
  * Premium Component
  */
 import React, { Component } from "react";
+import emailjs from 'emailjs-com';
+
 import {
   Navbar,
   NavbarBrand,
@@ -39,6 +41,7 @@ class Premium extends Component {
       modal: false,
       isModalOpen: false,
       collapsed: true,
+      inputValue:'',
       Premium: this.props.data_be.data_be.premium,
       tempId: this.props.data_be.data_be._id,
       isPrenium: !this.props.data_be.data_be.premium,
@@ -46,9 +49,71 @@ class Premium extends Component {
     this.state.toggleNav = this.toggleNav.bind(this);
     this.togglemodal = this.togglemodal.bind(this);
 
+    this.handleSubmitModal=this.handleSubmitModal.bind(this);
+    this.handleChange=this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+
     this.handlePremium_be = this.handlePremium_be.bind(this);
     this.state.handleLogout = this.handleLogout.bind(this);
   }
+
+  handleSubmit() {
+    var min = 1;
+      var max = 100;
+      var rand =  min + (Math.random() * (max-min));
+      rand=Math.ceil(rand);
+      alert(rand);
+      var NewObject={
+        randomId:rand
+      }
+      this.props.ControlModal(true);
+      this.props.ForSignUpVerification(NewObject);
+      var service_id = "ahahmed202025_gmail_com";
+      var template_id = "template_6Gzc6XQv";
+      var UserID ="user_ZGAt1STrmZuTHMLbdVnkr"
+      emailjs.init("user_ZGAt1STrmZuTHMLbdVnkr");
+
+      var template_params={
+        message_html: rand,
+        user_email: this.props.data_be.data_be.email
+      }
+      emailjs.send(service_id, template_id,template_params)
+          .then(function(){
+            alert("Sent!");
+          }, function(err) {
+            alert("Send email failed!\r\n Response:\n " + JSON.stringify(err));
+          });
+
+  }
+
+  handleChange(e){
+    this.setState({
+      inputValue:e.target.value
+    })
+  }
+
+  handleSubmitModal() {
+
+    alert(this.props.signupdata.signupdata.randomId+"Signup")
+    if(this.state.inputValue === this.props.signupdata.signupdata.randomId)
+    {   this.props.ControlModal(false);
+      if (this.state.Premium === true) {
+
+        this.props.PremiumPost(this.props.data_be.data_be._id, false);
+        this.setState({ Premium: false });
+
+      } else if (this.state.Premium === false) {
+        this.props.PremiumPost(this.props.data_be.data_be._id, true);
+        this.setState({ Premium: true });
+      }
+    }
+    else{
+      alert("Wrong Code")
+    }
+
+  }
+
+
 
   handleLogout() {
     this.props.handleLogout_BE();
@@ -62,16 +127,7 @@ class Premium extends Component {
    * Posts the claiming of premium membership
    */
   handlePremium_be() {
-    if (this.state.Premium === true) {
-      this.props.PremiumPost(this.props.data_be.data_be._id, false);
-      this.setState({ Premium: false });
-      this.togglemodal();
-    } else if (this.state.Premium === false) {
-      this.props.PremiumPost(this.props.data_be.data_be._id, true);
-      this.setState({ Premium: true });
 
-      this.togglemodal();
-    }
   }
   /**
    * Toggles the Navigation bar by switching isNavOpen from true to false and vice versa
@@ -222,20 +278,24 @@ class Premium extends Component {
             </div>
           </div>
           <p>
-            <Button className="signupbtn" onClick={this.togglemodal}>
+            <Button className="signupbtn" onClick={this.handleSubmit}>
               Get Premium
             </Button>
-            <Modal isOpen={this.state.modal}>
+            <Modal isOpen={this.props.isModalOpen.isModalOpen}
+            toggle={()=>this.props.ControlModal()}>
               <div className="modified-content">
                 <ModalHeader>Claiming Premium</ModalHeader>
                 <ModalBody>
                   Pay 5 EGP please for claiming your Premium account
                 </ModalBody>
+
+                <input onChange={()=>this.handleChange}
+                    placeholder="Enter Your Received Code"/>
                 <ModalFooter>
                   <Button
                     hidden={this.state.Premium}
                     color="primary"
-                    onClick={this.handlePremium_be}
+                    onClick={()=>this.handleSubmitModal}
                   >
                     Claim{" "}
                   </Button>
