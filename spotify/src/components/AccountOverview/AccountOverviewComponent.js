@@ -506,6 +506,7 @@ class AccountOverview extends Component {
                         data_be={this.props.data_be}
                         ForSignUpVerification={this.props.ForSignUpVerification}
                         signupdata={this.props.signupdata}
+                        resetpassword={this.props.resetpassword}
                       />
                     )}
                   />
