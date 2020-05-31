@@ -86,6 +86,9 @@ const mapDispatchToProps = (dispatch) => ({
   reseteditprofile: () => {
     dispatch(actions.reset("editprofie"));
   },
+  resetpassword: () => {
+    dispatch(actions.reset("resetpassword"));
+  },
   resetChangePasswordForm: () => {
     dispatch(actions.reset("changepassword"));
   },
@@ -269,6 +272,8 @@ class Main extends Component {
                 ControlModal={this.props.ControlModal}
                 ForSignUpVerification={this.props.ForSignUpVerification}
                 signupdata={this.props.signupdata}
+                resetpassword={this.props.resetpassword}
+
                 /////////
               />
             )}

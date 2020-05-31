@@ -18,7 +18,9 @@ export const ChangePassword = {
   password: "",
   confirmpassword: "",
 };
-
+export const ResetPassword = {
+  password: ""
+};
 export const EditProfile = {
   ID: "",
   email: "",

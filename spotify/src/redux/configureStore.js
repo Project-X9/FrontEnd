@@ -7,6 +7,7 @@ import {
   InitialLogin,
   ChangePassword,
   EditProfile,
+  ResetPassword,
 } from "./forms";
 import { Data, Data_BE } from "./userData";
 import { UserID } from "./UserId";
@@ -68,6 +69,7 @@ export const ConfigureStore = () => {
         login: InitialLogin,
         changepassword: ChangePassword,
         editprofie: EditProfile,
+        resetpassword: ResetPassword
       }),
     }),
     persistState,

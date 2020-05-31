@@ -28,6 +28,10 @@ class ResetPassword extends Component {
     this.handleChange=this.handleChange.bind(this);
    
   }
+  componentDidMount(){
+    this.props.resetpassword();
+
+  }
 
   handleChange(e){
     this.setState({
@@ -39,9 +43,9 @@ handleSubmitModal() {
     
     if(this.state.inputValue == this.props.signupdata.signupdata.randomId)
     {
-      alert("this.state.password")
       this.props.PostPassword(this.props.signupdata.signupdata.password, this.props.data_be.data_be._id);
       this.props.ControlModal(false)
+      this.props.resetpassword();
       //redirect
     }
     else{
@@ -91,7 +95,7 @@ handleSubmitModal() {
 
        
         <Form
-          model="changepassword"
+          model="resetpassword"
           onSubmit={(values) => this.handleSubmit(values)}
         >
           <div className="row form-group">
