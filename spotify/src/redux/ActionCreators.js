@@ -8,7 +8,7 @@ import {
   PlaylistsUrl,
   CategoriesUrl,
   FollowURL,
-  UnFollowURL,
+  UnFollowURL,AllSongsUrl,
   AlbumsUrl,
 } from "../shared/baseUrl";
 import { ArtistsUrl } from "./../shared/baseUrl";
@@ -214,6 +214,7 @@ export const handleSignIn_BE = (data) => (dispatch) => {
       dispatch(addLogin(true));
       var token = response.data.token;
       const Authstr = "Bearer ".concat(token);
+      dispatch(addToken(token));
       axios
         .get(`${SignUpUrl}/${response.data.user._id}`, {
           headers: { Authorization: Authstr },
@@ -226,9 +227,33 @@ export const handleSignIn_BE = (data) => (dispatch) => {
         .then((response2) =>
           dispatch(addCategories(response2.data.data.Categories))
         );
+        axios
+        .get(`${AllSongsUrl}`)
+        .then((response2) =>
+          dispatch(addAllTracks(response2.data.data.tracks))
+        );
     })
     .catch((error) => dispatch(addLogin(false)));
 };
+export const addToken = (data) => ({
+  type: ActionTypes.ADD_TOKEN,
+  payload: data,
+});
+export const handleChangeData_BE = (id,token) => (dispatch) => {
+  const Authstr = "Bearer ".concat(token);
+  axios
+  .get(`${SignUpUrl}/${id}`, {
+    headers: { Authorization: Authstr },
+  })
+  .then((response) =>
+    dispatch(addUserData_BE(response.data.data.user))
+  );
+};
+export const addAllTracks = (data) => ({
+  type: ActionTypes.ADD_FULLSONGS,
+  payload: data,
+});
+
 /**
  * 
  * @param {*} data 

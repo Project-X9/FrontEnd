@@ -61,6 +61,8 @@ class NowPlay extends Component {
         this.props.data_be.data_be._id,
         this.props.currentPlaylist.currentPlaylist._id
       );
+      alert()
+      this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
     }
   }
   /**
@@ -72,6 +74,7 @@ class NowPlay extends Component {
         this.props.data_be.data_be._id,
         this.props.currentPlaylist.currentPlaylist._id
       );
+      this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
     }
   }
 

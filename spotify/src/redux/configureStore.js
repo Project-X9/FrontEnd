@@ -20,7 +20,9 @@ import { Categories } from "./addCategories";
 import { Song, CurrentTime,TotalTime,PrevSong } from './PlayFooterStuff/SongsPlay';
 import { SongState } from './PlayFooterStuff/SongState';
 import { SongProgress, ProgressMode ,ProgressDirty} from './PlayFooterStuff/SongProgress';
+import { FullSongs } from "./addFullSongs";
 import { SignUpData, SignUpModal} from './SignupData';
+import { AddToken } from './AddToken';
 
 function saveState(state) {
   try {
@@ -59,10 +61,12 @@ export const ConfigureStore = () => {
       in_set_progress_mode:ProgressMode,
       is_progress_dirty:ProgressDirty,
       currentTime:CurrentTime,
+      fullsongs:FullSongs,
       totalTime:TotalTime,
       prevsong:PrevSong,
       signupdata:SignUpData,
       isModalOpen:SignUpModal,
+      token:AddToken,
       // playlist_BE:PlayList_BE,
       ...createForms({
         feedback: InitialFeedback,

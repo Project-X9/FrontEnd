@@ -146,7 +146,6 @@ render(){
     return(
         
         <div>
-            
             {this.props.isSignedIn.isSignedIn === true ? (
                 <div>
                 {redirected}
@@ -164,7 +163,7 @@ render(){
                         </Row>
                         <Row>
                             <Col  md={12} className="m-0 customizedColForCards">
-                                <div className="gridView">
+                            <div className="gridView">
                                     {this.props.data_be.data_be.tracks.length !== 0 ? (
                                             <div className="LikedSongs">
                                                 <div draggable="true">
@@ -213,12 +212,14 @@ render(){
                                                         </div>
                                                     </Col>
                                                 </Row>
+                                                {RenderUserPlayLists}
                                             </div>  
                                     ):(
-                                        <div></div>
+                                        <div>
+                                            {RenderUserPlayLists}
+                                        </div>
                                     )}
-                                    {RenderUserPlayLists}
-                                </div>
+                             </div>
                             </Col>
                         </Row>
                     </div>

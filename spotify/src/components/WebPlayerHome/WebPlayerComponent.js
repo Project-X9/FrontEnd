@@ -332,6 +332,8 @@ handleSubmit() {
                         PlaySong={this.props.PlaySong}
                         PauseSong={this.props.PauseSong}
                         isPlaying={this.props.isPlaying}
+                        handleChangeData_BE={this.props.handleChangeData_BE}
+                        token={this.props.token}
                       />
                     )}
                   />
@@ -359,6 +361,8 @@ handleSubmit() {
                     path="/webplayer/search"
                     component={() => (
                       <Search
+                          categories={this.props.categories}
+                          fullsongs={this.props.fullsongs}
                         id={this.props.id}
                         data={this.props.data}
                         playLists={this.props.playLists}

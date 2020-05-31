@@ -47,7 +47,8 @@ import {
   ChangeCurrentTime,
   AddPrevSong,
   ForSignUpVerification,
-  ControlModal
+  ControlModal,
+  handleChangeData_BE
 } from "../redux/ActionCreators";
 import MyAlbums from "./ForArtists/MyAlbumsComponent";
 import MySongs from "./ForArtists/MySongsComponent";
@@ -63,6 +64,7 @@ const mapStateToProps = (state) => ({
   data_be: state.data_be,
   currentPlaylist: state.currentPlaylist,
   categories: state.categories,
+  fullsongs: state.fullsongs,
   song: state.song,
   shuffle: state.shuffle,
   progress: state.progress,
@@ -73,6 +75,7 @@ const mapStateToProps = (state) => ({
   prevsong:state.prevsong,
   signupdata:state.signupdata,
   isModalOpen:state.isModalOpen,
+  token:state.token
 
 
 });
@@ -176,6 +179,9 @@ const mapDispatchToProps = (dispatch) => ({
   }
   , ControlModal: (data) => {
     dispatch(ControlModal(data));
+  },
+  handleChangeData_BE: (id,token) => {
+    dispatch(handleChangeData_BE(id,token));
   }
  
   
@@ -241,6 +247,12 @@ class Main extends Component {
                 ///////logging of the user
                 handleLogout_BE={this.props.handleLogout_BE}
                 isSignedIn={this.props.isSignedIn}
+                handleChangeData_BE={this.props.handleChangeData_BE}
+                token={this.props.token}
+                ForSignUpVerification={this.props.ForSignUpVerification}
+                signupdata={this.props.signupdata}
+                isModalOpen={this.props.isModalOpen}
+                ControlModal={this.props.ControlModal}
               />
             )}
           />
@@ -273,7 +285,8 @@ class Main extends Component {
                 ForSignUpVerification={this.props.ForSignUpVerification}
                 signupdata={this.props.signupdata}
                 resetpassword={this.props.resetpassword}
-
+                handleChangeData_BE={this.props.handleChangeData_BE}
+                token={this.props.token}
                 /////////
               />
             )}
@@ -282,6 +295,7 @@ class Main extends Component {
             path="/webplayer"
             component={() => (
               <WebPlayer
+              fullsongs={this.props.fullsongs}
                 //////////
                 patchedunfollow={this.props.patchedunfollow}
                 patchedfollow={this.props.patchedfollow}
@@ -319,8 +333,8 @@ class Main extends Component {
                 totalTime={this.props.totalTime}
                 AddPrevSong={this.props.AddPrevSong}
                 prevsong={this.props.prevsong}
-                
-
+                handleChangeData_BE={this.props.handleChangeData_BE}
+                token={this.props.token}
               />
             )}
           />
