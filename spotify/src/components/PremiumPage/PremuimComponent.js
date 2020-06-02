@@ -58,7 +58,9 @@ class Premium extends Component {
   }
 
   handleSubmit() {
-    var min = 1;
+    if(this.state.Premium){    this.props.ControlModal(true);
+    }
+else{    var min = 1;
     var max = 100;
     var rand =  min + (Math.random() * (max-min));
     rand=Math.ceil(rand);
@@ -84,7 +86,7 @@ class Premium extends Component {
           alert("Send email failed!\r\n Response:\n " + JSON.stringify(err));
         });
 
-  }
+  }}
 
   handleChange(e){
     this.setState({
@@ -92,32 +94,25 @@ class Premium extends Component {
     })
   }
 
-  handleSubmitModal() {
-    if(this.state.inputValue == this.props.signupdata.signupdata.randomId)
-    {   this.props.ControlModal(false);
-      if (this.state.Premium === true) {
-
-        this.props.PremiumPost(this.props.data_be.data_be._id, false);
-        this.setState({ Premium: false });
-
-      } else if (this.state.Premium === false) {
-        this.props.PremiumPost(this.props.data_be.data_be._id, true);
-        this.setState({ Premium: true });
+  handleSubmitModal(){
+    if (this.state.Premium === true){
+      this.props.PremiumPost(this.props.data_be.data_be._id, false);
+      this.setState({ Premium: false });
+      this.props.ControlModal(false);
+    }
+    else if(this.state.Premium ===false){
+      if (this.state.inputValue == this.props.signupdata.signupdata.randomId){
+        this.props.ControlModal(false);
+          this.props.PremiumPost(this.props.data_be.data_be._id, true);
+          this.setState({Premium: true});
+      } else if (this.state.inputValue != this.props.signupdata.signupdata.randomId) {
+        alert("Wrong Code")
       }
     }
-    else{
-      alert(this.state.inputValue);
-      alert("Wrong Code")
-    }
-
   }
-
-
-
   handleLogout() {
     this.props.handleLogout_BE();
   }
-
   togglemodal() {
     const Temp = !this.state.modal;
     this.setState({ modal: Temp });
@@ -280,6 +275,7 @@ class Premium extends Component {
               <Button className="signupbtn" onClick={this.handleSubmit}>
                 Get Premium
               </Button>
+
               <Modal isOpen={this.props.isModalOpen.isModalOpen} className="">
                 <ModalBody className="createPlayLsitBody">
                   <Row>
@@ -294,30 +290,43 @@ class Premium extends Component {
                           </Button>
                         </Col>
                       </Row>
-                      <Row>
+                      {this.props.data_be.data_be.premium===false?(<div><Row>
                         <Col md={{ size: 6, offset:3}} xs={{ size: 6, offset:3}} sm={{ size: 6, offset:3}} className="Create_new_playlist">
                           <h1>Enter The Code Send To Your Email</h1>
                         </Col>
                       </Row>
-                      <Row>
-                        <Col className="inputField_CP" md={12} xs={12} sm={12}>
-                          <div className="inputBox_CP">
-                            <Row>
-                              <Col md={{size:10, offset:2}} xs={12} sm={12} >
-                                <div className="contentSpacing_CP">
-                                  <input type="text" className="inputBox-input_CP" placeholder="Code" onChange={this.handleChange}></input>
-                                </div>
-                              </Col>
-                            </Row>
-                          </div>
+                        <Row>
+                          <Col className="inputField_CP" md={12} xs={12} sm={12}>
+                            <div className="inputBox_CP">
+                              <Row>
+                                <Col md={{size:10, offset:2}} xs={12} sm={12} >
+                                  <div className="contentSpacing_CP">
+                                    <input type="text" className="inputBox-input_CP" placeholder="Code" onChange={this.handleChange}></input>
+                                  </div>
+                                </Col>
+                              </Row>
+                            </div>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col md={{size:7,offset:5}} xs={12} sm={12} className="create_Cancel_CP">
+                            <button class="CancelButton_CP" type="button" onClick={()=>this.props.ControlModal(false)}>CANCEL</button>
+                            <button  class="CreateButton_CP" type="button" onClick={()=>this.handleSubmitModal()}>CREATE</button>
+                          </Col>
+                        </Row>
+                      </div>):(<div><Row>
+                        <Col md={{ size: 6, offset:3}} xs={{ size: 6, offset:3}} sm={{ size: 6, offset:3}} className="Create_new_playlist">
+                          <h1>To Cancel your Premium ship</h1>
                         </Col>
                       </Row>
-                      <Row>
-                        <Col md={{size:7,offset:5}} xs={12} sm={12} className="create_Cancel_CP">
-                          <button class="CancelButton_CP" type="button" onClick={()=>this.props.ControlModal(false)}>CANCEL</button>
-                          <button  class="CreateButton_CP" type="button" onClick={()=>this.handleSubmitModal()}>CREATE</button>
-                        </Col>
-                      </Row>
+
+                        <Row>
+                          <Col md={{size:7,offset:5}} xs={12} sm={12} className="create_Cancel_CP">
+                            <button class="CancelButton_CP" type="button" onClick={()=>this.props.ControlModal(false)}>CANCEL</button>
+                            <button  class="CreateButton_CP" type="button" onClick={()=>this.handleSubmitModal()}>End Your Premium</button>
+                          </Col>
+                        </Row>
+                      </div>)}
 
                     </Col>
                   </Row>
