@@ -23,6 +23,7 @@ class SongsByGenres extends Component {
    * @param props.handleCurrentAlbums Essentially used to display albums' data after integrating with the backend
    * @param props.handleCurrentPlayList Essentially used to display playlists' data after integrating with the backend
    * @param props.categories Essentially contains an array of categories that contain playlists
+   * @param props.PlayTheFooter Essentially used in show songs to be able to play the songs
    */
   constructor(props) {
     super(props);

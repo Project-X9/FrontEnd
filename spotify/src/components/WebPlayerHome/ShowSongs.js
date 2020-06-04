@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Button} from "reactstrap";
 import { Link, Redirect } from "react-router-dom";
 /**
- * Playlists inside the webplayer home
+ * responsible for getting the songs to be displayed inside the webplayer home
  */
 class ShowSongs extends Component {
    /**
@@ -13,6 +13,7 @@ class ShowSongs extends Component {
    * @param props.playLists Essentially contains playlist data
    * @param props.handleCurrentPlayList Essentially used to display playlist's data after integrating with the backend
    * @param props.categories Essentially contains an array of categories that contain playlists
+   * @param props.PlayTheFooter Essentially used in show songs to be able to play the songs
    */
   constructor(props) {
     super(props);
@@ -24,12 +25,15 @@ class ShowSongs extends Component {
     
   }
 
+  /**
+   * Puts the selected song in the footer to be played
+   */
   playSongs(song)
   {
     this.props.PlayTheFooter(song)
   }
   /**
-   * Responsible for showing the playlists in the webplayer home page
+   * Responsible for showing the songs in the webplayer home page
    * @returns Components that will be displayed on the page
    */
   render() {
