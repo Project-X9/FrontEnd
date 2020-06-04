@@ -97,6 +97,7 @@ else{    var min = 1;
   handleSubmitModal(){
     if (this.state.Premium === true){
       this.props.PremiumPost(this.props.data_be.data_be._id, false);
+      this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
       this.setState({ Premium: false });
       this.props.ControlModal(false);
     }
