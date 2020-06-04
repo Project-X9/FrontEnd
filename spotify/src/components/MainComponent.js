@@ -1,20 +1,18 @@
-import React, { Component } from 'react';
-import {
-  Switch, Route, Redirect, withRouter,
-} from 'react-router-dom';
-import { connect } from 'react-redux';
-import { actions } from 'react-redux-form';
-import Home from './Homepage/HomeComponent';
-import SignUp from './SignUp/SignUpComponent';
-import PremiumComponent from './PremiumPage/PremuimComponent';
-import AccountOverview from './AccountOverview/AccountOverviewComponent';
-import WebPlayer from './WebPlayerHome/WebPlayerComponent';
-import SignIn from './SignIn/SignInComponent';
-import ArtistInterface from './ForArtists/ArtistInterfaceComponent';
-import './ForArtists/ArtistInterfaceComponent.css';
-import Library from './Library/LibraryCompnent';
-import PlayFooter from './PlayFooter/PlayFooter';
-import CreatePlayList from './WebPlayerHome/CreatePlayListModel';
+import React, { Component } from "react";
+import { Switch, Route, Redirect, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { actions } from "react-redux-form";
+import Home from "./Homepage/HomeComponent";
+import SignUp from "./SignUp/SignUpComponent";
+import PremiumComponent from "./PremiumPage/PremuimComponent";
+import AccountOverview from "./AccountOverview/AccountOverviewComponent";
+import WebPlayer from "./WebPlayerHome/WebPlayerComponent";
+import SignIn from "./SignIn/SignInComponent";
+import ArtistInterface from "./ForArtists/ArtistInterfaceComponent"
+import "./ForArtists/ArtistInterfaceComponent.css";
+import Library from "./Library/LibraryCompnent";
+import PlayFooter from "./PlayFooter/PlayFooter";
+import CreatePlayList from "./WebPlayerHome/CreatePlayListModel";
 
 import {
   postFeedback,
@@ -50,10 +48,10 @@ import {
   AddPrevSong,
   ForSignUpVerification,
   ControlModal,
-  handleChangeData_BE,
-} from '../redux/ActionCreators';
-import MyAlbums from './ForArtists/MyAlbumsComponent';
-import MySongs from './ForArtists/MySongsComponent';
+  handleChangeData_BE
+} from "../redux/ActionCreators";
+import MyAlbums from "./ForArtists/MyAlbumsComponent";
+import MySongs from "./ForArtists/MySongsComponent";
 
 const mapStateToProps = (state) => ({
   data: state.data,
@@ -74,28 +72,28 @@ const mapStateToProps = (state) => ({
   is_progress_dirty: state.is_progress_dirty,
   currentTime: state.currentTime,
   totalTime: state.totalTime,
-  prevsong: state.prevsong,
-  signupdata: state.signupdata,
-  isModalOpen: state.isModalOpen,
-  token: state.token,
+  prevsong:state.prevsong,
+  signupdata:state.signupdata,
+  isModalOpen:state.isModalOpen,
+  token:state.token
 
 
 });
 const mapDispatchToProps = (dispatch) => ({
   resetFeedbackForm: () => {
-    dispatch(actions.reset('feedback'));
+    dispatch(actions.reset("feedback"));
   },
   resetSignInForm: () => {
-    dispatch(actions.reset('login'));
+    dispatch(actions.reset("login"));
   },
   reseteditprofile: () => {
-    dispatch(actions.reset('editprofie'));
+    dispatch(actions.reset("editprofie"));
   },
   resetpassword: () => {
-    dispatch(actions.reset('resetpassword'));
+    dispatch(actions.reset("resetpassword"));
   },
   resetChangePasswordForm: () => {
-    dispatch(actions.reset('changepassword'));
+    dispatch(actions.reset("changepassword"));
   },
   fetchUserData: () => {
     dispatch(fetchUserData());
@@ -133,14 +131,19 @@ const mapDispatchToProps = (dispatch) => ({
   getEmail: (id) => dispatch(getEmail(id)),
   getPassword: (id) => dispatch(getPassword(id)),
   PremiumPost: (id, isPremium) => dispatch(PremiumPost(id, isPremium)),
-  patchedunfollow: (idUser, idPlaylist) => dispatch(patchedunfollow(idUser, idPlaylist)),
-  patchedfollow: (idUser, idPlaylist) => dispatch(patchedfollow(idUser, idPlaylist)),
+  patchedunfollow: (idUser, idPlaylist) =>
+    dispatch(patchedunfollow(idUser, idPlaylist)),
+  patchedfollow: (idUser, idPlaylist) =>
+    dispatch(patchedfollow(idUser, idPlaylist)),
   handleLoginId: (id) => dispatch(handleLoginId(id)),
-  postFeedback: (email, confirmemail, password, name, day, month, year, sex) => dispatch(
-    postFeedback(email, confirmemail, password, name, day, month, year, sex),
-  ),
-  postupdatedFeedback: (id, isemail, isage, isID) => dispatch(postupdatedFeedback(id, isemail, isage, isID)),
-  postFacebookLogin: (email, image, name) => dispatch(postFacebookLogin(email, image, name)),
+  postFeedback: (email, confirmemail, password, name, day, month, year, sex) =>
+    dispatch(
+      postFeedback(email, confirmemail, password, name, day, month, year, sex)
+    ),
+  postupdatedFeedback: (id, isemail, isage, isID) =>
+    dispatch(postupdatedFeedback(id, isemail, isage, isID)),
+  postFacebookLogin: (email, image, name) =>
+    dispatch(postFacebookLogin(email, image, name)),
   PlayTheFooter: (songSrc) => {
     dispatch(PlayTheFooter(songSrc));
   },
@@ -152,31 +155,34 @@ const mapDispatchToProps = (dispatch) => ({
   },
   ChangeSongProgress: (progress) => {
     dispatch(ChangeSongProgress(progress));
-  },
+  }
+  ,
   ChangeProgressMode: (progressMode) => {
     dispatch(ChangeProgressMode(progressMode));
   },
   ChangeProgressDirty: (progressDirty) => {
     dispatch(ChangeProgressDirty(progressDirty));
-  },
+  }
+  ,
   ChangeTotalTime: (time) => {
     dispatch(ChangeTotalTime(time));
   },
   ChangeCurrentTime: (time) => {
     dispatch(ChangeCurrentTime(time));
-  },
+  }
+  ,
   AddPrevSong: (song) => {
     dispatch(AddPrevSong(song));
-  },
-  ForSignUpVerification: (data) => {
+  }
+  , ForSignUpVerification: (data) => {
     dispatch(ForSignUpVerification(data));
-  },
-  ControlModal: (data) => {
+  }
+  , ControlModal: (data) => {
     dispatch(ControlModal(data));
   },
-  handleChangeData_BE: (id, token) => {
-    dispatch(handleChangeData_BE(id, token));
-  },
+  handleChangeData_BE: (id,token) => {
+    dispatch(handleChangeData_BE(id,token));
+  }
 
 
 });
@@ -232,13 +238,13 @@ class Main extends Component {
             path="/premium"
             component={() => (
               <PremiumComponent
-                // /////////for Handling the premium membership of the user
+                ///////////for Handling the premium membership of the user
                 PremiumPost={this.props.PremiumPost}
                 id={this.props.id}
                 data={this.props.data}
-                // ///getting all the info of the user
+                /////getting all the info of the user
                 data_be={this.props.data_be}
-                // /////logging of the user
+                ///////logging of the user
                 handleLogout_BE={this.props.handleLogout_BE}
                 isSignedIn={this.props.isSignedIn}
                 handleChangeData_BE={this.props.handleChangeData_BE}
@@ -255,25 +261,25 @@ class Main extends Component {
             path="/account"
             component={() => (
               <AccountOverview
-                // ////////for overview and change password and edit profile and nowplay
+                //////////for overview and change password and edit profile and nowplay
                 data={this.props.data}
                 id={this.props.id}
                 handleLogoutId={this.props.handleLogoutId}
-                // /////////
-                // /////////for change password
+                ///////////
+                ///////////for change password
                 PostPassword={this.props.PostPassword}
                 GetPassword={this.props.GetPassword}
                 resetChangePasswordForm={this.props.resetChangePasswordForm}
                 reseteditprofile={this.props.reseteditprofile}
-                // ////////
-                // /////// for edit profile
+                //////////
+                ///////// for edit profile
                 postupdatedFeedback={this.props.postupdatedFeedback}
-                // ///////
+                /////////
                 data_be={this.props.data_be}
                 handleLogout_BE={this.props.handleLogout_BE}
                 isSignedIn={this.props.isSignedIn}
-              // /////////////////////////
-                // /////// for reset password
+              ///////////////////////////
+                ///////// for reset password
                 isModalOpen={this.props.isModalOpen}
                 ControlModal={this.props.ControlModal}
                 ForSignUpVerification={this.props.ForSignUpVerification}
@@ -281,7 +287,7 @@ class Main extends Component {
                 resetpassword={this.props.resetpassword}
                 handleChangeData_BE={this.props.handleChangeData_BE}
                 token={this.props.token}
-                // ///////
+                /////////
               />
             )}
           />
@@ -289,18 +295,18 @@ class Main extends Component {
             path="/webplayer"
             component={() => (
               <WebPlayer
-                fullsongs={this.props.fullsongs}
-                // ////////
+              fullsongs={this.props.fullsongs}
+                //////////
                 patchedunfollow={this.props.patchedunfollow}
                 patchedfollow={this.props.patchedfollow}
-                // ////////for Home page and Library page
+                //////////for Home page and Library page
                 data={this.props.data}
                 id={this.props.id}
                 playLists={this.props.playLists}
                 artist={this.props.artist}
                 album={this.props.album}
                 handleLogoutId={this.props.handleLogoutId}
-                // /////////
+                ///////////
                 data_be={this.props.data_be}
                 isSignedIn={this.props.isSignedIn}
                 handleCurrentPlayList={this.props.handleCurrentPlayList}
@@ -352,7 +358,8 @@ class Main extends Component {
           <Route
             path="/forartists"
             component={() => (
-              <ArtistInterface />
+              <ArtistInterface
+              />
             )}
           />
           <Redirect to="/signup" />

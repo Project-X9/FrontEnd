@@ -105,7 +105,9 @@ else{    var min = 1;
       if (this.state.inputValue == this.props.signupdata.signupdata.randomId){
         this.props.ControlModal(false);
           this.props.PremiumPost(this.props.data_be.data_be._id, true);
-          this.setState({Premium: true});
+        this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
+
+        this.setState({Premium: true});
       } else if (this.state.inputValue != this.props.signupdata.signupdata.randomId) {
         alert("Wrong Code")
       }
