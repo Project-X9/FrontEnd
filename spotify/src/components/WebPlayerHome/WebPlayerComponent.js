@@ -377,6 +377,7 @@ handleSubmit() {
                       <Search
                           categories={this.props.categories}
                           fullsongs={this.props.fullsongs}
+                          fullartists={this.props.fullartists}
                         id={this.props.id}
                         data={this.props.data}
                         playLists={this.props.playLists}

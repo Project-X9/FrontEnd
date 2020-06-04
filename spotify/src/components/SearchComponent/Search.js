@@ -37,7 +37,7 @@ class Search extends Component {
       isNavOpen: false,
       tempId: this.props.data_be.data_be.id,
       search:'',suggestionSongs:[],suggestionArtists:[],FullSongs:this.props.fullsongs.fullSongs,categories:this.props.categories.categories,
-artists:this.props.data_be.data_be.artists
+artists:this.props.fullartists.fullArtists
     };
     this.handleinput=this.handleinput.bind(this);
     this.state.toggleNav = this.toggleNav.bind(this);
