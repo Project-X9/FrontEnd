@@ -77,6 +77,9 @@ class WebPlayer extends Component {
     }
   }
 
+  /**
+   * Toggles the Song Modal in the library by switching isModalOpen from true to false and vice versa
+   */
   toggleModalSong() {
     if (this.props.isSignedIn.isSignedIn === null) {
       this.setState({
@@ -84,11 +87,19 @@ class WebPlayer extends Component {
       }); 
     }
   }
+
+  /**
+   * handles input in the textbox the playlist modal
+   */
 handleChange(e){
     this.setState({
         inputValue:e.target.value
     })
 }
+
+/**
+   * Toggles the playlist Modal in the library by switching isModalOpen from true to false and vice versa
+   */
 toggleModalNew(){
   if (this.props.isSignedIn.isSignedIn !== true) {
     this.setState({
@@ -99,7 +110,10 @@ toggleModalNew(){
       isModalOpenNew: !this.state.isModalOpenNew
   });
   } 
-    
+ 
+/**
+ * handles submitting input in the playlist modal
+ */ 
 }
 handleSubmit() {
     alert(this.state.inputValue);

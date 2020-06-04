@@ -11,12 +11,19 @@ import emailjs from 'emailjs-com';
 const required = (val) => val && val.length;
 const minLength = (len) => (val) => val && val.length >= len;
 /**
- * Class for the freePlan component which is a container shown for the free users
+ * Class for the ResetPassword component which allows a user who has signed in but forgot his password to change it
  */
 class ResetPassword extends Component {
-  /**
-   * Responsible for showing a container customized for free users
-   * @returns Components that will be display the container, and will be used in AccountOverview.js
+   /**
+   *
+   * @param {Object} props
+   * @param props.isModalOpen Essentially used to change the state of the modal
+   * @param props.ControlModal Essentially controls the state of the modal
+   * @param props.PostPassword Essentially used to post the new password
+   * @param props.data_be Essentially used to access email and id
+   * @param props.ForSignUpVerification Essentially used in the email
+   * @param props.signupdata Essentially used for posting the new password of a specific user
+   * @param props.resetpassword Essentially needed to apply the changes made
    */
   constructor(props) {
     super(props);

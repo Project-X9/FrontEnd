@@ -285,9 +285,9 @@ class Main extends Component {
                 ForSignUpVerification={this.props.ForSignUpVerification}
                 signupdata={this.props.signupdata}
                 resetpassword={this.props.resetpassword}
+                /////////
                 handleChangeData_BE={this.props.handleChangeData_BE}
                 token={this.props.token}
-                /////////
               />
             )}
           />
