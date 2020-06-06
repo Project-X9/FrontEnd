@@ -65,6 +65,7 @@ const mapStateToProps = (state) => ({
   currentPlaylist: state.currentPlaylist,
   categories: state.categories,
   fullsongs: state.fullsongs,
+  fullartists: state.fullartists,
   song: state.song,
   shuffle: state.shuffle,
   progress: state.progress,
@@ -183,8 +184,8 @@ const mapDispatchToProps = (dispatch) => ({
   handleChangeData_BE: (id,token) => {
     dispatch(handleChangeData_BE(id,token));
   }
- 
-  
+
+
 });
 
 class Main extends Component {
@@ -256,7 +257,7 @@ class Main extends Component {
               />
             )}
           />
-          
+
           <Route
             path="/account"
             component={() => (
@@ -296,6 +297,7 @@ class Main extends Component {
             component={() => (
               <WebPlayer
               fullsongs={this.props.fullsongs}
+              fullartists={this.props.fullartists}
                 //////////
                 patchedunfollow={this.props.patchedunfollow}
                 patchedfollow={this.props.patchedfollow}
@@ -308,7 +310,6 @@ class Main extends Component {
                 handleLogoutId={this.props.handleLogoutId}
                 ///////////
                 data_be={this.props.data_be}
-                isSignedIn={this.props.isSignedIn}
                 handleCurrentPlayList={this.props.handleCurrentPlayList}
                 currentPlaylist={this.props.currentPlaylist}
                 handleLogout_BE={this.props.handleLogout_BE}
@@ -335,6 +336,8 @@ class Main extends Component {
                 prevsong={this.props.prevsong}
                 handleChangeData_BE={this.props.handleChangeData_BE}
                 token={this.props.token}
+              isModalOpen={this.props.isModalOpen}
+              ControlModal={this.props.ControlModal}
               />
             )}
           />

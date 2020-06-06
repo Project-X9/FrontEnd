@@ -60,7 +60,7 @@ class Premium extends Component {
   handleSubmit() {
     if(this.state.Premium){    this.props.ControlModal(true);
     }
-else{    var min = 1;
+else{   var min = 1;
     var max = 100;
     var rand =  min + (Math.random() * (max-min));
     rand=Math.ceil(rand);
@@ -97,6 +97,7 @@ else{    var min = 1;
   handleSubmitModal(){
     if (this.state.Premium === true){
       this.props.PremiumPost(this.props.data_be.data_be._id, false);
+      this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
       this.setState({ Premium: false });
       this.props.ControlModal(false);
     }
@@ -104,7 +105,9 @@ else{    var min = 1;
       if (this.state.inputValue == this.props.signupdata.signupdata.randomId){
         this.props.ControlModal(false);
           this.props.PremiumPost(this.props.data_be.data_be._id, true);
-          this.setState({Premium: true});
+        this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
+
+        this.setState({Premium: true});
       } else if (this.state.inputValue != this.props.signupdata.signupdata.randomId) {
         alert("Wrong Code")
       }
