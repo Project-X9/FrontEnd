@@ -20,6 +20,7 @@ import Artist from "../ArtistInterface/ArtistComponent";
 import PlayFooter from './../PlayFooter/PlayFooter';
 import Search from "../SearchComponent/Search";
 import Queue from "./Queue";
+import PremiumComponent from "../PremiumPage/PremuimComponent";
 /**
  * Web Player page
  */
@@ -348,6 +349,8 @@ handleSubmit() {
                         isPlaying={this.props.isPlaying}
                         handleChangeData_BE={this.props.handleChangeData_BE}
                         token={this.props.token}
+                        isModalOpen={this.props.isModalOpen}
+                        ControlModal={this.props.ControlModal}
                       />
                     )}
                   />

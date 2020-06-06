@@ -60,7 +60,7 @@ class Premium extends Component {
   handleSubmit() {
     if(this.state.Premium){    this.props.ControlModal(true);
     }
-else{    var min = 1;
+else{   var min = 1;
     var max = 100;
     var rand =  min + (Math.random() * (max-min));
     rand=Math.ceil(rand);

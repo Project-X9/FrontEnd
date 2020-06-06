@@ -336,6 +336,8 @@ class Main extends Component {
                 prevsong={this.props.prevsong}
                 handleChangeData_BE={this.props.handleChangeData_BE}
                 token={this.props.token}
+              isModalOpen={this.props.isModalOpen}
+              ControlModal={this.props.ControlModal}
               />
             )}
           />
