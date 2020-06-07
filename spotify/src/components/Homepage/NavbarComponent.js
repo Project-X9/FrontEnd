@@ -6,7 +6,7 @@ import {
   Nav,
   NavItem,
   NavbarToggler,
-  Collapse,
+  Collapse, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button
 } from 'reactstrap';
 /**
  * Navbar main component 
@@ -24,19 +24,36 @@ class NavbarHome extends Component {
     };
     this.state.toggleNav = this.toggleNav.bind(this);
   }
-/**
- * Toggles the Navigation bar by switching isNavOpen from true to false and vice versa
- */
+  /**
+   * Toggles the Navigation bar by switching isNavOpen from true to false and vice versa
+   */
   toggleNav() {
     this.setState({
       isNavOpen: !this.state.isNavOpen,
     });
   }
-/**
- * Responsible for rendering the navbar and its elements on the screen
- * @returns a navbar component designed for an un-logged user
- */
+  handleLogout() {
+    // let id="";
+    // this.props.handleLogoutId(id);
+    this.props.handleLogout_BE();
+  }
+
+  /**
+   * Responsible for rendering the navbar and its elements on the screen
+   * @returns a navbar component designed for an un-logged user
+   */
+
   render() {
+    let userName = (
+      <div>
+        <Button className="AccountItself">
+          <DropdownToggle nav caret className="WritingInsideAccountItself">
+            <i class="fa fa-user-secret"></i>
+            {this.props.data_be.data_be.name}
+          </DropdownToggle>
+        </Button>
+      </div>
+    );
     return (
       <Navbar className="NavBar" sticky="top" expand="md">
         <div className="container">
@@ -75,15 +92,42 @@ class NavbarHome extends Component {
               <NavItem className="nav-link" id="NavSlash">
                 |
               </NavItem>
-              <NavItem>
-                <NavLink className="nav-link" to="/signup">
-                  Sign up
+              {this.props.isSignedIn.isSignedIn == null && (
+                <NavItem>
+                  <NavLink className="nav-link" to="/signup">
+                    Sign up
                 </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink className="nav-link" to="/signin">
-                  Log In
+                </NavItem>)
+              }
+              {this.props.isSignedIn.isSignedIn == null && (
+                <NavItem>
+                  <NavLink className="nav-link" to="/signin">
+                    Log In
                 </NavLink>
+                </NavItem>)
+              }
+              <NavItem>
+                {this.props.isSignedIn.isSignedIn != null && (
+                  <UncontrolledDropdown nav inNavbar>
+                    {userName}
+                    <DropdownMenu className="StaticNav" right>
+                      <DropdownItem className="StaticNavChildContainer">
+                        <NavLink
+                          className="StaticNavChild"
+                          to="/account/overview">
+                          Account
+                                      </NavLink>
+                      </DropdownItem>
+                      <DropdownItem className="StaticNavChildContainer">
+                        <Button
+                          onClick={() => { this.handleLogout() }}
+                          className="StaticNavChild">
+                          Log out
+                                      </Button>
+                      </DropdownItem>
+                    </DropdownMenu>
+                  </UncontrolledDropdown>)
+                }
               </NavItem>
             </Nav>
           </Collapse>

@@ -13,7 +13,7 @@ import "./ForArtists/ArtistInterfaceComponent.css";
 import Library from "./Library/LibraryCompnent";
 import PlayFooter from "./PlayFooter/PlayFooter";
 import CreatePlayList from "./WebPlayerHome/CreatePlayListModel";
-
+import LoggedHome from "./Homepage/LoggedHomeComponent";
 import {
   postFeedback,
   postFacebookLogin,
@@ -72,10 +72,10 @@ const mapStateToProps = (state) => ({
   is_progress_dirty: state.is_progress_dirty,
   currentTime: state.currentTime,
   totalTime: state.totalTime,
-  prevsong:state.prevsong,
-  signupdata:state.signupdata,
-  isModalOpen:state.isModalOpen,
-  token:state.token
+  prevsong: state.prevsong,
+  signupdata: state.signupdata,
+  isModalOpen: state.isModalOpen,
+  token: state.token
 
 
 });
@@ -180,11 +180,11 @@ const mapDispatchToProps = (dispatch) => ({
   , ControlModal: (data) => {
     dispatch(ControlModal(data));
   },
-  handleChangeData_BE: (id,token) => {
-    dispatch(handleChangeData_BE(id,token));
+  handleChangeData_BE: (id, token) => {
+    dispatch(handleChangeData_BE(id, token));
   }
- 
-  
+
+
 });
 
 class Main extends Component {
@@ -202,7 +202,19 @@ class Main extends Component {
         {/* <TransitionGroup> */}
         {/* <CSSTransition key={this.props.location.key} classNames="page" timeout={300}> */}
         <Switch>
-          <Route exact path="/home" component={() => <Home />} />
+          {this.props.isSignedIn.isSignedIn == null && (<Route exact path="/home" component={() => <Home isSignedIn={this.props.isSignedIn}
+            data_be={this.props.data_be} />}
+            handleLogout_BE={this.props.handleLogout_BE}
+            data_be={this.props.data_be} />)}
+          {this.props.isSignedIn.isSignedIn != null && (<Route exact path="/home" component={() => <LoggedHome
+            id={this.props.id}
+            data={this.props.data}
+            playLists={this.props.playLists}
+            data_be={this.props.data_be}
+            currentPlaylist={this.props.currentPlaylist}
+            fullsongs={this.props.fullsongs}
+            isSignedIn={this.props.isSignedIn}
+            handleLogout_BE={this.props.handleLogout_BE} />} />)}
           <Route
             exact
             path="/signup"
@@ -256,7 +268,7 @@ class Main extends Component {
               />
             )}
           />
-          
+
           <Route
             path="/account"
             component={() => (
@@ -278,7 +290,7 @@ class Main extends Component {
                 data_be={this.props.data_be}
                 handleLogout_BE={this.props.handleLogout_BE}
                 isSignedIn={this.props.isSignedIn}
-              ///////////////////////////
+                ///////////////////////////
                 ///////// for reset password
                 isModalOpen={this.props.isModalOpen}
                 ControlModal={this.props.ControlModal}
@@ -287,7 +299,7 @@ class Main extends Component {
                 resetpassword={this.props.resetpassword}
                 handleChangeData_BE={this.props.handleChangeData_BE}
                 token={this.props.token}
-                /////////
+              /////////
               />
             )}
           />
@@ -295,7 +307,7 @@ class Main extends Component {
             path="/webplayer"
             component={() => (
               <WebPlayer
-              fullsongs={this.props.fullsongs}
+                fullsongs={this.props.fullsongs}
                 //////////
                 patchedunfollow={this.props.patchedunfollow}
                 patchedfollow={this.props.patchedfollow}
