@@ -2,47 +2,57 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import {Button} from "reactstrap";
+import { Link } from "react-router-dom";
 /**
  * Class for the reviewing the notifications 
  */
 class ReviewNotifications extends Component {
   /**
-   * Responsible for showing a container containing all the notifications sent to the user
-   * @returns Components that will be display the notifications, and will be used in AccountOverview.js
+   *
+   * @param {Object} props
+   * @param props.data_be Essentially contains the data of the users in the database after integrating with backend
+   * @param props.isSignedIn Essentially used to check if a user is signed in or not
    */
   render() {
+    let Redirect = "";
+    if (this.props.isSignedIn.isSignedIn === null){
+      Redirect=<Link to="/overview"></Link>
+    }
     let Notifications = "";
-    Notifications = this.props.data_be.data_be.notifications.map((notification) => {
-      return(
-        <div key= {notification._id} className="ReadNotificationsRow">>
-          <div className="row">
-            <div className="col-9">
-              <h5 className="ReadNotificationsEvents"> 
-                {notification.event} 
-              </h5>
+    if (this.props.isSignedIn.isSignedIn !== null){
+      Notifications = this.props.data_be.data_be.notifications.map((notification) => {
+        return(
+          <div key= {notification._id} className="ReadNotificationsRow">>
+            <div className="row">
+              <div className="col-9">
+                <h5 className="ReadNotificationsEvents"> 
+                  {notification.event} 
+                </h5>
+              </div>
+              <div className="col-3"> 
+                {notification.read===false?(
+                    <div>
+                      <Button className="ReadNotificationsTrueButton">
+                        Not Read
+                      </Button>
+                    </div>
+                    ):(
+                    <div className="ReadNotificationsFalse">
+                      <h5>
+                        Read
+                      </h5>
+                    </div>
+                  )} 
+              </div>
             </div>
-            <div className="col-3"> 
-              {notification.read===false?(
-                  <div>
-                    <Button className="ReadNotificationsTrueButton">
-                      Not Read
-                    </Button>
-                  </div>
-                  ):(
-                  <div className="ReadNotificationsFalse">
-                    <h5>
-                      Read
-                    </h5>
-                  </div>
-                )} 
-            </div>
+            <hr />
           </div>
-          <hr />
-        </div>
-      )
-    })
+        )
+      })
+    }
     return (
       <div>
+        {Redirect}
         <div className="row">
           <h1 className="BigHeader">Notifications</h1>
         </div>

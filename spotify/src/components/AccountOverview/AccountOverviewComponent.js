@@ -498,6 +498,7 @@ class AccountOverview extends Component {
                     component={() => (
                       <ReviewNotifications
                         data_be={this.props.data_be}
+                        isSignedIn={this.props.isSignedIn}
                       />
                     )}
                   />

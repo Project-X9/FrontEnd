@@ -1,11 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-import {
-  Card, CardBody, CardText, CardSubtitle,
-} from 'reactstrap';
-import { Link, Switch, Route, Redirect } from "react-router-dom";
-import { Col,Row, Button,Modal, ModalBody, Label } from "reactstrap";
+import { Button,Modal, ModalBody, Label } from "reactstrap";
 import { Control, Form, Errors } from "react-redux-form";
 import emailjs from 'emailjs-com';
 const required = (val) => val && val.length;
