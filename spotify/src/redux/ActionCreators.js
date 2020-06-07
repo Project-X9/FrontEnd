@@ -227,6 +227,13 @@ export const handleSignIn_BE = (data) => (dispatch) => {
         .then((response2) =>
           dispatch(addCategories(response2.data.data.Categories))
         );
+
+        axios
+            .get(`${ArtistsUrl}`)
+            .then((response2) =>
+
+                dispatch(addAllArtists(response2.data.data.artists))
+            );
         axios
         .get(`${AllSongsUrl}`)
         .then((response2) =>
@@ -252,6 +259,10 @@ export const handleChangeData_BE = (id,token) => (dispatch) => {
 export const addAllTracks = (data) => ({
   type: ActionTypes.ADD_FULLSONGS,
   payload: data,
+});
+export const addAllArtists = (data) => ({
+    type: ActionTypes.ADD_FULLARTISTS,
+    payload: data,
 });
 
 /**

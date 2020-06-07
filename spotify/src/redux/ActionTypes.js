@@ -39,6 +39,8 @@ export const ADD_PREVIOUS = 'ADD_PREVIOUS';
 
 ////////////////////For Full Songs
 export const ADD_FULLSONGS = "ADD_FULLSONGS";
+export const ADD_FULLARTISTS = "ADD_FULLARTISTS";
+
 ///////////////////////////////
 export const ADD_NEW_USER = 'ADD_NEW_USER';
 export const CONTROLMODAL = 'CONTROLMODAL';

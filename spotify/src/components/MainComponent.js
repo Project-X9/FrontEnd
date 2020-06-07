@@ -65,6 +65,7 @@ const mapStateToProps = (state) => ({
   currentPlaylist: state.currentPlaylist,
   categories: state.categories,
   fullsongs: state.fullsongs,
+  fullartists: state.fullartists,
   song: state.song,
   shuffle: state.shuffle,
   progress: state.progress,
@@ -297,9 +298,9 @@ class Main extends Component {
                 ForSignUpVerification={this.props.ForSignUpVerification}
                 signupdata={this.props.signupdata}
                 resetpassword={this.props.resetpassword}
+                /////////
                 handleChangeData_BE={this.props.handleChangeData_BE}
                 token={this.props.token}
-              /////////
               />
             )}
           />
@@ -307,7 +308,8 @@ class Main extends Component {
             path="/webplayer"
             component={() => (
               <WebPlayer
-                fullsongs={this.props.fullsongs}
+              fullsongs={this.props.fullsongs}
+              fullartists={this.props.fullartists}
                 //////////
                 patchedunfollow={this.props.patchedunfollow}
                 patchedfollow={this.props.patchedfollow}
@@ -320,7 +322,6 @@ class Main extends Component {
                 handleLogoutId={this.props.handleLogoutId}
                 ///////////
                 data_be={this.props.data_be}
-                isSignedIn={this.props.isSignedIn}
                 handleCurrentPlayList={this.props.handleCurrentPlayList}
                 currentPlaylist={this.props.currentPlaylist}
                 handleLogout_BE={this.props.handleLogout_BE}
@@ -347,6 +348,8 @@ class Main extends Component {
                 prevsong={this.props.prevsong}
                 handleChangeData_BE={this.props.handleChangeData_BE}
                 token={this.props.token}
+              isModalOpen={this.props.isModalOpen}
+              ControlModal={this.props.ControlModal}
               />
             )}
           />

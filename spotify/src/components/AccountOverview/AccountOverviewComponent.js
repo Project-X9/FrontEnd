@@ -48,6 +48,11 @@ class AccountOverview extends Component {
    * @param props.data_be Essentially contains the data of the users in the database after integrating with backend
    * @param props.handleLogout_BE Essentially used to remove user id along with his other data instead of handleLogoutId
    * @param props.isSignedIn Essentially used to check if a user is signed in or not
+   * @param props.isModalOpen Essentially used in ResetPasswordComponent for the modal there
+   * @param props.ControlModal Essentially used in ResetPasswordComponent for the modal there
+   * @param props.ForSignUpVerification Essentially used in ResetPasswordComponent and used when sending the email
+   * @param props.signupdata  Essentially used in ResetPasswordComponent for resetting the password
+   * @param props.resetpassword Essentially used in ResetPasswordComponent for resetting the password
    */
   constructor(props) {
     super(props);
@@ -493,6 +498,7 @@ class AccountOverview extends Component {
                     component={() => (
                       <ReviewNotifications
                         data_be={this.props.data_be}
+                        isSignedIn={this.props.isSignedIn}
                       />
                     )}
                   />

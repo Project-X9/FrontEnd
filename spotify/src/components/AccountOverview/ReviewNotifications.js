@@ -1,75 +1,62 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-import {
-  Card, CardBody, CardText, CardSubtitle,
-} from 'reactstrap';
-import { NavLink} from "react-router-dom";
 import {Button} from "reactstrap";
+import { Link } from "react-router-dom";
 /**
- * Class for the freePlan component which is a container shown for the free users
+ * Class for the reviewing the notifications 
  */
 class ReviewNotifications extends Component {
   /**
-   * Responsible for showing a container customized for free users
-   * @returns Components that will be display the container, and will be used in AccountOverview.js
+   *
+   * @param {Object} props
+   * @param props.data_be Essentially contains the data of the users in the database after integrating with backend
+   * @param props.isSignedIn Essentially used to check if a user is signed in or not
    */
   render() {
+    let Redirect = "";
+    if (this.props.isSignedIn.isSignedIn === null){
+      Redirect=<Link to="/overview"></Link>
+    }
+    let Notifications = "";
+    if (this.props.isSignedIn.isSignedIn !== null){
+      Notifications = this.props.data_be.data_be.notifications.map((notification) => {
+        return(
+          <div key= {notification._id} className="ReadNotificationsRow">>
+            <div className="row">
+              <div className="col-9">
+                <h5 className="ReadNotificationsEvents"> 
+                  {notification.event} 
+                </h5>
+              </div>
+              <div className="col-3"> 
+                {notification.read===false?(
+                    <div>
+                      <Button className="ReadNotificationsTrueButton">
+                        Not Read
+                      </Button>
+                    </div>
+                    ):(
+                    <div className="ReadNotificationsFalse">
+                      <h5>
+                        Read
+                      </h5>
+                    </div>
+                  )} 
+              </div>
+            </div>
+            <hr />
+          </div>
+        )
+      })
+    }
     return (
-        <div>
+      <div>
+        {Redirect}
         <div className="row">
           <h1 className="BigHeader">Notifications</h1>
         </div>
-
-       
-        <div className="row">
-          <div className="col Content1">
-            <h5>Username</h5>
-          </div>
-          <div className="col Content2">
-            <h5> {this.props.data_be.data_be.name} </h5>
-          </div>
-        </div>
-        <hr />
-        <div className="row">
-          <div className="col Content1">
-            <h5>Email</h5>
-          </div>
-          <div className="col Content2">
-            <h5>{this.props.data_be.data_be.email}</h5>
-          </div>
-        </div>
-        <hr />
-        <div className="row">
-          <div className="col Content1">
-            <h5>Age</h5>
-          </div>
-          <div className="col Content2">
-            <h5>{this.props.data_be.data_be.age}</h5>
-          </div>
-        </div>
-        <hr />
-        <div className="row">
-          <div className="col Content1">
-            <h5>Country</h5>
-          </div>
-          <div className="col Content2">
-            <h5>EG</h5>
-          </div>
-        </div>
-        <hr />
-       
-       
-        <div className="row">
-          <Button onClick={() => {
-            this.handleLogout();
-          }}
-            className="EditProfile" color="success">
-            <NavLink className="InsideEditProfile" to="/">
-              SIGN OUT
-            </NavLink>
-          </Button>
-        </div>
+        {Notifications}
       </div>
     );
   }
