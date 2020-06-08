@@ -47,6 +47,7 @@ export const CONTROLMODAL = 'CONTROLMODAL';
 
 //////////////////////////////
 export const ADD_TOKEN = 'ADD_TOKEN';
+export const ADDSONGID = 'ADDSONGID';
 
 
 

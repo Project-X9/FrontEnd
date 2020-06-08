@@ -23,8 +23,8 @@ import {
   DropdownToggle,
 } from "reactstrap";
 import "./PremiumComponent.css";
-
 import { NavLink, Redirect } from "react-router-dom";
+import { emailjs } from 'emailjs-com';
 
 class Premium extends Component {
   /**
