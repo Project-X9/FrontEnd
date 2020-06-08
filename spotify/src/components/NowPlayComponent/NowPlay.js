@@ -14,6 +14,7 @@ import {
 import "./NowPlay.css";
 import { NavLink, Redirect } from "react-router-dom";
 import { Loading } from "./../Loading/LoadingComponent";
+import 'react-notifications/lib/notifications.css';
 /**
  * This Component is for Displaying the playlist and following or unfollowing it
  */

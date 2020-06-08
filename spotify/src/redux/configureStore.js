@@ -23,7 +23,7 @@ import { SongProgress, ProgressMode ,ProgressDirty} from './PlayFooterStuff/Song
 import { FullSongs } from "./addFullSongs";
 import { SignUpData, SignUpModal} from './SignupData';
 import { AddToken } from './AddToken';
-
+import {ADDSongId} from './AddSongToPlayList'
 function saveState(state) {
   try {
     const serializedState = JSON.stringify(state);
@@ -67,6 +67,7 @@ export const ConfigureStore = () => {
       signupdata:SignUpData,
       isModalOpen:SignUpModal,
       token:AddToken,
+      songid:ADDSongId,
       // playlist_BE:PlayList_BE,
       ...createForms({
         feedback: InitialFeedback,

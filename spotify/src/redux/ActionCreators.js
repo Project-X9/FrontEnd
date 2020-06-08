@@ -210,6 +210,7 @@ export const handleSignIn_BE = (data) => (dispatch) => {
   axios
     .post(SignInUrl, data)
     .then((response) => {
+      // test(response.data.user._id);
       console.log("Response from sign in", response);
       dispatch(addLogin(true));
       var token = response.data.token;
@@ -235,6 +236,67 @@ export const handleSignIn_BE = (data) => (dispatch) => {
     })
     .catch((error) => dispatch(addLogin(false)));
 };
+// const publicVapidKey =
+// "BDGd6_hu_pl5u_eEPBImTWFn5WBzDPHoXucwGEIx8-aNq8AtrAa_V5W1MlJbduW5SoB3_r3UyYMQmRM-lGetgg0";
+
+// // Check for service worker
+// export const test =(id)=>{
+//     if ("serviceWorker" in navigator) {
+//         send(id).catch(err => console.error(err));
+//       }
+// }
+
+// async function send(id) {
+//   // Register Service Worker
+//   console.log("Registering service worker...");
+//   const swUrl = `${process.env.PUBLIC_URL}/service-worker-custom.js`
+//   const register = await navigator.serviceWorker.register(swUrl);
+//   console.log("Service Worker Registered...");
+
+//   // Register Push
+//   console.log("Registering Push...");
+//   const subscription = await register.pushManager.subscribe({
+//     userVisibleOnly: true,
+//     applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
+//   });
+//   console.log("Push Registered...");
+
+//   // Send Push Notification
+//   console.log("Sending Push...");
+//   const body=
+//   {
+//     pushSubscription: subscription
+//   }
+  
+//  axios.post(`${SignUpUrl}/${id}/update-push`,body)
+//   .then(response=>console.log(response))
+//   .catch(err=> console.log(err));
+//   // await fetch(`${SignUpUrl}/${id}/update-push`, {
+//   //   method: "POST",
+//   //   body: JSON.stringify({
+//   //     subscription: subscription
+//   //   }),
+//   //   headers: {
+//   //     "content-type": "application/json"
+//   //   }
+//   // }).catch(err=>console.log(err));
+// }
+
+// function urlBase64ToUint8Array(base64String) {
+//   const padding = "=".repeat((4 - base64String.length % 4) % 4);
+//   const base64 = (base64String + padding)
+//     .replace(/\-/g, "+")
+//     .replace(/_/g, "/");
+
+//   const rawData = window.atob(base64);
+//   const outputArray = new Uint8Array(rawData.length);
+
+//   for (let i = 0; i < rawData.length; ++i) {
+//     outputArray[i] = rawData.charCodeAt(i);
+//   }
+//   return outputArray;
+// }
+
 export const addToken = (data) => ({
   type: ActionTypes.ADD_TOKEN,
   payload: data,
@@ -522,4 +584,42 @@ export const PlayShuffle = () => (dispatch) => {
    type: ActionTypes.CURRENT_TIME,
    payload: data,
  });
+//========================= Read Notifications===============================
+export const ReadNotifications = (UserId, idplaylist) => (dispatch) => {
+  const data = { id: UserId };
+  // data.date = new Date().toISOString();
+  console.log(data);
+  axios.patch(`${FollowURL}/${idplaylist}`, data);
+  // .then((response) => {
+  //   console.log("Response from sign in", response);
+  //   dispatch(addLogin(true));
+  //   axios
+  //     .get(`${SignUpUrl}/${iduser}`)
+  //     .then((response2) => dispatch(addUserData_BE(response2.data.data.user)));
+  // });
+};
+//========================= Read Notifications===============================
+export const ShareSongs= (UserId, idplaylist) => (dispatch) => {
+  const data = { id: UserId };
+  // data.date = new Date().toISOString();
+  console.log(data);
+  axios.patch(`${FollowURL}/${idplaylist}`, data);
+  // .then((response) => {
+  //   console.log("Response from sign in", response);
+  //   dispatch(addLogin(true));
+  //   axios
+  //     .get(`${SignUpUrl}/${iduser}`)
+  //     .then((response2) => dispatch(addUserData_BE(response2.data.data.user)));
+  // });
+};
 
+// export const CreatePlayList_BE(){
+
+// }
+export const AddSong_inPlaylist_id=(data)=>(dispatch)=>{
+  dispatch(addSongID(data));
+}
+export const addSongID = (data) => ({
+  type: ActionTypes.ADDSONGID,
+  payload: data,
+});

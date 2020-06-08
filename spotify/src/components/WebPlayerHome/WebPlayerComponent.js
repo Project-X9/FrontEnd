@@ -334,6 +334,8 @@ handleSubmit() {
                         isPlaying={this.props.isPlaying}
                         handleChangeData_BE={this.props.handleChangeData_BE}
                         token={this.props.token}
+                        AddSong_inPlaylist_id={this.props.AddSong_inPlaylist_id}
+                        songid={this.props.songid}
                       />
                     )}
                   />

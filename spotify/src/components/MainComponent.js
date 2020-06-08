@@ -48,7 +48,8 @@ import {
   AddPrevSong,
   ForSignUpVerification,
   ControlModal,
-  handleChangeData_BE
+  handleChangeData_BE,
+  AddSong_inPlaylist_id,
 } from "../redux/ActionCreators";
 import MyAlbums from "./ForArtists/MyAlbumsComponent";
 import MySongs from "./ForArtists/MySongsComponent";
@@ -75,8 +76,8 @@ const mapStateToProps = (state) => ({
   prevsong:state.prevsong,
   signupdata:state.signupdata,
   isModalOpen:state.isModalOpen,
-  token:state.token
-
+  token:state.token,
+  songid:state.songid
 
 });
 const mapDispatchToProps = (dispatch) => ({
@@ -183,7 +184,9 @@ const mapDispatchToProps = (dispatch) => ({
   handleChangeData_BE: (id,token) => {
     dispatch(handleChangeData_BE(id,token));
   }
- 
+ ,  AddSong_inPlaylist_id: (data) => {
+  dispatch(AddSong_inPlaylist_id(data));
+}
   
 });
 
@@ -335,6 +338,8 @@ class Main extends Component {
                 prevsong={this.props.prevsong}
                 handleChangeData_BE={this.props.handleChangeData_BE}
                 token={this.props.token}
+                AddSong_inPlaylist_id={this.props.AddSong_inPlaylist_id}
+                songid={this.props.songid}
               />
             )}
           />

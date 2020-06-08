@@ -10,12 +10,8 @@ const required = val => val && val.length;
 const minLength = len => val => val && val.length >= len;
 // const isNumber = (val) => !isNaN(Number(val));
 const validEmail = val => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
-const validDay = val => /^([1-9]|0[1-9]|[12]\d|3[01])$/i.test(val);
-const validYear = val =>
-  /^(181[2-9]|18[2-9]\d|19\d\d|2\d{3}|30[0-3]\d|304[0-8])$/i.test(val); //1812 - 3048
-const confEmail = val => val2 => val === val2;
-const typeSelected = val => val === "male" || val === "female";
-const monthSelected = val => val !== "null";
+
+
 
 /**
  * Class for the Edit component which is shown when the edit profile button is pressed in the account overview page
@@ -36,7 +32,7 @@ class EditProfile extends Component {
     this.handlePatchedInfo = this.handlePatchedInfo.bind(this);
   }
 
-    /**
+  /**
    * post the new values entered by the user
    */
   handlePatchedInfo = (values) => {
