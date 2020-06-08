@@ -118,8 +118,8 @@ toggleModalNew(){
 }
 handleSubmit() {
     alert(this.state.inputValue);
+    this.props.CreatePlayList_BE(this.props.data_be.data_be._id,this.state.inputValue,this.props.token.token);
     this.toggleModalNew();
-
 }
   /**
    * Responsible for showing everything on the Webplayer

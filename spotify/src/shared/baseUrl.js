@@ -15,6 +15,9 @@ export const SignInUrl =
 export const PremiumUrl =
   "http://localhost:3000/api/v1/users";
 
+export const Confirmation =
+  "http://localhost:3000/api/v1/users/confirmation";
+
 ////////////////////////PlayLists/////////////////////////////
 export const PlaylistsUrl =
   "http://localhost:3000/api/v1/playlist";

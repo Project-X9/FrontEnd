@@ -50,6 +50,8 @@ import {
   ControlModal,
   handleChangeData_BE,
   AddSong_inPlaylist_id,
+  CreatePlayList_BE,
+  ReadNotifications
 } from "../redux/ActionCreators";
 import MyAlbums from "./ForArtists/MyAlbumsComponent";
 import MySongs from "./ForArtists/MySongsComponent";
@@ -185,8 +187,13 @@ const mapDispatchToProps = (dispatch) => ({
   handleChangeData_BE: (id, token) => {
     dispatch(handleChangeData_BE(id, token));
   }
- ,  AddSong_inPlaylist_id: (data) => {
+ ,AddSong_inPlaylist_id: (data) => {
   dispatch(AddSong_inPlaylist_id(data));
+}, CreatePlayList_BE: (userId,playlistName,token) => {
+  dispatch(CreatePlayList_BE(userId,playlistName,token));
+}
+  ,ReadNotifications: (userId,notfId) => {
+    dispatch(ReadNotifications(userId,notfId));
 }
   
 });
@@ -304,6 +311,7 @@ class Main extends Component {
                 /////////
                 handleChangeData_BE={this.props.handleChangeData_BE}
                 token={this.props.token}
+                ReadNotifications={this.props.ReadNotifications}
               />
             )}
           />
@@ -353,8 +361,9 @@ class Main extends Component {
                 token={this.props.token}
                 AddSong_inPlaylist_id={this.props.AddSong_inPlaylist_id}
                 songid={this.props.songid}
-              isModalOpen={this.props.isModalOpen}
-              ControlModal={this.props.ControlModal}
+                isModalOpen={this.props.isModalOpen}
+                ControlModal={this.props.ControlModal}
+                CreatePlayList_BE={this.props.CreatePlayList_BE}
               />
             )}
           />

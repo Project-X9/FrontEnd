@@ -10,6 +10,7 @@ import {
   FollowURL,
   UnFollowURL,AllSongsUrl,
   AlbumsUrl,
+  Confirmation
 } from "../shared/baseUrl";
 import { ArtistsUrl } from "./../shared/baseUrl";
 export const postupdatedFeedback = (id, isemail, isage, isID) => (dispatch) => {
@@ -228,18 +229,17 @@ export const handleSignIn_BE = (data) => (dispatch) => {
         .then((response2) =>
           dispatch(addCategories(response2.data.data.Categories))
         );
+      axios
+          .get(`${ArtistsUrl}`)
+          .then((response2) =>
 
-        axios
-            .get(`${ArtistsUrl}`)
-            .then((response2) =>
-
-                dispatch(addAllArtists(response2.data.data.artists))
-            );
-        axios
-        .get(`${AllSongsUrl}`)
-        .then((response2) =>
-          dispatch(addAllTracks(response2.data.data.tracks))
-        );
+              dispatch(addAllArtists(response2.data.data.artists))
+          );
+      axios
+      .get(`${AllSongsUrl}`)
+      .then((response2) =>
+        dispatch(addAllTracks(response2.data.data.tracks))
+      );
     })
     .catch((error) => dispatch(addLogin(false)));
 };
@@ -456,9 +456,22 @@ export const postFeedback = (
   var n = d.getFullYear();
   newFeedback.age = n - newFeedback.year;
   axios
-    .post(SignUpUrl, newFeedback)
-    .then((response) => dispatch(addUser(true)))
-    .catch((error) => dispatch(addUser(false)));
+    .post(`${SignUpUrl}/SignUp`, newFeedback)
+    .then((response) => 
+    { console.log(response.data.data.token);
+      console.log(response.data.data.id);
+      const body ={
+        id:response.data.data.id
+      }
+      axios.patch(`${Confirmation}/${response.data.data.token}`,body).then(
+        response=>{
+          dispatch(addUser(true))
+        }
+      )
+    })
+    .catch((error) => {
+      console.log(error);
+      dispatch(addUser(false))});
   // for (let index = 0; index < response.data.id + 1; index++) {
   //   if (index === response.data.id) {
   //     dispatch(addUserId(index));
@@ -596,20 +609,17 @@ export const PlayShuffle = () => (dispatch) => {
    payload: data,
  });
 //========================= Read Notifications===============================
-export const ReadNotifications = (UserId, idplaylist) => (dispatch) => {
-  const data = { id: UserId };
+export const ReadNotifications = (UserId, notificationid) => (dispatch) => {
+  const data = { read:true };
   // data.date = new Date().toISOString();
   console.log(data);
-  axios.patch(`${FollowURL}/${idplaylist}`, data);
-  // .then((response) => {
-  //   console.log("Response from sign in", response);
-  //   dispatch(addLogin(true));
-  //   axios
-  //     .get(`${SignUpUrl}/${iduser}`)
-  //     .then((response2) => dispatch(addUserData_BE(response2.data.data.user)));
-  // });
+  axios.patch(`http://localhost:3000/api/v1/users/${UserId}/notifications/${notificationid}`, data)
+ .then(response => {
+    console.log("Read Sucess")
+    .catch(error=>console.log(error))
+ })
 };
-//========================= Read Notifications===============================
+//========================= Share Songs ===============================
 export const ShareSongs= (UserId, idplaylist) => (dispatch) => {
   const data = { id: UserId };
   // data.date = new Date().toISOString();
@@ -623,10 +633,25 @@ export const ShareSongs= (UserId, idplaylist) => (dispatch) => {
   //     .then((response2) => dispatch(addUserData_BE(response2.data.data.user)));
   // });
 };
-
-// export const CreatePlayList_BE(){
-
-// }
+//=================================Create New Playlist================
+export const CreatePlayList_BE=(userID,playlist_Name,token)=>(dispatch)=> {
+  const data = { 
+    name:playlist_Name,
+    image:"https://iwitness.com.ng/wp-content/uploads/2018/08/unnamed-1484220845.png",
+    description: "Private PlayList",
+    tracks:[],
+    artists: [],
+    author: "5e877b8fae42032b7c867feb",
+    followers:[],
+    likers: [],
+   };
+  axios.post(`${PlaylistsUrl}/${userID}`, data)
+  .then(response=>{ 
+    handleChangeData_BE(userID,token);
+  })
+  .catch(error => console.log(error));
+}
+//============================Add Song Id=================================
 export const AddSong_inPlaylist_id=(data)=>(dispatch)=>{
   dispatch(addSongID(data));
 }
