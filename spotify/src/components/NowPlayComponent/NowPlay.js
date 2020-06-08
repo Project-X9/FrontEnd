@@ -49,19 +49,8 @@ class NowPlay extends Component {
   handleSubmit() {
       this.props.ControlModal(true);
     }
-  rendersuggestion(){
-    if(this.props.data_be.data_be.playlists.length===0){return (<div><p>No Liked PlayList for you</p></div>)}
-    else{return (<div>
-      <Row className=" RowSearch" sm="5">
-        {this.props.data_be.data_be.playlists.map(item=>{return( <Col className="PaddingColoumns"><Card>
-          <CardImg top width="100%" src={item.image} alt="Card image cap" />
-          <CardBody>
-            <CardTitle>Playlist: {item.name}</CardTitle>
-            <Button className="bg-primary">Go To {item.name}</Button>
-          </CardBody>
-        </Card></Col>)})}
+  rendersuggestion(idS,idP){
 
-      </Row></div>)}
   }
 
 
@@ -504,7 +493,7 @@ class NowPlay extends Component {
                                                         <i className="fa fa-ellipsis-h"></i>
                                                       </Dropdown.Toggle>
                                                       <Dropdown.Menu>
-                                                        <Dropdown.Item href="#/action-1" onClick={this.handleSubmit} >Add Song To a PlayList</Dropdown.Item>
+                                                        <Dropdown.Item  onClick={()=>{this.handleSubmit()}} >Add Song To a PlayList</Dropdown.Item>
                                                       </Dropdown.Menu>
                                                     </Dropdown>
                                                   </div>
@@ -533,13 +522,22 @@ class NowPlay extends Component {
                                                         <h1>Add To Any of your Playlists</h1>
                                                       </Col>
                                                     </Row>
+                                                      <div>
+                                                        {this.props.data_be.data_be.playlists.length===0?
+                                                            (<div><p>No Liked PlayList for you</p></div>):(<div>
+                                                              <Row className=" RowSearch" sm="5">
+                                                                {this.props.data_be.data_be.playlists.map(item=>{return( <Col className="PaddingColoumns"><Card>
+                                                                  <CardImg top width="100%" src={item.image} alt="Card image cap" />
+                                                                  <CardBody>
+                                                                    <CardTitle>Playlist: {item.name}</CardTitle>
+                                                                    <Button className="bg-primary" onClick={()=>{this.rendersuggestion(item._id,Song)}}>Go To {item.name}</Button>
+                                                                  </CardBody>
+                                                                </Card></Col>)})}
 
-                                                      <div >
-                                                        {this.rendersuggestion()}
+                                                              </Row></div>)}
                                                       </div>
                                                     </div>
                                                   </div>
-
                                                 </ModalBody>
                                               </Modal>
                                               <div className="DivStyle TrackLisCol Duration">
