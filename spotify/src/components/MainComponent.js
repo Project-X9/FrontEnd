@@ -13,7 +13,7 @@ import "./ForArtists/ArtistInterfaceComponent.css";
 import Library from "./Library/LibraryCompnent";
 import PlayFooter from "./PlayFooter/PlayFooter";
 import CreatePlayList from "./WebPlayerHome/CreatePlayListModel";
-
+import LoggedHome from "./Homepage/LoggedHomeComponent";
 import {
   postFeedback,
   postFacebookLogin,
@@ -66,6 +66,7 @@ const mapStateToProps = (state) => ({
   currentPlaylist: state.currentPlaylist,
   categories: state.categories,
   fullsongs: state.fullsongs,
+  fullartists: state.fullartists,
   song: state.song,
   shuffle: state.shuffle,
   progress: state.progress,
@@ -181,8 +182,8 @@ const mapDispatchToProps = (dispatch) => ({
   , ControlModal: (data) => {
     dispatch(ControlModal(data));
   },
-  handleChangeData_BE: (id,token) => {
-    dispatch(handleChangeData_BE(id,token));
+  handleChangeData_BE: (id, token) => {
+    dispatch(handleChangeData_BE(id, token));
   }
  ,  AddSong_inPlaylist_id: (data) => {
   dispatch(AddSong_inPlaylist_id(data));
@@ -205,7 +206,19 @@ class Main extends Component {
         {/* <TransitionGroup> */}
         {/* <CSSTransition key={this.props.location.key} classNames="page" timeout={300}> */}
         <Switch>
-          <Route exact path="/home" component={() => <Home />} />
+          {this.props.isSignedIn.isSignedIn == null && (<Route exact path="/home" component={() => <Home isSignedIn={this.props.isSignedIn}
+            data_be={this.props.data_be} />}
+            handleLogout_BE={this.props.handleLogout_BE}
+            data_be={this.props.data_be} />)}
+          {this.props.isSignedIn.isSignedIn != null && (<Route exact path="/home" component={() => <LoggedHome
+            id={this.props.id}
+            data={this.props.data}
+            playLists={this.props.playLists}
+            data_be={this.props.data_be}
+            currentPlaylist={this.props.currentPlaylist}
+            fullsongs={this.props.fullsongs}
+            isSignedIn={this.props.isSignedIn}
+            handleLogout_BE={this.props.handleLogout_BE} />} />)}
           <Route
             exact
             path="/signup"
@@ -259,7 +272,7 @@ class Main extends Component {
               />
             )}
           />
-          
+
           <Route
             path="/account"
             component={() => (
@@ -281,16 +294,16 @@ class Main extends Component {
                 data_be={this.props.data_be}
                 handleLogout_BE={this.props.handleLogout_BE}
                 isSignedIn={this.props.isSignedIn}
-              ///////////////////////////
+                ///////////////////////////
                 ///////// for reset password
                 isModalOpen={this.props.isModalOpen}
                 ControlModal={this.props.ControlModal}
                 ForSignUpVerification={this.props.ForSignUpVerification}
                 signupdata={this.props.signupdata}
                 resetpassword={this.props.resetpassword}
+                /////////
                 handleChangeData_BE={this.props.handleChangeData_BE}
                 token={this.props.token}
-                /////////
               />
             )}
           />
@@ -299,6 +312,7 @@ class Main extends Component {
             component={() => (
               <WebPlayer
               fullsongs={this.props.fullsongs}
+              fullartists={this.props.fullartists}
                 //////////
                 patchedunfollow={this.props.patchedunfollow}
                 patchedfollow={this.props.patchedfollow}
@@ -311,7 +325,6 @@ class Main extends Component {
                 handleLogoutId={this.props.handleLogoutId}
                 ///////////
                 data_be={this.props.data_be}
-                isSignedIn={this.props.isSignedIn}
                 handleCurrentPlayList={this.props.handleCurrentPlayList}
                 currentPlaylist={this.props.currentPlaylist}
                 handleLogout_BE={this.props.handleLogout_BE}
@@ -340,6 +353,8 @@ class Main extends Component {
                 token={this.props.token}
                 AddSong_inPlaylist_id={this.props.AddSong_inPlaylist_id}
                 songid={this.props.songid}
+              isModalOpen={this.props.isModalOpen}
+              ControlModal={this.props.ControlModal}
               />
             )}
           />

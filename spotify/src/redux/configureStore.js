@@ -20,7 +20,7 @@ import { Categories } from "./addCategories";
 import { Song, CurrentTime,TotalTime,PrevSong } from './PlayFooterStuff/SongsPlay';
 import { SongState } from './PlayFooterStuff/SongState';
 import { SongProgress, ProgressMode ,ProgressDirty} from './PlayFooterStuff/SongProgress';
-import { FullSongs } from "./addFullSongs";
+import { FullSongs } from "./addFullSongs";import { FullArtists } from "./addFullArtists";
 import { SignUpData, SignUpModal} from './SignupData';
 import { AddToken } from './AddToken';
 import {ADDSongId} from './AddSongToPlayList'
@@ -62,6 +62,7 @@ export const ConfigureStore = () => {
       is_progress_dirty:ProgressDirty,
       currentTime:CurrentTime,
       fullsongs:FullSongs,
+        fullartists:FullArtists,
       totalTime:TotalTime,
       prevsong:PrevSong,
       signupdata:SignUpData,

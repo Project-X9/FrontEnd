@@ -9,16 +9,23 @@ import {
   DropdownMenu,
   DropdownItem,
   Button,
-  DropdownToggle,
+  DropdownToggle, Modal, ModalBody,
 } from "reactstrap";
 import "./NowPlay.css";
 import { NavLink, Redirect } from "react-router-dom";
 import { Loading } from "./../Loading/LoadingComponent";
 import 'react-notifications/lib/notifications.css';
+import Dropdown from "react-bootstrap/Dropdown";
+import emailjs from "emailjs-com";
+import Card from "@material-ui/core/Card";
+import CardImg from "react-bootstrap/CardImg";
+import CardBody from "reactstrap/es/CardBody";
+import CardTitle from "reactstrap/es/CardTitle";
 /**
  * This Component is for Displaying the playlist and following or unfollowing it
  */
 class NowPlay extends Component {
+
   /**
    *
    * @param tempId this is for the ID of the user entered right now
@@ -29,10 +36,44 @@ class NowPlay extends Component {
       isNavOpen: false,
       tempId: this.props.id.id,
     };
+    this.rendersuggestion=this.rendersuggestion.bind(this);
+    this.handleSubmitModal=this.handleSubmitModal.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.state.toggleNav = this.toggleNav.bind(this);
     this.patchFollow = this.patchFollow.bind(this);
     this.state.handleLogout = this.handleLogout.bind(this);
     this.patchunFollow = this.patchunFollow.bind(this);
+    this.handleAddingtoPlaylist = this.handleAddingtoPlaylist.bind(this);
+
+  }
+  handleSubmit() {
+      this.props.ControlModal(true);
+    }
+  rendersuggestion(){
+    if(this.props.data_be.data_be.playlists.length===0){return (<div><p>No Liked PlayList for you</p></div>)}
+    else{return (<div>
+      <Row className=" RowSearch" sm="5">
+        {this.props.data_be.data_be.playlists.map(item=>{return( <Col className="PaddingColoumns"><Card>
+          <CardImg top width="100%" src={item.image} alt="Card image cap" />
+          <CardBody>
+            <CardTitle>Playlist: {item.name}</CardTitle>
+            <Button className="bg-primary">Go To {item.name}</Button>
+          </CardBody>
+        </Card></Col>)})}
+
+      </Row></div>)}
+  }
+
+
+
+  handleSubmitModal(){
+
+      this.props.ControlModal(false);
+        this.props.ControlModal(false);
+
+  }
+  handleAddingtoPlaylist(SongId,PlaylistId){
+
   }
   /**
    * isPlaylistFollowed returns if the users already follows this playlist or not
@@ -448,8 +489,8 @@ class NowPlay extends Component {
                                                   <div className="DivStyle TrackListName SecondLine">
                                                     By{" "}
                                                     {Song.artists.map(
-                                                      (artisis) => {
-                                                        return artisis.name;
+                                                      (artist) => {
+                                                        return artist.name;
                                                       }
                                                     )}{" "}
                                                   </div>
@@ -458,12 +499,49 @@ class NowPlay extends Component {
                                               <div className="DivStyle TrackListCol more">
                                                 <div className="DivStyle TrackListCol TopAlign">
                                                   <div className="DivStyle TrackListRow more textMenuWrapper">
-                                                    <button className="buttonstyle MultiButton">
-                                                      <i class="fa fa-ellipsis-h"></i>
-                                                    </button>
+                                                    <Dropdown>
+                                                      <Dropdown.Toggle className="buttonstyle MultiButton">
+                                                        <i className="fa fa-ellipsis-h"></i>
+                                                      </Dropdown.Toggle>
+                                                      <Dropdown.Menu>
+                                                        <Dropdown.Item href="#/action-1" onClick={this.handleSubmit} >Add Song To a PlayList</Dropdown.Item>
+                                                      </Dropdown.Menu>
+                                                    </Dropdown>
                                                   </div>
                                                 </div>
                                               </div>
+                                              <Modal isOpen={this.props.isModalOpen.isModalOpen} >
+                                                <ModalBody className="createPlayListBody">
+                                                  <Row>
+                                                    <Col md={12} xs={12} sm={12}>
+                                                      <Row>
+                                                        <Col md={{ size: 6, offset: 5 }} xs={{ size: 6, offset: 3 }} sm={{ size: 6, offset: 3 }}>
+                                                          <Button className="exitButton_CP" onClick={()=>this.props.ControlModal(false)}>
+                                                            <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                                              <title>Close</title>
+                                                              <path d="M31.098 29.794L16.955 15.65 31.097 1.51 29.683.093 15.54 14.237 1.4.094-.016 1.508 14.126 15.65-.016 29.795l1.414 1.414L15.54 17.065l14.144 14.143" fill="#fff" fill-rule="evenodd"></path>
+                                                            </svg>
+                                                          </Button>
+                                                        </Col>
+                                                      </Row>
+                                                    </Col>
+                                                  </Row>
+                                                  <div>
+                                                    <div>
+                                                      <Row>
+                                                      <Col md={{ size: 6, offset:3}} xs={{ size: 6, offset:3}} sm={{ size: 6, offset:3}} className="Create_new_playlist">
+                                                        <h1>Add To Any of your Playlists</h1>
+                                                      </Col>
+                                                    </Row>
+
+                                                      <div >
+                                                        {this.rendersuggestion()}
+                                                      </div>
+                                                    </div>
+                                                  </div>
+
+                                                </ModalBody>
+                                              </Modal>
                                               <div className="DivStyle TrackLisCol Duration">
                                                 <div className="DivStyle TrackListHeader Body by">
                                                   <span>3:21</span>

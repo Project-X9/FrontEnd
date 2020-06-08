@@ -29,6 +29,10 @@ class ChangePass extends Component {
     this.handleConfirmPassword = this.handleConfirmPassword.bind(this);
   }
 
+  componentDidMount(){
+    this.props.resetChangePasswordForm();
+  }
+
   /**
    * Posting the changed Password
    */

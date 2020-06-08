@@ -20,6 +20,7 @@ import Artist from "../ArtistInterface/ArtistComponent";
 import PlayFooter from './../PlayFooter/PlayFooter';
 import Search from "../SearchComponent/Search";
 import Queue from "./Queue";
+import PremiumComponent from "../PremiumPage/PremuimComponent";
 /**
  * Web Player page
  */
@@ -77,6 +78,9 @@ class WebPlayer extends Component {
     }
   }
 
+  /**
+   * Toggles the Song Modal in the library by switching isModalOpen from true to false and vice versa
+   */
   toggleModalSong() {
     if (this.props.isSignedIn.isSignedIn === null) {
       this.setState({
@@ -84,11 +88,19 @@ class WebPlayer extends Component {
       }); 
     }
   }
+
+  /**
+   * handles input in the textbox the playlist modal
+   */
 handleChange(e){
     this.setState({
         inputValue:e.target.value
     })
 }
+
+/**
+   * Toggles the playlist Modal in the library by switching isModalOpen from true to false and vice versa
+   */
 toggleModalNew(){
   if (this.props.isSignedIn.isSignedIn !== true) {
     this.setState({
@@ -99,7 +111,10 @@ toggleModalNew(){
       isModalOpenNew: !this.state.isModalOpenNew
   });
   } 
-    
+ 
+/**
+ * handles submitting input in the playlist modal
+ */ 
 }
 handleSubmit() {
     alert(this.state.inputValue);
@@ -336,6 +351,8 @@ handleSubmit() {
                         token={this.props.token}
                         AddSong_inPlaylist_id={this.props.AddSong_inPlaylist_id}
                         songid={this.props.songid}
+                        isModalOpen={this.props.isModalOpen}
+                        ControlModal={this.props.ControlModal}
                       />
                     )}
                   />
@@ -365,6 +382,7 @@ handleSubmit() {
                       <Search
                           categories={this.props.categories}
                           fullsongs={this.props.fullsongs}
+                          fullartists={this.props.fullartists}
                         id={this.props.id}
                         data={this.props.data}
                         playLists={this.props.playLists}

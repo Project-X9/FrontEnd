@@ -13,23 +13,28 @@ class Home extends Component {
    * makes sure we are on the home page to prevent CSS problems that causes the homepage's 
    * styling to be visible in other pages with different components
    */
+  constructor(props) {
+    super(props);
+ }
   componentDidMount() {
     document.body.classList.add("homeBody");
   }
-/**The opposite of the componentDidMount() function, used to remove the styling after leaving homepage.
- * Also a built in function.
- */
+  /**The opposite of the componentDidMount() function, used to remove the styling after leaving homepage.
+   * Also a built in function.
+   */
   componentWillUnmount() {
     document.body.classList.remove("homeBody");
   }
-/**
- * Renders the main page to un-logged users loading Spotify
- */
+  /**
+   * Renders the main page to un-logged users loading Spotify
+   */
   render() {
-     /**@return: returns the homepage component consisting of a navbar component, main part and a footer component. */
+    /**@return: returns the homepage component consisting of a navbar component, main part and a footer component. */
     return (
       <div className="Home">
-        <NavbarHome />
+        <NavbarHome isSignedIn={this.props.isSignedIn}
+          data_be={this.props.data_be}
+          handleLogout_BE={this.props.handleLogout_BE} />
         <div class="bg-pic"></div>
         <div class="row row-simplified homeContent">
           <h1>Music for everyone.</h1>
