@@ -1,0 +1,75 @@
+.firstJT{
+    background-color: pink;
+    width: 100%;
+    height: 550px;
+}
+.homeLog nav{
+    top: 0px;
+    position: fixed;
+}
+.JT1Text{
+    padding-top: 100px;
+}
+.homeLog p{
+    margin-top: 40px;
+}
+.secondJT{
+    height: 750px;
+}
+.secondJT h1{
+    font-size: 52px;
+    margin-top: 90px;
+}
+.secondJT .getSpotifyBtn{
+    background-color: white;
+    color: darkslategray;
+    border: 2px solid darkslategray;
+    font-weight: bold;
+}
+
+.secondJT .getSpotifyBtn:hover{
+    color: white;
+    background-color: darkslategray;
+}
+
+.songCards{
+    margin-top: 60px;
+    display: flex;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.songCard{
+    flex: 33%;
+}
+@media (max-width: 768px){
+    .songCards{
+        flex-direction: column;
+    }
+    .songCard{
+        margin-top: 10px;
+    }
+    .secondJT{
+        height: 1350px;
+    }
+}
+
+.imgText {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #fff;
+    visibility: hidden;
+    opacity: 0;
+  
+    /* transition effect. not necessary */
+    transition: opacity .2s, visibility .2s;
+  }
+  
+  .songCard:hover .imgText {
+    visibility: visible;
+    opacity: 1;
+  }

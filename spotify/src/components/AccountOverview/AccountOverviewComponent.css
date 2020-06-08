@@ -950,4 +950,76 @@
     text-align: center;
   }
   /***************************************************Sidebar Content Reset Password***************************************************/
+  /***************************************************Sidebar Content Notifications***************************************************/
+  .ReadNotificationsRow{
+    background-image: url(https://ak.picdn.net/assets/cms/music_subscription_homepage_banner.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .ReadNotificationsEvents{
+    text-align: left;
+    font-size: 32px;
+    line-height: 40px;
+    margin-left:20px;
+    letter-spacing: -0.5px;
+    font-weight: 500;
+    font-style: italic;
+    box-sizing: border-box;
+    color: white;
+  }
+
+  .ReadNotificationsTrueButton{
+    border:0;
+    padding:0;
+    box-sizing: border-box;
+    max-width: 290px;
+    font-size: 12px;
+    line-height: 1;
+    padding: 15px;
+    color:#FFF;
+    background-color: #1DB954;
+    transition-property: background-color, border-color, color, box-shadow, filter, -webkit-box-shadow, -webkit-filter;
+    transition-duration: .3s;
+    border-width: 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    white-space: normal;
+    margin-bottom: 0;
+    font-weight: 700;
+    text-align: center;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    margin-right: 20px;
+  }
+
+  .ReadNotificationsTrueButton:hover{
+    background-color: #1ED760;
+  }
+
+  .ReadNotificationsFalse{
+    border:0;
+    padding:0;
+    box-sizing: border-box;
+    max-width: 290px;
+    font-size: 12px;
+    line-height: 1;
+    padding: 15px;
+    color:#FFF;
+    transition-property: background-color, border-color, color, box-shadow, filter, -webkit-box-shadow, -webkit-filter;
+    transition-duration: .3s;
+    border-width: 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    white-space: normal;
+    margin-bottom: 0;
+    font-weight: 700;
+    text-align: center;
+    background-image: none;
+    border: 1px solid transparent;
+    margin-right: 20px;
+  }
+  /***************************************************Sidebar Content Notifications***************************************************/
   /***************************************************Body***************************************************/
