@@ -12,7 +12,10 @@ import {
   AlbumsUrl,
   Confirmation,
   GetSongsByCategory,
-  RecoverPlayListUrl
+  RecoverPlayListUrl,
+  RecoverUrl,
+  AddToQueueUrl,
+  RemoveFromQueueUrl,
 } from "../shared/baseUrl";
 import { ArtistsUrl } from "./../shared/baseUrl";
 export const postupdatedFeedback = (id, isemail, isage, isID) => (dispatch) => {
@@ -708,13 +711,23 @@ export const addDeletedPlaylists = (data) => ({
   payload: data,
 });
 //=================== Recover PlayList ====================================
-// export const RecoverPlayList=(userID)=>{
-//   axios.post(`${PlaylistsUrl}/${userID}`, data)
-//   .then(response=>{ 
-//     handleChangeData_BE(userID,token);
-//   })
-//   .catch(error => console.log(error));
-// } 
+export const RecoverPlayList=(userID,PlaylistId,token)=>(dispatch)=>{
+  const data={
+    id:userID
+  }
+  const Authstr = "Bearer ".concat(token);
+  axios.patch(`${RecoverUrl}/${PlaylistId}`, data)
+  .then(response=>{ 
+    axios
+      .get(`${SignUpUrl}/${userID}`, {
+        headers: { Authorization: Authstr },
+      })
+      .then((response) =>
+        dispatch(addUserData_BE(response.data.data.user))
+      );
+  })
+  .catch(error => console.log(error));
+} 
 //=====================Get Songs by Generes===============================
 export const GetSongsByGeneres = (categoryId) =>(dispatch)=>{
   dispatch(ShowSongsByCategoryLoading());
@@ -729,3 +742,38 @@ export const addTracksByCategory = (data) => ({
 export const ShowSongsByCategoryLoading = () => ({
   type: ActionTypes.SONGS_BYCATEGORY_LOADING,
 });
+//==============================================================================
+export const AddToQueue = (trackId,userId,token) =>(dispatch)=>{
+  const data = {
+    id:userId 
+  }
+  const Authstr = "Bearer ".concat(token);
+  axios.patch(`${AddToQueueUrl}/${trackId}`,data)
+  .then(response=>{
+    axios
+    .get(`${SignUpUrl}/${userId}`, {
+      headers: { Authorization: Authstr },
+    })
+    .then((response) =>
+      dispatch(addUserData_BE(response.data.data.user))
+    );
+  })
+  .catch(err=>console.log(err));
+} 
+export const RemoveQueue = (trackId,userId,token) =>(dispatch)=>{
+  const data ={
+    id:userId
+  }
+  const Authstr = "Bearer ".concat(token);
+  axios.patch(`${RemoveFromQueueUrl}/${trackId}`,data)
+  .then(response=>{
+    axios
+      .get(`${SignUpUrl}/${userId}`, {
+        headers: { Authorization: Authstr },
+      })
+      .then((response) =>
+        dispatch(addUserData_BE(response.data.data.user))
+      );
+  })
+  .catch(err=>console.log(err));
+} 

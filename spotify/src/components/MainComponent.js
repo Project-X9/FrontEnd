@@ -54,7 +54,10 @@ import {
   CreatePlayList_BE,
   ReadNotifications,
   GetSongsByGeneres,
-  GetDeletedPlayList
+  GetDeletedPlayList,
+  RecoverPlayList,
+  AddToQueue,
+  RemoveQueue
 } from "../redux/ActionCreators";
 import MyAlbums from "./ForArtists/MyAlbumsComponent";
 import MySongs from "./ForArtists/MySongsComponent";
@@ -206,8 +209,16 @@ GetSongsByGeneres: (categoryId) => {
 },
 GetDeletedPlayList: (userid,token) => {
   dispatch(GetDeletedPlayList(userid,token));
+},
+RecoverPlayList: (userid,playlistid,token) => {
+  dispatch(RecoverPlayList(userid,playlistid,token));
+},
+AddToQueue: (userid,trackid,token) => {
+  dispatch(AddToQueue(userid,trackid,token));
+},
+RemoveQueue: (userid,trackid,token) => {
+  dispatch(RemoveQueue(userid,trackid,token));
 }
-  
 });
 
 class Main extends Component {
@@ -327,6 +338,7 @@ class Main extends Component {
 
                 GetDeletedPlayList={this.props.GetDeletedPlayList}
                 deletedPlaylists={this.props.deletedPlaylists}
+                RecoverPlayList={this.props.RecoverPlayList}
               />
             )}
           />
@@ -382,6 +394,8 @@ class Main extends Component {
                 GetSongsByGeneres={this.props.GetSongsByGeneres}
                 genretracks={this.props.genretracks}
                 PatchAddPlaylist={this.props.PatchAddPlaylist}
+                RemoveQueue={this.props.RemoveQueue}
+                AddToQueue={this.props.AddToQueue}
               />
             )}
           />
