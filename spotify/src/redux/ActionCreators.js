@@ -57,9 +57,8 @@ export const PatchAddPlaylist = (idPlaylist,idSong) => (dispatch) => {
     axios.patch(`${PlaylistsUrl}/tracks/${idPlaylist}/${idSong}`)
         .then(response=>console.log(response.data));
 };
-export const DeleteAddPlaylist = () => (dispatch) => {
-
-    axios.patch(`${PlaylistsUrl}/deleteTrack`)
+export const DeleteAddPlaylist = (idPlaylist,idSong) => (dispatch) => {
+    axios.patch(`${PlaylistsUrl}/deleteTrack/${idPlaylist}/${idSong}`)
         .then(response=>console.log(response.data));
 };
 /**
