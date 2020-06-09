@@ -42,6 +42,12 @@ class NowPlay extends Component {
     this.patchFollow = this.patchFollow.bind(this);
     this.state.handleLogout = this.handleLogout.bind(this);
     this.patchunFollow = this.patchunFollow.bind(this);
+    this.deleteSong=this.deleteSong.bind(this);
+  }
+  deleteSong(Song){
+
+    this.props.DeleteAddPlaylist(this.props.currentPlaylist.currentPlaylist._id,Song._id)
+    this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
 
   }
   handleSubmit(Song) {
@@ -57,6 +63,7 @@ class NowPlay extends Component {
       alert(sameSong)
       if(sameSong===undefined){
         this.props.PatchAddPlaylist(idPlaylist,this.props.songid.songid)
+        
       }
       else{console.log("Already Found in the playlist")}
     } }
@@ -491,6 +498,7 @@ class NowPlay extends Component {
                                                       </Dropdown.Toggle>
                                                       <Dropdown.Menu>
                                                         <Dropdown.Item  onClick={()=>{this.handleSubmit(Song)}} >Add Song To a PlayList</Dropdown.Item>
+                                                        <Dropdown.Item  onClick={()=>{this.deleteSong(Song)}} >Delete {Song.name} from this playlist</Dropdown.Item>
                                                       </Dropdown.Menu>
                                                     </Dropdown>
                                                   </div>
