@@ -47,9 +47,20 @@ export const GetPassword = (id) => (dispatch) => {
     .get(`${baseUrl}users/${id - 1}`)
     .then((response) => JSON.stringify(response.data.password));
 };
+
 export const PostPassword = (password, id) => (dispatch) => {
   const newPassword = { password: password };
   axios.patch(`${PremiumUrl}/${id}`, newPassword);
+};
+export const PatchAddPlaylist = (idPlaylist,idSong) => (dispatch) => {
+
+    axios.patch(`${PlaylistsUrl}/tracks/${idPlaylist}/${idSong}`)
+        .then(response=>console.log(response.data));
+};
+export const DeleteAddPlaylist = () => (dispatch) => {
+
+    axios.patch(`${PlaylistsUrl}/deleteTrack`)
+        .then(response=>console.log(response.data));
 };
 /**
  * This function handels the sign up with facebook 
