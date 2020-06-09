@@ -6,24 +6,21 @@ import { Link } from "react-router-dom";
 /**
  * Class for the reviewing the notifications 
  */
-class ReviewNotifications extends Component {
+class RecoverPlaylists extends Component {
   /**
    *
    * @param {Object} props
    * @param props.data_be Essentially contains the data of the users in the database after integrating with backend
    * @param props.isSignedIn Essentially used to check if a user is signed in or not
-   * @param props.handleChangeData_BE Essentially used for changing read value of the notification
-   * @param props.token Essentially used for changing read value of the notification
    * @param props.ReadNotifications Essentially used for changing read value of the notification
    */
 
   /**
-   * changes Not Read to Read
+   * Puts the selected song in the footer to be played
    */
   changeRead(userID,notificationID)
   {
     this.props.ReadNotifications(userID,notificationID)
-    this.props.handleChangeData_BE(userID,this.props.token)
   }
 
   render() {
@@ -31,9 +28,9 @@ class ReviewNotifications extends Component {
     if (this.props.isSignedIn.isSignedIn === null){
       Redirect=<Link to="/overview"></Link>
     }
-    let Notifications = "";
+    let RecoverPlaylist = "";
     if (this.props.isSignedIn.isSignedIn !== null){
-      Notifications = this.props.data_be.data_be.notifications.map((notification) => {
+        RecoverPlaylist = this.props.data_be.data_be.notifications.map((notification) => {
         return(
           <div key= {notification._id} className="ReadNotificationsRow">>
             <div className="row">
@@ -68,11 +65,12 @@ class ReviewNotifications extends Component {
       <div>
         {Redirect}
         <div className="row">
-          <h1 className="BigHeader">Notifications</h1>
+          <h1 className="RecoverPlaylistsHeader">Recover Playlists</h1>
         </div>
-        {Notifications}
+        <hr></hr>
+        {RecoverPlaylist}
       </div>
     );
   }
 }
-export default ReviewNotifications;
+export default RecoverPlaylists;

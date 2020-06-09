@@ -156,6 +156,8 @@ class SongsByGenres extends Component {
                     handleCurrentPlayList={this.props.handleCurrentPlayList}
                     categories={this.props.categories}
                     PlayTheFooter={this.props.PlayTheFooter}
+                    GetSongsByGeneres={this.props.GetSongsByGeneres}
+                    genretracks={this.props.genretracks}
                     />
                   </div>
                 </div>
@@ -216,6 +218,8 @@ class SongsByGenres extends Component {
                       handleCurrentPlayList={this.props.handleCurrentPlayList}
                       categories={this.props.categories}
                       PlayTheFooter={this.props.PlayTheFooter}
+                      GetSongsByGeneres={this.props.GetSongsByGeneres}
+                      genretracks={this.props.genretracks}
                     />
                   </div>
                 </div>

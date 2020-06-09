@@ -50,12 +50,12 @@ class NowPlay extends Component {
     }
 
   rendersuggestion(idPlaylist){
-  alert(this.props.songid.songid);
-  alert(idPlaylist)
+
     let Playlist=this.props.data_be.data_be.playlists.find(element=> element._id===idPlaylist)
     if(Playlist!==undefined){
       let sameSong=Playlist.tracks.find(element=>element._id===this.props.songid.songid)
-      if(sameSong!==undefined){
+      alert(sameSong)
+      if(sameSong===undefined){
         this.props.PatchAddPlaylist(idPlaylist,this.props.songid.songid)
       }
       else{console.log("Already Found in the playlist")}
