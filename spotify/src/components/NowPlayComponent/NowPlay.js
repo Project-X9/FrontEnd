@@ -54,7 +54,6 @@ class NowPlay extends Component {
     let Playlist=this.props.data_be.data_be.playlists.find(element=> element._id===idPlaylist)
     if(Playlist!==undefined){
       let sameSong=Playlist.tracks.find(element=>element._id===this.props.songid.songid)
-      alert(sameSong)
       if(sameSong===undefined){
         this.props.PatchAddPlaylist(idPlaylist,this.props.songid.songid)
       }
@@ -89,7 +88,6 @@ class NowPlay extends Component {
         this.props.data_be.data_be._id,
         this.props.currentPlaylist.currentPlaylist._id
       );
-      alert()
       this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
     }
   }
