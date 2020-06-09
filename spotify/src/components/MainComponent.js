@@ -54,7 +54,11 @@ import {
   CreatePlayList_BE,
   ReadNotifications,
   GetSongsByGeneres,
-  GetDeletedPlayList
+  GetDeletedPlayList,
+  RecoverPlayList,
+  AddToQueue,
+  RemoveQueue,
+  DeleteAddPlaylist
 } from "../redux/ActionCreators";
 import MyAlbums from "./ForArtists/MyAlbumsComponent";
 import MySongs from "./ForArtists/MySongsComponent";
@@ -135,6 +139,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(handleSignIn_BE(data));
   },
   handleLogoutId: (id) => dispatch(handleLogoutId(id)),
+  DeleteAddPlaylist:(idPlaylist,idSong)=>dispatch(DeleteAddPlaylist(idPlaylist,idSong)),
+
   PatchAddPlaylist:(idPlaylist,idSong) =>dispatch(PatchAddPlaylist(idPlaylist,idSong)),
   PostPassword: (password, id) => dispatch(PostPassword(password, id)),
   GetPassword: (id) => dispatch(GetPassword(id)),
@@ -382,6 +388,9 @@ class Main extends Component {
                 GetSongsByGeneres={this.props.GetSongsByGeneres}
                 genretracks={this.props.genretracks}
                 PatchAddPlaylist={this.props.PatchAddPlaylist}
+                DeleteAddPlaylist={this.props.DeleteAddPlaylist}
+                RemoveQueue={this.props.RemoveQueue}
+                AddToQueue={this.props.AddToQueue}
               />
             )}
           />
