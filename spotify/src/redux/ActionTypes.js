@@ -51,9 +51,9 @@ export const ADDSONGID = 'ADDSONGID';
 
 export const ADD_SONGS_BY_CATEGORY = 'ADD_SONGS_BY_CATEGORY';
 export const SONGS_BYCATEGORY_LOADING = 'SONGS_BYCATEGORY_LOADING';
+
+//==========================Recover Playlists=============================
+export const DELETED_PLAYLISTS_LOADING = 'DELETED_PLAYLISTS_LOADING';
 export const ADD_DELETED_PLAYLISTS = 'ADD_DELETED_PLAYLISTS';
-
-
-
 
 

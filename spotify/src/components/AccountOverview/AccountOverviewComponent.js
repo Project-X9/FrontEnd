@@ -65,7 +65,9 @@ class AccountOverview extends Component {
     this.state.nullID = this.nullID.bind(this);
     this.state.handleLogout = this.handleLogout.bind(this);
   }
-
+test(){
+  this.props.GetDeletedPlayList(this.props.data_be.data_be._id,this.props.token.token)
+}
   /**
    * Toggles the Navigation bar by switching isNavOpen from true to false and vice versa
    */
@@ -445,7 +447,7 @@ class AccountOverview extends Component {
                     <i className="fa fa-lock" />
                     Change password
                   </Link>
-                  <Link to="/" className={recoverPlaylistsActive}>
+                  <Link to="/" className={recoverPlaylistsActive} onClick={()=>this.test()}>
                     <i className="fa fa-hashtag" />
                     Recover playlists
                   </Link>

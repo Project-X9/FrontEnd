@@ -53,7 +53,8 @@ import {
   AddSong_inPlaylist_id,
   CreatePlayList_BE,
   ReadNotifications,
-  GetSongsByGeneres
+  GetSongsByGeneres,
+  GetDeletedPlayList
 } from "../redux/ActionCreators";
 import MyAlbums from "./ForArtists/MyAlbumsComponent";
 import MySongs from "./ForArtists/MySongsComponent";
@@ -83,7 +84,8 @@ const mapStateToProps = (state) => ({
   isModalOpen:state.isModalOpen,
   token:state.token,
   songid:state.songid,
-  genretracks:state.genretracks
+  genretracks:state.genretracks,
+  deletedPlaylists:state.deletedPlaylists
 
 });
 const mapDispatchToProps = (dispatch) => ({
@@ -201,6 +203,9 @@ const mapDispatchToProps = (dispatch) => ({
 },
 GetSongsByGeneres: (categoryId) => {
   dispatch(GetSongsByGeneres(categoryId));
+},
+GetDeletedPlayList: (userid,token) => {
+  dispatch(GetDeletedPlayList(userid,token));
 }
   
 });
@@ -319,6 +324,9 @@ class Main extends Component {
                 handleChangeData_BE={this.props.handleChangeData_BE}
                 token={this.props.token}
                 ReadNotifications={this.props.ReadNotifications}
+
+                GetDeletedPlayList={this.props.GetDeletedPlayList}
+                deletedPlaylists={this.props.deletedPlaylists}
               />
             )}
           />

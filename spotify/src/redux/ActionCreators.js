@@ -624,13 +624,19 @@ export const PlayShuffle = () => (dispatch) => {
 //========================= Read Notifications===============================
 export const ReadNotifications = (UserId, notificationid,token) => (dispatch) => {
   const data = { read:true };
+  const Authstr = "Bearer ".concat(token);
   // data.date = new Date().toISOString();
   console.log(data);
   axios.patch(`http://localhost:3000/api/v1/users/${UserId}/notifications/${notificationid}`, data)
  .then(response => {
-    console.log("Read Sucess")
-    handleChangeData_BE(UserId,token)
-    .catch(error=>console.log(error))
+  axios
+  .get(`${SignUpUrl}/${UserId}`, {
+    headers: { Authorization: Authstr },
+  })
+  .then((response) =>
+    dispatch(addUserData_BE(response.data.data.user))
+  );
+
  })
 };
 //========================= Share Songs ===============================
@@ -656,13 +662,20 @@ export const CreatePlayList_BE=(userID,playlist_Name,token)=>(dispatch)=> {
     tracks:[],
     artists: [],
     author: "5e877b8fae42032b7c867feb",
-    followers:[],
+    followers:[userID],
     likers: [],
    };
+  const Authstr = "Bearer ".concat(token);
   axios.post(`${PlaylistsUrl}/${userID}`, data)
-  .then(response=>{ 
-    dispatch(handleChangeData_BE(userID,token));
-  })
+  .then(response=>{
+    axios
+      .get(`${SignUpUrl}/${userID}`, {
+        headers: { Authorization: Authstr },
+      })
+      .then((response) =>
+        dispatch(addUserData_BE(response.data.data.user))
+      );
+      })
   .catch(error => console.log(error));
 }
 //============================Add Song Id=================================
@@ -674,13 +687,20 @@ export const addSongID = (data) => ({
   payload: data,
 });
 //===================Get Deleted PlayList ====================================
+// .get(`${SignUpUrl}/${id}`, {
+//   headers: { Authorization: Authstr },
+// })
+// .then((response) =>
+//   dispatch(addUserData_BE(response.data.data.user))
+// );
 export const GetDeletedPlayList=(UserId,token)=>(dispatch)=>{
   const data ={
     id:UserId
   }
-   const Authstr = "Bearer ".concat(token);
-  axios.get(`${RecoverPlayListUrl}`, data,{
-    headers: { Authorization: Authstr }})
+  console.log("entered here");
+  const Authstr = "Bearer ".concat(token);
+  axios.get(`${RecoverPlayListUrl}`,{
+    headers: { Authorization: Authstr }},data)
   .then(response=>{ 
     dispatch(addDeletedPlaylists(response.data.data.playlist_rt))
   })

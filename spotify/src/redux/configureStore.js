@@ -25,6 +25,7 @@ import { SignUpData, SignUpModal} from './SignupData';
 import { AddToken } from './AddToken';
 import {ADDSongId} from './AddSongToPlayList'
 import { GenreTracks } from './ShowSongsByGeneres'
+import {DeletedPlaylists} from './RecoverPlayList'
 function saveState(state) {
   try {
     const serializedState = JSON.stringify(state);
@@ -71,6 +72,7 @@ export const ConfigureStore = () => {
       token:AddToken,
       songid:ADDSongId,
       genretracks:GenreTracks,
+      deletedPlaylists:DeletedPlaylists,
       // playlist_BE:PlayList_BE,
       ...createForms({
         feedback: InitialFeedback,
