@@ -629,8 +629,6 @@ export const ReadNotifications = (UserId, notificationid,token) => (dispatch) =>
   axios.patch(`http://localhost:3000/api/v1/users/${UserId}/notifications/${notificationid}`, data)
  .then(response => {
     console.log("Read Sucess")
-    handleChangeData_BE(UserId,token)
-    .catch(error=>console.log(error))
  })
 };
 //========================= Share Songs ===============================

@@ -27,6 +27,7 @@ import PremiumJumbotron from "./PremiumJumbotron";
 import ChangePass from "./ChangePassword";
 import EditProfile from "./EditProfile";
 import ReviewNotifications from "./ReviewNotifications";
+import RecoverPlaylists from "./RecoverPlaylist";
 import { baseUrl2 } from "../../shared/baseUrl";
 import ResetPassword from "./ResetPassword";
 
@@ -53,6 +54,9 @@ class AccountOverview extends Component {
    * @param props.ForSignUpVerification Essentially used in ResetPasswordComponent and used when sending the email
    * @param props.signupdata  Essentially used in ResetPasswordComponent for resetting the password
    * @param props.resetpassword Essentially used in ResetPasswordComponent for resetting the password
+   * @param props.handleChangeData_BE Essentially used in ReviewNotifications for changing read value of the notification
+   * @param props.token Essentially used in ReviewNotifications for changing read value of the notification
+   * @param props.ReadNotifications Essentially used in ReviewNotifications for changing read value of the notification
    */
   constructor(props) {
     super(props);
@@ -148,6 +152,15 @@ class AccountOverview extends Component {
       redeemActive = "";
       reviewNotificationsActive = "";
       resetPasswordActive="active";
+    }
+    else if (currentURL === baseUrl2 + "account/recoverplaylists") {
+      overviewActive = "";
+      editProfileActive = "";
+      changePasswordActive = "";
+      recoverPlaylistsActive = "active";
+      redeemActive = "";
+      reviewNotificationsActive = "";
+      resetPasswordActive="";
     }
 
 
@@ -445,7 +458,7 @@ class AccountOverview extends Component {
                     <i className="fa fa-lock" />
                     Change password
                   </Link>
-                  <Link to="/" className={recoverPlaylistsActive}>
+                  <Link to="/account/recoverplaylists" className={recoverPlaylistsActive}>
                     <i className="fa fa-hashtag" />
                     Recover playlists
                   </Link>
@@ -499,6 +512,19 @@ class AccountOverview extends Component {
                       <ReviewNotifications
                         data_be={this.props.data_be}
                         isSignedIn={this.props.isSignedIn}
+                        handleChangeData_BE={this.props.handleChangeData_BE}
+                        token={this.props.token}
+                        ReadNotifications={this.props.ReadNotifications}
+                      />
+                    )}
+                  />
+                  <Route
+                    path="/account/recoverplaylists"
+                    component={() => (
+                      <RecoverPlaylists
+                        data_be={this.props.data_be}
+                        isSignedIn={this.props.isSignedIn}
+                        ReadNotifications={this.props.ReadNotifications}
                       />
                     )}
                   />
