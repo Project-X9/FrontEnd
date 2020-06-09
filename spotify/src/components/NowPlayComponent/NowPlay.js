@@ -35,6 +35,7 @@ class NowPlay extends Component {
     this.state = {
       isNavOpen: false,
       tempId: this.props.id.id,
+
     };
     this.rendersuggestion=this.rendersuggestion.bind(this);
     this.handleSubmitModal=this.handleSubmitModal.bind(this);
@@ -46,11 +47,14 @@ class NowPlay extends Component {
     this.handleAddingtoPlaylist = this.handleAddingtoPlaylist.bind(this);
 
   }
-  handleSubmit() {
+  handleSubmit(Song) {
+    this.props.AddSong_inPlaylist_id(Song._id);
       this.props.ControlModal(true);
     }
-  rendersuggestion(idS,idP){
 
+  rendersuggestion(idPlaylist){
+alert(this.props.songid.songid);
+ alert(idPlaylist)
   }
 
 
@@ -493,7 +497,7 @@ class NowPlay extends Component {
                                                         <i className="fa fa-ellipsis-h"></i>
                                                       </Dropdown.Toggle>
                                                       <Dropdown.Menu>
-                                                        <Dropdown.Item  onClick={()=>{this.handleSubmit()}} >Add Song To a PlayList</Dropdown.Item>
+                                                        <Dropdown.Item  onClick={()=>{this.handleSubmit(Song)}} >Add Song To a PlayList</Dropdown.Item>
                                                       </Dropdown.Menu>
                                                     </Dropdown>
                                                   </div>
@@ -530,7 +534,7 @@ class NowPlay extends Component {
                                                                   <CardImg top width="100%" src={item.image} alt="Card image cap" />
                                                                   <CardBody>
                                                                     <CardTitle>Playlist: {item.name}</CardTitle>
-                                                                    <Button className="bg-primary" onClick={()=>{this.rendersuggestion(item._id,Song)}}>Go To {item.name}</Button>
+                                                                    <Button className="bg-primary" onClick={()=>{this.rendersuggestion(item._id)}}>Go To {item.name}</Button>
                                                                   </CardBody>
                                                                 </Card></Col>)})}
 
