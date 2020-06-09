@@ -37,13 +37,11 @@ class NowPlay extends Component {
 
     };
     this.rendersuggestion=this.rendersuggestion.bind(this);
-    this.handleSubmitModal=this.handleSubmitModal.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state.toggleNav = this.toggleNav.bind(this);
     this.patchFollow = this.patchFollow.bind(this);
     this.state.handleLogout = this.handleLogout.bind(this);
     this.patchunFollow = this.patchunFollow.bind(this);
-    this.handleAddingtoPlaylist = this.handleAddingtoPlaylist.bind(this);
 
   }
   handleSubmit(Song) {
@@ -54,20 +52,15 @@ class NowPlay extends Component {
   rendersuggestion(idPlaylist){
   alert(this.props.songid.songid);
   alert(idPlaylist)
-    this.props.PatchAddPlaylist(idPlaylist,this.props.songid.songid)
-  }
+    let Playlist=this.props.data_be.data_be.playlists.find(element=> element._id===idPlaylist)
+    if(Playlist!==undefined){
+      let sameSong=Playlist.tracks.find(element=>element._id===this.props.songid.songid)
+      if(sameSong!==undefined){
+        this.props.PatchAddPlaylist(idPlaylist,this.props.songid.songid)
+      }
+      else{console.log("Already Found in the playlist")}
+    } }
 
-
-
-  handleSubmitModal(){
-
-      this.props.ControlModal(false);
-        this.props.ControlModal(false);
-
-  }
-  handleAddingtoPlaylist(SongId,PlaylistId){
-
-  }
   /**
    * isPlaylistFollowed returns if the users already follows this playlist or not
    */
