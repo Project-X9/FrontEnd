@@ -694,15 +694,12 @@ export const addSongID = (data) => ({
 //   dispatch(addUserData_BE(response.data.data.user))
 // );
 export const GetDeletedPlayList=(UserId,token)=>(dispatch)=>{
-  const data ={
-    id:UserId
-  }
-  console.log("entered here");
+  console.log("entered here");  
   const Authstr = "Bearer ".concat(token);
-  axios.get(`${RecoverPlayListUrl}`,{
-    headers: { Authorization: Authstr }},data)
+  axios.get(`${RecoverPlayListUrl}/${UserId}`,{
+    headers: { Authorization: Authstr }})
   .then(response=>{ 
-    dispatch(addDeletedPlaylists(response.data.data.playlist_rt))
+    dispatch(addDeletedPlaylists(response.data.data.playlist_array))
   })
   .catch(error => console.log(error));
 } 
