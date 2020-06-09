@@ -33,7 +33,6 @@ import {
   makeSignupRedirectable,
   handleLogout_BE,
   handleCurrentPlayList,
-  DeleteAddPlaylist,
   patchedunfollow,
   patchedfollow,
   postupdatedFeedback,
@@ -136,7 +135,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(handleSignIn_BE(data));
   },
   handleLogoutId: (id) => dispatch(handleLogoutId(id)),
-  DeleteAddPlaylist:(idPlaylist,idSong)=>dispatch(DeleteAddPlaylist(idPlaylist,idSong)),
   PatchAddPlaylist:(idPlaylist,idSong) =>dispatch(PatchAddPlaylist(idPlaylist,idSong)),
   PostPassword: (password, id) => dispatch(PostPassword(password, id)),
   GetPassword: (id) => dispatch(GetPassword(id)),
@@ -326,6 +324,7 @@ class Main extends Component {
                 handleChangeData_BE={this.props.handleChangeData_BE}
                 token={this.props.token}
                 ReadNotifications={this.props.ReadNotifications}
+
                 GetDeletedPlayList={this.props.GetDeletedPlayList}
                 deletedPlaylists={this.props.deletedPlaylists}
               />
@@ -383,7 +382,6 @@ class Main extends Component {
                 GetSongsByGeneres={this.props.GetSongsByGeneres}
                 genretracks={this.props.genretracks}
                 PatchAddPlaylist={this.props.PatchAddPlaylist}
-              DeleteAddPlaylist={this.props.DeleteAddPlaylist}
               />
             )}
           />
