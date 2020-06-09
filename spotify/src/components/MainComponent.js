@@ -51,7 +51,8 @@ import {
   handleChangeData_BE,
   AddSong_inPlaylist_id,
   CreatePlayList_BE,
-  ReadNotifications
+  ReadNotifications,
+  GetSongsByGeneres
 } from "../redux/ActionCreators";
 import MyAlbums from "./ForArtists/MyAlbumsComponent";
 import MySongs from "./ForArtists/MySongsComponent";
@@ -80,7 +81,8 @@ const mapStateToProps = (state) => ({
   signupdata:state.signupdata,
   isModalOpen:state.isModalOpen,
   token:state.token,
-  songid:state.songid
+  songid:state.songid,
+  genretracks:state.genretracks
 
 });
 const mapDispatchToProps = (dispatch) => ({
@@ -192,8 +194,11 @@ const mapDispatchToProps = (dispatch) => ({
 }, CreatePlayList_BE: (userId,playlistName,token) => {
   dispatch(CreatePlayList_BE(userId,playlistName,token));
 }
-  ,ReadNotifications: (userId,notfId) => {
-    dispatch(ReadNotifications(userId,notfId));
+,ReadNotifications: (userId,notfId,token) => {
+  dispatch(ReadNotifications(userId,notfId,token));
+},
+GetSongsByGeneres: (categoryId) => {
+  dispatch(GetSongsByGeneres(categoryId));
 }
   
 });
@@ -364,6 +369,8 @@ class Main extends Component {
                 isModalOpen={this.props.isModalOpen}
                 ControlModal={this.props.ControlModal}
                 CreatePlayList_BE={this.props.CreatePlayList_BE}
+                GetSongsByGeneres={this.props.GetSongsByGeneres}
+                genretracks={this.props.genretracks}
               />
             )}
           />

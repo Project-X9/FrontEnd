@@ -417,6 +417,8 @@ handleSubmit() {
                         handleCurrentAlbums={this.props.handleCurrentAlbums}
                         handleCurrentArtists={this.props.handleCurrentArtists}
                         PlayTheFooter={this.props.PlayTheFooter}
+                        GetSongsByGeneres={this.props.GetSongsByGeneres}
+                        genretracks={this.props.genretracks}
                       />
                     )}
                   />
