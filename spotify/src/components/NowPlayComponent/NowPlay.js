@@ -48,13 +48,14 @@ class NowPlay extends Component {
     this.props.AddSong_inPlaylist_id(Song._id);
       this.props.ControlModal(true);
     }
-
-  handleAddQueue(songID,userID,token) {
-    
+    // RemoveQueue={this.props.RemoveQueue}
+    // AddToQueue={this.props.AddToQueue}
+  handleAddQueue(songID,userID) {
+      this.props.AddToQueue(songID,userID,this.props.token.token)
     }
 
-  handleRemoveQueue(songID,userID,token) {
-   
+  handleRemoveQueue(songID,userID) {
+      this.props.RemoveQueue(songID,userID,this.props.token.token);
     }
 
   rendersuggestion(idPlaylist){
@@ -499,8 +500,8 @@ class NowPlay extends Component {
                                                       </Dropdown.Toggle>
                                                       <Dropdown.Menu>
                                                         <Dropdown.Item  onClick={()=>{this.handleSubmit(Song)}} >Add Song To a PlayList</Dropdown.Item>
-                                                        <Dropdown.Item  onClick={()=>{this.handleAddQueue(Song._id,this.props.data_be.data_be._id,this.props.token)}} >Add To Queue</Dropdown.Item>
-                                                        <Dropdown.Item  onClick={()=>{this.handleRemoveQueue(Song._id,this.props.data_be.data_be._id,this.props.token)}} >Remove From Queue</Dropdown.Item>
+                                                        <Dropdown.Item  onClick={()=>{this.handleAddQueue(Song._id,this.props.data_be.data_be._id)}} >Add To Queue</Dropdown.Item>
+                                                        <Dropdown.Item  onClick={()=>{this.handleRemoveQueue(Song._id,this.props.data_be.data_be._id)}} >Remove From Queue</Dropdown.Item>
                                                       </Dropdown.Menu>
                                                     </Dropdown>
                                                   </div>

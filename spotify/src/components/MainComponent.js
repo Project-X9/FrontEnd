@@ -61,7 +61,6 @@ import {
 } from "../redux/ActionCreators";
 import MyAlbums from "./ForArtists/MyAlbumsComponent";
 import MySongs from "./ForArtists/MySongsComponent";
-import { AddToQueue } from './../redux/ActionCreators';
 
 const mapStateToProps = (state) => ({
   data: state.data,

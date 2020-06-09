@@ -751,7 +751,7 @@ export const AddToQueue = (trackId,userId,token) =>(dispatch)=>{
   axios.patch(`${AddToQueueUrl}/${trackId}`,data)
   .then(response=>{
     axios
-    .get(`${SignUpUrl}/${userID}`, {
+    .get(`${SignUpUrl}/${userId}`, {
       headers: { Authorization: Authstr },
     })
     .then((response) =>
@@ -765,10 +765,10 @@ export const RemoveQueue = (trackId,userId,token) =>(dispatch)=>{
     id:userId
   }
   const Authstr = "Bearer ".concat(token);
-  axios.get(`${RemoveFromQueueUrl}/${trackId}`,data)
+  axios.patch(`${RemoveFromQueueUrl}/${trackId}`,data)
   .then(response=>{
     axios
-      .get(`${SignUpUrl}/${userID}`, {
+      .get(`${SignUpUrl}/${userId}`, {
         headers: { Authorization: Authstr },
       })
       .then((response) =>
