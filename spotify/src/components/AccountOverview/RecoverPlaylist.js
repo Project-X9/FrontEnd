@@ -33,16 +33,16 @@ class RecoverPlaylists extends Component {
     if (this.props.isSignedIn.isSignedIn !== null){
         RecoverPlaylist = this.props.deletedPlaylists.deletedPlaylists.map((playlist) => {
         return(
-          <div key= {playlist._id} className="ReadNotificationsRow">>
+          <div key= {playlist._id} >
             <div className="row">
               <div className="col-9">
-                <h5 className="ReadNotificationsEvents"> 
+                <h5 > 
                   {playlist.name} 
                 </h5>
               </div>
               <div className="col-3"> 
                 <div>
-                  <Button className="ReadNotificationsTrueButton"
+                  <Button 
                   onClick={()=>this.HandleDeletedPlaylist(this.props.data_be.data_be._id,playlist._id)}>
                     Recover
                   </Button>
