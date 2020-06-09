@@ -57,6 +57,8 @@ class AccountOverview extends Component {
    * @param props.handleChangeData_BE Essentially used in ReviewNotifications for changing read value of the notification
    * @param props.token Essentially used in ReviewNotifications for changing read value of the notification
    * @param props.ReadNotifications Essentially used in ReviewNotifications for changing read value of the notification
+   * @param props.GetDeletedPlayList Essentially used in RecoverPlaylist for getting the playlists
+   * @param props.deletedPlaylists Essentially used in RecoverPlaylist for getting the playlists
    */
   constructor(props) {
     super(props);
@@ -460,7 +462,7 @@ test(){
                     <i className="fa fa-lock" />
                     Change password
                   </Link>
-                  <Link to="/" className={recoverPlaylistsActive} onClick={()=>this.test()}>
+                  <Link to="/account/recoverplaylists" className={recoverPlaylistsActive} onClick={()=>this.test()}>
                     <i className="fa fa-hashtag" />
                     Recover playlists
                   </Link>
@@ -527,6 +529,8 @@ test(){
                         data_be={this.props.data_be}
                         isSignedIn={this.props.isSignedIn}
                         ReadNotifications={this.props.ReadNotifications}
+                        GetDeletedPlayList={this.props.GetDeletedPlayList}
+                        deletedPlaylists={this.props.deletedPlaylists}
                       />
                     )}
                   />

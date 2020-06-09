@@ -12,15 +12,16 @@ class RecoverPlaylists extends Component {
    * @param {Object} props
    * @param props.data_be Essentially contains the data of the users in the database after integrating with backend
    * @param props.isSignedIn Essentially used to check if a user is signed in or not
-   * @param props.ReadNotifications Essentially used for changing read value of the notification
+   * @param props.GetDeletedPlayList Essentially used in RecoverPlaylist for getting the playlists
+   * @param props.deletedPlaylists Essentially used in RecoverPlaylist for getting the playlists
    */
 
   /**
    * Puts the selected song in the footer to be played
    */
-  changeRead(userID,notificationID)
+  HandleDeletedPlaylist(userID,notificationID)
   {
-    this.props.ReadNotifications(userID,notificationID)
+    this.props.GetDeletedPlayList(userID,notificationID)
   }
 
   render() {
@@ -30,30 +31,22 @@ class RecoverPlaylists extends Component {
     }
     let RecoverPlaylist = "";
     if (this.props.isSignedIn.isSignedIn !== null){
-        RecoverPlaylist = this.props.data_be.data_be.notifications.map((notification) => {
+        RecoverPlaylist = this.props.deletedPlaylists.deletedPlaylists.map((playlist) => {
         return(
-          <div key= {notification._id} className="ReadNotificationsRow">>
+          <div key= {playlist._id} className="ReadNotificationsRow">>
             <div className="row">
               <div className="col-9">
                 <h5 className="ReadNotificationsEvents"> 
-                  {notification.event} 
+                  {playlist.name} 
                 </h5>
               </div>
               <div className="col-3"> 
-                {notification.read===false?(
-                    <div>
-                      <Button className="ReadNotificationsTrueButton"
-                      onClick={()=>this.changeRead(this.props.data_be.data_be._id,notification._id)}>
-                        Not Read
-                      </Button>
-                    </div>
-                    ):(
-                    <div className="ReadNotificationsFalse">
-                      <h5>
-                        Read
-                      </h5>
-                    </div>
-                  )} 
+                <div>
+                  <Button className="ReadNotificationsTrueButton"
+                  onClick={()=>this.HandleDeletedPlaylist(this.props.data_be.data_be._id,playlist._id)}>
+                    Recover
+                  </Button>
+                </div>   
               </div>
             </div>
             <hr />
