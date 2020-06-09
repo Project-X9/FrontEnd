@@ -10,7 +10,9 @@ import {
   FollowURL,
   UnFollowURL,AllSongsUrl,
   AlbumsUrl,
-  Confirmation
+  Confirmation,
+  GetSongsByCategory,
+  RecoverPlayListUrl
 } from "../shared/baseUrl";
 import { ArtistsUrl } from "./../shared/baseUrl";
 export const postupdatedFeedback = (id, isemail, isage, isID) => (dispatch) => {
@@ -620,13 +622,14 @@ export const PlayShuffle = () => (dispatch) => {
    payload: data,
  });
 //========================= Read Notifications===============================
-export const ReadNotifications = (UserId, notificationid) => (dispatch) => {
+export const ReadNotifications = (UserId, notificationid,token) => (dispatch) => {
   const data = { read:true };
   // data.date = new Date().toISOString();
   console.log(data);
   axios.patch(`http://localhost:3000/api/v1/users/${UserId}/notifications/${notificationid}`, data)
  .then(response => {
     console.log("Read Sucess")
+    handleChangeData_BE(UserId,token)
     .catch(error=>console.log(error))
  })
 };
@@ -658,7 +661,7 @@ export const CreatePlayList_BE=(userID,playlist_Name,token)=>(dispatch)=> {
    };
   axios.post(`${PlaylistsUrl}/${userID}`, data)
   .then(response=>{ 
-    handleChangeData_BE(userID,token);
+    dispatch(handleChangeData_BE(userID,token));
   })
   .catch(error => console.log(error));
 }
@@ -669,4 +672,43 @@ export const AddSong_inPlaylist_id=(data)=>(dispatch)=>{
 export const addSongID = (data) => ({
   type: ActionTypes.ADDSONGID,
   payload: data,
+});
+//===================Get Deleted PlayList ====================================
+export const GetDeletedPlayList=(UserId,token)=>(dispatch)=>{
+  const data ={
+    id:UserId
+  }
+   const Authstr = "Bearer ".concat(token);
+  axios.get(`${RecoverPlayListUrl}`, data,{
+    headers: { Authorization: Authstr }})
+  .then(response=>{ 
+    dispatch(addDeletedPlaylists(response.data.data.playlist_rt))
+  })
+  .catch(error => console.log(error));
+} 
+export const addDeletedPlaylists = (data) => ({
+  type: ActionTypes.ADD_DELETED_PLAYLISTS,
+  payload: data,
+});
+//=================== Recover PlayList ====================================
+// export const RecoverPlayList=(userID)=>{
+//   axios.post(`${PlaylistsUrl}/${userID}`, data)
+//   .then(response=>{ 
+//     handleChangeData_BE(userID,token);
+//   })
+//   .catch(error => console.log(error));
+// } 
+//=====================Get Songs by Generes===============================
+export const GetSongsByGeneres = (categoryId) =>(dispatch)=>{
+  dispatch(ShowSongsByCategoryLoading());
+  axios.get(`${GetSongsByCategory}/${categoryId}`)
+  .then(response=>dispatch(addTracksByCategory(response.data.data.array)))
+  .catch(err=>console.log(err));
+} 
+export const addTracksByCategory = (data) => ({
+  type: ActionTypes.ADD_SONGS_BY_CATEGORY,
+  payload: data,
+});
+export const ShowSongsByCategoryLoading = () => ({
+  type: ActionTypes.SONGS_BYCATEGORY_LOADING,
 });

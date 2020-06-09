@@ -41,3 +41,6 @@ export const ForActive= "http://localhost:3000/api/v1/";
 ///////////////////////////////////////////////////////
 export const AllSongsUrl =
   "http://localhost:3000/api/v1/track";
+  export const RecoverPlayListUrl =
+  "http://localhost:3000/api/v1/users/deletedplaylist";
+  export const GetSongsByCategory = "http://localhost:3000/api/v1/track/getTracksByGenresid";

@@ -24,6 +24,7 @@ import { FullSongs } from "./addFullSongs";import { FullArtists } from "./addFul
 import { SignUpData, SignUpModal} from './SignupData';
 import { AddToken } from './AddToken';
 import {ADDSongId} from './AddSongToPlayList'
+import { GenreTracks } from './ShowSongsByGeneres'
 function saveState(state) {
   try {
     const serializedState = JSON.stringify(state);
@@ -62,13 +63,14 @@ export const ConfigureStore = () => {
       is_progress_dirty:ProgressDirty,
       currentTime:CurrentTime,
       fullsongs:FullSongs,
-        fullartists:FullArtists,
+      fullartists:FullArtists,
       totalTime:TotalTime,
       prevsong:PrevSong,
       signupdata:SignUpData,
       isModalOpen:SignUpModal,
       token:AddToken,
       songid:ADDSongId,
+      genretracks:GenreTracks,
       // playlist_BE:PlayList_BE,
       ...createForms({
         feedback: InitialFeedback,
