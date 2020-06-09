@@ -44,7 +44,3 @@ export const AllSongsUrl =
   export const RecoverPlayListUrl =
   "http://localhost:3000/api/v1/users/deletedplaylist";
   export const GetSongsByCategory = "http://localhost:3000/api/v1/track/getTracksByGenresid";
-  export const RecoverUrl = "http://localhost:3000/api/v1/users/recoverPlaylist";
-
-  export const AddToQueueUrl = "http://localhost:3000/api/v1/follow/Queue";
-  export const RemoveFromQueueUrl = "http://localhost:3000/api/v1/follow/Queue/un";

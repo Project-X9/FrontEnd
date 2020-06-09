@@ -19,9 +19,9 @@ class RecoverPlaylists extends Component {
   /**
    * Puts the selected song in the footer to be played
    */
-  HandleDeletedPlaylist(userID,playlisId)
+  HandleDeletedPlaylist(userID,notificationID)
   {
-    this.props.RecoverPlayList(userID,playlisId,this.props.token.token);
+    this.props.GetDeletedPlayList(userID,notificationID)
   }
 
   render() {
@@ -33,16 +33,16 @@ class RecoverPlaylists extends Component {
     if (this.props.isSignedIn.isSignedIn !== null){
         RecoverPlaylist = this.props.deletedPlaylists.deletedPlaylists.map((playlist) => {
         return(
-          <div key= {playlist._id} >
+          <div key= {playlist._id} className="ReadNotificationsRow">>
             <div className="row">
               <div className="col-9">
-                <h5 > 
+                <h5 className="ReadNotificationsEvents"> 
                   {playlist.name} 
                 </h5>
               </div>
               <div className="col-3"> 
                 <div>
-                  <Button 
+                  <Button className="ReadNotificationsTrueButton"
                   onClick={()=>this.HandleDeletedPlaylist(this.props.data_be.data_be._id,playlist._id)}>
                     Recover
                   </Button>

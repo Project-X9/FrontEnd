@@ -151,9 +151,8 @@ class ShowSongs extends Component {
     ForMapping=this.props.categories.categories.map((Category) => {
       return(
         <div key={Category._id}>
-          <DropdownItem className="ShowSongsToggleDropDownItem">
-            <Button className="ShowSongsToggleDropDownItemButton"
-            onClick={()=>this.setWithCategory(Category)}>
+          <DropdownItem className="StaticNavChildContainer">
+            <Button onClick={()=>this.setWithCategory(Category)}>
             {Category.name}
             </Button>
           </DropdownItem>
@@ -165,10 +164,10 @@ class ShowSongs extends Component {
     if (this.props.isSignedIn.isSignedIn !== null) {
       HomeSongs2=(
         <UncontrolledDropdown nav inNavbar>
-        <DropdownToggle nav caret className="ShowSongsToggleGenre">
+        <DropdownToggle nav caret className="WritingInsideAccountItself">
           Genres
         </DropdownToggle>
-        <DropdownMenu className="ShowSongsToggleDropDownMenu" right>
+        <DropdownMenu className="StaticNav" right>
         {ForMapping}
         </DropdownMenu>
         </UncontrolledDropdown>
@@ -188,13 +187,13 @@ class ShowSongs extends Component {
             <div className="row FirstHeaderAndSeeAll">
                 <div className="col-sm-9 ContainerHeaderAboveGrid">
                   <Link className="LinkHeaderAboveGrid">
-                    <h2 className="HeaderAboveGrid">Songs Available in The Selected Genre</h2>
+                    <h2 className="HeaderAboveGrid">Songs Available</h2>
                   </Link>
                 </div>
             </div>
             <div className="row">
               <div className="col-sm-12">
-                <div className="ShowSongsBasedOnGenreGridView">
+                <div className="GridView">
           {
           this.props.genretracks.genretracks.map((track) => {
             return(
@@ -269,8 +268,7 @@ class ShowSongs extends Component {
       </div>
       {redirected}
       {HomeSongs2}
-      <Button className="ShowSongsSelectAfterGenreSelectionButton"
-      onClick={()=>this.handleTheNotificationID()}>
+      <Button onClick={()=>this.handleTheNotificationID()}>
         Select
       </Button>
       {ShowingSongs}

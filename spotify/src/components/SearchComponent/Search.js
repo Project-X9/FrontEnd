@@ -81,9 +81,9 @@ renderSuggestion(){
        <Row className=" RowSearch" lg="3">
          {this.state.categories.map(item=>{return( <Col className="PaddingColoumns"><Card>
            <CardImg top width="100%" src={item.icon} alt="Card image cap" />
-           <CardBody  className="SearchCardBodySuggestionCard">
-             <CardTitle className="SearchCardTitleSuggestionCard">Playlist: {item.name}</CardTitle>
-             <Button className="SearchCardButtonSuggestionCard">Go To {item.name}</Button>
+           <CardBody>
+             <CardTitle>Playlist: {item.name}</CardTitle>
+             <Button className="bg-primary">Go To {item.name}</Button>
            </CardBody>
          </Card></Col>)})}
 
@@ -105,9 +105,9 @@ renderSuggestion(){
   {suggestionArtists.map(Artist=>{return(
       <Col className="PaddingColoumns"><Card>
           <CardImg top width="100%" src={Artist.image} alt="Card image cap" />
-          <CardBody className="SearchCardBodySuggestionCard">
-              <CardTitle className="SearchCardTitleSuggestionCard">{Artist.name}</CardTitle>
-              <Button className="SearchCardButtonSuggestionCard">Go To {Artist.name}</Button>
+          <CardBody>
+              <CardTitle>{Artist.name}</CardTitle>
+              <Button className="bg-primary">Go To {Artist.name}</Button>
           </CardBody>
       </Card>
   </Col>)})}
@@ -129,9 +129,9 @@ renderSuggestion(){
                          {suggestionSongs.map(Song=>{return(
                              <Col className="PaddingColoumns"><Card>
                                  <CardImg top width="100%" src={Song.imageUrl} alt="Card image cap" />
-                                 <CardBody className="SearchCardBodySuggestionCard">
-                                     <CardTitle className="SearchCardTitleSuggestionCard">{Song.name}</CardTitle>
-                                     <Button className="SearchCardButtonSuggestionCard">Go To {Song.name}</Button>
+                                 <CardBody>
+                                     <CardTitle>{Song.name}</CardTitle>
+                                     <Button className="bg-primary">Go To {Song.name}</Button>
                                  </CardBody>
                              </Card>
                              </Col>)})}
@@ -282,7 +282,7 @@ renderSuggestion(){
          {this.props.isSignedIn.isSignedIn === true ? (
             <div className=" DivStyle LibraryPageBody">
               {SignedIn}
-              <section className="WrappingSection SearchAfterWritingInBoxContainer">
+              <section className="WrappingSection">
                 {this.renderSuggestion()}
 
               </section>

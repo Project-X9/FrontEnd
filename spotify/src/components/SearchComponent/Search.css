@@ -36,33 +36,3 @@
     padding: 10px;
     color: #212529;
 }
-
-.SearchCardBodySuggestionCard{
-    background-color: rgb(37, 37, 37);
-}
-
-.SearchCardTitleSuggestionCard{
-    color:rgb(134, 134, 134);
-    margin:20px;
-    font-weight: bolder;
-    font-size:20px;
-    background-color: rgb(37, 37, 37);
-    border-radius: 2em;
-}
-
-.SearchCardButtonSuggestionCard{
-    background-color: rgb(37, 37, 37);
-    color:rgb(134, 134, 134);
-    border:none;
-    font-weight: bolder;
-    font-size:20px; 
-}
-
-.SearchCardButtonSuggestionCard:hover{
-    background-color: rgb(63, 63, 63);
-    color:rgb(192, 192, 192); 
-}
-
-.SearchAfterWritingInBoxContainer{
-    padding:0;
-}

@@ -531,9 +531,6 @@ test(){
                         ReadNotifications={this.props.ReadNotifications}
                         GetDeletedPlayList={this.props.GetDeletedPlayList}
                         deletedPlaylists={this.props.deletedPlaylists}
-                        RecoverPlayList={this.props.RecoverPlayList}
-                        token={this.props.token}
-
                       />
                     )}
                   />
