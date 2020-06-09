@@ -29,6 +29,7 @@ import EditProfile from "./EditProfile";
 import ReviewNotifications from "./ReviewNotifications";
 import { baseUrl2 } from "../../shared/baseUrl";
 import ResetPassword from "./ResetPassword";
+import RecoverPlaylist from "./RecoverPlaylist";
 
 /**
  * Account Overview page
@@ -445,7 +446,7 @@ class AccountOverview extends Component {
                     <i className="fa fa-lock" />
                     Change password
                   </Link>
-                  <Link to="/" className={recoverPlaylistsActive}>
+                  <Link to="/account/recoverplaylist" className={recoverPlaylistsActive}>
                     <i className="fa fa-hashtag" />
                     Recover playlists
                   </Link>
@@ -490,6 +491,14 @@ class AccountOverview extends Component {
                         data={this.props.data}
                         data_be={this.props.data_be}
                         reseteditprofile={this.props.reseteditprofile}
+                      />
+                    )}
+                  />
+                  <Route
+                    path="/account/recoverplaylist"
+                    component={() => (
+                      <RecoverPlaylist
+                      data_be={this.props.data_be}
                       />
                     )}
                   />
