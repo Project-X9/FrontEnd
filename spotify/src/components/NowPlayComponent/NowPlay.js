@@ -14,11 +14,17 @@ import {
 import "./NowPlay.css";
 import { NavLink, Redirect } from "react-router-dom";
 import { Loading } from "./../Loading/LoadingComponent";
+import 'react-notifications/lib/notifications.css';
 import Dropdown from "react-bootstrap/Dropdown";
+import Card from "@material-ui/core/Card";
+import CardImg from "react-bootstrap/CardImg";
+import CardBody from "reactstrap/es/CardBody";
+import CardTitle from "reactstrap/es/CardTitle";
 /**
  * This Component is for Displaying the playlist and following or unfollowing it
  */
 class NowPlay extends Component {
+
   /**
    *
    * @param tempId this is for the ID of the user entered right now
@@ -28,17 +34,42 @@ class NowPlay extends Component {
     this.state = {
       isNavOpen: false,
       tempId: this.props.id.id,
+
     };
+    this.rendersuggestion=this.rendersuggestion.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.state.toggleNav = this.toggleNav.bind(this);
     this.patchFollow = this.patchFollow.bind(this);
     this.state.handleLogout = this.handleLogout.bind(this);
     this.patchunFollow = this.patchunFollow.bind(this);
-    this.handleAddingtoPlaylist = this.handleAddingtoPlaylist.bind(this);
 
   }
-  handleAddingtoPlaylist(SongId,PlaylistId){
+  handleSubmit(Song) {
+    this.props.AddSong_inPlaylist_id(Song._id);
+      this.props.ControlModal(true);
+    }
+    // RemoveQueue={this.props.RemoveQueue}
+    // AddToQueue={this.props.AddToQueue}
+  handleAddQueue(songID,userID) {
+      this.props.AddToQueue(songID,userID,this.props.token.token)
+    }
 
-  }
+  handleRemoveQueue(songID,userID) {
+      this.props.RemoveQueue(songID,userID,this.props.token.token);
+    }
+
+  rendersuggestion(idPlaylist){
+
+    let Playlist=this.props.data_be.data_be.playlists.find(element=> element._id===idPlaylist)
+    if(Playlist!==undefined){
+      let sameSong=Playlist.tracks.find(element=>element._id===this.props.songid.songid)
+      alert(sameSong)
+      if(sameSong===undefined){
+        this.props.PatchAddPlaylist(idPlaylist,this.props.songid.songid)
+      }
+      else{console.log("Already Found in the playlist")}
+    } }
+
   /**
    * isPlaylistFollowed returns if the users already follows this playlist or not
    */
@@ -468,14 +499,16 @@ class NowPlay extends Component {
                                                         <i className="fa fa-ellipsis-h"></i>
                                                       </Dropdown.Toggle>
                                                       <Dropdown.Menu>
-                                                        <Dropdown.Item href="#/action-1" >Add Song To a PlayList</Dropdown.Item>
+                                                        <Dropdown.Item  onClick={()=>{this.handleSubmit(Song)}} >Add Song To a PlayList</Dropdown.Item>
+                                                        <Dropdown.Item  onClick={()=>{this.handleAddQueue(Song._id,this.props.data_be.data_be._id)}} >Add To Queue</Dropdown.Item>
+                                                        <Dropdown.Item  onClick={()=>{this.handleRemoveQueue(Song._id,this.props.data_be.data_be._id)}} >Remove From Queue</Dropdown.Item>
                                                       </Dropdown.Menu>
                                                     </Dropdown>
                                                   </div>
                                                 </div>
                                               </div>
-                                              <Modal isOpen={this.props.isModalOpen.isModalOpen} className="">
-                                                <ModalBody className="createPlayLsitBody">
+                                              <Modal isOpen={this.props.isModalOpen.isModalOpen} >
+                                                <ModalBody className="createPlayListBody">
                                                   <Row>
                                                     <Col md={12} xs={12} sm={12}>
                                                       <Row>
@@ -488,46 +521,30 @@ class NowPlay extends Component {
                                                           </Button>
                                                         </Col>
                                                       </Row>
-                                                      {this.props.data_be.data_be.premium===false?(<div><Row>
-                                                        <Col md={{ size: 6, offset:3}} xs={{ size: 6, offset:3}} sm={{ size: 6, offset:3}} className="Create_new_playlist">
-                                                          <h1>Enter The Code Send To Your Email</h1>
-                                                        </Col>
-                                                      </Row>
-                                                        <Row>
-                                                          <Col className="inputField_CP" md={12} xs={12} sm={12}>
-                                                            <div className="inputBox_CP">
-                                                              <Row>
-                                                                <Col md={{size:10, offset:2}} xs={12} sm={12} >
-                                                                  <div className="contentSpacing_CP">
-                                                                    <input type="text" className="inputBox-input_CP" placeholder="Code" onChange={this.handleChange}></input>
-                                                                  </div>
-                                                                </Col>
-                                                              </Row>
-                                                            </div>
-                                                          </Col>
-                                                        </Row>
-                                                        <Row>
-                                                          <Col md={{size:7,offset:5}} xs={12} sm={12} className="create_Cancel_CP">
-                                                            <button class="CancelButton_CP" type="button" onClick={()=>this.props.ControlModal(false)}>CANCEL</button>
-                                                            <button  class="CreateButton_CP" type="button" onClick={()=>this.handleSubmitModal()}>CREATE</button>
-                                                          </Col>
-                                                        </Row>
-                                                      </div>):(<div><Row>
-                                                        <Col md={{ size: 6, offset:3}} xs={{ size: 6, offset:3}} sm={{ size: 6, offset:3}} className="Create_new_playlist">
-                                                          <h1>To Cancel your Premium ship</h1>
-                                                        </Col>
-                                                      </Row>
-
-                                                        <Row>
-                                                          <Col md={{size:7,offset:5}} xs={12} sm={12} className="create_Cancel_CP">
-                                                            <button class="CancelButton_CP" type="button" onClick={()=>this.props.ControlModal(false)}>CANCEL</button>
-                                                            <button  class="CreateButton_CP" type="button" onClick={()=>this.handleSubmitModal()}>End Your Premium</button>
-                                                          </Col>
-                                                        </Row>
-                                                      </div>)}
-
                                                     </Col>
                                                   </Row>
+                                                  <div>
+                                                    <div>
+                                                      <Row>
+                                                      <Col md={{ size: 6, offset:3}} xs={{ size: 6, offset:3}} sm={{ size: 6, offset:3}} className="Create_new_playlist">
+                                                        <h1>Add To Any of your Playlists</h1>
+                                                      </Col>
+                                                    </Row>
+                                                      <div>
+                                                        {this.props.data_be.data_be.playlists.length===0?
+                                                            (<div><p>No Liked PlayList for you</p></div>):(<div>
+                                                              <Row className=" RowSearch" sm="5">
+                                                                {this.props.data_be.data_be.playlists.map(item=>{return( <Col className="PaddingColoumns"><Card>
+                                                                  <CardImg top width="100%" src={item.image} alt="Card image cap" />
+                                                                  <CardBody>
+                                                                    <Button className="bg-primary" onClick={()=>{this.rendersuggestion(item._id)}}>Add to {item.name}</Button>
+                                                                  </CardBody>
+                                                                </Card></Col>)})}
+
+                                                              </Row></div>)}
+                                                      </div>
+                                                    </div>
+                                                  </div>
                                                 </ModalBody>
                                               </Modal>
                                               <div className="DivStyle TrackLisCol Duration">

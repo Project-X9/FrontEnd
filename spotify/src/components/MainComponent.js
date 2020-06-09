@@ -20,6 +20,7 @@ import {
   PremiumPost,
   GetPassword,
   PostPassword,
+  PatchAddPlaylist,
   getEmail,
   getPassword,
   fetchUserData,
@@ -48,7 +49,15 @@ import {
   AddPrevSong,
   ForSignUpVerification,
   ControlModal,
-  handleChangeData_BE
+  handleChangeData_BE,
+  AddSong_inPlaylist_id,
+  CreatePlayList_BE,
+  ReadNotifications,
+  GetSongsByGeneres,
+  GetDeletedPlayList,
+  RecoverPlayList,
+  AddToQueue,
+  RemoveQueue
 } from "../redux/ActionCreators";
 import MyAlbums from "./ForArtists/MyAlbumsComponent";
 import MySongs from "./ForArtists/MySongsComponent";
@@ -73,11 +82,13 @@ const mapStateToProps = (state) => ({
   is_progress_dirty: state.is_progress_dirty,
   currentTime: state.currentTime,
   totalTime: state.totalTime,
-  prevsong: state.prevsong,
-  signupdata: state.signupdata,
-  isModalOpen: state.isModalOpen,
-  token: state.token
-
+  prevsong:state.prevsong,
+  signupdata:state.signupdata,
+  isModalOpen:state.isModalOpen,
+  token:state.token,
+  songid:state.songid,
+  genretracks:state.genretracks,
+  deletedPlaylists:state.deletedPlaylists
 
 });
 const mapDispatchToProps = (dispatch) => ({
@@ -127,6 +138,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(handleSignIn_BE(data));
   },
   handleLogoutId: (id) => dispatch(handleLogoutId(id)),
+  PatchAddPlaylist:(idPlaylist,idSong) =>dispatch(PatchAddPlaylist(idPlaylist,idSong)),
   PostPassword: (password, id) => dispatch(PostPassword(password, id)),
   GetPassword: (id) => dispatch(GetPassword(id)),
   getEmail: (id) => dispatch(getEmail(id)),
@@ -184,8 +196,29 @@ const mapDispatchToProps = (dispatch) => ({
   handleChangeData_BE: (id, token) => {
     dispatch(handleChangeData_BE(id, token));
   }
-
-
+ ,AddSong_inPlaylist_id: (data) => {
+  dispatch(AddSong_inPlaylist_id(data));
+}, CreatePlayList_BE: (userId,playlistName,token) => {
+  dispatch(CreatePlayList_BE(userId,playlistName,token));
+}
+,ReadNotifications: (userId,notfId,token) => {
+  dispatch(ReadNotifications(userId,notfId,token));
+},
+GetSongsByGeneres: (categoryId) => {
+  dispatch(GetSongsByGeneres(categoryId));
+},
+GetDeletedPlayList: (userid,token) => {
+  dispatch(GetDeletedPlayList(userid,token));
+},
+RecoverPlayList: (userid,playlistid,token) => {
+  dispatch(RecoverPlayList(userid,playlistid,token));
+},
+AddToQueue: (userid,trackid,token) => {
+  dispatch(AddToQueue(userid,trackid,token));
+},
+RemoveQueue: (userid,trackid,token) => {
+  dispatch(RemoveQueue(userid,trackid,token));
+}
 });
 
 class Main extends Component {
@@ -301,6 +334,11 @@ class Main extends Component {
                 /////////
                 handleChangeData_BE={this.props.handleChangeData_BE}
                 token={this.props.token}
+                ReadNotifications={this.props.ReadNotifications}
+
+                GetDeletedPlayList={this.props.GetDeletedPlayList}
+                deletedPlaylists={this.props.deletedPlaylists}
+                RecoverPlayList={this.props.RecoverPlayList}
               />
             )}
           />
@@ -348,8 +386,16 @@ class Main extends Component {
                 prevsong={this.props.prevsong}
                 handleChangeData_BE={this.props.handleChangeData_BE}
                 token={this.props.token}
-              isModalOpen={this.props.isModalOpen}
-              ControlModal={this.props.ControlModal}
+                AddSong_inPlaylist_id={this.props.AddSong_inPlaylist_id}
+                songid={this.props.songid}
+                isModalOpen={this.props.isModalOpen}
+                ControlModal={this.props.ControlModal}
+                CreatePlayList_BE={this.props.CreatePlayList_BE}
+                GetSongsByGeneres={this.props.GetSongsByGeneres}
+                genretracks={this.props.genretracks}
+                PatchAddPlaylist={this.props.PatchAddPlaylist}
+                RemoveQueue={this.props.RemoveQueue}
+                AddToQueue={this.props.AddToQueue}
               />
             )}
           />

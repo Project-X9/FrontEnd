@@ -139,6 +139,8 @@ handleSubmitModal() {
           month:values.month, 
           year:values.year ,
           sex:values.sex,
+          isVerified:false,
+          ConfirmationToken:" ",
           randomId:rand 
         }
         this.props.ControlModal(true);

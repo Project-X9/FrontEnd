@@ -15,6 +15,9 @@ export const SignInUrl =
 export const PremiumUrl =
   "http://localhost:3000/api/v1/users";
 
+export const Confirmation =
+  "http://localhost:3000/api/v1/users/confirmation";
+
 ////////////////////////PlayLists/////////////////////////////
 export const PlaylistsUrl =
   "http://localhost:3000/api/v1/playlist";
@@ -38,3 +41,10 @@ export const ForActive= "http://localhost:3000/api/v1/";
 ///////////////////////////////////////////////////////
 export const AllSongsUrl =
   "http://localhost:3000/api/v1/track";
+  export const RecoverPlayListUrl =
+  "http://localhost:3000/api/v1/users/deletedplaylist";
+  export const GetSongsByCategory = "http://localhost:3000/api/v1/track/getTracksByGenresid";
+  export const RecoverUrl = "http://localhost:3000/api/v1/users/recoverPlaylist";
+
+  export const AddToQueueUrl = "http://localhost:3000/api/v1/follow/Queue";
+  export const RemoveFromQueueUrl = "http://localhost:3000/api/v1/follow/Queue/un";

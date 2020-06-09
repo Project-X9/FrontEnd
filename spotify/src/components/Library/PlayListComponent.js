@@ -163,8 +163,8 @@ render(){
                         </Row>
                         <Row>
                             <Col  md={12} className="m-0 customizedColForCards">
-                            <div className="gridView">
                                     {this.props.data_be.data_be.tracks.length !== 0 ? (
+                                        <div className="gridView">
                                             <div className="LikedSongs">
                                                 <div draggable="true">
                                                     <div className="showLiked">
@@ -212,14 +212,17 @@ render(){
                                                         </div>
                                                     </Col>
                                                 </Row>
-                                                {RenderUserPlayLists}
-                                            </div>  
-                                    ):(
-                                        <div>
+                                            </div>
                                             {RenderUserPlayLists}
                                         </div>
+
+                                    ):(
+                                        <div>
+                                            <div className="gridView">
+                                                {RenderUserPlayLists}
+                                            </div>
+                                        </div>
                                     )}
-                             </div>
                             </Col>
                         </Row>
                     </div>

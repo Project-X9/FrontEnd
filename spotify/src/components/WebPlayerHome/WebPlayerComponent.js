@@ -118,8 +118,8 @@ toggleModalNew(){
 }
 handleSubmit() {
     alert(this.state.inputValue);
+    this.props.CreatePlayList_BE(this.props.data_be.data_be._id,this.state.inputValue,this.props.token.token);
     this.toggleModalNew();
-
 }
   /**
    * Responsible for showing everything on the Webplayer
@@ -208,7 +208,7 @@ handleSubmit() {
     let showLikeAndCreate = (
       <div>
         <h3 className="sidebarHeaderBetween">PLAYLISTS</h3>
-        <Button  className={createPlaylistsActive} onClick={()=>this.toggleModalNew()}>
+        <Button  className={"SidebarSongButton " + createPlaylistsActive} onClick={()=>this.toggleModalNew()}>
           <i className="fa fa-plus-square"></i>
           Create Playlist
         </Button>
@@ -349,8 +349,13 @@ handleSubmit() {
                         isPlaying={this.props.isPlaying}
                         handleChangeData_BE={this.props.handleChangeData_BE}
                         token={this.props.token}
+                        AddSong_inPlaylist_id={this.props.AddSong_inPlaylist_id}
+                        songid={this.props.songid}
                         isModalOpen={this.props.isModalOpen}
                         ControlModal={this.props.ControlModal}
+                        PatchAddPlaylist={this.props.PatchAddPlaylist}
+                        RemoveQueue={this.props.RemoveQueue}
+                        AddToQueue={this.props.AddToQueue}
                       />
                     )}
                   />
@@ -415,6 +420,8 @@ handleSubmit() {
                         handleCurrentAlbums={this.props.handleCurrentAlbums}
                         handleCurrentArtists={this.props.handleCurrentArtists}
                         PlayTheFooter={this.props.PlayTheFooter}
+                        GetSongsByGeneres={this.props.GetSongsByGeneres}
+                        genretracks={this.props.genretracks}
                       />
                     )}
                   />

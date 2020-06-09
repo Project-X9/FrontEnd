@@ -12,7 +12,20 @@ class ReviewNotifications extends Component {
    * @param {Object} props
    * @param props.data_be Essentially contains the data of the users in the database after integrating with backend
    * @param props.isSignedIn Essentially used to check if a user is signed in or not
+   * @param props.handleChangeData_BE Essentially used for changing read value of the notification
+   * @param props.token Essentially used for changing read value of the notification
+   * @param props.ReadNotifications Essentially used for changing read value of the notification
    */
+
+  /**
+   * changes Not Read to Read
+   */
+  changeRead(userID,notificationID)
+  {
+    this.props.ReadNotifications(userID,notificationID)
+    this.props.handleChangeData_BE(userID,this.props.token.token)
+  }
+
   render() {
     let Redirect = "";
     if (this.props.isSignedIn.isSignedIn === null){
@@ -22,7 +35,7 @@ class ReviewNotifications extends Component {
     if (this.props.isSignedIn.isSignedIn !== null){
       Notifications = this.props.data_be.data_be.notifications.map((notification) => {
         return(
-          <div key= {notification._id} className="ReadNotificationsRow">>
+          <div key= {notification._id} className="ReadNotificationsRow">
             <div className="row">
               <div className="col-9">
                 <h5 className="ReadNotificationsEvents"> 
@@ -32,7 +45,8 @@ class ReviewNotifications extends Component {
               <div className="col-3"> 
                 {notification.read===false?(
                     <div>
-                      <Button className="ReadNotificationsTrueButton">
+                      <Button className="ReadNotificationsTrueButton"
+                      onClick={()=>this.changeRead(this.props.data_be.data_be._id,notification._id)}>
                         Not Read
                       </Button>
                     </div>

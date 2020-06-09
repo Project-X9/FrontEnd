@@ -10,6 +10,12 @@ import {
   FollowURL,
   UnFollowURL,AllSongsUrl,
   AlbumsUrl,
+  Confirmation,
+  GetSongsByCategory,
+  RecoverPlayListUrl,
+  RecoverUrl,
+  AddToQueueUrl,
+  RemoveFromQueueUrl,
 } from "../shared/baseUrl";
 import { ArtistsUrl } from "./../shared/baseUrl";
 export const postupdatedFeedback = (id, isemail, isage, isID) => (dispatch) => {
@@ -44,9 +50,20 @@ export const GetPassword = (id) => (dispatch) => {
     .get(`${baseUrl}users/${id - 1}`)
     .then((response) => JSON.stringify(response.data.password));
 };
+
 export const PostPassword = (password, id) => (dispatch) => {
   const newPassword = { password: password };
   axios.patch(`${PremiumUrl}/${id}`, newPassword);
+};
+export const PatchAddPlaylist = (idPlaylist,idSong) => (dispatch) => {
+
+    axios.patch(`${PlaylistsUrl}/tracks/${idPlaylist}/${idSong}`)
+        .then(response=>console.log(response.data));
+};
+export const DeleteAddPlaylist = () => (dispatch) => {
+
+    axios.patch(`${PlaylistsUrl}/deleteTrack`)
+        .then(response=>console.log(response.data));
 };
 /**
  * This function handels the sign up with facebook 
@@ -210,6 +227,7 @@ export const handleSignIn_BE = (data) => (dispatch) => {
   axios
     .post(SignInUrl, data)
     .then((response) => {
+      // test(response.data.user._id);
       console.log("Response from sign in", response);
       dispatch(addLogin(true));
       var token = response.data.token;
@@ -227,21 +245,81 @@ export const handleSignIn_BE = (data) => (dispatch) => {
         .then((response2) =>
           dispatch(addCategories(response2.data.data.Categories))
         );
+      axios
+          .get(`${ArtistsUrl}`)
+          .then((response2) =>
 
-        axios
-            .get(`${ArtistsUrl}`)
-            .then((response2) =>
-
-                dispatch(addAllArtists(response2.data.data.artists))
-            );
-        axios
-        .get(`${AllSongsUrl}`)
-        .then((response2) =>
-          dispatch(addAllTracks(response2.data.data.tracks))
-        );
+              dispatch(addAllArtists(response2.data.data.artists))
+          );
+      axios
+      .get(`${AllSongsUrl}`)
+      .then((response2) =>
+        dispatch(addAllTracks(response2.data.data.tracks))
+      );
     })
     .catch((error) => dispatch(addLogin(false)));
 };
+// const publicVapidKey =
+// "BDGd6_hu_pl5u_eEPBImTWFn5WBzDPHoXucwGEIx8-aNq8AtrAa_V5W1MlJbduW5SoB3_r3UyYMQmRM-lGetgg0";
+
+// // Check for service worker
+// export const test =(id)=>{
+//     if ("serviceWorker" in navigator) {
+//         send(id).catch(err => console.error(err));
+//       }
+// }
+
+// async function send(id) {
+//   // Register Service Worker
+//   console.log("Registering service worker...");
+//   const swUrl = `${process.env.PUBLIC_URL}/service-worker-custom.js`
+//   const register = await navigator.serviceWorker.register(swUrl);
+//   console.log("Service Worker Registered...");
+
+//   // Register Push
+//   console.log("Registering Push...");
+//   const subscription = await register.pushManager.subscribe({
+//     userVisibleOnly: true,
+//     applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
+//   });
+//   console.log("Push Registered...");
+
+//   // Send Push Notification
+//   console.log("Sending Push...");
+//   const body=
+//   {
+//     pushSubscription: subscription
+//   }
+  
+//  axios.post(`${SignUpUrl}/${id}/update-push`,body)
+//   .then(response=>console.log(response))
+//   .catch(err=> console.log(err));
+//   // await fetch(`${SignUpUrl}/${id}/update-push`, {
+//   //   method: "POST",
+//   //   body: JSON.stringify({
+//   //     subscription: subscription
+//   //   }),
+//   //   headers: {
+//   //     "content-type": "application/json"
+//   //   }
+//   // }).catch(err=>console.log(err));
+// }
+
+// function urlBase64ToUint8Array(base64String) {
+//   const padding = "=".repeat((4 - base64String.length % 4) % 4);
+//   const base64 = (base64String + padding)
+//     .replace(/\-/g, "+")
+//     .replace(/_/g, "/");
+
+//   const rawData = window.atob(base64);
+//   const outputArray = new Uint8Array(rawData.length);
+
+//   for (let i = 0; i < rawData.length; ++i) {
+//     outputArray[i] = rawData.charCodeAt(i);
+//   }
+//   return outputArray;
+// }
+
 export const addToken = (data) => ({
   type: ActionTypes.ADD_TOKEN,
   payload: data,
@@ -394,9 +472,22 @@ export const postFeedback = (
   var n = d.getFullYear();
   newFeedback.age = n - newFeedback.year;
   axios
-    .post(SignUpUrl, newFeedback)
-    .then((response) => dispatch(addUser(true)))
-    .catch((error) => dispatch(addUser(false)));
+    .post(`${SignUpUrl}/SignUp`, newFeedback)
+    .then((response) => 
+    { console.log(response.data.data.token);
+      console.log(response.data.data.id);
+      const body ={
+        id:response.data.data.id
+      }
+      axios.patch(`${Confirmation}/${response.data.data.token}`,body).then(
+        response=>{
+          dispatch(addUser(true))
+        }
+      )
+    })
+    .catch((error) => {
+      console.log(error);
+      dispatch(addUser(false))});
   // for (let index = 0; index < response.data.id + 1; index++) {
   //   if (index === response.data.id) {
   //     dispatch(addUserId(index));
@@ -533,4 +624,156 @@ export const PlayShuffle = () => (dispatch) => {
    type: ActionTypes.CURRENT_TIME,
    payload: data,
  });
+//========================= Read Notifications===============================
+export const ReadNotifications = (UserId, notificationid,token) => (dispatch) => {
+  const data = { read:true };
+  const Authstr = "Bearer ".concat(token);
+  // data.date = new Date().toISOString();
+  console.log(data);
+  axios.patch(`http://localhost:3000/api/v1/users/${UserId}/notifications/${notificationid}`, data)
+ .then(response => {
+  axios
+  .get(`${SignUpUrl}/${UserId}`, {
+    headers: { Authorization: Authstr },
+  })
+  .then((response) =>
+    dispatch(addUserData_BE(response.data.data.user))
+  );
 
+ })
+};
+//========================= Share Songs ===============================
+export const ShareSongs= (UserId, idplaylist) => (dispatch) => {
+  const data = { id: UserId };
+  // data.date = new Date().toISOString();
+  console.log(data);
+  axios.patch(`${FollowURL}/${idplaylist}`, data);
+  // .then((response) => {
+  //   console.log("Response from sign in", response);
+  //   dispatch(addLogin(true));
+  //   axios
+  //     .get(`${SignUpUrl}/${iduser}`)
+  //     .then((response2) => dispatch(addUserData_BE(response2.data.data.user)));
+  // });
+};
+//=================================Create New Playlist================
+export const CreatePlayList_BE=(userID,playlist_Name,token)=>(dispatch)=> {
+  const data = { 
+    name:playlist_Name,
+    image:"https://iwitness.com.ng/wp-content/uploads/2018/08/unnamed-1484220845.png",
+    description: "Private PlayList",
+    tracks:[],
+    artists: [],
+    author: "5e877b8fae42032b7c867feb",
+    followers:[userID],
+    likers: [],
+   };
+  const Authstr = "Bearer ".concat(token);
+  axios.post(`${PlaylistsUrl}/${userID}`, data)
+  .then(response=>{
+    axios
+      .get(`${SignUpUrl}/${userID}`, {
+        headers: { Authorization: Authstr },
+      })
+      .then((response) =>
+        dispatch(addUserData_BE(response.data.data.user))
+      );
+      })
+  .catch(error => console.log(error));
+}
+//============================Add Song Id=================================
+export const AddSong_inPlaylist_id=(data)=>(dispatch)=>{
+  dispatch(addSongID(data));
+}
+export const addSongID = (data) => ({
+  type: ActionTypes.ADDSONGID,
+  payload: data,
+});
+//===================Get Deleted PlayList ====================================
+// .get(`${SignUpUrl}/${id}`, {
+//   headers: { Authorization: Authstr },
+// })
+// .then((response) =>
+//   dispatch(addUserData_BE(response.data.data.user))
+// );
+export const GetDeletedPlayList=(UserId,token)=>(dispatch)=>{
+  console.log("entered here");  
+  const Authstr = "Bearer ".concat(token);
+  axios.get(`${RecoverPlayListUrl}/${UserId}`,{
+    headers: { Authorization: Authstr }})
+  .then(response=>{ 
+    dispatch(addDeletedPlaylists(response.data.data.playlist_array))
+  })
+  .catch(error => console.log(error));
+} 
+export const addDeletedPlaylists = (data) => ({
+  type: ActionTypes.ADD_DELETED_PLAYLISTS,
+  payload: data,
+});
+//=================== Recover PlayList ====================================
+export const RecoverPlayList=(userID,PlaylistId,token)=>(dispatch)=>{
+  const data={
+    id:userID
+  }
+  const Authstr = "Bearer ".concat(token);
+  axios.patch(`${RecoverUrl}/${PlaylistId}`, data)
+  .then(response=>{ 
+    axios
+      .get(`${SignUpUrl}/${userID}`, {
+        headers: { Authorization: Authstr },
+      })
+      .then((response) =>
+        dispatch(addUserData_BE(response.data.data.user))
+      );
+  })
+  .catch(error => console.log(error));
+} 
+//=====================Get Songs by Generes===============================
+export const GetSongsByGeneres = (categoryId) =>(dispatch)=>{
+  dispatch(ShowSongsByCategoryLoading());
+  axios.get(`${GetSongsByCategory}/${categoryId}`)
+  .then(response=>dispatch(addTracksByCategory(response.data.data.array)))
+  .catch(err=>console.log(err));
+} 
+export const addTracksByCategory = (data) => ({
+  type: ActionTypes.ADD_SONGS_BY_CATEGORY,
+  payload: data,
+});
+export const ShowSongsByCategoryLoading = () => ({
+  type: ActionTypes.SONGS_BYCATEGORY_LOADING,
+});
+//==============================================================================
+export const AddToQueue = (trackId,userId,token) =>(dispatch)=>{
+  const data = {
+    id:userId 
+  }
+  const Authstr = "Bearer ".concat(token);
+  axios.patch(`${AddToQueueUrl}/${trackId}`,data)
+  .then(response=>{
+    axios
+    .get(`${SignUpUrl}/${userId}`, {
+      headers: { Authorization: Authstr },
+    })
+    .then((response) =>
+      dispatch(addUserData_BE(response.data.data.user))
+    );
+  })
+  .catch(err=>console.log(err));
+} 
+export const RemoveQueue = (trackId,userId,token) =>(dispatch)=>{
+  const data ={
+    id:userId
+  }
+  const Authstr = "Bearer ".concat(token);
+  axios.patch(`${RemoveFromQueueUrl}/${trackId}`,data)
+  .then(response=>{
+    axios
+      .get(`${SignUpUrl}/${userId}`, {
+        headers: { Authorization: Authstr },
+      })
+      .then((response) =>
+        dispatch(addUserData_BE(response.data.data.user))
+      );
+  })
+  .catch(err=>console.log(err));
+} 

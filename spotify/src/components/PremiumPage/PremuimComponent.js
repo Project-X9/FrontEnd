@@ -2,8 +2,6 @@
  * Premium Component
  */
 import React, { Component } from "react";
-import emailjs from 'emailjs-com';
-
 import {
   Navbar,
   NavbarBrand,
@@ -25,8 +23,8 @@ import {
   DropdownToggle,
 } from "reactstrap";
 import "./PremiumComponent.css";
-
 import { NavLink, Redirect } from "react-router-dom";
+import { emailjs } from 'emailjs-com';
 
 class Premium extends Component {
   /**
@@ -41,17 +39,12 @@ class Premium extends Component {
       modal: false,
       isModalOpen: false,
       collapsed: true,
-      inputValue:'',
       Premium: this.props.data_be.data_be.premium,
       tempId: this.props.data_be.data_be._id,
       isPrenium: !this.props.data_be.data_be.premium,
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.togglemodal = this.togglemodal.bind(this);
-
-    this.handleSubmitModal=this.handleSubmitModal.bind(this);
-    this.handleChange=this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
 
     this.handlePremium_be = this.handlePremium_be.bind(this);
     this.state.handleLogout = this.handleLogout.bind(this);
@@ -124,7 +117,16 @@ else{   var min = 1;
    * Posts the claiming of premium membership
    */
   handlePremium_be() {
+    if (this.state.Premium === true) {
+      this.props.PremiumPost(this.props.data_be.data_be._id, false);
+      this.setState({ Premium: false });
+      this.togglemodal();
+    } else if (this.state.Premium === false) {
+      this.props.PremiumPost(this.props.data_be.data_be._id, true);
+      this.setState({ Premium: true });
 
+      this.togglemodal();
+    }
   }
   /**
    * Toggles the Navigation bar by switching isNavOpen from true to false and vice versa
