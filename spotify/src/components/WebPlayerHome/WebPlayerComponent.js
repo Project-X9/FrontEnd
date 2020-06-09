@@ -356,6 +356,8 @@ handleSubmit() {
                         PatchAddPlaylist={this.props.PatchAddPlaylist}
                         RemoveQueue={this.props.RemoveQueue}
                         AddToQueue={this.props.AddToQueue}
+                        DeleteAddPlaylist={this.props.DeleteAddPlaylist}
+
                       />
                     )}
                   />
