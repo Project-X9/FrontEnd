@@ -35,7 +35,7 @@ class ReviewNotifications extends Component {
     if (this.props.isSignedIn.isSignedIn !== null){
       Notifications = this.props.data_be.data_be.notifications.map((notification) => {
         return(
-          <div key= {notification._id} className="ReadNotificationsRow">>
+          <div key= {notification._id} className="ReadNotificationsRow">
             <div className="row">
               <div className="col-9">
                 <h5 className="ReadNotificationsEvents"> 
