@@ -19,9 +19,9 @@ class RecoverPlaylists extends Component {
   /**
    * Puts the selected song in the footer to be played
    */
-  HandleDeletedPlaylist(userID,notificationID)
+  HandleDeletedPlaylist(userID,playlisId)
   {
-    this.props.GetDeletedPlayList(userID,notificationID)
+    this.props.RecoverPlayList(userID,playlisId,this.props.token.token);
   }
 
   render() {
