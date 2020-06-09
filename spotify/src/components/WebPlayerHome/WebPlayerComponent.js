@@ -208,7 +208,7 @@ handleSubmit() {
     let showLikeAndCreate = (
       <div>
         <h3 className="sidebarHeaderBetween">PLAYLISTS</h3>
-        <Button  className={createPlaylistsActive} onClick={()=>this.toggleModalNew()}>
+        <Button  className={"SidebarSongButton " + createPlaylistsActive} onClick={()=>this.toggleModalNew()}>
           <i className="fa fa-plus-square"></i>
           Create Playlist
         </Button>
