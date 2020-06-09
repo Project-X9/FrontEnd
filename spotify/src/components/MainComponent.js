@@ -20,6 +20,7 @@ import {
   PremiumPost,
   GetPassword,
   PostPassword,
+  PatchAddPlaylist,
   getEmail,
   getPassword,
   fetchUserData,
@@ -130,6 +131,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(handleSignIn_BE(data));
   },
   handleLogoutId: (id) => dispatch(handleLogoutId(id)),
+  PatchAddPlaylist:(idPlaylist,idSong) =>dispatch(PatchAddPlaylist(idPlaylist,idSong)),
   PostPassword: (password, id) => dispatch(PostPassword(password, id)),
   GetPassword: (id) => dispatch(GetPassword(id)),
   getEmail: (id) => dispatch(getEmail(id)),
@@ -364,6 +366,7 @@ class Main extends Component {
                 isModalOpen={this.props.isModalOpen}
                 ControlModal={this.props.ControlModal}
                 CreatePlayList_BE={this.props.CreatePlayList_BE}
+                PatchAddPlaylist={this.props.PatchAddPlaylist}
               />
             )}
           />

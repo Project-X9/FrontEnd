@@ -49,6 +49,11 @@ export const PostPassword = (password, id) => (dispatch) => {
   const newPassword = { password: password };
   axios.patch(`${PremiumUrl}/${id}`, newPassword);
 };
+export const PatchAddPlaylist = (idPlaylist,idSong) => (dispatch) => {
+
+    axios.patch(`${PlaylistsUrl}/tracks/${idPlaylist}/${idSong}`)
+        .then(response=>console.log(response.data));
+};
 /**
  * This function handels the sign up with facebook 
  * @param {String} email 

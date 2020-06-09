@@ -16,7 +16,6 @@ import { NavLink, Redirect } from "react-router-dom";
 import { Loading } from "./../Loading/LoadingComponent";
 import 'react-notifications/lib/notifications.css';
 import Dropdown from "react-bootstrap/Dropdown";
-import emailjs from "emailjs-com";
 import Card from "@material-ui/core/Card";
 import CardImg from "react-bootstrap/CardImg";
 import CardBody from "reactstrap/es/CardBody";
@@ -53,8 +52,9 @@ class NowPlay extends Component {
     }
 
   rendersuggestion(idPlaylist){
-alert(this.props.songid.songid);
- alert(idPlaylist)
+  alert(this.props.songid.songid);
+  alert(idPlaylist)
+    this.props.PatchAddPlaylist(idPlaylist,this.props.songid.songid)
   }
 
 
@@ -533,8 +533,7 @@ alert(this.props.songid.songid);
                                                                 {this.props.data_be.data_be.playlists.map(item=>{return( <Col className="PaddingColoumns"><Card>
                                                                   <CardImg top width="100%" src={item.image} alt="Card image cap" />
                                                                   <CardBody>
-                                                                    <CardTitle>Playlist: {item.name}</CardTitle>
-                                                                    <Button className="bg-primary" onClick={()=>{this.rendersuggestion(item._id)}}>Go To {item.name}</Button>
+                                                                    <Button className="bg-primary" onClick={()=>{this.rendersuggestion(item._id)}}>Add to {item.name}</Button>
                                                                   </CardBody>
                                                                 </Card></Col>)})}
 
