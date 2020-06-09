@@ -25,6 +25,7 @@ import {
   getPassword,
   fetchUserData,
   handleLoginId,
+  DeleteAddPlaylist,
   handleLogoutId,
   fetchUserPlaylist,
   fetchArtist,
@@ -181,6 +182,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ChangeCurrentTime(time));
   }
   ,
+  DeleteAddPlaylist:(idPlaylist,idSong)=>dispatch(DeleteAddPlaylist(idPlaylist,idSong)),
   AddPrevSong: (song) => {
     dispatch(AddPrevSong(song));
   }
@@ -382,6 +384,10 @@ class Main extends Component {
                 GetSongsByGeneres={this.props.GetSongsByGeneres}
                 genretracks={this.props.genretracks}
                 PatchAddPlaylist={this.props.PatchAddPlaylist}
+                RemoveQueue={this.props.RemoveQueue}
+                AddToQueue={this.props.AddToQueue}
+              DeleteAddPlaylist={this.props.DeleteAddPlaylist}
+
               />
             )}
           />
