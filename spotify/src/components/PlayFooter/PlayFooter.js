@@ -135,8 +135,7 @@ function format2Number(num) {
     // UnFollowArtist={this.props.UnFollowArtist}
     handleQueue(){
       alert("entered Here")
-      // this.props.GetQueue(this.props.data_be.data_be._id,this.props.token.token);
-      this.props.FollowArtist("5e877b8fae42032b7c867feb",this.props.data_be.data_be._id,this.props.token.token);
+      this.props.GetQueue(this.props.data_be.data_be._id,this.props.token.token);
 
     }
     ////////////////////////////// volume

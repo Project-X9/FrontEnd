@@ -488,7 +488,6 @@ handleSubmit() {
                 DisLikeSong={this.props.DisLikeSong}
                 FollowArtist={this.props.FollowArtist}
                 UnFollowArtist={this.props.UnFollowArtist}
-
                />
         </div>
         <Modal
