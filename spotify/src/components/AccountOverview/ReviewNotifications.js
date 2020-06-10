@@ -21,8 +21,8 @@ class ReviewNotifications extends Component {
    * changes Not Read to Read
    */
   changeRead(userID,notificationID)
-  {
-    this.props.ReadNotifications(userID,notificationID)
+  { 
+    this.props.ReadNotifications(userID,notificationID,this.props.token.token)
     this.props.handleChangeData_BE(userID,this.props.token.token)
   }
 
