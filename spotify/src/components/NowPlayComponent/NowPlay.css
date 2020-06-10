@@ -433,6 +433,7 @@
   -ms-user-select: none;
   user-select: none;
   position: relative;
+  margin-bottom: 4em;
 }
 
 .TrackListRow:hover {
@@ -567,3 +568,45 @@ display: inline;
   z-index: 104;
   overflow-y: scroll;
 }
+
+.NowPlayDropdownToggle{
+  background-color: rgb(37, 37, 37);
+}
+
+.NowPlayDropdownToggle:hover{
+  background-color: rgb(63, 63, 63);
+  border:none;
+}
+
+.NowPlayDropdownToggle.dropdown-toggle.btn.btn-primary:active{
+  background-color: rgb(63, 63, 63);
+  border:none;
+  outline: none;
+}
+
+.NowPlayDropdownToggle.dropdown-toggle.btn.btn-primary:focus{
+  background-color: rgb(63, 63, 63);
+  outline: none;
+  border:none;
+  box-shadow: none;
+}
+
+.NowPlayDropdownMenu{
+  background-color: rgb(37, 37, 37);
+}
+
+.NowPlayDropdownItem{
+  background-color: rgb(37, 37, 37);
+  color:rgb(129, 129, 129);
+  font-weight: bold;
+}
+
+.NowPlayDropdownItem:hover{
+  background-color: rgb(63, 63, 63);
+  color:rgb(129, 129, 129);
+  font-weight: bold;
+}
+
+
+
+
