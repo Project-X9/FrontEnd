@@ -48,3 +48,13 @@ export const AllSongsUrl =
 
   export const AddToQueueUrl = "http://localhost:3000/api/v1/follow/Queue";
   export const RemoveFromQueueUrl = "http://localhost:3000/api/v1/follow/Queue/un";
+
+  export const GetQueueUrl = "  http://localhost:3000/api/v1/users/Queue";
+
+// ==============================================================
+export const LikeSongUrl ="http://localhost:3000/api/v1/follow/track";
+export const DisLikeSongUrl ="http://localhost:3000/api/v1/follow/track/un";
+
+export const FollowArtistUrl ="http://localhost:3000/api/v1/follow/artist";
+export const UnFollowArtistUrl ="http://localhost:3000/api/v1/follow/artist/un";
+
