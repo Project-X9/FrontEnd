@@ -608,7 +608,7 @@ export const AddPrevSong = (songSrc) => (dispatch) => {
  
  };
  /**
-  * the actio that sets the state of the previous song 
+  * the action that sets the state of the previous song 
   * @param {object} data 
   */
  export const addPrevSong = (data) => ({
@@ -710,6 +710,12 @@ export const PlayShuffle = () => (dispatch) => {
    payload: data,
  });
 //========================= Read Notifications===============================
+/**
+ *  Hashish
+ * @param {*} UserId 
+ * @param {*} notificationid 
+ * @param {*} token 
+ */
 export const ReadNotifications = (UserId, notificationid,token) => (dispatch) => {
   const data = { read:true };
   const Authstr = "Bearer ".concat(token);
@@ -729,7 +735,15 @@ export const ReadNotifications = (UserId, notificationid,token) => (dispatch) =>
  })
 };
 //========================= Share Songs ===============================
-export const ShareSongs= (UserId, trackid, recEmail,token) => (dispatch) => {
+/**
+ * This function takes the id of the track that will be shared, the email of the user that the 
+ * user will share this song with and the token of the signed user for authentication and make post request 
+ * for the back end to handle it
+ * @param {String} trackid 
+ * @param {String} recEmail 
+ * @param {String} token 
+ */
+export const ShareSongs= (trackid, recEmail,token) => (dispatch) => {
   const data = { 
       recipientEmail: recEmail,
       trackId : trackid
@@ -740,15 +754,16 @@ export const ShareSongs= (UserId, trackid, recEmail,token) => (dispatch) => {
   axios.post(`${ShareSongUrl}`, data,{
     headers: { Authorization: Authstr },
   });
-  // .then((response) => {
-  //   console.log("Response from sign in", response);
-  //   dispatch(addLogin(true));
-  //   axios
-  //     .get(`${SignUpUrl}/${iduser}`)
-  //     .then((response2) => dispatch(addUserData_BE(response2.data.data.user)));
-  // });
 };
 //=================================Create New Playlist================
+/**
+ * This Function takes the user that creates the playlist and the name of the new playlsit and the token of the signed user 
+ * for authentication and makes a post request for the backend then we get the user's updated data to have the new playlist added to
+ * users data we save 
+ * @param {String} userID 
+ * @param {String} playlist_Name 
+ * @param {String} token 
+ */
 export const CreatePlayList_BE=(userID,playlist_Name,token)=>(dispatch)=> {
   const data = { 
     name:playlist_Name,
@@ -776,6 +791,10 @@ export const CreatePlayList_BE=(userID,playlist_Name,token)=>(dispatch)=> {
   .catch(error => console.log(error));
 }
 //============================Add Song Id=================================
+/**
+ * Ezzat 
+ * @param {} data 
+ */
 export const AddSong_inPlaylist_id=(data)=>(dispatch)=>{
   dispatch(addSongID(data));
 }
@@ -784,6 +803,11 @@ export const addSongID = (data) => ({
   payload: data,
 });
 //===================Get Deleted PlayList ====================================
+/**
+ * Gets the User Deleted PlayList to render it 
+ * @param {*} UserId 
+ * @param {*} token 
+ */
 export const GetDeletedPlayList=(UserId,token)=>(dispatch)=>{
   console.log("entered here");  
   const Authstr = "Bearer ".concat(token);
@@ -794,11 +818,21 @@ export const GetDeletedPlayList=(UserId,token)=>(dispatch)=>{
   })
   .catch(error => console.log(error));
 } 
+/**
+ * the action that sets tha state with the user deleted playlsit
+ * @param {*} data 
+ */
 export const addDeletedPlaylists = (data) => ({
   type: ActionTypes.ADD_DELETED_PLAYLISTS,
   payload: data,
 });
 //=================== Recover PlayList ====================================
+/**
+ * the function that recovers the deleted playlist and put it back in the users playlist
+ * @param {*} userID 
+ * @param {*} PlaylistId 
+ * @param {*} token 
+ */
 export const RecoverPlayList=(userID,PlaylistId,token)=>(dispatch)=>{
   const data={
     id:userID
@@ -819,6 +853,11 @@ export const RecoverPlayList=(userID,PlaylistId,token)=>(dispatch)=>{
   .catch(error => console.log(error));
 } 
 //=====================Get Songs by Generes===============================
+/**
+ * Hashish
+ * @param {*} categoryId 
+ * @param {*} token 
+ */
 export const GetSongsByGeneres = (categoryId,token) =>(dispatch)=>{
   dispatch(ShowSongsByCategoryLoading());
   const Authstr = "Bearer ".concat(token);
@@ -837,6 +876,11 @@ export const ShowSongsByCategoryLoading = () => ({
   type: ActionTypes.SONGS_BYCATEGORY_LOADING,
 });
 //==================================Queue=================================
+/**
+ * Hashish 
+ * @param {*} userId 
+ * @param {*} token 
+ */
 export const GetQueue = (userId,token) =>(dispatch)=>{
   dispatch(AddQueueLoading());
   const Authstr = "Bearer ".concat(token);
@@ -893,6 +937,12 @@ export const RemoveQueue = (trackId,userId,token) =>(dispatch)=>{
   .catch(err=>console.log(err));
 } 
 //=======================LikeSong & Follow Artist=========================
+/**
+ * this function implements the like song
+ * @param {*} trackId 
+ * @param {*} userId 
+ * @param {*} token 
+ */
 export const LikeSong = (trackId,userId,token) =>(dispatch)=>{
   const data ={
     id:userId
@@ -912,6 +962,12 @@ export const LikeSong = (trackId,userId,token) =>(dispatch)=>{
   })
   .catch(err=>console.log(err));
 } 
+/**
+ * this function implements the dislike song
+ * @param {*} trackId 
+ * @param {*} userId 
+ * @param {*} token 
+ */
 export const DisLikeSong = (trackId,userId,token) =>(dispatch)=>{
  
   const data ={
@@ -932,6 +988,12 @@ export const DisLikeSong = (trackId,userId,token) =>(dispatch)=>{
   })
   .catch(err=>console.log(err));
 } 
+/**
+ * this function implements following an artist 
+ * @param {*} ArtistId 
+ * @param {*} userId 
+ * @param {*} token 
+ */
 export const FollowArtist = (ArtistId,userId,token) =>(dispatch)=>{
   const data ={
     id:userId
@@ -951,6 +1013,12 @@ export const FollowArtist = (ArtistId,userId,token) =>(dispatch)=>{
   })
   .catch(err=>console.log(err));
 } 
+/**
+ *  * this function implements unfollowing an artist 
+ * @param {*} ArtistId 
+ * @param {*} userId 
+ * @param {*} token 
+ */
 export const UnFollowArtist = (ArtistId,userId,token) =>(dispatch)=>{
   const data ={
     id:userId
