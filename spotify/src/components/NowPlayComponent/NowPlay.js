@@ -35,6 +35,7 @@ class NowPlay extends Component {
       email: '',
       shareModal: false,
       isNavOpen: false,
+      tempSharedSong: "",
       tempId: this.props.id.id,
 
     };
@@ -82,7 +83,8 @@ class NowPlay extends Component {
 
   shareSong(Song){
     //function of sharing 
-   this.setState({shareModal:true})
+   this.setState({shareModal:true,
+    tempSharedSong: Song})
   }
   handleChange(event) {
     this.setState({email: event.target.value});
@@ -553,7 +555,7 @@ class NowPlay extends Component {
                                                       </Dropdown.Toggle>
                                                       <Dropdown.Menu className="NowPlayDropdownMenu">
                                                         <Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.handleSubmit(Song)}} >Add Song To a PlayList</Dropdown.Item>
-                                                        <Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.shareSong(Song); this.toggleModal(true)}} >Share Song</Dropdown.Item>
+                                                        <Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.shareSong(Song); this.toggleModal(true)}} >Share {Song.name}</Dropdown.Item>
                                                         {this.props.data_be.data_be.queue.find(el => el == Song._id)===undefined?(
                                                           <Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.handleAddQueue(Song._id,this.props.data_be.data_be._id)}} >Add To Queue</Dropdown.Item>
                                                         ):(  
@@ -622,7 +624,7 @@ class NowPlay extends Component {
                                                           </Button>
                                                         </Col>
                                                       </Row>
-                                                      <Row><h2 id="shareSongHeader">Enter your friend's email to share {Song.name} with him now!</h2></Row>
+                                                      <Row><h2 id="shareSongHeader">Enter your friend's email to share {this.state.tempSharedSong.name} with him now!</h2></Row>
                                                     </Col>
                                                   </Row>
                                                   <div>
@@ -633,7 +635,7 @@ class NowPlay extends Component {
                                                         <input value={this.state.email} onChange={this.handleChange} placeholder="Your friend's email"></input>
                                                       </Col>
                                                       <Col md={{ size: 6, offset:3}} xs={{ size: 6, offset:3}} sm={{ size: 6, offset:3}} className="Create_new_playlist">
-                                                        <Button className="bg-primary" id="shareSongButton" onClick={()=>{this.handleShare(Song)}}>Send</Button>      
+                                                        <Button className="bg-primary" id="shareSongButton" onClick={()=>{this.handleShare(this.state.tempSharedSong)}}>Send</Button>      
                                                       </Col>
                                                     </Row>
                                                       <div>
