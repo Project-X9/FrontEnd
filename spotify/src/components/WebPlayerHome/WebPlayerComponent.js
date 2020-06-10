@@ -324,6 +324,14 @@ handleSubmit() {
                         PlaySong={this.props.PlaySong}
                         PauseSong={this.props.PauseSong}
                         isPlaying={this.props.isPlaying}
+                        isModalOpen={this.props.isModalOpen}
+                        ControlModal={this.props.ControlModal}
+                        PatchAddPlaylist={this.props.PatchAddPlaylist}
+                        RemoveQueue={this.props.RemoveQueue}
+                        AddToQueue={this.props.AddToQueue}
+                        DeleteAddPlaylist={this.props.DeleteAddPlaylist}
+                        AddSong_inPlaylist_id={this.props.AddSong_inPlaylist_id}
+                        songid={this.props.songid}
                       />
                     )}
                   />
@@ -332,7 +340,8 @@ handleSubmit() {
                     path="/webplayer/nowplay"
                     component={() => (
                       <NowPlay
-                        id={this.props.id}
+                          fullsongs={this.props.fullsongs}
+                          id={this.props.id}
                         data={this.props.data}
                         playLists={this.props.playLists}
                         data_be={this.props.data_be}
@@ -377,6 +386,9 @@ handleSubmit() {
                         PlaySong={this.props.PlaySong}
                         PauseSong={this.props.PauseSong}
                         isPlaying={this.props.isPlaying}
+                        token={this.props.token}
+                        FollowArtist={this.props.FollowArtist}
+                        UnFollowArtist={this.props.UnFollowArtist}
                       />
                     )}
                   />
@@ -447,6 +459,7 @@ handleSubmit() {
                         handleCurrentAlbums={this.props.handleCurrentAlbums}
                         handleCurrentArtists={this.props.handleCurrentArtists}
                         PlayTheFooter={this.props.PlayTheFooter}
+                        queue={this.props.queue}
                       />
                     )}
                   />

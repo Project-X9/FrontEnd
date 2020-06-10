@@ -437,11 +437,11 @@ onHandleShuffle(){
                                       <div className="now-playing-bar__right__inner">
                                           <div className="ExtraControls">
                                               <div className="volume-bar">
-                                                  {/* <Link to="/webplayer/queue" onClick={()=>this.props.GetQueue(this.props.data_be.data_be._id,this.props.token.token)}> */}
+                                                  <Link to="/webplayer/queue" onClick={()=>this.props.GetQueue(this.props.data_be.data_be._id,this.props.token.token)}>
                                                     <button className="control-button volume-bar__icon" aria-label="Queue" title="Queue" onClick={()=>this.handleQueue()}>
                                                         <i class="fa fa-list"></i>
                                                     </button>
-                                                  {/* </Link> */}
+                                                  </Link>
                                                   <button className="control-button volume-bar__icon" aria-label="Mute">
                                                       <i class="fa fa-volume-up"></i>
                                                   </button>
