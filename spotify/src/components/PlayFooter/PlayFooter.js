@@ -70,8 +70,9 @@ function format2Number(num) {
       this.interval_id = setInterval(this.onUpdate.bind(this), 250);
       // this.onPlayerNext();
       this.togglePlay=this.togglePlay.bind(this);
-    }
+      this.handleQueue=this.handleQueue.bind(this);
 
+    }
     onUpdate() {
       if (this._player) {
         if (!this.is_progress_dirty) {
@@ -85,7 +86,6 @@ function format2Number(num) {
         }
       }
     }
-   
     togglePlay() {
       if (this.props.isSignedIn.isSignedIn !== true) {
         this.setState({
@@ -128,6 +128,15 @@ function format2Number(num) {
         }
       }
     
+    }
+    // LikeSong={this.props.LikeSong}
+    // DisLikeSong={this.props.DisLikeSong}
+    // FollowArtist={this.props.FollowArtist}
+    // UnFollowArtist={this.props.UnFollowArtist}
+    handleQueue(){
+      alert("entered Here")
+      this.props.GetQueue(this.props.data_be.data_be._id,this.props.token.token);
+
     }
     ////////////////////////////// volume
     startSetVolume(evt) {
@@ -418,12 +427,11 @@ onHandleShuffle(){
                                       <div className="now-playing-bar__right__inner">
                                           <div className="ExtraControls">
                                               <div className="volume-bar">
-                                                  <Link to="/webplayer/queue">
-                                                    <button className="control-button volume-bar__icon" aria-label="Queue" title="Queue">
+                                                  {/* <Link to="/webplayer/queue" onClick={()=>this.props.GetQueue(this.props.data_be.data_be._id,this.props.token.token)}> */}
+                                                    <button className="control-button volume-bar__icon" aria-label="Queue" title="Queue" onClick={()=>this.handleQueue()}>
                                                         <i class="fa fa-list"></i>
-                                                        
                                                     </button>
-                                                  </Link>
+                                                  {/* </Link> */}
                                                   <button className="control-button volume-bar__icon" aria-label="Mute">
                                                       <i class="fa fa-volume-up"></i>
                                                   </button>

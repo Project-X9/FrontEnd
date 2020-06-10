@@ -38,7 +38,7 @@ class NowPlay extends Component {
       tempId: this.props.id.id,
 
     };
-    this.rendersuggestion=this.rendersuggestion.bind(this);
+    this.AddingToBe=this.AddingToBe.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state.toggleNav = this.toggleNav.bind(this);
     this.patchFollow = this.patchFollow.bind(this);
@@ -47,7 +47,12 @@ class NowPlay extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleShare = this.handleShare.bind(this);
     this.state.toggleModal = this.toggleModal.bind(this);
+    this.deleteSong=this.deleteSong.bind(this);
 
+  }
+  deleteSong(Song){
+    this.props.DeleteAddPlaylist(this.props.currentPlaylist.currentPlaylist._id,Song._id)
+    this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
   }
   handleSubmit(Song) {
     this.props.AddSong_inPlaylist_id(Song._id);
@@ -93,19 +98,16 @@ class NowPlay extends Component {
       this.props.RemoveQueue(songID,userID,this.props.token.token);
     }
 
-
-
-  rendersuggestion(idPlaylist){
-
+  AddingToBe(idPlaylist){
     let Playlist=this.props.data_be.data_be.playlists.find(element=> element._id===idPlaylist)
     if(Playlist!==undefined){
       let sameSong=Playlist.tracks.find(element=>element._id===this.props.songid.songid)
-      alert(sameSong)
       if(sameSong===undefined){
         this.props.PatchAddPlaylist(idPlaylist,this.props.songid.songid)
       }
       else{console.log("Already Found in the playlist")}
-    } }
+    }
+  }
 
   /**
    * isPlaylistFollowed returns if the users already follows this playlist or not
@@ -537,9 +539,10 @@ class NowPlay extends Component {
                                                       </Dropdown.Toggle>
                                                       <Dropdown.Menu>
                                                         <Dropdown.Item  onClick={()=>{this.handleSubmit(Song)}} >Add Song To a PlayList</Dropdown.Item>
-                                                        <Dropdown.Item  onClick={()=>{this.handleAddQueue(Song._id,this.props.data_be.data_be._id,this.props.token)}} >Add To Queue</Dropdown.Item>
-                                                        <Dropdown.Item  onClick={()=>{this.handleRemoveQueue(Song._id,this.props.data_be.data_be._id,this.props.token)}} >Remove From Queue</Dropdown.Item>
                                                         <Dropdown.Item  onClick={()=>{this.shareSong(Song); this.toggleModal(true)}} >Share Song</Dropdown.Item>
+                                                        <Dropdown.Item  onClick={()=>{this.handleAddQueue(Song._id,this.props.data_be.data_be._id)}} >Add To Queue</Dropdown.Item>
+                                                        <Dropdown.Item  onClick={()=>{this.handleRemoveQueue(Song._id,this.props.data_be.data_be._id)}} >Remove From Queue</Dropdown.Item>
+                                                        <Dropdown.Item  onClick={()=>{this.deleteSong(Song)}} >Delete {Song.name} from this playlist</Dropdown.Item>s
                                                       </Dropdown.Menu>
                                                     </Dropdown>
                                                   </div>
@@ -575,7 +578,7 @@ class NowPlay extends Component {
                                                                 {this.props.data_be.data_be.playlists.map(item=>{return( <Col className="PaddingColoumns"><Card>
                                                                   <CardImg top width="100%" src={item.image} alt="Card image cap" />
                                                                   <CardBody>
-                                                                    <Button className="bg-primary" onClick={()=>{this.rendersuggestion(item._id)}}>Add to {item.name}</Button>
+                                                                    <Button className="bg-primary" onClick={()=>{this.AddingToBe(item._id)}}>Add to {item.name}</Button>
                                                                   </CardBody>
                                                                 </Card></Col>)})}
 
