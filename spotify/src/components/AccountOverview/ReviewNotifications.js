@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import {Button} from "reactstrap";
 import { Link } from "react-router-dom";
 /**
- * Class for the reviewing the notifications 
+ * Class for the reviewing the notifications section in the account page
  */
 class ReviewNotifications extends Component {
   /**
@@ -19,7 +19,9 @@ class ReviewNotifications extends Component {
 
   /**
    * changes Not Read to Read
-   */
+   * @param userID 
+   * @param notificationID 
+   */ 
   changeRead(userID,notificationID)
   {
     this.props.ReadNotifications(userID,notificationID)

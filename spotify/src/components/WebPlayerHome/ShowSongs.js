@@ -15,6 +15,8 @@ class ShowSongs extends Component {
    * @param props.handleCurrentPlayList Essentially used to display playlist's data after integrating with the backend
    * @param props.categories Essentially contains an array of categories that contain playlists
    * @param props.PlayTheFooter Essentially used in show songs to be able to play the songs
+   * @param props.GetSongsByGeneres Essentially used to get the songs according to the chosen category
+   * @param props.genretracks Essentially contains the songs retrieved from a specific category
    */
   constructor(props) {
     super(props);
@@ -42,7 +44,7 @@ class ShowSongs extends Component {
   }
 
   /**
-   * Sets the state catID with the ID of the selected category
+   * Get the songs according to the category chosen
    */
   handleTheNotificationID(){
     if(this.state.catID!=="")

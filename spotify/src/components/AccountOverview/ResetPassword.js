@@ -35,12 +35,18 @@ class ResetPassword extends Component {
     this.props.resetpassword();
   }
 
+  /**
+   * Used for when the user enters text in the code textbox inside the modal
+   */
   handleChange(e){
     this.setState({
         inputValue:e.target.value
     })
 }
 
+ /**
+   * Used to check if the user entered the code correctly, if yes, then it will reset the password
+   */
 handleSubmitModal() {
     
     if(this.state.inputValue == this.props.signupdata.signupdata.randomId)
@@ -57,6 +63,9 @@ handleSubmitModal() {
 
 }   
 
+/**
+ * Used to make a random password and send it to the user via his email
+ */
   handleSubmit(values) {
     if (values.password !== "" ) {
         var min = 1;
@@ -64,10 +73,10 @@ handleSubmitModal() {
         var rand =  min + (Math.random() * (max-min));
         rand=Math.ceil(rand);
         this.props.ControlModal(true);
-        var service_id = "ahahmed202025_gmail_com";
-        var template_id = "template_6Gzc6XQv";
-        var UserID ="user_ZGAt1STrmZuTHMLbdVnkr"
-        emailjs.init("user_ZGAt1STrmZuTHMLbdVnkr");
+        var service_id = "gmail";
+        var template_id = "template_mEf57s4f";
+        var UserID ="user_jUaXMo4Oo1nGtzqQSfk4k"
+        emailjs.init("user_jUaXMo4Oo1nGtzqQSfk4k");
         var NewObject={
             password:values.password,     
             randomId:rand 
