@@ -36,7 +36,7 @@ class NowPlay extends Component {
       tempId: this.props.id.id,
 
     };
-    this.rendersuggestion=this.rendersuggestion.bind(this);
+    this.AddingToBe=this.AddingToBe.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state.toggleNav = this.toggleNav.bind(this);
     this.patchFollow = this.patchFollow.bind(this);
@@ -46,27 +46,23 @@ class NowPlay extends Component {
 
   }
   deleteSong(Song){
-
     this.props.DeleteAddPlaylist(this.props.currentPlaylist.currentPlaylist._id,Song._id)
     this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
-
   }
   handleSubmit(Song) {
     this.props.AddSong_inPlaylist_id(Song._id);
       this.props.ControlModal(true);
     }
-
-  rendersuggestion(idPlaylist){
-
+  AddingToBe(idPlaylist){
     let Playlist=this.props.data_be.data_be.playlists.find(element=> element._id===idPlaylist)
     if(Playlist!==undefined){
       let sameSong=Playlist.tracks.find(element=>element._id===this.props.songid.songid)
-      alert(sameSong)
       if(sameSong===undefined){
         this.props.PatchAddPlaylist(idPlaylist,this.props.songid.songid)
       }
       else{console.log("Already Found in the playlist")}
-    } }
+    }
+  }
 
   /**
    * isPlaylistFollowed returns if the users already follows this playlist or not
@@ -536,7 +532,7 @@ class NowPlay extends Component {
                                                                 {this.props.data_be.data_be.playlists.map(item=>{return( <Col className="PaddingColoumns"><Card>
                                                                   <CardImg top width="100%" src={item.image} alt="Card image cap" />
                                                                   <CardBody>
-                                                                    <Button className="bg-primary" onClick={()=>{this.rendersuggestion(item._id)}}>Add to {item.name}</Button>
+                                                                    <Button className="bg-primary" onClick={()=>{this.AddingToBe(item._id)}}>Add to {item.name}</Button>
                                                                   </CardBody>
                                                                 </Card></Col>)})}
 
