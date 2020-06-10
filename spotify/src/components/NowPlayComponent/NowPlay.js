@@ -73,7 +73,7 @@ class NowPlay extends Component {
 
   shareSong(Song){
     //function of sharing 
-    this.props.ControlModal(true);
+   this.setState({shareModal:true})
   }
   handleChange(event) {
     this.setState({email: event.target.value});
@@ -85,7 +85,6 @@ class NowPlay extends Component {
       // If the email is correct we send the selected song to another user
       alert('Sent ' +Song.name+" to "+this.state.email+"\n"+Song._id);
       this.setState({shareModal: false})
-      this.props.ControlModal(false)
   }
   else {
       // invalid email, alerts the user for an error.
@@ -600,7 +599,7 @@ class NowPlay extends Component {
                                                     <Col md={12} xs={12} sm={12}>
                                                       <Row>
                                                         <Col md={{ size: 6, offset: 5 }} xs={{ size: 6, offset: 3 }} sm={{ size: 6, offset: 3 }}>
-                                                          <Button className="exitButton_CP" onClick={()=>{this.props.toggleModal(false)}}>
+                                                          <Button className="exitButton_CP" onClick={()=>{this.setState({shareModal:false})}}>
                                                             <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                                               <title>Close</title>
                                                               <path d="M31.098 29.794L16.955 15.65 31.097 1.51 29.683.093 15.54 14.237 1.4.094-.016 1.508 14.126 15.65-.016 29.795l1.414 1.414L15.54 17.065l14.144 14.143" fill="#fff" fill-rule="evenodd"></path>
