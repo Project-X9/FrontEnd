@@ -16,6 +16,11 @@ import {
   RecoverUrl,
   AddToQueueUrl,
   RemoveFromQueueUrl,
+  GetQueueUrl,
+  LikeSongUrl,
+  DisLikeSongUrl,
+  FollowArtistUrl,
+  UnFollowArtistUrl
 } from "../shared/baseUrl";
 import { ArtistsUrl } from "./../shared/baseUrl";
 export const postupdatedFeedback = (id, isemail, isage, isID) => (dispatch) => {
@@ -381,7 +386,6 @@ export const makeSignupRedirectable = () => (dispatch) => {
  */
 export const handleLogout_BE = () => (dispatch) => {
   dispatch(LogOut_BE());
-  // dispatch(removeUserData());
 };
 /**
  * The action of Logout
@@ -402,8 +406,6 @@ export const handleCurrentPlayList = (id) => (dispatch) => {
     .then((response) =>
       dispatch(addCurrentPlaylist(response.data.data.playlist))
     );
-  // dispatch(addCurrentPlaylist(response))
-  // dispatch(removeUserData());
 };
 /**
  * This function takes the id of the artist we are going to render and request the data of it from the data base to be rendered 
@@ -417,8 +419,6 @@ export const handleCurrentArtists = (id) => (dispatch) => {
     .then((response) =>
       dispatch(addCurrentPlaylist(response.data.data.artist))
     );
-  // dispatch(addCurrentPlaylist(response))
-  // dispatch(removeUserData());
 };
 /**
  * This function takes the id of the Album we are going to render and request the data of it from the data base to be rendered 
@@ -430,9 +430,6 @@ export const handleCurrentAlbums = (id) => (dispatch) => {
   axios
     .get(`${AlbumsUrl}/${id}`)
     .then((response) => dispatch(addCurrentPlaylist(response.data.data.album)));
-
-  // dispatch(addCurrentPlaylist(response))
-  // dispatch(removeUserData());
 };
 /**
  * This is the action that when it is called the data of the current playlist, Album or Artist is stored in currentPlaylist
@@ -450,17 +447,65 @@ export const addCurrentPlaylist = (data) => ({
 export const CurrentLoading = () => ({
   type: ActionTypes.CURRENT_LOADING,
 });
+
 /**
- * I takes all this paramater and post it to the data base and if the email is already exist it will set the user state to false 
+ * Takes the data of the user and put it in data_be 
+ * @param {Object} data 
+ */
+export const addUser = (data) => ({
+  type: ActionTypes.ADD_USER,
+  payload: data,
+});
+
+export const patchedunfollow = (iduser, idplaylist) => (dispatch) => {
+  const data = { id: iduser };
+  console.log(data);
+  axios.patch(`${UnFollowURL}/${idplaylist}`, data);
+};
+export const patchedfollow = (iduser, idplaylist) => (dispatch) => {
+  const data = { id: iduser };
+  console.log(data);
+  axios.patch(`${FollowURL}/${idplaylist}`, data);
+};
+//=============================Sign Up==================================
+/**
+ * this functions saves all the data that the user enters while signing up + saves the random code that is sent to the
+ * useer email so when the user enters the righ code the saved data is send to PostFeedback that handels the sign up
+ * @param {Object} data 
+ */
+export const ForSignUpVerification = (data) => (dispatch) => {
+  dispatch(addNewUser(data)); 
+ };
+ /**
+  * the action that saves the signup data in a state to be used when the user enters the righ code
+  * @param {Object} data 
+  */
+ export const addNewUser = (data) => ({
+   type: ActionTypes.ADD_NEW_USER,
+   payload: data,
+ });
+ /**
+  * This Function controls the modal appears in many cases for example the moadl appears in the Sign up 
+  * to enter the code required
+  * @param {Boolean} data 
+  */
+ export const ControlModal = (data) => (dispatch) => {
+  dispatch(changeModalState(data));
+ //  dispatch(Play());
+ 
+ };
+ /**
+  * this action changes the state of the Modal 
+  * @param {Boolean} data 
+  */
+ export const changeModalState = (data) => ({
+   type: ActionTypes.CONTROLMODAL,
+   payload: data,
+ });
+ /**
+ * I takes an object that Contains_All_The_Required_Data_To_SignUp and post it to the data base and if the email is already exist it will set the user state to false 
  * else it will be true 
- * @param {String} email 
- * @param {String} confirmemail 
- * @param {String} password 
- * @param {String} name 
- * @param {Number} day 
- * @param {String} month 
- * @param {Number} year 
- * @param {String} sex 
+ * @param {Object} newFeedback
  */
 export const postFeedback = (
   newFeedback
@@ -488,64 +533,7 @@ export const postFeedback = (
     .catch((error) => {
       console.log(error);
       dispatch(addUser(false))});
-  // for (let index = 0; index < response.data.id + 1; index++) {
-  //   if (index === response.data.id) {
-  //     dispatch(addUserId(index));
-  //   }
-  // }
 };
-/**
- * Takes the data of the user and put it in data_be 
- * @param {Object} data 
- */
-export const addUser = (data) => ({
-  type: ActionTypes.ADD_USER,
-  payload: data,
-});
-export const patchedunfollow = (iduser, idplaylist) => (dispatch) => {
-  const data = { id: iduser };
-  // data.date = new Date().toISOString();
-  console.log(data);
-  axios.patch(`${UnFollowURL}/${idplaylist}`, data);
-  // .then((response) => {
-  //   console.log("Response from sign in", response);
-
-  //   axios
-  //     .get(`${SignUpUrl}/${iduser}`)
-  //     .then((response2) => dispatch(addUserData_BE(response2.data.data.user)));
-  // });
-};
-export const patchedfollow = (iduser, idplaylist) => (dispatch) => {
-  const data = { id: iduser };
-  // data.date = new Date().toISOString();
-  console.log(data);
-  axios.patch(`${FollowURL}/${idplaylist}`, data);
-  // .then((response) => {
-  //   console.log("Response from sign in", response);
-  //   dispatch(addLogin(true));
-  //   axios
-  //     .get(`${SignUpUrl}/${iduser}`)
-  //     .then((response2) => dispatch(addUserData_BE(response2.data.data.user)));
-  // });
-};
-export const ForSignUpVerification = (data) => (dispatch) => {
-  dispatch(addNewUser(data));
- //  dispatch(Play());
- 
- };
- export const addNewUser = (data) => ({
-   type: ActionTypes.ADD_NEW_USER,
-   payload: data,
- });
- export const ControlModal = (data) => (dispatch) => {
-  dispatch(changeModalState(data));
- //  dispatch(Play());
- 
- };
- export const changeModalState = (data) => ({
-   type: ActionTypes.CONTROLMODAL,
-   payload: data,
- });
 export const PremiumPost = (id, isPremium) => (dispatch) => {
   const data = {
     premium: isPremium,
@@ -555,71 +543,130 @@ export const PremiumPost = (id, isPremium) => (dispatch) => {
   axios.patch(`${PremiumUrl}/${id}`, data);
   // .then(response => alert(response.data.premium ));
 };
+//======================The Play Footer========================================
+/**
+ * This Function sets the Song that the footer will play in a state 
+ * @param {Object} songSrc 
+ */
 export const PlayTheFooter = (songSrc) => (dispatch) => {
  dispatch(addSongSrc(songSrc));
 //  dispatch(Play());
-
 };
+/**
+ * the action that sets the state of the Song 
+ * @param {Object} data 
+ */
 export const addSongSrc = (data) => ({
   type: ActionTypes.CURRENT_SONG_URL,
   payload: data,
 });
-
+/**
+ * this takes the previous song and save it in a state to get it when the user press the previous song 
+ * @param {Object} songSrc 
+ */
 export const AddPrevSong = (songSrc) => (dispatch) => {
   dispatch(addPrevSong(songSrc));
  //  dispatch(Play());
  
  };
+ /**
+  * the actio that sets the state of the previous song 
+  * @param {object} data 
+  */
  export const addPrevSong = (data) => ({
    type: ActionTypes.ADD_PREVIOUS,
    payload: data,
  });
+ //=======================Shuffle======================
+ /**
+  * This function Starts the shuffle and dispatch the action Play that put the shuffle state with true
+  */
 export const PlayShuffle = () => (dispatch) => {
   dispatch(Play());
  };
  export const Play = () => ({
    type: ActionTypes.START_SHUFFLE
  });
-
+/**
+  * This function Pauses the shuffle and dispatch the action Pause that put the shuffle state with false
+  */
  export const PauseShuffle = () => (dispatch) => {
   dispatch(Pause());
  };
  export const Pause = () => ({
    type: ActionTypes.PAUSE_SHUFFLE
  });
-
+/**
+ * Not Used
+ * @param {*} progress 
+ */
  export const ChangeSongProgress = (progress) => (dispatch) => {
   dispatch(songProgress(progress));
  };
+ /**
+  * Not Used
+  * @param {*} data 
+  */
  export const songProgress = (data) => ({
    type: ActionTypes.CHANGE_SONG_PROGRESS,
    payload: data,
  });
-
+/**
+ * Not Used
+ * @param {*} progress_mode 
+ */
  export const ChangeProgressMode = (progress_mode) => (dispatch) => {
   dispatch(progressMode(progress_mode));
  };
+ /**
+  * Not Used
+  * @param {*} data 
+  */
  export const progressMode = (data) => ({
    type: ActionTypes.CHANGE_PROGRESS_Mode,
    payload: data,
  });
-
+/**
+ * Not Used
+ * @param {*} progress_dirty 
+ */
  export const ChangeProgressDirty = (progress_dirty) => (dispatch) => {
   dispatch(progressDirty(progress_dirty));
  };
+ /**
+  * Not Used
+  * @param {*} data 
+  */
  export const progressDirty = (data) => ({
    type: ActionTypes.CHANGE_PROGRESS_Dirty,
    payload: data,
  });
+ /**
+  * Not Used
+  * @param {*} time 
+  */
  export const ChangeTotalTime = (time) => (dispatch) => {
   dispatch(totalTime(time));
  };
+ /**
+  * Not Used
+  * @param {*} data 
+  */
  export const totalTime = (data) => ({
    type: ActionTypes.TOTAL_TIME,
    payload: data,
- }); export const ChangeCurrentTime = (time) => (dispatch) => {
+ }); 
+ /**
+  * Not Used
+  * @param {*} time 
+  */
+ export const ChangeCurrentTime = (time) => (dispatch) => {
   dispatch(currentTime(time));
  };
+ /**
+  * Not Used
+  * @param {*} data 
+  */
  export const currentTime = (data) => ({
    type: ActionTypes.CURRENT_TIME,
    payload: data,
@@ -639,23 +686,25 @@ export const ReadNotifications = (UserId, notificationid,token) => (dispatch) =>
   .then((response) =>
     dispatch(addUserData_BE(response.data.data.user))
   );
-
  })
 };
 //========================= Share Songs ===============================
-export const ShareSongs= (UserId, idplaylist) => (dispatch) => {
-  const data = { id: UserId };
-  // data.date = new Date().toISOString();
-  console.log(data);
-  axios.patch(`${FollowURL}/${idplaylist}`, data);
-  // .then((response) => {
-  //   console.log("Response from sign in", response);
-  //   dispatch(addLogin(true));
-  //   axios
-  //     .get(`${SignUpUrl}/${iduser}`)
-  //     .then((response2) => dispatch(addUserData_BE(response2.data.data.user)));
-  // });
-};
+// export const ShareSongs= (UserId, trackid, recEmail) => (dispatch) => {
+//   const data = { 
+//     SenderId: UserId,
+//     recipientEmail:recEmail,
+
+//   };
+//   console.log(data);
+//   axios.post(`${FollowURL}/${idplaylist}`, data);
+//   // .then((response) => {
+//   //   console.log("Response from sign in", response);
+//   //   dispatch(addLogin(true));
+//   //   axios
+//   //     .get(`${SignUpUrl}/${iduser}`)
+//   //     .then((response2) => dispatch(addUserData_BE(response2.data.data.user)));
+//   // });
+// };
 //=================================Create New Playlist================
 export const CreatePlayList_BE=(userID,playlist_Name,token)=>(dispatch)=> {
   const data = { 
@@ -690,12 +739,6 @@ export const addSongID = (data) => ({
   payload: data,
 });
 //===================Get Deleted PlayList ====================================
-// .get(`${SignUpUrl}/${id}`, {
-//   headers: { Authorization: Authstr },
-// })
-// .then((response) =>
-//   dispatch(addUserData_BE(response.data.data.user))
-// );
 export const GetDeletedPlayList=(UserId,token)=>(dispatch)=>{
   console.log("entered here");  
   const Authstr = "Bearer ".concat(token);
@@ -742,7 +785,24 @@ export const addTracksByCategory = (data) => ({
 export const ShowSongsByCategoryLoading = () => ({
   type: ActionTypes.SONGS_BYCATEGORY_LOADING,
 });
-//==============================================================================
+//==================================Queue=================================
+export const GetQueue = (userId,token) =>(dispatch)=>{
+  dispatch(AddQueueLoading());
+  const Authstr = "Bearer ".concat(token);
+  axios.get(`${GetQueueUrl}/${userId}`,{
+    headers: { Authorization: Authstr },})
+  .then(response=>{ 
+    console.log()
+    dispatch(AddQueue(response.data.queue_tracks))})
+  .catch(err=>console.log(err));
+} 
+export const AddQueueLoading = () => ({
+  type: ActionTypes.ADDQUEUE_LOADING,
+});
+export const AddQueue = (data) => ({
+  type: ActionTypes.ADDQUEUE,
+  payload: data,
+});
 export const AddToQueue = (trackId,userId,token) =>(dispatch)=>{
   const data = {
     id:userId 
@@ -766,6 +826,76 @@ export const RemoveQueue = (trackId,userId,token) =>(dispatch)=>{
   }
   const Authstr = "Bearer ".concat(token);
   axios.patch(`${RemoveFromQueueUrl}/${trackId}`,data)
+  .then(response=>{
+    axios
+      .get(`${SignUpUrl}/${userId}`, {
+        headers: { Authorization: Authstr },
+      })
+      .then((response) =>
+        dispatch(addUserData_BE(response.data.data.user))
+      );
+  })
+  .catch(err=>console.log(err));
+} 
+//=======================LikeSong & Follow Artist=========================
+export const LikeSong = (trackId,userId,token) =>(dispatch)=>{
+  const data ={
+    id:userId
+  }
+  const Authstr = "Bearer ".concat(token);
+  axios.patch(`${LikeSongUrl}/${trackId}`,data)
+  .then(response=>{
+    axios
+      .get(`${SignUpUrl}/${userId}`, {
+        headers: { Authorization: Authstr },
+      })
+      .then((response) =>
+        dispatch(addUserData_BE(response.data.data.user))
+      );
+  })
+  .catch(err=>console.log(err));
+} 
+export const DisLikeSong = (trackId,userId,token) =>(dispatch)=>{
+ 
+  const data ={
+    id:userId
+  }
+  const Authstr = "Bearer ".concat(token);
+  axios.patch(`${DisLikeSongUrl}/${trackId}`,data)
+  .then(response=>{
+    axios
+      .get(`${SignUpUrl}/${userId}`, {
+        headers: { Authorization: Authstr },
+      })
+      .then((response) =>
+        dispatch(addUserData_BE(response.data.data.user))
+      );
+  })
+  .catch(err=>console.log(err));
+} 
+export const FollowArtist = (ArtistId,userId,token) =>(dispatch)=>{
+  const data ={
+    id:userId
+  }
+  const Authstr = "Bearer ".concat(token);
+  axios.patch(`${FollowArtistUrl}/${ArtistId}`,data)
+  .then(response=>{
+    axios
+      .get(`${SignUpUrl}/${userId}`, {
+        headers: { Authorization: Authstr },
+      })
+      .then((response) =>
+        dispatch(addUserData_BE(response.data.data.user))
+      );
+  })
+  .catch(err=>console.log(err));
+} 
+export const UnFollowArtist = (ArtistId,userId,token) =>(dispatch)=>{
+  const data ={
+    id:userId
+  }
+  const Authstr = "Bearer ".concat(token);
+  axios.patch(`${UnFollowArtistUrl}/${ArtistId}`,data)
   .then(response=>{
     axios
       .get(`${SignUpUrl}/${userId}`, {

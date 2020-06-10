@@ -26,6 +26,7 @@ import { AddToken } from './AddToken';
 import {ADDSongId} from './AddSongToPlayList'
 import { GenreTracks } from './ShowSongsByGeneres'
 import {DeletedPlaylists} from './RecoverPlayList'
+import {QueueOfTracks} from "./Queue"
 function saveState(state) {
   try {
     const serializedState = JSON.stringify(state);
@@ -73,6 +74,7 @@ export const ConfigureStore = () => {
       songid:ADDSongId,
       genretracks:GenreTracks,
       deletedPlaylists:DeletedPlaylists,
+      queue:QueueOfTracks,
       // playlist_BE:PlayList_BE,
       ...createForms({
         feedback: InitialFeedback,

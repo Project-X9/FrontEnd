@@ -383,9 +383,9 @@ handleSubmit() {
                     path="/webplayer/search"
                     component={() => (
                       <Search
-                          categories={this.props.categories}
-                          fullsongs={this.props.fullsongs}
-                          fullartists={this.props.fullartists}
+                        categories={this.props.categories}
+                        fullsongs={this.props.fullsongs}
+                        fullartists={this.props.fullartists}
                         id={this.props.id}
                         data={this.props.data}
                         playLists={this.props.playLists}
@@ -478,6 +478,15 @@ handleSubmit() {
                 prevsong={this.props.prevsong}
                 audio={this.props.audio}
                 AudioControl={this.props.AudioControl}
+                GetQueue={this.props.GetQueue}
+                queue={this.props.queue}
+                data_be={this.props.data_be}
+                token={this.props.token}
+                LikeSong={this.props.LikeSong}
+                DisLikeSong={this.props.DisLikeSong}
+                FollowArtist={this.props.FollowArtist}
+                UnFollowArtist={this.props.UnFollowArtist}
+
                />
         </div>
         <Modal
