@@ -377,6 +377,9 @@ handleSubmit() {
                         PlaySong={this.props.PlaySong}
                         PauseSong={this.props.PauseSong}
                         isPlaying={this.props.isPlaying}
+                        token={this.props.token}
+                        FollowArtist={this.props.FollowArtist}
+                        UnFollowArtist={this.props.UnFollowArtist}
                       />
                     )}
                   />
