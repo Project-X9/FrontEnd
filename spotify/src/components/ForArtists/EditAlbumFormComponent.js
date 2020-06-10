@@ -7,16 +7,16 @@ class EditAlbum extends Component {
                 <Row className="add-album-form">
                     <Form>
                         <FormGroup row>
-                            <Label for="email" sm={2} xs={2} md={2} lg={2} className="add-album-label">Name:</Label>
-                            <Col sm={10} md={10} xs={10} lg={6}>
+                            <Label for="email" sm={6} xs={6} md={6} lg={2} className="add-album-label">Name:</Label>
+                            <Col sm={12} md={12} xs={12} lg={6}>
                                 <Input name="albumName" placeholder="New Album Name" className="add-album-name"></Input>
                             </Col>
                         </FormGroup>
 
                         <FormGroup row>
-                            <Label for="image" sm={2} xs={2} md={2} lg={2} className="add-album-label">Image:</Label>
-                            <Col sm={10} md={10} xs={10} lg={6}>
-                                <Input type="file" name="file" id="newImage" placeholder="New Album Image" className="add-album-img-fld"></Input>
+                            <Label for="image" sm={6} xs={6} md={6} lg={2} className="add-album-label">Image:</Label>
+                            <Col sm={12} md={12} xs={12} lg={6}>
+                                <Input type="text" name="imageURL" id="newImage" placeholder="New Album Image URL" className="add-album-img-fld"></Input>
                             </Col>
                         </FormGroup>
                         <FormGroup check row>
