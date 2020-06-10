@@ -50,9 +50,18 @@ class NowPlay extends Component {
     this.deleteSong=this.deleteSong.bind(this);
 
   }
-  /**
+ 
+  handleAddQueue(songID,userID) {
+    this.props.AddToQueue(songID,userID,this.props.token.token)
+  }
+
+  handleRemoveQueue(songID,userID) {
+    this.props.RemoveQueue(songID,userID,this.props.token.token);
+  }
+ /**
    * DeleteSong passed the id of the Currentplaylist and the song to be deleted from it
    */
+
   deleteSong(Song){
     this.props.DeleteAddPlaylist(this.props.currentPlaylist.currentPlaylist._id,Song._id)
     this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
@@ -538,16 +547,22 @@ class NowPlay extends Component {
                                               <div className="DivStyle TrackListCol more">
                                                 <div className="DivStyle TrackListCol TopAlign">
                                                   <div className="DivStyle TrackListRow more textMenuWrapper">
-                                                    <Dropdown>
-                                                      <Dropdown.Toggle className="buttonstyle MultiButton">
+                                                    <Dropdown >
+                                                      <Dropdown.Toggle className="buttonstyle MultiButton NowPlayDropdownToggle">
                                                         <i className="fa fa-ellipsis-h"></i>
                                                       </Dropdown.Toggle>
-                                                      <Dropdown.Menu>
-                                                        <Dropdown.Item  onClick={()=>{this.handleSubmit(Song)}} >Add Song To a PlayList</Dropdown.Item>
-                                                        <Dropdown.Item  onClick={()=>{this.shareSong(Song); this.toggleModal(true)}} >Share Song</Dropdown.Item>
-                                                        <Dropdown.Item  onClick={()=>{this.handleAddQueue(Song._id,this.props.data_be.data_be._id)}} >Add To Queue</Dropdown.Item>
-                                                        <Dropdown.Item  onClick={()=>{this.handleRemoveQueue(Song._id,this.props.data_be.data_be._id)}} >Remove From Queue</Dropdown.Item>
-                                                        <Dropdown.Item  onClick={()=>{this.deleteSong(Song)}} >Delete {Song.name} from this playlist</Dropdown.Item>
+                                                      <Dropdown.Menu className="NowPlayDropdownMenu">
+                                                        <Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.handleSubmit(Song)}} >Add Song To a PlayList</Dropdown.Item>
+                                                        <Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.shareSong(Song); this.toggleModal(true)}} >Share Song</Dropdown.Item>
+                                                        {this.props.data_be.data_be.queue.find(el => el == Song._id)===undefined?(
+                                                          <Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.handleAddQueue(Song._id,this.props.data_be.data_be._id)}} >Add To Queue</Dropdown.Item>
+                                                        ):(  
+                                                        <div>
+                                                          <Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.handleRemoveQueue(Song._id,this.props.data_be.data_be._id)}} >Remove From Queue</Dropdown.Item>
+                                                          </div>
+                                                        )
+                                                        }
+                                                        <Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.deleteSong(Song)}} >Delete {Song.name} from this playlist</Dropdown.Item>
                                                       </Dropdown.Menu>
                                                     </Dropdown>
                                                   </div>
