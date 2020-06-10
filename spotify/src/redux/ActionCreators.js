@@ -61,19 +61,6 @@ export const PostPassword = (password, id) => (dispatch) => {
   const newPassword = { password: password };
   axios.patch(`${PremiumUrl}/${id}`, newPassword);
 };
-////////////////////////////////////For Handling the playlist either adding or removing it from the playlist /////////////////////////////////
-/**
- * This function handles the playlist either adding or removing it from the playlist
- */
-export const PatchAddPlaylist = (idPlaylist,idSong) => (dispatch) => {
-
-    axios.patch(`${PlaylistsUrl}/tracks/${idPlaylist}/${idSong}`)
-        .then(response=>console.log(response.data));
-};
-export const DeleteAddPlaylist = (idPlaylist,idSong) => (dispatch) => {
-    axios.patch(`${PlaylistsUrl}/deleteTrack/${idPlaylist}/${idSong}`)
-        .then(response=>console.log(response.data));
-};
 /**
  * This function handels the sign up with facebook 
  * @param {String} email 
@@ -232,6 +219,7 @@ export const addAlbum = (data) => ({
  * and if the user is not exist in the data base i set the isSignedIn to false    
  * @param {Object} data 
  */
+
 export const handleSignIn_BE = (data) => (dispatch) => {
   axios
     .post(SignInUrl, data)
@@ -331,6 +319,26 @@ function urlBase64ToUint8Array(base64String) {
   return outputArray;
 }
 
+////////////////////////////////////For Handling the playlist either adding or removing it from the playlist /////////////////////////////////
+/**
+ * This function handles the playlist either adding or removing it from the playlist
+ */
+export const PatchAddPlaylist = (idPlaylist,idSong,token) => (dispatch) => {
+  const Authstr = "Bearer ".concat(token);
+  
+  axios.patch(`${PlaylistsUrl}/tracks/${idPlaylist}/${idSong}`,{
+    headers: { Authorization: Authstr },
+  })
+      .then(response=>console.log(response.data));
+};
+export const DeleteAddPlaylist = (idPlaylist,idSong,token) => (dispatch) => {
+  const Authstr = "Bearer ".concat(token);
+
+  axios.patch(`${PlaylistsUrl}/deleteTrack/${idPlaylist}/${idSong}`,{
+    headers: { Authorization: Authstr },
+  })
+      .then(response=>console.log(response.data));
+};
 export const addToken = (data) => ({
   type: ActionTypes.ADD_TOKEN,
   payload: data,
@@ -405,10 +413,14 @@ export const LogOut_BE = () => ({
  * in the playlist interface and put in a state we called currentplayList  
  * @param {String} id 
  */
-export const handleCurrentPlayList = (id) => (dispatch) => {
+export const handleCurrentPlayList = (id,token) => (dispatch) => {
   dispatch(CurrentLoading(true));
+  const Authstr = "Bearer ".concat(token);
+
   axios
-    .get(`${PlaylistsUrl}/${id}`)
+    .get(`${PlaylistsUrl}/${id}`,{
+      headers: { Authorization: Authstr },
+    })
     .then((response) =>
       dispatch(addCurrentPlaylist(response.data.data.playlist))
     );
@@ -418,10 +430,14 @@ export const handleCurrentPlayList = (id) => (dispatch) => {
  * in the playlist interface and put in a state we called currentplayList  
  * @param {String} id 
  */
-export const handleCurrentArtists = (id) => (dispatch) => {
+export const handleCurrentArtists = (id,token) => (dispatch) => {
   dispatch(CurrentLoading(true));
+  const Authstr = "Bearer ".concat(token);
+
   axios
-    .get(`${ArtistsUrl}/${id}`)
+    .get(`${ArtistsUrl}/${id}`,  {
+      headers: { Authorization: Authstr },
+    })
     .then((response) =>
       dispatch(addCurrentPlaylist(response.data.data.artist))
     );
@@ -431,10 +447,14 @@ export const handleCurrentArtists = (id) => (dispatch) => {
  * in the playlist interface and put in a state we called currentplayList  
  * @param {String} id 
  */
-export const handleCurrentAlbums = (id) => (dispatch) => {
+export const handleCurrentAlbums = (id,token) => (dispatch) => {
   dispatch(CurrentLoading(true));
+  const Authstr = "Bearer ".concat(token);
+
   axios
-    .get(`${AlbumsUrl}/${id}`)
+    .get(`${AlbumsUrl}/${id}`, {
+      headers: { Authorization: Authstr },
+    })
     .then((response) => dispatch(addCurrentPlaylist(response.data.data.album)));
 };
 /**
@@ -463,15 +483,23 @@ export const addUser = (data) => ({
   payload: data,
 });
 
-export const patchedunfollow = (iduser, idplaylist) => (dispatch) => {
+export const patchedunfollow = (iduser, idplaylist,token) => (dispatch) => {
   const data = { id: iduser };
   console.log(data);
-  axios.patch(`${UnFollowURL}/${idplaylist}`, data);
+  const Authstr = "Bearer ".concat(token);
+
+  axios.patch(`${UnFollowURL}/${idplaylist}`, data, {
+    headers: { Authorization: Authstr },
+  });
 };
-export const patchedfollow = (iduser, idplaylist) => (dispatch) => {
+export const patchedfollow = (iduser, idplaylist,token) => (dispatch) => {
   const data = { id: iduser };
+  const Authstr = "Bearer ".concat(token);
+
   console.log(data);
-  axios.patch(`${FollowURL}/${idplaylist}`, data);
+  axios.patch(`${FollowURL}/${idplaylist}`, data, {
+    headers: { Authorization: Authstr },
+  });
 };
 //=============================Sign Up==================================
 /**
@@ -540,13 +568,17 @@ export const postFeedback = (
       console.log(error);
       dispatch(addUser(false))});
 };
-export const PremiumPost = (id, isPremium) => (dispatch) => {
+export const PremiumPost = (id, isPremium,token) => (dispatch) => {
   const data = {
     premium: isPremium,
     previouslyPremium: true,
   };
+  const Authstr = "Bearer ".concat(token);
+  
   // data.date = new Date().toISOString();
-  axios.patch(`${PremiumUrl}/${id}`, data);
+  axios.patch(`${PremiumUrl}/${id}`, data,{
+    headers: { Authorization: Authstr },
+  });
   // .then(response => alert(response.data.premium ));
 };
 //======================The Play Footer========================================
@@ -697,13 +729,17 @@ export const ReadNotifications = (UserId, notificationid,token) => (dispatch) =>
  })
 };
 //========================= Share Songs ===============================
-export const ShareSongs= (UserId, trackid, recEmail) => (dispatch) => {
+export const ShareSongs= (UserId, trackid, recEmail,token) => (dispatch) => {
   const data = { 
       recipientEmail: recEmail,
       trackId : trackid
   };
+  const Authstr = "Bearer ".concat(token);
+
   console.log(data);
-  axios.post(`${ShareSongUrl}`, data);
+  axios.post(`${ShareSongUrl}`, data,{
+    headers: { Authorization: Authstr },
+  });
   // .then((response) => {
   //   console.log("Response from sign in", response);
   //   dispatch(addLogin(true));
@@ -725,7 +761,9 @@ export const CreatePlayList_BE=(userID,playlist_Name,token)=>(dispatch)=> {
     likers: [],
    };
   const Authstr = "Bearer ".concat(token);
-  axios.post(`${PlaylistsUrl}/${userID}`, data)
+  axios.post(`${PlaylistsUrl}/${userID}`, data, {
+    headers: { Authorization: Authstr },
+  })
   .then(response=>{
     axios
       .get(`${SignUpUrl}/${userID}`, {
@@ -766,7 +804,9 @@ export const RecoverPlayList=(userID,PlaylistId,token)=>(dispatch)=>{
     id:userID
   }
   const Authstr = "Bearer ".concat(token);
-  axios.patch(`${RecoverUrl}/${PlaylistId}`, data)
+  axios.patch(`${RecoverUrl}/${PlaylistId}`, data, {
+    headers: { Authorization: Authstr },
+  })
   .then(response=>{ 
     axios
       .get(`${SignUpUrl}/${userID}`, {
@@ -779,9 +819,13 @@ export const RecoverPlayList=(userID,PlaylistId,token)=>(dispatch)=>{
   .catch(error => console.log(error));
 } 
 //=====================Get Songs by Generes===============================
-export const GetSongsByGeneres = (categoryId) =>(dispatch)=>{
+export const GetSongsByGeneres = (categoryId,token) =>(dispatch)=>{
   dispatch(ShowSongsByCategoryLoading());
-  axios.get(`${GetSongsByCategory}/${categoryId}`)
+  const Authstr = "Bearer ".concat(token);
+
+  axios.get(`${GetSongsByCategory}/${categoryId}`, {
+    headers: { Authorization: Authstr },
+  })
   .then(response=>dispatch(addTracksByCategory(response.data.data.array)))
   .catch(err=>console.log(err));
 } 
@@ -815,7 +859,9 @@ export const AddToQueue = (trackId,userId,token) =>(dispatch)=>{
     id:userId 
   }
   const Authstr = "Bearer ".concat(token);
-  axios.patch(`${AddToQueueUrl}/${trackId}`,data)
+  axios.patch(`${AddToQueueUrl}/${trackId}`,data, {
+    headers: { Authorization: Authstr },
+  })
   .then(response=>{
     axios
     .get(`${SignUpUrl}/${userId}`, {
@@ -832,7 +878,9 @@ export const RemoveQueue = (trackId,userId,token) =>(dispatch)=>{
     id:userId
   }
   const Authstr = "Bearer ".concat(token);
-  axios.patch(`${RemoveFromQueueUrl}/${trackId}`,data)
+  axios.patch(`${RemoveFromQueueUrl}/${trackId}`,data, {
+    headers: { Authorization: Authstr },
+  })
   .then(response=>{
     axios
       .get(`${SignUpUrl}/${userId}`, {
@@ -850,7 +898,9 @@ export const LikeSong = (trackId,userId,token) =>(dispatch)=>{
     id:userId
   }
   const Authstr = "Bearer ".concat(token);
-  axios.patch(`${LikeSongUrl}/${trackId}`,data)
+  axios.patch(`${LikeSongUrl}/${trackId}`,data, {
+    headers: { Authorization: Authstr },
+  })
   .then(response=>{
     axios
       .get(`${SignUpUrl}/${userId}`, {
@@ -868,7 +918,9 @@ export const DisLikeSong = (trackId,userId,token) =>(dispatch)=>{
     id:userId
   }
   const Authstr = "Bearer ".concat(token);
-  axios.patch(`${DisLikeSongUrl}/${trackId}`,data)
+  axios.patch(`${DisLikeSongUrl}/${trackId}`,data, {
+    headers: { Authorization: Authstr },
+  })
   .then(response=>{
     axios
       .get(`${SignUpUrl}/${userId}`, {
@@ -885,7 +937,9 @@ export const FollowArtist = (ArtistId,userId,token) =>(dispatch)=>{
     id:userId
   }
   const Authstr = "Bearer ".concat(token);
-  axios.patch(`${FollowArtistUrl}/${ArtistId}`,data)
+  axios.patch(`${FollowArtistUrl}/${ArtistId}`,data, {
+    headers: { Authorization: Authstr },
+  })
   .then(response=>{
     axios
       .get(`${SignUpUrl}/${userId}`, {
@@ -902,7 +956,9 @@ export const UnFollowArtist = (ArtistId,userId,token) =>(dispatch)=>{
     id:userId
   }
   const Authstr = "Bearer ".concat(token);
-  axios.patch(`${UnFollowArtistUrl}/${ArtistId}`,data)
+  axios.patch(`${UnFollowArtistUrl}/${ArtistId}`,data, {
+    headers: { Authorization: Authstr },
+  })
   .then(response=>{
     axios
       .get(`${SignUpUrl}/${userId}`, {
