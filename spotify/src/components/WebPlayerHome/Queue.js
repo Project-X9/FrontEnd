@@ -6,6 +6,7 @@ import PopularPlaylistsContent from "./PopularPlaylistsContent";
 import PopularArtistsHomeAndNavContent from "./PopularArtistsHomeAndNavContent";
 import PopularAlbumsHomeAndNavContent from "./PopularAlbumsHomeAndNavContent";
 import ShowSongs from "./ShowSongs";
+import {Loading} from './../Loading/LoadingComponent'
 /**
  * Songs inside Webplayer page
  */
@@ -143,35 +144,52 @@ class Queue extends Component {
                         </h2>
                     </div>
                 </div>
-                <div className="row QueueNextUpBiggestRow">
-                <div className="col">
-                    <div className="row">
-                        <div className="col-1 QueueNextUpFirstColumnFirstIcon">
-                            <div>
-                            <i class="fa fa-music"></i>
-                            </div>
-                        </div>
-                        <div className="col-9">
-                            <div className="row">
-                                <div className="col QueueNextUpFirstRow">
-                                    {song}
+                {
+                    this.props.queue.queue.map((track) => {
+                    return(
+                    <div key={track._id} className="row QueueNextUpBiggestRow">
+                    <div className="col">
+                        <div className="row">
+                            <div className="col-1 QueueNextUpFirstColumnFirstIcon">
+                                <div>
+                                <i class="fa fa-music"></i>
                                 </div>
                             </div>
-                            <div className="row">
-                                <div className="col QueueNextUpSecondRow">
-                                    {artist} . {album}
+                            <div className="col-9">
+                                <div className="row">
+                                    <div className="col QueueNextUpFirstRow">
+                                        {track.name}
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col QueueNextUpSecondRow">
+                                        {track.description}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="col-1 QueueNextUpThirdColumn">
-                            3:16
+                            <div className="col-1 QueueNextUpThirdColumn">
+                                3:16
+                            </div>
                         </div>
                     </div>
-                </div>
-                </div>
+                    </div>
+                    )
+                    }
+                    )
+                }
             </div>
         )
-
+        
+        let Body=(this.props.queue.isLoading===true?(
+            <div>
+              <Loading></Loading>
+            </div>
+            ):(
+            <div>
+            {nowPlaying}
+            {nextUp}
+            </div>
+          ) )
    
         
         return (
@@ -238,8 +256,7 @@ class Queue extends Component {
                   </div>
               </div>
               <div className="QueueMakingSomeSpace">
-                {nowPlaying}
-                {nextUp}
+                {Body}
               </div>
              
               
