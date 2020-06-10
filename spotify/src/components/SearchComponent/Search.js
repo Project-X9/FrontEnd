@@ -57,9 +57,15 @@ artists:this.props.fullartists.fullArtists
   handleLogout() {
     this.props.handleLogout_BE();
   }
+    /**
+     * Updating the stated with the names of the full songs in the database and also the artists
+     */
 componentDidMount(){
-  this.setState({SongsList:this.state.FullSongs.map(x=>x.name),ArtistList:this.state.FullSongs.map(x=>x.name)})
+  this.setState({SongsList:this.state.FullSongs.map(x=>x.name),ArtistList:this.state.artists.map(x=>x.name)})
 }
+    /**
+     * handleinput for comparing the input text with the names of the songs and artists
+     */
   handleinput=(e)=>{
     const value = e.target.value;
     let suggestionsForSongs=[];let suggestionsForArtists=[];
@@ -68,12 +74,12 @@ componentDidMount(){
       suggestionsForSongs=this.state.FullSongs.sort().filter(v=>regex.test(v.name));
       suggestionsForArtists=this.state.artists.sort().filter(v=>regex.test(v.name));
     }
-
     this.setState({suggestionArtists:suggestionsForArtists,suggestionSongs:suggestionsForSongs,search: value})
-
 }
 
-
+    /**
+     * renderSuggestion for rendering the matching items either from the artists or songs
+     */
 renderSuggestion(){
      const {suggestionSongs,suggestionArtists}=this.state;
      if(suggestionSongs.length===0 & suggestionArtists.length===0){return (<div>

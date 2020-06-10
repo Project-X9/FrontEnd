@@ -50,10 +50,25 @@ class NowPlay extends Component {
     this.deleteSong=this.deleteSong.bind(this);
 
   }
+ 
+  handleAddQueue(songID,userID) {
+    this.props.AddToQueue(songID,userID,this.props.token.token)
+  }
+
+  handleRemoveQueue(songID,userID) {
+    this.props.RemoveQueue(songID,userID,this.props.token.token);
+  }
+ /**
+   * DeleteSong passed the id of the Currentplaylist and the song to be deleted from it
+   */
+
   deleteSong(Song){
     this.props.DeleteAddPlaylist(this.props.currentPlaylist.currentPlaylist._id,Song._id)
     this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
   }
+  /**
+   * handleSubmit controls the modal appearing and sets a state with the id of the song selected
+   */
   handleSubmit(Song) {
     this.props.AddSong_inPlaylist_id(Song._id);
       this.props.ControlModal(true);
@@ -67,7 +82,7 @@ class NowPlay extends Component {
 
   shareSong(Song){
     //function of sharing 
-    this.props.ControlModal(true);
+   this.setState({shareModal:true})
   }
   handleChange(event) {
     this.setState({email: event.target.value});
@@ -79,7 +94,6 @@ class NowPlay extends Component {
       // If the email is correct we send the selected song to another user
       alert('Sent ' +Song.name+" to "+this.state.email+"\n"+Song._id);
       this.setState({shareModal: false})
-      this.props.ControlModal(false)
   }
   else {
       // invalid email, alerts the user for an error.
@@ -97,7 +111,9 @@ class NowPlay extends Component {
   handleRemoveQueue(songID,userID,token) {
       this.props.RemoveQueue(songID,userID,this.props.token.token);
     }
-
+  /**
+   * AddingToBe controls passing the id of the selected song and the selected playlist for the song to be added
+   */
   AddingToBe(idPlaylist){
     let Playlist=this.props.data_be.data_be.playlists.find(element=> element._id===idPlaylist)
     if(Playlist!==undefined){
@@ -114,7 +130,6 @@ class NowPlay extends Component {
    */
   handlePlay(song)
   {
-    alert("entered here");
     this.props.PlayTheFooter(song)
   }
   isPlaylistFollowed() {
@@ -137,7 +152,6 @@ class NowPlay extends Component {
         this.props.data_be.data_be._id,
         this.props.currentPlaylist.currentPlaylist._id
       );
-      alert()
       this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
     }
   }
@@ -205,7 +219,7 @@ class NowPlay extends Component {
         if (this.props.data_be.data_be.premium === false) {
           showUpgrade2 = (
             <NavLink className="StaticNavChild Disappear" to="/premium">
-              Upgarde to Premium
+              Upgrade to Premium
             </NavLink>
           );
         } else {
@@ -533,16 +547,22 @@ class NowPlay extends Component {
                                               <div className="DivStyle TrackListCol more">
                                                 <div className="DivStyle TrackListCol TopAlign">
                                                   <div className="DivStyle TrackListRow more textMenuWrapper">
-                                                    <Dropdown>
-                                                      <Dropdown.Toggle className="buttonstyle MultiButton">
+                                                    <Dropdown >
+                                                      <Dropdown.Toggle className="buttonstyle MultiButton NowPlayDropdownToggle">
                                                         <i className="fa fa-ellipsis-h"></i>
                                                       </Dropdown.Toggle>
-                                                      <Dropdown.Menu>
-                                                        <Dropdown.Item  onClick={()=>{this.handleSubmit(Song)}} >Add Song To a PlayList</Dropdown.Item>
-                                                        <Dropdown.Item  onClick={()=>{this.shareSong(Song); this.toggleModal(true)}} >Share Song</Dropdown.Item>
-                                                        <Dropdown.Item  onClick={()=>{this.handleAddQueue(Song._id,this.props.data_be.data_be._id)}} >Add To Queue</Dropdown.Item>
-                                                        <Dropdown.Item  onClick={()=>{this.handleRemoveQueue(Song._id,this.props.data_be.data_be._id)}} >Remove From Queue</Dropdown.Item>
-                                                        <Dropdown.Item  onClick={()=>{this.deleteSong(Song)}} >Delete {Song.name} from this playlist</Dropdown.Item>s
+                                                      <Dropdown.Menu className="NowPlayDropdownMenu">
+                                                        <Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.handleSubmit(Song)}} >Add Song To a PlayList</Dropdown.Item>
+                                                        <Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.shareSong(Song); this.toggleModal(true)}} >Share Song</Dropdown.Item>
+                                                        {this.props.data_be.data_be.queue.find(el => el == Song._id)===undefined?(
+                                                          <Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.handleAddQueue(Song._id,this.props.data_be.data_be._id)}} >Add To Queue</Dropdown.Item>
+                                                        ):(  
+                                                        <div>
+                                                          <Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.handleRemoveQueue(Song._id,this.props.data_be.data_be._id)}} >Remove From Queue</Dropdown.Item>
+                                                          </div>
+                                                        )
+                                                        }
+                                                        <Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.deleteSong(Song)}} >Delete {Song.name} from this playlist</Dropdown.Item>
                                                       </Dropdown.Menu>
                                                     </Dropdown>
                                                   </div>
@@ -594,7 +614,7 @@ class NowPlay extends Component {
                                                     <Col md={12} xs={12} sm={12}>
                                                       <Row>
                                                         <Col md={{ size: 6, offset: 5 }} xs={{ size: 6, offset: 3 }} sm={{ size: 6, offset: 3 }}>
-                                                          <Button className="exitButton_CP" onClick={()=>{this.props.toggleModal(false)}}>
+                                                          <Button className="exitButton_CP" onClick={()=>{this.setState({shareModal:false})}}>
                                                             <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                                               <title>Close</title>
                                                               <path d="M31.098 29.794L16.955 15.65 31.097 1.51 29.683.093 15.54 14.237 1.4.094-.016 1.508 14.126 15.65-.016 29.795l1.414 1.414L15.54 17.065l14.144 14.143" fill="#fff" fill-rule="evenodd"></path>
