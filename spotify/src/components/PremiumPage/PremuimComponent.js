@@ -49,7 +49,10 @@ class Premium extends Component {
     this.handlePremium_be = this.handlePremium_be.bind(this);
     this.state.handleLogout = this.handleLogout.bind(this);
   }
-
+  /**
+   *handleSubmit   handles showing the modal and determining whether to send the mail with the generated id if the user is not premium
+   * Or not send it from the beginning because he is just opening the modal to cancel his permiumship
+   */
   handleSubmit() {
     if(this.state.Premium){    this.props.ControlModal(true);
     }
@@ -57,7 +60,6 @@ else{   var min = 1;
     var max = 100;
     var rand =  min + (Math.random() * (max-min));
     rand=Math.ceil(rand);
-    alert(rand);
     var NewObject={
       randomId:rand
     }
@@ -74,13 +76,14 @@ else{   var min = 1;
     }
     emailjs.send(service_id, template_id,template_params)
         .then(function(){
-          alert("Sent!");
+
         }, function(err) {
-          alert("Send email failed!\r\n Response:\n " + JSON.stringify(err));
         });
 
   }}
-
+  /**
+   *handleChange  handles setting the state of the input value with
+   */
   handleChange(e){
     this.setState({
       inputValue:e.target.value
@@ -102,7 +105,7 @@ else{   var min = 1;
 
         this.setState({Premium: true});
       } else if (this.state.inputValue != this.props.signupdata.signupdata.randomId) {
-        alert("Wrong Code")
+
       }
     }
   }

@@ -261,9 +261,9 @@
   font-weight: var(--glue-font-weight-black);
   text-transform: none;
 }
-.TrackListHeader.Body.Inverter.Actions {
-  /* margin-top: 16px; */
-}
+/*.TrackListHeader.Body.Inverter.Actions {
+  /* margin-top: 16px; 
+}*/
 .TrackListHeader.ExtraButtons {
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -433,6 +433,7 @@
   -ms-user-select: none;
   user-select: none;
   position: relative;
+  margin-bottom: 7em;
 }
 
 .TrackListRow:hover {
@@ -566,4 +567,72 @@ display: inline;
   background-color: rgba(0,0,0,.9);
   z-index: 104;
   overflow-y: scroll;
+}
+
+.NowPlayDropdownToggle{
+  background-color: rgb(37, 37, 37);
+}
+
+.NowPlayDropdownToggle:hover{
+  background-color: rgb(63, 63, 63);
+  border:none;
+}
+
+.NowPlayDropdownToggle.dropdown-toggle.btn.btn-primary:active{
+  background-color: rgb(63, 63, 63);
+  border:none;
+  outline: none;
+}
+
+.NowPlayDropdownToggle.dropdown-toggle.btn.btn-primary:focus{
+  background-color: rgb(63, 63, 63);
+  outline: none;
+  border:none;
+  box-shadow: none;
+}
+
+.NowPlayDropdownMenu{
+  background-color: rgb(37, 37, 37);
+}
+
+.NowPlayDropdownItem{
+  background-color: rgb(37, 37, 37);
+  color:rgb(129, 129, 129);
+  font-weight: bold;
+}
+
+.NowPlayDropdownItem:hover{
+  background-color: rgb(63, 63, 63);
+  color:rgb(129, 129, 129);
+  font-weight: bold;
+}
+
+
+
+
+.shareSongBody{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,.9);
+  z-index: 104;
+  overflow-y: scroll;
+}
+.shareSongBody input{
+  width: 70%;
+  background-color: darkslategray;
+  height: 50px;
+  border-radius: 50px;
+  color: wheat;
+  padding-left: 20px;
+}
+.shareSongBody input:focus{
+  outline: none;
+}
+#shareSongHeader{
+  color: wheat;
+  margin-left: auto;
+  margin-right: auto;
 }

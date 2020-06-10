@@ -60,6 +60,10 @@ export const PostPassword = (password, id) => (dispatch) => {
   const newPassword = { password: password };
   axios.patch(`${PremiumUrl}/${id}`, newPassword);
 };
+////////////////////////////////////For Handling the playlist either adding or removing it from the playlist /////////////////////////////////
+/**
+ * This function handles the playlist either adding or removing it from the playlist
+ */
 export const PatchAddPlaylist = (idPlaylist,idSong) => (dispatch) => {
 
     axios.patch(`${PlaylistsUrl}/tracks/${idPlaylist}/${idSong}`)
