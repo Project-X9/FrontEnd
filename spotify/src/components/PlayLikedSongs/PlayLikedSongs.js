@@ -9,11 +9,15 @@ import {
   DropdownMenu,
   DropdownItem,
   Button,
-  DropdownToggle,
+  DropdownToggle, Modal, ModalBody,
 } from "reactstrap";
 import "../NowPlayComponent/NowPlay.css";
 import { NavLink, Redirect } from "react-router-dom";
 import { Loading } from "./../Loading/LoadingComponent";
+import Dropdown from "react-bootstrap/Dropdown";
+import Card from "@material-ui/core/Card";
+import CardImg from "react-bootstrap/CardImg";
+import CardBody from "reactstrap/es/CardBody";
 /**
  * PlayLikedSongs gets the liked songs of the user and displays it
  */
@@ -25,7 +29,95 @@ class PlayLikedSongs extends Component {
       tempId: this.props.data_be.data_be.id,
     };
     this.state.toggleNav = this.toggleNav.bind(this);
+    this.AddingToBe=this.AddingToBe.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state.toggleNav = this.toggleNav.bind(this);
     this.state.handleLogout = this.handleLogout.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleShare = this.handleShare.bind(this);
+    this.state.toggleModal = this.toggleModal.bind(this);
+    this.deleteSong=this.deleteSong.bind(this);
+  }
+  handleAddQueue(songID,userID) {
+    this.props.AddToQueue(songID,userID,this.props.token.token)
+  }
+
+  handleRemoveQueue(songID,userID) {
+    this.props.RemoveQueue(songID,userID,this.props.token.token);
+  }
+  /**
+   * DeleteSong passed the id of the Currentplaylist and the song to be deleted from it
+   */
+
+  deleteSong(Song){
+    this.props.DeleteAddPlaylist(this.props.currentPlaylist.currentPlaylist._id,Song._id)
+    this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
+  }
+  /**
+   * handleSubmit controls the modal appearing and sets a state with the id of the song selected
+   */
+  handleSubmit(Song) {
+    this.props.AddSong_inPlaylist_id(Song._id);
+    this.props.ControlModal(true);
+  }
+
+  toggleModal(x) {
+    this.setState({
+      shareModal: x
+    });
+  }
+
+  shareSong(Song){
+    //function of sharing
+    this.setState({shareModal:true})
+  }
+  handleChange(event) {
+    this.setState({email: event.target.value});
+  }
+
+  handleShare(Song){
+    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if ( re.test(String(this.state.email).toLowerCase()) ) {
+      // If the email is correct we send the selected song to another user
+      alert('Sent ' +Song.name+" to "+this.state.email+"\n"+Song._id);
+      this.setState({shareModal: false})
+    }
+    else {
+      // invalid email, alerts the user for an error.
+      alert("Error! invalid email, please try again.");
+    }
+  }
+
+  // RemoveQueue={this.props.RemoveQueue}
+  // AddToQueue={this.props.AddToQueue}
+  handleAddQueue(songID,userID) {
+    this.props.AddToQueue(songID,userID,this.props.token.token)
+  }
+
+
+  handleRemoveQueue(songID,userID,token) {
+    this.props.RemoveQueue(songID,userID,this.props.token.token);
+  }
+  /**
+   * AddingToBe controls passing the id of the selected song and the selected playlist for the song to be added
+   */
+  AddingToBe(idPlaylist){
+    let Playlist=this.props.data_be.data_be.playlists.find(element=> element._id===idPlaylist)
+    if(Playlist!==undefined){
+      let sameSong=Playlist.tracks.find(element=>element._id===this.props.songid.songid)
+      if(sameSong===undefined){
+        this.props.PatchAddPlaylist(idPlaylist,this.props.songid.songid)
+      }
+      else{console.log("Already Found in the playlist")}
+    }
+  }
+
+  /**
+   * isPlaylistFollowed returns if the users already follows this playlist or not
+   */
+  handlePlay(song)
+  {
+    this.props.PlayTheFooter(song)
   }
 
   toggleNav() {
@@ -316,78 +408,172 @@ class PlayLikedSongs extends Component {
                             </div>
                           ) : (
                             <div>
-                              {this.props.data_be.data_be.tracks.map((Song) => {
-                                return (
-                                  <section className="TrackListContainer">
-                                    <ol className="olstyle TrackListContainer Orderedlist">
-                                      <div className="Div textMenuWrapper">
-                                        <div draggable="true">
-                                          <li
-                                            tabindex="0"
-                                            role="button"
-                                            aria-pressed="false"
-                                            className="listyle TrackListRow"
-                                          >
-                                            <div className="DivStyle TrackListCol PositionOuter">
-                                              <div
-                                                role="button"
-                                                className="DivStyle TrackListCol PositionOuter TopAlign PlayPause"
-                                              >
-                                                <svg
-                                                  class="icon-play"
-                                                  viewBox="0 0 85 100"
+                              {this.props.data_be.data_be.tracks.map(
+                                  (Song) => {
+                                    return (
+                                        <section className="TrackListContainer">
+                                          <ol className="olstyle TrackListContainer Orderedlist">
+                                            <div className="Div textMenuWrapper">
+                                              <div draggable="true">
+                                                <li
+                                                    tabindex="0"
+                                                    role="button"
+                                                    aria-pressed="false"
+                                                    className="listyle TrackListRow"
                                                 >
-                                                  <path
-                                                    fill="currentColor"
-                                                    d="M81 44.6c5 3 5 7.8 0 10.8L9 98.7c-5 3-9 .7-9-5V6.3c0-5.7 4-8 9-5l72 43.3z"
-                                                  >
-                                                    <title>PLAY</title>
-                                                  </path>
-                                                </svg>
-                                              </div>
-                                              <div
-                                                role="button"
-                                                className="DivStyle TrackListCol PositionOuter  Position"
-                                              >
-                                                <i className="fa fa-music"></i>
+                                                  <div className="DivStyle TrackListCol PositionOuter">
+                                                    <div
+                                                        role="button"
+                                                        className="DivStyle TrackListCol PositionOuter TopAlign PlayPause"
+                                                    >
+                                                      <button onClick={()=>this.handlePlay(Song)}>
+                                                        <svg
+                                                            class="icon-play"
+                                                            viewBox="0 0 85 100"
+                                                        >
+                                                          <path
+                                                              fill="currentColor"
+                                                              d="M81 44.6c5 3 5 7.8 0 10.8L9 98.7c-5 3-9 .7-9-5V6.3c0-5.7 4-8 9-5l72 43.3z"
+                                                          >
+                                                            <title>PLAY</title>
+                                                          </path>
+                                                        </svg>
+                                                      </button>
+                                                    </div>
+                                                    <div
+                                                        role="button"
+                                                        className="DivStyle TrackListCol PositionOuter  Position"
+                                                    >
+                                                      <i className="fa fa-music"></i>
+                                                    </div>
+                                                  </div>
+                                                  <div className="DivStyle TrackListCol name">
+                                                    <div className="DivStyle TrackListCol TopAlign ">
+                                                      <div className="DivStyle InOneLine TrackListName">
+                                                        {Song.name}{" "}
+                                                      </div>
+                                                      <div className="DivStyle TrackListName SecondLine">
+                                                        By{" "}
+                                                        {Song.artists.map(
+                                                            (artist) => {
+                                                              return artist.name;
+                                                            }
+                                                        )}{" "}
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div className="DivStyle TrackListCol more">
+                                                    <div className="DivStyle TrackListCol TopAlign">
+                                                      <div className="DivStyle TrackListRow more textMenuWrapper">
+                                                        <Dropdown >
+                                                          <Dropdown.Toggle className="buttonstyle MultiButton NowPlayDropdownToggle">
+                                                            <i className="fa fa-ellipsis-h"></i>
+                                                          </Dropdown.Toggle>
+                                                          <Dropdown.Menu className="NowPlayDropdownMenu">
+                                                            <Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.handleSubmit(Song)}} >Add Song To a PlayList</Dropdown.Item>
+                                                            <Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.shareSong(Song); this.toggleModal(true)}} >Share Song</Dropdown.Item>
+                                                            {this.props.data_be.data_be.queue.find(el => el == Song._id)===undefined?(
+                                                                <Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.handleAddQueue(Song._id,this.props.data_be.data_be._id)}} >Add To Queue</Dropdown.Item>
+                                                            ):(
+                                                                <div>
+                                                                  <Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.handleRemoveQueue(Song._id,this.props.data_be.data_be._id)}} >Remove From Queue</Dropdown.Item>
+                                                                </div>
+                                                            )
+                                                            }
+                                                          </Dropdown.Menu>
+                                                        </Dropdown>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <Modal isOpen={this.props.isModalOpen.isModalOpen} >
+                                                    <ModalBody className="createPlayListBody">
+                                                      <Row>
+                                                        <Col md={12} xs={12} sm={12}>
+                                                          <Row>
+                                                            <Col md={{ size: 6, offset: 5 }} xs={{ size: 6, offset: 3 }} sm={{ size: 6, offset: 3 }}>
+                                                              <Button className="exitButton_CP" onClick={()=>this.props.ControlModal(false)}>
+                                                                <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                                                  <title>Close</title>
+                                                                  <path d="M31.098 29.794L16.955 15.65 31.097 1.51 29.683.093 15.54 14.237 1.4.094-.016 1.508 14.126 15.65-.016 29.795l1.414 1.414L15.54 17.065l14.144 14.143" fill="#fff" fill-rule="evenodd"></path>
+                                                                </svg>
+                                                              </Button>
+                                                            </Col>
+                                                          </Row>
+                                                        </Col>
+                                                      </Row>
+                                                      <div>
+                                                        <div>
+                                                          <Row>
+                                                            <Col md={{ size: 6, offset:3}} xs={{ size: 6, offset:3}} sm={{ size: 6, offset:3}} className="Create_new_playlist">
+                                                              <h1>Add To Any of your Playlists</h1>
+                                                            </Col>
+                                                          </Row>
+                                                          <div>
+                                                            {this.props.data_be.data_be.playlists.length===0?
+                                                                (<div><p>No Liked PlayList for you</p></div>):(<div>
+                                                                  <Row className=" RowSearch" sm="5">
+                                                                    {this.props.data_be.data_be.playlists.map(item=>{return( <Col className="PaddingColoumns"><Card>
+                                                                      <CardImg top width="100%" src={item.image} alt="Card image cap" />
+                                                                      <CardBody>
+                                                                        <Button className="bg-primary" onClick={()=>{this.AddingToBe(item._id)}}>Add to {item.name}</Button>
+                                                                      </CardBody>
+                                                                    </Card></Col>)})}
+
+                                                                  </Row></div>)}
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </ModalBody>
+                                                  </Modal>
+                                                  <Modal isOpen={this.state.shareModal===true} >
+                                                    <ModalBody className="shareSongBody">
+                                                      <Row>
+                                                        <Col md={12} xs={12} sm={12}>
+                                                          <Row>
+                                                            <Col md={{ size: 6, offset: 5 }} xs={{ size: 6, offset: 3 }} sm={{ size: 6, offset: 3 }}>
+                                                              <Button className="exitButton_CP" onClick={()=>{this.setState({shareModal:false})}}>
+                                                                <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                                                  <title>Close</title>
+                                                                  <path d="M31.098 29.794L16.955 15.65 31.097 1.51 29.683.093 15.54 14.237 1.4.094-.016 1.508 14.126 15.65-.016 29.795l1.414 1.414L15.54 17.065l14.144 14.143" fill="#fff" fill-rule="evenodd"></path>
+                                                                </svg>
+                                                              </Button>
+                                                            </Col>
+                                                          </Row>
+                                                          <Row><h2 id="shareSongHeader">Enter your friend's email to share {Song.name} with him now!</h2></Row>
+                                                        </Col>
+                                                      </Row>
+                                                      <div>
+                                                        <div>
+                                                          <form>
+                                                            <Row>
+                                                              <Col md={{ size: 6, offset:3}} xs={{ size: 6, offset:3}} sm={{ size: 6, offset:3}} className="Create_new_playlist">
+                                                                <input value={this.state.email} onChange={this.handleChange} placeholder="Your friend's email"></input>
+                                                              </Col>
+                                                              <Col md={{ size: 6, offset:3}} xs={{ size: 6, offset:3}} sm={{ size: 6, offset:3}} className="Create_new_playlist">
+                                                                <Button className="bg-primary" id="shareSongButton" onClick={()=>{this.handleShare(Song)}}>Send</Button>
+                                                              </Col>
+                                                            </Row>
+                                                            <div>
+
+                                                            </div>
+                                                          </form>
+                                                        </div>
+                                                      </div>
+                                                    </ModalBody>
+                                                  </Modal>
+                                                  <div className="DivStyle TrackLisCol Duration">
+                                                    <div className="DivStyle TrackListHeader Body by">
+                                                      <span>3:21</span>
+                                                    </div>
+                                                  </div>
+                                                </li>
                                               </div>
                                             </div>
-                                            <div className="DivStyle TrackListCol name">
-                                              <div className="DivStyle TrackListCol TopAlign ">
-                                                <div className="DivStyle InOneLine TrackListName">
-                                                  {Song.name}{" "}
-                                                </div>
-                                                <div className="DivStyle TrackListName SecondLine">
-                                                  By{" "}
-                                                  {Song.artists.map(
-                                                    (artisis) => {
-                                                      return artisis.name;
-                                                    }
-                                                  )}{" "}
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <div className="DivStyle TrackListCol more">
-                                              <div className="DivStyle TrackListCol TopAlign">
-                                                <div className="DivStyle TrackListRow more textMenuWrapper">
-                                                  <button className="buttonstyle MultiButton">
-                                                    <i class="fa fa-ellipsis-h"></i>
-                                                  </button>
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <div className="DivStyle TrackLisCol Duration">
-                                              <div className="DivStyle TrackListHeader Body by">
-                                                <span>3:21</span>
-                                              </div>
-                                            </div>
-                                          </li>
-                                        </div>
-                                      </div>
-                                    </ol>
-                                  </section>
-                                );
-                              })}
+                                          </ol>
+                                        </section>
+                                    );
+                                  }
+                              )}
                             </div>
                           )}
                         </div>
@@ -398,7 +584,7 @@ class PlayLikedSongs extends Component {
               </section>
             </div>
           ) : (
-            <div>{redirect}</div>
+              <div>{redirect}</div>
           )}
         </div>
       );

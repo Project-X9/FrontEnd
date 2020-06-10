@@ -324,6 +324,14 @@ handleSubmit() {
                         PlaySong={this.props.PlaySong}
                         PauseSong={this.props.PauseSong}
                         isPlaying={this.props.isPlaying}
+                        isModalOpen={this.props.isModalOpen}
+                        ControlModal={this.props.ControlModal}
+                        PatchAddPlaylist={this.props.PatchAddPlaylist}
+                        RemoveQueue={this.props.RemoveQueue}
+                        AddToQueue={this.props.AddToQueue}
+                        DeleteAddPlaylist={this.props.DeleteAddPlaylist}
+                        AddSong_inPlaylist_id={this.props.AddSong_inPlaylist_id}
+                        songid={this.props.songid}
                       />
                     )}
                   />
