@@ -340,7 +340,8 @@ handleSubmit() {
                     path="/webplayer/nowplay"
                     component={() => (
                       <NowPlay
-                        id={this.props.id}
+                          fullsongs={this.props.fullsongs}
+                          id={this.props.id}
                         data={this.props.data}
                         playLists={this.props.playLists}
                         data_be={this.props.data_be}
