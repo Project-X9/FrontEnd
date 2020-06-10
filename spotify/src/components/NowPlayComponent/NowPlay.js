@@ -45,14 +45,23 @@ class NowPlay extends Component {
     this.deleteSong=this.deleteSong.bind(this);
 
   }
+  /**
+   * DeleteSong passed the id of the Currentplaylist and the song to be deleted from it
+   */
   deleteSong(Song){
     this.props.DeleteAddPlaylist(this.props.currentPlaylist.currentPlaylist._id,Song._id)
     this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
   }
+  /**
+   * handleSubmit controls the modal appearing and sets a state with the id of the song selected
+   */
   handleSubmit(Song) {
     this.props.AddSong_inPlaylist_id(Song._id);
       this.props.ControlModal(true);
     }
+  /**
+   * AddingToBe controls passing the id of the selected song and the selected playlist for the song to be added
+   */
   AddingToBe(idPlaylist){
     let Playlist=this.props.data_be.data_be.playlists.find(element=> element._id===idPlaylist)
     if(Playlist!==undefined){
@@ -69,7 +78,6 @@ class NowPlay extends Component {
    */
   handlePlay(song)
   {
-    alert("entered here");
     this.props.PlayTheFooter(song)
   }
   isPlaylistFollowed() {
@@ -92,7 +100,6 @@ class NowPlay extends Component {
         this.props.data_be.data_be._id,
         this.props.currentPlaylist.currentPlaylist._id
       );
-      alert()
       this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
     }
   }
@@ -160,7 +167,7 @@ class NowPlay extends Component {
         if (this.props.data_be.data_be.premium === false) {
           showUpgrade2 = (
             <NavLink className="StaticNavChild Disappear" to="/premium">
-              Upgarde to Premium
+              Upgrade to Premium
             </NavLink>
           );
         } else {
@@ -496,7 +503,7 @@ class NowPlay extends Component {
                                                         <Dropdown.Item  onClick={()=>{this.handleSubmit(Song)}} >Add Song To a PlayList</Dropdown.Item>
                                                         <Dropdown.Item  onClick={()=>{this.handleAddQueue(Song._id,this.props.data_be.data_be._id)}} >Add To Queue</Dropdown.Item>
                                                         <Dropdown.Item  onClick={()=>{this.handleRemoveQueue(Song._id,this.props.data_be.data_be._id)}} >Remove From Queue</Dropdown.Item>
-                                                        <Dropdown.Item  onClick={()=>{this.deleteSong(Song)}} >Delete {Song.name} from this playlist</Dropdown.Item>s
+                                                        <Dropdown.Item  onClick={()=>{this.deleteSong(Song)}} >Delete {Song.name} from this playlist</Dropdown.Item>
                                                       </Dropdown.Menu>
                                                     </Dropdown>
                                                   </div>
