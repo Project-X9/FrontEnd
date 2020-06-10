@@ -106,7 +106,7 @@ class PlayLikedSongs extends Component {
     if(Playlist!==undefined){
       let sameSong=Playlist.tracks.find(element=>element._id===this.props.songid.songid)
       if(sameSong===undefined){
-        this.props.PatchAddPlaylist(idPlaylist,this.props.songid.songid)
+        this.props.PatchAddPlaylist(idPlaylist,this.props.songid.songid,this.props.token.token)
       }
       else{console.log("Already Found in the playlist")}
     }
