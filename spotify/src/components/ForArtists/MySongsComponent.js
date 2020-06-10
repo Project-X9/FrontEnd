@@ -36,7 +36,7 @@ class MySongs extends Component {
                 </Row>
                 <Row>
                     <Col offset="6" className="edit-btn">
-                        <Button outline color="success" size="lg">
+                        <Button outline color="success" size="lg" className="edit-albums-btn">
                             <Link to="/forartists/songs/edit">
                                 Edit Songs
                             </Link>

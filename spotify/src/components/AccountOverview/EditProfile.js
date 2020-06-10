@@ -38,7 +38,7 @@ class EditProfile extends Component {
   handlePatchedInfo = (values) => {
     this.props.reseteditprofile();
     this.props.postupdatedFeedback(
-      this.state.tempId,
+        this.props.data_be.data_be._id,
       values.email,
       parseInt(values.age, 10),
       values.ID
@@ -55,7 +55,6 @@ class EditProfile extends Component {
     if (this.state.tempId === "") {
       redirect = <Redirect to="/signup" />;
     }
-
     return (
       <div className="container">
         {redirect}
@@ -92,16 +91,29 @@ class EditProfile extends Component {
           </Row>
           <Row className="form-group">
             <Col xs={12} md={{ size: 6, offset: 3 }}>
-              <Label>Age</Label>
+              <Label>Country</Label>
               <Control.text
                 className="form-control"
-                model=".age"
-                id="age"
-                name="age"
-                placeholder="New Age"
+                model=".country"
+                id="country"
+                name="country"
+                placeholder="New country"
               />
             </Col>
           </Row>
+          <Row className="form-group">
+            <Col xs={12} md={{ size: 6, offset: 3 }}>
+              <Label>Age</Label>
+              <Control.text
+                  className="form-control"
+                  model=".age"
+                  id="age"
+                  name="age"
+                  placeholder="New Age"
+              />
+            </Col>
+          </Row>
+
           <Row className="form-group">
             <Col>
               <Button className="EditProfileCancelButton">

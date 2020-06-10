@@ -22,7 +22,7 @@ class Artist extends Component {
     this.state = {
       overview: 1,
       following: false,
-      isNavOpen: false
+      isNavOpen: false,
       // Followed: this.props.data_be.data_be.following.id,
     };
     this.state.toggleNav = this.toggleNav.bind(this);
@@ -36,7 +36,7 @@ class Artist extends Component {
   toggleNav() {
     this.setState({
       isNavOpen: !this.state.isNavOpen,
-      collapsed: !this.state.collapsed
+      collapsed: !this.state.collapsed,
     });
   }
 
@@ -66,13 +66,35 @@ class Artist extends Component {
     const Temp = 3;
     this.setState({ overview: Temp });
   }
+  componentDidMount(){
+    if(!this.props.currentPlaylist.isLoading){
+      this.props.currentPlaylist.currentPlaylist.followers.find(el => el._id==this.props.data_be.data_be._id)===undefined?(this.setState({following: false})):(this.setState({following:true}))
+    }
+  }
 
 /**Follow artist function, currently only changes the button on click, to be implemented later */
   toggleFollow() {
 
     const temp = this.state.following;
+    if(temp===false){
     this.props.FollowArtist(this.props.currentPlaylist.currentPlaylist._id,this.props.data_be.data_be._id,this.props.token.token);
+    }
+    else{
+      this.props.UnFollowArtist(this.props.currentPlaylist.currentPlaylist._id,this.props.data_be.data_be._id,this.props.token.token);
+    }
     this.setState({ following: !temp });
+  }
+  handleCurrentAlbums(data) {
+    // let id="";
+    // this.props.handleLogoutId(id);
+    let id="";
+    /*
+    for(let i=0;i<data.length;i++){
+      const id = this.props.data_be.data_be.albums.find(
+        (element) => element._id == this.props.currentPlaylist.currentPlaylist.albums[i]
+      )==undefined?return(<div></div>)
+
+    }*/
   }
 
   /**
@@ -84,6 +106,10 @@ class Artist extends Component {
     if (this.props.currentPlaylist.isLoading) {
       return <Loading />;
     } else {
+      let TopSongs="";
+      let TopAlbums="";
+      let element="";
+ // this.handleCurrentAlbums(this.props.currentPlaylist.currentPlaylist);
       return (
         <div className="artistPage container">
           <div className="container-fluid m-0 p-0">
@@ -172,99 +198,45 @@ class Artist extends Component {
                   <header className="Header1" id="popular-songs">
                     Popular
                   </header>
+                  {TopSongs = this.props.currentPlaylist.currentPlaylist.tracks.map((song)=>
+                  {return(
                   <Link>
                     <div className="artist-song">
                       <img
-                        src="https://annsokoto.files.wordpress.com/2018/02/dualipa.jpg?w=356&h=356"
+                        src={song.imageUrl}
                         width="50px"
                         height="50px"
                         className="artist-image"
                       />
                       <p className="song-text">
                         {
-                          this.props.currentPlaylist.currentPlaylist.tracks[0]
-                            .name
+                          song.name
                         }
                       </p>
                       <p className="duration">3:03</p>
                     </div>
                   </Link>
-                  {/* <Link>
-                  <div className="artist-song">
-                    <img
-                      src="https://annsokoto.files.wordpress.com/2018/02/dualipa.jpg?w=356&h=356"
-                      width="50px"
-                      height="50px"
-                      className="artist-image"
-                    />
-                    <p className="song-text">{this.props.currentPlaylist.currentPlaylist.tracks[1]}</p>
-                    <p className="duration">3:29</p>
-                  </div>
-                </Link> */}
-                  {/* <Link>
-                  <div className="artist-song">
-                    <img
-                      src="https://annsokoto.files.wordpress.com/2018/02/dualipa.jpg?w=356&h=356"
-                      width="50px"
-                      height="50px"
-                      className="artist-image"
-                    />
-                    <p className="song-text">{this.props.currentPlaylist.currentPlaylist.tracks[2]}</p>
-                    <p className="duration">3:43</p>
-                  </div>
-                </Link>
-                <Link>
-                  <div className="artist-song">
-                    <img
-                      src="https://annsokoto.files.wordpress.com/2018/02/dualipa.jpg?w=356&h=356"
-                      width="50px"
-                      height="50px"
-                      className="artist-image"
-                    />
-                    <p className="song-text">{this.props.currentPlaylist.currentPlaylist.tracks[3]}</p>
-                    <p className="duration">3:21</p>
-                  </div>
-                </Link>
-                <Link>
-                  <div className="artist-song">
-                    <img
-                      src="https://annsokoto.files.wordpress.com/2018/02/dualipa.jpg?w=356&h=356"
-                      width="50px"
-                      height="50px"
-                      className="artist-image"
-                    />
-                    <p className="song-text">{this.props.currentPlaylist.currentPlaylist.tracks[4]}</p>
-                    <p className="duration">3:13</p>
-                  </div>
-                </Link> */}
+                  )})}
                   <header className="Header1" id="popular-songs">
                     Albums
                   </header>
                   <div className="artist-albums">
+                    {TopAlbums = this.props.currentPlaylist.currentPlaylist.albums.map((album)=>{return(
+                      this.props.data_be.data_be.albums.find(
+                        (element) => element._id == album
+                      )===undefined?(<div>hello</div>):(
                     <Link>
                       <div className="album-card">
                         <img
-                          src="https://annsokoto.files.wordpress.com/2018/02/dualipa.jpg?w=356&h=356"
+                          src={element.image}
                           width="150px"
-                          height="150px"
+                          height="152px"
                           className="artist-image"
                           id="album-img"
                         ></img>
-                        <span class="caption">Dua Lipa</span>{" "}
+                        <span class="caption">{element.name}</span>{" "}
                       </div>
-                    </Link>
-                    <Link>
-                      <div className="album-card">
-                        <img
-                          src="https://myegy.io/files/img/content/9/938/1585610997.500_1000.jpg"
-                          width="150px"
-                          height="150px"
-                          className="artist-image"
-                          id="album-img"
-                        ></img>
-                        <span class="caption">Future Nostalgia</span>{" "}
-                      </div>
-                    </Link>
+                    </Link>))})}
                   </div>
                 </div>
               )}

@@ -35,6 +35,7 @@ class NowPlay extends Component {
       email: '',
       shareModal: false,
       isNavOpen: false,
+        EditingPlaylist:false,
       tempSharedSong: "",
       tempId: this.props.id.id,
 
@@ -49,9 +50,14 @@ class NowPlay extends Component {
     this.handleShare = this.handleShare.bind(this);
     this.state.toggleModal = this.toggleModal.bind(this);
     this.deleteSong=this.deleteSong.bind(this);
+    this.handleEditSubmit=this.handleEditSubmit.bind(this);
 
   }
- 
+
+  handleEditSubmit(){
+      this.setState({EditingPlaylist:true})
+
+  }
   handleAddQueue(songID,userID) {
     this.props.AddToQueue(songID,userID,this.props.token.token)
   }
@@ -113,6 +119,13 @@ class NowPlay extends Component {
   handleRemoveQueue(songID,userID,token) {
       this.props.RemoveQueue(songID,userID,this.props.token.token);
     }
+    AddingSongPlayListToBe(idSong){
+        let Song=this.props.currentPlaylist.currentPlaylist.tracks.find(element=> element._id===idSong)
+        if(Song===undefined){
+                this.props.PatchAddPlaylist(this.props.currentPlaylist.currentPlaylist._id,idSong)}
+
+            else{console.log("Already Found in the playlist")}
+        }
   /**
    * AddingToBe controls passing the id of the selected song and the selected playlist for the song to be added
    */
@@ -415,7 +428,10 @@ class NowPlay extends Component {
                                   <div className="TrackListHeader Body Inverter Actions">
                                     <button className="signupbtn" type="submit">
                                       PLAY
-                                    </button>
+                                  </button>
+                                      <button className="signupbtn" type="submit" onClick={this.handleEditSubmit}>
+                                          Edit PlayList
+                                      </button>
                                     <div className="TrackListHeader ExtraButtons">
                                       <Button
                                         className="Jumbostyle"
@@ -610,6 +626,46 @@ class NowPlay extends Component {
                                                   </div>
                                                 </ModalBody>
                                               </Modal>
+                                                <Modal isOpen={this.state.EditingPlaylist} >
+                                                    <ModalBody className="createPlayListBody">
+                                                        <Row>
+                                                            <Col md={12} xs={12} sm={12}>
+                                                                <Row>
+                                                                    <Col md={{ size: 6, offset: 5 }} xs={{ size: 6, offset: 3 }} sm={{ size: 6, offset: 3 }}>
+                                                                        <Button className="exitButton_CP" onClick={()=>this.props.ControlModal(false)}>
+                                                                            <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                                                                <title>Close</title>
+                                                                                <path d="M31.098 29.794L16.955 15.65 31.097 1.51 29.683.093 15.54 14.237 1.4.094-.016 1.508 14.126 15.65-.016 29.795l1.414 1.414L15.54 17.065l14.144 14.143" fill="#fff" fill-rule="evenodd"></path>
+                                                                            </svg>
+                                                                        </Button>
+                                                                    </Col>
+                                                                </Row>
+                                                            </Col>
+                                                        </Row>
+                                                        <div>
+                                                            <div>
+                                                                <Row>
+                                                                    <Col md={{ size: 6, offset:3}} xs={{ size: 6, offset:3}} sm={{ size: 6, offset:3}} className="Create_new_playlist">
+                                                                        <h1>Add To your Playlists</h1>
+                                                                    </Col>
+                                                                </Row>
+                                                                <div>
+                                                                    {this.props.fullsongs.fullSongs.length===0?
+                                                                        (<div><p>No Available Songs for you</p></div>):(<div>
+                                                                            <Row className=" RowSearch" sm="5">
+                                                                                {this.props.fullsongs.fullSongs.map(item=>{return( <Col className="PaddingColoumns"><Card>
+                                                                                    <CardImg top width="100%" src={item.imageUrl} alt="Card image cap" />
+                                                                                    <CardBody>
+                                                                                        <Button className="bg-primary" onClick={()=>{this.AddingSongPlayListToBe(item._id)}}>Add {item.name}</Button>
+                                                                                    </CardBody>
+                                                                                </Card></Col>)})}
+
+                                                                            </Row></div>)}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </ModalBody>
+                                                </Modal>
                                               <Modal isOpen={this.state.shareModal===true} >
                                                 <ModalBody className="shareSongBody">
                                                   <Row>

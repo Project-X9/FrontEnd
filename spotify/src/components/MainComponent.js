@@ -123,14 +123,14 @@ const mapDispatchToProps = (dispatch) => ({
   fetchUserPlaylist: () => {
     dispatch(fetchUserPlaylist());
   },
-  handleCurrentPlayList: (data) => {
-    dispatch(handleCurrentPlayList(data));
+  handleCurrentPlayList: (data,token) => {
+    dispatch(handleCurrentPlayList(data,token));
   },
-  handleCurrentArtists: (data) => {
-    dispatch(handleCurrentArtists(data));
+  handleCurrentArtists: (data,token) => {
+    dispatch(handleCurrentArtists(data,token));
   },
-  handleCurrentAlbums: (data) => {
-    dispatch(handleCurrentAlbums(data));
+  handleCurrentAlbums: (data,token) => {
+    dispatch(handleCurrentAlbums(data,token));
   },
   fetchArtist: () => {
     dispatch(fetchArtist());

@@ -58,3 +58,7 @@ export const DisLikeSongUrl ="http://localhost:3000/api/v1/follow/track/un";
 export const FollowArtistUrl ="http://localhost:3000/api/v1/follow/artist";
 export const UnFollowArtistUrl ="http://localhost:3000/api/v1/follow/artist/un";
 
+//==========================================================================
+export const ShareSongUrl ="localhost:3000/api/v1/share/share-track";
+
+
