@@ -145,10 +145,10 @@ handleSubmitModal() {
         }
         this.props.ControlModal(true);
         this.props.ForSignUpVerification(NewObject);
-        var service_id = "ahahmed202025_gmail_com";
-        var template_id = "template_6Gzc6XQv";
-        var UserID ="user_ZGAt1STrmZuTHMLbdVnkr"
-        emailjs.init("user_ZGAt1STrmZuTHMLbdVnkr");
+        var service_id = "gmail";
+        var template_id = "template_mEf57s4f";
+        var UserID ="user_jUaXMo4Oo1nGtzqQSfk4k"
+        emailjs.init("user_jUaXMo4Oo1nGtzqQSfk4k");
         
         var template_params={
           message_html: rand,

@@ -9,7 +9,10 @@ import { Link ,Redirect } from 'react-router-dom';
 import "./PlayFooter.css";
 import { totalTime } from '../../redux/ActionCreators';
 
-
+/**
+ * Function that that transfer the audio time to a time format 
+ * @param {*} num 
+ */
 function format2Number(num) {
     var str = num + '';
     if (str.length === 1) {
@@ -20,7 +23,10 @@ function format2Number(num) {
     }
     return str;
   }
-  
+  /**
+   * Takes the time and change it to the format 00:00 for example 
+   * @param {*} s 
+   */
   function formatTime(s) {
     if (!s && s !== 0) {
       return '00:00';
@@ -37,7 +43,10 @@ function format2Number(num) {
   
     return format2Number(minutes) + ':' + format2Number(seconds);
   }
-  
+  /**
+   * 
+   * @param {*} el 
+   */
   function offsetLeft(el) {
     var left = 0;
     while (el && el !== document) {
@@ -82,6 +91,7 @@ function format2Number(num) {
         }
         if (this._player.ended){
           this.onPlayerNext();
+          
   
         }
       }

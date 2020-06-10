@@ -20,7 +20,8 @@ import {
   LikeSongUrl,
   DisLikeSongUrl,
   FollowArtistUrl,
-  UnFollowArtistUrl
+  UnFollowArtistUrl,
+  ShareSongUrl
 } from "../shared/baseUrl";
 import { ArtistsUrl } from "./../shared/baseUrl";
 export const postupdatedFeedback = (id, isemail, isage, isID) => (dispatch) => {
@@ -235,11 +236,11 @@ export const handleSignIn_BE = (data) => (dispatch) => {
   axios
     .post(SignInUrl, data)
     .then((response) => {
-      test(response.data.user._id);
       console.log("Response from sign in", response);
       dispatch(addLogin(true));
       var token = response.data.token;
       const Authstr = "Bearer ".concat(token);
+      test(response.data.user._id,token);
       dispatch(addToken(token));
       axios
         .get(`${SignUpUrl}/${response.data.user._id}`, {
@@ -271,13 +272,13 @@ const publicVapidKey =
 "BDGd6_hu_pl5u_eEPBImTWFn5WBzDPHoXucwGEIx8-aNq8AtrAa_V5W1MlJbduW5SoB3_r3UyYMQmRM-lGetgg0";
 
 // Check for service worker
-export const test =(id)=>{
+export const test =(id,token)=>{
     if ("serviceWorker" in navigator) {
-        send(id).catch(err => console.error(err));
+        send(id,token).catch(err => console.error(err));
       }
 }
 
-async function send(id) {
+async function send(id,token) {
   // Register Service Worker
   console.log("Registering service worker...");
   const swUrl = `${process.env.PUBLIC_URL}/service-worker-custom.js`
@@ -298,8 +299,10 @@ async function send(id) {
   {
     pushSubscription: subscription
   }
-  
- axios.post(`${SignUpUrl}/${id}/update-push`,body)
+  const Authstr = "Bearer ".concat(token);
+ axios.post(`${SignUpUrl}/me/update-push`,body, {
+  headers: { Authorization: Authstr },
+})
   .then(response=>console.log(response))
   .catch(err=> console.log(err));
   // await fetch(`${SignUpUrl}/${id}/update-push`, {
@@ -680,7 +683,9 @@ export const ReadNotifications = (UserId, notificationid,token) => (dispatch) =>
   const Authstr = "Bearer ".concat(token);
   // data.date = new Date().toISOString();
   console.log(data);
-  axios.patch(`http://localhost:3000/api/v1/users/${UserId}/notifications/${notificationid}`, data)
+  axios.patch(`http://localhost:3000/api/v1/users/me/notifications/${notificationid}`, data, {
+    headers: { Authorization: Authstr }
+  })
  .then(response => {
   axios
   .get(`${SignUpUrl}/${UserId}`, {
@@ -692,22 +697,21 @@ export const ReadNotifications = (UserId, notificationid,token) => (dispatch) =>
  })
 };
 //========================= Share Songs ===============================
-// export const ShareSongs= (UserId, trackid, recEmail) => (dispatch) => {
-//   const data = { 
-//     SenderId: UserId,
-//     recipientEmail:recEmail,
-
-//   };
-//   console.log(data);
-//   axios.post(`${FollowURL}/${idplaylist}`, data);
-//   // .then((response) => {
-//   //   console.log("Response from sign in", response);
-//   //   dispatch(addLogin(true));
-//   //   axios
-//   //     .get(`${SignUpUrl}/${iduser}`)
-//   //     .then((response2) => dispatch(addUserData_BE(response2.data.data.user)));
-//   // });
-// };
+export const ShareSongs= (UserId, trackid, recEmail) => (dispatch) => {
+  const data = { 
+      recipientEmail: recEmail,
+      trackId : trackid
+  };
+  console.log(data);
+  axios.post(`${ShareSongUrl}`, data);
+  // .then((response) => {
+  //   console.log("Response from sign in", response);
+  //   dispatch(addLogin(true));
+  //   axios
+  //     .get(`${SignUpUrl}/${iduser}`)
+  //     .then((response2) => dispatch(addUserData_BE(response2.data.data.user)));
+  // });
+};
 //=================================Create New Playlist================
 export const CreatePlayList_BE=(userID,playlist_Name,token)=>(dispatch)=> {
   const data = { 
