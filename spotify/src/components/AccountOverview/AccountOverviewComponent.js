@@ -30,7 +30,6 @@ import ReviewNotifications from "./ReviewNotifications";
 import RecoverPlaylists from "./RecoverPlaylist";
 import { baseUrl2 } from "../../shared/baseUrl";
 import ResetPassword from "./ResetPassword";
-import RecoverPlaylist from "./RecoverPlaylist";
 
 /**
  * Account Overview page
@@ -508,14 +507,6 @@ test(){
                         data={this.props.data}
                         data_be={this.props.data_be}
                         reseteditprofile={this.props.reseteditprofile}
-                      />
-                    )}
-                  />
-                  <Route
-                    path="/account/recoverplaylist"
-                    component={() => (
-                      <RecoverPlaylist
-                      data_be={this.props.data_be}
                       />
                     )}
                   />
