@@ -261,9 +261,9 @@
   font-weight: var(--glue-font-weight-black);
   text-transform: none;
 }
-.TrackListHeader.Body.Inverter.Actions {
-  /* margin-top: 16px; */
-}
+/*.TrackListHeader.Body.Inverter.Actions {
+  /* margin-top: 16px; 
+}*/
 .TrackListHeader.ExtraButtons {
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -566,4 +566,30 @@ display: inline;
   background-color: rgba(0,0,0,.9);
   z-index: 104;
   overflow-y: scroll;
+}
+.shareSongBody{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,.9);
+  z-index: 104;
+  overflow-y: scroll;
+}
+.shareSongBody input{
+  width: 70%;
+  background-color: darkslategray;
+  height: 50px;
+  border-radius: 50px;
+  color: wheat;
+  padding-left: 20px;
+}
+.shareSongBody input:focus{
+  outline: none;
+}
+#shareSongHeader{
+  color: wheat;
+  margin-left: auto;
+  margin-right: auto;
 }

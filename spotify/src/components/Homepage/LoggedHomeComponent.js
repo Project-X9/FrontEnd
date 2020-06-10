@@ -11,6 +11,7 @@ class LoggedHome extends Component {
         super(props);
     }
     render() {
+        let TopSongs="";
         /**@return: returns the homepage component consisting of a navbar component, main part and a footer component. */
         return (
             <div className="Home homeLog">
@@ -40,27 +41,17 @@ class LoggedHome extends Component {
                         </button>
                     </Link>
                     <div className="songCards">
-                        <div className="songCard">
-                            <Link to="/webplayer">
-                                <img src={this.props.fullsongs.fullSongs[0].imageUrl} width="350" height="350" />
-                                <h3 className="imgText">{this.props.fullsongs.fullSongs[0]
-                                    .name}</h3>
-                            </Link>
-                        </div>
-                        <div className="songCard">
-                            <Link to="/webplayer">
-                                <img src={this.props.fullsongs.fullSongs[1].imageUrl} width="350" height="350" />
-                                <h3 className="imgText">{this.props.fullsongs.fullSongs[1]
-                                    .name}</h3>
-                            </Link>
-                        </div>
-                        <div className="songCard">
-                            <Link to="/webplayer">
-                                <img src={this.props.fullsongs.fullSongs[3].imageUrl} width="350" height="350" />
-                                <h3 className="imgText">{this.props.fullsongs.fullSongs[2]
-                                    .name}</h3>
-                            </Link>
-                        </div>
+                    {TopSongs = this.props.fullsongs.fullSongs.map((song) => {
+                        return(
+                            <div className="songCard">
+                                <Link to="/webplayer">
+                                 <img src={song.imageUrl} width="350" height="350" />
+                                <h3 className="imgText">{song
+                               .name}</h3>
+                                </Link>
+                            </div>
+                    )})
+                }
                     </div>
                 </div>
 

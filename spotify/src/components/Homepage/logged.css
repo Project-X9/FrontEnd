@@ -14,7 +14,7 @@
     margin-top: 40px;
 }
 .secondJT{
-    height: 750px;
+    height: 1050px;
 }
 .secondJT h1{
     font-size: 52px;
@@ -38,10 +38,17 @@
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .songCard{
     flex: 33%;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+    margin-bottom: 10px;
 }
 @media (max-width: 768px){
     .songCards{
@@ -73,3 +80,4 @@
     visibility: visible;
     opacity: 1;
   }
+  

@@ -32,6 +32,8 @@ class NowPlay extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      email: '',
+      shareModal: false,
       isNavOpen: false,
       tempId: this.props.id.id,
 
@@ -42,6 +44,9 @@ class NowPlay extends Component {
     this.patchFollow = this.patchFollow.bind(this);
     this.state.handleLogout = this.handleLogout.bind(this);
     this.patchunFollow = this.patchunFollow.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleShare = this.handleShare.bind(this);
+    this.state.toggleModal = this.toggleModal.bind(this);
     this.deleteSong=this.deleteSong.bind(this);
 
   }
@@ -58,6 +63,45 @@ class NowPlay extends Component {
   handleSubmit(Song) {
     this.props.AddSong_inPlaylist_id(Song._id);
       this.props.ControlModal(true);
+  }
+
+  toggleModal(x) {
+    this.setState({
+      shareModal: x
+    });
+  }
+
+  shareSong(Song){
+    //function of sharing 
+    this.props.ControlModal(true);
+  }
+  handleChange(event) {
+    this.setState({email: event.target.value});
+  }
+
+  handleShare(Song){
+    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if ( re.test(String(this.state.email).toLowerCase()) ) {
+      // If the email is correct we send the selected song to another user
+      alert('Sent ' +Song.name+" to "+this.state.email+"\n"+Song._id);
+      this.setState({shareModal: false})
+      this.props.ControlModal(false)
+  }
+  else {
+      // invalid email, alerts the user for an error.
+      alert("Error! invalid email, please try again.");
+  }
+  }
+
+  // RemoveQueue={this.props.RemoveQueue}
+    // AddToQueue={this.props.AddToQueue}
+  handleAddQueue(songID,userID) {
+      this.props.AddToQueue(songID,userID,this.props.token.token)
+  }
+
+
+  handleRemoveQueue(songID,userID,token) {
+      this.props.RemoveQueue(songID,userID,this.props.token.token);
     }
   /**
    * AddingToBe controls passing the id of the selected song and the selected playlist for the song to be added
@@ -501,6 +545,7 @@ class NowPlay extends Component {
                                                       </Dropdown.Toggle>
                                                       <Dropdown.Menu>
                                                         <Dropdown.Item  onClick={()=>{this.handleSubmit(Song)}} >Add Song To a PlayList</Dropdown.Item>
+                                                        <Dropdown.Item  onClick={()=>{this.shareSong(Song); this.toggleModal(true)}} >Share Song</Dropdown.Item>
                                                         <Dropdown.Item  onClick={()=>{this.handleAddQueue(Song._id,this.props.data_be.data_be._id)}} >Add To Queue</Dropdown.Item>
                                                         <Dropdown.Item  onClick={()=>{this.handleRemoveQueue(Song._id,this.props.data_be.data_be._id)}} >Remove From Queue</Dropdown.Item>
                                                         <Dropdown.Item  onClick={()=>{this.deleteSong(Song)}} >Delete {Song.name} from this playlist</Dropdown.Item>
@@ -545,6 +590,42 @@ class NowPlay extends Component {
 
                                                               </Row></div>)}
                                                       </div>
+                                                    </div>
+                                                  </div>
+                                                </ModalBody>
+                                              </Modal>
+                                              <Modal isOpen={this.state.shareModal===true} >
+                                                <ModalBody className="shareSongBody">
+                                                  <Row>
+                                                    <Col md={12} xs={12} sm={12}>
+                                                      <Row>
+                                                        <Col md={{ size: 6, offset: 5 }} xs={{ size: 6, offset: 3 }} sm={{ size: 6, offset: 3 }}>
+                                                          <Button className="exitButton_CP" onClick={()=>{this.props.toggleModal(false)}}>
+                                                            <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                                              <title>Close</title>
+                                                              <path d="M31.098 29.794L16.955 15.65 31.097 1.51 29.683.093 15.54 14.237 1.4.094-.016 1.508 14.126 15.65-.016 29.795l1.414 1.414L15.54 17.065l14.144 14.143" fill="#fff" fill-rule="evenodd"></path>
+                                                            </svg>
+                                                          </Button>
+                                                        </Col>
+                                                      </Row>
+                                                      <Row><h2 id="shareSongHeader">Enter your friend's email to share {Song.name} with him now!</h2></Row>
+                                                    </Col>
+                                                  </Row>
+                                                  <div>
+                                                    <div>
+                                                    <form>
+                                                      <Row>
+                                                      <Col md={{ size: 6, offset:3}} xs={{ size: 6, offset:3}} sm={{ size: 6, offset:3}} className="Create_new_playlist">
+                                                        <input value={this.state.email} onChange={this.handleChange} placeholder="Your friend's email"></input>
+                                                      </Col>
+                                                      <Col md={{ size: 6, offset:3}} xs={{ size: 6, offset:3}} sm={{ size: 6, offset:3}} className="Create_new_playlist">
+                                                        <Button className="bg-primary" id="shareSongButton" onClick={()=>{this.handleShare(Song)}}>Send</Button>      
+                                                      </Col>
+                                                    </Row>
+                                                      <div>
+                                                    
+                                                      </div>
+                                                      </form>
                                                     </div>
                                                   </div>
                                                 </ModalBody>

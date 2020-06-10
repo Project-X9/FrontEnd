@@ -58,7 +58,12 @@ import {
   RecoverPlayList,
   AddToQueue,
   RemoveQueue,
-  DeleteAddPlaylist
+  DeleteAddPlaylist,
+  GetQueue,
+  LikeSong,
+  DisLikeSong,
+  FollowArtist,
+  UnFollowArtist,
 } from "../redux/ActionCreators";
 import MyAlbums from "./ForArtists/MyAlbumsComponent";
 import MySongs from "./ForArtists/MySongsComponent";
@@ -89,7 +94,8 @@ const mapStateToProps = (state) => ({
   token:state.token,
   songid:state.songid,
   genretracks:state.genretracks,
-  deletedPlaylists:state.deletedPlaylists
+  deletedPlaylists:state.deletedPlaylists,
+  queue:state.queue
 
 });
 const mapDispatchToProps = (dispatch) => ({
@@ -212,8 +218,33 @@ GetSongsByGeneres: (categoryId) => {
 },
 GetDeletedPlayList: (userid,token) => {
   dispatch(GetDeletedPlayList(userid,token));
-}
-  
+},
+RecoverPlayList: (userid,playlistid,token) => {
+  dispatch(RecoverPlayList(userid,playlistid,token));
+},
+AddToQueue: (userid,trackid,token) => {
+  dispatch(AddToQueue(userid,trackid,token));
+},
+RemoveQueue: (userid,trackid,token) => {
+  dispatch(RemoveQueue(userid,trackid,token));
+},
+GetQueue: (userid,token) => {
+  dispatch(GetQueue(userid,token));
+},
+
+LikeSong: (trackId,userId,token) => {
+  dispatch(LikeSong(trackId,userId,token));
+},
+DisLikeSong: (trackId,userId,token) => {
+  dispatch(DisLikeSong(trackId,userId,token));
+},
+FollowArtist: (artistID,userId,token) => {
+  dispatch(FollowArtist(artistID,userId,token));
+},
+UnFollowArtist: (artistID,userId,token) => {
+  dispatch(UnFollowArtist(artistID,userId,token));
+},
+
 });
 
 class Main extends Component {
@@ -391,6 +422,12 @@ class Main extends Component {
                 DeleteAddPlaylist={this.props.DeleteAddPlaylist}
                 RemoveQueue={this.props.RemoveQueue}
                 AddToQueue={this.props.AddToQueue}
+                GetQueue={this.props.GetQueue}
+                queue={this.props.queue}
+                LikeSong={this.props.LikeSong}
+                DisLikeSong={this.props.DisLikeSong}
+                FollowArtist={this.props.FollowArtist}
+                UnFollowArtist={this.props.UnFollowArtist}
               />
             )}
           />

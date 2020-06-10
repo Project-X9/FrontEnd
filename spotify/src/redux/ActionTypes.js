@@ -56,4 +56,9 @@ export const SONGS_BYCATEGORY_LOADING = 'SONGS_BYCATEGORY_LOADING';
 export const DELETED_PLAYLISTS_LOADING = 'DELETED_PLAYLISTS_LOADING';
 export const ADD_DELETED_PLAYLISTS = 'ADD_DELETED_PLAYLISTS';
 
+//======================Queue=======================
+export const ADDQUEUE = 'ADDQUEUE';
+export const ADDQUEUE_LOADING = 'ADDQUEUE_LOADING';
+
+
 
