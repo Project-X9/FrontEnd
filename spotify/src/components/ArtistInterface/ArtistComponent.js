@@ -69,7 +69,9 @@ class Artist extends Component {
 
 /**Follow artist function, currently only changes the button on click, to be implemented later */
   toggleFollow() {
+
     const temp = this.state.following;
+    this.props.FollowArtist(this.props.currentPlaylist.currentPlaylist._id,this.props.data_be.data_be._id,this.props.token.token);
     this.setState({ following: !temp });
   }
 

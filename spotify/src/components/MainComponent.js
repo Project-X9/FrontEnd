@@ -361,7 +361,7 @@ class Main extends Component {
                 handleChangeData_BE={this.props.handleChangeData_BE}
                 token={this.props.token}
                 ReadNotifications={this.props.ReadNotifications}
-
+                RecoverPlayList={this.props.RecoverPlayList}
                 GetDeletedPlayList={this.props.GetDeletedPlayList}
                 deletedPlaylists={this.props.deletedPlaylists}
               />
