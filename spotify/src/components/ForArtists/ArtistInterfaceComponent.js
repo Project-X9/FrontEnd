@@ -40,7 +40,7 @@ class ArtistInterface extends Component {
                         <Col className="sidebar-area-col" xs="12" sm="12" md="12" lg="4">
                             <div className="sidebar-area">
                                 <Link className="AppearBig" to="forartists/profile">
-                                    <img src="https://res.cloudinary.com/dyki04uxl/image/upload/v1590425257/G7qS7TVN_400x400_ic5jm9.jpg" alt="your-image" className="artist-img rounded-circle img-fluid" />
+                                    <img src={this.props.data_be.data_be.artists[0].image} alt="your-image" className="artist-img rounded-circle img-fluid" />
                                 </Link>
                                 <Button>
                                     <Link to="/forartists/profile" >
@@ -64,67 +64,67 @@ class ArtistInterface extends Component {
                                 <Route
                                     exact
                                     path="/forartists/profile"
-                                    component={() => <ArtistProfile />}
+                                    component={() => <ArtistProfile data_be={this.props.data_be} />}
                                 />
 
                                 <Route
                                     exact
                                     path="/forartists/songs"
-                                    component={() => <MySongs />}
+                                    component={() => <MySongs data_be={this.props.data_be} />}
                                 />
 
                                 <Route
                                     exact
                                     path="/forartists/albums"
-                                    component={() => <MyAlbums />}
+                                    component={() => <MyAlbums data_be={this.props.data_be} />}
                                 />
 
                                 <Route
                                     exact
                                     path="/forartists/albums/description"
-                                    component={() => <AlbumDescription />}
+                                    component={() => <AlbumDescription data_be={this.props.data_be} />}
                                 />
 
                                 <Route
                                     exact
                                     path="/forartists/albums/edit"
-                                    component={() => <EditAlbumsComponent />}
+                                    component={() => <EditAlbumsComponent data_be={this.props.data_be} />}
                                 />
 
                                 <Route
                                     exact
                                     path="/forartists/albums/add"
-                                    component={() => <AddAlbum />}
+                                    component={() => <AddAlbum data_be={this.props.data_be} />}
                                 />
 
                                 <Route
                                     exact
                                     path="/forartists/albums/edit/form"
-                                    component={() => <EditAlbum />}
+                                    component={() => <EditAlbum data_be={this.props.data_be} />}
                                 />
 
                                 <Route
                                     exact
                                     path="/forartists/songs/edit"
-                                    component={() => <EditSongs />}
+                                    component={() => <EditSongs data_be={this.props.data_be} />}
                                 />
 
                                 <Route
                                     exact
                                     path="/forartists/songs/edit/form"
-                                    component={() => <EditSongsForm />}
+                                    component={() => <EditSongsForm data_be={this.props.data_be} />}
                                 />
 
                                 <Route
                                     exact
                                     path="/forartists/songs/add"
-                                    component={() => <AddSong />}
+                                    component={() => <AddSong data_be={this.props.data_be} />}
                                 />
 
                                 <Route
                                     exact
                                     path="/forartists/profile/edit"
-                                    component={() => <EditArtistProfile />}
+                                    component={() => <EditArtistProfile data_be={this.props.data_be} />}
                                 />
                                 <Redirect to="/forartists/profile" />
                             </Switch>
