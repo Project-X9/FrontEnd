@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Col, Row, Container, Button, Form, FormGroup, Input, Label } from 'reactstrap'
 import { Link } from 'react-router-dom'
 class EditArtistProfile extends Component {
+    /**
+  * Responsible for rendering the edit profile form and its elements on the screen
+  * @returns a form for edit profile
+  */
     render() {
         return (
             <Container>
@@ -36,8 +40,8 @@ class EditArtistProfile extends Component {
                         </FormGroup>
                         <FormGroup check row>
                             <Col sm={{ size: 10, offset: 2 }}>
-                                <Button type="submit" outline="success" className="edit-albums-btn">Submit</Button>
-                                <Button outline="success" className="edit-albums-btn">
+                                <Button type="submit" className="edit-albums-btn">Submit</Button>
+                                <Button className="edit-albums-btn">
                                     <Link to="/forartists/songs">Back
                                 </Link>
                                 </Button>

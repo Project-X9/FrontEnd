@@ -2,9 +2,18 @@ import React, { Component } from 'react';
 import { Col, Row, Container, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 class ArtistProfile extends Component {
+    /**
+     * 
+     * @param {Object} props 
+     */
     constructor(props) {
         super(props);
     }
+    /**
+     * @param {Object} obj
+     * this function returns the length of an array of objects, used to count artists, songs, followers, etc...
+     * @returns object array length
+     */
     getObjectLength = (obj) => {
         var length = 0;
         for (var p in obj) {
@@ -14,6 +23,10 @@ class ArtistProfile extends Component {
         }
         return length;
     }
+    /**
+   * Responsible for rendering the artist profile and its elements on the screen
+   * @returns artist profile
+   */
     render() {
         let numberOfAlbums = this.getObjectLength(this.props.data_be.data_be.artists[0].albums);
         let nubmerOfSongs = this.getObjectLength(this.props.data_be.data_be.artists[0].tracks);

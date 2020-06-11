@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Col, Row, Container, Button, Form, FormGroup, Input, Label } from 'reactstrap'
 import { Link } from 'react-router-dom'
 class EditAlbum extends Component {
+    /**
+   * Responsible for rendering the edit album form and its elements on the screen
+   * @returns a from for edit album
+   */
     render() {
         return (
             <Container>

@@ -3,12 +3,17 @@ import { Col, Row, Button, Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 class MyAlbums extends Component {
+    /**
+     * 
+     * @param {Object} props 
+     */
     constructor(props) {
         super(props);
-        this.state = {
-            active: ""
-        }
     }
+    /**
+     * this function is responsible for rendering all the albums of the artist
+     * @returns interface for all albums
+     */
     render() {
         let i = 0;
         let artistAlbums = this.props.data_be.data_be.albums.map((Album) => {
@@ -37,10 +42,10 @@ class MyAlbums extends Component {
                 <Row>
                     {artistAlbums}
                     <Col offset="6" className="edit-btn">
-                        <Button outline color="success" size="lg" className="edit-albums-btn">
+                        <Button size="lg" className="edit-albums-btn">
                             <Link to="/forartists/albums/edit">Edit Albums</Link>
                         </Button>
-                        <Button outline color="success" size="lg" className="edit-albums-btn">
+                        <Button size="lg" className="edit-albums-btn">
                             <Link to="/forartists/albums/add">Add Album</Link>
                         </Button>
                     </Col>

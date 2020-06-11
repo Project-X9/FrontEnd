@@ -15,12 +15,17 @@ import EditSongsForm from "./EditSongsFormComponent";
 import AddSong from "./AddSongsComponent";
 import EditArtistProfile from "./EditProfileComponent";
 class ArtistInterface extends Component {
+    /**
+     * 
+     * @param {Object} props 
+     */
     constructor(props) {
         super(props);
-        this.state = {
-            active: "profile"
-        }
     }
+    /**
+   * Responsible for rendering the artist interface m and its elements on the screen
+   * @returns artist interface
+   */
 
     render() {
         return (

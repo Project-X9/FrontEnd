@@ -2,9 +2,17 @@ import React, { Component } from 'react';
 import { Col, Row, Container, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 class AlbumDescription extends Component {
+    /**
+     * 
+     * @param {Object} props 
+     */
     constructor(props) {
         super(props);
     }
+    /**
+   * Responsible for rendering the album songs and its elements on the screen
+   * @returns songs for album
+   */
     render() {
         return (
             <Container>
