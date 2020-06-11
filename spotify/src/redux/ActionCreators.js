@@ -778,13 +778,13 @@ export const ShareSongs = (trackid, recEmail, token) => (dispatch) => {
  * @param {String} Bio 
  * @param {String} Name
  * @param {String} Image
- */export const postupdatedArtist = (id, isemail, Bio, Name, Image, token) => (dispatch) => {
+ */export const postUpdatedArtist = (id, isemail, bio, Name, Image, token) => (dispatch) => {
   const Authstr = "Bearer ".concat(token);
 
   const newArtist = {
-    email: isemail,
-    bio: Bio,
     name: Name,
+    email: isemail,
+    Bio: bio,
     image: Image
   };
   axios.patch(`${ArtistsUrl}/${id}`, newArtist, {
@@ -965,7 +965,7 @@ export const AddToQueue = (trackId, userId, token) => (dispatch) => {
     })
     .catch(err => console.log(err));
 }
-export const RemoveQueue = (trackId, userId, token) => (dispatch) => {
+export const RemoveQueue = (trackId, userId, token,isqueue) => (dispatch) => {
   const data = {
     id: userId
   }
@@ -986,6 +986,12 @@ export const RemoveQueue = (trackId, userId, token) => (dispatch) => {
             .then(response2 => {
               console.log()
               dispatch(AddQueue(response2.data.queue_tracks))
+              if(isqueue && response2.data.queue_tracks.length>0)
+              {
+                dispatch(addSongSrc(response2.data.queue_tracks[0]))
+
+              }
+              dispatch()
             })
             .catch(err1 => console.log(err1));
         }

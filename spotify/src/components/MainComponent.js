@@ -11,6 +11,11 @@ import SignIn from "./SignIn/SignInComponent";
 import ArtistInterface from "./ForArtists/ArtistInterfaceComponent"
 import "./ForArtists/ArtistInterfaceComponent.css";
 import LoggedHome from "./Homepage/LoggedHomeComponent";
+import MyAlbums from "./ForArtists/MyAlbumsComponent";
+import MySongs from "./ForArtists/MySongsComponent";
+import Library from "./Library/LibraryCompnent";
+import PlayFooter from "./PlayFooter/PlayFooter";
+import CreatePlayList from "./WebPlayerHome/CreatePlayListModel";
 import {
   postFeedback,
   postFacebookLogin,
@@ -62,7 +67,7 @@ import {
   FollowArtist,
   UnFollowArtist,
   SetIsQueue,
-  postupdatedArtist,
+  postUpdatedArtist,
   ShareSongs
 } from "../redux/ActionCreators";
 
@@ -106,6 +111,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   reseteditprofile: () => {
     dispatch(actions.reset("editprofie"));
+  },
+  resetartisteditprofile: () => {
+    dispatch(actions.reset("artisteditprofile"));
   },
   resetpassword: () => {
     dispatch(actions.reset("resetpassword"));
@@ -163,8 +171,8 @@ const mapDispatchToProps = (dispatch) => ({
     ),
   postupdatedFeedback: (id, isemail, isage, isID, country, token) =>
     dispatch(postupdatedFeedback(id, isemail, isage, isID, country, token)),
-  postupdatedArtist: (id, isemail, Bio, Name, token) =>
-    dispatch(postupdatedArtist(id, isemail, Bio, Name, token)),
+  postUpdatedArtist: (id, isemail, Bio, Name, token) =>
+    dispatch(postUpdatedArtist(id, isemail, Bio, Name, token)),
   postFacebookLogin: (email, image, name) =>
     dispatch(postFacebookLogin(email, image, name)),
   PlayTheFooter: (songSrc) => {
@@ -226,8 +234,8 @@ const mapDispatchToProps = (dispatch) => ({
   AddToQueue: (userid, trackid, token) => {
     dispatch(AddToQueue(userid, trackid, token));
   },
-  RemoveQueue: (userid, trackid, token,isqueue) => {
-    dispatch(RemoveQueue(userid, trackid, token,isqueue));
+  RemoveQueue: (userid, trackid, token, isqueue) => {
+    dispatch(RemoveQueue(userid, trackid, token, isqueue));
   },
   GetQueue: (userid, token) => {
     dispatch(GetQueue(userid, token));
@@ -251,7 +259,7 @@ const mapDispatchToProps = (dispatch) => ({
   ShareSongs: (trackid, recEmail, token) => {
     dispatch(ShareSongs(trackid, recEmail, token));
   },
-  
+
 });
 
 class Main extends Component {
@@ -463,6 +471,8 @@ class Main extends Component {
             component={() => (
               <ArtistInterface
                 data_be={this.props.data_be}
+                token={this.props.token}
+                postUpdatedArtist={this.props.postUpdatedArtist}
               />
             )}
           />
