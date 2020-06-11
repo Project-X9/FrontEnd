@@ -627,6 +627,9 @@ display: inline;
   border-radius: 50px;
   color: wheat;
   padding-left: 20px;
+  margin-left: 15%;
+  margin-right: auto;
+  margin-top: 20px;
 }
 .shareSongBody input:focus{
   outline: none;
@@ -634,5 +637,12 @@ display: inline;
 #shareSongHeader{
   color: wheat;
   margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+}
+#shareSongButton{
+  margin-left: auto;
+  margin-left: 45%;
+  margin-top: 30px;
   margin-right: auto;
 }

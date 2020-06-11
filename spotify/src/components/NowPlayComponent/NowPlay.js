@@ -105,8 +105,8 @@ class NowPlay extends Component {
   handleShare(Song){
     let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if ( re.test(String(this.state.email).toLowerCase()) ) {
-      // If the email is correct we send the selected song to another user
-      alert('Sent ' +Song.name+" to "+this.state.email+"\n"+Song._id);
+      // If the email is correct we send the selected song to another user'
+      this.props.ShareSongs(Song._id,this.state.email,this.props.token.token);
       this.setState({shareModal: false})
   }
   else {
@@ -598,7 +598,7 @@ class NowPlay extends Component {
                                                     <Col md={12} xs={12} sm={12}>
                                                       <Row>
                                                         <Col md={{ size: 6, offset: 5 }} xs={{ size: 6, offset: 3 }} sm={{ size: 6, offset: 3 }}>
-                                                          <Button className="exitButton_CP" onClick={()=>this.props.ControlModal(false)}>
+                                                          <Button className="exitButton_CP"  onClick={()=>{this.setState({EditingPlaylist:false})}}>
                                                             <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                                               <title>Close</title>
                                                               <path d="M31.098 29.794L16.955 15.65 31.097 1.51 29.683.093 15.54 14.237 1.4.094-.016 1.508 14.126 15.65-.016 29.795l1.414 1.414L15.54 17.065l14.144 14.143" fill="#fff" fill-rule="evenodd"></path>
@@ -638,7 +638,7 @@ class NowPlay extends Component {
                                                             <Col md={12} xs={12} sm={12}>
                                                                 <Row>
                                                                     <Col md={{ size: 6, offset: 5 }} xs={{ size: 6, offset: 3 }} sm={{ size: 6, offset: 3 }}>
-                                                                        <Button className="exitButton_CP" onClick={()=>this.props.ControlModal(false)}>
+                                                                        <Button className="exitButton_CP" onClick={()=>this.props.ControlModal(true)}>
                                                                             <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                                                                 <title>Close</title>
                                                                                 <path d="M31.098 29.794L16.955 15.65 31.097 1.51 29.683.093 15.54 14.237 1.4.094-.016 1.508 14.126 15.65-.016 29.795l1.414 1.414L15.54 17.065l14.144 14.143" fill="#fff" fill-rule="evenodd"></path>

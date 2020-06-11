@@ -44,7 +44,7 @@ class RecoverPlaylists extends Component {
                 <div>
                   <Button 
                   onClick={()=>this.HandleDeletedPlaylist(this.props.data_be.data_be._id,playlist._id)}>
-                    Recover
+                    Restore
                   </Button>
                 </div>   
               </div>
@@ -55,13 +55,14 @@ class RecoverPlaylists extends Component {
       })
     }
     return (
-      <div>
+      <div className="recover-playlists">
         {Redirect}
         <div className="row">
-          <h1 className="RecoverPlaylistsHeader">Recover Playlists</h1>
+          <h2 className="RecoverPlaylistsHeader">Recover Playlists</h2>
         </div>
         <hr></hr>
         {RecoverPlaylist}
+          
       </div>
     );
   }
