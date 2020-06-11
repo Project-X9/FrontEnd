@@ -370,7 +370,7 @@ handleSubmit() {
                         DeleteAddPlaylist={this.props.DeleteAddPlaylist}
                         LikeSong={this.props.LikeSong}
                         DisLikeSong={this.props.DisLikeSong}
-
+                        ShareSongs={this.props.ShareSongs}
                       />
                     )}
                   />
