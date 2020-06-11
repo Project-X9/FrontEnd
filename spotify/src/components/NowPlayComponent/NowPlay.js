@@ -19,6 +19,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Card from "@material-ui/core/Card";
 import CardImg from "react-bootstrap/CardImg";
 import CardBody from "reactstrap/es/CardBody";
+import CardTitle from "reactstrap/es/CardTitle";
 /**
  * This Component is for Displaying the playlist and following or unfollowing it
  */

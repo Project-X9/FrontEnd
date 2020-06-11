@@ -20,6 +20,7 @@ import Artist from "../ArtistInterface/ArtistComponent";
 import PlayFooter from './../PlayFooter/PlayFooter';
 import Search from "../SearchComponent/Search";
 import Queue from "./Queue";
+import PremiumComponent from "../PremiumPage/PremuimComponent";
 /**
  * Web Player page
  */
@@ -303,7 +304,6 @@ handleSubmit() {
                       />
                     )}
                   />
-                  />
                   <Route
                     exact
                     path="/webplayer/likedplay"
@@ -370,7 +370,7 @@ handleSubmit() {
                         DeleteAddPlaylist={this.props.DeleteAddPlaylist}
                         LikeSong={this.props.LikeSong}
                         DisLikeSong={this.props.DisLikeSong}
-
+                        ShareSongs={this.props.ShareSongs}
                       />
                     )}
                   />
