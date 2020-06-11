@@ -119,7 +119,9 @@ class NowPlay extends Component {
     AddingSongPlayListToBe(idSong){
         let Song=this.props.currentPlaylist.currentPlaylist.tracks.find(element=> element._id===idSong)
         if(Song===undefined){
-                this.props.PatchAddPlaylist(this.props.currentPlaylist.currentPlaylist._id,idSong,this.props.token.token)}
+                this.props.PatchAddPlaylist(this.props.currentPlaylist.currentPlaylist._id,idSong,this.props.token.token)
+            this.props.ControlModal(false);
+        }
 
             else{console.log("Already Found in the playlist")}
         }
@@ -134,6 +136,8 @@ class NowPlay extends Component {
           console.log("Not Found in the playlist")
         this.props.PatchAddPlaylist(idPlaylist,this.props.songid.songid,this.props.token.token)
           this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
+          this.props.ControlModal(false);
+
 
       }
       else{console.log("Already Found in the playlist")}
@@ -487,11 +491,10 @@ class NowPlay extends Component {
                                       <Row>
                                         <Col md={12}>
                                           <h1 class="YourFirstInAll">
-                                            Songs you’ve liked live here{" "}
+                                            Songs you’ve added to your playlist live here{" "}
                                           </h1>
                                           <h4 class="_1bfd68987bbac2dd824e5db895bd3c57-scss">
-                                            Find more of the songs you love in
-                                            Browse and save to your Liked Songs.
+                                            Find more of the songs you can add to your playlist.
                                           </h4>
                                           <button
                                             class="_2221af4e93029bedeab751d04fab4b8b-scss _1edf52628d509e6baded2387f6267588-scss _4a19a959428c34075eef50bd44ab468f-scss"
