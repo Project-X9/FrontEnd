@@ -80,6 +80,12 @@ class NowPlay extends Component {
     this.props.AddSong_inPlaylist_id(Song._id);
       this.props.ControlModal(true);
   }
+  handleDislike(Song){
+    this.props.DisLikeSong(Song._id,this.props.data_be.data_be._id,this.props.token.token);
+  }
+  handleLike(Song){
+    this.props.LikeSong(Song._id,this.props.data_be.data_be._id,this.props.token.token);
+  }
 
   toggleModal(x) {
     this.setState({
@@ -570,6 +576,9 @@ class NowPlay extends Component {
                                                         <i className="fa fa-ellipsis-h"></i>
                                                       </Dropdown.Toggle>
                                                       <Dropdown.Menu className="NowPlayDropdownMenu">
+                                                        {Song.likers.find(el=>el==this.props.data_be.data_be._id)===undefined?(<Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.handleLike(Song)}} >Like Song</Dropdown.Item>
+                                                         ):(<Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.handleDislike(Song)}} >Dislike Song</Dropdown.Item>)
+                                                         }
                                                         <Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.handleSubmit(Song)}} >Add Song To a PlayList</Dropdown.Item>
                                                         <Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.shareSong(Song); this.toggleModal(true)}} >Share {Song.name}</Dropdown.Item>
                                                         {this.props.data_be.data_be.queue.find(el => el == Song._id)===undefined?(

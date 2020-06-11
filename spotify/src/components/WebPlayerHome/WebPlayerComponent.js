@@ -322,6 +322,7 @@ handleSubmit() {
                         patchedunfollow={this.props.patchedunfollow}
                         PlayTheFooter={this.props.PlayTheFooter}
                         PlaySong={this.props.PlaySong}
+                        token={this.props.token}
                         PauseSong={this.props.PauseSong}
                         isPlaying={this.props.isPlaying}
                         isModalOpen={this.props.isModalOpen}
@@ -332,6 +333,7 @@ handleSubmit() {
                         DeleteAddPlaylist={this.props.DeleteAddPlaylist}
                         AddSong_inPlaylist_id={this.props.AddSong_inPlaylist_id}
                         songid={this.props.songid}
+                        DisLikeSong={this.props.DisLikeSong}
                       />
                     )}
                   />
@@ -366,6 +368,8 @@ handleSubmit() {
                         RemoveQueue={this.props.RemoveQueue}
                         AddToQueue={this.props.AddToQueue}
                         DeleteAddPlaylist={this.props.DeleteAddPlaylist}
+                        LikeSong={this.props.LikeSong}
+                        DisLikeSong={this.props.DisLikeSong}
 
                       />
                     )}
