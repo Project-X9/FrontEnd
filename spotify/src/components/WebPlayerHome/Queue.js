@@ -141,7 +141,7 @@ class Queue extends Component {
                                 </div>
                             </div>
                             <div className="col-1 QueueNowPlayingThirdColumn">
-                                3:12
+                                6:12
                             </div>
                         </div>
                     </div>
@@ -150,51 +150,53 @@ class Queue extends Component {
             )
         }
        
-        
-        let nextUp= (
-            <div>
-                <div className="row">
-                    <div className="col">
-                        <h2 className="QueueNextUpHeader">
-                            Next Up
-                        </h2>
-                    </div>
-                </div>
-                {
-                    this.props.queue.queue.map((track) => {
-                    return(
-                    <div key={track._id} className="row QueueNextUpBiggestRow">
-                    <div className="col">
-                        <div className="row">
-                            <div className="col-1 QueueNextUpFirstColumnFirstIcon">
-                                <div>
-                                <i class="fa fa-music"></i>
-                                </div>
-                            </div>
-                            <div className="col-9">
-                                <div className="row">
-                                    <div className="col QueueNextUpFirstRow">
-                                        {track.name}
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col QueueNextUpSecondRow">
-                                        {track.description}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-1 QueueNextUpThirdColumn">
-                                3:16
-                            </div>
+        let nextUp=""
+        if(this.props.queue.queue){
+            nextUp= (
+                <div>
+                    <div className="row">
+                        <div className="col">
+                            <h2 className="QueueNextUpHeader">
+                                Next Up
+                            </h2>
                         </div>
                     </div>
-                    </div>
-                    )
+                    {
+                        this.props.queue.queue.map((track) => {
+                        return(
+                        <div key={track._id} className="row QueueNextUpBiggestRow">
+                        <div className="col">
+                            <div className="row">
+                                <div className="col-1 QueueNextUpFirstColumnFirstIcon">
+                                    <div>
+                                    <i class="fa fa-music"></i>
+                                    </div>
+                                </div>
+                                <div className="col-9">
+                                    <div className="row">
+                                        <div className="col QueueNextUpFirstRow">
+                                            {track.name}
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col QueueNextUpSecondRow">
+                                            {track.description}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-1 QueueNextUpThirdColumn">
+                                    6:12
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        )
+                        }
+                        )
                     }
-                    )
-                }
-            </div>
-        )
+                </div>
+            )
+        }
         
         let Body=(this.props.queue.isLoading===true?(
             <div>
