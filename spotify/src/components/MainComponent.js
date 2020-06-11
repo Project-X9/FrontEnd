@@ -11,6 +11,11 @@ import SignIn from "./SignIn/SignInComponent";
 import ArtistInterface from "./ForArtists/ArtistInterfaceComponent"
 import "./ForArtists/ArtistInterfaceComponent.css";
 import LoggedHome from "./Homepage/LoggedHomeComponent";
+import MyAlbums from "./ForArtists/MyAlbumsComponent";
+import MySongs from "./ForArtists/MySongsComponent";
+import Library from "./Library/LibraryCompnent";
+import PlayFooter from "./PlayFooter/PlayFooter";
+import CreatePlayList from "./WebPlayerHome/CreatePlayListModel";
 import {
   postFeedback,
   postFacebookLogin,

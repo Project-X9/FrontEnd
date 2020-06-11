@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Col, Button, Row, Label, ModalBody,Modal
+  Col, Button, Row, Label, NavLink, ModalBody,Modal
 } from 'reactstrap';
 import {
   Control, Form, Errors,
@@ -8,6 +8,7 @@ import {
 import { Link, Redirect } from 'react-router-dom';
 import FacebookLogin from 'react-facebook-login';
 import emailjs from 'emailjs-com';
+
 
 const required = val => val && val.length;
 // const maxLength = (len) => (val) => !(val) || (val.length <= len);

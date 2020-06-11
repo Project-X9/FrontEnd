@@ -4,7 +4,10 @@ import {
 } from 'reactstrap';
 import { Link ,Redirect } from 'react-router-dom';
 import "./PlayFooter.css";
-
+import { totalTime } from '../../redux/ActionCreators';
+import {
+  Control, Form, Errors,
+} from 'react-redux-form';
 /**
  * Function that that transfer the audio time to a time format 
  * @param {*} num 
