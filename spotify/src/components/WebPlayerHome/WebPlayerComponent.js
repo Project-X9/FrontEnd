@@ -332,6 +332,7 @@ handleSubmit() {
                         DeleteAddPlaylist={this.props.DeleteAddPlaylist}
                         AddSong_inPlaylist_id={this.props.AddSong_inPlaylist_id}
                         songid={this.props.songid}
+                        DisLikeSong={this.props.DisLikeSong}
                         token={this.props.token}
                       />
                     )}
@@ -367,7 +368,9 @@ handleSubmit() {
                         RemoveQueue={this.props.RemoveQueue}
                         AddToQueue={this.props.AddToQueue}
                         DeleteAddPlaylist={this.props.DeleteAddPlaylist}
-
+                        LikeSong={this.props.LikeSong}
+                        DisLikeSong={this.props.DisLikeSong}
+                        ShareSongs={this.props.ShareSongs}
                       />
                     )}
                   />

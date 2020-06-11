@@ -3,6 +3,17 @@ import { Col, Row, Container, Button } from 'reactstrap';
 import { Link, Route, Switch } from 'react-router-dom';
 import MyAlbums from './MyAlbumsComponent';
 class AlbumDescription extends Component {
+    /**
+     * 
+     * @param {Object} props 
+     */
+    constructor(props) {
+        super(props);
+    }
+    /**
+   * Responsible for rendering the album songs and its elements on the screen
+   * @returns songs for album
+   */
     render() {
         return (
             <Container>
@@ -42,7 +53,7 @@ class AlbumDescription extends Component {
                 </Row>
                 <Row>
                     <Col offset="6" className="back-btn">
-                        <Button outline color="success" size="lg" onClick={this.handleBackClick}>
+                        <Button outline color="success" size="lg" className="edit-albums-btn">
                             <Link to="/forartists/albums">Back</Link>
                         </Button>
                     </Col>

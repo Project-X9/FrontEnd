@@ -67,7 +67,8 @@ import {
   FollowArtist,
   UnFollowArtist,
   SetIsQueue,
-  postupdatedArtist
+  postupdatedArtist,
+  ShareSongs
 } from "../redux/ActionCreators";
 
 const mapStateToProps = (state) => ({
@@ -230,8 +231,8 @@ const mapDispatchToProps = (dispatch) => ({
   AddToQueue: (userid, trackid, token) => {
     dispatch(AddToQueue(userid, trackid, token));
   },
-  RemoveQueue: (userid, trackid, token) => {
-    dispatch(RemoveQueue(userid, trackid, token));
+  RemoveQueue: (userid, trackid, token,isqueue) => {
+    dispatch(RemoveQueue(userid, trackid, token,isqueue));
   },
   GetQueue: (userid, token) => {
     dispatch(GetQueue(userid, token));
@@ -252,8 +253,10 @@ const mapDispatchToProps = (dispatch) => ({
   SetIsQueue: (isqueue) => {
     dispatch(SetIsQueue(isqueue));
   },
-
-
+  ShareSongs: (trackid, recEmail, token) => {
+    dispatch(ShareSongs(trackid, recEmail, token));
+  },
+  
 });
 
 class Main extends Component {
@@ -439,6 +442,7 @@ class Main extends Component {
                 UnFollowArtist={this.props.UnFollowArtist}
                 isQueue={this.props.isQueue}
                 SetIsQueue={this.props.SetIsQueue}
+                ShareSongs={this.props.ShareSongs}
               />
             )}
           />

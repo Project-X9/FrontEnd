@@ -154,6 +154,7 @@
     margin-bottom: 10px;
     border-color: lightgrey;
     color: gainsboro;
+    background-color: #212529;
 }
 
 .add-album-label {
@@ -174,6 +175,13 @@
 .song-img,
 .album-img {
     margin: 15px;
+    max-width: 300px;
+    max-height: 300px;
+}
+
+#no-songs-hdr {
+    color: gainsboro;
+    margin: 20px;
 }
 
 .album-img {

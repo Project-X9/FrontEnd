@@ -74,6 +74,9 @@ class PlayLikedSongs extends Component {
   handleChange(event) {
     this.setState({email: event.target.value});
   }
+  handleDislike(SongID,UserID){
+    this.props.DisLikeSong(SongID,UserID,this.props.token.token);
+  }
 
   handleShare(Song){
     let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -461,6 +464,7 @@ class PlayLikedSongs extends Component {
                                                             <i className="fa fa-ellipsis-h"></i>
                                                           </Dropdown.Toggle>
                                                           <Dropdown.Menu className="NowPlayDropdownMenu">
+                                                            <Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.handleDislike(Song._id,this.props.data_be.data_be._id)}} >Dislike Song</Dropdown.Item>
                                                             <Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.handleSubmit(Song)}} >Add Song To a PlayList</Dropdown.Item>
                                                             <Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.shareSong(Song); this.toggleModal(true)}} >Share Song</Dropdown.Item>
                                                             {this.props.data_be.data_be.queue.find(el => el == Song._id)===undefined?(

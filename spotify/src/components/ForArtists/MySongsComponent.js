@@ -2,10 +2,17 @@ import React, { Component } from 'react';
 import { Col, Row, Button, Container } from 'reactstrap';
 import { Link } from 'react-router-dom'
 class MySongs extends Component {
+    /**
+     * 
+     * @param {Object} props 
+     */
     constructor(props) {
         super(props);
     }
-
+    /**
+     * renders artist tracks
+     * @returns interface for all tracks of an artist
+     */
     render() {
         let allTracks = this.props.data_be.data_be.tracks;
         let i = 0;
@@ -44,12 +51,12 @@ class MySongs extends Component {
                 </Row>
                 <Row>
                     <Col offset="6" className="edit-btn">
-                        <Button outline color="success" size="lg" className="edit-albums-btn">
+                        <Button size="lg" className="edit-albums-btn">
                             <Link to="/forartists/songs/edit">
                                 Edit Songs
                             </Link>
                         </Button>
-                        <Button outline color="success" size="lg" className="edit-albums-btn">
+                        <Button size="lg" className="edit-albums-btn">
                             <Link to="/forartists/songs/add">Add Song</Link>
                         </Button>
                     </Col>
