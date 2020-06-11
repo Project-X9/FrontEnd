@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Col, Row, Container, Button } from 'reactstrap';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 class AlbumDescription extends Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
         return (
             <Container>
@@ -41,7 +44,7 @@ class AlbumDescription extends Component {
                 </Row>
                 <Row>
                     <Col offset="6" className="back-btn">
-                        <Button outline color="success" size="lg" onClick={this.handleBackClick}>
+                        <Button outline color="success" size="lg" className="edit-albums-btn">
                             <Link to="/forartists/albums">Back</Link>
                         </Button>
                     </Col>
