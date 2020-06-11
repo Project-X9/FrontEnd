@@ -2,12 +2,8 @@ import React, { Component } from 'react';
 import {
   Col, Button, Row, Modal,ModalBody
 } from 'reactstrap';
-import {
-  Control, Form, Errors,
-} from 'react-redux-form';
 import { Link ,Redirect } from 'react-router-dom';
 import "./PlayFooter.css";
-import { totalTime } from '../../redux/ActionCreators';
 
 /**
  * Function that that transfer the audio time to a time format 
