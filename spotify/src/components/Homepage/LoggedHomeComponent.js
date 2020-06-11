@@ -18,7 +18,7 @@ class LoggedHome extends Component {
                 <NavbarHome isSignedIn={this.props.isSignedIn}
                     data_be={this.props.data_be}
                     handleLogout_BE={this.props.handleLogout_BE} />
-                {this.props.data_be.data_be.premium==false&&(<div className="firstJT">
+                {this.props.data_be.data_be.premium===false&&(<div className="firstJT">
                     <div className="JT1Text">
                         <h1>Get 3 months of Premium for <br />EGP 49.99</h1>
                         <h2>Join Premium for endless ad-free music - even offline.</h2>

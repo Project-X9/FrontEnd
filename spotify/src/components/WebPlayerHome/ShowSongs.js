@@ -177,15 +177,21 @@ class ShowSongs extends Component {
       )
     }
 
+    
+    
+
     let ShowingSongs = "";
+
     if (this.props.isSignedIn.isSignedIn !== null) {
-      ShowingSongs=(
-        <div>
-        {this.props.genretracks.isLoading!==false?(
+      if(this.props.genretracks.isLoading===true){
+        ShowingSongs=(
           <div>
             <Loading></Loading>
           </div>
-          ):(
+        );
+      }
+      else if(this.props.genretracks.isLoading===false){
+        ShowingSongs=(
           <div>
             <div className="row FirstHeaderAndSeeAll">
                 <div className="col-sm-9 ContainerHeaderAboveGrid">
@@ -254,11 +260,15 @@ class ShowSongs extends Component {
             </div>
           </div>
         </div>
-
-
-        )}
-        </div>
-      )
+        );
+      }
+      else if(this.props.genretracks.isLoading===null){
+        ShowingSongs=(
+          <div></div>
+        );
+      }
+      
+      
     }
     return (
       <div>
