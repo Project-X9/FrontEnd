@@ -23,13 +23,12 @@ class AddAlbum extends Component {
                         <FormGroup check row>
                             <Col sm={{ size: 10, offset: 2 }}>
                                 <Button type="submit" outline="success" className="edit-albums-btn">Submit</Button>
-                            </Col>
-                            <Col sm={{ size: 10, offset: 2 }}>
                                 <Button outline="success" className="edit-albums-btn">
                                     <Link to="/forartists/albums">Back
                                 </Link>
                                 </Button>
                             </Col>
+
                         </FormGroup>
 
                     </Form>
