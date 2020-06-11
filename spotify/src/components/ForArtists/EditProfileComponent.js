@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Col, Row, Container, Button, Form, FormGroup, Input, Label } from 'reactstrap'
 import { Link } from 'react-router-dom'
 class EditArtistProfile extends Component {
+    /**
+  * Responsible for rendering the edit profile form and its elements on the screen
+  * @returns a form for edit profile
+  */
     render() {
         return (
             <Container>

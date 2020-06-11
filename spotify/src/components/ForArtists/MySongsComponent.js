@@ -2,10 +2,17 @@ import React, { Component } from 'react';
 import { Col, Row, Button, Container } from 'reactstrap';
 import { Link } from 'react-router-dom'
 class MySongs extends Component {
+    /**
+     * 
+     * @param {Object} props 
+     */
     constructor(props) {
         super(props);
     }
-
+    /**
+     * renders artist tracks
+     * @returns interface for all tracks of an artist
+     */
     render() {
         let allTracks = this.props.data_be.data_be.tracks;
         let i = 0;

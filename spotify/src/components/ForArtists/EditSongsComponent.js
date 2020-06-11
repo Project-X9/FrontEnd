@@ -3,6 +3,13 @@ import React, { Component } from 'react';
 import { Col, Row, Button, Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
 class EditSongs extends Component {
+    /**
+     * 
+     * @param {Object} props
+     * @param {Object} artistSongs the component itself to be rendered
+     * @param {Object} actualSongs the tracks array of objects
+     * @param {boolean} isLoading determines whether the component should be rendered or not 
+     */
     constructor(props) {
         super(props);
         this.state = {
@@ -12,6 +19,10 @@ class EditSongs extends Component {
         };
     }
     trackProp = this.props.data_be.data_be.tracks;
+    /**
+     * Responsible for deleting the track clicked 
+     * @param {Event} event the click event that will trigger the deletion of the clicked track
+     */
     handleDelete = (event) => {
         console.log(event.currentTarget.id);
         this.trackProp = this.trackProp.filter(track => track._id !== event.currentTarget.id);
@@ -25,6 +36,11 @@ class EditSongs extends Component {
         })
 
     }
+    /**
+     * @param {Object} obj
+     * this function returns the length of an array of objects, used to count artists, songs, followers, etc...
+     * @returns object array length
+     */
     getObjectLength = (obj) => {
         var length = 0;
         for (var p in obj) {

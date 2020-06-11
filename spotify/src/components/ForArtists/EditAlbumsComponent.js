@@ -3,6 +3,13 @@ import React, { Component } from 'react';
 import { Button, Col, Row, Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
 class EditAlbumsComponent extends Component {
+    /**
+     * 
+     * @param {Object} props
+     * @param {Object} isLoading determines whether the component should be reloaded or not
+     * @param {Object} actualAlbums all the albums in the db
+     * @param {Object} artistAlbums the component itself to be rendered 
+     */
     constructor(props) {
         super(props);
         this.state = {
@@ -12,6 +19,10 @@ class EditAlbumsComponent extends Component {
         }
     }
     allAlbums = this.props.data_be.data_be.albums
+    /**
+     * @param {Event} event
+     * this function deletes the album with the given id from the album array
+     */
     handleDelete = (event) => {
         console.log(event.currentTarget.id);
         this.allAlbums = this.allAlbums.filter(Album => Album._id !== event.currentTarget.id);
@@ -24,6 +35,11 @@ class EditAlbumsComponent extends Component {
             isLoading: true,
         })
     }
+    /**
+     * @param {Object} obj
+     * this function returns the length of an array of objects, used to count artists, songs, followers, etc...
+     * @returns object array length
+     */
     getObjectLength = (obj) => {
         var length = 0;
         for (var p in obj) {
@@ -33,6 +49,10 @@ class EditAlbumsComponent extends Component {
         }
         return length;
     }
+    /**
+   * Responsible for rendering the edit album interface and its elements on the screen
+   * @returns edit album interface
+   */
     render() {
         let i = 0;
         let allAlbums = this.state.actualAlbums;

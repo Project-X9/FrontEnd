@@ -3,12 +3,17 @@ import { Col, Row, Button, Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 class MyAlbums extends Component {
+    /**
+     * 
+     * @param {Object} props 
+     */
     constructor(props) {
         super(props);
-        this.state = {
-            active: ""
-        }
     }
+    /**
+     * this function is responsible for rendering all the albums of the artist
+     * @returns interface for all albums
+     */
     render() {
         let i = 0;
         let artistAlbums = this.props.data_be.data_be.albums.map((Album) => {

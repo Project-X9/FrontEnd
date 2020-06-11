@@ -3,6 +3,10 @@ import { Row, Col, Container } from "reactstrap";
 import { Link } from "react-router-dom";
 import "./FooterComponent.css";
 class ArtistFooter extends Component {
+    /**
+  * Responsible for rendering the artist footer and its elements on the screen
+  * @returns a footer for all artist pages
+  */
     render() {
         return (
             <Container fluid={true}>
