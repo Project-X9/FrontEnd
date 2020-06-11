@@ -965,7 +965,7 @@ export const AddToQueue = (trackId, userId, token) => (dispatch) => {
     })
     .catch(err => console.log(err));
 }
-export const RemoveQueue = (trackId, userId, token) => (dispatch) => {
+export const RemoveQueue = (trackId, userId, token,isqueue) => (dispatch) => {
   const data = {
     id: userId
   }
@@ -986,6 +986,12 @@ export const RemoveQueue = (trackId, userId, token) => (dispatch) => {
             .then(response2 => {
               console.log()
               dispatch(AddQueue(response2.data.queue_tracks))
+              if(isqueue && response2.data.queue_tracks.length>0)
+              {
+                dispatch(addSongSrc(response2.data.queue_tracks[0]))
+
+              }
+              dispatch()
             })
             .catch(err1 => console.log(err1));
         }
