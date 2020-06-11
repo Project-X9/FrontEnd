@@ -10,9 +10,6 @@ import WebPlayer from "./WebPlayerHome/WebPlayerComponent";
 import SignIn from "./SignIn/SignInComponent";
 import ArtistInterface from "./ForArtists/ArtistInterfaceComponent"
 import "./ForArtists/ArtistInterfaceComponent.css";
-import Library from "./Library/LibraryCompnent";
-import PlayFooter from "./PlayFooter/PlayFooter";
-import CreatePlayList from "./WebPlayerHome/CreatePlayListModel";
 import LoggedHome from "./Homepage/LoggedHomeComponent";
 import {
   postFeedback,
@@ -67,8 +64,6 @@ import {
   SetIsQueue,
   postupdatedArtist
 } from "../redux/ActionCreators";
-import MyAlbums from "./ForArtists/MyAlbumsComponent";
-import MySongs from "./ForArtists/MySongsComponent";
 
 const mapStateToProps = (state) => ({
   data: state.data,

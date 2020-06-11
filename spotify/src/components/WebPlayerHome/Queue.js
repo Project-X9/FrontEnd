@@ -2,10 +2,6 @@ import "./WebPlayerHomeComponent.css";
 import React, { Component } from "react";
 import { Navbar,Nav,NavItem,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem,Button} from "reactstrap";
 import { NavLink, Redirect} from "react-router-dom";
-import PopularPlaylistsContent from "./PopularPlaylistsContent";
-import PopularArtistsHomeAndNavContent from "./PopularArtistsHomeAndNavContent";
-import PopularAlbumsHomeAndNavContent from "./PopularAlbumsHomeAndNavContent";
-import ShowSongs from "./ShowSongs";
 import {Loading} from './../Loading/LoadingComponent'
 /**
  * Queue inside Webplayer page
@@ -102,7 +98,7 @@ class Queue extends Component {
         } 
         
         let nowPlaying=""
-        if(this.props.queue.queue !== null){
+        if(this.props.queue.queue && this.props.queue.queue.length>0){
             nowPlaying= (
                 <div>
                     <div className="row">
@@ -150,7 +146,7 @@ class Queue extends Component {
         }
        
         let nextUp=""
-        if(this.props.queue.queue){
+        if(this.props.queue.queue && this.props.queue.queue.length>0){
             nextUp= (
                 <div>
                     <div className="row">

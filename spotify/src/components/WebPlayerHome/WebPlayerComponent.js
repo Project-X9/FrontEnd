@@ -20,7 +20,6 @@ import Artist from "../ArtistInterface/ArtistComponent";
 import PlayFooter from './../PlayFooter/PlayFooter';
 import Search from "../SearchComponent/Search";
 import Queue from "./Queue";
-import PremiumComponent from "../PremiumPage/PremuimComponent";
 /**
  * Web Player page
  */

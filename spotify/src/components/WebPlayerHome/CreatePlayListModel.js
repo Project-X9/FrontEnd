@@ -1,8 +1,6 @@
-import React, { Component, useState } from "react";
+import React, { Component} from "react";
 
-import { 
-    Form,FormGroup,Modal,ModalBody,ModalHeader,Button,Label,Input,Jumbotron, Row, Col,Mo} from 'reactstrap'; 
-import {Link} from "react-router-dom";
+import { Modal,ModalBody,Button, Row, Col} from 'reactstrap'; 
 
 import "./CreatePlaylist.css";
 
