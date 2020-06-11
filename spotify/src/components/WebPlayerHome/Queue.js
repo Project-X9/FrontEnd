@@ -33,7 +33,7 @@ class Queue extends Component {
   }
 
   handleplayqueue(){
-    alert("hello")
+   // alert("hello")
     if(this.props.queue.queue)
     {
     this.props.PlayTheFooter(this.props.queue.queue[0])
