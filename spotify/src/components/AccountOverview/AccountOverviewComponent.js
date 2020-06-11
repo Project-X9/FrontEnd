@@ -507,6 +507,8 @@ test(){
                         data={this.props.data}
                         data_be={this.props.data_be}
                         reseteditprofile={this.props.reseteditprofile}
+                        token={this.props.token}
+
                       />
                     )}
                   />

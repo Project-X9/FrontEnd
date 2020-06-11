@@ -42,8 +42,7 @@ class EditProfile extends Component {
       values.email,
       parseInt(values.age, 10),
       values.ID,
-      values.country,
-        this.props.token.token
+      this.props.token.token
     );
   };
 
@@ -91,18 +90,7 @@ class EditProfile extends Component {
               />
             </Col>
           </Row>
-          <Row className="form-group">
-            <Col xs={12} md={{ size: 6, offset: 3 }}>
-              <Label>Country</Label>
-              <Control.text
-                className="form-control"
-                model=".country"
-                id="country"
-                name="country"
-                placeholder="New country"
-              />
-            </Col>
-          </Row>
+          
           <Row className="form-group">
             <Col xs={12} md={{ size: 6, offset: 3 }}>
               <Label>Age</Label>
