@@ -61,7 +61,7 @@ class Queue extends Component {
    */
 
     render(){
-        if (this.props.isSignedIn.isSignedIn === null) {
+        if (this.props.isSignedIn.isSignedIn !== true) {
             var redirected = <Redirect to="/webplayer/home"></Redirect>;
         }
 
@@ -103,7 +103,7 @@ class Queue extends Component {
         } 
         
         let nowPlaying=""
-        if(this.props.queue.queue){
+        if(this.props.queue.queue !== null){
             nowPlaying= (
                 <div>
                     <div className="row">
