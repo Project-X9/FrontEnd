@@ -62,7 +62,7 @@ import {
   FollowArtist,
   UnFollowArtist,
   SetIsQueue,
-  postupdatedArtist
+  postUpdatedArtist
 } from "../redux/ActionCreators";
 
 const mapStateToProps = (state) => ({
@@ -105,6 +105,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   reseteditprofile: () => {
     dispatch(actions.reset("editprofie"));
+  },
+  resetartisteditprofile: () => {
+    dispatch(actions.reset("artisteditprofile"));
   },
   resetpassword: () => {
     dispatch(actions.reset("resetpassword"));
@@ -162,8 +165,8 @@ const mapDispatchToProps = (dispatch) => ({
     ),
   postupdatedFeedback: (id, isemail, isage, isID, country, token) =>
     dispatch(postupdatedFeedback(id, isemail, isage, isID, country, token)),
-  postupdatedArtist: (id, isemail, Bio, Name, token) =>
-    dispatch(postupdatedArtist(id, isemail, Bio, Name, token)),
+  postUpdatedArtist: (id, isemail, Bio, Name, token) =>
+    dispatch(postUpdatedArtist(id, isemail, Bio, Name, token)),
   postFacebookLogin: (email, image, name) =>
     dispatch(postFacebookLogin(email, image, name)),
   PlayTheFooter: (songSrc) => {
@@ -459,6 +462,8 @@ class Main extends Component {
             component={() => (
               <ArtistInterface
                 data_be={this.props.data_be}
+                token={this.props.token}
+                postUpdatedArtist={this.props.postUpdatedArtist}
               />
             )}
           />
