@@ -15,7 +15,10 @@ class AddAlbum extends Component {
             description: values.description,
             _id: values.name
         }
-        this.props.data_be.data_be.albums.push(newAlbum);
+        if (newAlbum.name !== undefined && newAlbum.name !== undefined && newAlbum.artists !== undefined)
+            this.props.data_be.data_be.albums.push(newAlbum);
+        else
+            alert("wrong data entered");
     }
     /**
    * Responsible for rendering the add album form and its elements on the screen

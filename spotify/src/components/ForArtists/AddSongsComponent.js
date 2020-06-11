@@ -22,9 +22,12 @@ class AddSong extends Component {
                 name: this.props.data_be.data_be.artists[0].name
             }],
             description: values.description,
-            _id:values.name
+            _id: values.name
         }
-        this.props.data_be.data_be.tracks.push(newSong);
+        if (newSong.name !== undefined && newSong.name !== undefined && newSong.artists[0].name !== undefined)
+            this.props.data_be.data_be.albums.push(newSong);
+        else
+            alert("wrong data entered");
     }
     /**
    * Responsible for rendering the add song form and its elements on the screen
