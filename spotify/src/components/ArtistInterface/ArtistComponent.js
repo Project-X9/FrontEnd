@@ -66,18 +66,13 @@ class Artist extends Component {
     const Temp = 3;
     this.setState({ overview: Temp });
   }
-    /**
-   * Checks if the user follows that artist or not and renders the button based on it
-   */
   componentDidMount(){
     if(!this.props.currentPlaylist.isLoading){
       this.props.currentPlaylist.currentPlaylist.followers.find(el => el._id==this.props.data_be.data_be._id)===undefined?(this.setState({following: false})):(this.setState({following:true}))
     }
   }
 
-/**Function to either follow or unfollow artist depending on whether the user already 
- * follows this artist or not
- */
+/**Follow artist function, currently only changes the button on click, to be implemented later */
   toggleFollow() {
 
     const temp = this.state.following;

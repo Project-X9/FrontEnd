@@ -30,7 +30,7 @@ class PlayList extends Component {
 //        }
 //    }
 handleplay(){
-   // alert("hello")
+    alert("hello")
     if(this.props.currentPlaylist.currentPlaylist.tracks)
     {
     this.props.PlayTheFooter(this.props.currentPlaylist.currentPlaylist.tracks[0])

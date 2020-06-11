@@ -36,11 +36,6 @@ class EditSongs extends Component {
         })
 
     }
-    handleEdit = (event) => {
-        console.log(event.currentTarget.id);
-        //this.props.clickedSong = event.currentTarget.id;
-        //console.log(this.props.clickedSong)
-    }
     /**
      * @param {Object} obj
      * this function returns the length of an array of objects, used to count artists, songs, followers, etc...
@@ -87,11 +82,11 @@ class EditSongs extends Component {
                                         <Col>
                                             <Button size="lg" className="edit-albums-btn" id={allTracks._id} onClick={this.handleDelete}>
                                                 Delete
-                                            </Button>
-                                            <Button size="lg" className="edit-albums-btn" id={allTracks._id} onClick={this.handleEdit}>
+                        </Button>
+                                            <Button size="lg" className="edit-albums-btn" id={allTracks._id} >
                                                 <Link to="/forartists/songs/edit/form">
                                                     Edit
-                                                </Link>
+                            </Link>
                                             </Button>
                                         </Col>
                                     </Row>

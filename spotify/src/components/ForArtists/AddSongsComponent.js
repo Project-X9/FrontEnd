@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Row, Container, Button, Label } from 'reactstrap'
 import { Link } from "react-router-dom"
-import { Control, Form } from 'react-redux-form'
+import { Control, Form, Errors } from 'react-redux-form'
 class AddSong extends Component {
     /**
      * 
@@ -16,22 +16,16 @@ class AddSong extends Component {
     handleAddSong = values => {
         this.props.reseteditprofile();
         let newSong = {
-            album: "",
+            name: values.name,
+            imageUrl: values.image,
             artists: [{
                 name: this.props.data_be.data_be.artists[0].name
             }],
             description: values.description,
-            duration: "",
-            genres: [],
-            imageUrl: values.image,
-            likers: [],
-            name: values.name,
-            playcount: "",
-            url: values.song,
-            _id: values.name,
+            _id: values.name
         }
         if (newSong.name !== undefined && newSong.name !== undefined && newSong.artists[0].name !== undefined)
-            this.props.data_be.data_be.tracks.push(newSong);
+            this.props.data_be.data_be.albums.push(newSong);
         else
             alert("wrong data entered");
     }
@@ -56,7 +50,6 @@ class AddSong extends Component {
                                 id="name"
                                 name="name"
                                 placeholder="New Name"
-                                required="true"
                             />
                         </Col>
                     </Row>
@@ -69,7 +62,6 @@ class AddSong extends Component {
                                 id="image"
                                 name="image"
                                 placeholder="New Image"
-                                required="true"
                             />
                         </Col>
                     </Row>
@@ -82,20 +74,6 @@ class AddSong extends Component {
                                 id="description"
                                 name="description"
                                 placeholder="New Description"
-                                required="true"
-                            />
-                        </Col>
-                    </Row>
-                    <Row className="form-group">
-                        <Col xs={12} md={{ size: 6, offset: 3 }}>
-                            <Label className="add-album-label">Song URL :</Label>
-                            <Control.text
-                                className="form-control add-album-img-fld"
-                                model=".song"
-                                id="song"
-                                name="song"
-                                placeholder="New Song Url"
-                                required="true"
                             />
                         </Col>
                     </Row>

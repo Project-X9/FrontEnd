@@ -28,9 +28,6 @@ class NowPlay extends Component {
   /**
    *
    * @param tempId this is for the ID of the user entered right now
-   * @param shareModal this is to open the modal of sharing as we have two modals that we can open
-   * @param email stores the email of the user we want to send the song to
-   * @param tempSharedSong stores the song we want to share
    */
   constructor(props) {
     super(props);
@@ -83,15 +80,9 @@ class NowPlay extends Component {
     this.props.AddSong_inPlaylist_id(Song._id);
       this.props.ControlModal(true);
   }
-  /**
-   * Calls the function that removes a liked song from the user's list of likes
-   */
   handleDislike(Song){
     this.props.DisLikeSong(Song._id,this.props.data_be.data_be._id,this.props.token.token);
   }
-  /**
-   * Calls the function that likes a song 
-   */
   handleLike(Song){
     this.props.LikeSong(Song._id,this.props.data_be.data_be._id,this.props.token.token);
   }
@@ -101,9 +92,7 @@ class NowPlay extends Component {
       shareModal: x
     });
   }
-/**
- * Stores the song we want to share and opens the modal for sharing
- */
+
   shareSong(Song){
     //function of sharing 
    this.setState({shareModal:true,
@@ -113,9 +102,6 @@ class NowPlay extends Component {
     this.setState({email: event.target.value});
   }
 
-  /**
- * Makes sure that the email is valid and sends it to the other user
- */
   handleShare(Song){
     let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if ( re.test(String(this.state.email).toLowerCase()) ) {
@@ -587,11 +573,7 @@ class NowPlay extends Component {
                                                         <i className="fa fa-ellipsis-h"></i>
                                                       </Dropdown.Toggle>
                                                       <Dropdown.Menu className="NowPlayDropdownMenu">
-                                                        {  
-                                                        /**
-                                                         * Checks if the user already liked this song
-                                                         */
-                                                        Song.likers.find(el=>el==this.props.data_be.data_be._id)===undefined?(<Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.handleLike(Song)}} >Like Song</Dropdown.Item>
+                                                        {Song.likers.find(el=>el==this.props.data_be.data_be._id)===undefined?(<Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.handleLike(Song)}} >Like Song</Dropdown.Item>
                                                          ):(<Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.handleDislike(Song)}} >Dislike Song</Dropdown.Item>)
                                                          }
                                                         <Dropdown.Item  className="NowPlayDropdownItem" onClick={()=>{this.handleSubmit(Song)}} >Add Song To a PlayList</Dropdown.Item>

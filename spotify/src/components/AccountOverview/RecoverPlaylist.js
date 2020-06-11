@@ -17,7 +17,7 @@ class RecoverPlaylists extends Component {
    */
 
   /**
-   * Calls the function that recovers the deleted playlist
+   * Puts the selected song in the footer to be played
    */
   HandleDeletedPlaylist(userID,playlisId)
   {
@@ -59,10 +59,10 @@ class RecoverPlaylists extends Component {
         {Redirect}
         <div className="row">
           <h2 className="RecoverPlaylistsHeader">Recover Playlists</h2>
-          <p>Accidentally deleted a playlist? No worries, find the deleted playlist you'd like to recover below then click RESTORE to recover it.</p>
         </div>
         <hr></hr>
         {RecoverPlaylist}
+          
       </div>
     );
   }

@@ -16,7 +16,6 @@ import MySongs from "./ForArtists/MySongsComponent";
 import Library from "./Library/LibraryCompnent";
 import PlayFooter from "./PlayFooter/PlayFooter";
 import CreatePlayList from "./WebPlayerHome/CreatePlayListModel";
-import Help from"./Homepage/HelpComponent";
 import {
   postFeedback,
   postFacebookLogin,
@@ -291,9 +290,6 @@ class Main extends Component {
             fullsongs={this.props.fullsongs}
             isSignedIn={this.props.isSignedIn}
             handleLogout_BE={this.props.handleLogout_BE} />} />)}
-            <Route exact path="/help" component={() => <Help isSignedIn={this.props.isSignedIn}
-            data_be={this.props.data_be}
-            handleLogout_BE={this.props.handleLogout_BE} />}></Route>
           <Route
             exact
             path="/signup"

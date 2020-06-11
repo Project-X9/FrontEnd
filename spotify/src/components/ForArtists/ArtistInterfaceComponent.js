@@ -23,15 +23,12 @@ class ArtistInterface extends Component {
     constructor(props) {
         super(props);
     }
-    clickedSong = "i am the clicked song";
-
     /**
    * Responsible for rendering the artist interface m and its elements on the screen
    * @returns artist interface
    */
 
     render() {
-
         return (
             <div>
                 <Container className="artist-interface" fluid={true}>
@@ -119,8 +116,7 @@ class ArtistInterface extends Component {
                                 <Route
                                     exact
                                     path="/forartists/songs/edit"
-                                    component={() => <EditSongs data_be={this.props.data_be}
-                                        clickedSong={this.clickedSong} />}
+                                    component={() => <EditSongs data_be={this.props.data_be} />}
                                 />
                                 <Route
                                     exact
@@ -132,8 +128,7 @@ class ArtistInterface extends Component {
                                 <Route
                                     exact
                                     path="/forartists/songs/edit/form"
-                                    component={() => <EditSongsForm data_be={this.props.data_be}
-                                        clickedSong={this.clickedSong} />}
+                                    component={() => <EditSongsForm data_be={this.props.data_be} />}
                                 />
 
                                 <Route

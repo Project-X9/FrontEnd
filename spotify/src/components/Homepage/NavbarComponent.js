@@ -80,7 +80,7 @@ class NavbarHome extends Component {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink className="nav-link" to="/help">
+                <NavLink className="nav-link" to="">
                   Help
                 </NavLink>
               </NavItem>

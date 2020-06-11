@@ -10,7 +10,7 @@ class AlbumDescription extends Component {
         super(props);
     }
     /**
-   * Responsible for rendering the static album songs and its elements on the screen
+   * Responsible for rendering the album songs and its elements on the screen
    * @returns songs for album
    */
     render() {
