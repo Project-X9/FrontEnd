@@ -147,6 +147,11 @@
         text-align: center;
         margin: auto;
     }
+    .song-img,
+    .album-img {
+        height: 300px;
+        width: 300px;
+    }
 }
 
 .edit-albums-btn {
@@ -177,6 +182,8 @@
     margin: 15px;
     max-width: 300px;
     max-height: 300px;
+    width: 400px;
+    height: 400px;
 }
 
 #no-songs-hdr {

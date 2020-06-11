@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Col, Row, Button, Container } from 'reactstrap';
-import { Link } from 'react-router-dom'
+import { Link, Route, Switch } from 'react-router-dom'
+import AddSong from "./AddSongsComponent";
+
 class MySongs extends Component {
     /**
      * 

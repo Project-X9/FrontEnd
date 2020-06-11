@@ -43,6 +43,47 @@ class WebPlayer extends Component {
    * @param props.handleCurrentAlbums Essentially used to display albums' data after integrating with the backend
    * @param props.handleCurrentPlayList Essentially used to display playlists' data after integrating with the backend
    * @param props.categories Essentially contains an array of categories that contain playlists
+   * @param props.fullsongs Essentially used in the nowplay and search components
+   * @param props.fullartists Essentially used in the search component
+   * @param props.PlayTheFooter Essentially used in multiple components to allow for a selected song to play
+   * @param props.song Essentially used in the playFooter component
+   * @param props.PlayShuffle Essentially used in the playFooter component for playing
+   * @param props.PauseShuffle Essentially used in the playFooter component for pausing
+   * @param props.shuffle Essentially used in the playFooter component for controlling the song that is playing
+   * @param props.ChangeSongProgress Essentially used in the playFooter component for controlling the song that is playing
+   * @param props.progress Essentially used in the playFooter component for controlling the song that is playing
+   * @param props.ChangeProgressMode Essentially used in the playFooter component for controlling the song that is playing
+   * @param props.in_set_progress_mode Essentially used in the playFooter component for controlling the song that is playing
+   * @param props.ChangeProgressDirty Essentially used in the playFooter component for controlling the song that is playing
+   * @param props.is_progress_dirty Essentially used in the playFooter component for controlling the song that is playing
+   * @param props.ChangeTotalTime Essentially used in the playFooter component for controlling the song that is playing
+   * @param props.ChangeCurrentTime Essentially used in the playFooter component for controlling the song that is playing
+   * @param props.currentTime Essentially used in the playFooter component for controlling the song that is playing
+   * @param props.totalTime Essentially used in the playFooter component for controlling the song that is playing
+   * @param props.AddPrevSong Essentially used in the playFooter and queue components for configuring the player
+   * @param props.prevsong Essentially used in the playFooter and queue components for configuring the player
+   * @param props.handleChangeData_BE Essentially used in nowplay for making sure that when a change happens, it should affect the right things
+   * @param props.token Essentially used in many components mainly for authentication
+   * @param props.AddSong_inPlaylist_id Essentially used in likedplay and nowplay components
+   * @param props.songid Essentially used in likedplay and nowplay components
+   * @param props.isModalOpen Essentially used in likedplay and nowplay components
+   * @param props.ControlModal Essentially used in likedplay and nowplay components
+   * @param props.CreatePlayList_BE Essentially used in creating a new playlist
+   * @param props.GetSongsByGeneres Essentially used in SongsByGenres component to get the songs from a specific category
+   * @param props.genretracks Essentially used in SongsByGenres component to store the songs taken from a specific category
+   * @param props.PatchAddPlaylist Essentially used in likedplay and nowplay components
+   * @param props.DeleteAddPlaylist Essentially used in likedplay and nowplay components
+   * @param props.RemoveQueue Essentially used in likedplay, nowplay and playFooter components to remove a song from the queue of IDs
+   * @param props.AddToQueue Essentially used in likedplay and nowplay components to add a song from the queue of IDs
+   * @param props.GetQueue Essentially used in playFooter component to get a queue of songs based on the IDs of songs in another queue
+   * @param props.queue Essentially used in Queue and playFooter components and it contains songs
+   * @param props.LikeSong Essentially used in nowplay and playFooter components 
+   * @param props.DisLikeSong Essentially used in nowplay, Likeplay and playFooter components 
+   * @param props.FollowArtist Essentially used in Artist and playFooter components
+   * @param props.UnFollowArtist Essentially used in Artist and playFooter components
+   * @param props.isQueue Essentially used in Queue and playFooter components
+   * @param props.SetIsQueue Essentially used in Queue and playFooter components
+   * @param props.ShareSongs Essentially used in nowplaycomponent
    */
   constructor(props) {
     super(props);
@@ -327,6 +368,7 @@ handleSubmit() {
                         isModalOpen={this.props.isModalOpen}
                         ControlModal={this.props.ControlModal}
                         PatchAddPlaylist={this.props.PatchAddPlaylist}
+                        ShareSongs={this.props.ShareSongs}
                         RemoveQueue={this.props.RemoveQueue}
                         AddToQueue={this.props.AddToQueue}
                         DeleteAddPlaylist={this.props.DeleteAddPlaylist}
@@ -342,8 +384,8 @@ handleSubmit() {
                     path="/webplayer/nowplay"
                     component={() => (
                       <NowPlay
-                          fullsongs={this.props.fullsongs}
-                          id={this.props.id}
+                        fullsongs={this.props.fullsongs}
+                        id={this.props.id}
                         data={this.props.data}
                         playLists={this.props.playLists}
                         data_be={this.props.data_be}
