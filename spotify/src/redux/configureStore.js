@@ -8,6 +8,7 @@ import {
   ChangePassword,
   EditProfile,
   ResetPassword,
+  ArtistEditProfile,
 } from "./forms";
 import { Data, Data_BE } from "./userData";
 import { UserID } from "./UserId";
@@ -17,16 +18,16 @@ import { Album } from "./Albums";
 import { SignUpState, SignInState } from "./addUser";
 import { Current } from "./CurrentPlaylist";
 import { Categories } from "./addCategories";
-import { Song, CurrentTime,TotalTime,PrevSong } from './PlayFooterStuff/SongsPlay';
+import { Song, CurrentTime, TotalTime, PrevSong } from './PlayFooterStuff/SongsPlay';
 import { SongState } from './PlayFooterStuff/SongState';
-import { SongProgress, ProgressMode ,ProgressDirty} from './PlayFooterStuff/SongProgress';
-import { FullSongs } from "./addFullSongs";import { FullArtists } from "./addFullArtists";
-import { SignUpData, SignUpModal} from './SignupData';
+import { SongProgress, ProgressMode, ProgressDirty } from './PlayFooterStuff/SongProgress';
+import { FullSongs } from "./addFullSongs"; import { FullArtists } from "./addFullArtists";
+import { SignUpData, SignUpModal } from './SignupData';
 import { AddToken } from './AddToken';
-import {ADDSongId} from './AddSongToPlayList'
+import { ADDSongId } from './AddSongToPlayList'
 import { GenreTracks } from './ShowSongsByGeneres'
-import {DeletedPlaylists} from './RecoverPlayList'
-import {QueueOfTracks,SetQueueState} from "./Queue"
+import { DeletedPlaylists } from './RecoverPlayList'
+import { QueueOfTracks, SetQueueState } from "./Queue"
 
 function saveState(state) {
   try {
@@ -43,7 +44,7 @@ function loadState() {
       return undefined;
     }
     return JSON.parse(serializedState);
-  } catch (error) {}
+  } catch (error) { }
 }
 const persistState = loadState();
 export const ConfigureStore = () => {
@@ -59,31 +60,32 @@ export const ConfigureStore = () => {
       data_be: Data_BE,
       currentPlaylist: Current,
       categories: Categories,
-      song:Song,
-      shuffle:SongState,
-      progress:SongProgress,
-      in_set_progress_mode:ProgressMode,
-      is_progress_dirty:ProgressDirty,
-      currentTime:CurrentTime,
-      fullsongs:FullSongs,
-      fullartists:FullArtists,
-      totalTime:TotalTime,
-      prevsong:PrevSong,
-      signupdata:SignUpData,
-      isModalOpen:SignUpModal,
-      token:AddToken,
-      songid:ADDSongId,
-      genretracks:GenreTracks,
-      deletedPlaylists:DeletedPlaylists,
-      queue:QueueOfTracks,
-      isQueue:SetQueueState,
+      song: Song,
+      shuffle: SongState,
+      progress: SongProgress,
+      in_set_progress_mode: ProgressMode,
+      is_progress_dirty: ProgressDirty,
+      currentTime: CurrentTime,
+      fullsongs: FullSongs,
+      fullartists: FullArtists,
+      totalTime: TotalTime,
+      prevsong: PrevSong,
+      signupdata: SignUpData,
+      isModalOpen: SignUpModal,
+      token: AddToken,
+      songid: ADDSongId,
+      genretracks: GenreTracks,
+      deletedPlaylists: DeletedPlaylists,
+      queue: QueueOfTracks,
+      isQueue: SetQueueState,
       // playlist_BE:PlayList_BE,
       ...createForms({
         feedback: InitialFeedback,
         login: InitialLogin,
         changepassword: ChangePassword,
         editprofie: EditProfile,
-        resetpassword: ResetPassword
+        resetpassword: ResetPassword,
+        artisteditprofile: ArtistEditProfile
       }),
     }),
     persistState,
