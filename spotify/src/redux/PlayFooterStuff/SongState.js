@@ -7,8 +7,8 @@ export const SongState = (state = {shuffle:false}, action) => {
       return { ...state, shuffle: true };
     case ActionTypes.PAUSE_SHUFFLE:
       return { ...state, shuffle:false };
-    // case ActionTypes.STOP_SONG:
-    //   return { ...state, isPlaying:false };  
+    case ActionTypes.ADD_LOGOUT_BE:
+      return { ...state, shuffle:false };  
     default:
       return state;
   }
