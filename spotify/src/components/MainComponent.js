@@ -145,25 +145,25 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(handleSignIn_BE(data));
   },
   handleLogoutId: (id) => dispatch(handleLogoutId(id)),
-  DeleteAddPlaylist:(idPlaylist,idSong)=>dispatch(DeleteAddPlaylist(idPlaylist,idSong)),
+  DeleteAddPlaylist:(idPlaylist,idSong,token)=>dispatch(DeleteAddPlaylist(idPlaylist,idSong,token)),
 
-  PatchAddPlaylist:(idPlaylist,idSong) =>dispatch(PatchAddPlaylist(idPlaylist,idSong)),
+  PatchAddPlaylist:(idPlaylist,idSong,token) =>dispatch(PatchAddPlaylist(idPlaylist,idSong,token)),
   PostPassword: (password, id) => dispatch(PostPassword(password, id)),
   GetPassword: (id) => dispatch(GetPassword(id)),
   getEmail: (id) => dispatch(getEmail(id)),
   getPassword: (id) => dispatch(getPassword(id)),
   PremiumPost: (id, isPremium) => dispatch(PremiumPost(id, isPremium)),
-  patchedunfollow: (idUser, idPlaylist) =>
-    dispatch(patchedunfollow(idUser, idPlaylist)),
-  patchedfollow: (idUser, idPlaylist) =>
-    dispatch(patchedfollow(idUser, idPlaylist)),
+  patchedunfollow: (idUser, idPlaylist,token) =>
+    dispatch(patchedunfollow(idUser, idPlaylist,token)),
+  patchedfollow: (idUser, idPlaylist,token) =>
+    dispatch(patchedfollow(idUser, idPlaylist,token)),
   handleLoginId: (id) => dispatch(handleLoginId(id)),
   postFeedback: (email, confirmemail, password, name, day, month, year, sex) =>
     dispatch(
       postFeedback(email, confirmemail, password, name, day, month, year, sex)
     ),
-  postupdatedFeedback: (id, isemail, isage, isID) =>
-    dispatch(postupdatedFeedback(id, isemail, isage, isID)),
+  postupdatedFeedback: (id, isemail, isage, isID,country,token) =>
+    dispatch(postupdatedFeedback(id, isemail, isage, isID,country,token)),
   postFacebookLogin: (email, image, name) =>
     dispatch(postFacebookLogin(email, image, name)),
   PlayTheFooter: (songSrc) => {

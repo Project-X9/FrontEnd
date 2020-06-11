@@ -24,14 +24,7 @@ import {
   ShareSongUrl
 } from "../shared/baseUrl";
 import { ArtistsUrl } from "./../shared/baseUrl";
-export const postupdatedFeedback = (id, isemail, isage, isID) => (dispatch) => {
-  const newFeedback = {
-    email: isemail,
-    age: isage,
-    name: isID,
-  };
-  axios.patch(`${PremiumUrl}/${id}`, newFeedback);
-};
+
 
 /**
  * Mocking
@@ -319,6 +312,19 @@ function urlBase64ToUint8Array(base64String) {
   return outputArray;
 }
 
+export const postupdatedFeedback = (id, isemail, isage, isID,country,token) => (dispatch) => {
+  const Authstr = "Bearer ".concat(token);
+
+  const newFeedback = {
+    email: isemail,
+    age: isage,
+    name: isID,
+    country:country
+  };
+  axios.patch(`${PremiumUrl}/${id}`, newFeedback,{
+    headers: { Authorization: Authstr },
+  });
+};
 ////////////////////////////////////For Handling the playlist either adding or removing it from the playlist /////////////////////////////////
 /**
  * This function handles the playlist either adding or removing it from the playlist

@@ -298,7 +298,8 @@ handleSubmit() {
                         PlaySong={this.props.PlaySong}
                         PauseSong={this.props.PauseSong}
                         isPlaying={this.props.isPlaying}
-                        // fetchPlaylistById_be={this.props.fetchPlaylistById_be}
+                        token={this.props.token}
+                          // fetchPlaylistById_be={this.props.fetchPlaylistById_be}
                         // playlist_BE={this.props.playlist_BE}
                       />
                     )}
@@ -375,6 +376,7 @@ handleSubmit() {
                     path="/webplayer/artist"
                     component={() => (
                       <Artist
+
                         id={this.props.id}
                         data={this.props.data}
                         playLists={this.props.playLists}
@@ -411,6 +413,8 @@ handleSubmit() {
                         PlaySong={this.props.PlaySong}
                         PauseSong={this.props.PauseSong}
                         isPlaying={this.props.isPlaying}
+                        token={this.props.token}
+                        handleCurrentArtists={this.props.handleCurrentArtists}
                       />
                     )}
                   />

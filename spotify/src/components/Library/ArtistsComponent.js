@@ -26,8 +26,7 @@ class Artists extends Component {
      * @param {String} data 
      */
     handleRenderingPlaylist(data){
-
-        this.props.handleCurrentArtists(data);
+        this.props.handleCurrentArtists(data,this.props.token.token);
         this.setState({
             playListadded:true
         })

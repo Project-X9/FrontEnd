@@ -122,7 +122,7 @@ class NowPlay extends Component {
     AddingSongPlayListToBe(idSong){
         let Song=this.props.currentPlaylist.currentPlaylist.tracks.find(element=> element._id===idSong)
         if(Song===undefined){
-                this.props.PatchAddPlaylist(this.props.currentPlaylist.currentPlaylist._id,idSong)}
+                this.props.PatchAddPlaylist(this.props.currentPlaylist.currentPlaylist._id,idSong,this.props.token.token)}
 
             else{console.log("Already Found in the playlist")}
         }
@@ -134,7 +134,7 @@ class NowPlay extends Component {
     if(Playlist!==undefined){
       let sameSong=Playlist.tracks.find(element=>element._id===this.props.songid.songid)
       if(sameSong===undefined){
-        this.props.PatchAddPlaylist(idPlaylist,this.props.songid.songid)
+        this.props.PatchAddPlaylist(idPlaylist,this.props.songid.songid,this.props.token.token)
       }
       else{console.log("Already Found in the playlist")}
     }

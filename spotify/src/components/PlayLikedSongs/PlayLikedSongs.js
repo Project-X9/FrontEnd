@@ -50,7 +50,7 @@ class PlayLikedSongs extends Component {
    */
 
   deleteSong(Song){
-    this.props.DeleteAddPlaylist(this.props.currentPlaylist.currentPlaylist._id,Song._id)
+    this.props.DeleteAddPlaylist(this.props.currentPlaylist.currentPlaylist._id,Song._id,this.props.token.token)
     this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
   }
   /**
