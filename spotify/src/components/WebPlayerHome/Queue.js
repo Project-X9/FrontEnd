@@ -1,14 +1,14 @@
 import "./WebPlayerHomeComponent.css";
 import React, { Component } from "react";
 import { Navbar,Nav,NavItem,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem,Button} from "reactstrap";
-import { NavLink} from "react-router-dom";
+import { NavLink, Redirect} from "react-router-dom";
 import PopularPlaylistsContent from "./PopularPlaylistsContent";
 import PopularArtistsHomeAndNavContent from "./PopularArtistsHomeAndNavContent";
 import PopularAlbumsHomeAndNavContent from "./PopularAlbumsHomeAndNavContent";
 import ShowSongs from "./ShowSongs";
 import {Loading} from './../Loading/LoadingComponent'
 /**
- * Songs inside Webplayer page
+ * Queue inside Webplayer page
  */
 class Queue extends Component {
    /**
@@ -36,6 +36,15 @@ class Queue extends Component {
     this.state.handleLogout = this.handleLogout.bind(this);
   }
 
+  handleplayqueue(){
+    alert("hello")
+    if(this.props.queue.queue)
+    {
+    this.props.PlayTheFooter(this.props.queue.queue[0])
+    this.props.AddPrevSong(null);
+    }
+}
+
   /**
    * Sets a variable to an empty string then passes it to
    * handleLogoutId() functions which logs the user out
@@ -52,6 +61,10 @@ class Queue extends Component {
    */
 
     render(){
+        if (this.props.isSignedIn.isSignedIn === null) {
+            var redirected = <Redirect to="/webplayer/home"></Redirect>;
+        }
+
         let userName =(
             <div>
              <Button className="AccountItself">
@@ -192,8 +205,9 @@ class Queue extends Component {
           ) )
    
         
-        return (
+        return ( 
             <div>
+                {redirected}
               <div className="row">
                   <div className="WebPlayerHomeNav">
                       <div className="container">

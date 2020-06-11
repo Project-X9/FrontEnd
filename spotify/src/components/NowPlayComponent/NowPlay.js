@@ -109,16 +109,7 @@ class NowPlay extends Component {
   }
   }
 
-  // RemoveQueue={this.props.RemoveQueue}
-    // AddToQueue={this.props.AddToQueue}
-  handleAddQueue(songID,userID) {
-      this.props.AddToQueue(songID,userID,this.props.token.token)
-  }
-
-
-  handleRemoveQueue(songID,userID,token) {
-      this.props.RemoveQueue(songID,userID,this.props.token.token);
-    }
+  
     AddingSongPlayListToBe(idSong){
         let Song=this.props.currentPlaylist.currentPlaylist.tracks.find(element=> element._id===idSong)
         if(Song===undefined){

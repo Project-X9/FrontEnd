@@ -333,6 +333,7 @@ handleSubmit() {
                         DeleteAddPlaylist={this.props.DeleteAddPlaylist}
                         AddSong_inPlaylist_id={this.props.AddSong_inPlaylist_id}
                         songid={this.props.songid}
+                        token={this.props.token}
                       />
                     )}
                   />
@@ -440,6 +441,7 @@ handleSubmit() {
                         PlayTheFooter={this.props.PlayTheFooter}
                         GetSongsByGeneres={this.props.GetSongsByGeneres}
                         genretracks={this.props.genretracks}
+                        token={this.props.token}
                       />
                     )}
                   />

@@ -431,6 +431,13 @@ export const handleCurrentPlayList = (id,token) => (dispatch) => {
       dispatch(addCurrentPlaylist(response.data.data.playlist))
     );
 };
+
+
+// export const handleCurrentQueue = (queue) => (dispatch) => {
+//   dispatch(CurrentLoading(true));
+//   dispatch(addCurrentPlaylist(queue))
+// };
+
 /**
  * This function takes the id of the artist we are going to render and request the data of it from the data base to be rendered 
  * in the playlist interface and put in a state we called currentplayList  
