@@ -58,13 +58,19 @@ class SignUp extends Component {
     this.handleChange=this.handleChange.bind(this);
 
   }
-  
+/**
+ * function that handels the field where the user enters the id sent to him and saves him in a state and when the user 
+ * press create we compare the value with the send id in handleSubmitModal
+ * @param {*} e 
+ */  
 handleChange(e){
     this.setState({
         inputValue:e.target.value
     })
 }
-
+/**
+ * this function assures that when the users enters the righ code he will redirect him to the sign in 
+ */
 handleSubmitModal() {
     
     if(this.state.inputValue == this.props.signupdata.signupdata.randomId)
@@ -106,11 +112,9 @@ handleSubmitModal() {
   }
 
   /**
-   * This function takes the data fromthe input fields and assure that the all
+   * This function takes the data from the input fields and assure that the all
    * the data is not empty (don't make the validations) and if all the data required is
-   * avaliable it gives the data to the function (PostFeedback) to post the data to the 
-   * server and resets the input fields using resetFeedBack form and also state the submitted 
-   * state to true to be redirected to the next page.
+   * avaliable it saves the data ina a state and sends the mail with the random id 
    * @param {Object} values 
    */
   handleSubmit(values) {
