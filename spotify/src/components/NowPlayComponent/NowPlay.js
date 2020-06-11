@@ -123,9 +123,12 @@ class NowPlay extends Component {
   AddingToBe(idPlaylist){
     let Playlist=this.props.data_be.data_be.playlists.find(element=> element._id===idPlaylist)
     if(Playlist!==undefined){
-      let sameSong=Playlist.tracks.find(element=>element._id===this.props.songid.songid)
+      let sameSong=Playlist.tracks.find(element=>element===this.props.songid.songid)
       if(sameSong===undefined){
+          console.log("Not Found in the playlist")
         this.props.PatchAddPlaylist(idPlaylist,this.props.songid.songid,this.props.token.token)
+          this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
+
       }
       else{console.log("Already Found in the playlist")}
     }
