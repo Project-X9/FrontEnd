@@ -20,7 +20,6 @@ import Artist from "../ArtistInterface/ArtistComponent";
 import PlayFooter from './../PlayFooter/PlayFooter';
 import Search from "../SearchComponent/Search";
 import Queue from "./Queue";
-import PremiumComponent from "../PremiumPage/PremuimComponent";
 /**
  * Web Player page
  */
@@ -298,7 +297,8 @@ handleSubmit() {
                         PlaySong={this.props.PlaySong}
                         PauseSong={this.props.PauseSong}
                         isPlaying={this.props.isPlaying}
-                        // fetchPlaylistById_be={this.props.fetchPlaylistById_be}
+                        token={this.props.token}
+                          // fetchPlaylistById_be={this.props.fetchPlaylistById_be}
                         // playlist_BE={this.props.playlist_BE}
                       />
                     )}
@@ -322,7 +322,6 @@ handleSubmit() {
                         patchedunfollow={this.props.patchedunfollow}
                         PlayTheFooter={this.props.PlayTheFooter}
                         PlaySong={this.props.PlaySong}
-                        token={this.props.token}
                         PauseSong={this.props.PauseSong}
                         isPlaying={this.props.isPlaying}
                         isModalOpen={this.props.isModalOpen}
@@ -334,6 +333,7 @@ handleSubmit() {
                         AddSong_inPlaylist_id={this.props.AddSong_inPlaylist_id}
                         songid={this.props.songid}
                         DisLikeSong={this.props.DisLikeSong}
+                        token={this.props.token}
                       />
                     )}
                   />
@@ -379,6 +379,7 @@ handleSubmit() {
                     path="/webplayer/artist"
                     component={() => (
                       <Artist
+
                         id={this.props.id}
                         data={this.props.data}
                         playLists={this.props.playLists}
@@ -415,6 +416,8 @@ handleSubmit() {
                         PlaySong={this.props.PlaySong}
                         PauseSong={this.props.PauseSong}
                         isPlaying={this.props.isPlaying}
+                        token={this.props.token}
+                        handleCurrentArtists={this.props.handleCurrentArtists}
                       />
                     )}
                   />
@@ -440,6 +443,7 @@ handleSubmit() {
                         PlayTheFooter={this.props.PlayTheFooter}
                         GetSongsByGeneres={this.props.GetSongsByGeneres}
                         genretracks={this.props.genretracks}
+                        token={this.props.token}
                       />
                     )}
                   />
@@ -464,6 +468,10 @@ handleSubmit() {
                         handleCurrentArtists={this.props.handleCurrentArtists}
                         PlayTheFooter={this.props.PlayTheFooter}
                         queue={this.props.queue}
+                        AddPrevSong={this.props.AddPrevSong}
+                        SetIsQueue={this.props.SetIsQueue}
+                        isQueue={this.props.isQueue}
+
                       />
                     )}
                   />
@@ -505,6 +513,12 @@ handleSubmit() {
                 DisLikeSong={this.props.DisLikeSong}
                 FollowArtist={this.props.FollowArtist}
                 UnFollowArtist={this.props.UnFollowArtist}
+                RemoveQueue={this.props.RemoveQueue}
+                SetIsQueue={this.props.SetIsQueue}
+                isQueue={this.props.isQueue}
+                handleCurrentPlayList={this.props.handleCurrentPlayList}
+
+
                />
         </div>
         <Modal

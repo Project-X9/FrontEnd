@@ -10,9 +10,6 @@ import WebPlayer from "./WebPlayerHome/WebPlayerComponent";
 import SignIn from "./SignIn/SignInComponent";
 import ArtistInterface from "./ForArtists/ArtistInterfaceComponent"
 import "./ForArtists/ArtistInterfaceComponent.css";
-import Library from "./Library/LibraryCompnent";
-import PlayFooter from "./PlayFooter/PlayFooter";
-import CreatePlayList from "./WebPlayerHome/CreatePlayListModel";
 import LoggedHome from "./Homepage/LoggedHomeComponent";
 import {
   postFeedback,
@@ -64,9 +61,9 @@ import {
   DisLikeSong,
   FollowArtist,
   UnFollowArtist,
+  SetIsQueue,
+  postupdatedArtist
 } from "../redux/ActionCreators";
-import MyAlbums from "./ForArtists/MyAlbumsComponent";
-import MySongs from "./ForArtists/MySongsComponent";
 
 const mapStateToProps = (state) => ({
   data: state.data,
@@ -88,14 +85,15 @@ const mapStateToProps = (state) => ({
   is_progress_dirty: state.is_progress_dirty,
   currentTime: state.currentTime,
   totalTime: state.totalTime,
-  prevsong:state.prevsong,
-  signupdata:state.signupdata,
-  isModalOpen:state.isModalOpen,
-  token:state.token,
-  songid:state.songid,
-  genretracks:state.genretracks,
-  deletedPlaylists:state.deletedPlaylists,
-  queue:state.queue
+  prevsong: state.prevsong,
+  signupdata: state.signupdata,
+  isModalOpen: state.isModalOpen,
+  token: state.token,
+  songid: state.songid,
+  genretracks: state.genretracks,
+  deletedPlaylists: state.deletedPlaylists,
+  queue: state.queue,
+  isQueue: state.isQueue
 
 });
 const mapDispatchToProps = (dispatch) => ({
@@ -123,14 +121,14 @@ const mapDispatchToProps = (dispatch) => ({
   fetchUserPlaylist: () => {
     dispatch(fetchUserPlaylist());
   },
-  handleCurrentPlayList: (data) => {
-    dispatch(handleCurrentPlayList(data));
+  handleCurrentPlayList: (data, token) => {
+    dispatch(handleCurrentPlayList(data, token));
   },
-  handleCurrentArtists: (data) => {
-    dispatch(handleCurrentArtists(data));
+  handleCurrentArtists: (data, token) => {
+    dispatch(handleCurrentArtists(data, token));
   },
-  handleCurrentAlbums: (data) => {
-    dispatch(handleCurrentAlbums(data));
+  handleCurrentAlbums: (data, token) => {
+    dispatch(handleCurrentAlbums(data, token));
   },
   fetchArtist: () => {
     dispatch(fetchArtist());
@@ -145,25 +143,27 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(handleSignIn_BE(data));
   },
   handleLogoutId: (id) => dispatch(handleLogoutId(id)),
-  DeleteAddPlaylist:(idPlaylist,idSong)=>dispatch(DeleteAddPlaylist(idPlaylist,idSong)),
+  DeleteAddPlaylist: (idPlaylist, idSong, token) => dispatch(DeleteAddPlaylist(idPlaylist, idSong, token)),
 
-  PatchAddPlaylist:(idPlaylist,idSong) =>dispatch(PatchAddPlaylist(idPlaylist,idSong)),
+  PatchAddPlaylist: (idPlaylist, idSong, token) => dispatch(PatchAddPlaylist(idPlaylist, idSong, token)),
   PostPassword: (password, id) => dispatch(PostPassword(password, id)),
   GetPassword: (id) => dispatch(GetPassword(id)),
   getEmail: (id) => dispatch(getEmail(id)),
   getPassword: (id) => dispatch(getPassword(id)),
   PremiumPost: (id, isPremium) => dispatch(PremiumPost(id, isPremium)),
-  patchedunfollow: (idUser, idPlaylist) =>
-    dispatch(patchedunfollow(idUser, idPlaylist)),
-  patchedfollow: (idUser, idPlaylist) =>
-    dispatch(patchedfollow(idUser, idPlaylist)),
+  patchedunfollow: (idUser, idPlaylist, token) =>
+    dispatch(patchedunfollow(idUser, idPlaylist, token)),
+  patchedfollow: (idUser, idPlaylist, token) =>
+    dispatch(patchedfollow(idUser, idPlaylist, token)),
   handleLoginId: (id) => dispatch(handleLoginId(id)),
   postFeedback: (email, confirmemail, password, name, day, month, year, sex) =>
     dispatch(
       postFeedback(email, confirmemail, password, name, day, month, year, sex)
     ),
-  postupdatedFeedback: (id, isemail, isage, isID) =>
-    dispatch(postupdatedFeedback(id, isemail, isage, isID)),
+  postupdatedFeedback: (id, isemail, isage, isID, country, token) =>
+    dispatch(postupdatedFeedback(id, isemail, isage, isID, country, token)),
+  postupdatedArtist: (id, isemail, Bio, Name, token) =>
+    dispatch(postupdatedArtist(id, isemail, Bio, Name, token)),
   postFacebookLogin: (email, image, name) =>
     dispatch(postFacebookLogin(email, image, name)),
   PlayTheFooter: (songSrc) => {
@@ -205,45 +205,49 @@ const mapDispatchToProps = (dispatch) => ({
   handleChangeData_BE: (id, token) => {
     dispatch(handleChangeData_BE(id, token));
   }
- ,AddSong_inPlaylist_id: (data) => {
-  dispatch(AddSong_inPlaylist_id(data));
-}, CreatePlayList_BE: (userId,playlistName,token) => {
-  dispatch(CreatePlayList_BE(userId,playlistName,token));
-}
-,ReadNotifications: (userId,notfId,token) => {
-  dispatch(ReadNotifications(userId,notfId,token));
-},
-GetSongsByGeneres: (categoryId) => {
-  dispatch(GetSongsByGeneres(categoryId));
-},
-GetDeletedPlayList: (userid,token) => {
-  dispatch(GetDeletedPlayList(userid,token));
-},
-RecoverPlayList: (userid,playlistid,token) => {
-  dispatch(RecoverPlayList(userid,playlistid,token));
-},
-AddToQueue: (userid,trackid,token) => {
-  dispatch(AddToQueue(userid,trackid,token));
-},
-RemoveQueue: (userid,trackid,token) => {
-  dispatch(RemoveQueue(userid,trackid,token));
-},
-GetQueue: (userid,token) => {
-  dispatch(GetQueue(userid,token));
-},
+  , AddSong_inPlaylist_id: (data) => {
+    dispatch(AddSong_inPlaylist_id(data));
+  }, CreatePlayList_BE: (userId, playlistName, token) => {
+    dispatch(CreatePlayList_BE(userId, playlistName, token));
+  }
+  , ReadNotifications: (userId, notfId, token) => {
+    dispatch(ReadNotifications(userId, notfId, token));
+  },
+  GetSongsByGeneres: (categoryId) => {
+    dispatch(GetSongsByGeneres(categoryId));
+  },
+  GetDeletedPlayList: (userid, token) => {
+    dispatch(GetDeletedPlayList(userid, token));
+  },
+  RecoverPlayList: (userid, playlistid, token) => {
+    dispatch(RecoverPlayList(userid, playlistid, token));
+  },
+  AddToQueue: (userid, trackid, token) => {
+    dispatch(AddToQueue(userid, trackid, token));
+  },
+  RemoveQueue: (userid, trackid, token) => {
+    dispatch(RemoveQueue(userid, trackid, token));
+  },
+  GetQueue: (userid, token) => {
+    dispatch(GetQueue(userid, token));
+  },
 
-LikeSong: (trackId,userId,token) => {
-  dispatch(LikeSong(trackId,userId,token));
-},
-DisLikeSong: (trackId,userId,token) => {
-  dispatch(DisLikeSong(trackId,userId,token));
-},
-FollowArtist: (artistID,userId,token) => {
-  dispatch(FollowArtist(artistID,userId,token));
-},
-UnFollowArtist: (artistID,userId,token) => {
-  dispatch(UnFollowArtist(artistID,userId,token));
-},
+  LikeSong: (trackId, userId, token) => {
+    dispatch(LikeSong(trackId, userId, token));
+  },
+  DisLikeSong: (trackId, userId, token) => {
+    dispatch(DisLikeSong(trackId, userId, token));
+  },
+  FollowArtist: (artistID, userId, token) => {
+    dispatch(FollowArtist(artistID, userId, token));
+  },
+  UnFollowArtist: (artistID, userId, token) => {
+    dispatch(UnFollowArtist(artistID, userId, token));
+  },
+  SetIsQueue: (isqueue) => {
+    dispatch(SetIsQueue(isqueue));
+  },
+
 
 });
 
@@ -371,8 +375,8 @@ class Main extends Component {
             path="/webplayer"
             component={() => (
               <WebPlayer
-              fullsongs={this.props.fullsongs}
-              fullartists={this.props.fullartists}
+                fullsongs={this.props.fullsongs}
+                fullartists={this.props.fullartists}
                 //////////
                 patchedunfollow={this.props.patchedunfollow}
                 patchedfollow={this.props.patchedfollow}
@@ -428,6 +432,8 @@ class Main extends Component {
                 DisLikeSong={this.props.DisLikeSong}
                 FollowArtist={this.props.FollowArtist}
                 UnFollowArtist={this.props.UnFollowArtist}
+                isQueue={this.props.isQueue}
+                SetIsQueue={this.props.SetIsQueue}
               />
             )}
           />
@@ -452,6 +458,7 @@ class Main extends Component {
             path="/forartists"
             component={() => (
               <ArtistInterface
+                data_be={this.props.data_be}
               />
             )}
           />

@@ -2,23 +2,11 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import {
   Navbar,
-  NavbarBrand,
-  Jumbotron,
   Nav,
   NavItem,
   NavbarToggler,
   Collapse,
-  Row,
-  Col,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  UncontrolledDropdown,
-  DropdownMenu,
-  DropdownItem,
   Button,
-  DropdownToggle
 } from "reactstrap";
 
 class TopNav extends Component {

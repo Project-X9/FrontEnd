@@ -2,12 +2,8 @@ import React, { Component } from 'react';
 import {
   Col, Button, Row, Modal,ModalBody
 } from 'reactstrap';
-import {
-  Control, Form, Errors,
-} from 'react-redux-form';
 import { Link ,Redirect } from 'react-router-dom';
 import "./PlayFooter.css";
-import { totalTime } from '../../redux/ActionCreators';
 
 /**
  * Function that that transfer the audio time to a time format 
@@ -44,7 +40,7 @@ function format2Number(num) {
     return format2Number(minutes) + ':' + format2Number(seconds);
   }
   /**
-   * 
+   *  gets the item position in the document 
    * @param {*} el 
    */
   function offsetLeft(el) {
@@ -55,12 +51,12 @@ function format2Number(num) {
     }
     return left;
   }
+  /**
+   * The Foter that Plays the Songs
+   */
   class PlayFooter extends Component {
     /**
-     * 
-     * @param {Object} props 
-     * @param props.postFeedback
-     * @param props.resetFeedbackForm
+     * @param {*} props 
      */
     constructor(props) {
       super(props);
@@ -82,6 +78,10 @@ function format2Number(num) {
       this.handleQueue=this.handleQueue.bind(this);
 
     }
+    /**
+     * this function is called every 250 ms to update the progress of the song and calculates the actual time and see 
+     * if the song is ended it plays the next one 
+     */
     onUpdate() {
       if (this._player) {
         if (!this.is_progress_dirty) {
@@ -90,12 +90,25 @@ function format2Number(num) {
           });
         }
         if (this._player.ended){
-          this.onPlayerNext();
-          
-  
+          var songID=this.props.data_be.data_be.queue.find(el => el == this.props.song.song._id)
+          if(songID!==undefined){
+            this.props.RemoveQueue(songID,this.props.data_be.data_be._id,this.props.token.token)
+          }
+          if(this.props.isQueue.isQueue === false && this.props.currentPlaylist.currentPlaylist)
+          {
+            this.onPlayerNext();
+          }
+          else if(this.props.isQueue.isQueue === true && this.props.queue.queue)
+          {
+            this.props.PlayTheFooter(this.props.queue.queue[0])
+          }
         }
       }
     }
+    /**
+     * this function changes the the state of the play button if it is play or it pause and checks first that 
+     * te user is signed in so he can play or pause  
+     */
     togglePlay() {
       if (this.props.isSignedIn.isSignedIn !== true) {
         this.setState({
@@ -107,6 +120,10 @@ function format2Number(num) {
           this.setState({ is_playing: !this.state.is_playing });
         }
     }
+    /**
+     * this four function controls the progress of the Song 
+     * @param {*} evt 
+     */
     startSetProgress(evt) {
       this.setState({
         in_set_progress_mode: true
@@ -139,16 +156,14 @@ function format2Number(num) {
       }
     
     }
-    // LikeSong={this.props.LikeSong}
-    // DisLikeSong={this.props.DisLikeSong}
-    // FollowArtist={this.props.FollowArtist}
-    // UnFollowArtist={this.props.UnFollowArtist}
+    /**
+     * Function that handels Opening the Queue  
+     */
     handleQueue(){
-      alert("entered Here")
       this.props.GetQueue(this.props.data_be.data_be._id,this.props.token.token);
-
+      this.props.handleCurrentPlayList(null);
+      this.props.SetIsQueue(true);
     }
-    ////////////////////////////// volume
     startSetVolume(evt) {
       this.setState({
         in_set_volume_mode: true
@@ -180,14 +195,10 @@ function format2Number(num) {
       }
     }
     }
-   ///////////////////////// prev and 
     onPlayerNext() {
       if (this.props.song.song) {
-        // alert("entered here")
-        // this.history.push(this.props.song.song);
-        // AddPrevSong={this.props.AddPrevSong}
-        // prevsong={this.props.prevsong}
       this.props.AddPrevSong(this.props.song.song)
+      }
       var song;
       // do {
         if(this.props.shuffle.shuffle === true )
@@ -211,20 +222,7 @@ function format2Number(num) {
             }
           })
         }
-        
-  
-      // } while (this.history.length > 0 && this.history[this.history.length - 1] === song);
-
-      // this.setState({
-      //   is_playing:true
-      // },async()=>{
-      //   this._player.pause();
-      //   this._player.load();
-      //   this._player.play();
-      // })
-      
     
-    }
     }
     onPlayerPrev() {
       if(this.props.prevsong.prevsong)

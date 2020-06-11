@@ -41,7 +41,9 @@ class EditProfile extends Component {
         this.props.data_be.data_be._id,
       values.email,
       parseInt(values.age, 10),
-      values.ID
+      values.ID,
+      values.country,
+        this.props.token.token
     );
   };
 

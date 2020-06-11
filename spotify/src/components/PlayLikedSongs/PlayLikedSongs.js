@@ -50,7 +50,7 @@ class PlayLikedSongs extends Component {
    */
 
   deleteSong(Song){
-    this.props.DeleteAddPlaylist(this.props.currentPlaylist.currentPlaylist._id,Song._id)
+    this.props.DeleteAddPlaylist(this.props.currentPlaylist.currentPlaylist._id,Song._id,this.props.token.token)
     this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
   }
   /**
@@ -91,16 +91,7 @@ class PlayLikedSongs extends Component {
     }
   }
 
-  // RemoveQueue={this.props.RemoveQueue}
-  // AddToQueue={this.props.AddToQueue}
-  handleAddQueue(songID,userID) {
-    this.props.AddToQueue(songID,userID,this.props.token.token)
-  }
-
-
-  handleRemoveQueue(songID,userID,token) {
-    this.props.RemoveQueue(songID,userID,this.props.token.token);
-  }
+  
   /**
    * AddingToBe controls passing the id of the selected song and the selected playlist for the song to be added
    */
@@ -109,7 +100,7 @@ class PlayLikedSongs extends Component {
     if(Playlist!==undefined){
       let sameSong=Playlist.tracks.find(element=>element._id===this.props.songid.songid)
       if(sameSong===undefined){
-        this.props.PatchAddPlaylist(idPlaylist,this.props.songid.songid)
+        this.props.PatchAddPlaylist(idPlaylist,this.props.songid.songid,this.props.token.token)
       }
       else{console.log("Already Found in the playlist")}
     }

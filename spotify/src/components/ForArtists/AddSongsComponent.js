@@ -8,29 +8,35 @@ class AddSong extends Component {
                 <Row className="add-album-form">
                     <Form>
                         <FormGroup row>
-                            <Label for="name" sm={12} xs={12} md={12} lg={3} className="add-album-label">Name:</Label>
+                            <Label for="name" sm={12} xs={12} md={12} lg={3} className="add-album-label">Name :</Label>
                             <Col sm={12} md={12} xs={12} lg={8}>
                                 <Input name="albumName" placeholder="New Song Name" className="add-album-name-fld"></Input>
                             </Col>
                         </FormGroup>
 
                         <FormGroup row>
-                            <Label for="image" sm={12} xs={12} md={12} lg={3} className="add-album-label">Image:</Label>
+                            <Label for="image" sm={12} xs={12} md={12} lg={3} className="add-album-label">Image URL :</Label>
                             <Col sm={12} md={12} xs={12} lg={8}>
-                                <Input type="text" name="imageURL" id="newImage" placeholder="New Song Image URL" className="add-album-img-fld"></Input>
+                                <Input type="text" name="imageURL" id="imageURL" placeholder="New Song Image URL" className="add-album-img-fld"></Input>
                             </Col>
                         </FormGroup>
+
+                        <FormGroup row>
+                            <Label for="image" sm={12} xs={12} md={12} lg={3} className="add-album-label">Song URL :</Label>
+                            <Col sm={12} md={12} xs={12} lg={6}>
+                                <Input type="text" name="songURL" id="songURL" placeholder="New Song URL" className="add-album-img-fld"></Input>
+                            </Col>
+                        </FormGroup>
+
                         <FormGroup check row>
                             <Col sm={{ size: 10, offset: 2 }}>
-                                <Button type="submit" outline="success">Submit</Button>
-                            </Col>
-
-                            <Col sm={{ size: 10, offset: 2 }}>
+                                <Button type="submit" outline="success" className="edit-albums-btn">Submit</Button>
                                 <Button outline="success" className="edit-albums-btn">
                                     <Link to="/forartists/songs">Back
                                 </Link>
                                 </Button>
                             </Col>
+
                         </FormGroup>
                     </Form>
 

@@ -2,37 +2,45 @@ import React, { Component } from 'react';
 import { Col, Row, Button, Container } from 'reactstrap';
 import { Link } from 'react-router-dom'
 class MySongs extends Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
+        let allTracks = this.props.data_be.data_be.tracks;
+        let i = 0;
+        console.log(allTracks);
+        console.log(this.props.data_be.data_be.artists[0].tracks)
+        let artistSongs = this.props.data_be.data_be.tracks.map((tracks) => {
+            while (tracks.artists[i] !== undefined) {
+                if (tracks.artists[i].name === this.props.data_be.data_be.artists[0].name) {
+                    return (
+                        <Col className="" md="12" xs="12" sm="12" lg="4">
+                            <img src={tracks.imageUrl} alt="" className="song-img rounded img-fluid" />
+                            <h5 className="song-title">
+                                {tracks.name}
+                            </h5>
+                            <h6 className="song-duration">
+                                {tracks.duration}
+                            </h6>
+                            <h6 className="song-duration">
+                                {tracks.description}
+                            </h6>
+                            <h6 className="song-duration">
+                                {tracks.playcount}
+                            </h6>
+                        </Col>
+                    )
+                }
+                i++;
+            }
+            i = 0;
+
+        });
         return (
             <Container>
                 <Row>
-                    <Col className="" md="12" xs="12" sm="12" lg="4">
-                        <img src="https://res.cloudinary.com/dyki04uxl/image/upload/v1590425257/G7qS7TVN_400x400_ic5jm9.jpg" alt="" className="song-img rounded img-fluid" />
-                        <h5 className="song-title">
-                            title
-                    </h5>
-                        <h6 className="song-duration">
-                            03:14
-                    </h6>
-                    </Col>
-                    <Col md="12" xs="12" sm="12" lg="4">
-                        <img src="https://res.cloudinary.com/dyki04uxl/image/upload/v1590425257/G7qS7TVN_400x400_ic5jm9.jpg" alt="" className="song-img rounded img-fluid" />
-                        <h5 className="song-title">
-                            title
-                    </h5>
-                        <h6 className="song-duration">
-                            03:14
-                    </h6>
-                    </Col>
-                    <Col md="12" xs="12" sm="12" lg="4">
-                        <img src="https://res.cloudinary.com/dyki04uxl/image/upload/v1590425257/G7qS7TVN_400x400_ic5jm9.jpg" alt="" className="song-img rounded img-fluid" />
-                        <h5 className="song-title">
-                            title
-                    </h5>
-                        <h6 className="song-duration">
-                            03:14
-                    </h6>
-                    </Col>
+                    {artistSongs}
                 </Row>
                 <Row>
                     <Col offset="6" className="edit-btn">

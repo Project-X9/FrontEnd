@@ -19,7 +19,6 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Card from "@material-ui/core/Card";
 import CardImg from "react-bootstrap/CardImg";
 import CardBody from "reactstrap/es/CardBody";
-import CardTitle from "reactstrap/es/CardTitle";
 /**
  * This Component is for Displaying the playlist and following or unfollowing it
  */
@@ -70,7 +69,7 @@ class NowPlay extends Component {
    */
 
   deleteSong(Song){
-    this.props.DeleteAddPlaylist(this.props.currentPlaylist.currentPlaylist._id,Song._id)
+    this.props.DeleteAddPlaylist(this.props.currentPlaylist.currentPlaylist._id,Song._id,this.props.token.token)
     this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
   }
   /**
@@ -115,20 +114,11 @@ class NowPlay extends Component {
   }
   }
 
-  // RemoveQueue={this.props.RemoveQueue}
-    // AddToQueue={this.props.AddToQueue}
-  handleAddQueue(songID,userID) {
-      this.props.AddToQueue(songID,userID,this.props.token.token)
-  }
-
-
-  handleRemoveQueue(songID,userID,token) {
-      this.props.RemoveQueue(songID,userID,this.props.token.token);
-    }
+  
     AddingSongPlayListToBe(idSong){
         let Song=this.props.currentPlaylist.currentPlaylist.tracks.find(element=> element._id===idSong)
         if(Song===undefined){
-                this.props.PatchAddPlaylist(this.props.currentPlaylist.currentPlaylist._id,idSong)}
+                this.props.PatchAddPlaylist(this.props.currentPlaylist.currentPlaylist._id,idSong,this.props.token.token)}
 
             else{console.log("Already Found in the playlist")}
         }
@@ -138,9 +128,12 @@ class NowPlay extends Component {
   AddingToBe(idPlaylist){
     let Playlist=this.props.data_be.data_be.playlists.find(element=> element._id===idPlaylist)
     if(Playlist!==undefined){
-      let sameSong=Playlist.tracks.find(element=>element._id===this.props.songid.songid)
+      let sameSong=Playlist.tracks.find(element=>element===this.props.songid.songid)
       if(sameSong===undefined){
-        this.props.PatchAddPlaylist(idPlaylist,this.props.songid.songid)
+          console.log("Not Found in the playlist")
+        this.props.PatchAddPlaylist(idPlaylist,this.props.songid.songid,this.props.token.token)
+          this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
+
       }
       else{console.log("Already Found in the playlist")}
     }
@@ -171,7 +164,7 @@ class NowPlay extends Component {
     if (!this.isPlaylistFollowed()) {
       this.props.patchedfollow(
         this.props.data_be.data_be._id,
-        this.props.currentPlaylist.currentPlaylist._id
+        this.props.currentPlaylist.currentPlaylist._id,this.props.token.token
       );
       this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
     }
@@ -183,7 +176,7 @@ class NowPlay extends Component {
     if (this.isPlaylistFollowed()) {
       this.props.patchedunfollow(
         this.props.data_be.data_be._id,
-        this.props.currentPlaylist.currentPlaylist._id
+        this.props.currentPlaylist.currentPlaylist._id,this.props.token.token
       );
       this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
     }

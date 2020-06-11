@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Col, Row, Container, Button, Form, FormGroup, Input, Label } from 'reactstrap'
+import { Link } from 'react-router-dom'
 class EditAlbum extends Component {
     render() {
         return (
@@ -21,8 +22,13 @@ class EditAlbum extends Component {
                         </FormGroup>
                         <FormGroup check row>
                             <Col sm={{ size: 10, offset: 2 }}>
-                                <Button type="submit" outline="success">Submit</Button>
+                                <Button type="submit" outline="success" className="edit-albums-btn">Submit</Button>
+                                <Button outline="success" className="edit-albums-btn">
+                                    <Link to="/forartists/albums/edit">Back
+                                </Link>
+                                </Button>
                             </Col>
+
                         </FormGroup>
                     </Form>
 

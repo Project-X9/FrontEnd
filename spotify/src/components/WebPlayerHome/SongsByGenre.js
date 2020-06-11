@@ -24,6 +24,8 @@ class SongsByGenres extends Component {
    * @param props.handleCurrentPlayList Essentially used to display playlists' data after integrating with the backend
    * @param props.categories Essentially contains an array of categories that contain playlists
    * @param props.PlayTheFooter Essentially used in show songs to be able to play the songs
+   * @param props.GetSongsByGeneres Essentially used in show songs to be able to play the songs
+   * @param props.genretracks Essentially used in show songs to be able to play the songs
    */
   constructor(props) {
     super(props);
@@ -158,6 +160,7 @@ class SongsByGenres extends Component {
                     PlayTheFooter={this.props.PlayTheFooter}
                     GetSongsByGeneres={this.props.GetSongsByGeneres}
                     genretracks={this.props.genretracks}
+                    token={this.props.token}
                     />
                   </div>
                 </div>
@@ -220,6 +223,7 @@ class SongsByGenres extends Component {
                       PlayTheFooter={this.props.PlayTheFooter}
                       GetSongsByGeneres={this.props.GetSongsByGeneres}
                       genretracks={this.props.genretracks}
+                      token={this.props.token}
                     />
                   </div>
                 </div>

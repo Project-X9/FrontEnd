@@ -7,8 +7,7 @@ import Albums from './AlbumsComponent';
 import Artists from './ArtistsComponent';
 import LibraryNavbar from './LibraryNavbar'
 import {Switch, Route,Redirect} from "react-router-dom";
-import { 
-  Button, Row, Col,} from 'reactstrap'; 
+import { Row, Col} from 'reactstrap';
 
 /**
  * The library page in the web player interface 
@@ -60,6 +59,8 @@ class LibraryPage extends Component {
                         PauseSong={this.props.PauseSong}
                         isPlaying={this.props.isPlaying}
                         AddPrevSong={this.props.AddPrevSong}
+                        token={this.props.token}
+
                         />
                       )} />
                    <Route
@@ -78,8 +79,7 @@ class LibraryPage extends Component {
                         PauseSong={this.props.PauseSong}
                         isPlaying={this.props.isPlaying}
                         AddPrevSong={this.props.AddPrevSong}
-
-        
+                        token={this.props.token}
                         />
                       )} />
                     <Route
@@ -97,7 +97,7 @@ class LibraryPage extends Component {
                         PlaySong={this.props.PlaySong}
                         PauseSong={this.props.PauseSong}
                         isPlaying={this.props.isPlaying}
-        
+                        token={this.props.token}
                         />
                       )} />
                 </Switch>

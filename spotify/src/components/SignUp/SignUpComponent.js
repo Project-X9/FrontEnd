@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Col, Button, Row, Label, NavLink, ModalBody,Modal
+  Col, Button, Row, Label, ModalBody,Modal
 } from 'reactstrap';
 import {
   Control, Form, Errors,
@@ -129,7 +129,7 @@ handleSubmitModal() {
         var max = 100;
         var rand =  min + (Math.random() * (max-min));
         rand=Math.ceil(rand);
-        alert(rand);
+
         var NewObject={
           email:values.email, 
           confirmemail:values.confirmemail,

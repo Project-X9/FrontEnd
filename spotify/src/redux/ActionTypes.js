@@ -59,6 +59,7 @@ export const ADD_DELETED_PLAYLISTS = 'ADD_DELETED_PLAYLISTS';
 //======================Queue=======================
 export const ADDQUEUE = 'ADDQUEUE';
 export const ADDQUEUE_LOADING = 'ADDQUEUE_LOADING';
+export const ISQUEUE = 'ISQUEUE';
 
 
 

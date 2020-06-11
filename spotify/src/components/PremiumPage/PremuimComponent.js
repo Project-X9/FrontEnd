@@ -24,7 +24,7 @@ import {
 } from "reactstrap";
 import "./PremiumComponent.css";
 import { NavLink, Redirect } from "react-router-dom";
-import { emailjs } from 'emailjs-com';
+import emailjs  from 'emailjs-com';
 
 class Premium extends Component {
   /**
@@ -38,6 +38,7 @@ class Premium extends Component {
       isNavOpen: false,
       modal: false,
       isModalOpen: false,
+      inputValue:null,
       collapsed: true,
       Premium: this.props.data_be.data_be.premium,
       tempId: this.props.data_be.data_be._id,
@@ -63,24 +64,27 @@ else{   var min = 1;
     var NewObject={
       randomId:rand
     }
-    this.props.ControlModal(true);
-    this.props.ForSignUpVerification(NewObject);
-    var service_id = "ahahmed202025_gmail_com";
-    var template_id = "template_6Gzc6XQv";
-    var UserID ="user_ZGAt1STrmZuTHMLbdVnkr"
-    emailjs.init("user_ZGAt1STrmZuTHMLbdVnkr");
+    alert(rand)
+      this.props.ControlModal(true);
+      this.props.ForSignUpVerification(NewObject);
+      var service_id = "gmail";
+      var template_id = "template_mEf57s4f";
+      var UserID ="user_jUaXMo4Oo1nGtzqQSfk4k"
+      emailjs.init("user_jUaXMo4Oo1nGtzqQSfk4k");
 
-    var template_params={
-      message_html: rand,
-      user_email: this.props.data_be.data_be.email
+      var template_params={
+        message_html: rand,
+        user_email: this.props.data_be.data_be.email
+      }
+      emailjs.send(service_id, template_id,template_params)
+          .then(function(){
+            alert("Sent!");
+          }, function(err) {
+            alert("Send email failed!\r\n Response:\n " + JSON.stringify(err));
+          });
+
     }
-    emailjs.send(service_id, template_id,template_params)
-        .then(function(){
-
-        }, function(err) {
-        });
-
-  }}
+}
   /**
    *handleChange  handles setting the state of the input value with
    */
@@ -92,19 +96,21 @@ else{   var min = 1;
 
   handleSubmitModal(){
     if (this.state.Premium === true){
-      this.props.PremiumPost(this.props.data_be.data_be._id, false);
+      this.props.PremiumPost(this.props.data_be.data_be._id, false,this.props.token.token);
       this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
       this.setState({ Premium: false });
       this.props.ControlModal(false);
     }
     else if(this.state.Premium ===false){
+      alert(this.state.inputValue);alert(this.props.signupdata.signupdata.randomId)
       if (this.state.inputValue == this.props.signupdata.signupdata.randomId){
         this.props.ControlModal(false);
-          this.props.PremiumPost(this.props.data_be.data_be._id, true);
+          this.props.PremiumPost(this.props.data_be.data_be._id, true,this.props.token.token);
         this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
-
+alert("sa7")
         this.setState({Premium: true});
       } else if (this.state.inputValue != this.props.signupdata.signupdata.randomId) {
+        alert("8alat")
 
       }
     }
@@ -280,7 +286,7 @@ else{   var min = 1;
               </div>
             </div>
             <p>
-              <Button className="signupbtn" onClick={this.handleSubmit}>
+              <Button className="signupbtn" onClick={()=>{this.handleSubmit()}}>
                 Get Premium
               </Button>
 
@@ -309,7 +315,7 @@ else{   var min = 1;
                               <Row>
                                 <Col md={{size:10, offset:2}} xs={12} sm={12} >
                                   <div className="contentSpacing_CP">
-                                    <input type="text" className="inputBox-input_CP" placeholder="Code" onChange={this.handleChange}></input>
+                                    <input type="text" className="inputBox-input_CP" placeholder="Code" onChange={this.handleChange}/>
                                   </div>
                                 </Col>
                               </Row>
