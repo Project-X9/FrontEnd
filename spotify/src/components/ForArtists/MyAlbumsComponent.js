@@ -17,7 +17,7 @@ class MyAlbums extends Component {
     render() {
         let i = 0;
         let artistAlbums = this.props.data_be.data_be.albums.map((Album) => {
-            while (Album.artists[i] !== undefined) {
+            while (Album.artists[i] !== undefined && Album._id !== undefined) {
                 if (Album.artists[i] === this.props.data_be.data_be.artists[0]._id) {
                     return (
                         <Col xs="12" md="12" sm="12" lg="4">
@@ -26,6 +26,9 @@ class MyAlbums extends Component {
                             </Link>
                             <h5 className="album-title">
                                 {Album.name}
+                            </h5>
+                            <h5 className="album-title">
+                                {Album.description}
                             </h5>
                         </Col>
                     )
@@ -41,6 +44,9 @@ class MyAlbums extends Component {
             <Container>
                 <Row>
                     {artistAlbums}
+
+                </Row>
+                <Row>
                     <Col offset="6" className="edit-btn">
                         <Button size="lg" className="edit-albums-btn">
                             <Link to="/forartists/albums/edit">Edit Albums</Link>

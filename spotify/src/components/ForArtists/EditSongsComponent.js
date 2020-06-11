@@ -56,7 +56,7 @@ class EditSongs extends Component {
         if (this.state.isLoading === true) {
             this.setState({
                 artistSongs: allTracks.map((allTracks) => {
-                    while (allTracks.artists[i] !== undefined) {
+                    while (allTracks.artists[i] !== undefined && allTracks._id !== undefined) {
                         if (allTracks.artists[i].name === this.props.data_be.data_be.artists[0].name) {
                             console.log("hi")
                             return (

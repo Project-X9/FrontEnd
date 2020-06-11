@@ -473,6 +473,7 @@ class Main extends Component {
                 data_be={this.props.data_be}
                 token={this.props.token}
                 postUpdatedArtist={this.props.postUpdatedArtist}
+                reseteditprofile={this.props.reseteditprofile}
               />
             )}
           />

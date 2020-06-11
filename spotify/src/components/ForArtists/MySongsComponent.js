@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Col, Row, Button, Container } from 'reactstrap';
-import { Link } from 'react-router-dom'
+import { Link, Route, Switch } from 'react-router-dom'
+import AddSong from "./AddSongsComponent";
+
 class MySongs extends Component {
     /**
      * 
@@ -14,12 +16,13 @@ class MySongs extends Component {
      * @returns interface for all tracks of an artist
      */
     render() {
+
         let allTracks = this.props.data_be.data_be.tracks;
         let i = 0;
         console.log(allTracks);
         console.log(this.props.data_be.data_be.artists[0].tracks)
         let artistSongs = this.props.data_be.data_be.tracks.map((tracks) => {
-            while (tracks.artists[i] !== undefined) {
+            while (tracks.artists[i] !== undefined && tracks._id !== undefined) {
                 if (tracks.artists[i].name === this.props.data_be.data_be.artists[0].name) {
                     return (
                         <Col className="" md="12" xs="12" sm="12" lg="4">

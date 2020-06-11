@@ -59,7 +59,7 @@ class EditAlbumsComponent extends Component {
         if (this.state.isLoading === true) {
             this.setState({
                 artistsAlbums: allAlbums.map((Album) => {
-                    while (Album.artists[i] !== undefined) {
+                    while (Album.artists[i] !== undefined && Album._id !== undefined) {
                         if (Album.artists[i] === this.props.data_be.data_be.artists[0]._id) {
                             return (
                                 <Container>
@@ -70,6 +70,9 @@ class EditAlbumsComponent extends Component {
                                             </Link>
                                             <h5 className="album-title">
                                                 {Album.name}
+                                            </h5>
+                                            <h5 className="album-title">
+                                                {Album.description}
                                             </h5>
                                         </Col>
                                     </Row>
