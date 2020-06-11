@@ -9,11 +9,16 @@ class AddAlbum extends Component {
     handleAddAlbum = values => {
         this.props.reseteditprofile();
         let newAlbum = {
-            name: values.name,
-            image: values.image,
             artists: [this.props.data_be.data_be.artists[0]._id],
+            author: this.props.data_be.data_be.artists[0],
+            dateCreated: new Date().toISOString(),
             description: values.description,
-            _id: values.name
+            followers: [],
+            genres: [],
+            image: values.image,
+            name: values.name,
+            tracks: [],
+            _id: values.name,
         }
         if (newAlbum.name !== undefined && newAlbum.name !== undefined && newAlbum.artists !== undefined)
             this.props.data_be.data_be.albums.push(newAlbum);
@@ -41,6 +46,7 @@ class AddAlbum extends Component {
                                 id="name"
                                 name="name"
                                 placeholder="New Name"
+                                required="true"
                             />
                         </Col>
                     </Row>
@@ -53,6 +59,8 @@ class AddAlbum extends Component {
                                 id="image"
                                 name="image"
                                 placeholder="New Image"
+                                required="true"
+
                             />
                         </Col>
                     </Row>
@@ -65,6 +73,8 @@ class AddAlbum extends Component {
                                 id="description"
                                 name="description"
                                 placeholder="New Description"
+                                required="true"
+
                             />
                         </Col>
                     </Row>
