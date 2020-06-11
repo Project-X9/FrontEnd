@@ -3,9 +3,17 @@ import { Col, Row, Container, Button, Label } from 'reactstrap'
 import { Form, Control } from 'react-redux-form'
 import { Link } from "react-router-dom"
 class AddAlbum extends Component {
+    /**
+     * 
+     * @param {Object} props 
+     */
     constructor(props) {
         super(props);
     }
+    /**
+     * handles adding the album to the album array
+     * @param {Object} values 
+     */
     handleAddAlbum = values => {
         this.props.reseteditprofile();
         let newAlbum = {
