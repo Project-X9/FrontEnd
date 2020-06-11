@@ -160,6 +160,7 @@ class SongsByGenres extends Component {
                     PlayTheFooter={this.props.PlayTheFooter}
                     GetSongsByGeneres={this.props.GetSongsByGeneres}
                     genretracks={this.props.genretracks}
+                    token={this.props.token}
                     />
                   </div>
                 </div>
@@ -222,6 +223,7 @@ class SongsByGenres extends Component {
                       PlayTheFooter={this.props.PlayTheFooter}
                       GetSongsByGeneres={this.props.GetSongsByGeneres}
                       genretracks={this.props.genretracks}
+                      token={this.props.token}
                     />
                   </div>
                 </div>

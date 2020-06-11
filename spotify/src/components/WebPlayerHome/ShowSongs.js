@@ -49,7 +49,7 @@ class ShowSongs extends Component {
   handleTheNotificationID(){
     if(this.state.catID!=="")
     {
-      this.props.GetSongsByGeneres(this.state.catID);
+      this.props.GetSongsByGeneres(this.state.catID,this.props.token.token);
     }
   }
 
