@@ -27,6 +27,9 @@ class MyAlbums extends Component {
                             <h5 className="album-title">
                                 {Album.name}
                             </h5>
+                            <h5 className="album-title">
+                                {Album.description}
+                            </h5>
                         </Col>
                     )
                 }

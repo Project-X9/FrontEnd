@@ -102,7 +102,9 @@ class ArtistInterface extends Component {
                                 <Route
                                     exact
                                     path="/forartists/albums/add"
-                                    component={() => <AddAlbum data_be={this.props.data_be} />}
+                                    component={() => <AddAlbum data_be={this.props.data_be}
+                                        reseteditprofile={this.props.reseteditprofile}
+                                    />}
                                 />
 
                                 <Route
