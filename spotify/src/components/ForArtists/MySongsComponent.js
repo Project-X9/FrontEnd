@@ -44,12 +44,12 @@ class MySongs extends Component {
                 </Row>
                 <Row>
                     <Col offset="6" className="edit-btn">
-                        <Button outline color="success" size="lg" className="edit-albums-btn">
+                        <Button size="lg" className="edit-albums-btn">
                             <Link to="/forartists/songs/edit">
                                 Edit Songs
                             </Link>
                         </Button>
-                        <Button outline color="success" size="lg" className="edit-albums-btn">
+                        <Button size="lg" className="edit-albums-btn">
                             <Link to="/forartists/songs/add">Add Song</Link>
                         </Button>
                     </Col>

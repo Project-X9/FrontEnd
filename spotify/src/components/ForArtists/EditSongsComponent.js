@@ -25,6 +25,15 @@ class EditSongs extends Component {
         })
 
     }
+    getObjectLength = (obj) => {
+        var length = 0;
+        for (var p in obj) {
+            if (obj.hasOwnProperty(p)) {
+                length++;
+            }
+        }
+        return length;
+    }
     render() {
         let i = 0;
         let allTracks = this.state.actualSongs;
@@ -37,7 +46,7 @@ class EditSongs extends Component {
                             return (
                                 <Container>
                                     <Row>
-                                        <Col className="" md="12" xs="12" sm="12" lg="4">
+                                        <Col className="" md="12" xs="12" sm="12" >
                                             <img src={allTracks.imageUrl} alt="" className="song-img rounded img-fluid" />
                                             <h5 className="song-title">
                                                 {allTracks.name}
@@ -55,25 +64,17 @@ class EditSongs extends Component {
                                     </Row>
                                     <Row>
                                         <Col>
-                                            <Button outline color="success" size="lg" className="edit-albums-btn" id={allTracks._id} onClick={this.handleDelete}>
+                                            <Button size="lg" className="edit-albums-btn" id={allTracks._id} onClick={this.handleDelete}>
                                                 Delete
                         </Button>
-                                            <Button outline color="success" size="lg" className="edit-albums-btn" id={allTracks._id} >
+                                            <Button size="lg" className="edit-albums-btn" id={allTracks._id} >
                                                 <Link to="/forartists/songs/edit/form">
                                                     Edit
                             </Link>
                                             </Button>
                                         </Col>
                                     </Row>
-                                    <Row>
-                                        <Col className="" md="12" xs="12" sm="12" lg="12">
-                                            <Button outline color="success" size="lg" className="edit-albums-btn">
-                                                <Link to="/forartists/songs">
-                                                    Back
-                            </Link>
-                                            </Button>
-                                        </Col>
-                                    </Row>
+
                                 </Container>
                             )
 
@@ -89,7 +90,16 @@ class EditSongs extends Component {
         else { }
         return (
             <Container>
-                {this.state.artistSongs}
+                {this.getObjectLength(this.trackProp) !== 0 ? this.state.artistSongs : <h5 id="no-songs-hdr">You have no Songs</h5>}
+                <Row>
+                    <Col className="" md="12" xs="12" sm="12" lg="12">
+                        <Button outline color="success" size="lg" className="edit-albums-btn">
+                            <Link to="/forartists/songs">
+                                Back
+                            </Link>
+                        </Button>
+                    </Col>
+                </Row>
             </Container>
         );
     }

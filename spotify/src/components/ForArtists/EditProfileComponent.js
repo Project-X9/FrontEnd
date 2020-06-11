@@ -36,8 +36,8 @@ class EditArtistProfile extends Component {
                         </FormGroup>
                         <FormGroup check row>
                             <Col sm={{ size: 10, offset: 2 }}>
-                                <Button type="submit" outline="success" className="edit-albums-btn">Submit</Button>
-                                <Button outline="success" className="edit-albums-btn">
+                                <Button type="submit" className="edit-albums-btn">Submit</Button>
+                                <Button className="edit-albums-btn">
                                     <Link to="/forartists/songs">Back
                                 </Link>
                                 </Button>

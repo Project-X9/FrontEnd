@@ -37,10 +37,10 @@ class MyAlbums extends Component {
                 <Row>
                     {artistAlbums}
                     <Col offset="6" className="edit-btn">
-                        <Button outline color="success" size="lg" className="edit-albums-btn">
+                        <Button size="lg" className="edit-albums-btn">
                             <Link to="/forartists/albums/edit">Edit Albums</Link>
                         </Button>
-                        <Button outline color="success" size="lg" className="edit-albums-btn">
+                        <Button size="lg" className="edit-albums-btn">
                             <Link to="/forartists/albums/add">Add Album</Link>
                         </Button>
                     </Col>
