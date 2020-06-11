@@ -23,6 +23,9 @@ class Queue extends Component {
    * @param props.handleCurrentAlbums Essentially used to display albums' data after integrating with the backend
    * @param props.handleCurrentPlayList Essentially used to display playlists' data after integrating with the backend
    * @param props.categories Essentially contains an array of categories that contain playlists
+   * @param props.PlayTheFooter Essentially used to put the first song in the queue inside the playfooter
+   * @param props.queue Essentially contains the queue containing the songs
+   * @param props.AddPrevSong Essentially used to put the first song in the queue inside the playfooter
    */
   constructor(props) {
     super(props);
@@ -32,6 +35,10 @@ class Queue extends Component {
     this.state.handleLogout = this.handleLogout.bind(this);
   }
 
+
+  /**
+   * Responsible for adding the first song in the queue inside the playfooter
+   */
   handleplayqueue(){
    // alert("hello")
     if(this.props.queue.queue)
