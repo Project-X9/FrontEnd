@@ -167,6 +167,10 @@ function format2Number(num) {
       this.props.handleCurrentPlayList(null);
       this.props.SetIsQueue(true);
     }
+    /**
+     * These 3 functions Controls the Volume of the footer 
+     * @param {*} evt 
+     */
     startSetVolume(evt) {
       this.setState({
         in_set_volume_mode: true
@@ -198,6 +202,10 @@ function format2Number(num) {
       }
     }
     }
+    /**
+     * this function handels the next song in the playlist wether we pressed Next button or the song is finished
+     * and determines whether the Shuffle is on or not so it can determine the next song    
+     */
     onPlayerNext() {
       if (this.props.song.song) {
       this.props.AddPrevSong(this.props.song.song)
@@ -227,6 +235,11 @@ function format2Number(num) {
         }
     
     }
+    /**
+     * this handels the prev song by checking the state of the prev song sinc when we play the 
+     * next song we set the previous song state with the song that finished or the user skiped to 
+     * the next one  
+     */
     onPlayerPrev() {
       if(this.props.prevsong.prevsong)
       {
@@ -239,6 +252,9 @@ function format2Number(num) {
       
 
   }
+  /**
+   * this handels the Stop this when the user press Stop the player is reset and the play is off
+   */
   Stop() {
     if(this.props.song.song)
     {
@@ -254,6 +270,9 @@ function format2Number(num) {
   }
 
 }
+/**
+ * this handels the shuffle state when the user press the button of the shuffle 
+ */
 onHandleShuffle(){
   if(this.props.shuffle.shuffle === true)
   {
@@ -266,7 +285,7 @@ onHandleShuffle(){
   }
 }
     /**
-     * Responsible for showing everything on the Sign Up page
+     * Responsible for showing everything in the Play Footer
      * @returns Components that will be displayed on the page
      */
     render() {
