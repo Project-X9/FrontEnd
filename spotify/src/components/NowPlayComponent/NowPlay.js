@@ -105,7 +105,7 @@ class NowPlay extends Component {
     let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if ( re.test(String(this.state.email).toLowerCase()) ) {
       // If the email is correct we send the selected song to another user
-      alert('Sent ' +Song.name+" to "+this.state.email+"\n"+Song._id);
+      this.props.ShareSongs(Song._id,this.state.email,this.props.token.token);
       this.setState({shareModal: false})
   }
   else {

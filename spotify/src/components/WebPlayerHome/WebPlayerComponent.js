@@ -327,6 +327,7 @@ handleSubmit() {
                         isModalOpen={this.props.isModalOpen}
                         ControlModal={this.props.ControlModal}
                         PatchAddPlaylist={this.props.PatchAddPlaylist}
+                        ShareSongs={this.props.ShareSongs}
                         RemoveQueue={this.props.RemoveQueue}
                         AddToQueue={this.props.AddToQueue}
                         DeleteAddPlaylist={this.props.DeleteAddPlaylist}

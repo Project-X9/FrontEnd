@@ -1023,15 +1023,24 @@
     margin-right: 20px;
   }
   /***************************************************Sidebar Content Notifications***************************************************/
-  /***************************************************Sidebar Content Notifications***************************************************/
+  /***************************************************Sidebar Content Recover Playlist***************************************************/
   .RecoverPlaylistsHeader{
-    font-size: 26px;
-    margin: .5em 0;
+    float: left;
+    margin: 48px 0 24px;
+    border-bottom: 1px solid #EFEFEF;
+    padding-bottom: 0;
+    margin-top: 10px;
+    width: 100%;
+    height: 50px;
+    font-size: 24px;
+    margin-bottom: 0px;
     color: #1DB954;
-    font-weight: 400;
-    box-sizing: border-box;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
+    text-align: left;
   }
-  /***************************************************Sidebar Content Notifications***************************************************/
+
+  .recover-playlists h5{
+    text-align: left;
+    margin-left: 10px;
+  }
+  /***************************************************Sidebar Content Recover Playlist***************************************************/
   /***************************************************Body***************************************************/
