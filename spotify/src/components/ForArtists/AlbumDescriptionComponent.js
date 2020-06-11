@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Col, Row, Container, Button } from 'reactstrap';
-import { Link, Route, Switch } from 'react-router-dom';
-import MyAlbums from './MyAlbumsComponent';
+import { Link } from 'react-router-dom';
 class AlbumDescription extends Component {
     /**
      * 

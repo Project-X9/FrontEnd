@@ -12,8 +12,9 @@ import AddAlbum from "./AddAlbumComponent";
 import EditAlbum from "./EditAlbumFormComponent";
 import EditSongs from "./EditSongsComponent";
 import EditSongsForm from "./EditSongsFormComponent";
-import AddSong from "./AddSongsComponent";
 import EditArtistProfile from "./EditProfileComponent";
+import AddSong from "./AddSongsComponent";
+
 class ArtistInterface extends Component {
     /**
      * 
@@ -115,7 +116,11 @@ class ArtistInterface extends Component {
                                     path="/forartists/songs/edit"
                                     component={() => <EditSongs data_be={this.props.data_be} />}
                                 />
-
+                                <Route
+                                    exact
+                                    path="/forartists/songs/add"
+                                    component={() => <AddSong data_be={this.props.data_be} />}
+                                />
                                 <Route
                                     exact
                                     path="/forartists/songs/edit/form"
@@ -124,18 +129,10 @@ class ArtistInterface extends Component {
 
                                 <Route
                                     exact
-                                    path="/forartists/songs/add"
-                                    component={() => <AddSong data_be={this.props.data_be} />}
-                                />
-
-                                <Route
-                                    exact
                                     path="/forartists/profile/edit"
                                     component={() => <EditArtistProfile data_be={this.props.data_be}
                                         token={this.props.token}
                                         postUpdatedArtist={this.props.postUpdatedArtist}
-
-
                                     />}
                                 />
                                 <Redirect to="/forartists/profile" />
