@@ -767,7 +767,8 @@ export const ShareSongs = (trackid, recEmail, token) => (dispatch) => {
   console.log(data);
   axios.post(`${ShareSongUrl}`, data, {
     headers: { Authorization: Authstr },
-  });
+  }).then(response=> console.log(response,data))
+  .catch(err => console.log(err));
 };
 
 //==================================Artist Module=================================
