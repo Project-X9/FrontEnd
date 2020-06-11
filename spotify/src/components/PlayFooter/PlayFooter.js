@@ -97,9 +97,15 @@ function format2Number(num) {
           var songID=this.props.data_be.data_be.queue.find(el => el == this.props.song.song._id)
           if(songID!==undefined){
             this.props.RemoveQueue(songID,this.props.data_be.data_be._id,this.props.token.token)
-            this.props.GetQueue(this.props.data_be.data_be._id,this.props.token.token)
           }
-          this.onPlayerNext();
+          if(this.props.isQueue.isQueue === false && this.props.currentPlaylist.currentPlaylist)
+          {
+            this.onPlayerNext();
+          }
+          else if(this.props.isQueue.isQueue === true && this.props.queue.queue)
+          {
+            this.props.PlayTheFooter(this.props.queue.queue[0])
+          }
         }
       }
     }
@@ -159,6 +165,8 @@ function format2Number(num) {
      */
     handleQueue(){
       this.props.GetQueue(this.props.data_be.data_be._id,this.props.token.token);
+      this.props.handleCurrentPlayList(null);
+      this.props.SetIsQueue(true);
     }
     startSetVolume(evt) {
       this.setState({
@@ -194,6 +202,7 @@ function format2Number(num) {
     onPlayerNext() {
       if (this.props.song.song) {
       this.props.AddPrevSong(this.props.song.song)
+      }
       var song;
       // do {
         if(this.props.shuffle.shuffle === true )
@@ -217,7 +226,7 @@ function format2Number(num) {
             }
           })
         }
-    }
+    
     }
     onPlayerPrev() {
       if(this.props.prevsong.prevsong)

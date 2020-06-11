@@ -64,7 +64,6 @@ class Queue extends Component {
         if (this.props.isSignedIn.isSignedIn !== true) {
             var redirected = <Redirect to="/webplayer/home"></Redirect>;
         }
-
         let userName =(
             <div>
              <Button className="AccountItself">

@@ -925,8 +925,15 @@ export const AddToQueue = (trackId,userId,token) =>(dispatch)=>{
       headers: { Authorization: Authstr },
     })
     .then((response) =>
+    {
       dispatch(addUserData_BE(response.data.data.user))
-    );
+      axios.get(`${GetQueueUrl}/${userId}`,{
+        headers: { Authorization: Authstr },})
+      .then(response2=>{ 
+        console.log()
+        dispatch(AddQueue(response2.data.queue_tracks))})
+      .catch(err1=>console.log(err1));
+    });
   })
   .catch(err=>console.log(err));
 } 
@@ -944,11 +951,26 @@ export const RemoveQueue = (trackId,userId,token) =>(dispatch)=>{
         headers: { Authorization: Authstr },
       })
       .then((response) =>
+      {
         dispatch(addUserData_BE(response.data.data.user))
+        axios.get(`${GetQueueUrl}/${userId}`,{
+          headers: { Authorization: Authstr },})
+        .then(response2=>{ 
+          console.log()
+          dispatch(AddQueue(response2.data.queue_tracks))})
+        .catch(err1=>console.log(err1));
+      }
       );
   })
   .catch(err=>console.log(err));
 } 
+export const SetIsQueue = (isqueue) =>(dispatch)=>{
+  dispatch(IsQueue(isqueue));
+} 
+export const IsQueue = (isqueue) => ({
+  type: ActionTypes.ISQUEUE,
+  payload:isqueue
+});
 //=======================LikeSong & Follow Artist=========================
 /**
  * this function implements the like song

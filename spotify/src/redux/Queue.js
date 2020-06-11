@@ -1,6 +1,6 @@
 import * as ActionTypes from './ActionTypes';
 
-export const QueueOfTracks = (state = { queue: null , isLoading: true}, action) => {
+export const QueueOfTracks = (state = { queue: null , isLoading: null}, action) => {
     switch (action.type) {
       case ActionTypes.ADDQUEUE:
         return { ...state, queue: action.payload , isLoading:false};
@@ -12,4 +12,15 @@ export const QueueOfTracks = (state = { queue: null , isLoading: true}, action) 
         return state;
     }
   };
+  export const SetQueueState = (state = { isQueue: false }, action) => {
+    switch (action.type) {
+      case ActionTypes.ISQUEUE:
+        return { ...state, isQueue: action.payload};
+        case ActionTypes.ADD_LOGOUT_BE:
+          return {...state , isQueue: false }
+      default:
+        return state;
+    }
+  };
+
   

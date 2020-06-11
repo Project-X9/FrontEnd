@@ -467,6 +467,9 @@ handleSubmit() {
                         PlayTheFooter={this.props.PlayTheFooter}
                         queue={this.props.queue}
                         AddPrevSong={this.props.AddPrevSong}
+                        SetIsQueue={this.props.SetIsQueue}
+                        isQueue={this.props.isQueue}
+
                       />
                     )}
                   />
@@ -509,6 +512,11 @@ handleSubmit() {
                 FollowArtist={this.props.FollowArtist}
                 UnFollowArtist={this.props.UnFollowArtist}
                 RemoveQueue={this.props.RemoveQueue}
+                SetIsQueue={this.props.SetIsQueue}
+                isQueue={this.props.isQueue}
+                handleCurrentPlayList={this.props.handleCurrentPlayList}
+
+
                />
         </div>
         <Modal

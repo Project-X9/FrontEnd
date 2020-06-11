@@ -64,6 +64,7 @@ import {
   DisLikeSong,
   FollowArtist,
   UnFollowArtist,
+  SetIsQueue
 } from "../redux/ActionCreators";
 import MyAlbums from "./ForArtists/MyAlbumsComponent";
 import MySongs from "./ForArtists/MySongsComponent";
@@ -95,7 +96,8 @@ const mapStateToProps = (state) => ({
   songid:state.songid,
   genretracks:state.genretracks,
   deletedPlaylists:state.deletedPlaylists,
-  queue:state.queue
+  queue:state.queue,
+  isQueue:state.isQueue
 
 });
 const mapDispatchToProps = (dispatch) => ({
@@ -244,6 +246,10 @@ FollowArtist: (artistID,userId,token) => {
 UnFollowArtist: (artistID,userId,token) => {
   dispatch(UnFollowArtist(artistID,userId,token));
 },
+SetIsQueue: (isqueue) => {
+  dispatch(SetIsQueue(isqueue));
+},
+
 
 });
 
@@ -428,6 +434,8 @@ class Main extends Component {
                 DisLikeSong={this.props.DisLikeSong}
                 FollowArtist={this.props.FollowArtist}
                 UnFollowArtist={this.props.UnFollowArtist}
+                isQueue={this.props.isQueue}
+                SetIsQueue={this.props.SetIsQueue}
               />
             )}
           />
