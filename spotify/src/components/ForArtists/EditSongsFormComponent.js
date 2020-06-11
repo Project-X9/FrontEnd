@@ -14,17 +14,23 @@ class EditSongForm extends Component {
                         <FormGroup row>
                             <Label for="name" sm={12} xs={12} md={12} lg={3} className="add-album-label">Name:</Label>
                             <Col sm={12} md={12} xs={12} lg={8}>
-                                <Input name="albumName" placeholder="New Song Name" className="add-album-name"></Input>
+                                <Input name="songName" id="songName " placeholder="New Song Name" className="add-album-name"></Input>
                             </Col>
                         </FormGroup>
 
                         <FormGroup row>
                             <Label for="image" sm={12} xs={12} md={12} lg={3} className="add-album-label">Image:</Label>
                             <Col sm={12} md={12} xs={12} lg={8}>
-                                <Input type="text" name="imageURL" id="newImage" placeholder="New Song Image URL" className="add-album-img-fld"></Input>
+                                <Input type="text" name="imageURL" id="imageURL" placeholder="New Song Image URL" className="add-album-img-fld"></Input>
                             </Col>
                         </FormGroup>
 
+                        <FormGroup row>
+                            <Label for="image" sm={12} xs={12} md={12} lg={3} className="add-album-label">Song Url:</Label>
+                            <Col sm={12} md={12} xs={12} lg={8}>
+                                <Input type="text" name="songURL" id="songURL" placeholder="New Song Image URL" className="add-album-img-fld"></Input>
+                            </Col>
+                        </FormGroup>
                         <FormGroup check row>
                             <Col sm={{ size: 10, offset: 2 }}>
                                 <Button type="submit" outline="success" className="edit-albums-btn">Submit</Button>
