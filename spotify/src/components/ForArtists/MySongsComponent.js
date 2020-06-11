@@ -22,7 +22,7 @@ class MySongs extends Component {
         console.log(allTracks);
         console.log(this.props.data_be.data_be.artists[0].tracks)
         let artistSongs = this.props.data_be.data_be.tracks.map((tracks) => {
-            while (tracks.artists[i] !== undefined && tracks._id !== undefined && tracks.name !== undefined) {
+            while (tracks.artists[i] !== undefined && tracks._id !== undefined) {
                 if (tracks.artists[i].name === this.props.data_be.data_be.artists[0].name) {
                     return (
                         <Col className="" md="12" xs="12" sm="12" lg="4">
