@@ -98,7 +98,7 @@ class Queue extends Component {
         } 
         
         let nowPlaying=""
-        if(this.props.queue.queue !== null){
+        if(this.props.queue.queue && this.props.queue.queue.length>0){
             nowPlaying= (
                 <div>
                     <div className="row">
@@ -146,7 +146,7 @@ class Queue extends Component {
         }
        
         let nextUp=""
-        if(this.props.queue.queue){
+        if(this.props.queue.queue && this.props.queue.queue.length>0){
             nextUp= (
                 <div>
                     <div className="row">
