@@ -3,65 +3,93 @@ import React, { Component } from 'react';
 import { Col, Row, Button, Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
 class EditSongs extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            artistSongs: "",
+            actualSongs: this.props.data_be.data_be.tracks,
+            isLoading: true,
+        };
+    }
+    trackProp = this.props.data_be.data_be.tracks;
+    handleDelete = (event) => {
+        console.log(event.currentTarget.id);
+        this.trackProp = this.trackProp.filter(track => track._id !== event.currentTarget.id);
+        console.log("i am");
+        console.log(this.trackProp);
+        this.setState({ actualSongs: this.trackProp }, () => {
+            console.log(this.state.actualSongs);
+        })
+        this.setState({
+            isLoading: true,
+        })
+
+    }
     render() {
-        let allTracks = this.props.data_be.data_be.tracks;
         let i = 0;
-        let buttonId = 0;
-        console.log(allTracks);
-        console.log(this.props.data_be.data_be.artists[0].tracks)
-        let artistSongs = this.props.data_be.data_be.tracks.map((tracks) => {
-            while (tracks.artists[i] !== undefined) {
-                if (tracks.artists[i].name === this.props.data_be.data_be.artists[0].name) {
-                    return (
-                        <Container>
-                            <Row>
-                                <Col className="" md="12" xs="12" sm="12" lg="4">
-                                    <img src={tracks.imageUrl} alt="" className="song-img rounded img-fluid" />
-                                    <h5 className="song-title">
-                                        {tracks.name}
-                                    </h5>
-                                    <h6 className="song-duration">
-                                        {tracks.duration}
-                                    </h6>
-                                    <h6 className="song-duration">
-                                        {tracks.description}
-                                    </h6>
-                                    <h6 className="song-duration">
-                                        {tracks.playcount}
-                                    </h6>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col>
-                                    <Button outline color="success" size="lg" className="edit-albums-btn" id={tracks._id} >
-                                        Delete
+        let allTracks = this.state.actualSongs;
+        if (this.state.isLoading === true) {
+            this.setState({
+                artistSongs: allTracks.map((allTracks) => {
+                    while (allTracks.artists[i] !== undefined) {
+                        if (allTracks.artists[i].name === this.props.data_be.data_be.artists[0].name) {
+                            console.log("hi")
+                            return (
+                                <Container>
+                                    <Row>
+                                        <Col className="" md="12" xs="12" sm="12" lg="4">
+                                            <img src={allTracks.imageUrl} alt="" className="song-img rounded img-fluid" />
+                                            <h5 className="song-title">
+                                                {allTracks.name}
+                                            </h5>
+                                            <h6 className="song-duration">
+                                                {allTracks.duration}
+                                            </h6>
+                                            <h6 className="song-duration">
+                                                {allTracks.description}
+                                            </h6>
+                                            <h6 className="song-duration">
+                                                {allTracks.playcount}
+                                            </h6>
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col>
+                                            <Button outline color="success" size="lg" className="edit-albums-btn" id={allTracks._id} onClick={this.handleDelete}>
+                                                Delete
                         </Button>
-                                    <Button outline color="success" size="lg" className="edit-albums-btn" id={tracks._id} >
-                                        <Link to="/forartists/songs/edit/form">
-                                            Edit
+                                            <Button outline color="success" size="lg" className="edit-albums-btn" id={allTracks._id} >
+                                                <Link to="/forartists/songs/edit/form">
+                                                    Edit
                             </Link>
-                                    </Button>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col className="" md="12" xs="12" sm="12" lg="12">
-                                    <Button outline color="success" size="lg" className="edit-albums-btn">
-                                        <Link to="/forartists/songs">
-                                            Back
+                                            </Button>
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col className="" md="12" xs="12" sm="12" lg="12">
+                                            <Button outline color="success" size="lg" className="edit-albums-btn">
+                                                <Link to="/forartists/songs">
+                                                    Back
                             </Link>
-                                    </Button>
-                                </Col>
-                            </Row>
-                        </Container>
-                    )
-                }
-                i++;
-            }
-            i = 0;
-        });
+                                            </Button>
+                                        </Col>
+                                    </Row>
+                                </Container>
+                            )
+
+                        }
+                        i++;
+                    }
+                    i = 0;
+
+                })
+            });
+            this.setState({ isLoading: false });
+        }
+        else { }
         return (
             <Container>
-                {artistSongs}
+                {this.state.artistSongs}
             </Container>
         );
     }
