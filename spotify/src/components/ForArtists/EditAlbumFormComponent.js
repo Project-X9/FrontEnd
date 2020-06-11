@@ -3,6 +3,13 @@ import { Col, Row, Container, Button, Form, FormGroup, Input, Label } from 'reac
 import { Link } from 'react-router-dom'
 class EditAlbum extends Component {
     /**
+     * 
+     * @param {Object} props 
+     */
+    constructor(props) {
+        super(props);
+    }
+    /**
    * Responsible for rendering the edit album form and its elements on the screen
    * @returns a from for edit album
    */
