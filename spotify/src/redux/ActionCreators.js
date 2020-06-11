@@ -989,7 +989,6 @@ export const RemoveQueue = (trackId, userId, token,isqueue) => (dispatch) => {
               if(isqueue && response2.data.queue_tracks.length>0)
               {
                 dispatch(addSongSrc(response2.data.queue_tracks[0]))
-
               }
               dispatch()
             })
