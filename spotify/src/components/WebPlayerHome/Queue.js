@@ -101,51 +101,54 @@ class Queue extends Component {
         else{
             showUpgrade2=(<span></span>)
         } 
-        let song="Lose Yourself"
-        let artist="Eminem";
-        let album="a new album";
-        let nowPlaying= (
-            <div>
-                <div className="row">
-                    <div className="col">
-                        <h2 className="QueueNowPlayingHeader">
-                            Now Playing
-                        </h2>
-                    </div>
-                </div>
-                <div className="row QueueNowPlayingBiggestRow">
-                <div className="col">
+        
+        let nowPlaying=""
+        if(this.props.queue.queue){
+            nowPlaying= (
+                <div>
                     <div className="row">
-                        <div className="col-1 QueueNowPlayingFirstColumnFirstIcon">
-                            <div>
-                            <i class="fa fa-music"></i>
-                            </div>
-                        </div>
-                        <div className="col-1 QueueNowPlayingFirstColumnSecondIcon">
-                            <Button className="QueueNowPlayingFirstColumnSecondIconButton">
-                            <i class="fa fa-play"></i>
-                            </Button>
-                        </div>
-                        <div className="col-9">
-                            <div className="row">
-                                <div className="col QueueNowPlayingFirstRow">
-                                    {song}
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col QueueNowPlayingSecondRow">
-                                    {artist} . {album}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-1 QueueNowPlayingThirdColumn">
-                            3:12
+                        <div className="col">
+                            <h2 className="QueueNowPlayingHeader">
+                                Now Playing
+                            </h2>
                         </div>
                     </div>
+                    <div className="row QueueNowPlayingBiggestRow">
+                    <div className="col">
+                        <div className="row">
+                            <div className="col-1 QueueNowPlayingFirstColumnFirstIcon">
+                                <div>
+                                <i class="fa fa-music"></i>
+                                </div>
+                            </div>
+                            <div className="col-1 QueueNowPlayingFirstColumnSecondIcon">
+                                <Button 
+                                onClick={()=>this.handleplayqueue()}
+                                className="QueueNowPlayingFirstColumnSecondIconButton">
+                                <i class="fa fa-play"></i>
+                                </Button>
+                            </div>
+                            <div className="col-9">
+                                <div className="row">
+                                    <div className="col QueueNowPlayingFirstRow">
+                                        {this.props.queue.queue[0].name}
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col QueueNowPlayingSecondRow">
+                                        {this.props.queue.queue[0].description}
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-1 QueueNowPlayingThirdColumn">
+                                3:12
+                            </div>
+                        </div>
+                    </div>
+                    </div>
                 </div>
-                </div>
-            </div>
-        )
+            )
+        }
        
         
         let nextUp= (
