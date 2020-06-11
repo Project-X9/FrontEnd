@@ -41,7 +41,7 @@ class LoggedHome extends Component {
                         </button>
                     </Link>
                     <div className="songCards">
-                    {TopSongs = this.props.fullsongs.fullSongs.map((song) => {
+                    {TopSongs = this.props.fullsongs.fullSongs.slice(0,6).map((song) => {
                         return(
                             <div className="songCard">
                                 <Link to="/webplayer">

@@ -7,7 +7,9 @@ import Albums from './AlbumsComponent';
 import Artists from './ArtistsComponent';
 import LibraryNavbar from './LibraryNavbar'
 import {Switch, Route,Redirect} from "react-router-dom";
-import { Row, Col} from 'reactstrap';
+import { 
+  Button, Row, Col,} from 'reactstrap';
+import NowPlay from "../NowPlayComponent/NowPlay";
 
 /**
  * The library page in the web player interface 

@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { 
     Nav,Navbar,NavItem,
    Button, Row, Col,DropdownItem,UncontrolledDropdown,DropdownToggle,DropdownMenu} from 'reactstrap'; 
-import {NavLink} from "react-router-dom";
+   import {NavLink,Redirect} from "react-router-dom";
 
 import "./Page.css";
 

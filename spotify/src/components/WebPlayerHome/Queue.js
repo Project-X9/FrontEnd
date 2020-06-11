@@ -2,7 +2,7 @@ import "./WebPlayerHomeComponent.css";
 import React, { Component } from "react";
 import { Navbar,Nav,NavItem,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem,Button} from "reactstrap";
 import { NavLink, Redirect} from "react-router-dom";
-import {Loading} from './../Loading/LoadingComponent'
+import {Loading} from './../Loading/LoadingComponent';
 /**
  * Queue inside Webplayer page
  */
