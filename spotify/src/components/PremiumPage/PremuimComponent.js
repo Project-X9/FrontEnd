@@ -65,10 +65,10 @@ else{   var min = 1;
     }
     this.props.ControlModal(true);
     this.props.ForSignUpVerification(NewObject);
-    var service_id = "ahahmed202025_gmail_com";
-    var template_id = "template_6Gzc6XQv";
-    var UserID ="user_ZGAt1STrmZuTHMLbdVnkr"
-    emailjs.init("user_ZGAt1STrmZuTHMLbdVnkr");
+      var service_id = "gmail";
+      var template_id = "template_mEf57s4f";
+      var UserID ="user_jUaXMo4Oo1nGtzqQSfk4k"
+      emailjs.init("user_jUaXMo4Oo1nGtzqQSfk4k");
 
     var template_params={
       message_html: rand,
@@ -92,7 +92,7 @@ else{   var min = 1;
 
   handleSubmitModal(){
     if (this.state.Premium === true){
-      this.props.PremiumPost(this.props.data_be.data_be._id, false);
+      this.props.PremiumPost(this.props.data_be.data_be._id, false,this.props.token.token);
       this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
       this.setState({ Premium: false });
       this.props.ControlModal(false);
@@ -100,7 +100,7 @@ else{   var min = 1;
     else if(this.state.Premium ===false){
       if (this.state.inputValue == this.props.signupdata.signupdata.randomId){
         this.props.ControlModal(false);
-          this.props.PremiumPost(this.props.data_be.data_be._id, true);
+          this.props.PremiumPost(this.props.data_be.data_be._id, true,this.props.token.token);
         this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
 
         this.setState({Premium: true});
@@ -280,7 +280,7 @@ else{   var min = 1;
               </div>
             </div>
             <p>
-              <Button className="signupbtn" onClick={this.handleSubmit}>
+              <Button className="signupbtn" onClick={()=>{this.handleSubmit()}}>
                 Get Premium
               </Button>
 

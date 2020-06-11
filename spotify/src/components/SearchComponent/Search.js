@@ -14,7 +14,6 @@ import {
   InputGroup,
 } from "reactstrap";
 import axios from 'axios';
-
 import "../SearchComponent/Search.css";
 import "../NowPlayComponent/NowPlay.css";
 import {Link, NavLink, Redirect} from "react-router-dom";
@@ -35,6 +34,7 @@ class Search extends Component {
     super(props);
     this.state = {
       isNavOpen: false,
+        playListadded:false,
       tempId: this.props.data_be.data_be.id,
       search:'',suggestionSongs:[],suggestionArtists:[],FullSongs:this.props.fullsongs.fullSongs,categories:this.props.categories.categories,
 artists:this.props.fullartists.fullArtists
@@ -42,8 +42,14 @@ artists:this.props.fullartists.fullArtists
     this.handleinput=this.handleinput.bind(this);
     this.state.toggleNav = this.toggleNav.bind(this);
     this.state.handleLogout = this.handleLogout.bind(this);
+    this.handleRenderingPlaylist=this.handleRenderingPlaylist.bind(this);
   }
-  
+    handleRenderingPlaylist(data){
+        this.props.handleCurrentArtists(data,this.props.token.token);
+        this.setState({
+            playListadded:true
+        })
+    }
 
   toggleNav() {
     this.setState({
@@ -104,7 +110,6 @@ renderSuggestion(){
                   <hr/>
                 <h3 >Opps!.. No Related Songs</h3>
 
-
     <h1 >Related Artists</h1>
 
     <Row xs="3">
@@ -113,8 +118,10 @@ renderSuggestion(){
           <CardImg top width="100%" src={Artist.image} alt="Card image cap" />
           <CardBody className="SearchCardBodySuggestionCard">
               <CardTitle className="SearchCardTitleSuggestionCard">{Artist.name}</CardTitle>
-              <Button className="SearchCardButtonSuggestionCard">Go To {Artist.name}</Button>
-          </CardBody>
+              <Link to="/webplayer/artist">
+              <Button className="SearchCardButtonSuggestionCard" onClick={()=>this.handleRenderingPlaylist(Artist._id)}>Go To {Artist.name}</Button>
+              </Link>
+              </CardBody>
       </Card>
   </Col>)})}
 </Row>
@@ -127,17 +134,14 @@ renderSuggestion(){
                  <section className="JumbostyleWithPadding">
                      <h1 >Related Artists</h1>
                      <h5>Opps!.. No Related Artists</h5>
-
-
                      <h1 >Related Songs</h1>
-
                      <Row xs="3">
                          {suggestionSongs.map(Song=>{return(
                              <Col className="PaddingColoumns"><Card>
                                  <CardImg top width="100%" src={Song.imageUrl} alt="Card image cap" />
                                  <CardBody className="SearchCardBodySuggestionCard">
                                      <CardTitle className="SearchCardTitleSuggestionCard">{Song.name}</CardTitle>
-                                     <Button className="SearchCardButtonSuggestionCard">Go To {Song.name}</Button>
+                                     <Button className="SearchCardButtonSuggestionCard" onClick={()=>{this.props.PlayTheFooter(Song.url)}}>Play {Song.name}</Button>
                                  </CardBody>
                              </Card>
                              </Col>)})}
@@ -145,11 +149,45 @@ renderSuggestion(){
                  </section>
              </div>)
        }
-       else{return (<div><p>Your Related Songs are {suggestionSongs.map(x=>x.name)}</p><p>Your Related Artists are{suggestionArtists.map(x=>x.name)}</p></div>)}
+       else{return ( <div className="DivStyle">
+         <section className="JumbostyleWithPadding">
+             <h1 >Related Artists</h1>
+             <Row xs="3">
+                 {suggestionArtists.map(Artist=>{return(
+                     <Col className="PaddingColoumns"><Card>
+                         <CardImg top width="100%" src={Artist.image} alt="Card image cap" />
+                         <CardBody className="SearchCardBodySuggestionCard">
+                             <CardTitle className="SearchCardTitleSuggestionCard">{Artist.name}</CardTitle>
+                             <Link to="/webplayer/artist">
+                             <Button className="SearchCardButtonSuggestionCard" onClick={()=>this.handleRenderingPlaylist(Artist._id)}>Go To {Artist.name}</Button>
+                             </Link>
+                             </CardBody>
+                     </Card>
+                     </Col>)})}
+             </Row>
+             <h1 >Related Songs</h1>
+             <Row xs="3">
+                 {suggestionSongs.map(Song=>{return(
+                     <Col className="PaddingColoumns"><Card>
+                         <CardImg top width="100%" src={Song.imageUrl} alt="Card image cap" />
+                         <CardBody className="SearchCardBodySuggestionCard">
+                             <CardTitle className="SearchCardTitleSuggestionCard">{Song.name}</CardTitle>
+                             <Button className="SearchCardButtonSuggestionCard" onClick={()=>{this.props.PlayTheFooter(Song.url)}}>Play {Song.name}</Button>
+                         </CardBody>
+                     </Card>
+                     </Col>)})}
+             </Row>
+         </section>
+     </div>)}
 
     }
 
   render() {
+
+      if(this.state.playListadded === true)
+      {
+          var redirected = <Redirect to="/webplayer/nowplay"></Redirect>
+      }
     let redirect = "";
     if (this.props.isSignedIn.isSignedIn === null) {
       redirect = <Redirect to="/webplayer/home" />;
@@ -285,6 +323,7 @@ renderSuggestion(){
       }
       return (
         <div>
+            {redirected}
          {this.props.isSignedIn.isSignedIn === true ? (
             <div className=" DivStyle LibraryPageBody">
               {SignedIn}

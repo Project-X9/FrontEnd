@@ -16,19 +16,15 @@ class Albums extends Component {
         };      
     }
     handleRenderingPlaylist(data){
-
-        // alert(data);
-        this.props.handleCurrentAlbums(data);
+        this.props.handleCurrentAlbums(data,this.props.token.token);
         this.setState({
             playListadded:true
         })
     }
     render(){
         if(this.state.playListadded === true)
-        {   
-            // wait(2000);
+        {
             var redirected = <Redirect to="/webplayer/nowplay"></Redirect>
-
         }
         if(this.props.isSignedIn.isSignedIn === true)
         {

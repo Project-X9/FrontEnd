@@ -42,7 +42,7 @@ handleplay(){
  * @param {String} id 
  */
 handleRenderingPlaylist(id){
-    this.props.handleCurrentPlayList(id);   
+    this.props.handleCurrentPlayList(id,this.props.token.token);
 }
 render(){
     if(this.state.playListadded === true)
