@@ -14,6 +14,7 @@ class AddSong extends Component {
      * @param {Object} values adds the song from the form to the songs array
      */
     handleAddSong = values => {
+        this.props.reseteditprofile();
         let newSong = {
             name: values.name,
             imageUrl: values.image,
@@ -32,8 +33,10 @@ class AddSong extends Component {
         return (
             <Container>
                 <Form
-                    model="artisteditprofile"
-                    onSubmit={(values) => this.handleAddSong(values)}>
+                    model="editprofie"
+                    onSubmit={(values) => {
+                        this.handleAddSong(values)
+                    }}>
                     <Row className="form-group">
                         <Col xs={12} md={{ size: 6, offset: 3 }}>
                             <Label className="add-album-label">Name :</Label>
