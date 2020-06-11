@@ -12,7 +12,7 @@ class LoggedHome extends Component {
     }
     render() {
         let TopSongs="";
-        /**@return: returns the homepage component consisting of a navbar component, main part and a footer component. */
+        /**@return: returns the homepage component for logged in users consisting of a navbar component, main part, some songs and a footer component. */
         return (
             <div className="Home homeLog">
                 <NavbarHome isSignedIn={this.props.isSignedIn}
