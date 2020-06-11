@@ -69,7 +69,6 @@ handleSubmitModal() {
     
     if(this.state.inputValue == this.props.signupdata.signupdata.randomId)
     {
-      alert("this.state.password")
       this.props.ControlModal(false)
       this.props.resetFeedbackForm();
       this.state.Succeded = this.props.postFeedback(this.props.signupdata.signupdata); 
@@ -157,7 +156,6 @@ handleSubmitModal() {
       }
         emailjs.send(service_id, template_id,template_params)
         .then(function(){ 
-           alert("Sent!");
          }, function(err) {
            alert("Send email failed!\r\n Response:\n " + JSON.stringify(err));
         });

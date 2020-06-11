@@ -152,7 +152,7 @@ class Queue extends Component {
                     <div className="row">
                         <div className="col">
                             <h2 className="QueueNextUpHeader">
-                                Next Up
+                                Songs in Queue
                             </h2>
                         </div>
                     </div>
