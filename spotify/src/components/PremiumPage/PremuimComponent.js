@@ -25,7 +25,11 @@ import {
 import "./PremiumComponent.css";
 import { NavLink, Redirect } from "react-router-dom";
 import emailjs  from 'emailjs-com';
-
+import"../WebPlayerHome/CreatePlaylist.css"
+import FormGroup from "@material-ui/core/FormGroup";
+import Input from "@material-ui/core/Input";
+import Label from "reactstrap/es/Label";
+import Form from "react-bootstrap/Form";
 class Premium extends Component {
   /**
    *
@@ -38,15 +42,17 @@ class Premium extends Component {
       isNavOpen: false,
       modal: false,
       isModalOpen: false,
-      inputValue:null,
       collapsed: true,
       Premium: this.props.data_be.data_be.premium,
       tempId: this.props.data_be.data_be._id,
       isPrenium: !this.props.data_be.data_be.premium,
+      inputValue:''
     };
     this.state.toggleNav = this.toggleNav.bind(this);
     this.togglemodal = this.togglemodal.bind(this);
-
+    this.handleSubmitModal=this.handleSubmitModal.bind(this);
+    this.handleChange=this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePremium_be = this.handlePremium_be.bind(this);
     this.state.handleLogout = this.handleLogout.bind(this);
   }
@@ -64,8 +70,7 @@ else{   var min = 1;
     var NewObject={
       randomId:rand
     }
-    alert(rand)
-      this.props.ControlModal(true);
+    this.props.ControlModal(true);
       this.props.ForSignUpVerification(NewObject);
       var service_id = "gmail";
       var template_id = "template_mEf57s4f";
@@ -81,7 +86,7 @@ else{   var min = 1;
             alert("Sent!");
           }, function(err) {
             alert("Send email failed!\r\n Response:\n " + JSON.stringify(err));
-          });
+        });
 
     }
 }
@@ -102,15 +107,12 @@ else{   var min = 1;
       this.props.ControlModal(false);
     }
     else if(this.state.Premium ===false){
-      alert(this.state.inputValue);alert(this.props.signupdata.signupdata.randomId)
       if (this.state.inputValue == this.props.signupdata.signupdata.randomId){
         this.props.ControlModal(false);
           this.props.PremiumPost(this.props.data_be.data_be._id, true,this.props.token.token);
         this.props.handleChangeData_BE(this.props.data_be.data_be._id,this.props.token.token)
-alert("sa7")
         this.setState({Premium: true});
       } else if (this.state.inputValue != this.props.signupdata.signupdata.randomId) {
-        alert("8alat")
 
       }
     }
@@ -291,7 +293,7 @@ alert("sa7")
               </Button>
 
               <Modal isOpen={this.props.isModalOpen.isModalOpen} className="">
-                <ModalBody className="createPlayLsitBody">
+                <ModalBody className="createPlayListBody">
                   <Row>
                     <Col md={12} xs={12} sm={12}>
                       <Row>
@@ -309,13 +311,14 @@ alert("sa7")
                           <h1>Enter The Code Send To Your Email</h1>
                         </Col>
                       </Row>
+
                         <Row>
                           <Col className="inputField_CP" md={12} xs={12} sm={12}>
                             <div className="inputBox_CP">
                               <Row>
                                 <Col md={{size:10, offset:2}} xs={12} sm={12} >
                                   <div className="contentSpacing_CP">
-                                    <input type="text" className="inputBox-input_CP" placeholder="Code" onChange={this.handleChange}/>
+                                    <input type="text" className="inputBox-input_CP" placeholder="Enter Your Received Code" onChange={this.handleChange}/>
                                   </div>
                                 </Col>
                               </Row>

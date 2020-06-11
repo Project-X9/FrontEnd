@@ -11,6 +11,11 @@ import SignIn from "./SignIn/SignInComponent";
 import ArtistInterface from "./ForArtists/ArtistInterfaceComponent"
 import "./ForArtists/ArtistInterfaceComponent.css";
 import LoggedHome from "./Homepage/LoggedHomeComponent";
+import MyAlbums from "./ForArtists/MyAlbumsComponent";
+import MySongs from "./ForArtists/MySongsComponent";
+import Library from "./Library/LibraryCompnent";
+import PlayFooter from "./PlayFooter/PlayFooter";
+import CreatePlayList from "./WebPlayerHome/CreatePlayListModel";
 import {
   postFeedback,
   postFacebookLogin,
@@ -62,7 +67,8 @@ import {
   FollowArtist,
   UnFollowArtist,
   SetIsQueue,
-  postUpdatedArtist
+  postUpdatedArtist,
+  ShareSongs
 } from "../redux/ActionCreators";
 
 const mapStateToProps = (state) => ({
@@ -228,8 +234,8 @@ const mapDispatchToProps = (dispatch) => ({
   AddToQueue: (userid, trackid, token) => {
     dispatch(AddToQueue(userid, trackid, token));
   },
-  RemoveQueue: (userid, trackid, token) => {
-    dispatch(RemoveQueue(userid, trackid, token));
+  RemoveQueue: (userid, trackid, token, isqueue) => {
+    dispatch(RemoveQueue(userid, trackid, token, isqueue));
   },
   GetQueue: (userid, token) => {
     dispatch(GetQueue(userid, token));
@@ -250,7 +256,9 @@ const mapDispatchToProps = (dispatch) => ({
   SetIsQueue: (isqueue) => {
     dispatch(SetIsQueue(isqueue));
   },
-
+  ShareSongs: (trackid, recEmail, token) => {
+    dispatch(ShareSongs(trackid, recEmail, token));
+  },
 
 });
 
@@ -437,6 +445,7 @@ class Main extends Component {
                 UnFollowArtist={this.props.UnFollowArtist}
                 isQueue={this.props.isQueue}
                 SetIsQueue={this.props.SetIsQueue}
+                ShareSongs={this.props.ShareSongs}
               />
             )}
           />

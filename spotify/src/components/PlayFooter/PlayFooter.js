@@ -4,7 +4,10 @@ import {
 } from 'reactstrap';
 import { Link ,Redirect } from 'react-router-dom';
 import "./PlayFooter.css";
-
+import { totalTime } from '../../redux/ActionCreators';
+import {
+  Control, Form, Errors,
+} from 'react-redux-form';
 /**
  * Function that that transfer the audio time to a time format 
  * @param {*} num 
@@ -92,7 +95,7 @@ function format2Number(num) {
         if (this._player.ended){
           var songID=this.props.data_be.data_be.queue.find(el => el == this.props.song.song._id)
           if(songID!==undefined){
-            this.props.RemoveQueue(songID,this.props.data_be.data_be._id,this.props.token.token)
+            this.props.RemoveQueue(songID,this.props.data_be.data_be._id,this.props.token.token,this.props.isQueue.isQueue)
           }
           if(this.props.isQueue.isQueue === false && this.props.currentPlaylist.currentPlaylist)
           {
