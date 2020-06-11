@@ -21,7 +21,8 @@ class AddSong extends Component {
             artists: [{
                 name: this.props.data_be.data_be.artists[0].name
             }],
-            description: values.description
+            description: values.description,
+            _id:values.name
         }
         this.props.data_be.data_be.tracks.push(newSong);
     }

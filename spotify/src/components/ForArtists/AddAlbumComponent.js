@@ -12,7 +12,8 @@ class AddAlbum extends Component {
             name: values.name,
             image: values.image,
             artists: [this.props.data_be.data_be.artists[0]._id],
-            description: values.description
+            description: values.description,
+            _id: values.name
         }
         this.props.data_be.data_be.albums.push(newAlbum);
     }
@@ -67,7 +68,7 @@ class AddAlbum extends Component {
                     <Row className="form-group">
                         <Col>
                             <Button className="edit-albums-btn" size="lg">
-                                <Link to="/forartists/songs">
+                                <Link to="/forartists/albums">
                                     Back
                                     </Link>
                             </Button>
