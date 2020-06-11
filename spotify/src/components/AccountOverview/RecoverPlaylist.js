@@ -17,7 +17,7 @@ class RecoverPlaylists extends Component {
    */
 
   /**
-   * Puts the selected song in the footer to be played
+   * Calls the function that recovers the deleted playlist
    */
   HandleDeletedPlaylist(userID,playlisId)
   {
