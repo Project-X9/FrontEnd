@@ -26,3 +26,9 @@ export const EditProfile = {
   email: "",
   age: "",
 };
+export const ArtistEditProfile = {
+  name: "",
+  email: "",
+  bio: "",
+  image: "",
+};

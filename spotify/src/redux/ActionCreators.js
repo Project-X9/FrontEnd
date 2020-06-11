@@ -778,13 +778,13 @@ export const ShareSongs = (trackid, recEmail, token) => (dispatch) => {
  * @param {String} Bio 
  * @param {String} Name
  * @param {String} Image
- */export const postupdatedArtist = (id, isemail, Bio, Name, Image, token) => (dispatch) => {
+ */export const postUpdatedArtist = (id, isemail, bio, Name, Image, token) => (dispatch) => {
   const Authstr = "Bearer ".concat(token);
 
   const newArtist = {
-    email: isemail,
-    bio: Bio,
     name: Name,
+    email: isemail,
+    Bio: bio,
     image: Image
   };
   axios.patch(`${ArtistsUrl}/${id}`, newArtist, {

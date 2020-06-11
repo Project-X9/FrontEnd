@@ -69,7 +69,9 @@ class ArtistInterface extends Component {
                                 <Route
                                     exact
                                     path="/forartists/profile"
-                                    component={() => <ArtistProfile data_be={this.props.data_be} />}
+                                    component={() => <ArtistProfile data_be={this.props.data_be}
+                                        token={this.props.token}
+                                    />}
                                 />
 
                                 <Route
@@ -129,7 +131,12 @@ class ArtistInterface extends Component {
                                 <Route
                                     exact
                                     path="/forartists/profile/edit"
-                                    component={() => <EditArtistProfile data_be={this.props.data_be} />}
+                                    component={() => <EditArtistProfile data_be={this.props.data_be}
+                                        token={this.props.token}
+                                        postUpdatedArtist={this.props.postUpdatedArtist}
+
+
+                                    />}
                                 />
                                 <Redirect to="/forartists/profile" />
                             </Switch>
