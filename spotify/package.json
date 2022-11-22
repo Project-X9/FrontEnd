@@ -23,7 +23,7 @@
     "react-redux": "^7.2.0",
     "react-redux-form": "^1.16.14",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.0",
+    "react-scripts": "5.0.1",
     "react-test-render": "^1.1.2",
     "react-test-renderer": "^16.13.0",
     "reactstrap": "^8.4.1",
